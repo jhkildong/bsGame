@@ -25,10 +25,10 @@ Jimin Park : fermat308@gmail.com
 <li> 맵
 
 ### 기능구현
-<li> 캐릭터 움직임
+<li> 캐릭터 움직임 - Yeon 
 <li> 캐릭터 조작 - 전사  
 <li> 캐릭터 파라미터 조작  
-<li> 몬스터 이동  
+<li> 몬스터 이동 - Yeon
 <li> 몬스터 파라미터 조작
 <li> 몬스터 랜덤 리스폰
 <li> 건물 건설
