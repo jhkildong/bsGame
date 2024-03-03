@@ -5,19 +5,24 @@ using UnityEngine;
 
 namespace Yeon
 {
+    /*
+    이동 조작 구현시 Yeon.Movement class 상속
+    이동을 하려고 하는 방향 벡터값을 FixedUpdate에서 worldMoveDir에 전달
+    rigidbody의 velocity조작을 통한 이동
+    */
     public class Movement : MonoBehaviour
     {
         protected Rigidbody rBody;
 
-        [Range(1f, 10f), Tooltip("이동속도")]
-        public float moveSpeed = 5f;
+        [SerializeField, Range(1f, 10f), Tooltip("이동속도")]
+        protected float moveSpeed = 5f;
 
-        public bool isMoving;
-        public bool isBlocked; //장애물 존재
-        public bool isOutOfControl; //제어 불가 상태
+        [SerializeField] protected bool isMoving;
+        [SerializeField] protected bool isBlocked; //장애물 존재
+        [SerializeField] protected bool isOutOfControl; //제어 불가 상태
 
-        public Vector3 worldMoveDir;
-        public float outOfControllDuration;
+        [SerializeField] protected Vector3 worldMoveDir;
+        [SerializeField] protected float outOfControllDuration;
 
         protected virtual void Start()
         {
