@@ -4,25 +4,29 @@ using UnityEngine;
 
 public class enemydrop : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject DropItem;
-    public int hp = 10;
+    //드랍되는 아이템
 
-    public float highValueItem = 0.5f;
-    public float middleValueItem = 7.5f;
-    public float lowValueItem;
+    public int hp = 10;
+    //몬스터의 체력
+
+    //public float highValueItem = 0.5f;
+    //public float middleValueItem = 7.5f;
+    //public float lowValueItem;
+    //드랍되는 확률
 
     public string boolParameter;
+    //죽을때 생기는 애니매이션 이름
     public Animator animator;
 
     private bool hasDead = false;
+    //생사 여부
 
     void Start()
     {
-        lowValueItem = 100.0f - (highValueItem + middleValueItem);
+        //lowValueItem = 100.0f - (highValueItem + middleValueItem);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(hp <= 0 && !hasDead)
@@ -30,14 +34,15 @@ public class enemydrop : MonoBehaviour
             hasDead = true;
             StartCoroutine(DeathAnimation());
             SpawnItem();
+            DestroyObject();
         }
+        //죽으면 애니매이션 > 아이템 스폰 > 옵젝 사라짐.
         
     }
     IEnumerator DeathAnimation()
     {
         animator.SetBool(boolParameter, true);
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        //DestroyObject();
     }
 
     void DestroyObject()
@@ -51,10 +56,12 @@ public class enemydrop : MonoBehaviour
         rnd.y = 1.0f;
         Instantiate(DropItem, rnd, Quaternion.identity);
     }
+    //반지름 2인 범위안에 아이템 드랍이 됨.
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("부딛혀서 체력이 깎임");
         hp -= 5;
     }
+    //부딛히면 로그.
 }
