@@ -1,0 +1,163 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
+public class InstantiateBuilding : MonoBehaviour
+{
+    //public BuildingScriptableObject setBuildingEvent;
+
+    //기능 : UI버튼클릭시, SetBuilding.cs에서 ChangeStateToBuild를 호출하여 Build상태로 전환.
+    //       마우스 위치에 클릭한 건물에 해당하는 가상의 건물을 생성하고, 마우스를 따라다니는 충돌감지 오브젝트를 SetActive한다.
+    //       해당 건물은 collider가 있는 곳에 배치가 불가능하며(ground만 raycast로 검사)
+    //       클릭시 해당 건물을 위치에 instantiate한다.
+    //       건물은 IncompletedBuilding layer 상태로 생성되며, 해당 레이어는 충돌이 일어나지 않는다.
+    public LayerMask mouseLayer;
+    Rigidbody rigid;
+    public GameObject selectBuilding; //선택한 건물 (UI 버튼을 누르면 해당 건물이 여기로 입력되어야함)
+    public GameObject selectedBuilding;//건설위치를 정하기 위해 마우스를 따라다닐 표시를 위한 임시 건물
+    Collider selectedBuildingCollider;//건설할 임시 건물의 콜라이더
+    BoxCollider checkBuildingCollider; // 건설가능 위치를 감지할 오브젝트의 Collider
+    public GameObject checkBuilding; //건설 가능 위치를 감지할 오브젝트
+    public GameObject instBuilding; //실제로 생성될 건물
+    bool isBuildReady;
+    public bool canBuild;
+
+    enum State
+    {
+        Normal,
+        Build
+    }
+
+    State state;
+    public Vector3 mousePos;
+    void Start()
+    {
+        state = State.Normal;
+        canBuild = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (state == State.Normal) { 
+           
+        }
+        if (state == State.Build) // UI클릭시 Build로 넘어온다. (Button Event에 있음)
+        {
+            if(!isBuildReady) 
+            {
+                GetReadyToBuild(); //건설 대기상태로.
+            }
+            mousePos = Input.mousePosition;
+            Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
+            if (Physics.Raycast(mouseRay, out RaycastHit hit, 1000f, mouseLayer)) // 마우스위치에 생성될 오브젝트를 보여준다. (임시 오브젝트가 따라다닌다)
+            {
+                checkBuilding.transform.position = hit.point;
+                //selectedBuilding.transform.position = selectedBuildingTransform.position;
+                //selectedBuilding.transform.rotation = selectedBuildingTransform.rotation;
+
+
+
+            }
+            float wheel = -Input.GetAxis("Mouse ScrollWheel") * 300; //마우스 휠 돌린값 *300(회전속도)
+            checkBuilding.transform.rotation *= Quaternion.Euler(0, wheel, 0);// 마우스 휠 돌린만큼 y축 기준으로 회전한다.
+
+            if (Input.GetMouseButtonDown(0)&&canBuild) // 건설가능한 위치에 클릭시
+            {
+                instBuilding = selectBuilding; //생성될 건물은 선택한 건물이다.
+                Instantiate(instBuilding, hit.point, checkBuilding.transform.rotation); //해당 위치에 회전한 그대로 생성
+                isBuildReady = false; // 건설대기상태 끝.
+                ChangeState(State.Normal);//일반상태로 돌아간다.
+                Destroy(selectedBuilding);//임시 오브젝트 파괴
+                checkBuilding.SetActive(false);//콜라이더 체크 오브젝트 비활성화
+                
+            }
+            else if (Input.GetMouseButtonDown(0) && !canBuild)
+            {
+                Debug.Log("해당 위치에 건설할수 없습니다");
+            }
+            else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape)) // 우클릭oresc 입력시 건설 취소
+            {
+                CancleBuild();
+            }
+        }       
+    }
+
+    void ChangeState(State st)
+    {
+        if (st == state) return;
+
+        else if (st == State.Normal)
+        {
+            state = State.Normal;
+        }
+        else if (st == State.Build)
+        {
+            state = State.Build;
+        }
+
+    }
+
+    public void ChangeStateToNormal()
+    {
+        ChangeState(State.Normal);
+    }
+
+    public void ChangeStateToBuild()
+    {
+        ChangeState(State.Build);
+    }
+
+    public void CanBuild()
+    {
+        canBuild = true;
+    }
+    public void CantBuild()
+    {
+        canBuild = false;
+    }
+
+    public void SetBuilding(GameObject bd)
+    {
+
+    }
+
+    public void CancleBuild()
+    {
+        isBuildReady = false; // 건설대기상태 끝.
+        ChangeState(State.Normal);//일반상태로 돌아간다.
+        Destroy(selectedBuilding);//임시 오브젝트 파괴
+        checkBuilding.SetActive(false);//콜라이더 체크 오브젝트 비활성화
+    }
+
+    public void GetReadyToBuild()
+    {
+        
+        //건설 버튼이 눌리면, 버튼이 갖고있던 스크립트 작동 -> selectBuilding 으로 해당 오브젝트 전달.
+
+        isBuildReady = true; // 건설 대기상태로 전환
+        //selectedBuilding = Instantiate(selectBuilding, this.transform.position, Quaternion.identity); //임시 건물오브젝트 생성 (선택한 건물과 동일하게)
+        
+        selectedBuilding = Instantiate(selectBuilding, this.transform.position, Quaternion.identity, checkBuilding.transform); //임시 건물오브젝트 생성 (선택한 건물과 동일하게)
+        //selectedBuilding을 istrigger로 바꿔야됨.
+
+        rigid = selectedBuilding.GetComponent<Rigidbody>(); // 임시 오브젝트의 rigidbody를 isKinematic으로 ( 충돌감지 불가하게 )
+        rigid.isKinematic = true;
+        //selectedBuilding.transform.SetParent(checkBuilding.transform); // 임시 건물 오브젝트를 콜라이더 체크하는 오브젝트의 자식으로 넣는다.
+
+        selectedBuilding.transform.position = checkBuilding.transform.position; // 임시 건물 오브젝트의 위치를 조정 (충돌감지하는 오브젝트와 위치 맞추기)
+        selectedBuilding.transform.rotation = checkBuilding.transform.rotation; // rotation맞추기
+        selectedBuildingCollider = selectedBuilding.GetComponent<Collider>(); // 임시 건물의 콜라이더를 
+        selectedBuildingCollider.enabled = false; //끈다.(임시건물은 충돌이 감지되면 안됨)
+        checkBuildingCollider = checkBuilding.GetComponent<BoxCollider>(); //충돌감지하는 오브젝트의 콜라이더를 가져와서
+
+        Vector3 newSize = selectedBuilding.GetComponent<BoxCollider>().size; //임시 오브젝트의 크기를 구한다음
+        //checkBuilding.transform.localScale = new Vector3(1, 1, 1); // 알수없는 충돌감지오브젝트의 Scale변동 문제가 있어서 강제로 scale을 고정시켰다 (임시방편)
+        checkBuildingCollider.size = newSize; //0체크 콜라이더 오브젝트의 크기를 임시 오브젝트의 크기와 동일하게 맞춘다.    
+        checkBuildingCollider.center = selectedBuilding.GetComponent<BoxCollider>().center;
+
+        checkBuilding.SetActive(true); //건물을 지을 위치에 다른 물체가 있는지 체크할 collider 활성화
+    }
+
+}

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CartoonGrass_Grass_02_LOD2
-  m_Shader: {fileID: -6465566751694194690, guid: 0e3ac3183fecbaf49826aa372f4dcd0e, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 1cda2909320305c41ad6bc2dc85d1e0e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -36,17 +36,11 @@ Material:
     m_Floats:
     - GradientHeight: 0.85
     - GradientSmoothness: 1
-    - _BUILTIN_QueueControl: 0
-    - _BUILTIN_QueueOffset: 0
-    - _GradientHeight: 0.85
-    - _GradientSmoothness: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - BottomColor: {r: 0.23921569, g: 0.4627451, b: 0.18039216, a: 0}
     - TopColor: {r: 0.58431375, g: 0.7647059, b: 0.28235295, a: 0}
-    - _BottomColor: {r: 0.2392157, g: 0.46274513, b: 0.18039216, a: 0}
-    - _TopColor: {r: 0.58431375, g: 0.76470596, b: 0.28235295, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &872280508215694085
 MonoBehaviour:
@@ -61,16 +55,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
---- !u!114 &5188142555081994456
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 0

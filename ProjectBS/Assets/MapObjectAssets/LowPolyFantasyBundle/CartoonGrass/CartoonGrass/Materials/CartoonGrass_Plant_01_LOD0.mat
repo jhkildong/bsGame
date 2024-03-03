@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8395959059049842851
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 0
 --- !u!114 &-285310488771742133
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -34,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CartoonGrass_Plant_01_LOD0
-  m_Shader: {fileID: -6465566751694194690, guid: 56ab90c99b5f15841a76bd401600843b, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: ba79b7d3ce84b864ea6da8312f516305, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -65,18 +52,10 @@ Material:
     - Vector1_387E92A5: 0
     - WindSpeed: 1
     - WindStrength: 0.1
-    - _BUILTIN_QueueControl: 0
-    - _BUILTIN_QueueOffset: 0
-    - _Emission_multiply: 0
-    - _GradientSmoothness: 1
     - _Offset: 0.34
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WindSpeed: 1
-    - _WindStrength: 0.1
     m_Colors:
     - BottomColor: {r: 0.5415029, g: 0.745283, b: 0.18046154, a: 0}
     - TopColor: {r: 0.34276584, g: 0.5, b: 0.11635217, a: 0}
-    - _BottomColor: {r: 0.34117648, g: 0.5019608, b: 0.11764707, a: 0}
-    - _TopColor: {r: 0.5411765, g: 0.74509805, b: 0.18039216, a: 0}
   m_BuildTextureStacks: []
