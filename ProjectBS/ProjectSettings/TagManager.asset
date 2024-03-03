@@ -14,7 +14,6 @@ TagManager:
   - 
   - 
   - 
-  - Ground
   - 
   - 
   - 
@@ -33,10 +32,11 @@ TagManager:
   - 
   - 
   - 
-  - IncompletedBuilding
-  - BuildCheckObject
-  - Building
-  - Monster
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0

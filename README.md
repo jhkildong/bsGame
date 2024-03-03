@@ -1,4 +1,4 @@
-Hi
+https://drive.google.com/drive/folders/1TZVacSd9rDb6bMYVDEuVMMNYC348H368  
 
 SunghoBae : sungho9898@naver.com  
 JeongWhan Yeon : jh_kildong@naver.com   
@@ -25,15 +25,20 @@ Jimin Park : fermat308@gmail.com
 <li> 맵
 
 ### 기능구현
-<li> 캐릭터 움직임 - Yeon 
+<li> 캐릭터 움직임 - Yeon & Jun
 <li> 캐릭터 조작 - 전사  
-<li> 캐릭터 파라미터 조작  
-<li> 몬스터 이동 - Yeon
+<li> 캐릭터 파라미터 생성 - Jun
+<li> 캐릭터 파라미터 조작
+<li> 몬스터 생성 및 이동 - Yeon
+<li> 몬스터 파라미터 생성 - Jun
 <li> 몬스터 파라미터 조작
-<li> 몬스터 랜덤 리스폰
+<li> 몬스터 랜덤 리스폰 - Yeon
 <li> 건물 건설 - 박지민
+<li> 건물 파라미터 생성 - Jun
 <li> 건물 파라미터 조작
-<li> 드랍 아이템 획득 - 경험치, 특수아이템, 보물 
+<li> 아이템 파라미터 생성 - Jun
+<li> 드랍 아이템 획득 - 경험치, 특수아이템, 보물 - ho
+<li> 무기 파라미터 생성 - Jun
 <li> 레벨업시 무기 or 특성 랜덤 등장 후 선택
 <li> 낮 밤 구현
 <li> 무기 구체화
@@ -267,13 +272,3 @@ Collider는 얇게 구현(겹치기 방지)
 
 
 
-파라피터
-	ㄴ재준 - 이건 뭐에요?
-	ㄴ 능력치 Parameter입니다. 이제 정의해야됩니다
-	ㄴ 아하!
-
-캐릭터
--오늘 저녁은 신라면이다.(히히 참치발싸)
-
-몬스터
--
