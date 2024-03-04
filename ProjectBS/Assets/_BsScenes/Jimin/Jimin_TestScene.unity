@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   selectBuilding: {fileID: 0}
   selectedBuilding: {fileID: 0}
   checkBuilding: {fileID: 530482572}
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkLayer:
     serializedVersion: 2
-    m_Bits: 3489660928
+    m_Bits: 0
   cantBuildState:
     m_PersistentCalls:
       m_Calls:

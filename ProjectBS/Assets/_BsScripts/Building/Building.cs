@@ -2,26 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviour
+public abstract class Building
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public BuildingData Data {get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    //건설시간 코드
-    void BuildingTime()
-    {
-        //건설 시간 체크
-        //건설시간이 건설필요시간 이상이 되면 건물 실체화.
-    }
-
-    //
+    public Building(BuildingData data) => Data = data;
 }
