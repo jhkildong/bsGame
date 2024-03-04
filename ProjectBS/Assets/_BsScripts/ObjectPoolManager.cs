@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
-using static UnityEngine.GridBrushBase;
 
+/// <summary>
+/// 오브젝트를 생성 시 풀에 반환하기위해 부착할 클래스
+/// </summary>
 public class ReturnToPool : MonoBehaviour
 {
     public IObjectPool<GameObject> Pool;

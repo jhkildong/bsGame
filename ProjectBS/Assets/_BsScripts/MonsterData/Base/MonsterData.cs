@@ -7,9 +7,9 @@ public abstract class MonsterData : ScriptableObject
 {
     public int ID => _id;
     public string Name => _name;
-    public short Ak => _attack;
-    public short AkDelay => _attackDelay;
-    public short Sp => _speed;
+    public float Ak => _attack;
+    public float AkDelay => _attackDelay;
+    public float Sp => _speed;
     public short MaxHP => _maxHp;
     public GameObject MonsterPrefab => _prefab;
 

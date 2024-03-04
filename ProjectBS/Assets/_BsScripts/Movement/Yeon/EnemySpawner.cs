@@ -31,6 +31,7 @@ public class EnemySpawner : MonoBehaviour
         }
         applyRespawn = true;
         StartCoroutine(EnemySpawn(monster.Data));
+        
     }
     IEnumerator EnemySpawn(MonsterData md)
     {
