@@ -1,26 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class PlayerRootMotion : MonoBehaviour
+public class RootMotion : MonoBehaviour
 {
     Animator myAnim;
+
     // Start is called before the first frame update
-    protected void Start()
+    void Start()
     {
         myAnim = GetComponent<Animator>();
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
         
     }
 
     private void OnAnimatorMove()
     {
-        transform.parent.position += myAnim.deltaPosition;
-        transform.parent.rotation *= myAnim.deltaRotation;
+
     }
 }
-
