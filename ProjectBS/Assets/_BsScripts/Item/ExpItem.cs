@@ -2,18 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExpItem : ItemBase
+public class ExpItem : Item
 {
-    public float ExpRate = 1.0f;
+    
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ExpItemData ExpItemData { get; private set; }
 
-    // Update is called once per frame
-    void Update()
+    public ExpItem(ExpItemData data) : base(data)
     {
-        
+        ExpItemData = data;
     }
 }
