@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class enemydrop : MonoBehaviour
 {
-    public GameObject DropItem;
+    public GameObject[] DropItem;
     //드랍되는 아이템
 
     public int hp = 10;
     //몬스터의 체력
 
-    //public float highValueItem = 0.5f;
+    public float[] Chance_of_item;
     //public float middleValueItem = 7.5f;
     //public float lowValueItem;
     //드랍되는 확률
@@ -24,6 +24,7 @@ public class enemydrop : MonoBehaviour
 
     void Start()
     {
+        Chance_of_item = new float[DropItem.Length];
         //lowValueItem = 100.0f - (highValueItem + middleValueItem);
     }
 
@@ -54,7 +55,7 @@ public class enemydrop : MonoBehaviour
     {
         Vector3 rnd = transform.position + Random.insideUnitSphere * 2.0f;
         rnd.y = 1.0f;
-        Instantiate(DropItem, rnd, Quaternion.identity);
+        Instantiate(DropItem[0], rnd, Quaternion.identity);
     }
     //반지름 2인 범위안에 아이템 드랍이 됨.
 
