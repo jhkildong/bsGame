@@ -4,14 +4,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Yeon.ResetExtention
-{
-    public static class Reset
-    {
-        public static void ResetCeof(this ref float ceof) => ceof = 1.0f;
-    }
-}
-
 public abstract class Monster
 {
     public MonsterData Data { get; private set; }
@@ -31,19 +23,31 @@ public abstract class Monster
         Mathf.Clamp(HP, 0, MaxHP);
     }
 
-    [SerializeField]
-    protected float _speedCeof = 1.0f;
+    protected float _speedCeof = 1.0f; //이동속도 계수
     /// <summary>몬스터 이동속도, 값 대입시 계수로 적용</summary>
     public float Speed { get => Data.Sp * _speedCeof;  set => _speedCeof = value; }
+    public void ResetSpeed() => _speedCeof = 1.0f;
 
-    protected float _attackCeof = 1.0f;
+    protected float _attackCeof = 1.0f; //공격력 계수
     /// <summary>몬스터 공격력, 값 대입시 계수로 적용</summary>
     public float Attack { get => Data.Ak * _attackCeof; set => _attackCeof = value; }
+    public void ResetAttack() => _attackCeof = 1.0f;
 
-    protected float _attackDelayCeof = 1.0f;
+    protected float _attackDelayCeof = 1.0f; //공격딜레이 계수
     /// <summary>몬스터 공격딜레이, 값 대입시 계수로 적용</summary>
     public float AttackDelay { get => Data.Sp * _attackDelayCeof; set => _attackDelayCeof = value; }
+    public void ResetAttackDelay() => _attackDelayCeof = 1.0f;
+
+    /// <summary>모든 상태변화 초기화</summary>
+    public void ResetAllState()
+    {
+        ResetSpeed();
+        ResetAttack();
+        ResetAttackDelay();
+    }
 
 
     public Monster(MonsterData data) => Data = data;
+
+
 }

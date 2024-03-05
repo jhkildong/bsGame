@@ -16,6 +16,6 @@ MonoBehaviour:
   _name: test
   _attack: 1
   _attackDelay: 1
-  _speed: 1
+  _speed: 2
   _maxHp: 1
   _prefab: {fileID: 919132149155446097, guid: 3b3fe2443348b1949b5834b3c0c9736a, type: 3}
