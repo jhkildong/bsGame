@@ -172,7 +172,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 372894f42ae84054dbe70563561e2aaa, type: 2}
   respawnDist: 20
   applyRespawn: 0
-  respawnTime: 1
+  respawnTime: 0.2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,11 +465,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c466505bb923c44baa5e64dcefd63f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectionChecks: 1
   objectInfos:
-  - objData: {fileID: 11400000, guid: 372894f42ae84054dbe70563561e2aaa, type: 2}
-    maxCount: 10
-    initCount: 10
+  - monsterData: {fileID: 11400000, guid: 372894f42ae84054dbe70563561e2aaa, type: 2}
+    maxCount: 50
+    initCount: 20
 --- !u!1 &1425763829
 GameObject:
   m_ObjectHideFlags: 0

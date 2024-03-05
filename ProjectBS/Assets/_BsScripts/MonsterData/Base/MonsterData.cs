@@ -15,9 +15,9 @@ public abstract class MonsterData : ScriptableObject
 
     [SerializeField] private int _id;               // 몬스터 아이디
     [SerializeField] private string _name;          // 몬스터 이름
-    [SerializeField] private short _attack;         // 몬스터 공격력
-    [SerializeField] private short _attackDelay;    // 몬스터 공격딜레이
-    [SerializeField] private short _speed;          // 몬스터 이동속도
+    [SerializeField] private float _attack;         // 몬스터 공격력
+    [SerializeField] private float _attackDelay;    // 몬스터 공격딜레이
+    [SerializeField] private float _speed;          // 몬스터 이동속도
     [SerializeField] private short _maxHp;          // 몬스터 최대체력
     [SerializeField] private GameObject _prefab;    // 몬스터 프리팹
 

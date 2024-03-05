@@ -7,6 +7,11 @@ public class NormalMonsterData : MonsterData
 {
     public override Monster CreateMonster()
     {
-        return new NormalMonster(this);
+        GameObject monster = new GameObject(Name);
+        monster.AddComponent<NormalMonster>().Init(this);
+        monster.AddComponent<EnemyFollowPlayer>();
+        Instantiate(MonsterPrefab, monster.transform);
+
+        return monster.GetComponent<NormalMonster>();
     }
 }

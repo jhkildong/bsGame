@@ -3,25 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public abstract class Monster
+public abstract class Monster : MonoBehaviour
 {
-    public MonsterData Data { get; private set; }
+    #region 오브젝트풀
+    public IObjectPool<Monster> Pool;
+
+    public void DestoryMonster()
+    {
+        Pool.Release(this);
+    }
+    #endregion
+
+    public MonsterData Data { get; protected set; }
 
     /// <summary> 현재 체력 </summary>
-    public short HP { get; protected set; }
+    public short HP { get => _hp; protected set => _hp = value; }
+    [SerializeField] protected short _hp;
     /// <summary> 최대체력</summary>
     public short MaxHP => Data.MaxHP;
     /// <summary> 현재 체력이 0이하가 되면 true  </summary>
     public bool IsDead => HP <= 0;
-    public void TakeDamage(short damage) => HP -= damage;
+    
+    public void TakeDamage(short damage) => _hp -= damage;
     public void ReceiveHeal(short heal)
     {
         if (IsDead)
             return;
-        HP += heal;
+        _hp += heal;
         Mathf.Clamp(HP, 0, MaxHP);
     }
+
+    
 
     protected float _speedCeof = 1.0f; //이동속도 계수
     /// <summary>몬스터 이동속도, 값 대입시 계수로 적용</summary>
@@ -46,8 +60,5 @@ public abstract class Monster
         ResetAttackDelay();
     }
 
-
-    public Monster(MonsterData data) => Data = data;
-
-
+    public abstract void Init(MonsterData data);
 }

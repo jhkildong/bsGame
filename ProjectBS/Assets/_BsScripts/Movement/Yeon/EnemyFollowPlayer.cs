@@ -10,6 +10,10 @@ public class EnemyFollowPlayer : Yeon.Movement
     protected override void Start()
     {
         base.Start();
+        if (target == null)
+        {
+            target = GameObject.Find("Player").transform;
+        }    
     }
 
     private void Update()

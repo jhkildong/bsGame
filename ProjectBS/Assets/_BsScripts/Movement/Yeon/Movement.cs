@@ -31,7 +31,10 @@ namespace Yeon
 
         private void InitRigidbody()
         {
-            TryGetComponent(out rBody);
+            if(TryGetComponent(out rBody) == false)
+            {
+                rBody = gameObject.AddComponent<Rigidbody>();
+            }
         }
 
         protected virtual void FixedUpdate()

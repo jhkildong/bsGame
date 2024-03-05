@@ -5,25 +5,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 
-/// <summary>
-/// 오브젝트를 생성 시 풀에 반환하기위해 부착할 클래스
-/// </summary>
-public class ReturnToPool : MonoBehaviour
-{
-    public IObjectPool<GameObject> Pool;
-
-    public void ReleaseObject()
-    {
-        Pool.Release(gameObject);
-    }
-}
 
 public class ObjectPoolManager : MonoBehaviour
 {
     [Serializable]
     private class ObjectInfo
     {
-        public ScriptableObject objData;
+        public MonsterData monsterData;
         // 최대 갯수
         public int maxCount;
         // 생성 갯수
@@ -32,23 +20,12 @@ public class ObjectPoolManager : MonoBehaviour
 
     public bool IsReady { get; private set; }
 
-    // 이미 풀에 있는 항목을 릴리스하려고 하면 오류 발생.
-    public bool collectionChecks = true;
-
-    IObjectPool<GameObject> m_Pool;
-
     [SerializeField]
     private ObjectInfo[] objectInfos = null;
 
-     // 생성할 오브젝트의 key값지정을 위한 변수
-    private int objectID;
-
+    private int objectId;
     // 오브젝트풀들을 관리할 딕셔너리
-    private Dictionary<int, IObjectPool<GameObject>> ojbectPoolDic = new Dictionary<int, IObjectPool<GameObject>>();
-
-    // 오브젝트풀에서 오브젝트를 새로 생성할때 사용할 딕셔너리
-    private Dictionary<int, GameObject> goDic = new Dictionary<int, GameObject>();
-
+    private Dictionary<int, IObjectPool<Monster>> ojbectPoolDic = new Dictionary<int, IObjectPool<Monster>>();
 
 
     private void Awake()
@@ -60,21 +37,17 @@ public class ObjectPoolManager : MonoBehaviour
     {
         IsReady = false;
 
-        for (int idx = 0; idx < objectInfos.Length; idx++)
+        foreach(ObjectInfo info in objectInfos)
         {
-            if (objectInfos[idx].objData is MonsterData md)
+            IObjectPool<Monster> pool = new ObjectPool<Monster>(CreatePooledMonster, OnGetMonster, OnReleaseMonster, OnDestroyMonster,
+                                                                defaultCapacity:info.initCount, maxSize:info.maxCount);
+            ojbectPoolDic.Add(info.monsterData.ID, pool);
+            objectId = info.monsterData.ID;
+            // 미리 오브젝트 생성 해놓기
+            for (int i = 0; i < info.initCount; i++)
             {
-                IObjectPool<GameObject> pool = new ObjectPool<GameObject>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject,
-                                                                            collectionChecks, objectInfos[idx].initCount, objectInfos[idx].maxCount);
-                goDic.Add(md.ID, md.MonsterPrefab);
-                ojbectPoolDic.Add(md.ID, pool);
-
-                // 미리 오브젝트 생성 해놓기
-                for (int i = 0; i < objectInfos[idx].initCount; i++)
-                {
-                    objectID = md.ID;
-                    CreatePooledItem();
-                }
+                //objectID = md.ID;
+                CreatePooledMonster();
             }
         }
 
@@ -82,46 +55,38 @@ public class ObjectPoolManager : MonoBehaviour
     }
 
     // 생성
-    GameObject CreatePooledItem()
+    Monster CreatePooledMonster()
     {
-        GameObject poolGo = Instantiate(goDic[objectID]);
-        // This is used to return ParticleSystems to the pool when they have stopped.
-        var returnToPool = poolGo.AddComponent<ReturnToPool>();
-        returnToPool.Pool = ojbectPoolDic[objectID];
-        returnToPool.ReleaseObject();
+        Monster monster = objectInfos[0].monsterData.CreateMonster();
+        monster.Pool = ojbectPoolDic[objectId];
+        monster.DestoryMonster();
 
-        return poolGo;
-    }
-
-    // Called when an item is returned to the pool using Release
-    void OnReturnedToPool(GameObject poolObj)
-    {
-        poolObj.gameObject.SetActive(false);
+        return monster;
     }
 
     // Called when an item is taken from the pool using Get
-    void OnTakeFromPool(GameObject poolObj)
+    void OnGetMonster(Monster monster)
     {
-        poolObj.gameObject.SetActive(true);
+        monster.gameObject.SetActive(true);
+    }
+
+    // Called when an item is returned to the pool using Release
+    void OnReleaseMonster(Monster monster)
+    {
+        monster.gameObject.SetActive(false);
     }
 
     // If the pool capacity is reached then any items returned will be destroyed.
     // We can control what the destroy behavior does, here we destroy the GameObject.
-    void OnDestroyPoolObject(GameObject poolObj)
+    void OnDestroyMonster(Monster monster)
     {
-        Destroy(poolObj.gameObject);
+        Destroy(monster.gameObject);
     }
 
-    public GameObject GetGo(int goID)
+    public GameObject GetGo(int id)
     {
-        objectID = goID;
-
-        if (goDic.ContainsKey(goID) == false)
-        {
-            Debug.LogFormat("{0} 오브젝트풀에 등록되지 않은 오브젝트입니다.", goID);
-            return null;
-        }
-
-        return ojbectPoolDic[goID].Get();
+        return ojbectPoolDic[id].Get().gameObject;
     }
+
+
 }

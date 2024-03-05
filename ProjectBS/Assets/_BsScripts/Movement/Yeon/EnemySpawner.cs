@@ -17,7 +17,6 @@ public class EnemySpawner : MonoBehaviour
     public ObjectPoolManager poolManager;
     [SerializeField]
     private MonsterData[] monsterDatas;
-    public Monster monster;
     public float respawnDist = 20.0f;
     public bool applyRespawn;
     public float respawnTime = 0.1f;
@@ -25,15 +24,11 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (MonsterData md in monsterDatas)
-        {
-            monster = md.CreateMonster();
-        }
         applyRespawn = true;
-        StartCoroutine(EnemySpawn(monster.Data));
+        StartCoroutine(EnemySpawn(monsterDatas));
         
     }
-    IEnumerator EnemySpawn(MonsterData md)
+    IEnumerator EnemySpawn(MonsterData[] md)
     {
         while(true)
         {
@@ -45,10 +40,13 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void RandomMonsterGenerate(MonsterData md)
+    private void RandomMonsterGenerate(MonsterData[] monsterDatas)
     {
-        float rndAngle = Random.value * Mathf.PI * 2.0f;
-        Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle));
-        poolManager.GetGo(md.ID).transform.position += rndPos;
+        foreach(MonsterData md in monsterDatas)
+        {
+            float rndAngle = Random.value * Mathf.PI * 2.0f;
+            Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle));
+            poolManager.GetGo(md.ID).transform.position += rndPos * respawnDist;
+        }
     }
 }

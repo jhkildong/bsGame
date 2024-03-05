@@ -7,10 +7,13 @@ public class NormalMonster : Monster
 {
     public NormalMonsterData NormalData { get; private set; }
 
-
-    public NormalMonster(NormalMonsterData data) : base(data)
+    public override void Init(MonsterData data)
     {
-        NormalData = data;
+        Data = data;
+        if(data is NormalMonsterData ndm)
+        {
+            NormalData = ndm;
+            HP = MaxHP;
+        }
     }
-
 }
