@@ -9,7 +9,7 @@ public abstract class ItemData : ScriptableObject
     public int ID => _id;
     public string Name => _name;
     public float Value => _value;
-    public GameObject MonsterPrefab => _prefab;
+    public GameObject ItemPrefab => _prefab;
 
 
     [SerializeField] private int _id;               
