@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StructItem : MonoBehaviour
+public class StructItem : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public StructItemData StructItemData { get; private set; }
 
-    // Update is called once per frame
-    void Update()
+    public StructItem(StructItemData data) : base(data)
     {
-        
+        StructItemData = data;
     }
 }
