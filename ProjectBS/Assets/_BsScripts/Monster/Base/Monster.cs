@@ -18,12 +18,12 @@ public abstract class Monster : MonoBehaviour
     }
     #endregion
 
-    public MonsterData Data { get; protected set; }
+    public MonsterData Data { get; private set; }
     public UnityEvent<float> ChangeHpAct;
     public UnityEvent DeadAct;
 
     /// <summary> 현재 체력 </summary>
-    protected short CurHp
+    private short CurHp
     {   
         get => _curHp;
         set
@@ -38,7 +38,7 @@ public abstract class Monster : MonoBehaviour
             ChangeHpAct?.Invoke(_curHp/MaxHP);
         }
     }
-    [SerializeField] protected short _curHp;
+    [SerializeField] private short _curHp;
     /// <summary> 최대체력</summary>
     public short MaxHP => Data.MaxHP;
     /// <summary> 현재 체력이 0이하가 되면 true  </summary>
@@ -76,5 +76,10 @@ public abstract class Monster : MonoBehaviour
         ResetAttackDelay();
     }
 
-    public abstract void Init(MonsterData data);
+    public virtual void Init(MonsterData data)
+    {
+        Data = data;
+        CurHp = MaxHP;
+        Instantiate(data.MonsterPrefab, this.transform); //자식으로 몬스터의 프리팹 생성
+    }
 }

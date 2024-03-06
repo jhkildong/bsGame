@@ -23,10 +23,11 @@ public class ObjectPoolManager : MonoBehaviour
     [SerializeField]
     private ObjectInfo[] objectInfos;
 
+    
+
     private int objectId;
     // 오브젝트풀들을 관리할 딕셔너리
-    private Dictionary<int, IObjectPool<Monster>> ojbectPoolDic = new Dictionary<int, IObjectPool<Monster>>();
-
+    private Dictionary<int, IObjectPool<Monster>> ojbectPoolDic = new Dictionary<int, IObjectPool<Monster>>(); 
 
     private void Awake()
     {
@@ -42,6 +43,8 @@ public class ObjectPoolManager : MonoBehaviour
             IObjectPool<Monster> pool = new ObjectPool<Monster>(CreatePooledMonster, OnGetMonster, OnReleaseMonster, OnDestroyMonster, maxSize:info.maxCount);
             ojbectPoolDic.Add(info.monsterData.ID, pool);
             objectId = info.monsterData.ID;
+            
+            
             // 미리 오브젝트 생성 해놓기
             for (int i = 0; i < info.initCount; i++)
             {

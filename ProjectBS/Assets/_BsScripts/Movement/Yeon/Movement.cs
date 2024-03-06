@@ -50,7 +50,7 @@ namespace Yeon
 
                 capsule.height = 2.0f;
                 capsule.center = Vector3.up * 1.0f;
-                capsule.radius = 0.2f;
+                capsule.radius = 0.5f;
             }
         }
 
