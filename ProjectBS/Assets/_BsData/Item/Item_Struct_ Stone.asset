@@ -16,3 +16,5 @@ MonoBehaviour:
   _name: stonne
   _value: 1
   _prefab: {fileID: 1816422187447663941, guid: 401ad4bfe044873439785718bd45697f, type: 3}
+  TypeOfItem: 2
+  TypeOfMaterial: 1
