@@ -12,16 +12,16 @@ public class ObjectPoolManager : MonoBehaviour
     private class ObjectInfo
     {
         public MonsterData monsterData;
-        // 최대 갯수
+        // 최대 개수(최대 개수 생성시 반환하는 과정에서 Destroy됨)
         public int maxCount;
-        // 생성 갯수
+        // 미리 생성해둘 개수
         public int initCount;
     }
 
     public bool IsReady { get; private set; }
 
     [SerializeField]
-    private ObjectInfo[] objectInfos = null;
+    private ObjectInfo[] objectInfos;
 
     private int objectId;
     // 오브젝트풀들을 관리할 딕셔너리
@@ -39,15 +39,14 @@ public class ObjectPoolManager : MonoBehaviour
 
         foreach(ObjectInfo info in objectInfos)
         {
-            IObjectPool<Monster> pool = new ObjectPool<Monster>(CreatePooledMonster, OnGetMonster, OnReleaseMonster, OnDestroyMonster,
-                                                                defaultCapacity:info.initCount, maxSize:info.maxCount);
+            IObjectPool<Monster> pool = new ObjectPool<Monster>(CreatePooledMonster, OnGetMonster, OnReleaseMonster, OnDestroyMonster, maxSize:info.maxCount);
             ojbectPoolDic.Add(info.monsterData.ID, pool);
             objectId = info.monsterData.ID;
             // 미리 오브젝트 생성 해놓기
             for (int i = 0; i < info.initCount; i++)
             {
-                //objectID = md.ID;
-                CreatePooledMonster();
+                Monster monster = CreatePooledMonster();
+                monster.ReleaseMonster();
             }
         }
 
@@ -59,7 +58,6 @@ public class ObjectPoolManager : MonoBehaviour
     {
         Monster monster = objectInfos[0].monsterData.CreateMonster();
         monster.Pool = ojbectPoolDic[objectId];
-        monster.DestoryMonster();
 
         return monster;
     }
@@ -83,10 +81,8 @@ public class ObjectPoolManager : MonoBehaviour
         Destroy(monster.gameObject);
     }
 
-    public GameObject GetGo(int id)
+    public GameObject GetMonster(int id)
     {
         return ojbectPoolDic[id].Get().gameObject;
     }
-
-
 }

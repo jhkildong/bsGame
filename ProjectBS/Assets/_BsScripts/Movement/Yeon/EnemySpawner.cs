@@ -26,7 +26,6 @@ public class EnemySpawner : MonoBehaviour
     {
         applyRespawn = true;
         StartCoroutine(EnemySpawn(monsterDatas));
-        
     }
     IEnumerator EnemySpawn(MonsterData[] md)
     {
@@ -45,8 +44,9 @@ public class EnemySpawner : MonoBehaviour
         foreach(MonsterData md in monsterDatas)
         {
             float rndAngle = Random.value * Mathf.PI * 2.0f;
-            Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle));
-            poolManager.GetGo(md.ID).transform.position += rndPos * respawnDist;
+            Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
+            rndPos += transform.position;
+            poolManager.GetMonster(md.ID).transform.position = rndPos;
         }
     }
 }

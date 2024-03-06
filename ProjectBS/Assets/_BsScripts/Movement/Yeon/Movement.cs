@@ -27,6 +27,7 @@ namespace Yeon
         protected virtual void Start()
         {
             InitRigidbody();
+            InitCapsuleCollider();
         }
 
         private void InitRigidbody()
@@ -34,6 +35,22 @@ namespace Yeon
             if(TryGetComponent(out rBody) == false)
             {
                 rBody = gameObject.AddComponent<Rigidbody>();
+                rBody.useGravity = false;
+                rBody.freezeRotation = true;
+            }
+        }
+
+        private void InitCapsuleCollider()
+        {
+            CapsuleCollider capsule;
+            TryGetComponent(out capsule);
+            if (capsule == null)
+            {
+                capsule = gameObject.AddComponent<CapsuleCollider>();
+
+                capsule.height = 2.0f;
+                capsule.center = Vector3.up * 1.0f;
+                capsule.radius = 0.2f;
             }
         }
 
