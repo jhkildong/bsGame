@@ -5,10 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item_Struct_", menuName = "Item/Struct_Item", order = 6)]
 public class StructItemData : ItemData
 {
+    public itemtype TypeOfItem = itemtype.structure;
+    public enum struct_mat { wood, stone, steel}
+    public struct_mat TypeOfMaterial;
     
-    //public enum matType => _matType;
-
-    //[SerializeField] private enum _matType;
 
     public override Item CreateItem()
     {
