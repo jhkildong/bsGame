@@ -16,3 +16,5 @@ MonoBehaviour:
   _name: 
   _value: 0
   _prefab: {fileID: 0}
+  TypeOfItem: 2
+  TypeOfMaterial: 0

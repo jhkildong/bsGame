@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item_Exp_", menuName = "Item/Exp_Item", order = 5)]
 public class ExpItemData : ItemData
 {
+    //itemtype expitem = itemtype.exp;
+    //첫줄에서 exp 아이템으로 설정
     public float exprate => _exprate;
 
     [SerializeField] private float _exprate;
