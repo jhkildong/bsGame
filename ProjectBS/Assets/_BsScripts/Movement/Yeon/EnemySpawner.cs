@@ -14,16 +14,22 @@ respawnTime으로 리스폰 주기 결정
 
 public class EnemySpawner : MonoBehaviour
 {
-    public ObjectPoolManager poolManager;
     [SerializeField]
     private MonsterData[] monsterDatas;
     public float respawnDist = 20.0f;
     public bool applyRespawn;
     public float respawnTime = 0.1f;
 
+
+    public int init = 10;
+    public int max = 10;
     // Start is called before the first frame update
     void Start()
     {
+        foreach(MonsterData monster in monsterDatas)
+        {
+            //SetMonsterPool(monster, init, max);
+        }
         applyRespawn = true;
         StartCoroutine(EnemySpawn(monsterDatas));
     }
@@ -46,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
             float rndAngle = Random.value * Mathf.PI * 2.0f;
             Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
             rndPos += transform.position;
-            poolManager.GetMonster(md.ID).transform.position = rndPos;
+            //GetMonster(md.ID).gameObject.transform.position = rndPos;
         }
     }
 }
