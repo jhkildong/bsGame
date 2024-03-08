@@ -16,15 +16,11 @@ public class ItemManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // 충돌한 GameObject에서 ScriptableObject 스크립트를 가져옵니다.
-        ItemData scriptableObject = other.gameObject.GetComponent<ItemData>();
-
-        // ScriptableObject이 존재하고, 특정 ID를 가지고 있다면
+        /*ExpItemData scriptableObject = other.gameObject.GetComponent<ExpItemData>();
         if (scriptableObject != null)
         {
-            Debug.Log("파괴");
-            Destroy(other.gameObject);
-        }
+            Debug.Log("아이템과 부딛힘");
+        }*/
     }
 
     //Tag가 뭔지
