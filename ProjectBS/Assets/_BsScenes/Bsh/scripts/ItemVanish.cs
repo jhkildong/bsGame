@@ -13,5 +13,6 @@ public class ItemVanish : MonoBehaviour
     private void DestroyItem()
     {
         Destroy(gameObject);
+        Debug.Log("Destroyed item: " + gameObject.name);
     }
 }

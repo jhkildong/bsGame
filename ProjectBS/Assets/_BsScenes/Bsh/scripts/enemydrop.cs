@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class enemydrop : MonoBehaviour
 {
+    /// <summary>
+    /// 상급, 중급, 하급 아이템 확률 및 아이템 드랍 정할 수 있음.
+    /// 확률은 %로 적으면 됨.
+    /// 코드안에 죽으면 아이템 스폰과 캐릭터가 죽음.
+    /// </summary>
     public float PChance;
     public ItemData[] PremiumDropItem;
     public float MChance;
@@ -11,20 +16,9 @@ public class enemydrop : MonoBehaviour
     public float BChance;
     public ItemData[] BasicDropItem;
     //드랍되는 아이템
-
     public int hp = 10;
-
     private bool hasDead = false;
     //생사 여부
-
-    void Start()
-    {
-        //Chance_of_item = new float[DropItem.Length];
-        //lowValueItem = 100.0f - (highValueItem + middleValueItem);
-        
-            
-    }
-
     void Update()
     {
         if(hp <= 0 && !hasDead)
