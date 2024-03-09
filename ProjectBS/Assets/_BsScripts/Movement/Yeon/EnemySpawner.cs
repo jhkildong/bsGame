@@ -12,7 +12,7 @@ applyRespawn을 통해 리스폰여부
 respawnTime으로 리스폰 주기 결정
 */
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : MonsterPoolManager
 {
     [SerializeField]
     private MonsterData[] monsterDatas;
@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach(MonsterData monster in monsterDatas)
         {
-            //SetMonsterPool(monster, init, max);
+            SetMonsterPool(monster, init, max);
         }
         applyRespawn = true;
         StartCoroutine(EnemySpawn(monsterDatas));
@@ -52,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
             float rndAngle = Random.value * Mathf.PI * 2.0f;
             Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
             rndPos += transform.position;
-            //GetMonster(md.ID).gameObject.transform.position = rndPos;
+            GetMonster(md.ID).gameObject.transform.position = rndPos;
         }
     }
 }

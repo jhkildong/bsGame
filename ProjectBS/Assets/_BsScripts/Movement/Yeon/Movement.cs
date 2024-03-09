@@ -18,8 +18,8 @@ namespace Yeon
         protected float moveSpeed = 5f;
 
         [SerializeField] protected bool isMoving;
-        [SerializeField] protected bool isBlocked; //장애물 존재
-        [SerializeField] protected bool isOutOfControl; //제어 불가 상태
+        [SerializeField] protected bool isBlocked = false; //장애물 존재
+        [SerializeField] protected bool isOutOfControl = false; //제어 불가 상태
 
         [SerializeField] protected Vector3 worldMoveDir;
         [SerializeField] protected float outOfControllDuration;
@@ -62,7 +62,7 @@ namespace Yeon
         /// <summary> 리지드바디 최종 속도 적용 </summary>
         private void MovementToRigidbody()
         {
-            if (!isOutOfControl)
+            if (!isOutOfControl && !isBlocked)
             {
                 rBody.velocity = worldMoveDir * moveSpeed;
             }
@@ -72,6 +72,7 @@ namespace Yeon
             }
 
         }
+
     }
 
 }

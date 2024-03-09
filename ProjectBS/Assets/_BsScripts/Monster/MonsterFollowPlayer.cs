@@ -15,15 +15,15 @@ public class MonsterFollowPlayer : Yeon.Movement
         if (target == null)
         {
             target = GameObject.Find("Player").transform;
-        }    
-        myMonster = GetComponent<Monster>();
+        }
+        TryGetComponent(out myMonster);
         moveSpeed = myMonster.Speed;
     }
 
     private void Update()
     {
         dir = target.position - transform.position;
-        if(dir.magnitude > 1)
+        if (dir.magnitude > 1)
             dir.Normalize();
     }
 
@@ -33,4 +33,10 @@ public class MonsterFollowPlayer : Yeon.Movement
         worldMoveDir = dir;
         base.FixedUpdate();
     }
+
+    public void block(bool state)
+    {
+        isBlocked = state;
+    }
 }
+

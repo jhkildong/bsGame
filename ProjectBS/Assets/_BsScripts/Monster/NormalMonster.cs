@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yeon;
 
-[RequireComponent(typeof(MonsterFollowPlayer))]
-[RequireComponent(typeof(MonsterAction))]
 public class NormalMonster : Monster
 {
     public NormalMonsterData NormalData { get; private set; }
