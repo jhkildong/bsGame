@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MonsterData : ScriptableObject
+public abstract class MonsterData : ScriptableObject, IPoolable
 {
     public int ID => _id;
     public string Name => _name;
@@ -11,7 +11,7 @@ public abstract class MonsterData : ScriptableObject
     public float AkDelay => _attackDelay;
     public float Sp => _speed;
     public short MaxHP => _maxHp;
-    public GameObject MonsterPrefab => _prefab;
+    public GameObject Prefab => _prefab;
 
     [SerializeField] private int _id;               // 몬스터 아이디
     [SerializeField] private string _name;          // 몬스터 이름
@@ -22,6 +22,6 @@ public abstract class MonsterData : ScriptableObject
     [SerializeField] private GameObject _prefab;    // 몬스터 프리팹
 
     /// <summary> 타입에 맞는 새로운 몬스터 생성 </summary>
-    public abstract Monster CreateMonster();
+    public abstract GameObject CreateClone();
 
 }

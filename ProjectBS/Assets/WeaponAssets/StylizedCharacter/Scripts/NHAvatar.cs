@@ -411,7 +411,7 @@ namespace NHance.Assets.Scripts
         public void Save()
         {
             //chose file path
-            string filePath = EditorUtility.SaveFilePanel("Select Directory to save prefab", "Assets/StylizedCharacter/Prefabs", $"{gameObject.name}_Prefab", "prefab");
+            string filePath = EditorUtility.SaveFilePanel("Select Directory to save prefab", "WeaponAssets/Assets/StylizedCharacter/Prefabs", $"{gameObject.name}_Prefab", "prefab");
             if (string.IsNullOrEmpty(filePath))
                 return;
             //copy current game object
