@@ -12,6 +12,8 @@ public class CheckCanBuild : MonoBehaviour
     public UnityEvent cantBuildState;
     public UnityEvent canBuildState;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +51,7 @@ public class CheckCanBuild : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        canBuildState.Invoke(); // 땅이 같이 검출이 되면서 문제가 생기는중. 땅이 아얘 ontriggerstay도 안되게 하고싶어
+        canBuildState.Invoke(); 
         Debug.Log("물체 안겹침!");
     }
 }

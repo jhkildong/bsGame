@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8054383924059726359}
   - component: {fileID: 4787845405296662400}
   - component: {fileID: -8194810050267617477}
-  - component: {fileID: -1117160661875707894}
-  m_Layer: 28
+  - component: {fileID: -2129037964129037832}
+  m_Layer: 25
   m_Name: Wood_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &-1117160661875707894
+--- !u!114 &-2129037964129037832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData: {fileID: 11400000, guid: 504b18e84829ff844bef9b6b5d584fbf, type: 2}
+  cp: 0
