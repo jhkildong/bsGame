@@ -4,47 +4,31 @@ using UnityEngine;
 
 public class enemydrop : MonoBehaviour
 {
-    public GameObject DropItem;
+    /// <summary>
+    /// 상급, 중급, 하급 아이템 확률 및 아이템 드랍 정할 수 있음.
+    /// 확률은 %로 적으면 됨.
+    /// 코드안에 죽으면 아이템 스폰과 캐릭터가 죽음.
+    /// </summary>
+    public float PChance;
+    public ItemData[] PremiumDropItem;
+    public float MChance;
+    public ItemData[] MiddleDropItem;
+    public float BChance;
+    public ItemData[] BasicDropItem;
     //드랍되는 아이템
-
     public int hp = 10;
-    //몬스터의 체력
-
-    //public float highValueItem = 0.5f;
-    //public float middleValueItem = 7.5f;
-    //public float lowValueItem;
-    //드랍되는 확률
-
-    public string boolParameter;
-    //죽을때 생기는 애니매이션 이름
-    public Animator animator;
-
     private bool hasDead = false;
     //생사 여부
-
-    void Start()
-    {
-        //lowValueItem = 100.0f - (highValueItem + middleValueItem);
-    }
-
     void Update()
     {
         if(hp <= 0 && !hasDead)
         {
             hasDead = true;
-            StartCoroutine(DeathAnimation());
             SpawnItem();
             DestroyObject();
         }
-        //죽으면 애니매이션 > 아이템 스폰 > 옵젝 사라짐.
-        
+        //죽으면 애니매이션 > 아이템 스폰 > 옵젝 사라짐.      
     }
-    IEnumerator DeathAnimation()
-    {
-        animator.SetBool(boolParameter, true);
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-    }
-
     void DestroyObject()
     {
         Destroy(gameObject);
@@ -54,14 +38,30 @@ public class enemydrop : MonoBehaviour
     {
         Vector3 rnd = transform.position + Random.insideUnitSphere * 2.0f;
         rnd.y = 1.0f;
-        Instantiate(DropItem, rnd, Quaternion.identity);
+        float i = Random.Range(0.0f, 100.0f);
+        if (i <= PChance)
+        {
+            int num = Random.Range(0, PremiumDropItem.Length);
+            Instantiate(PremiumDropItem[num].ItemPrefab, rnd, Quaternion.identity);
+            Debug.Log("상급아이템 생성");
+        }
+        else if (i <= PChance + MChance)
+        {
+            int num = Random.Range(0, MiddleDropItem.Length);
+            Instantiate(MiddleDropItem[num].ItemPrefab, rnd, Quaternion.identity);
+            Debug.Log("중급아이템 생성");
+        }
+        else
+        {
+            int num = Random.Range(0, BasicDropItem.Length);
+            Instantiate(BasicDropItem[num].ItemPrefab, rnd, Quaternion.identity);
+            Debug.Log("하급아이템 생성");
+        }
     }
-    //반지름 2인 범위안에 아이템 드랍이 됨.
 
     private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("부딛혀서 체력이 깎임");
+    {        
         hp -= 5;
+        Debug.Log("부딛혀서 체력이 깎임");
     }
-    //부딛히면 로그.
 }

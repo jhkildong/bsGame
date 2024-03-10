@@ -18,8 +18,8 @@ namespace Yeon
         protected float moveSpeed = 5f;
 
         [SerializeField] protected bool isMoving;
-        [SerializeField] protected bool isBlocked; //장애물 존재
-        [SerializeField] protected bool isOutOfControl; //제어 불가 상태
+        [SerializeField] protected bool isBlocked = false; //장애물 존재
+        [SerializeField] protected bool isOutOfControl = false; //제어 불가 상태
 
         [SerializeField] protected Vector3 worldMoveDir;
         [SerializeField] protected float outOfControllDuration;
@@ -27,11 +27,31 @@ namespace Yeon
         protected virtual void Start()
         {
             InitRigidbody();
+            InitCapsuleCollider();
         }
 
         private void InitRigidbody()
         {
-            TryGetComponent(out rBody);
+            if(TryGetComponent(out rBody) == false)
+            {
+                rBody = gameObject.AddComponent<Rigidbody>();
+                rBody.useGravity = false;
+                rBody.freezeRotation = true;
+            }
+        }
+
+        private void InitCapsuleCollider()
+        {
+            CapsuleCollider capsule;
+            TryGetComponent(out capsule);
+            if (capsule == null)
+            {
+                capsule = gameObject.AddComponent<CapsuleCollider>();
+
+                capsule.height = 2.0f;
+                capsule.center = Vector3.up * 1.0f;
+                capsule.radius = 0.5f;
+            }
         }
 
         protected virtual void FixedUpdate()
@@ -42,7 +62,7 @@ namespace Yeon
         /// <summary> 리지드바디 최종 속도 적용 </summary>
         private void MovementToRigidbody()
         {
-            if (!isOutOfControl)
+            if (!isOutOfControl && !isBlocked)
             {
                 rBody.velocity = worldMoveDir * moveSpeed;
             }
@@ -51,6 +71,11 @@ namespace Yeon
                 rBody.velocity = new Vector3(0, 0, 0);
             }
 
+        }
+
+        public void SetDirection(Vector3 dir)
+        {
+            worldMoveDir = dir;
         }
     }
 

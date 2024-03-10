@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yeon;
 
 public class NormalMonster : Monster
 {
     public NormalMonsterData NormalData { get; private set; }
 
-    public NormalMonster(NormalMonsterData data) : base(data)
+    public override void Init(MonsterData data)
     {
-        NormalData = data;
+        base.Init(data);
+        NormalData = (data as NormalMonsterData);
     }
-
 }
