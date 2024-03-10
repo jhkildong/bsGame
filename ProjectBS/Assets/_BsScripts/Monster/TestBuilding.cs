@@ -8,6 +8,7 @@ public class TestBuilding : MonoBehaviour, IDamage
 
     public void TakeDamage(short dmg)
     {
+
         HP -= dmg;
     }
 }

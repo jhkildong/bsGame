@@ -11,21 +11,13 @@ using UnityEngine.Events;
 [RequireComponent(typeof(MonsterAction))]
 public abstract class Monster : MonoBehaviour, IDamage
 {
-    #region 오브젝트풀
-    public IObjectPool<Monster> Pool;
-
-    public void ReleaseMonster()
-    {
-        Pool.Release(this);
-    }
-    #endregion
-
-    public MonsterData Data { get; private set; }
+    [SerializeField] private MonsterData _data;
+    public MonsterData Data => _data;
     public UnityEvent<float> ChangeHpAct;
     public UnityEvent DeadAct;
     MonsterFollowPlayer mfp;
 
-    private bool _isBlocked;
+    [SerializeField] private bool _isBlocked;
     public bool isBlocked 
     {
         get => _isBlocked;
@@ -34,7 +26,6 @@ public abstract class Monster : MonoBehaviour, IDamage
             if(mfp == null)
             {
                 TryGetComponent(out mfp);
-                Debug.Log("Block");
             }
             mfp.block(value);
             _isBlocked = value;
@@ -42,7 +33,7 @@ public abstract class Monster : MonoBehaviour, IDamage
     }
 
     /// <summary> 현재 체력 </summary>
-    private short CurHp
+    public short CurHp
     {   
         get => _curHp;
         set
@@ -50,9 +41,11 @@ public abstract class Monster : MonoBehaviour, IDamage
             if (value <= 0 )
             {
                 //죽은상태
-                ReleaseMonster();
+                ObjectPoolManager.Instance.ReleaseObj(Data, gameObject);
+                ChangeHpAct?.Invoke(0.0f);
                 DeadAct?.Invoke();
-                value = 0;
+                ResetAllState();
+                return;
             }    
             _curHp = value;
             ChangeHpAct?.Invoke(_curHp/MaxHP);
@@ -72,13 +65,13 @@ public abstract class Monster : MonoBehaviour, IDamage
         Mathf.Clamp(CurHp, 0, MaxHP);
     }
 
-    private float _speedCeof = 1.0f; //이동속도 계수
-    public float SpeedCeof { get =>_speedCeof ; set => _speedCeof = value; }
+    [SerializeField]private float _speedCeof = 1.0f; //이동속도 계수
+    public float SpeedCeof =>_speedCeof ;
     /// <summary>몬스터 이동속도</summary>
     public float Speed => Data.Sp * _speedCeof;
     public void ResetSpeed() => _speedCeof = 1.0f;
 
-    private float _attackCeof = 1.0f; //공격력 계수
+    [SerializeField]private float _attackCeof = 1.0f; //공격력 계수
     public float AttackCeof { get => _attackCeof; set => _attackCeof = value; }
     /// <summary>몬스터 공격력</summary>
     public float Attack => Data.Ak * _attackCeof;
@@ -88,13 +81,14 @@ public abstract class Monster : MonoBehaviour, IDamage
     public float AttackDelay => Data.AkDelay;
     public void ResetAttackDelay() => _curAttackDelay = Data.AkDelay;
 
-    private float _curAttackDelay;
+    [SerializeField]private float _curAttackDelay;
     public float CurAttackDelay{ get => _curAttackDelay; set => _curAttackDelay = value; }
     public bool isAttack => CurAttackDelay < AttackDelay;
 
     /// <summary>모든 상태변화 초기화</summary>
     public void ResetAllState()
     {
+        _curAttackDelay = AttackDelay;
         ResetSpeed();
         ResetAttack();
         ResetAttackDelay();
@@ -102,9 +96,10 @@ public abstract class Monster : MonoBehaviour, IDamage
 
     public virtual void Init(MonsterData data)
     {
-        Data = data;
-        CurHp = MaxHP;
-        CurAttackDelay = AttackDelay;
-        Instantiate(data.MonsterPrefab, this.transform); //자식으로 몬스터의 프리팹 생성
+        _data = data;
+        _curHp = MaxHP;
+        _curAttackDelay = AttackDelay;
+        gameObject.layer = 15;
+        Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
     }
 }

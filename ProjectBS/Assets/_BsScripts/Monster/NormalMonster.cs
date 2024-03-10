@@ -11,9 +11,6 @@ public class NormalMonster : Monster
     public override void Init(MonsterData data)
     {
         base.Init(data);
-        if (data is NormalMonsterData normalData)
-        {
-            NormalData = normalData;
-        }
+        NormalData = (data as NormalMonsterData);
     }
 }

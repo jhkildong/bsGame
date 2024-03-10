@@ -73,6 +73,10 @@ namespace Yeon
 
         }
 
+        public void SetDirection(Vector3 dir)
+        {
+            worldMoveDir = dir;
+        }
     }
 
 }
