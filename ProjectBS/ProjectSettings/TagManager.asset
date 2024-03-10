@@ -29,12 +29,12 @@ TagManager:
   - 
   - 
   - 
+  - Building
+  - InCompletedBuilding
+  - BuildCheckObject
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
   - 
   - 
   m_SortingLayers:

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "BuildingScriptableObject", menuName = "Events/BuildingScriptableObject")]
-public class BuildingScriptableObject : ScriptableObject
+
+public class BuildingScriptableObject : BuildingData // BuildingData가 ScriptableObject를 상속받고있다.
 {
-    public GameObject building;
+
 }
