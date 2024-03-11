@@ -16,11 +16,11 @@ public class ItemManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        /*ExpItemData scriptableObject = other.gameObject.GetComponent<ExpItemData>();
+        ExpItemData scriptableObject = other.gameObject.GetComponent<ExpItemData>();
         if (scriptableObject != null)
         {
             Debug.Log("¾ÆÀÌÅÛ°ú ºÎµóÈû");
-        }*/
+        }
     }
 
     //Tag°¡ ¹ºÁö
