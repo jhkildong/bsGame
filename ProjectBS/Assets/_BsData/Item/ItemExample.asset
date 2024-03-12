@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72fc1e9bb1e24dd4581c0c5e0129fae9, type: 3}
-  m_Name: Item_Struct_
+  m_Script: {fileID: 11500000, guid: 206e8ed5a6456d8448733dd178fbad29, type: 3}
+  m_Name: ItemExample
   m_EditorClassIdentifier: 
-  _id: 0
-  _name: 
-  _value: 0
-  _prefab: {fileID: 0}
-  TypeOfItem: 2
-  TypeOfMaterial: 0
+  itemName: 
+  level: 0
+  stats: []
+  maxStack: 0
+  price: 0
+  icon: {fileID: 0}
+  prefab: {fileID: 0}
+  description: 
