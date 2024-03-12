@@ -18,8 +18,8 @@ public class MonsterAction : MonoBehaviour
 
     private void Start()
     {
-        Building = LayerMask.GetMask("Building");
-        Player = LayerMask.GetMask("Player");
+        Building = LayerMask.NameToLayer("Building");
+        Player = LayerMask.NameToLayer("Player");
         TryGetComponent(out myMonster);
     }
 
