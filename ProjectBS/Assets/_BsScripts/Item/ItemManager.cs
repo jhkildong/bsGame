@@ -1,30 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class ItemManager : MonoBehaviour
+[CreateAssetMenu]
+public class ItemManager : ScriptableObject
 {
-    private void Start()
+    [System.Serializable]
+    public class Items
     {
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public ItemBasic ItemBasic;
+        public int weight;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public List<Items> items = new List<Items>();
+
+    protected ItemBasic PickItem()
     {
-        /*ExpItemData scriptableObject = other.gameObject.GetComponent<ExpItemData>();
-        if (scriptableObject != null)
+        int sum = 0;
+        foreach (var ItemBasic in items)
         {
-            Debug.Log("아이템과 부딛힘");
-        }*/
+            sum += ItemBasic.weight;
+        }
+
+        var rnd = Random.Range(0, sum);
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            var ItemBasic = items[i];
+            if (ItemBasic.weight > rnd) return items[i].ItemBasic;
+            else rnd -= ItemBasic.weight;
+        }
+
+        return null;
     }
 
-    //Tag가 뭔지
-    //아이템 이름
-    //종류 식별( 어떤 종류 아이템인지)
-    //해당 종류 이벤트에 맞는 이벤트
+    public void ItemDrop(Vector3 pos)
+    {
+        var item = PickItem();
+        if (item == null) return;
+
+        Instantiate(item.prefab, pos, Quaternion.identity);
+    }
 }
