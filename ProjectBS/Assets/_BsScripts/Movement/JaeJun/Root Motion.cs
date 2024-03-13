@@ -22,7 +22,7 @@ public class RootMotion : MonoBehaviour
 
     private void FixedUpdate()
     {
-        myPlayer.SetDirection(myAnim.velocity);
+        //myPlayer.SetDirection(myAnim.velocity);
     }
 
     private void OnAnimatorMove()
