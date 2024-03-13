@@ -8,8 +8,14 @@ using UnityEngine.UI;
 /// </summary>
 public interface IDamage
 {
-    void TakeDamage(short dmg);   
+    void TakeDamage(short dmg);
 }
+
+public interface IHealing
+{
+    void ReceiveHeal(short dmg);
+}
+
 public class MonsterAction : MonoBehaviour
 {
     Monster myMonster;

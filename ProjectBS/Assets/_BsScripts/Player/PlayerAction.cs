@@ -6,6 +6,7 @@ using Yeon;
 
 public class PlayerAction : Player
 {
+
     Movement myMovement;
     // Start is called before the first frame update
     private void Start()
@@ -17,8 +18,17 @@ public class PlayerAction : Player
     Vector3 dir;
     Vector3 inputDir;
     public float angle;
+    public LayerMask building;
     private void Update()
     {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, transform.forward, out hit, 3.0f, building);
+        Building build = hit.transform.gameObject.GetComponent<Building>();
+        if(build != null)
+        {
+            
+        }
+
         moveDir.x = Input.GetAxisRaw("Horizontal"); //A, D키의 이동 방향
         moveDir.z = Input.GetAxisRaw("Vertical"); //W, S키의 이동 방향
         

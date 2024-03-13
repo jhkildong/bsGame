@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour, IDamage
+public class Player : MonoBehaviour, IDamage, IHealing
 {
     public UnityEvent<float> ChangeHpAct;
     public UnityEvent DeadAct;

@@ -43,7 +43,7 @@ public class CampFire : Building
         {
             Debug.Log("¤¾¤·");
             playerIsInRange = true;
-            StartCoroutine(healTickTimeCheck());
+            StartCoroutine(healTickTimeCheck(other.GetComponent<IHealing>()));
         }
     }
     void OnTriggerExit(Collider other)
@@ -71,8 +71,9 @@ public class CampFire : Building
         Destroy(gameObject);
     }
 
-    IEnumerator healTickTimeCheck()
+    IEnumerator healTickTimeCheck(IHealing healable)
     {
+        if (healable == null) yield break;
         float inTime = 0;
         while (playerIsInRange)
         {
@@ -82,7 +83,8 @@ public class CampFire : Building
             }
             else if (inTime >= healTick)
             {
-                activeHeal();
+                healable.ReceiveHeal(healAmount);
+                //activeHeal();
                 inTime = 0;
             }
             yield return null;
