@@ -15,6 +15,7 @@ public abstract class Monster : MonoBehaviour, IDamage
     public MonsterData Data => _data;
     public UnityEvent<float> ChangeHpAct;
     public UnityEvent DeadAct;
+    public UnityEvent<Vector3> DropItem;
     MonsterFollowPlayer mfp;
 
     [SerializeField] private bool _isBlocked;
@@ -44,6 +45,7 @@ public abstract class Monster : MonoBehaviour, IDamage
                 ObjectPoolManager.Instance.ReleaseObj(Data, gameObject);
                 ChangeHpAct?.Invoke(0.0f);
                 DeadAct?.Invoke();
+                DropItem?.Invoke(this.transform.position);
                 ResetAllState();
                 return;
             }    

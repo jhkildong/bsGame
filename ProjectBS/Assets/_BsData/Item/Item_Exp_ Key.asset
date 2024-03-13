@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Exp_ Key
   m_EditorClassIdentifier: 
   _id: 0
-  _name: 
+  _name: key
   _value: 0
   _prefab: {fileID: 3799868614507099205, guid: a84316f9f9f6d5a42a10635b413568f6, type: 3}
   _exprate: 100

@@ -4,14 +4,16 @@ using UnityEngine;
 using System.Linq;
 
 [CreateAssetMenu]
-public class ItemManager : ScriptableObject
+public class ItemManager : MonoBehaviour
 {
+
     [System.Serializable]
     public class Items
     {
         public ItemBasic ItemBasic;
         public int weight;
     }
+    public ItemData data;
 
     public List<Items> items = new List<Items>();
 
@@ -37,9 +39,9 @@ public class ItemManager : ScriptableObject
 
     public void ItemDrop(Vector3 pos)
     {
-        var item = PickItem();
+        GameObject item = data.CreateItem().gameObject;
         if (item == null) return;
 
-        Instantiate(item.prefab, pos, Quaternion.identity);
+        item.transform.position = pos;
     }
 }

@@ -8,8 +8,9 @@ public class ExpItem : Item
     // Start is called before the first frame update
     public ExpItemData ExpItemData { get; private set; }
 
-    public ExpItem(ExpItemData data) : base(data)
+    public override void Init(ItemData data)
     {
-        ExpItemData = data;
+        base.Init(data);
+        ExpItemData = (data as ExpItemData);
     }
 }

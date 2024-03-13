@@ -12,6 +12,10 @@ public class ExpItemData : ItemData
     // Start is called before the first frame update
     public override Item CreateItem()
     {
-        return new ExpItem(this);
+        GameObject itemObject = new GameObject(Name);
+
+        itemObject.AddComponent<ExpItem>().Init(this);
+
+        return itemObject.GetComponent<ExpItem>();
     }
 }

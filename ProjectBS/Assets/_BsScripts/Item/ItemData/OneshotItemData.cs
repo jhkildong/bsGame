@@ -9,6 +9,8 @@ public class OneshotItemData : ItemData
     [SerializeField] private bool _used;
     public override Item CreateItem()
     {
-        return new OneshotItem(this);
+        GameObject itemObject = new GameObject(Name);
+        itemObject.AddComponent<OneshotItem>();
+        return itemObject.GetComponent<OneshotItem>();
     }
 }

@@ -6,8 +6,5 @@ public class StructItem : Item
 {
     public StructItemData StructItemData { get; private set; }
 
-    public StructItem(StructItemData data) : base(data)
-    {
-        StructItemData = data;
-    }
+    
 }
