@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7760933214031743829}
   - component: {fileID: 2768355051482174262}
   m_Layer: 25
-  m_Name: Ground_16 1
+  m_Name: IronSpike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

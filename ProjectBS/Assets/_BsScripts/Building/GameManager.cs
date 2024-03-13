@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             curGameTime += Time.deltaTime;
             checkAMPMTime += Time.deltaTime;
-            Debug.Log(curGameTime);
+            //Debug.Log(curGameTime);
 
             //¹ã³· º¯°æ
             if (!isNight && checkAMPMTime >= 5)

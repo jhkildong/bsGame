@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public abstract class Building : MonoBehaviour
 {
     [SerializeField]
