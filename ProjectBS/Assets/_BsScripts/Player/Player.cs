@@ -18,7 +18,7 @@ public class Player : MonoBehaviour, IDamage, IHealing
             if (value <= 0)
             {
                 //Á×Àº»óÅÂ
-                ChangeHpAct?.Invoke(0.0f);
+                //ChangeHpAct?.Invoke(0.0f);
                 DeadAct?.Invoke();
                 return;
             }

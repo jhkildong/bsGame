@@ -59,6 +59,7 @@ public class InstantiateBuilding : MonoBehaviour
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
             if (Physics.Raycast(mouseRay, out RaycastHit hit, 1000f, mouseLayer)) // 마우스위치에 생성될 오브젝트를 보여준다. (임시 오브젝트가 따라다닌다)
             {
+                Debug.Log(hit.point);
                 checkBuilding.transform.position = hit.point;
                 //selectedBuilding.transform.position = selectedBuildingTransform.position;
                 //selectedBuilding.transform.rotation = selectedBuildingTransform.rotation;
