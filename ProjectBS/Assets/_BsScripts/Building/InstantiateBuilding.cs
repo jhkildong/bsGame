@@ -59,13 +59,9 @@ public class InstantiateBuilding : MonoBehaviour
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
             if (Physics.Raycast(mouseRay, out RaycastHit hit, 1000f, mouseLayer)) // 마우스위치에 생성될 오브젝트를 보여준다. (임시 오브젝트가 따라다닌다)
             {
-                
                 checkBuilding.transform.position = hit.point;
                 //selectedBuilding.transform.position = selectedBuildingTransform.position;
                 //selectedBuilding.transform.rotation = selectedBuildingTransform.rotation;
-
-
-
             }
             float wheel = -Input.GetAxis("Mouse ScrollWheel") * 300; //마우스 휠 돌린값 *300(회전속도)
             checkBuilding.transform.rotation *= Quaternion.Euler(0, wheel, 0);// 마우스 휠 돌린만큼 y축 기준으로 회전한다.

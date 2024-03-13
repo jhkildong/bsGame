@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public abstract class Building : MonoBehaviour
 {
     [SerializeField]
@@ -65,6 +66,7 @@ public abstract class Building : MonoBehaviour
     }
     void Update()
     {
+        /*
         if (Input.GetKey(KeyCode.B))
         {
             Construction(2*Time.deltaTime);
@@ -78,9 +80,7 @@ public abstract class Building : MonoBehaviour
         {
             Repair(0.1f);
         }
-
-
-
+        */
     }
 
 
@@ -128,7 +128,7 @@ public abstract class Building : MonoBehaviour
         Debug.Log("건설 완료");
     }
 
-    void Repair(float RepairSpeed)
+    public void Repair(float RepairSpeed)
     {
         if (_curHp < _maxHp)
         {
@@ -142,7 +142,7 @@ public abstract class Building : MonoBehaviour
 
     }
 
-    void GetDamage(short dmg)
+    public void GetDamage(short dmg)
     {
         if(completedBuilding && isInstalled)
         {
