@@ -13,7 +13,6 @@ public class ExpItemData : ItemData
     public override Item CreateItem()
     {
         GameObject itemObject = new GameObject(Name);
-
         itemObject.AddComponent<ExpItem>().Init(this);
 
         return itemObject.GetComponent<ExpItem>();
