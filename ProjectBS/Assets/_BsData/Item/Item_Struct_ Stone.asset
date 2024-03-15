@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fc1e9bb1e24dd4581c0c5e0129fae9, type: 3}
   m_Name: Item_Struct_ Stone
   m_EditorClassIdentifier: 
-  _id: 2
+  _id: 3
   _name: stonne
   _value: 1
   _prefab: {fileID: 1816422187447663941, guid: 401ad4bfe044873439785718bd45697f, type: 3}

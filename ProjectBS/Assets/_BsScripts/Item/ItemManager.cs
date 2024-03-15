@@ -5,6 +5,7 @@ using System.Linq;
 
 public class ItemManager : MonoBehaviour
 {
+    //>>>>>>>>>>>>>>>>>SingleTon
     private static ItemManager instance = null;
     private void Awake()
     {
@@ -29,38 +30,39 @@ public class ItemManager : MonoBehaviour
             return instance;
         }
     }
+    //SingleTon<<<<<<<<<<<<<<<<<<<<<
+
+
+
     [System.Serializable]
     public class Items
     {
-        public ItemData name;
         public ItemData data;
-        public float weight;
     }
     public List<Items> items = new List<Items>();
-
-    protected ItemData PickItem()
+    
+    public ItemData GetItemDataByID(int id)
     {
-        float sum = 0.0f;
-        foreach (var data in items)
+        foreach (var item in items)
         {
-            sum += data.weight;
+            if (item.data.ID == id)
+            {
+                Debug.Log("아이템 데이터 가져옴.");
+                return item.data;
+            }
         }
-
-        var rnd = Random.Range(0, sum);
-
-        for (int i = 0; i < items.Count; i++)
-        {
-            var item = items[i];
-            if (item.weight > rnd) return items[i].data;
-            else rnd -= item.weight;
-        }
-        return null;
+        return null; // 해당 ID에 대한 아이템 데이터가 없는 경우 null 반환
     }
-    public void ItemDrop()
-    {
-        ItemData item = PickItem();
-        if (item == null) return;
 
-        item.CreateItem();
+    public void Drop(ItemData itemData, float dropChance)
+    {
+        float randomValue = Random.Range(0,100); // 0부터 1 사이의 랜덤 값 생성
+
+        if (randomValue <= dropChance)
+        {
+            Debug.Log("아이템 드랍. Drop()");
+            // 드랍 확률을 넘은 경우 아이템 드롭
+            itemData.CreateItem();
+        }
     }
 }
