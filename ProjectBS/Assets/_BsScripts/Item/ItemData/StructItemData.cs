@@ -10,10 +10,10 @@ public class StructItemData : ItemData
     public struct_mat TypeOfMaterial;
 
 
-    public override Item CreateItem()
+    public override GameObject CreateItem()
     {
         GameObject itemObject = new GameObject(Name);
-        itemObject.AddComponent<StructItem>();
-        return itemObject.GetComponent<StructItem>();
+        itemObject.AddComponent<StructItem>().Init(this);
+        return itemObject;
     }
 }
