@@ -15,7 +15,7 @@ namespace Yeon
         protected Rigidbody rBody;
 
         [SerializeField, Range(1f, 10f), Tooltip("이동속도")]
-        protected float moveSpeed = 5f;
+        protected float moveSpeed = 1f;
 
         [SerializeField] protected bool isMoving;
         [SerializeField] protected bool isBlocked = false; //장애물 존재
@@ -24,6 +24,7 @@ namespace Yeon
         [SerializeField] protected Vector3 worldMoveDir;
         [SerializeField] protected float outOfControllDuration;
 
+        ///<summary>시작시 rigidBody와 캡슐콜라이더 설정</summary>
         protected virtual void Start()
         {
             InitRigidbody();

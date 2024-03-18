@@ -7,45 +7,30 @@ using UnityEngine.Pool;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
+
 [RequireComponent(typeof(MonsterFollowPlayer))]
 [RequireComponent(typeof(MonsterAction))]
-public abstract class Monster : MonoBehaviour, IDamage
+public abstract class Monster : Yeon.Movement, IDamage
 {
     [SerializeField] private MonsterData _data;
     public MonsterData Data => _data;
     public UnityEvent<float> ChangeHpAct;
     public UnityEvent DeadAct;
-    public UnityEvent<Vector3> DropItem;
-    MonsterFollowPlayer mfp;
-
-    [SerializeField] private bool _isBlocked;
-    public bool isBlocked 
-    {
-        get => _isBlocked;
-        set
-        {
-            if(mfp == null)
-            {
-                TryGetComponent(out mfp);
-            }
-            mfp.block(value);
-            _isBlocked = value;
-        }
-    }
+    private UnityAction<DropItem[]> DropItem;
 
     /// <summary> 현재 체력 </summary>
     public short CurHp
     {   
-        get => _curHp;
+        get => _curHp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
         set
         {
             if (value <= 0 )
             {
                 //죽은상태
+                //DropItem?.Invoke(this.transform.position);
                 ObjectPoolManager.Instance.ReleaseObj(Data, gameObject);
                 ChangeHpAct?.Invoke(0.0f);
                 DeadAct?.Invoke();
-                DropItem?.Invoke(this.transform.position);
                 ResetAllState();
                 return;
             }    
@@ -95,6 +80,8 @@ public abstract class Monster : MonoBehaviour, IDamage
         ResetAttack();
         ResetAttackDelay();
     }
+
+    
 
     public virtual void Init(MonsterData data)
     {

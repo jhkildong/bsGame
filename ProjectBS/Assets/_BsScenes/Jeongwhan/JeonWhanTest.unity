@@ -314,7 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 0
 --- !u!114 &441671909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,6 +1320,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571632b61c025d648b73ea78b2b77de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
+  isMoving: 0
+  isBlocked: 0
+  isOutOfControl: 0
+  worldMoveDir: {x: 0, y: 0, z: 0}
+  outOfControllDuration: 0
   _data: {fileID: 11400000, guid: 372894f42ae84054dbe70563561e2aaa, type: 2}
   ChangeHpAct:
     m_PersistentCalls:
@@ -1327,22 +1333,6 @@ MonoBehaviour:
   DeadAct:
     m_PersistentCalls:
       m_Calls: []
-  DropItem:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 476378252}
-        m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
-        m_MethodName: ItemDrop
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _isBlocked: 0
   _curHp: 0
   _speedCeof: 1
   _attackCeof: 1

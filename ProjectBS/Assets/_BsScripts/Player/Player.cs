@@ -47,7 +47,7 @@ public class Player : MonoBehaviour, IDamage, IHealing
         if (IsDead)
             return;
         CurHp += heal;
-        Mathf.Clamp(CurHp, 0, MaxHP);
+        CurHp = (short)Mathf.Clamp(CurHp, 0, MaxHP);
     }
 
     public void OnAttack()

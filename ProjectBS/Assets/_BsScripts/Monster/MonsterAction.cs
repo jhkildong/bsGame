@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 /// <summary>
 /// 몬스터상호작용
 /// </summary>
@@ -22,6 +23,7 @@ public class MonsterAction : MonoBehaviour
     [SerializeField] LayerMask Building;
     [SerializeField] LayerMask Player;
 
+    
     private void Start()
     {
         Building = LayerMask.NameToLayer("Building");
@@ -32,11 +34,11 @@ public class MonsterAction : MonoBehaviour
     //테스트용코드
     private void OnCollisionEnter(Collision collision)
     {
+        if (myMonster == null) return;
         if (!myMonster.isAttack)
         {
             if ((Building & 1 << collision.gameObject.layer) != 0)
             {
-                myMonster.isBlocked = true;
                 StartCoroutine(TakeDamaging(collision.gameObject.GetComponent<IDamage>()));
             }
             else if ((Player & 1 << collision.gameObject.layer) != 0)
