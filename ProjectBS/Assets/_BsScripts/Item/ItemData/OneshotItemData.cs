@@ -10,7 +10,7 @@ public class OneshotItemData : ItemData
     public override Item CreateItem()
     {
         GameObject itemObject = new GameObject(Name);
-        itemObject.AddComponent<OneshotItem>();
+        itemObject.AddComponent<OneshotItem>().Init(this);
         return itemObject.GetComponent<OneshotItem>();
     }
 }
