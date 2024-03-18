@@ -23,8 +23,8 @@ public class DropTable : MonoBehaviour
         public float dropChance;
     }
     public List<dropItem> dropItems = new List<dropItem>();
-    public void WillDrop()
+    public GameObject WillDrop()
     {
-        itemManager.A(dropItems);
+        return itemManager.A(dropItems);
     }
 }

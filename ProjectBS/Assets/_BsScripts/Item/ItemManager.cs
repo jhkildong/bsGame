@@ -54,26 +54,26 @@ public class ItemManager : MonoBehaviour
         return null; // 해당 ID에 대한 아이템 데이터가 없는 경우 null 반환
     }
 
-    public void A(List<DropTable.dropItem> items)
+    public GameObject A(List<DropTable.dropItem> items)
     {
         float rnd = Random.Range(0, 100);
         foreach(var dropitem in items)
         {
             if(dropitem.dropChance > rnd)
             {
-                Drop(GetItemDataByID(dropitem.ID));
-                break;
+                return Drop(GetItemDataByID(dropitem.ID));
             }
             else
             {
                 rnd = rnd - dropitem.dropChance;
             }
         }
+        return null;
     }
 
-    public void Drop(ItemData itemData)
+    public GameObject Drop(ItemData itemData)
     {
         Debug.Log("아이템 드랍 :" + itemData.Name);
-        itemData.CreateItem();
+        return itemData.CreateItem();;
     }
 }

@@ -9,7 +9,7 @@ public abstract class Item : MonoBehaviour
 
     public virtual void Init(ItemData data)
     {
-        Data = data;
-        Instantiate(Data.ItemPrefab, transform);
+        //GameObject go= data.CreateItem();
+        Instantiate(data.ItemPrefab, transform);
     }
 }

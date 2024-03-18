@@ -1317,9 +1317,9 @@ MonoBehaviour:
   itemManager: {fileID: 0}
   dropItems:
   - ID: 1
-    dropChance: 0
-  - ID: 2
     dropChance: 100
+  - ID: 2
+    dropChance: 0
   - ID: 3
     dropChance: 0
 --- !u!1001 &1679761473
@@ -1536,6 +1536,7 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: 1cc8d47902f51fa47a5c7f5ac1a60dc2, type: 2}
   - data: {fileID: 11400000, guid: 10ffcfb7f7f689c439629a28b6eaaf6d, type: 2}
   - data: {fileID: 11400000, guid: 7696f5c3e683b4345a75a69d04471700, type: 2}
+  - data: {fileID: 0}
 --- !u!4 &1921447414
 Transform:
   m_ObjectHideFlags: 0

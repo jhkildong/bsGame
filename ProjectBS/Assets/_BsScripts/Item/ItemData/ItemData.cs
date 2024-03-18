@@ -21,5 +21,5 @@ public abstract class ItemData : ScriptableObject
     [SerializeField] private GameObject _prefab;
     //[SerializeField] private itemtype _itemType;
     // Start is called before the first frame update
-    public abstract Item CreateItem();
+    public abstract GameObject CreateItem();
 }
