@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class wasdMoving : MonoBehaviour
 {
+    public Animator _myAnim;
     public float moveSpeed = 5f;
     void Update()
     {
@@ -17,8 +18,13 @@ public class wasdMoving : MonoBehaviour
         // È¸Àü
         if (movement != Vector3.zero)
         {
+            _myAnim.SetBool("walk", true);
             Quaternion targetRotation = Quaternion.LookRotation(movement, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f * Time.deltaTime);
+        }
+        else if(movement == Vector3.zero)
+        {
+            _myAnim.SetBool("walk", false);
         }
     }
 }

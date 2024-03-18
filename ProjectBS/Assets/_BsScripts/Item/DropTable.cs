@@ -25,14 +25,6 @@ public class DropTable : MonoBehaviour
     public List<dropItem> dropItems = new List<dropItem>();
     public void WillDrop()
     {
-        foreach (var dropItem in dropItems)
-        {
-            ItemData itemData = itemManager.GetItemDataByID(dropItem.ID);
-            if (itemData != null)
-            {
-                Debug.Log("droptable");
-                itemManager.Drop(itemData, dropItem.dropChance);
-            }
-        }
+        itemManager.A(dropItems);
     }
 }
