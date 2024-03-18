@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 59e089ff5dd2a9b47a22a6076f719d4f, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 0600b0525554bc84598d24a71d924f65, type: 2}
+      objectReference: {fileID: 9100000, guid: 81b1ce4af51a34340861ab68c390d1ea, type: 2}
     - target: {fileID: 5866666021909216657, guid: 59e089ff5dd2a9b47a22a6076f719d4f, type: 3}
       propertyPath: m_UpdateMode
       value: 1
@@ -71,12 +71,6 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 59e089ff5dd2a9b47a22a6076f719d4f, type: 3}
       propertyPath: m_CullingMode
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866666021909216657, guid: 59e089ff5dd2a9b47a22a6076f719d4f, type: 3}
-      propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'Hand_R'\n\tFrom animation clip 'Warrior_Attack'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -125,8 +119,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Yeon.Combat, Assembly-CSharp
-        m_MethodName: OnAttackPoint
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -161,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7057867334602970740, guid: cda3224591e2c2a47ba59e5c7d63d27c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.016
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7057867334602970740, guid: cda3224591e2c2a47ba59e5c7d63d27c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -169,27 +163,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7057867334602970740, guid: cda3224591e2c2a47ba59e5c7d63d27c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.2302114
+      value: -0.18301266
       objectReference: {fileID: 0}
     - target: {fileID: 7057867334602970740, guid: cda3224591e2c2a47ba59e5c7d63d27c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.6601411
+      value: 0.6830127
       objectReference: {fileID: 0}
     - target: {fileID: 7057867334602970740, guid: cda3224591e2c2a47ba59e5c7d63d27c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6685827
+      value: -0.6830127
       objectReference: {fileID: 0}
     - target: {fileID: 7057867334602970740, guid: cda3224591e2c2a47ba59e5c7d63d27c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2534044
+      value: 0.18301266
       objectReference: {fileID: 0}
     - target: {fileID: 7057867334602970740, guid: cda3224591e2c2a47ba59e5c7d63d27c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 178
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7057867334602970740, guid: cda3224591e2c2a47ba59e5c7d63d27c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -40
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 7057867334602970740, guid: cda3224591e2c2a47ba59e5c7d63d27c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

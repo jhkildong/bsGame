@@ -3,20 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-/// <summary>
-/// 몬스터상호작용
-/// </summary>
-public interface IDamage
-{
-    void TakeDamage(short dmg);
-}
-
-public interface IHealing
-{
-    void ReceiveHeal(short dmg);
-}
-
 public class MonsterAction : MonoBehaviour
 {
     Monster myMonster;
