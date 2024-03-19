@@ -13,6 +13,7 @@ namespace Yeon
     public class Movement : MonoBehaviour
     {
         protected Rigidbody rBody;
+        [SerializeField] protected Animator myAnim;
 
         [SerializeField, Range(1f, 10f), Tooltip("이동속도")]
         protected float moveSpeed = 1f;
@@ -27,6 +28,7 @@ namespace Yeon
         ///<summary>시작시 rigidBody와 캡슐콜라이더 설정</summary>
         protected virtual void Start()
         {
+            myAnim = GetComponentInChildren<Animator>();
             InitRigidbody();
             InitCapsuleCollider();
         }
@@ -63,7 +65,7 @@ namespace Yeon
         /// <summary> 리지드바디 최종 속도 적용 </summary>
         private void MovementToRigidbody()
         {
-            if (!isOutOfControl && !isBlocked)
+            if (!isOutOfControl && !isBlocked && !isMoving)
             {
                 rBody.velocity = worldMoveDir * moveSpeed;
             }
