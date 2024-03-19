@@ -3,12 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class DropItem
-{
-    public ItemData data;
-    public float weight;
-}
 public abstract class MonsterData : ScriptableObject, IPoolable
 {
     public int ID => _id;
@@ -21,8 +15,6 @@ public abstract class MonsterData : ScriptableObject, IPoolable
     public GameObject Prefab => _prefab;
     
     public List<dropItem> DropItemList => _dropItemList;
-
-
 
     [SerializeField] private int _id;               // 몬스터 아이디
     [SerializeField] private string _name;          // 몬스터 이름

@@ -8,8 +8,8 @@ namespace Yeon
     public class Combat : Movement, IDamage, IHealing
     {
         #region SerializeField
-        [SerializeField] protected UnityEvent<float> ChangeHpAct;
-        [SerializeField] protected UnityEvent DeadAct;
+        [SerializeField] protected UnityAction<float> ChangeHpAct = null;
+        [SerializeField] protected UnityAction DeadAct;
         [SerializeField] protected Transform myAttackPoint;
         [SerializeField] protected LayerMask attackMask;
         #endregion
@@ -19,9 +19,9 @@ namespace Yeon
         public float AttackCeof => _attackCeof; //공격력 계수
         protected short Attack { get => (short)(_attack * _attackCeof); set => _attack = value; }
 
-        [SerializeField] private short _maxHP;
-        [SerializeField] private float _speedCeof = 1.0f; 
-        [SerializeField] private float _attackCeof = 1.0f;
+        [SerializeField] protected short _maxHP;
+        [SerializeField] protected float _speedCeof = 1.0f; 
+        [SerializeField] protected float _attackCeof = 1.0f;
         [SerializeField] private short _attack;
 
 
@@ -43,6 +43,7 @@ namespace Yeon
         public void TakeDamage(short damage)
         {
             CurHp -= damage;
+            Debug.Log($"받은 데미지:{damage}, 현재 체력:{CurHp}");
             if (CurHp <= 0.0f)
             {
                 DeadAct?.Invoke();

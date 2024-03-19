@@ -11,8 +11,6 @@ public class AnimEvent : MonoBehaviour
     public void OnAttack()
     {
         attackAct?.Invoke();
-
-
     }
 
     public void OnDead()

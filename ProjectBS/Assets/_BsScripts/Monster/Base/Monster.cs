@@ -1,98 +1,171 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Pool;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using Yeon;
 
-[RequireComponent(typeof(MonsterFollowPlayer))]
-[RequireComponent(typeof(MonsterAction))]
 [RequireComponent(typeof(DropTable))]
-public abstract class Monster : Yeon.Movement, IDamage, IDropable
+public abstract class Monster : Combat, IDropable
 {
+    Transform PlayerTransform;
+
     [SerializeField] private MonsterData _data;
     public MonsterData Data => _data;
-    public UnityEvent<float> ChangeHpAct;
-    public UnityEvent DeadAct;
     public List<dropItem> dropItems() => Data.DropItemList;
     public void WillDrop()
     {
-        GameObject go = ItemManager.Instance.A(dropItems());
-        go.transform.position = this.transform.position;
+        //GameObject go = ItemManager.Instance.A(dropItems());
+        //go.transform.position = this.transform.position;
     }
-
-    /// <summary> 현재 체력 </summary>
-    public short CurHp
-    {   
-        get => _curHp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-        set
-        {
-            if (value <= 0 )
-            {
-                //죽은상태
-                //DropItem?.Invoke(this.transform.position);
-                ObjectPoolManager.Instance.ReleaseObj(Data, gameObject);
-                ChangeHpAct?.Invoke(0.0f);
-                DeadAct?.Invoke();
-                ResetAllState();
-                //Data.dropTable.WillDrop();
-                return;
-            }    
-            _curHp = value;
-            ChangeHpAct?.Invoke(_curHp/MaxHP);
-        }
-    }
-    [SerializeField] private short _curHp;
-    /// <summary> 최대체력</summary>
-    public short MaxHP => Data.MaxHP;
-    /// <summary> 현재 체력이 0이하가 되면 true  </summary>
-    public bool IsDead => CurHp <= 0;
-    public void TakeDamage(short damage) => CurHp -= damage;
-    public void ReceiveHeal(short heal)
-    {
-        if (IsDead)
-            return;
-        CurHp += heal;
-        Mathf.Clamp(CurHp, 0, MaxHP);
-    }
-
-    [SerializeField]private float _speedCeof = 1.0f; //이동속도 계수
-    public float SpeedCeof =>_speedCeof ;
-    /// <summary>몬스터 이동속도</summary>
-    public float Speed => Data.Sp * _speedCeof;
-    public void ResetSpeed() => _speedCeof = 1.0f;
-
-    [SerializeField]private float _attackCeof = 1.0f; //공격력 계수
-    public float AttackCeof { get => _attackCeof; set => _attackCeof = value; }
-    /// <summary>몬스터 공격력</summary>
-    public float Attack => Data.Ak * _attackCeof;
-    public void ResetAttack() => _attackCeof = 1.0f;
-
+   
     /// <summary>몬스터 공격딜레이</summary>
     public float AttackDelay => Data.AkDelay;
-    public void ResetAttackDelay() => _curAttackDelay = Data.AkDelay;
 
     [SerializeField]private float _curAttackDelay;
     public float CurAttackDelay{ get => _curAttackDelay; set => _curAttackDelay = value; }
     public bool isAttack => CurAttackDelay < AttackDelay;
 
-    /// <summary>모든 상태변화 초기화</summary>
-    public void ResetAllState()
-    {
-        _curAttackDelay = AttackDelay;
-        ResetSpeed();
-        ResetAttack();
-        ResetAttackDelay();
-    }
     public virtual void Init(MonsterData data)
     {
         _data = data;
-        _curHp = MaxHP;
-        _curAttackDelay = AttackDelay;
-        gameObject.layer = 15;
-        DeadAct.AddListener(WillDrop);
+        _maxHP = data.MaxHP;
+        _curAttackDelay = data.AkDelay;
+        moveSpeed = data.Sp;
+        CurHp = data.MaxHP;
+        attackMask = (int)(BSLayerMasks.Player | BSLayerMasks.Building);
+        gameObject.layer = (int)Mathf.Log((int)BSLayerMasks.Monster, 2);
+        //DeadAct.AddListener(WillDrop);
         Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
+        //임시
+        PlayerTransform = GameObject.Find("Player").transform;
+        myTarget = PlayerTransform;
+        DeadAct += Death;
     }
+
+    protected override void Start()
+    {
+        base.Start();
+        ChangeState(State.Chase);
+    }
+
+    protected virtual void OnEnable()
+    {
+        if (Data == null) return;
+        moveSpeed = Data.Sp;
+        CurHp = Data.MaxHP;
+        if(myAnim == null) myAnim = GetComponentInChildren<Animator>();
+        ChangeState(State.Chase);
+    }
+
+    void Death()
+    {
+        myAnim.SetBool(AnimParam.isMoving, false);
+        myAnim.SetTrigger(AnimParam.Death);
+        StartCoroutine(DelayChangeState(State.Death, 0.5f));
+    }
+
+    #region Monster StateMachine
+    public enum State
+    {
+        Create, Chase, Attack, Death
+    }
+    public State myState = State.Create;
+    public Transform myTarget;
+
+    void ChangeState(State s)
+    {
+        if (myState == s) return;
+        myState = s;
+        switch (myState)
+        {
+            case State.Chase:
+                playTime = 0.0f;
+                myAnim.SetBool(AnimParam.isMoving, true);
+                break;
+            case State.Attack:
+                worldMoveDir = Vector3.zero;
+                myAnim.SetBool(AnimParam.isMoving, false);
+                break;
+            case State.Death:
+                ObjectPoolManager.Instance.ReleaseObj(Data, this.gameObject);
+                break;
+        }
+    }
+
+    float playTime;
+    IDamage AttackTarget;
+    void StateProcess()
+    {
+        switch (myState)
+        {
+            case State.Chase:
+                Vector3 dir = myTarget.position - transform.position;
+                dir.Normalize();
+                worldMoveDir = dir;
+                break;
+            case State.Attack:
+                playTime -= Time.deltaTime;
+                if(playTime <= 0.0f)
+                {
+                    if(AttackTarget != null)
+                    {
+                        AttackTarget.TakeDamage((short)Data.Ak);
+                        myAnim.SetTrigger(AnimParam.Attack);
+                    }
+                    playTime = AttackDelay;
+                }
+                break;
+        }
+    }
+
+    IEnumerator DelayChangeState(State s, float t)
+    {
+        yield return new WaitForSeconds(t);
+        ChangeState(s);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.LookAt(myTarget);
+        StateProcess();
+    }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
+
+    public void ChangeTarget(Transform target)
+    {
+        if (myState == State.Death) return;
+        myTarget = target;
+    }
+    
+    public void ResetTarget()
+    {
+        if (myState == State.Death) return;
+        myTarget = PlayerTransform;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if ((attackMask & (1 << collision.gameObject.layer)) != 0)
+        {
+            AttackTarget = collision.gameObject.GetComponent<IDamage>();
+            ChangeState(State.Attack);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if ((attackMask & (1 << collision.gameObject.layer)) != 0)
+        {
+            ChangeState(State.Chase);
+        }
+    }
+
+    #endregion
+
 }
