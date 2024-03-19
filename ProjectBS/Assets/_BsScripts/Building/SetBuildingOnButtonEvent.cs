@@ -11,9 +11,7 @@ public class SetBuildingOnButtonEvent : MonoBehaviour
     void Start()
     {
 
-    
     }
-
 
     public void onClickButton()
     {

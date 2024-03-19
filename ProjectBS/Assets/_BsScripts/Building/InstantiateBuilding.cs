@@ -192,7 +192,7 @@ public class InstantiateBuilding : MonoBehaviour
 
         Vector3 newSize = selectedBuilding.GetComponent<BoxCollider>().size; //임시 오브젝트의 크기를 구한다음
         //checkBuilding.transform.localScale = new Vector3(1, 1, 1); // 알수없는 충돌감지오브젝트의 Scale변동 문제가 있어서 강제로 scale을 고정시켰다 (임시방편)
-        checkBuildingCollider.size = newSize; //0체크 콜라이더 오브젝트의 크기를 임시 오브젝트의 크기와 동일하게 맞춘다.    
+        checkBuildingCollider.size = newSize; //체크 콜라이더 오브젝트의 크기를 임시 오브젝트의 크기와 동일하게 맞춘다.    
         checkBuildingCollider.center = selectedBuilding.GetComponent<BoxCollider>().center;
 
 

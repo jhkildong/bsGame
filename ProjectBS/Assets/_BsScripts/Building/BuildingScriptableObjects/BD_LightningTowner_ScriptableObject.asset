@@ -9,21 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe26ac52d55aea419c028a691417d6f, type: 3}
-  m_Name: Spike_ScriptableObject
+  m_Script: {fileID: 11500000, guid: 1b9eb4d418614f0409eceb9ab44a0641, type: 3}
+  m_Name: BD_LightningTowner_ScriptableObject
   m_EditorClassIdentifier: 
-  _id: 2
-  _buildingName: IronSpike
+  _id: 4
+  _buildingName: LightningTower
   _maxHp: 100
   _curHp: 100
-  _requireWood: 0
-  _requireStone: 0
-  _requireIron: 10
+  _requireWood: 5
+  _requireStone: 10
+  _requireIron: 5
   _constTime: 5
-  _repairSpeed: 10
-  _attack: 20
-  _attackDelay: 0
-  _buildingPrefab: {fileID: 3543125075967514443, guid: cf5e2570d14c7bd4ea96193f80c076ce, type: 3}
+  _repairSpeed: 5
+  _attack: 40
+  _attackDelay: 2
+  _buildingPrefab: {fileID: 0}
   _layerMask:
     serializedVersion: 2
     m_Bits: 16777216
