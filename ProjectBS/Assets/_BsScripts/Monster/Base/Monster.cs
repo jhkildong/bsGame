@@ -7,16 +7,21 @@ using UnityEngine.Pool;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-
 [RequireComponent(typeof(MonsterFollowPlayer))]
 [RequireComponent(typeof(MonsterAction))]
-public abstract class Monster : Yeon.Movement, IDamage
+[RequireComponent(typeof(DropTable))]
+public abstract class Monster : Yeon.Movement, IDamage, IDropable
 {
     [SerializeField] private MonsterData _data;
     public MonsterData Data => _data;
     public UnityEvent<float> ChangeHpAct;
     public UnityEvent DeadAct;
-    private UnityAction<DropItem[]> DropItem;
+    public List<dropItem> dropItems() => Data.DropItemList;
+    public void WillDrop()
+    {
+        GameObject go = ItemManager.Instance.A(dropItems());
+        go.transform.position = this.transform.position;
+    }
 
     /// <summary> 현재 체력 </summary>
     public short CurHp
@@ -32,6 +37,7 @@ public abstract class Monster : Yeon.Movement, IDamage
                 ChangeHpAct?.Invoke(0.0f);
                 DeadAct?.Invoke();
                 ResetAllState();
+                //Data.dropTable.WillDrop();
                 return;
             }    
             _curHp = value;
@@ -80,15 +86,13 @@ public abstract class Monster : Yeon.Movement, IDamage
         ResetAttack();
         ResetAttackDelay();
     }
-
-    
-
     public virtual void Init(MonsterData data)
     {
         _data = data;
         _curHp = MaxHP;
         _curAttackDelay = AttackDelay;
         gameObject.layer = 15;
+        DeadAct.AddListener(WillDrop);
         Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
     }
 }

@@ -19,7 +19,10 @@ public abstract class MonsterData : ScriptableObject, IPoolable
     public short MaxHP => _maxHp;
     public short Exp => _exp;
     public GameObject Prefab => _prefab;
-    public List<DropItem> DropItemList => _dropItemList;
+    
+    public List<dropItem> DropItemList => _dropItemList;
+
+
 
     [SerializeField] private int _id;               // 몬스터 아이디
     [SerializeField] private string _name;          // 몬스터 이름
@@ -29,8 +32,7 @@ public abstract class MonsterData : ScriptableObject, IPoolable
     [SerializeField] private short _maxHp;          // 몬스터 최대체력
     [SerializeField] private short _exp;
     [SerializeField] private GameObject _prefab;    // 몬스터 프리팹
-    
-    [SerializeField] private List<DropItem> _dropItemList;
+    [SerializeField] private List<dropItem> _dropItemList;
 
     /// <summary> 타입에 맞는 새로운 몬스터 생성 </summary>
     public abstract GameObject CreateClone();

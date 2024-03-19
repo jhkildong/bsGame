@@ -2,9 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class dropItem
+{
+    public int ID;
+    public float dropChance;
+}
+
+public interface IDropable
+{
+    List<dropItem> dropItems();
+    void WillDrop();
+}
 public class DropTable : MonoBehaviour
 {
-
     public ItemManager itemManager;
     private void Start()
     {
@@ -14,15 +25,10 @@ public class DropTable : MonoBehaviour
         {
             Debug.LogError("ItemManager is not initialized!");
         }
+        dropItems = GetComponent<IDropable>().dropItems();
+        
     }
-
-    [System.Serializable]
-    public class dropItem
-    {
-        public int ID;
-        public float dropChance;
-    }
-    public List<dropItem> dropItems = new List<dropItem>();
+    public List<dropItem> dropItems;
     public GameObject WillDrop()
     {
         return itemManager.A(dropItems);
