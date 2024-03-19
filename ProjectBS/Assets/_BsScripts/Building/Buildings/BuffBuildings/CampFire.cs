@@ -14,49 +14,50 @@ public class CampFire : Building
 
     bool playerIsInRange;
 
-    public UnityEvent<short> healEvent;
+    //public UnityEvent<short> healEvent;
 
     // Start is called before the first frame update
     void Awake()
     {
-        duration = 10;
+        duration = 20;
         healAmount = 5;
         healTick = 2;
         healRadius = 3f;
     }
     void Start()
     {
-        gameObject.GetComponent<SphereCollider>().radius = healRadius;
-        StartCoroutine(lifeSpan());
+        gameObject.GetComponentInChildren<SphereCollider>().radius = healRadius; //힐 범위 설정
+        StartCoroutine(lifeSpan());// 지속시간 설정
     }
 
     // Update is called once per frame
     void Update()
     {
-        //범위에 들어온 player 태그를 가진 캐릭터를 주기적으로 회복시킴
-
     }
 
     void OnTriggerEnter(Collider other)
     {
         if ((1<< other.gameObject.layer & findPlayerMask) != 0)
         {
-            Debug.Log("ㅎㅇ");
             playerIsInRange = true;
             StartCoroutine(healTickTimeCheck(other.GetComponent<IHealing>()));
         }
     }
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("ㅂㅇ");
-        playerIsInRange = false;
+        if ((1 << other.gameObject.layer & findPlayerMask) != 0)
+        {
+            playerIsInRange = false;
+        }
+
     }
 
 
     void activeHeal()
     {
-        healEvent.Invoke(healAmount);
-        Debug.Log("힐!");
+        // 기능을 인터페이스로 구현한다. 모닥불 범위안에 힐 할수 있는 오브젝트가 있으면, 힐 하는 방식으로. (범위안 getComponent -> 인터페이스를 가지고있는지 판별 -> 있으면 힐)
+        //델리게이트 이벤트로 넣어주지 않기 위함이다.
+        //healEvent.Invoke(healAmount);
     }
 
     IEnumerator lifeSpan()
@@ -83,6 +84,7 @@ public class CampFire : Building
             }
             else if (inTime >= healTick)
             {
+                Debug.Log("힐!");
                 healable.ReceiveHeal(healAmount);
                 //activeHeal();
                 inTime = 0;

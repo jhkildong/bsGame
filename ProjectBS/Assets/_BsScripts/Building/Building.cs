@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public abstract class Building : MonoBehaviour
+public abstract class Building : MonoBehaviour , IDamage
 {
     [SerializeField]
     private BuildingData buildingData;
@@ -24,6 +24,8 @@ public abstract class Building : MonoBehaviour
     private short _requireIron;      // 철 요구 재료개수
     private float _constTime;     // 건물 총 건설시간
     private float _repairSpeed;    // 건물 수리속도
+    protected short _attack;       // 공격가능한 건물의 공격력
+    protected float _attackDelay;  // 건물의 공격 딜레이
     
     
     private int layerNum;
@@ -45,12 +47,13 @@ public abstract class Building : MonoBehaviour
 
     //private InstantiateBuilding installBuilding;
 
-    void Start()
+    protected virtual void Start()
     {
         _maxHp = Data.maxHp;
         _curHp = Data.curHp;
         _constTime = Data.constTime;
         _repairSpeed = Data.repairSpeed;
+        _attack = Data.attack;
         layerNum = LayerMask.NameToLayer("Building");
 
         /*
@@ -64,23 +67,24 @@ public abstract class Building : MonoBehaviour
         //installBuilding.BuildingInstalled += IsInstalled;
 
     }
-    void Update()
+    protected virtual void Update()
     {
-        /*
+        
         if (Input.GetKey(KeyCode.B))
         {
             Construction(2*Time.deltaTime);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            GetDamage(20);
+            TakeDamage(20);
             Debug.Log("남은 체력" + _curHp);
         }
         if (Input.GetKey(KeyCode.R))
         {
             Repair(0.1f);
         }
-        */
+        
+        
     }
 
 
@@ -142,7 +146,7 @@ public abstract class Building : MonoBehaviour
 
     }
 
-    public void GetDamage(short dmg)
+    public void TakeDamage(short dmg) // IDamage 인터페이스 구현
     {
         if(completedBuilding && isInstalled)
         {
@@ -154,6 +158,8 @@ public abstract class Building : MonoBehaviour
         }
 
     }
+
+
 
     void Destroy()
     {

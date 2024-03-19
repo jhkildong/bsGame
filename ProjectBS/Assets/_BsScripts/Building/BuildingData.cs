@@ -13,7 +13,10 @@ public class BuildingData : ScriptableObject
     public short requireStone => _requireStone;
     public short requireIron => _requireIron;
     public float constTime => _constTime;
-    public float repairSpeed => _repairSpeed;   
+    public float repairSpeed => _repairSpeed;
+
+    public short attack => _attack;
+    public float attackDelay => _attackDelay;
     public GameObject buildingPrefab => _buildingPrefab;
 
     public LayerMask layerMask => _layerMask;
@@ -28,6 +31,8 @@ public class BuildingData : ScriptableObject
 
     [SerializeField] private float _constTime;     // 건물 총 건설시간
     [SerializeField] private float _repairSpeed;    // 건물 수리속도
+    [SerializeField] private short _attack;
+    [SerializeField] private float _attackDelay;  // 건물의 공격 딜레이
     [SerializeField] private GameObject _buildingPrefab;    // 건물 prefab
     [SerializeField] private LayerMask _layerMask;
 
