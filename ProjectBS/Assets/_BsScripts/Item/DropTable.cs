@@ -16,7 +16,7 @@ public interface IDropable
 }
 public class DropTable : MonoBehaviour
 {
-    public ItemManager itemManager;
+    ItemManager itemManager;
     private void Start()
     {
         // ItemManager의 인스턴스를 가져와서 참조 설정
@@ -26,7 +26,6 @@ public class DropTable : MonoBehaviour
             Debug.LogError("ItemManager is not initialized!");
         }
         dropItems = GetComponent<IDropable>().dropItems();
-        
     }
     public List<dropItem> dropItems;
     public GameObject WillDrop()
