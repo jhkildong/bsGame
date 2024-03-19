@@ -2,72 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Yeon;
 
-public class Player : MonoBehaviour, IDamage, IHealing
+public enum BSLayerMasks
 {
-    public UnityEvent<float> ChangeHpAct;
-    public UnityEvent DeadAct;
-    public Transform myAttackPoint;
-    public LayerMask monsterMask;
+    Player = 1 << 14,
+    Monster = 1 << 15,
+    Building = 1 << 24,
+    InCompletedBuilding = 1 << 25,
+    BuildCheckObject = 1 << 26,
+    Ground = 1 << 29
+}
 
-    public short CurHp
-    {
-        get => _curHp;
-        set
-        {
-            if (value <= 0)
-            {
-                //죽은상태
-                ChangeHpAct?.Invoke(0.0f);
-                DeadAct?.Invoke();
-                return;
-            }
-            _curHp = value;
-            ChangeHpAct?.Invoke((float)_curHp / (float)MaxHP);
-        }
-    }           //현재 체력
-    public short MaxHP => _maxHP;   //최대 체력
-    public float SpeedCeof => _speedCeof;
-    public float AttackCeof => _attackCeof;
-    protected short Attack { get => (short)(_attack * _attackCeof); set => _attack = value; }
+public class Player : Combat
+{
+    [SerializeField] protected Animator myAnim;
 
-    [SerializeField] private short _curHp;
-    [SerializeField] private short _maxHP;
-    [SerializeField] private float _speedCeof = 1.0f; //이동속도 계수
-    [SerializeField] private float _attackCeof = 1.0f; //공격력 계수
-    [SerializeField] private short _attack;
-
-    protected Animator myAnim;
-
-    /// <summary> 현재 체력이 0이하가 되면 true  </summary>
-    public bool IsDead => CurHp <= 0;
-    public void TakeDamage(short damage) => CurHp -= damage;
-    public void ReceiveHeal(short heal)
-    {
-        if (IsDead)
-            return;
-        CurHp += heal;
-        Mathf.Clamp(CurHp, 0, MaxHP);
-    }
-
-    public void OnAttack()
-    {
-        Collider[] list = Physics.OverlapSphere(myAttackPoint.position, 1.0f, monsterMask);
-
-        foreach (Collider col in list)
-        {
-            IDamage act = col.GetComponent<IDamage>();
-            if (act != null)
-            {
-                act.TakeDamage(Attack);
-            }
-        }
-    }
-
-    protected void Init()
+    private void InitPlayerSetting()
     {
         myAnim = GetComponentInChildren<Animator>();
         ChangeHpAct.AddListener(PlayerUI.Instance.ChangeHP);
         CurHp = MaxHP;
+        attackMask = (int)BSLayerMasks.Monster;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        InitPlayerSetting();
     }
 }

@@ -7,10 +7,10 @@ public class OneshotItemData : ItemData
     public bool used => _used;
 
     [SerializeField] private bool _used;
-    public override Item CreateItem()
+    public override GameObject CreateItem()
     {
         GameObject itemObject = new GameObject(Name);
-        itemObject.AddComponent<OneshotItem>();
-        return itemObject.GetComponent<OneshotItem>();
+        itemObject.AddComponent<OneshotItem>().Init(this);
+        return itemObject;
     }
 }

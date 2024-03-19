@@ -3,45 +3,77 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-[CreateAssetMenu]
 public class ItemManager : MonoBehaviour
 {
+    //>>>>>>>>>>>>>>>>>SingleTon
+    private static ItemManager instance = null;
+    private void Awake()
+    {
+        if (null == instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    public static ItemManager Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
+    }
+    //SingleTon<<<<<<<<<<<<<<<<<<<<<
+
+
 
     [System.Serializable]
     public class Items
     {
-        public ItemBasic ItemBasic;
-        public int weight;
+        public ItemData data;
     }
-    public ItemData data;
-
     public List<Items> items = new List<Items>();
-
-    protected ItemBasic PickItem()
+    
+    public ItemData GetItemDataByID(int id)
     {
-        int sum = 0;
-        foreach (var ItemBasic in items)
+        foreach (var item in items)
         {
-            sum += ItemBasic.weight;
+            if (item.data.ID == id)
+            {
+                Debug.Log("아이템 데이터 가져옴.");
+                return item.data;
+            }
         }
+        return null; // 해당 ID에 대한 아이템 데이터가 없는 경우 null 반환
+    }
 
-        var rnd = Random.Range(0, sum);
-
-        for (int i = 0; i < items.Count; i++)
+    public GameObject A(List<DropTable.dropItem> items)
+    {
+        float rnd = Random.Range(0, 100);
+        foreach(var dropitem in items)
         {
-            var ItemBasic = items[i];
-            if (ItemBasic.weight > rnd) return items[i].ItemBasic;
-            else rnd -= ItemBasic.weight;
+            if(dropitem.dropChance > rnd)
+            {
+                return Drop(GetItemDataByID(dropitem.ID));
+            }
+            else
+            {
+                rnd = rnd - dropitem.dropChance;
+            }
         }
-
         return null;
     }
 
-    public void ItemDrop(Vector3 pos)
+    public GameObject Drop(ItemData itemData)
     {
-        GameObject item = data.CreateItem().gameObject;
-        if (item == null) return;
-
-        item.transform.position = pos;
+        Debug.Log("아이템 드랍 :" + itemData.Name);
+        return itemData.CreateItem();;
     }
 }

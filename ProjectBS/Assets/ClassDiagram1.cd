@@ -16,7 +16,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ObjectPoolManager">
-    <Position X="9.75" Y="0.5" Width="3" />
+    <Position X="10" Y="0.5" Width="3" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>

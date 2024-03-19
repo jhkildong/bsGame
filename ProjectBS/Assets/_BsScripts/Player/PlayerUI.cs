@@ -34,6 +34,8 @@ public class PlayerUI : MonoBehaviour
 
     public void ChangeHP(float hp)
     {
+        if (mySlider == null)
+            return;
         mySlider.value = hp;
     }
 }
