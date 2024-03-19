@@ -19,6 +19,11 @@ MonoBehaviour:
   _requireWood: 0
   _requireStone: 0
   _requireIron: 10
-  _constSpeed: 30
+  _constTime: 5
   _repairSpeed: 10
+  _attack: 20
+  _attackDelay: 0
   _buildingPrefab: {fileID: 3543125075967514443, guid: cf5e2570d14c7bd4ea96193f80c076ce, type: 3}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 16777216
