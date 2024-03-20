@@ -15,6 +15,7 @@ public abstract class NormalMonster : Monster
         if(NormalData.BuildingFirst)
         {
             GameObject AIPerception = new GameObject("AIPerception");
+            AIPerception.transform.parent = transform;
             AIPerception.AddComponent<AIPerception>().Init((int)BSLayerMasks.Building,
                 (building) => ChangeTarget(building), () => ResetTarget());
         }

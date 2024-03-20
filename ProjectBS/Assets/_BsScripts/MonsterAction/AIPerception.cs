@@ -16,6 +16,10 @@ public class AIPerception : MonoBehaviour
         myTarget = null;
         findEnemy += find;
         lostEnemy += lost;
+        SphereCollider col = gameObject.AddComponent<SphereCollider>();
+        col.radius = 5.0f;
+        col.isTrigger = true;
+        gameObject.AddComponent<Rigidbody>().isKinematic = true;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -6,19 +6,17 @@ public class LookAtPoint : MonoBehaviour
 {
     public LayerMask mask;
     private Camera myCam;
-    private Animator myAnim;
+    public void IsDead() => this.enabled = false;
     // Start is called before the first frame update
     void Start()
     {
         myCam = Camera.main;
-        myAnim = GetComponentInChildren<Animator>();
+        GetComponentInParent<Player>().DeadAct += IsDead;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (myAnim.GetBool(AnimParam.isAttacking))
-        //    return;
         Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, mask))
         {

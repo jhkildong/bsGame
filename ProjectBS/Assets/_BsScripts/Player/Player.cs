@@ -28,6 +28,7 @@ public class Player : Combat
     void Death()
     {
         myAnim.SetTrigger(AnimParam.Death);
+        GetComponent<PlayerInput>().actions.Disable();
     }
 
     protected override void Start()
@@ -40,14 +41,14 @@ public class Player : Combat
     Vector3 moveDir;
     Vector3 dir;
     Vector3 inputDir;
-    public float angle;
+    public Transform myCharacter;
 
     private void Update()
     {
-        //현재 월드 기준 바라보는 방향의 각도
-        angle = transform.rotation.eulerAngles.y;
+        if (IsDead())
+            return;
         //바라보는 방향기준의 애니메이션 방향(입력받은 방향에서 바라보는 방향의 반대방향으로 회전)
-        dir = Quaternion.AngleAxis(-angle, Vector3.up) * moveDir;
+        dir = Quaternion.AngleAxis(-myCharacter.rotation.eulerAngles.y, Vector3.up) * moveDir;
 
         inputDir = Vector3.Lerp(inputDir, dir, Time.deltaTime * 8.0f);
         inputDir.x = Mathf.Clamp(inputDir.x, -1.0f, 1.0f);

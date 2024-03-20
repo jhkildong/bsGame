@@ -110,6 +110,8 @@ public abstract class Monster : Combat, IDropable
                 {
                     if(AttackTarget != null)
                     {
+                        if (AttackTarget is Combat combat)
+                            if (combat.IsDead()) break;
                         AttackTarget.TakeDamage((short)Data.Ak);
                         myAnim.SetTrigger(AnimParam.Attack);
                     }
@@ -128,7 +130,9 @@ public abstract class Monster : Combat, IDropable
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(myTarget);
+        Vector3 targetDirection = myTarget.position - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
         StateProcess();
     }
 
@@ -141,6 +145,8 @@ public abstract class Monster : Combat, IDropable
     {
         if (myState == State.Death) return;
         myTarget = target;
+        ChangeState(State.Chase);
+        
     }
     
     public void ResetTarget()

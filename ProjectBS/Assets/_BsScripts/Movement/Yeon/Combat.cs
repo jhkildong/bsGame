@@ -8,8 +8,8 @@ namespace Yeon
     public class Combat : Movement, IDamage, IHealing
     {
         #region SerializeField
-        [SerializeField] protected UnityAction<float> ChangeHpAct = null;
-        [SerializeField] protected UnityAction DeadAct;
+        public event UnityAction<float> ChangeHpAct = null;
+        public event UnityAction DeadAct;
         [SerializeField] protected Transform myAttackPoint;
         [SerializeField] protected LayerMask attackMask;
         #endregion
