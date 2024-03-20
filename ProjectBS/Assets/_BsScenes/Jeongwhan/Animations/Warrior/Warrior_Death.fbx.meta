@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1ee35c64ed5d1164ea58b7164ae37b1e
+guid: 96b414278adcc2c4aa19e1aef09da31d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Warrior_Death
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0

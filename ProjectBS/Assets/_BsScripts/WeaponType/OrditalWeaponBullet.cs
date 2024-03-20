@@ -8,6 +8,6 @@ public class OrditalWeaponBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * rotSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up * rotSpeed * Time.deltaTime,Space.World);
     }
 }

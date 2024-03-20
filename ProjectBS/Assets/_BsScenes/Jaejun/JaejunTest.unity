@@ -281,32 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8e9721cc28cfd4ba947ff3f4ec0bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  isMoving: 0
-  isBlocked: 0
-  isOutOfControl: 0
-  worldMoveDir: {x: 0, y: 0, z: 0}
-  outOfControllDuration: 0
-  ChangeHpAct:
-    m_PersistentCalls:
-      m_Calls: []
-  DeadAct:
-    m_PersistentCalls:
-      m_Calls: []
-  myAttackPoint: {fileID: 2145791882}
-  attackMask:
-    serializedVersion: 2
-    m_Bits: 0
-  _maxHP: 200
-  _speedCeof: 1
-  _attackCeof: 1
-  _attack: 100
-  _curHp: 200
-  myAnim: {fileID: 0}
-  angle: 0
-  building:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &441671908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,6 +1153,7 @@ MonoBehaviour:
   myTarget: {fileID: 441671902}
   weaponPrefabs: {fileID: 7690253012658785486, guid: 20980e8491bec884b833bf6ed5936f6e, type: 3}
   rotSpeed: 180
+  attakRange: 2
 --- !u!1 &1415305128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2304,11 +2279,6 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
---- !u!4 &2145791882 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6608403403467918624, guid: b72c516e254ccb2479656093fa67c3b8, type: 3}
-  m_PrefabInstance: {fileID: 7023267166422959817}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7023267166422959817
 PrefabInstance:
   m_ObjectHideFlags: 0
