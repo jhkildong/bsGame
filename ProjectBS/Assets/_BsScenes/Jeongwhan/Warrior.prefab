@@ -74,9 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 59e089ff5dd2a9b47a22a6076f719d4f, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'Hand_R'\n\tFrom animation clip 'Warrior_Attack'"
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -87,9 +85,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 59e089ff5dd2a9b47a22a6076f719d4f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 451769889306968890}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 59e089ff5dd2a9b47a22a6076f719d4f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7717252200997414768}
   m_SourcePrefab: {fileID: 100100000, guid: 59e089ff5dd2a9b47a22a6076f719d4f, type: 3}
 --- !u!1 &2099673946678000532 stripped
@@ -97,18 +92,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 59e089ff5dd2a9b47a22a6076f719d4f, type: 3}
   m_PrefabInstance: {fileID: 1288842606233470661}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &451769889306968890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099673946678000532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de8dbbe07253b89409a8209d52100af9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7717252200997414768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +109,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Yeon.Combat, Assembly-CSharp
-        m_MethodName: OnAttackPoint
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
