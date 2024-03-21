@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MonsterType
+{
+    Single, Group, Surround
+}
+
+
 public abstract class MonsterData : ScriptableObject, IPoolable
 {
     public int ID => _id;

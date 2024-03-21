@@ -1716,7 +1716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1779756002
 Transform:
   m_ObjectHideFlags: 0
@@ -1747,6 +1747,7 @@ MonoBehaviour:
   monsterDatas:
   - {fileID: 11400000, guid: 9ad55dc6258519245acd514efd8f1562, type: 2}
   - {fileID: 11400000, guid: e9460f905858ea04a8e04391c6b48db0, type: 2}
+  - {fileID: 11400000, guid: d289a2c78d6489d48a721670a8656aad, type: 2}
   respawnDist: 20
   applyRespawn: 0
   respawnTime: 1

@@ -18,7 +18,7 @@ public class MonsterSpawner : MonoBehaviour
     private MonsterData[] monsterDatas;
     public float respawnDist = 20.0f;
     public bool applyRespawn;
-    public float respawnTime = 0.1f;
+    public float respawnTime = 0.5f;
 
 
     public int init = 10;
@@ -33,18 +33,40 @@ public class MonsterSpawner : MonoBehaviour
         applyRespawn = true;
         StartCoroutine(EnemySpawn(monsterDatas));
     }
-    IEnumerator EnemySpawn(MonsterData[] md)
+    IEnumerator EnemySpawn(MonsterData[] monsterDatas)
     {
         while(true)
         {
-            if(applyRespawn)
+            foreach (MonsterData md in monsterDatas)
             {
-                RandomMonsterGenerate(md);
+                float rndAngle = Random.value * Mathf.PI * 2.0f;
+                Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
+                rndPos += transform.position;
+                if (md is NormalMonsterData nmd)
+                {
+                    switch (nmd.Type)
+                    {
+                        case MonsterType.Single:
+                            ObjectPoolManager.Instance.GetObj(md).gameObject.transform.position = rndPos;
+                            break;
+                        case MonsterType.Group:
+                            for (int i = 0; i < (nmd as GroupNormalMonsterData).Amount; ++i)
+                            {
+                                Vector3 addPos = new Vector3(Random.Range(0, 2.0f), 0, Random.Range(0, 2.0f));
+                                ObjectPoolManager.Instance.GetObj(md).gameObject.transform.position = rndPos + addPos;
+                            }
+                            break;
+                        case MonsterType.Surround:
+
+                            break;
+                    }
+                }
+                yield return new WaitForSeconds(respawnTime);
             }
-            yield return new WaitForSeconds(respawnTime);
+            
         }
     }
-
+    /*
     private void RandomMonsterGenerate(MonsterData[] monsterDatas)
     {
         foreach(MonsterData md in monsterDatas)
@@ -52,7 +74,27 @@ public class MonsterSpawner : MonoBehaviour
             float rndAngle = Random.value * Mathf.PI * 2.0f;
             Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
             rndPos += transform.position;
-            ObjectPoolManager.Instance.GetObj(md).gameObject.transform.position = rndPos;
+            if (md is NormalMonsterData nmd)
+            {
+                switch(nmd.Type)
+                {
+                    case MonsterType.Single:
+                        ObjectPoolManager.Instance.GetObj(md).gameObject.transform.position = rndPos;
+                        break;
+                    case MonsterType.Group:
+                        for(int i = 0; i<(nmd as GroupNormalMonsterData).Amount; ++i)
+                        {
+                            Vector3 addPos = new Vector3(Random.Range(0, 2.0f), 0, Random.Range(0, 2.0f));
+                            ObjectPoolManager.Instance.GetObj(md).gameObject.transform.position = rndPos + addPos;
+                        }
+                        break;
+                    case MonsterType.Surround:
+
+                        break;
+                }
+            }
         }
     }
+    */
+
 }

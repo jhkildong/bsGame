@@ -37,7 +37,6 @@ public class Player : Combat
         InitPlayerSetting();
     }
 
-
     Vector3 moveDir;
     Vector3 dir;
     Vector3 inputDir;
