@@ -223,9 +223,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7057867334602970740}
   - component: {fileID: 7383701681955582365}
-  - component: {fileID: -8799964195710255106}
+  - component: {fileID: -4120807761822101328}
   m_Layer: 0
-  m_Name: Sword_1H_Generic_01_Bl (ForwardWeaponPerfab)
+  m_Name: Sword_1H_Generic_01_Bl (RangeWeaponPrefab)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7690253012658785486}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -247,7 +247,7 @@ Transform:
   - {fileID: 2259754580313723601}
   - {fileID: 505485029060847438}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7383701681955582365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   - Type: 12
     Enabled: 0
     Target: {fileID: 0}
---- !u!114 &-8799964195710255106
+--- !u!114 &-4120807761822101328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -310,10 +310,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7690253012658785486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7298f44d625bdbd45af4b087bbf94f8e, type: 3}
+  m_Script: {fileID: 11500000, guid: beed9fc2e6fdfaf4283b6cb98619eb43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  Attack: 100
+  rotSpeed: 270
 --- !u!1 &8173058340552221074
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,37 +6,32 @@ using UnityEngine;
 public class ForwardWeapon : MonoBehaviour
 {
     public Transform myTarget;
+    public Transform myRotation;
     public GameObject objectPrefab; // 생성할 물체의 프리팹
 
-    public float bulletSpeed = 5.0f;
-
-    float time = 0.0f;
-    float reTime = 2.0f;
+    float time = 0.0f; // 시간 저장 변수
+    float reTime = 2.0f; // 다음 발사 시간 간격
     short Count = 0;
     // Start is called before the first frame update
     void Start()
     {
         Count = 0;
+        if (myTarget != null) transform.SetParent(myTarget);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 자신의 위치(x,z 값만 받음)
-        Vector3 targetPos = new Vector3(myTarget.position.x, transform.position.y, myTarget.position.z);
-        transform.position = targetPos;
-
-        // 회전축을 같게 만듬.
-        transform.rotation = myTarget.rotation;
+        transform.rotation = myRotation.rotation;
         time += Time.deltaTime;
 
         if (Count > 0)
         {
             if (time >= reTime)
             {
-                GameObject bullet = Instantiate(objectPrefab, transform.position, transform.rotation);
-                bullet.transform.SetParent(null);
-                Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+                GameObject swordBullet = Instantiate(objectPrefab, transform.position , transform.rotation);
+                swordBullet.transform.SetParent(null);
+                Rigidbody SwordRigidbody = swordBullet.GetComponent<Rigidbody>();
                 Debug.Log($"{reTime}초가 지났습니다.");
                 time = 0f;
             }
@@ -48,10 +43,7 @@ public class ForwardWeapon : MonoBehaviour
         if(Count < 7)
         {
             Count++;
-            if (Count > 1)
-            {
-                reTime *= 0.8f;
-            }
+            if (Count > 1) reTime *= 0.8f;
         }
     }
 
