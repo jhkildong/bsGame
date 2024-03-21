@@ -38,8 +38,7 @@ public class Player : Combat
         InitPlayerSetting();
     }
 
-
-    [SerializeField]Vector3 moveDir;
+    Vector3 moveDir;
     Vector3 dir;
     Vector3 inputDir;
     public Transform myCharacter;

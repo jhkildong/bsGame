@@ -10,21 +10,18 @@ public class OrditalWeapon : MonoBehaviour
     public float attakRange = 2.0f;
     
     short Count = 0;
-    private GameObject spawnedWeapon; // 생성된 무기를 저장할 변수
 
     // Start is called before the first frame update
     void Start()
     {
         Count = 0;
-        if(myTarget != null)
-            transform.SetParent(myTarget);
+        if(myTarget != null) transform.SetParent(myTarget);
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Rotate(Vector3.up, rotSpeed * Time.deltaTime); // 공전
-
     }
 
     public void SpawnOrditalWeapon()

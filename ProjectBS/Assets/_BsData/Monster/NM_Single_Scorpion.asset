@@ -24,3 +24,4 @@ MonoBehaviour:
   - ID: 0
     dropChance: 100
   _buildingFirst: 0
+  myType: 0

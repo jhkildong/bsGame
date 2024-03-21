@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForwardWeaponBullet : MonoBehaviour
+public class ForwardWeaponBullet : Weapon
 {
-    public float moveSpeed = 5.0f; // 이동 속도
+    public float bulletSpeed = 5.0f; // 이동 속도
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,6 @@ public class ForwardWeaponBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
     }
 }
