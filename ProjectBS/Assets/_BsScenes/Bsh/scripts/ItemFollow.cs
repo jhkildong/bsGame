@@ -6,11 +6,16 @@ public class ItemFollow : MonoBehaviour
 {
     Transform target;
     Vector3 dir;
-    float moveSpeed = 0.5f;
+    float moveSpeed;
+    bool follow = false;
+    float sphereRange;
+    bool flag;
 
     void Start()
     {
         target = GameObject.Find("Player").transform;
+        sphereRange = GameObject.Find("Player").GetComponent<SphereCollider>().radius;
+        moveSpeed = GameObject.Find("Player").GetComponent<wasdMoving>().moveSpeed;
         /*BoxCollider boxCollider = GetComponent<BoxCollider>();
         Vector3 size = boxCollider.size;*/
     }
@@ -18,19 +23,23 @@ public class ItemFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dir = target.position - transform.position;
-        if (dir.magnitude > 1)
+        if (follow)
         {
-            dir.Normalize();
+            dir = target.position - transform.position;
+            float speedMultiplier = 0.5f * Mathf.Abs(sphereRange - dir.magnitude);
+            transform.position += dir.normalized *( moveSpeed + speedMultiplier+ 0.5f) * Time.deltaTime;
+            transform.position = new Vector3(transform.position.x, 1.0f, transform.position.z);
+            Debug.Log(dir.magnitude);
+            if (dir.magnitude < 1.5f)
+            {
+                Destroy(gameObject);
+            }
         }
-       
+        
     }
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // 충돌한 타겟 방향으로 아이템을 이동시킵니다.
-            transform.position += dir * moveSpeed * Time.deltaTime;
-        }
+        Debug.Log("쫓아가기 시작");
+        follow = true;
     }
 }
