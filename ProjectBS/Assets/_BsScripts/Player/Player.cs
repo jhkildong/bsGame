@@ -17,6 +17,7 @@ public enum BSLayerMasks
 
 public class Player : Combat
 {
+
     private void InitPlayerSetting()
     {
         ChangeHpAct += PlayerUI.Instance.ChangeHP;
@@ -38,7 +39,7 @@ public class Player : Combat
     }
 
 
-    Vector3 moveDir;
+    [SerializeField]Vector3 moveDir;
     Vector3 dir;
     Vector3 inputDir;
     public Transform myCharacter;
@@ -50,32 +51,35 @@ public class Player : Combat
         //바라보는 방향기준의 애니메이션 방향(입력받은 방향에서 바라보는 방향의 반대방향으로 회전)
         dir = Quaternion.AngleAxis(-myCharacter.rotation.eulerAngles.y, Vector3.up) * moveDir;
 
-        inputDir = Vector3.Lerp(inputDir, dir, Time.deltaTime * 8.0f);
+        inputDir = Vector3.Lerp(inputDir, dir, Time.deltaTime * 10.0f);
         inputDir.x = Mathf.Clamp(inputDir.x, -1.0f, 1.0f);
         inputDir.z = Mathf.Clamp(inputDir.z, -1.0f, 1.0f);
 
-        if (inputDir.sqrMagnitude < 0.001f)
+        if (inputDir.sqrMagnitude < 0.005f)
         {
-            myAnim.SetBool("isMoving", false);
             inputDir = Vector3.zero;
+            if(moveDir == Vector3.zero)
+            {
+                myAnim.SetBool("isMoving", false);
+            }
         }
-        else
-            myAnim.SetBool("isMoving", true);
     }
 
     protected override void FixedUpdate()
     {
-        SetDirection(moveDir.normalized);
+        worldMoveDir = moveDir.normalized;
         myAnim.SetFloat("x", inputDir.x);
         myAnim.SetFloat("y", inputDir.z);
         base.FixedUpdate();
     }
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
         Vector2 input = context.ReadValue<Vector2>();
         if (input != null)
         {
+            myAnim.SetBool("isMoving", true);
             moveDir = new(input.x, 0f, input.y);
         }
     }
