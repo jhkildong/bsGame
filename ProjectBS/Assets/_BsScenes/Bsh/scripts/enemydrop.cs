@@ -6,7 +6,7 @@ public class enemydrop : MonoBehaviour
 {
     public int hp = 10;
     private bool hasDead = false;
-    public DropTable dropTable;
+    DropTable dropTable;
 
     void Start()
     {

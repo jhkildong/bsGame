@@ -9,13 +9,16 @@ public class ItemFollow : MonoBehaviour
     float moveSpeed;
     bool follow = false;
     float sphereRange;
-    bool flag;
+    float willbeDestroy;
+    ItemData.itemtype DDDD;
 
     void Start()
     {
         target = GameObject.Find("Player").transform;
         sphereRange = GameObject.Find("Player").GetComponent<SphereCollider>().radius;
         moveSpeed = GameObject.Find("Player").GetComponent<wasdMoving>().moveSpeed;
+        willbeDestroy = GameObject.Find("Player").GetComponent<CapsuleCollider>().radius;
+        //DDDD = gameObject.GetComponentInParent<ItemData.itemtype>();
         /*BoxCollider boxCollider = GetComponent<BoxCollider>();
         Vector3 size = boxCollider.size;*/
     }
@@ -26,20 +29,26 @@ public class ItemFollow : MonoBehaviour
         if (follow)
         {
             dir = target.position - transform.position;
-            float speedMultiplier = 0.5f * Mathf.Abs(sphereRange - dir.magnitude);
-            transform.position += dir.normalized *( moveSpeed + speedMultiplier+ 0.5f) * Time.deltaTime;
+            float speedMultiplier = Mathf.Abs(sphereRange - dir.magnitude) + 0.5f;
+            transform.position += dir.normalized *(moveSpeed + Mathf.Pow(speedMultiplier, 2)) * Time.deltaTime;
             transform.position = new Vector3(transform.position.x, 1.0f, transform.position.z);
-            Debug.Log(dir.magnitude);
-            if (dir.magnitude < 1.5f)
+            if (dir.magnitude < 1.0f + willbeDestroy)
             {
+                Debug.Log(DDDD);
                 Destroy(gameObject);
             }
         }
-        
     }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("쫓아가기 시작");
         follow = true;
     }
+    
+    void Eat()
+    {
+        Destroy(gameObject);
+        Debug.Log(gameObject);
+    }
+    
 }
