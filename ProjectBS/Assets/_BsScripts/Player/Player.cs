@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Yeon;
+using static UnityEngine.InputSystem.InputAction;
 
 public enum BSLayerMasks
 {
@@ -17,7 +18,8 @@ public enum BSLayerMasks
 
 public class Player : Combat
 {
-
+    CallbackContext WSaction;
+    CallbackContext ADaction;
     private void InitPlayerSetting()
     {
         ChangeHpAct += PlayerUI.Instance.ChangeHP;
@@ -54,13 +56,9 @@ public class Player : Combat
         inputDir.x = Mathf.Clamp(inputDir.x, -1.0f, 1.0f);
         inputDir.z = Mathf.Clamp(inputDir.z, -1.0f, 1.0f);
 
-        if (inputDir.sqrMagnitude < 0.005f)
+        if (inputDir.magnitude < 0.01f)
         {
             inputDir = Vector3.zero;
-            if(moveDir == Vector3.zero)
-            {
-                myAnim.SetBool("isMoving", false);
-            }
         }
     }
 
@@ -71,7 +69,6 @@ public class Player : Combat
         myAnim.SetFloat("y", inputDir.z);
         base.FixedUpdate();
     }
-
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -88,6 +85,38 @@ public class Player : Combat
         if (context.performed)
         {
             myAnim.SetTrigger(AnimParam.Attack);
+        }
+    }
+
+    public void PressW(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            moveDir.z = 1.0f;
+        }
+    }
+
+    public void PressS(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            moveDir.z = -1.0f;
+        }
+    }
+
+    public void PressA(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            moveDir.x = -1.0f;
+        }
+    }
+
+    public void PressD(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            moveDir.x = 1.0f;
         }
     }
 }

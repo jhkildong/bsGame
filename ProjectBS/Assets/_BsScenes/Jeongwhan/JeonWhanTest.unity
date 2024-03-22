@@ -289,12 +289,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3724192507397184376, guid: 498b54ff0b2200846836986d0c22bd85, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3724192507397184379, guid: 498b54ff0b2200846836986d0c22bd85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3724192508087671745, guid: 498b54ff0b2200846836986d0c22bd85, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724192508087671806, guid: 498b54ff0b2200846836986d0c22bd85, type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3724192508087671806, guid: 498b54ff0b2200846836986d0c22bd85, type: 3}
@@ -307,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3724192508165782300, guid: 498b54ff0b2200846836986d0c22bd85, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3724192508165782300, guid: 498b54ff0b2200846836986d0c22bd85, type: 3}
       propertyPath: lengthInSec
@@ -388,6 +396,10 @@ PrefabInstance:
     - target: {fileID: 3724192508554018546, guid: 498b54ff0b2200846836986d0c22bd85, type: 3}
       propertyPath: m_Name
       value: Slash_fire_once
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724192508554018546, guid: 498b54ff0b2200846836986d0c22bd85, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -549,22 +561,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 441671910}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 9fb7f7a3-8cbd-4402-9256-f09ad2af3345
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 441671910}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -577,6 +573,70 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 44a73018-f37c-4656-a186-85fabc98572e
     m_ActionName: Player/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 441671910}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PressW
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f8beacc7-206b-4bee-bf45-6c324c28a19c
+    m_ActionName: Player/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 441671910}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PressS
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1b75e17c-eebd-491f-8a1c-b2ae0bb1ab72
+    m_ActionName: Player/W1[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 441671910}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PressA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 95102af0-a895-4c23-84ce-8247be9c882b
+    m_ActionName: Player/W2[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 441671910}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PressD
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0ae21bbd-6f4c-42f6-b324-a6619ecdc852
+    m_ActionName: Player/W3[/Keyboard/w]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: PC
   m_DefaultActionMap: Player
@@ -610,7 +670,6 @@ MonoBehaviour:
   _attackCeof: 1
   _attack: 100
   _curHp: 100
-  moveDir: {x: 0, y: 0, z: 0}
   myCharacter: {fileID: 1539816077}
 --- !u!1 &476378250
 GameObject:
@@ -1927,7 +1986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1779756002
 Transform:
   m_ObjectHideFlags: 0
