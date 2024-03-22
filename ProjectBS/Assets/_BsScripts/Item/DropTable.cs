@@ -8,7 +8,6 @@ public class dropItem
     public int ID;
     public float dropChance;
 }
-
 public interface IDropable
 {
     List<dropItem> dropItems();
@@ -25,7 +24,7 @@ public class DropTable : MonoBehaviour
         {
             Debug.LogError("ItemManager is not initialized!");
         }
-        dropItems = GetComponent<IDropable>().dropItems();
+        //dropItems = GetComponent<IDropable>().dropItems();
     }
     public List<dropItem> dropItems;
     public GameObject WillDrop()
