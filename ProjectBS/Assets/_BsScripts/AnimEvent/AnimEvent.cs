@@ -8,6 +8,7 @@ public class AnimEvent : MonoBehaviour
     public UnityEvent attackAct;
     public UnityEvent deadAct;
     public UnityEvent<int> skillAct;
+
     public void OnAttack()
     {
         attackAct?.Invoke();

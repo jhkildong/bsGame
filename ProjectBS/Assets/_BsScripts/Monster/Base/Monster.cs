@@ -172,6 +172,12 @@ public abstract class Monster : Combat, IDropable
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        TakeDamage(MaxHP);
+        ChangeState(State.Death);
+    }
+
     #endregion
 
 }

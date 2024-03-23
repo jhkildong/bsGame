@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Animations.Rigging;
 using Yeon;
 
 public enum BSLayerMasks
@@ -100,8 +101,11 @@ public class Player : Combat
 
     #endregion
 
+    Rig[] myRigs;
+
     private void InitPlayerSetting()
     {
+        myRigs = GetComponentsInChildren<Rig>();
         playerInputs = new PlayerInputs();
         ChangeHpAct += PlayerUI.Instance.ChangeHP;
         DeadAct += Death;
@@ -140,6 +144,11 @@ public class Player : Combat
     void Death()
     {
         myAnim.SetTrigger(AnimParam.Death);
+        isOutOfControl = true;
+        foreach(Rig rig in myRigs)
+        {
+            rig.weight = 0;
+        }
         playerInputs.Disable();
     }
 

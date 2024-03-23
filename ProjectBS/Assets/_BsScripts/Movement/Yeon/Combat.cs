@@ -57,10 +57,13 @@ namespace Yeon
             CurHp += heal;
             CurHp = (short)Mathf.Clamp(CurHp, 0, MaxHP);
         }
-        
+
+
+        public ParticleSystem myParticle;
         public void OnAttackPoint()
         {
             Collider[] list = Physics.OverlapSphere(myAttackPoint.position, 1.0f, attackMask);
+            myParticle.Play();
 
             foreach (Collider col in list)
             {
