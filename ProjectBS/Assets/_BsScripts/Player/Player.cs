@@ -21,7 +21,7 @@ public class Player : Combat
     private void InitPlayerSetting()
     {
         myAnim = GetComponentInChildren<Animator>();
-        //ChangeHpAct.AddListener(PlayerUI.Instance.ChangeHP);
+        ChangeHpAct.AddListener(PlayerUI.Instance.ChangeHP);
         CurHp = MaxHP;
         attackMask = (int)BSLayerMasks.Monster;
     }
