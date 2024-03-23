@@ -57,6 +57,7 @@ public abstract class Monster : Combat, IDropable
     {
         base.Start();
         ChangeState(State.Chase);
+        dropTable = GetComponent<DropTable>();
     }
 
     protected virtual void OnEnable()
@@ -68,11 +69,13 @@ public abstract class Monster : Combat, IDropable
         ChangeState(State.Chase);
     }
 
+    private DropTable dropTable;
     void Death()
     {
         myAnim.SetBool(AnimParam.isMoving, false);
         myAnim.SetTrigger(AnimParam.Death);
         ChangeState(State.Death);
+        dropTable.WillDrop(dropItems()).transform.position = this.transform.position;
     }
 
     #region Monster StateMachine
@@ -120,8 +123,10 @@ public abstract class Monster : Combat, IDropable
                 {
                     if(AttackTarget != null)
                     {
+                        //юс╫ц
                         if (AttackTarget is Combat combat)
                             if (combat.IsDead()) break;
+                        if (AttackTarget == null) return;
                         AttackTarget.TakeDamage((short)Data.Ak);
                         myAnim.SetTrigger(AnimParam.Attack);
                     }
@@ -140,6 +145,8 @@ public abstract class Monster : Combat, IDropable
     // Update is called once per frame
     void Update()
     {
+        if(myTarget == null)
+            ResetTarget();
         Vector3 targetDirection = myTarget.position - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
@@ -186,6 +193,7 @@ public abstract class Monster : Combat, IDropable
     {
         TakeDamage(MaxHP);
         ChangeState(State.Death);
+        Destroy(gameObject);
     }
 
     #endregion

@@ -6,18 +6,18 @@ public class ItemFollow : MonoBehaviour
 {
     Transform target;
     Vector3 dir;
-    float moveSpeed;
+    float moveSpeed = 5.0f;
     bool follow = false;
-    float sphereRange;
-    float willbeDestroy;
+    float sphereRange = 2.0f;
+    float willbeDestroy = 0.5f;
     ItemData.itemtype DDDD;
 
     void Start()
     {
         target = GameObject.Find("Player").transform;
-        sphereRange = GameObject.Find("Player").GetComponent<SphereCollider>().radius;
-        moveSpeed = GameObject.Find("Player").GetComponent<wasdMoving>().moveSpeed;
-        willbeDestroy = GameObject.Find("Player").GetComponent<CapsuleCollider>().radius;
+        //sphereRange = GameObject.Find("Player").GetComponent<SphereCollider>().radius;
+        //moveSpeed = GameObject.Find("Player").GetComponent<wasdMoving>().moveSpeed;
+        //willbeDestroy = GameObject.Find("Player").GetComponent<CapsuleCollider>().radius;
         //DDDD = gameObject.GetComponentInParent<ItemData.itemtype>();
         /*BoxCollider boxCollider = GetComponent<BoxCollider>();
         Vector3 size = boxCollider.size;*/

@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 1
   _name: Scorpion
-  _attack: 2
-  _attackDelay: 2
+  _attack: 0
+  _attackDelay: 100
   _speed: 1.5
   _maxHp: 30
   _exp: 10
   _prefab: {fileID: 6615806220265532411, guid: 9747e732db7a36c48a8e2263422bf7a1, type: 3}
   _dropItemList:
-  - ID: 0
+  - ID: 1
     dropChance: 100
+  - ID: 2
+    dropChance: 0
+  - ID: 3
+    dropChance: 0
   _buildingFirst: 1
   _type: 0

@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Attack: 100
-  rotSpeed: 270
+  rotSpeed: 3000
 --- !u!1 &8173058340552221074
 GameObject:
   m_ObjectHideFlags: 0
