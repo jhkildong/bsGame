@@ -2876,6 +2876,14 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 416184724607724809, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
+      propertyPath: TriggerModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416184724607724809, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 605706357329581077, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -3018,11 +3026,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3724192508554018544, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
       propertyPath: CollisionModule.enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3724192508554018544, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
       propertyPath: CollisionModule.quality
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724192508554018544, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3724192508554018544, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
       propertyPath: CollisionModule.maxKillSpeed
@@ -3045,6 +3057,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3724192508554018544, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
+      propertyPath: CollisionModule.multiplyColliderForceByParticleSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724192508554018544, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
       propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
       value: 0
       objectReference: {fileID: 0}
@@ -3055,7 +3071,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3724192508554018546, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2147436224}
   m_SourcePrefab: {fileID: 100100000, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
 --- !u!4 &2019710685 stripped
 Transform:
@@ -3522,11 +3541,36 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2147436221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3724192508554018546, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
+  m_PrefabInstance: {fileID: 2019710684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &2147436223 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3724192508554018544, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
   m_PrefabInstance: {fileID: 2019710684}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2147436224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147436221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a959a1b0b8414d4fb8a68bdc12d69ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectsOnCollision: []
+  DestroyTimeDelay: 5
+  UseWorldSpacePosition: 0
+  Offset: 0
+  rotationOffset: {x: 0, y: 0, z: 0}
+  useOnlyRotationOffset: 1
+  UseFirePointRotation: 0
+  DestoyMainEffect: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
