@@ -47,12 +47,43 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4543157061543718820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5164076940604325103}
+  m_Layer: 0
+  m_Name: EffectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5164076940604325103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543157061543718820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4566748564954228628}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5732704864016183740
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,9 +95,10 @@ GameObject:
   - component: {fileID: 4566748564954228628}
   - component: {fileID: 8281773388341297588}
   - component: {fileID: 2867913085272649515}
-  - component: {fileID: 1341190888796781959}
-  - component: {fileID: 2831361490602004531}
-  m_Layer: 0
+  - component: {fileID: 43368177450105637}
+  - component: {fileID: 7570393000076974083}
+  - component: {fileID: 7838043590040376087}
+  m_Layer: 25
   m_Name: LightningTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,14 +113,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5732704864016183740}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.983731, z: -0, w: -0.1796482}
-  m_LocalPosition: {x: -1.1917257, y: -0.000000007450581, z: -0.4028883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7815691743660106638}
+  - {fileID: 5164076940604325103}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -200.699, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8281773388341297588
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -139,8 +172,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1341190888796781959
-MeshCollider:
+--- !u!65 &43368177450105637
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,12 +189,38 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: aedf5e83e836017429bc4acebf13e9bc, type: 3}
---- !u!114 &2831361490602004531
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.57599527, y: 1.5085621, z: 0.6046792}
+  m_Center: {x: 0.0014377236, y: 0.75428104, z: 0}
+--- !u!54 &7570393000076974083
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5732704864016183740}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &7838043590040376087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,13 +229,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 5732704864016183740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b11191323a92614e8520db3cce9e2f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 04efa6f8e331a9342ae1afea0bd9b9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData: {fileID: 11400000, guid: 7066052e26a97f544bad46925326cbf0, type: 2}
+  _curHp: 0
   isInstalled: 0
   target: {fileID: 0}
   detectedObj: []
+  atkDelaying: 0
   attackableLayer:
     serializedVersion: 2
     m_Bits: 16384
+  atkEffect: {fileID: 995855345012900889, guid: e17f81322b971a945ab1380a4353e1ba, type: 3}
+  effectList: []
+  effectPool: {fileID: 5164076940604325103}
+  AtkEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _attackDelay: 0

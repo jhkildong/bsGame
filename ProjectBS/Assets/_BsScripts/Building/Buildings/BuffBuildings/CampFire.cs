@@ -24,20 +24,23 @@ public class CampFire : Building
         healTick = 2;
         healRadius = 3f;
     }
-    void Start()
+   protected override void Start()
     {
+        base.Start();
         gameObject.GetComponentInChildren<SphereCollider>().radius = healRadius; //힐 범위 설정
+        
+    }
+
+    protected override void ConstructComplete() //건설 완료시
+    {
+        base.ConstructComplete();
         StartCoroutine(lifeSpan());// 지속시간 설정
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     void OnTriggerEnter(Collider other)
     {
-        if ((1<< other.gameObject.layer & findPlayerMask) != 0)
+        if ((1<< other.gameObject.layer & findPlayerMask) != 0 && iscompletedBuilding)
         {
             playerIsInRange = true;
             StartCoroutine(healTickTimeCheck(other.GetComponent<IHealing>()));
@@ -45,7 +48,7 @@ public class CampFire : Building
     }
     void OnTriggerExit(Collider other)
     {
-        if ((1 << other.gameObject.layer & findPlayerMask) != 0)
+        if ((1 << other.gameObject.layer & findPlayerMask) != 0 && iscompletedBuilding)
         {
             playerIsInRange = false;
         }

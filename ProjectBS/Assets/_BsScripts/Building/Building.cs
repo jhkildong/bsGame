@@ -15,24 +15,22 @@ public abstract class Building : MonoBehaviour , IDamage
         set { buildingData = value; }
     }
 
-    private int _id;               // 건물 ID
-    private string _buildingName;  // 건물 이름
-    private short _maxHp;          // 건물 최대체력
-    private short _curHp;          // 건물 현재체력
-    private short _requireWood;      // 나무 요구 재료개수
-    private short _requireStone;      // 돌 요구 재료개수
-    private short _requireIron;      // 철 요구 재료개수
-    private float _constTime;     // 건물 총 건설시간
-    private float _repairSpeed;    // 건물 수리속도
-    protected short _attack;       // 공격가능한 건물의 공격력
-    protected float _attackDelay;  // 건물의 공격 딜레이
-    
-    
-    private int layerNum;
 
-    [SerializeField] private bool isInstalled = false;
+    [SerializeField] protected int _id;               // 건물 ID
+    [SerializeField] protected string _buildingName;  // 건물 이름
+    [SerializeField] protected short _maxHp;          // 건물 최대체력
+    [SerializeField] protected short _curHp;          // 건물 현재체력
+    [SerializeField] protected short _requireWood;      // 나무 요구 재료개수
+    [SerializeField] protected short _requireStone;      // 돌 요구 재료개수
+    [SerializeField] protected short _requireIron;      // 철 요구 재료개수
+    [SerializeField] protected float _constTime;     // 건물 총 건설시간
+    [SerializeField] protected float _repairSpeed;    // 건물 수리속도
 
-    private bool completedBuilding; // 건물의 건설 여부
+    protected int layerNum;
+
+    [SerializeField] protected bool isInstalled = false;
+
+    protected bool iscompletedBuilding; // 건물의 건설 여부
     float curConstTime = 0.0f; //건설한 시간
 
 
@@ -49,13 +47,8 @@ public abstract class Building : MonoBehaviour , IDamage
 
     protected virtual void Start()
     {
-        _maxHp = Data.maxHp;
-        _curHp = Data.curHp;
-        _constTime = Data.constTime;
-        _repairSpeed = Data.repairSpeed;
-        _attack = Data.attack;
-        layerNum = LayerMask.NameToLayer("Building");
-
+        SetBuildingStat();
+        Debug.Log("building" + _constTime);
         /*
         Renderer[] myRenderer = gameObject.GetComponentsInChildren<Renderer>();
         foreach(Renderer renderer in myRenderer)
@@ -67,6 +60,14 @@ public abstract class Building : MonoBehaviour , IDamage
         //installBuilding.BuildingInstalled += IsInstalled;
 
     }
+    public void SetBuildingStat()
+    {
+        _maxHp = Data.maxHp;
+        _curHp = Data.curHp;
+        _constTime = Data.constTime;
+        _repairSpeed = Data.repairSpeed;
+        layerNum = LayerMask.NameToLayer("Building");
+    }
     protected virtual void Update()
     {
         
@@ -74,11 +75,13 @@ public abstract class Building : MonoBehaviour , IDamage
         {
             Construction(2*Time.deltaTime);
         }
+        /*
         if (Input.GetKeyDown(KeyCode.D))
         {
             TakeDamage(20);
             Debug.Log("남은 체력" + _curHp);
         }
+        */
         if (Input.GetKey(KeyCode.R))
         {
             Repair(0.1f);
@@ -88,7 +91,7 @@ public abstract class Building : MonoBehaviour , IDamage
     }
 
 
-    public void OnInstalled() // 건물이 세팅될때(클릭으로 건설위치가 정해질때)
+    public void OnInstalled() // 건물이 세팅될때(클릭으로 건설위치가 정해질때) instantiateBuilding 에서 직접 호출중
     {
         isInstalled = true;
     }
@@ -106,7 +109,7 @@ public abstract class Building : MonoBehaviour , IDamage
         //
         //총 건설 시간에서 플레이어의 건설속도를 뺀 값을 뺀다.
         //총 건설시간이 0이되면 건설 완료, -> 레이어를 Building으로 변경한다. 머터리얼의 투명도를 조정한다.
-        if (!completedBuilding && isInstalled) //미완성 건물일때, 건설 세팅 상태일때
+        if (!iscompletedBuilding && isInstalled) //미완성 건물일때, 건설 세팅 상태일때
         {
             curConstTime += constSpeed;
             Debug.Log("건설 진행 시간 :"  + curConstTime);
@@ -119,16 +122,18 @@ public abstract class Building : MonoBehaviour , IDamage
 
     }
 
-    void ConstructComplete() // 건설 완료시
+    protected virtual void ConstructComplete() // 건설 완료시
     {
-        completedBuilding = true; // 건설 완료상태 true.
+        iscompletedBuilding = true; // 건설 완료상태 true.
         Renderer[] completedBuildingRenderer = gameObject.GetComponentsInChildren<Renderer>();
         foreach(Renderer renderer in completedBuildingRenderer)
         {
-            renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 1f); //투명도 0.5
+            renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 1f); 
         }
 
         gameObject.layer = layerNum; // 레이어를 Building으로 변경
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
         Debug.Log("건설 완료");
     }
 
@@ -148,7 +153,7 @@ public abstract class Building : MonoBehaviour , IDamage
 
     public void TakeDamage(short dmg) // IDamage 인터페이스 구현
     {
-        if(completedBuilding && isInstalled)
+        if(iscompletedBuilding && isInstalled)
         {
             _curHp -= dmg;
             if (_curHp <= 0)

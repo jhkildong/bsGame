@@ -59,7 +59,7 @@ public class InstantiateBuilding : MonoBehaviour
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
             if (Physics.Raycast(mouseRay, out RaycastHit hit, 1000f, mouseLayer)) // 마우스위치에 생성될 오브젝트를 보여준다. (임시 오브젝트가 따라다닌다)
             {
-                Debug.Log(hit.point);
+                //Debug.Log(hit.point);
                 checkBuilding.transform.position = hit.point;
                 //selectedBuilding.transform.position = selectedBuildingTransform.position;
                 //selectedBuilding.transform.rotation = selectedBuildingTransform.rotation;
@@ -94,7 +94,7 @@ public class InstantiateBuilding : MonoBehaviour
                 }
                 foreach (Renderer renderer in instBuildingRenderers)
                 {
-                    renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 0.5f); //투명도 0.5
+                    renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 0.3f); //투명도 0.5
                 }
                 selectedBuildingCollider.enabled = true; // 박스 콜라이더 다시 켜기.(콜라이더가 켜져도 Layer가 IncompletedBuilding 이기때문에 여전히 충돌 불가능)
                 rigid.isKinematic = false; // isKinematic도 다시 끈다.
