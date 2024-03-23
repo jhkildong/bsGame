@@ -23,7 +23,9 @@ MonoBehaviour:
   _repairSpeed: 10
   _attackPower: 20
   _attackDelay: 3
-  _buildingPrefab: {fileID: 3543125075967514443, guid: cf5e2570d14c7bd4ea96193f80c076ce, type: 3}
+  _attackRadius: 0
+  _attackProjectileSize: 0
+  _buildingPrefab: {fileID: 7215726233801088367, guid: b87f8b2fa9976fe488546514a7e45aa3, type: 3}
   _layerMask:
     serializedVersion: 2
     m_Bits: 16777216

@@ -14,13 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 2
   _name: Corbra
-  _attack: 1
-  _attackDelay: 2
+  _attack: 0
+  _attackDelay: 100
   _speed: 0.7
   _maxHp: 20
   _exp: 10
   _prefab: {fileID: 767905264487814327, guid: ae4f8b952a7abca4f9150c857cfa3a88, type: 3}
-  _dropItemList: []
+  _dropItemList:
+  - ID: 1
+    dropChance: 0
+  - ID: 2
+    dropChance: 0
+  - ID: 3
+    dropChance: 100
   _buildingFirst: 0
-  _type: 0
+  _type: 1
   _amount: 4

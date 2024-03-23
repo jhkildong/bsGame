@@ -19,7 +19,7 @@ public class enemydrop : MonoBehaviour
         if (hp <= 0 && !hasDead)
         {
             hasDead = true;
-            dropTable.WillDrop().transform.position = this.transform.position;
+            //dropTable.WillDrop().transform.position = this.transform.position;
             DestroyObject();
         }
         //죽으면 애니매이션 > 아이템 스폰 > 옵젝 사라짐.      

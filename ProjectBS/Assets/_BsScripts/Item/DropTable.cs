@@ -27,7 +27,7 @@ public class DropTable : MonoBehaviour
         //dropItems = GetComponent<IDropable>().dropItems();
     }
     public List<dropItem> dropItems;
-    public GameObject WillDrop()
+    public GameObject WillDrop(List<dropItem> dropItems)
     {
         return itemManager.A(dropItems);
     }
