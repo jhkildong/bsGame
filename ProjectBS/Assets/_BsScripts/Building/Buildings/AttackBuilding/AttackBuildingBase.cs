@@ -10,7 +10,7 @@ public class AttackBuildingBase : Building
 
 
     [SerializeField]protected GameObject target;
-    public List<GameObject> detectedObj = new List<GameObject>();
+    protected List<Transform> detectedObj = new List<Transform>();
     public bool atkDelaying;
 
     public LayerMask attackableLayer;
@@ -65,9 +65,11 @@ public class AttackBuildingBase : Building
             IDamage obj = other.GetComponent<IDamage>();
             if (obj != null)
             {
-                detectedObj.Add(other.gameObject);
-                target = detectedObj[0];
+                detectedObj.Add((obj as Monster).transform);
+                target = detectedObj[0].gameObject;
                 //Debug.Log(target);
+
+                (obj as Monster).DeadTransformAct += RemoveTarget;
             }
         }
     }
@@ -79,12 +81,12 @@ public class AttackBuildingBase : Building
             IDamage obj = other.GetComponent<IDamage>();
             if (obj != null)
             {
-                if (detectedObj.Contains(other.gameObject))
+                if (detectedObj.Contains((obj as Monster).transform))
                 {
-                    detectedObj.Remove(other.gameObject);
+                    detectedObj.Remove((obj as Monster).transform);
                     if(detectedObj.Count > 0)
                     {
-                        target = detectedObj[0]; //새로운 타겟 찾기
+                        target = detectedObj[0].gameObject; //새로운 타겟 찾기
                     }
                     else
                     {
@@ -93,6 +95,27 @@ public class AttackBuildingBase : Building
                     //Debug.Log(other.gameObject);
                 }
             }
+        }
+    }
+
+    void RemoveTarget(Transform tr)
+    {
+        foreach (Transform obj in detectedObj)
+        {
+            if(obj != null && obj.transform == tr)
+            {
+                detectedObj.Remove(obj);
+                if (detectedObj.Count > 0)
+                {
+                    target = detectedObj[0].gameObject; //새로운 타겟 찾기
+                }
+                else
+                {
+                    target = null;
+                }
+                return;
+            }
+            
         }
     }
 
@@ -108,7 +131,14 @@ public class AttackBuildingBase : Building
                 atkDelaying = true;
                 StartCoroutine(AtkDelay(_attackDelay));
             }
+
+
+
         }
+
+
+
+
     }
 
     IEnumerator AtkDelay(float delay)

@@ -21,7 +21,7 @@ MonoBehaviour:
   _requireIron: 5
   _constTime: 5
   _repairSpeed: 5
-  _attackPower: 50
+  _attackPower: 20
   _attackDelay: 1
   _attackRadius: 2
   _attackProjectileSize: 0
