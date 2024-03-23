@@ -44,7 +44,7 @@ public class CheckCanBuild : MonoBehaviour
         if ((checkLayer.value & (1 << other.gameObject.layer)) != 0)
         {
             cantBuildState.Invoke();
-            Debug.Log("¹°Ã¼ °ãÄ§!");
+            Debug.Log("¹°Ã¼ °ãÄ§! :" + other);
         }
 
 

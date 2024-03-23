@@ -21,8 +21,8 @@ MonoBehaviour:
   _requireIron: 10
   _constTime: 5
   _repairSpeed: 10
-  _attack: 20
-  _attackDelay: 0
+  _attackPower: 20
+  _attackDelay: 3
   _buildingPrefab: {fileID: 3543125075967514443, guid: cf5e2570d14c7bd4ea96193f80c076ce, type: 3}
   _layerMask:
     serializedVersion: 2

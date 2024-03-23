@@ -21,7 +21,9 @@ MonoBehaviour:
   _requireIron: 0
   _constTime: 10
   _repairSpeed: 10
+  _attack: 0
+  _attackDelay: 0
   _buildingPrefab: {fileID: 0}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16777216
