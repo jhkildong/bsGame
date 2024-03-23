@@ -40,7 +40,7 @@ namespace Yeon
         /// <summary> 현재 체력이 0이하가 되면 true  </summary>
         public bool IsDead() => CurHp <= 0;
         
-        public void TakeDamage(short damage)
+        public virtual void TakeDamage(short damage)
         {
             CurHp -= damage;
             Debug.Log($"받은 데미지:{damage}, 현재 체력:{CurHp}");

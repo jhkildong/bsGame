@@ -10,6 +10,7 @@ public abstract class Monster : Combat, IDropable
 {
     Transform PlayerTransform;
 
+    public event UnityAction<Transform> DeadTransformAct;
     [SerializeField] private MonsterData _data;
     public MonsterData Data => _data;
     public List<dropItem> dropItems() => Data.DropItemList;
@@ -42,6 +43,15 @@ public abstract class Monster : Combat, IDropable
         myTarget = PlayerTransform;
         DeadAct += Death;
     }
+    public override void TakeDamage(short damage)
+    {
+        base.TakeDamage(damage);
+        if(CurHp <=0)
+        {
+            DeadTransformAct?.Invoke(this.transform);
+        }
+    }
+
 
     protected override void Start()
     {

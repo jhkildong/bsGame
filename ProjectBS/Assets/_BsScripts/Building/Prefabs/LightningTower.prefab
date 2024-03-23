@@ -233,14 +233,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData: {fileID: 11400000, guid: 7066052e26a97f544bad46925326cbf0, type: 2}
+  _id: 0
+  _buildingName: 
+  _maxHp: 0
   _curHp: 0
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
+  _constTime: 0
+  _repairSpeed: 0
   isInstalled: 0
   target: {fileID: 0}
   detectedObj: []
   atkDelaying: 0
   attackableLayer:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 32768
   atkEffect: {fileID: 995855345012900889, guid: e17f81322b971a945ab1380a4353e1ba, type: 3}
   effectList: []
   effectPool: {fileID: 5164076940604325103}
