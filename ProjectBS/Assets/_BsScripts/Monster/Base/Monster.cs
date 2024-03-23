@@ -62,7 +62,7 @@ public abstract class Monster : Combat, IDropable
     {
         myAnim.SetBool(AnimParam.isMoving, false);
         myAnim.SetTrigger(AnimParam.Death);
-        StartCoroutine(DelayChangeState(State.Death, 0.5f));
+        ChangeState(State.Death);
     }
 
     #region Monster StateMachine

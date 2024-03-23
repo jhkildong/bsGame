@@ -1,0 +1,264 @@
+{
+    "name": "PlayerInputs",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "29ee7a5b-b69a-4a72-a327-6ebebb65c85e",
+            "actions": [
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "44a73018-f37c-4656-a186-85fabc98572e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressW",
+                    "type": "Button",
+                    "id": "f8beacc7-206b-4bee-bf45-6c324c28a19c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressS",
+                    "type": "Button",
+                    "id": "1b75e17c-eebd-491f-8a1c-b2ae0bb1ab72",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressA",
+                    "type": "Button",
+                    "id": "95102af0-a895-4c23-84ce-8247be9c882b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressD",
+                    "type": "Button",
+                    "id": "0ae21bbd-6f4c-42f6-b324-a6619ecdc852",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ReleaseW",
+                    "type": "Button",
+                    "id": "b9c5990c-512f-47e9-b39a-ddad122c6a95",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.8,behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ReleaseS",
+                    "type": "Button",
+                    "id": "92ef1c65-1847-4b58-839b-243461b7f3c4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.8,behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ReleaseA",
+                    "type": "Button",
+                    "id": "678f9919-aeae-4534-b4e1-d36edc6fa725",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.8,behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ReleaseD",
+                    "type": "Button",
+                    "id": "0e9f5abf-e208-456c-9b88-db16f96e5736",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.8,behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveAnim",
+                    "type": "Button",
+                    "id": "3d81a626-4c03-49fd-86a8-524847396dd7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Mash(tapDelay=0.15)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "63d8d49b-324b-4828-b7dd-fc2b5f2c05db",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "360abe4f-5e7e-4ddf-91e8-db68df895e49",
+                    "path": "<Keyboard>/w",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "PressW",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8763036-e9e1-43a8-99e2-b4512dbd4178",
+                    "path": "<Keyboard>/s",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "PressS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ea85f78-10ac-474c-ad2d-8cbddeedd3aa",
+                    "path": "<Keyboard>/a",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "PressA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c20d893e-741e-4856-96da-16d6afd7c355",
+                    "path": "<Keyboard>/d",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "PressD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "393f621d-b2aa-447b-8828-bf99402376ea",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "ReleaseW",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6715c6b2-15a4-4064-992a-ee97625b414b",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "ReleaseS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a8d11be-3fa2-40b1-bdb2-6b74799e757a",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "ReleaseA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a1453b2d-fbd6-43ec-970f-56a6c9f39ef8",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReleaseD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "82687efa-d710-4f6b-9d73-c5a6f28383ce",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveAnim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3257c36a-7740-4a28-9165-6680249f7274",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveAnim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f19abb61-bb34-4bd2-919e-a9b7385caceb",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveAnim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63248cc9-9643-4e13-8bbe-49c1e222362a",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveAnim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PC",
+            "bindingGroup": "PC",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
