@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1124390968336686611}
   - component: {fileID: 1717933134826633824}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AtkCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,9 +204,13 @@ MonoBehaviour:
   isInstalled: 0
   target: {fileID: 0}
   detectedObj: []
+  atkDelaying: 0
   attackableLayer:
     serializedVersion: 2
     m_Bits: 16384
+  atkEffect: {fileID: 0}
+  effectList: []
+  effectPool: {fileID: 0}
 --- !u!1001 &8711661605395587187
 PrefabInstance:
   m_ObjectHideFlags: 0
