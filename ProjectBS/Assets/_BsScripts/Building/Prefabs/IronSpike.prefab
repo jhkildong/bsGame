@@ -1,58 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1647231291455249611
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1124390968336686611}
-  - component: {fileID: 1717933134826633824}
-  m_Layer: 0
-  m_Name: AtkCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1124390968336686611
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647231291455249611}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9181911032304371608}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1717933134826633824
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647231291455249611}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.3, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7215726233801088367
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,7 +13,7 @@ GameObject:
   - component: {fileID: 2362461954362303829}
   - component: {fileID: 1071733962729775870}
   - component: {fileID: 3976462652506925387}
-  - component: {fileID: 7854005807676335694}
+  - component: {fileID: 8348860071291441259}
   m_Layer: 25
   m_Name: IronSpike
   m_TagString: Untagged
@@ -188,7 +135,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &7854005807676335694
+--- !u!114 &8348860071291441259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,20 +144,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 7215726233801088367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b11191323a92614e8520db3cce9e2f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a660c1237a0b6444ac36111df387324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData: {fileID: 11400000, guid: ce34a8a711ea01e46b68bb9a18aef5db, type: 2}
+  _id: 0
+  _buildingName: 
+  _maxHp: 0
+  _curHp: 0
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
+  _constTime: 0
+  _repairSpeed: 0
   isInstalled: 0
   target: {fileID: 0}
-  detectedObj: []
   atkDelaying: 0
   attackableLayer:
     serializedVersion: 2
-    m_Bits: 16384
-  atkEffect: {fileID: 0}
+    m_Bits: 32768
+  atkEffect: {fileID: 1153730961705006, guid: f1aeeba2f9003904da5c0a24ba150198, type: 3}
   effectList: []
   effectPool: {fileID: 0}
+  AtkEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _attackDelay: 0
 --- !u!1001 &8711661605395587187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -281,10 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 087dde9b87fd23d49a3cd0c89948fd52, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1124390968336686611}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 087dde9b87fd23d49a3cd0c89948fd52, type: 3}
       insertIndex: -1

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebe26ac52d55aea419c028a691417d6f, type: 3}
-  m_Name: Spike_ScriptableObject
+  m_Name: BD_IronSpike_ScriptableObject
   m_EditorClassIdentifier: 
   _id: 2
   _buildingName: IronSpike
@@ -21,8 +21,8 @@ MonoBehaviour:
   _requireIron: 10
   _constTime: 5
   _repairSpeed: 10
-  _attackPower: 20
-  _attackDelay: 3
+  _attackPower: 3
+  _attackDelay: 0.5
   _attackRadius: 0
   _attackProjectileSize: 0
   _buildingPrefab: {fileID: 7215726233801088367, guid: b87f8b2fa9976fe488546514a7e45aa3, type: 3}

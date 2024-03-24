@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BuildingProjectileHit : MonoBehaviour
+public class BuildingEffectHit : MonoBehaviour
 {
 
     protected enum Type
     {
         Projectile,
-        Point
+        Point,
     }
     
     [SerializeField]protected Type atkType;
@@ -48,20 +48,20 @@ public class BuildingProjectileHit : MonoBehaviour
     }
     void OnEnable()
     {
-        getParentBuildingDmg();
+        getParentBuildingAtkStats();
         canHit = true;
         Debug.Log("켜짐");
     }
 
-    void getParentBuildingDmg()
+    void getParentBuildingAtkStats()
     {
         
         AttackBuildingBase buildingStat = GetComponentInParent<AttackBuildingBase>(); //커플링. 부모 건물의 현재 공격력을 갖는다.
         dmg = buildingStat.SetDmg();
         radius = buildingStat.SetAtkRadius();
-        
+        projectileSize = buildingStat.SetAtkProjectileSize();
 
-    }
+}
 
     void Update()
     {
@@ -77,7 +77,7 @@ public class BuildingProjectileHit : MonoBehaviour
             {
                 canHit = false;
                 Debug.Log("지금!");
-                Hit();
+                HitSphere();
                 
             }
             if(progress >= 1f)
@@ -100,16 +100,12 @@ public class BuildingProjectileHit : MonoBehaviour
 
     }
 
-    protected void Hit()
+    protected void HitSphere()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius,attackableLayer); 
         if(colliders.Length > 0 )
         {
             Debug.Log(colliders);
-        }
-        else
-        {
-            Debug.Log("범위에 대상이 없습니다");
         }
 
         foreach (Collider collider in colliders)
@@ -131,4 +127,5 @@ public class BuildingProjectileHit : MonoBehaviour
         //범위내의 적에게 (Idamage 가 있는)
         //데미지 전달
     }
+
 }

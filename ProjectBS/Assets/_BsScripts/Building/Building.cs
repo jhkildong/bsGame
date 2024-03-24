@@ -75,12 +75,13 @@ public abstract class Building : MonoBehaviour , IDamage
         {
             Construction(2*Time.deltaTime);
         }
-        
+        /*
         if (Input.GetKeyDown(KeyCode.D))
         {
             TakeDamage(20);
             Debug.Log("남은 체력" + _curHp);
         }
+        */
         
         if (Input.GetKey(KeyCode.R))
         {
