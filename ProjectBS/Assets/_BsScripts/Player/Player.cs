@@ -184,6 +184,12 @@ public class Player : Combat
         }
     }
 
+    public override void OnAttackPoint()
+    {
+        base.OnAttackPoint();
+        myParticle.transform.parent.rotation = myCharacter.rotation;
+    }
+
     protected override void FixedUpdate()
     {
         worldMoveDir = moveDir;

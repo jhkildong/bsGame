@@ -37,7 +37,7 @@ public abstract class Monster : Combat, IDropable
         attackMask = (int)(BSLayerMasks.Player | BSLayerMasks.Building);
         gameObject.layer = (int)Mathf.Log((int)BSLayerMasks.Monster, 2);
         //DeadAct.AddListener(WillDrop);
-        Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
+        myAnim = Instantiate(data.Prefab, this.transform).GetComponent<Animator>(); //자식으로 몬스터의 프리팹 생성
         //임시
         PlayerTransform = GameObject.Find("Player").transform;
         myTarget = PlayerTransform;
@@ -65,7 +65,7 @@ public abstract class Monster : Combat, IDropable
         if (Data == null) return;
         moveSpeed = Data.Sp;
         CurHp = Data.MaxHP;
-        if(myAnim == null) myAnim = GetComponentInChildren<Animator>();
+        playTime = 0.0f;
         ChangeState(State.Chase);
     }
 
@@ -93,7 +93,7 @@ public abstract class Monster : Combat, IDropable
         switch (myState)
         {
             case State.Chase:
-                playTime = 0.0f;
+                //playTime = 0.0f;
                 myAnim.SetBool(AnimParam.isMoving, true);
                 break;
             case State.Attack:
@@ -113,9 +113,12 @@ public abstract class Monster : Combat, IDropable
         switch (myState)
         {
             case State.Chase:
+                /*
                 Vector3 dir = myTarget.position - transform.position;
                 dir.Normalize();
                 worldMoveDir = dir;
+                */
+                worldMoveDir = transform.forward;
                 break;
             case State.Attack:
                 playTime -= Time.deltaTime;
@@ -130,7 +133,7 @@ public abstract class Monster : Combat, IDropable
                         AttackTarget.TakeDamage((short)Data.Ak);
                         myAnim.SetTrigger(AnimParam.Attack);
                     }
-                    playTime = AttackDelay;
+                    playTime = CurAttackDelay;
                 }
                 break;
         }
@@ -148,7 +151,8 @@ public abstract class Monster : Combat, IDropable
         if(myTarget == null)
             ResetTarget();
         Vector3 targetDirection = myTarget.position - transform.position;
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+        targetDirection.y = 0.0f;
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection.normalized);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
         StateProcess();
     }
@@ -193,7 +197,6 @@ public abstract class Monster : Combat, IDropable
     {
         TakeDamage(MaxHP);
         ChangeState(State.Death);
-        Destroy(gameObject);
     }
 
     #endregion

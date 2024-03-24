@@ -16,22 +16,22 @@ public abstract class Building : MonoBehaviour , IDamage
     }
 
 
-    [SerializeField] protected int _id;               // °Ç¹° ID
-    [SerializeField] protected string _buildingName;  // °Ç¹° ÀÌ¸§
-    [SerializeField] protected short _maxHp;          // °Ç¹° ÃÖ´ëÃ¼·Â
-    [SerializeField] protected short _curHp;          // °Ç¹° ÇöÀçÃ¼·Â
-    [SerializeField] protected short _requireWood;      // ³ª¹« ¿ä±¸ Àç·á°³¼ö
-    [SerializeField] protected short _requireStone;      // µ¹ ¿ä±¸ Àç·á°³¼ö
-    [SerializeField] protected short _requireIron;      // Ã¶ ¿ä±¸ Àç·á°³¼ö
-    [SerializeField] protected float _constTime;     // °Ç¹° ÃÑ °Ç¼³½Ã°£
-    [SerializeField] protected float _repairSpeed;    // °Ç¹° ¼ö¸®¼Óµµ
+    [SerializeField] protected int _id;               // ê±´ë¬¼ ID
+    [SerializeField] protected string _buildingName;  // ê±´ë¬¼ ì´ë¦„
+    [SerializeField] protected short _maxHp;          // ê±´ë¬¼ ìµœëŒ€ì²´ë ¥
+    [SerializeField] protected short _curHp;          // ê±´ë¬¼ í˜„ì¬ì²´ë ¥
+    [SerializeField] protected short _requireWood;      // ë‚˜ë¬´ ìš”êµ¬ ì¬ë£Œê°œìˆ˜
+    [SerializeField] protected short _requireStone;      // ëŒ ìš”êµ¬ ì¬ë£Œê°œìˆ˜
+    [SerializeField] protected short _requireIron;      // ì²  ìš”êµ¬ ì¬ë£Œê°œìˆ˜
+    [SerializeField] protected float _constTime;     // ê±´ë¬¼ ì´ ê±´ì„¤ì‹œê°„
+    [SerializeField] protected float _repairSpeed;    // ê±´ë¬¼ ìˆ˜ë¦¬ì†ë„
 
     protected int layerNum;
 
     [SerializeField] protected bool isInstalled = false;
 
-    protected bool iscompletedBuilding; // °Ç¹°ÀÇ °Ç¼³ ¿©ºÎ
-    float curConstTime = 0.0f; //°Ç¼³ÇÑ ½Ã°£
+    protected bool iscompletedBuilding; // ê±´ë¬¼ì˜ ê±´ì„¤ ì—¬ë¶€
+    float curConstTime = 0.0f; //ê±´ì„¤í•œ ì‹œê°„
 
 
 
@@ -79,10 +79,9 @@ public abstract class Building : MonoBehaviour , IDamage
         if (Input.GetKeyDown(KeyCode.D))
         {
             TakeDamage(20);
-            Debug.Log("³²Àº Ã¼·Â" + _curHp);
+            Debug.Log("ë‚¨ì€ ì²´ë ¥" + _curHp);
         }
         */
-        
         if (Input.GetKey(KeyCode.R))
         {
             Repair(0.1f);
@@ -92,28 +91,28 @@ public abstract class Building : MonoBehaviour , IDamage
     }
 
 
-    public void OnInstalled() // °Ç¹°ÀÌ ¼¼ÆÃµÉ¶§(Å¬¸¯À¸·Î °Ç¼³À§Ä¡°¡ Á¤ÇØÁú¶§) instantiateBuilding ¿¡¼­ Á÷Á¢ È£ÃâÁß
+    public void OnInstalled() // ê±´ë¬¼ì´ ì„¸íŒ…ë ë•Œ(í´ë¦­ìœ¼ë¡œ ê±´ì„¤ìœ„ì¹˜ê°€ ì •í•´ì§ˆë•Œ) instantiateBuilding ì—ì„œ ì§ì ‘ í˜¸ì¶œì¤‘
     {
         isInstalled = true;
     }
     
-    void Construction(float constSpeed) //°Ç¼³Áß
+    void Construction(float constSpeed) //ê±´ì„¤ì¤‘
     {
-        //canBuild»óÅÂ¿¡¼­ »óÈ£ÀÛ¿ëÅ° ÀÔ·Â½Ã, constructing È°¼ºÈ­, °Ç¼³¾Ö´Ï¸ŞÀÌ¼Ç ½ÃÀÛ, constructingÀÎ µ¿¾È ÀÌº¥Æ® È£Ãâ. 
+        //canBuildìƒíƒœì—ì„œ ìƒí˜¸ì‘ìš©í‚¤ ì…ë ¥ì‹œ, constructing í™œì„±í™”, ê±´ì„¤ì• ë‹ˆë©”ì´ì…˜ ì‹œì‘, constructingì¸ ë™ì•ˆ ì´ë²¤íŠ¸ í˜¸ì¶œ. 
 
 
 
-        //ÀÌº¥Æ® ³»¿ë
-        //°Ç¹°Àº °Ç¼³»óÅÂ¸¦ ±¸ºĞÇÑ´Ù ( ¿Ï¼º , ¹Ì¿Ï¼º ).
-        //¾ğÁ¦? ÇÃ·¹ÀÌ¾î°¡ »óÈ£ÀÛ¿ëÇÒ¶§. -> »óÈ£ÀÛ¿ëÀº ¾î¶»°Ô? ??
-        //»óÈ£ÀÛ¿ë ¹æ½Ä -> °Ç¹°ÀÌ »óÈ£ÀÛ¿ë ¹üÀ§¸¦ °®´Â´Ù. ¹üÀ§¿¡ ÇÃ·¹ÀÌ¾î°¡ µé¾î¿À¸é, »óÈ£ÀÛ¿ë °¡´É »óÅÂ°¡ µÈ´Ù. »óÈ£ÀÛ¿ëÀº ÇÃ·¹ÀÌ¾î¿¡¼­ ray¸¦ ½÷¼­ hitÇÑ °Ç¹°·Î ÇÑ´Ù. ¹®Á¦Á¡ -> »ó½Ã °Ë»çÇØ¾ßÇØ¼­ ÀÚ¿ø ¹®Á¦
+        //ì´ë²¤íŠ¸ ë‚´ìš©
+        //ê±´ë¬¼ì€ ê±´ì„¤ìƒíƒœë¥¼ êµ¬ë¶„í•œë‹¤ ( ì™„ì„± , ë¯¸ì™„ì„± ).
+        //ì–¸ì œ? í”Œë ˆì´ì–´ê°€ ìƒí˜¸ì‘ìš©í• ë•Œ. -> ìƒí˜¸ì‘ìš©ì€ ì–´ë–»ê²Œ? ??
+        //ìƒí˜¸ì‘ìš© ë°©ì‹ -> ê±´ë¬¼ì´ ìƒí˜¸ì‘ìš© ë²”ìœ„ë¥¼ ê°–ëŠ”ë‹¤. ë²”ìœ„ì— í”Œë ˆì´ì–´ê°€ ë“¤ì–´ì˜¤ë©´, ìƒí˜¸ì‘ìš© ê°€ëŠ¥ ìƒíƒœê°€ ëœë‹¤. ìƒí˜¸ì‘ìš©ì€ í”Œë ˆì´ì–´ì—ì„œ rayë¥¼ ì´ì„œ hití•œ ê±´ë¬¼ë¡œ í•œë‹¤. ë¬¸ì œì  -> ìƒì‹œ ê²€ì‚¬í•´ì•¼í•´ì„œ ìì› ë¬¸ì œ
         //
-        //ÃÑ °Ç¼³ ½Ã°£¿¡¼­ ÇÃ·¹ÀÌ¾îÀÇ °Ç¼³¼Óµµ¸¦ »« °ªÀ» »«´Ù.
-        //ÃÑ °Ç¼³½Ã°£ÀÌ 0ÀÌµÇ¸é °Ç¼³ ¿Ï·á, -> ·¹ÀÌ¾î¸¦ BuildingÀ¸·Î º¯°æÇÑ´Ù. ¸ÓÅÍ¸®¾óÀÇ Åõ¸íµµ¸¦ Á¶Á¤ÇÑ´Ù.
-        if (!iscompletedBuilding && isInstalled) //¹Ì¿Ï¼º °Ç¹°ÀÏ¶§, °Ç¼³ ¼¼ÆÃ »óÅÂÀÏ¶§
+        //ì´ ê±´ì„¤ ì‹œê°„ì—ì„œ í”Œë ˆì´ì–´ì˜ ê±´ì„¤ì†ë„ë¥¼ ëº€ ê°’ì„ ëº€ë‹¤.
+        //ì´ ê±´ì„¤ì‹œê°„ì´ 0ì´ë˜ë©´ ê±´ì„¤ ì™„ë£Œ, -> ë ˆì´ì–´ë¥¼ Buildingìœ¼ë¡œ ë³€ê²½í•œë‹¤. ë¨¸í„°ë¦¬ì–¼ì˜ íˆ¬ëª…ë„ë¥¼ ì¡°ì •í•œë‹¤.
+        if (!iscompletedBuilding && isInstalled) //ë¯¸ì™„ì„± ê±´ë¬¼ì¼ë•Œ, ê±´ì„¤ ì„¸íŒ… ìƒíƒœì¼ë•Œ
         {
             curConstTime += constSpeed;
-            Debug.Log("°Ç¼³ ÁøÇà ½Ã°£ :"  + curConstTime);
+            Debug.Log("ê±´ì„¤ ì§„í–‰ ì‹œê°„ :"  + curConstTime);
             if (curConstTime >= _constTime)
             {
                 ConstructComplete();
@@ -123,26 +122,26 @@ public abstract class Building : MonoBehaviour , IDamage
 
     }
 
-    protected virtual void ConstructComplete() // °Ç¼³ ¿Ï·á½Ã
+    protected virtual void ConstructComplete() // ê±´ì„¤ ì™„ë£Œì‹œ
     {
-        iscompletedBuilding = true; // °Ç¼³ ¿Ï·á»óÅÂ true.
+        iscompletedBuilding = true; // ê±´ì„¤ ì™„ë£Œìƒíƒœ true.
         Renderer[] completedBuildingRenderer = gameObject.GetComponentsInChildren<Renderer>();
         foreach(Renderer renderer in completedBuildingRenderer)
         {
             renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 1f); 
         }
 
-        gameObject.layer = layerNum; // ·¹ÀÌ¾î¸¦ BuildingÀ¸·Î º¯°æ
+        gameObject.layer = layerNum; // ë ˆì´ì–´ë¥¼ Buildingìœ¼ë¡œ ë³€ê²½
         gameObject.SetActive(false);
         gameObject.SetActive(true);
-        Debug.Log("°Ç¼³ ¿Ï·á");
+        Debug.Log("ê±´ì„¤ ì™„ë£Œ");
     }
 
     public void Repair(float RepairSpeed)
     {
         if (_curHp < _maxHp)
         {
-            Debug.Log("¼ö¸®Áß" + _curHp);
+            Debug.Log("ìˆ˜ë¦¬ì¤‘" + _curHp);
             _curHp += (short)RepairSpeed;
             if(_curHp >= _maxHp)
             {
@@ -152,7 +151,7 @@ public abstract class Building : MonoBehaviour , IDamage
 
     }
 
-    public void TakeDamage(short dmg) // IDamage ÀÎÅÍÆäÀÌ½º ±¸Çö
+    public void TakeDamage(short dmg) // IDamage ì¸í„°í˜ì´ìŠ¤ êµ¬í˜„
     {
         if(iscompletedBuilding && isInstalled)
         {

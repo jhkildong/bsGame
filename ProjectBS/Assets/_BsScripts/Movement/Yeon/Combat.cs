@@ -60,7 +60,7 @@ namespace Yeon
 
 
         public ParticleSystem myParticle;
-        public void OnAttackPoint()
+        public virtual void OnAttackPoint()
         {
             Collider[] list = Physics.OverlapSphere(myAttackPoint.position, 1.0f, attackMask);
             myParticle.Play();
