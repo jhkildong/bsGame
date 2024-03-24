@@ -92,6 +92,7 @@ public class ObjectPoolManager : MonoBehaviour
         for (int i = 0; i < init; i++)
         {
             GameObject clone = poolable.CreateClone();
+            clone.name += $"{i}"; //юс╫ц
             clone.transform.SetParent(poolObj.transform);
             clone.SetActive(false);
             pool.Push(clone);
