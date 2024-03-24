@@ -75,7 +75,7 @@ public abstract class Monster : Combat, IDropable
         myAnim.SetBool(AnimParam.isMoving, false);
         myAnim.SetTrigger(AnimParam.Death);
         ChangeState(State.Death);
-        dropTable.WillDrop(dropItems()).transform.position = this.transform.position;
+        dropTable.WillDrop(dropItems()).transform.position = this.transform.position + new Vector3(0f, 0.3f, 0f);
     }
 
     #region Monster StateMachine
