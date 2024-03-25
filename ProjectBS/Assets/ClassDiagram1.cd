@@ -1,27 +1,381 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Monster">
-    <Position X="0.75" Y="0.5" Width="4.5" />
+  <Class Name="AnimParam" Collapsed="true">
+    <Position X="37" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AGYAAAABBABAAkAAAAIUEAABEIgAAFAAACICgBAFQBA=</HashCode>
-      <FileName>Assets\_BsScripts\Monster\Base\Monster.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAJAAAAAgAAABAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\_Static\AnimParam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnimEvent" Collapsed="true">
+    <Position X="35.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAACAAAAAgAAAAACAAAACAAAAAAACAAA=</HashCode>
+      <FileName>Assets\_BsScripts\AnimEvent\AnimEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlWeaponData" Collapsed="true">
+    <Position X="40.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgABAAQAAAAAgAAAAABAACAAAKAAEAIBAAAAABAEAEA=</HashCode>
+      <FileName>Assets\_BsScripts\BlWeaponData\BlWeaponData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Building" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAIACgAAAhACABEAAAAACBBgBAgBAABgAAAASI=</HashCode>
+      <FileName>Assets\_BsScripts\Building\Building.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="NormalMonster">
-    <Position X="6.75" Y="0.5" Width="2.25" />
+  <Class Name="BuildingData" Collapsed="true">
+    <Position X="9.75" Y="16.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAACAAAAAAA=</HashCode>
-      <FileName>Assets\_BsScripts\Monster\NormalMonster.cs</FileName>
+      <HashCode>EAQABAAAAAgAgAhESABEAAAAAwBQgAAIRAGQCEBARUA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\BuildingData.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ObjectPoolManager">
-    <Position X="10" Y="0.5" Width="3" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
+  <Class Name="AttackBuilding_Meele" Collapsed="true">
+    <Position X="10" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAACAAAAAAAAAAAAAAQAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\Buildings\AttackBuilding\AttackBuilding_Meele.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AttackBuilding_Point" Collapsed="true">
+    <Position X="12.25" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAIAAABAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\Buildings\AttackBuilding\AttackBuilding_Point.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AttackBuildingBase" Collapsed="true">
+    <Position X="12.25" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAwEABEBGKAAAAAAMABCQAAABQAwQIBAQAGAAAAAAEA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\Buildings\AttackBuilding\AttackBuildingBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingEffectHit" Collapsed="true">
+    <Position X="30" Y="4.5" Width="1.75" />
     <NestedTypes>
-      <Class Name="ObjectPoolManager.PoolableObjectData">
+      <Enum Name="BuildingEffectHit.Type" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\Building\Buildings\AttackBuilding\BuildingEffectHit.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAwAIAAACCAACIAAAACCAAAAAAAAAACgGIAgAAAACEA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\Buildings\AttackBuilding\BuildingEffectHit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightningBuilding" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\Buildings\AttackBuilding\LightningBuilding\LightningBuilding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CampFire" Collapsed="true">
+    <Position X="16.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAIAACAAAAAgAAAAAAAAAAAEAIAAQQBAAARAAEA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\Buildings\BuffBuildings\CampFire.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WoodBarricate" Collapsed="true">
+    <Position X="19" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\Buildings\WoodBarricate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingScriptableObject" Collapsed="true">
+    <Position X="9.75" Y="18" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\BuildingScriptableObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CheckCanBuild" Collapsed="true">
+    <Position X="37" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAACAAABAAAAACAAAAAAAAAIAgQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\CheckCanBuild.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="31.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEgAgAACIQAJAAAgAAEQAAgAAQADAAQAAAAoAAAMA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InstantiateBuilding" Collapsed="true">
+    <Position X="33.5" Y="5.5" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="InstantiateBuilding.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\Building\InstantiateBuilding.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABZCAABAAiAIBAEAAAKIAAAAAABAAAAEEIIAAAEAQgA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\InstantiateBuilding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SetBuildingOnButtonEvent" Collapsed="true">
+    <Position X="38.75" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAACAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\SetBuildingOnButtonEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestPlayer" Collapsed="true">
+    <Position X="30" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Building\TestPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MashInteraction" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31.75" Y="6.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="MashInteraction.ButtonPhase" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\InputSystem\MashInteraction.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAABQABAgIAQAAAAAAAABACAAAAABAAAAI=</HashCode>
+      <FileName>Assets\_BsScripts\InputSystem\MashInteraction.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="@PlayerInputs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30" Y="3.5" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="@PlayerInputs.PlayerActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\InputSystem\PlayerInputs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Interface Name="@PlayerInputs.IPlayerActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\InputSystem\PlayerInputs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAQiAAABAAAQAECBABBAAACmBEAEAgAEBSBAA=</HashCode>
+      <FileName>Assets\_BsScripts\InputSystem\PlayerInputs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="dropItem" Collapsed="true">
+    <Position X="38.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\DropTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DropTable" Collapsed="true">
+    <Position X="40.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAIgAAAgAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\DropTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExpItem" Collapsed="true">
+    <Position X="23" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\Item_Type\ExpItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item" Collapsed="true">
+    <Position X="25.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\Item_Type\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OneshotItem" Collapsed="true">
+    <Position X="25.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\Item_Type\OneshotItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StructItem" Collapsed="true">
+    <Position X="27.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\Item_Type\StructItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExpItemData" Collapsed="true">
+    <Position X="17.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAgAAAAAAAAAgAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\ItemData\ExpItemData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemBasic" Collapsed="true">
+    <Position X="35.25" Y="5.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="ItemBasic.itemtype" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\Item\ItemData\ItemBasic.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Struct Name="ItemBasic.STAT" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\Item\ItemData\ItemBasic.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAABAAAQBAAAAAAAIAAAgAIAAAEAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\ItemData\ItemBasic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemData" Collapsed="true">
+    <Position X="17.25" Y="14.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="ItemData.itemtype" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\Item\ItemData\ItemData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABBAIAAAAAAAgAAAIABAAAQCAAAAAAAAAAAgEAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\ItemData\ItemData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OneshotItemData" Collapsed="true">
+    <Position X="19.5" Y="16" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAACQAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\ItemData\OneshotItemData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StructItemData" Collapsed="true">
+    <Position X="15" Y="16" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="StructItemData.struct_mat" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\Item\ItemData\StructItemData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ACBAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\ItemData\StructItemData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemManager" Collapsed="true">
+    <Position X="37" Y="5.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="ItemManager.Items" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\Item\ItemManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAgAAAgAAABAAAAAQAAAIAAAAEA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\ItemManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AIPerception" Collapsed="true">
+    <Position X="33.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAABEAAAIAAQBACAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\AIPerception.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monster" Collapsed="true">
+    <Position X="11" Y="11.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Monster.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\MonsterScript\Monster\Base\Monster.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAQAAAABFgBABAAAAgAAgAAARQAMABAsAAICwAAkSFA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\Monster\Base\Monster.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NormalMonster" Collapsed="true">
+    <Position X="11" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\Monster\Base\NormalMonster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GroupNormalMonster" Collapsed="true">
+    <Position X="10" Y="14.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\Monster\GroupNormalMonster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SingleNormalMonster" Collapsed="true">
+    <Position X="12.25" Y="14.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\Monster\SingleNormalMonster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MonsterData" Collapsed="true">
+    <Position X="19" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCIAAAAAAAgAAAAgBAEAQAAAAIAAAAFADAEAAAQMA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\MonsterData\Base\MonsterData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NormalMonsterData" Collapsed="true">
+    <Position X="19" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAgAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\MonsterData\Base\NormalMonsterData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GroupNormalMonsterData" Collapsed="true">
+    <Position X="17.75" Y="12.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAEABAAAAACAA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\MonsterData\GroupNormalMonsterData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SingleNormalMonsterData" Collapsed="true">
+    <Position X="20" Y="12.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\MonsterData\SingleNormalMonsterData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MonsterSpawner" Collapsed="true">
+    <Position X="35.25" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAQACAAAAAAAAACAABAABAAAAIAAAAAAAAQAAA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\MonsterSpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectPoolManager" Collapsed="true">
+    <Position X="37" Y="6.5" Width="1.75" />
+    <NestedTypes>
+      <Class Name="ObjectPoolManager.PoolableObjectData" Collapsed="true">
         <TypeIdentifier>
           <NewMemberFileName>Assets\_BsScripts\Monster\ObjectPoolManager.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -29,15 +383,276 @@
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAEAAAAACAAAIAAAAAEEAAAAAAAAIAAQAAiIAAAAEA=</HashCode>
-      <FileName>Assets\_BsScripts\Monster\ObjectPoolManager.cs</FileName>
+      <FileName>Assets\_BsScripts\MonsterScript\ObjectPoolManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="IPoolable">
-    <Position X="6.75" Y="3" Width="1.5" />
+  <Class Name="TestBuilding" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>Assets\_BsScripts\Monster\ObjectPoolManager.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\TestBuilding.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ActionPlayer" Collapsed="true">
+    <Position X="31.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAACAAAAAAACAABAABAAAAAAAAAQAAAAAAAEA=</HashCode>
+      <FileName>Assets\_BsScripts\Movement\JaeJun\ActionPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainCameraAction" Collapsed="true">
+    <Position X="30" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAiAAAADAAgAQACAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Movement\JaeJun\MainCameraAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootMotion" Collapsed="true">
+    <Position X="37" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAiAAEAAAAAACAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Movement\JaeJun\Root Motion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LookAtPoint" Collapsed="true">
+    <Position X="40.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAgEA=</HashCode>
+      <FileName>Assets\_BsScripts\Movement\Yeon\LookAtPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingParams" Collapsed="true">
+    <Position X="31.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAACAAAAgAAEAAACAAAAABAgAAQBAAEAAAACAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Parameters\BuildingParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterParams" Collapsed="true">
+    <Position X="35.25" Y="4.5" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="CharacterParams.job" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\Parameters\CharacterParams.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAQAAgAAAAAAAAAAgEAAQCAIBEAAAFAAgI=</HashCode>
+      <FileName>Assets\_BsScripts\Parameters\CharacterParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemParams" Collapsed="true">
+    <Position X="38.75" Y="5.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="ItemParams.matType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\Parameters\ItemParams.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAgAABAAAAAAAAAAAAAgAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\_BsScripts\Parameters\ItemParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MonsterParams" Collapsed="true">
+    <Position X="33.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAASAAAAgAAAAABAAAAAABAAAQSAAAAAAAIAAAI=</HashCode>
+      <FileName>Assets\_BsScripts\Parameters\MonsterParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponParams" Collapsed="true">
+    <Position X="31.75" Y="8.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="WeaponParams.job" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_BsScripts\Parameters\WeaponParams.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABgAAAAAAAAAAAAAEgAACAABQAAACAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Parameters\WeaponParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponTypeParams" Collapsed="true">
+    <Position X="33.5" Y="8.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAIACAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Parameters\WeaponTypeParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="14.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAAiQBBICAAAAAQAAAAgQAAAAgYIBILACLAUA=</HashCode>
+      <FileName>Assets\_BsScripts\Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerUI" Collapsed="true">
+    <Position X="40.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEABAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAEA=</HashCode>
+      <FileName>Assets\_BsScripts\Player\PlayerUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReadOnlyAttribute" Collapsed="true">
+    <Position X="33.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Assets\_BsScripts\ReadOnlyAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="buildingPopup" Collapsed="true">
+    <Position X="33.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\UI\buildingPopup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PopupManager" Collapsed="true">
+    <Position X="30" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\UI\PopupManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ForwardWeapon" Collapsed="true">
+    <Position X="30" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBwAAQACAAAAAAAAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\WeaponType\ForwardWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ForwardWeaponBullet" Collapsed="true">
+    <Position X="20.25" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\WeaponType\ForwardWeaponBullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrditalWeapon" Collapsed="true">
+    <Position X="38.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAACAAAAAAAAAAABQAhAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\WeaponType\OrditalWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrditalWeaponBullet" Collapsed="true">
+    <Position X="22.5" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\WeaponType\OrditalWeaponBullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RangeWeapon" Collapsed="true">
+    <Position X="31.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBgQgQACAAAAAAAAAAAAQABAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\WeaponType\RangeWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RangeWeaponBullet" Collapsed="true">
+    <Position X="18" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\WeaponType\RangeWeaponBullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Weapon" Collapsed="true">
+    <Position X="20.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\WeaponType\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Yeon.Combat" Collapsed="true">
+    <Position X="12.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGIAAAAEAAAAAEAAAAIEEAQAEIAAAAAABAAAgAABQEA=</HashCode>
+      <FileName>Assets\_BsScripts\Movement\Yeon\Combat.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Yeon.Movement" Collapsed="true">
+    <Position X="12.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEkAAAACAAQBCAAAACgAAAAAAIAKBAAAAAEA=</HashCode>
+      <FileName>Assets\_BsScripts\Movement\Yeon\Movement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Yeon.BlessData" Collapsed="true">
+    <Position X="38.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAgAAAAgBAAAQAAAAAAAAAAABAEAAAAEA=</HashCode>
+      <FileName>Assets\_BsScripts\Yeon\Bless\Bless.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEditor.ReadOnlyAttributeDrawer" Collapsed="true">
+    <Position X="35.25" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\ReadOnlyAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IDamage" Collapsed="true">
+    <Position X="31.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\_Interface\IDamage.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="IDamage&lt;T&gt;" Collapsed="true">
+    <Position X="33.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\_Interface\IDamage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IHealing" Collapsed="true">
+    <Position X="37" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\_Interface\IHealing.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IPoolable" Collapsed="true">
+    <Position X="38.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\_Interface\IPoolable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IBuildingAtkStats" Collapsed="true">
+    <Position X="30" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Interface\IBuildingAtkStats.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IDropable" Collapsed="true">
+    <Position X="35.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAgAAA=</HashCode>
+      <FileName>Assets\_BsScripts\Item\DropTable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MonsterType" Collapsed="true">
+    <Position X="31.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAgAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_BsScripts\MonsterScript\MonsterData\Base\MonsterData.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BSLayerMasks" Collapsed="true">
+    <Position X="30" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAACAAAAAAAAAAAAACAAAAAAAgAAAQAAEAA=</HashCode>
+      <FileName>Assets\_BsScripts\Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="맑은 고딕" Size="10" />
 </ClassDiagram>

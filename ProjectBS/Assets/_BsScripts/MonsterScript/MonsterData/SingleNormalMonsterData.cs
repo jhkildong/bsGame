@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NM_Single_", menuName = "Monster/NormalMonster/Single", order = 0)]

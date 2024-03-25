@@ -37,7 +37,7 @@ public abstract class Monster : Combat, IDropable
         attackMask = (int)(BSLayerMasks.Player | BSLayerMasks.Building);
         gameObject.layer = (int)Mathf.Log((int)BSLayerMasks.Monster, 2);
         //DeadAct.AddListener(WillDrop);
-        myAnim = Instantiate(data.Prefab, this.transform).GetComponent<Animator>(); //자식으로 몬스터의 프리팹 생성
+        Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
         //임시
         PlayerTransform = GameObject.Find("Player").transform;
         myTarget = PlayerTransform;
@@ -94,7 +94,7 @@ public abstract class Monster : Combat, IDropable
         {
             case State.Chase:
                 //playTime = 0.0f;
-                myAnim.SetBool(AnimParam.isMoving, true);
+                MyAnim.SetBool(AnimParam.isMoving, true);
                 break;
             case State.Attack:
                 worldMoveDir = Vector3.zero;

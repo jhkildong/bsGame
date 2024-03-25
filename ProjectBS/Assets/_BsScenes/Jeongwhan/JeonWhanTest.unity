@@ -1696,11 +1696,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751423704}
   m_CullTransparentMesh: 1
---- !u!198 &1751599659 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3724192508554018544, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
-  m_PrefabInstance: {fileID: 2047260756472415900}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1751599662 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3724192508554018543, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
@@ -3249,11 +3244,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _maxHP: 100
+  _curHp: 1
   _speedCeof: 1
   _attackCeof: 1
   _attack: 100
-  _curHp: 1
-  myParticle: {fileID: 1751599659}
   myCharacter: {fileID: 595880030}
 --- !u!114 &4273071552900180825
 MonoBehaviour:
