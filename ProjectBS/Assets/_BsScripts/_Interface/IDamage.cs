@@ -6,3 +6,8 @@ public interface IDamage
 {
     void TakeDamage(short dmg);
 }
+
+public interface IDamage<T> where T : MonoBehaviour
+{
+    void TakeDamage(short dmg);
+}
