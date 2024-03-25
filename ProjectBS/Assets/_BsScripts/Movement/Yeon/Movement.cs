@@ -38,7 +38,7 @@ namespace Yeon
             if(TryGetComponent(out rBody) == false)
             {
                 rBody = gameObject.AddComponent<Rigidbody>();
-                rBody.useGravity = false;
+                //rBody.useGravity = false;
                 rBody.freezeRotation = true;
             }
         }

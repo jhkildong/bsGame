@@ -15,7 +15,7 @@ MonoBehaviour:
   _id: 2
   _name: Corbra
   _attack: 0
-  _attackDelay: 100
+  _attackDelay: 1
   _speed: 0.7
   _maxHp: 20
   _exp: 10

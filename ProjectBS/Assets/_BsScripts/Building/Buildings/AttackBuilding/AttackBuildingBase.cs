@@ -7,8 +7,6 @@ public class AttackBuildingBase : Building
 {
     // Start is called before the first frame update
 
-
-
     [SerializeField]protected GameObject target;
     protected List<Transform> detectedObj = new List<Transform>();
     public bool atkDelaying;
@@ -19,14 +17,14 @@ public class AttackBuildingBase : Building
     public List<GameObject> effectList; //
     public Transform effectPool; //오브젝트 풀링 될 초기 위치. 
 
-    public UnityEvent AtkEvent;
+    public UnityEvent AtkEvent; //AtkDelay 에서 Invoke
 
 
     protected short _attackPower;// 공격가능한 건물의 공격력
     public float _attackDelay;  // 건물의 공격 딜레이
     protected float _attackRadius; // 건물의 공격 반지름 (좌표 범위형 공격)
     protected float _attackProjectileSize; //건물의 투사체 사이즈 (투사체형 공격)
-
+    protected Vector3 _attackBoxSize;
     /*
     public short Damage
     {
@@ -41,8 +39,6 @@ public class AttackBuildingBase : Building
         _attackDelay = Data.attackDelay;
         _attackRadius = Data.attackRadius;
         _attackProjectileSize = Data.attackProjectileSize;
-
-
         Debug.Log("attackbuilding" + _constTime);
     }
 
@@ -131,14 +127,7 @@ public class AttackBuildingBase : Building
                 atkDelaying = true;
                 StartCoroutine(AtkDelay(_attackDelay));
             }
-
-
-
         }
-
-
-
-
     }
 
     IEnumerator AtkDelay(float delay)
@@ -161,16 +150,6 @@ public class AttackBuildingBase : Building
 
     protected void InstEffects() // 이펙트 오브젝트 풀링 (생성)
     {
-        /*
-        for (int i = 0; i < 5; i++)
-        {
-            GameObject eft = Instantiate(atkEffect, effectPool);
-
-            effectList.Add(eft);
-            eft.SetActive(false);
-        }
-        */
-
         GameObject eft = Instantiate(atkEffect, effectPool);
 
         effectList.Add(eft);
@@ -196,16 +175,6 @@ public class AttackBuildingBase : Building
     */
 
 
-
-
-
-    /*
-    public short SetDmg()
-    {
-        return  _attackPower;
-    }
-    */
-
     public short SetDmg()
     {
         return _attackPower;
@@ -217,6 +186,10 @@ public class AttackBuildingBase : Building
     public float SetAtkProjectileSize()
     {
         return _attackProjectileSize;
+    }
+    public Vector3 SetBoxSize()
+    {
+        return _attackBoxSize;
     }
 
 

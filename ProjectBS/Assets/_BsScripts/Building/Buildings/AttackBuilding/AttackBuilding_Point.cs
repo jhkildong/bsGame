@@ -13,9 +13,7 @@ public class AttackBuilding_Point : AttackBuildingBase
 
     protected void PointAttack()
     {
-
         SetActivePointAtkEffect();
-
     }
 
     void SetActivePointAtkEffect()
@@ -30,13 +28,11 @@ public class AttackBuilding_Point : AttackBuildingBase
                 break;
             }
 
-
             else
             {
                 if (i == effectList.Count - 1)
                 {
                     InstEffects();
-                    Debug.Log("QDSFSADF");
                 }
                 continue;
             }
