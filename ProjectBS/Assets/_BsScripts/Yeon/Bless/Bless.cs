@@ -18,9 +18,9 @@ namespace Yeon
         [SerializeField] private GameObject _prefab;    // 축복 프리팹
 
         /// <summary> 타입에 맞는 새로운 몬스터 생성 </summary>
-        public GameObject CreateClone()
+        /*public GameObject CreateClone()
         {
             
-        }
+        }*/
     }
 }
