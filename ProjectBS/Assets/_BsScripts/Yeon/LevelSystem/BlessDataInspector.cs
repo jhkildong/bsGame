@@ -22,10 +22,11 @@ namespace Yeon
                 var tabMessages = new TabMessage[_blessData.LevelAttributes.TFieldNames.Length];
                 for (int i = 0; i < _blessData.LevelAttributes.TFieldNames.Length; i++)
                 {
+                    int index = i;
                     string fieldName = _blessData.LevelAttributes.TFieldNames[i];
                     tabMessages[i] = new TabMessage(fieldName,
-                        () => { _blessData.LevelAttributes.CreateFieldArray(i); },
-                        () => { _blessData.LevelAttributes.RemoveFieldArray(i); });
+                        () => { _blessData.LevelAttributes.CreateFieldArray(index); },
+                        () => { _blessData.LevelAttributes.RemoveFieldArray(index); });
                 }
                 tabComponent = new TabComponent(tabMessages);
             }
@@ -44,16 +45,6 @@ namespace Yeon
             {
                 EditorUtility.SetDirty(_blessData);
             }
-        }
-
-        private void OnDisable()
-        {
-            /*
-            if (tabComponent != null)
-            {
-                tabComponent.Destroy();
-            }
-            */
         }
     }
 }
