@@ -60,7 +60,7 @@ namespace Yeon
             var fieldInfo = TFieldInfos.ElementAt(index);
             string fieldName = fieldInfo.Name;
 
-            if (LevelUpInfo[i].Attribute == fieldName)
+            //if (LevelUpInfo[i].Attribute == fieldName)
                 return;
 
             LevelUpInfo.Add(new Info(fieldName));
