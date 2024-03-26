@@ -2,23 +2,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Yeon
 {
     [Serializable]
-    public class LevelAttribute<T>
+    public class LevelAttribute
     {
         static int MaxLevel = 7;
-        [SerializeField]private List<Info> LevelUpInfo = new List<Info>();
+        private int _id;
+        private Type _type;
+        [SerializeField] private List<Info> LevelUpInfo = new List<Info>();
 
         [System.Serializable]
         public class Info
         {
             public string Attribute;
             public float[] LevelTable;
-            public event UnityAction action;
+            public UnityAction<float> LevelUpAct;
 
             public Info(string name)
             {
@@ -27,26 +30,47 @@ namespace Yeon
             }
         }
 
-#if UNITY_EDITOR
-        IEnumerable<FieldInfo> TFieldInfos;
-        [HideInInspector]public string[] TFieldNames;
-
-        public LevelAttribute()
+        public void LevelUp(int level)
         {
-            if (TFieldInfos != null) return;
-            Initilize();
+            foreach (var info in LevelUpInfo)
+            {
+                info.LevelUpAct?.Invoke(info.LevelTable[level - 1]);
+            }
         }
 
-        public void Initilize()
-        {
-            TFieldInfos = typeof(T).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).
-                Where(field => field.FieldType == typeof(int) || field.FieldType == typeof(float) || field.FieldType == typeof(short));
-            TFieldNames = new string[TFieldInfos.Count()];
-            
+#if UNITY_EDITOR
+        IEnumerable<FieldInfo> TFieldInfos;
+        IEnumerable<PropertyInfo> TPropertyInfos;
+        [HideInInspector] public string[] TFieldNames;
+        [HideInInspector] public string[] TPropertyNames;
 
-            for(int i = 0; i< TFieldInfos.Count(); i++)
+        public void Initilize(object obj, int id)
+        {
+            _type = obj.GetType();
+            _id = id;
+            //int, float, short 타입만 가져옴
+            TFieldInfos = _type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance).
+                Where(field => field.FieldType == typeof(int) || field.FieldType == typeof(float) || field.FieldType == typeof(short));
+
+            TPropertyInfos = _type.GetProperties(BindingFlags.Public | BindingFlags.Instance).
+                Where(property => property.PropertyType == typeof(int) || property.PropertyType == typeof(float) || property.PropertyType == typeof(short));
+
+
+            TFieldNames = new string[TFieldInfos.Count()];
+            TPropertyNames = new string[TPropertyInfos.Count()];
+
+            for (int i = 0; i < TFieldInfos.Count(); i++)
             {
-                TFieldNames[i] = TFieldInfos.ElementAt(i).Name;
+                StringBuilder sb = new StringBuilder("ID:");
+                sb.Append(_id.ToString());
+                TFieldNames[i] = sb.Append(TFieldInfos.ElementAt(i).Name).ToString();
+            }
+
+            for (int i = 0; i < TPropertyInfos.Count(); i++)
+            {
+                StringBuilder sb = new StringBuilder("ID:");
+                sb.Append(_id.ToString());
+                TPropertyNames[i] = sb.Append(TPropertyInfos.ElementAt(i).Name).ToString();
             }
         }
 
@@ -58,12 +82,45 @@ namespace Yeon
             }
 
             var fieldInfo = TFieldInfos.ElementAt(index);
-            string fieldName = fieldInfo.Name;
+            StringBuilder sb = new StringBuilder("ID:");
+            sb.Append(_id.ToString());
+            sb.Append(fieldInfo.Name);
 
-            //if (LevelUpInfo[i].Attribute == fieldName)
+            //중복이 있으면 리턴
+            foreach (var info in LevelUpInfo)
+            {
+                if (info.Attribute == sb.ToString())
+                {
+                    return;
+                }
+            }
+            LevelUpInfo.Add(new Info(sb.ToString()));
+        }
+
+        public void CreatePropertyArray(object obj, int index)
+        {
+            if (index < 0 || index >= TPropertyInfos.Count())
+            {
                 return;
+            }
 
-            LevelUpInfo.Add(new Info(fieldName));
+            var propertyInfo = TPropertyInfos.ElementAt(index);
+            StringBuilder sb = new StringBuilder("ID:");
+            sb.Append(_id.ToString());
+            sb.Append(propertyInfo.Name);
+            Info info = new Info(sb.ToString());
+            info.LevelUpAct = (val) => propertyInfo.SetValue(obj, val);
+            Debug.Log(info.LevelUpAct.GetMethodInfo());
+            //중복이 있으면 리턴
+            foreach (var lvInfo in LevelUpInfo)
+            {
+                if (lvInfo.Attribute == sb.ToString())
+                {
+                    return;
+                }
+            }
+
+            LevelUpInfo.Add(info);
         }
 
         public void RemoveFieldArray(int index)
@@ -74,11 +131,27 @@ namespace Yeon
             }
 
             var fieldInfo = TFieldInfos.ElementAt(index);
-            string fieldName = fieldInfo.Name;
-            LevelUpInfo.RemoveAll(info => info.Attribute == fieldName);
+            StringBuilder sb = new StringBuilder("ID:");
+            sb.Append(_id.ToString());
+            sb.Append(fieldInfo.Name);
+            LevelUpInfo.RemoveAll(info => info.Attribute == sb.ToString());
         }
 
-        public static explicit operator LevelAttribute<T>(UnityEngine.Object v)
+        public void RemovePropertyArray(int index)
+        {
+            if (index < 0 || index >= TPropertyInfos.Count())
+            {
+                return;
+            }
+
+            var propertyInfo = TPropertyInfos.ElementAt(index);
+            StringBuilder sb = new StringBuilder("ID:");
+            sb.Append(_id.ToString());
+            sb.Append(propertyInfo.Name);
+            LevelUpInfo.RemoveAll(info => info.Attribute == sb.ToString());
+        }
+
+        public static explicit operator LevelAttribute(UnityEngine.Object v)
         {
             throw new NotImplementedException();
         }

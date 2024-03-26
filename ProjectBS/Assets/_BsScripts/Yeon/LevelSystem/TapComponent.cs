@@ -24,10 +24,9 @@ namespace Yeon
                 using (new GUILayout.HorizontalScope())
                     foreach (var t in _tabs)
                         t.DrawToggle();
-
-                GUILayout.Space(10);
                 foreach (var t in _tabs)
                     t.SetAction();
+                GUILayout.Space(10);
             }
         }
     }

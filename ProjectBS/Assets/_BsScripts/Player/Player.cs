@@ -15,7 +15,7 @@ public enum BSLayerMasks
     Ground = 1 << 29
 }
 
-public class Player : Combat
+public class Player : Combat, IDamage<Player>
 {
     /// <summary>
     /// 플레이어의 키 조작을 버튼 형식으로 받음

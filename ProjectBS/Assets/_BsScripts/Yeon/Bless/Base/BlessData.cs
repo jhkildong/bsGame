@@ -14,16 +14,16 @@ namespace Yeon
         public short Ak => _attack;
         public float Size => _size;
         public GameObject Prefab => _prefab;
+        public Bless Bless => _bless;
 
         [SerializeField] private int _id;               // 축복 아이디
         [SerializeField] private string _name;          // 축복 이름
         [SerializeField] private short _attack;         // 축복 공격력
         [SerializeField] private float _size;           // 축복 크기
         [SerializeField] private GameObject _prefab;    // 축복 프리팹
+        [SerializeField] private Bless _bless;          // 축복 스크립트
 
-#if UNITY_EDITOR
-        public LevelAttribute<BlessData> LevelAttributes = new LevelAttribute<BlessData>();
-#endif
+        public LevelAttribute LevelAttribute;
 
         public GameObject CreateClone()
         {

@@ -8,16 +8,17 @@ namespace Yeon
     public class Bless : MonoBehaviour
     {   
         public BlessData Data => _data;
-        public short Ak => _attack;
-        public float Size => _size;
-        public short Amount => _amount;
-        public short Level => _level;
+        public float Ak {get => _attack; set => _attack = value;}
+        public float Size { get => _size; set => _size = value; }
+        public float Amount { get => _amount; set => _amount = value; }
+        public LevelAttribute LevelAttribute => _levelAttribute;
 
-        [SerializeField]private BlessData _data;
-        [SerializeField]private short _attack;
-        [SerializeField]private float _size;
-        [SerializeField]private short _amount;
-        [SerializeField]private short _level;
+        [SerializeField] protected BlessData _data;
+        [SerializeField] protected float _attack;
+        [SerializeField] protected float _size;
+        [SerializeField] protected float _amount;
+        [SerializeField] private short _level;
+        [SerializeField] protected LevelAttribute _levelAttribute;
 
         public void Init(BlessData data)
         {

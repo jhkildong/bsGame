@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d03fbb1d3612ff4092b86ec8f51215a, type: 3}
+  m_Name: Bless_
+  m_EditorClassIdentifier: 
+  _id: 111
+  _name: 
+  _attack: 0
+  _size: 0
+  _prefab: {fileID: 2572208535413284431, guid: fa3db6b628310dc43b83549919cc9ce9, type: 3}
+  _bless: {fileID: 5013291277220486145, guid: fa3db6b628310dc43b83549919cc9ce9, type: 3}
+  LevelAttribute:
+    LevelUpInfo:
+    - Attribute: ID:111TestInt
+      LevelTable:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+    - Attribute: ID:111Ak
+      LevelTable:
+      - 4
+      - 6
+      - 8
+      - 9
+      - 123
+      - 2
+      - 3
+    TFieldNames:
+    - ID:111_testInt
+    - ID:111_attack
+    - ID:111_size
+    - ID:111_amount
+    TPropertyNames:
+    - ID:111TestInt
+    - ID:111Ak
+    - ID:111Size
+    - ID:111Amount
