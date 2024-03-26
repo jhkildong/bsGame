@@ -1,33 +1,42 @@
 using UnityEngine;
 using UnityEditor;
 
-
 namespace Yeon
 {
     [CustomEditor(typeof(LevelAttribute<>), true)]
     public class LevelAttributeEditor<T> : Editor
     {
-        private bool[] toggleStates;
+        LevelAttribute<T> myTarget;
+        bool[] toggleStates;
+
+        private void OnEnable()
+        {
+            myTarget = (LevelAttribute<T>)target;
+            toggleStates = new bool[myTarget.TFieldNames.Length];
+            for (int i = 0; i < myTarget.TFieldNames.Length; i++)
+            {
+                toggleStates[i] = EditorPrefs.GetBool(myTarget.TFieldNames[i], false);
+            }
+        }
 
         public override void OnInspectorGUI()
         {
-            LevelAttribute<T> myTarget = (LevelAttribute<T>)target;
-
-            if (toggleStates == null || toggleStates.Length != myTarget.TFieldNames.Length)
-            {
-                toggleStates = new bool[myTarget.TFieldNames.Length];
-            }
+            EditorGUI.BeginChangeCheck();
 
             for (int i = 0; i < myTarget.TFieldNames.Length; i++)
             {
-                toggleStates[i] = EditorGUILayout.Toggle(myTarget.TFieldNames[i], toggleStates[i]);
+                bool newState = EditorGUILayout.Toggle(myTarget.TFieldNames[i], toggleStates[i]);
+                if (newState != toggleStates[i])
+                {
+                    toggleStates[i] = newState;
+                    EditorPrefs.SetBool(myTarget.TFieldNames[i], newState);
+                }
             }
 
-            if (GUI.changed)
+            if (EditorGUI.EndChangeCheck())
             {
                 EditorUtility.SetDirty(target);
             }
         }
     }
 }
-

@@ -54,12 +54,14 @@ namespace Yeon
         {
             if (index < 0 || index >= TFieldInfos.Count())
             {
-                Debug.Log($"{index}, {TFieldInfos.Count()}");
                 return;
             }
 
             var fieldInfo = TFieldInfos.ElementAt(index);
             string fieldName = fieldInfo.Name;
+
+            if (LevelUpInfo[i].Attribute == fieldName)
+                return;
 
             LevelUpInfo.Add(new Info(fieldName));
         }

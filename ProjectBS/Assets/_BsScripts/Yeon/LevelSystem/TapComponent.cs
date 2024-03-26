@@ -11,7 +11,7 @@ namespace Yeon
     {
         private List<TabContainer> _tabs = new List<TabContainer>();
 
-        public TabComponent(params TabMessage[] drawActions)
+        public TabComponent(TabMessage[] drawActions)
         {
             foreach (var m in drawActions)
                 _tabs.Add(new TabContainer(m));
@@ -23,18 +23,12 @@ namespace Yeon
             {
                 using (new GUILayout.HorizontalScope())
                     foreach (var t in _tabs)
-                        t.DrawButton();
+                        t.DrawToggle();
 
                 GUILayout.Space(10);
                 foreach (var t in _tabs)
-                    t.DrawContent();
+                    t.SetAction();
             }
-        }
-
-        public void Destroy()
-        {
-            _tabs.ForEach(t => t.Destroy());
-            _tabs.Clear();
         }
     }
 
@@ -43,22 +37,29 @@ namespace Yeon
         public Action OnTabActivated;
         public Action OnTabDeactivated;
         public string Title;
-        bool isActivated = false;
 
         public TabMessage(string title, Action onTabActivated, Action onTabDeactivated)
         {
             Title = title;
-            isActivated = EditorPrefs.GetBool(Title, false);
-
+            bool isActivated = false;
+  
             OnTabActivated = () =>
             {
-                onTabActivated?.Invoke();
-                EditorPrefs.SetBool(Title, true);
+                if(!isActivated)
+                {
+                    isActivated = true;
+                    onTabActivated?.Invoke();
+                    EditorPrefs.SetBool(Title, true);
+                }
             };
             OnTabDeactivated = () =>
             {
-                onTabDeactivated?.Invoke();
-                EditorPrefs.SetBool(Title, false);             
+                if(isActivated)
+                {
+                    isActivated = false;
+                    onTabDeactivated?.Invoke();
+                    EditorPrefs.SetBool(Title, false);
+                }
             };
         }
     }
@@ -71,31 +72,33 @@ namespace Yeon
         public TabContainer(TabMessage message)
         {
             _message = message;
+            _state = EditorPrefs.GetBool(_message.Title, false);
         }
 
-        public bool DrawButton(Action disableRest = null)
+        public bool DrawToggle()
         {
-            bool previousState = _state;
-            _state = GUILayout.Toggle(_state, _message.Title, "Button", GUILayout.Height(50));
-            if (_state != previousState && _state)
+            bool newState = GUILayout.Toggle(_state, _message.Title, "Button", GUILayout.Height(50));
+            if (newState != _state)
             {
-                disableRest?.Invoke();
+                _state = newState;
+                EditorPrefs.SetBool(_message.Title, _state);
+                SetAction();
             }
 
             return _state;
         }
 
-        public void DrawContent()
+        public void SetAction()
         {
             if (_state)
+            {
                 _message.OnTabActivated?.Invoke();
-        }
-
-        public void Destroy()
-        {
-            _message.OnTabActivated = null;
-            _message = null;
-            _message.OnTabDeactivated = null;
+            }
+            else
+            {
+                _message.OnTabDeactivated?.Invoke();
+            }
+                
         }
     }
 }
