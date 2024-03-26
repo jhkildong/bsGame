@@ -12,9 +12,27 @@ namespace Yeon
     */
     public class Movement : MonoBehaviour
     {
-        protected Rigidbody rBody;
+        #region Component
+        private Rigidbody rBody;
         [SerializeField] protected Animator myAnim;
+        #endregion
 
+        #region Property
+        public Animator MyAnim
+        {
+            get
+            {
+                if(myAnim == null)
+                {
+                    if(!TryGetComponent(out myAnim))
+                        myAnim = GetComponentInChildren<Animator>();
+                }
+                return myAnim;
+            }
+        }
+        #endregion
+
+        #region Private Field
         [SerializeField, Range(1f, 10f), Tooltip("이동속도")]
         protected float moveSpeed = 1f;
 
@@ -24,18 +42,12 @@ namespace Yeon
 
         [SerializeField] protected Vector3 worldMoveDir;
         [SerializeField] protected float outOfControllDuration;
+        #endregion
 
-        ///<summary>시작시 rigidBody와 캡슐콜라이더 설정</summary>
-        protected virtual void Start()
-        {
-            myAnim = GetComponentInChildren<Animator>();
-            InitRigidbody();
-            InitCapsuleCollider();
-        }
-
+        #region Init Method
         private void InitRigidbody()
         {
-            if(TryGetComponent(out rBody) == false)
+            if (TryGetComponent(out rBody) == false)
             {
                 rBody = gameObject.AddComponent<Rigidbody>();
                 //rBody.useGravity = false;
@@ -56,12 +68,23 @@ namespace Yeon
                 capsule.radius = 0.5f;
             }
         }
+        #endregion
+
+        #region Unity Event
+        ///<summary>시작시 rigidBody와 캡슐콜라이더 설정</summary>
+        protected virtual void Awake()
+        {
+            InitRigidbody();
+            InitCapsuleCollider();
+        }
 
         protected virtual void FixedUpdate()
         {
             MovementToRigidbody();
         }
+        #endregion
 
+        #region Private Method
         /// <summary> 리지드바디 최종 속도 적용 </summary>
         private void MovementToRigidbody()
         {
@@ -73,13 +96,15 @@ namespace Yeon
             {
                 rBody.velocity = new Vector3(0, 0, 0);
             }
-
         }
+        #endregion
 
+        #region Public Method
         public void SetDirection(Vector3 dir)
         {
             worldMoveDir = dir;
         }
+        #endregion
     }
 
 }
