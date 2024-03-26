@@ -103,8 +103,6 @@ public class Player : Combat
         DeadAct += Death;
         CurHp = MaxHP;
         attackMask = (int)BSLayerMasks.Monster;
-
-
         #region PlayerInputsCallback Setting
         playerInputs = new PlayerInputs();
         playerInputs.Player.Attack.performed += OnAttack;
