@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForwardWeaponBullet : Weapon
+public class ForwardWeaponLD_Bullet : Weapon
 {
     public float bulletSpeed = 5.0f; // 이동 속도
 

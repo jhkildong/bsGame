@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrditalWeaponBullet : Weapon
+public class OrditalWeaponRA_Bullet : Weapon
 {
     public float rotSpeed = 1000.0f;
 
