@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace Yeon
 {
-
     [CreateAssetMenu(fileName = "Bless_", menuName = "Bless/Bless", order = 0)]
     public class BlessData : ScriptableObject
     {
-
         public int ID => _id;
         public string Name => _name;
         public short Ak => _attack;

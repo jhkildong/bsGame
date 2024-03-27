@@ -12,39 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d03fbb1d3612ff4092b86ec8f51215a, type: 3}
   m_Name: Bless_
   m_EditorClassIdentifier: 
-  _id: 111
+  _id: 0
   _name: 
   _attack: 0
   _size: 0
-  _prefab: {fileID: 2572208535413284431, guid: fa3db6b628310dc43b83549919cc9ce9, type: 3}
-  _bless: {fileID: 5013291277220486145, guid: fa3db6b628310dc43b83549919cc9ce9, type: 3}
+  _prefab: {fileID: 1713211937245518513, guid: 82f0b9c08fb4c8647a2d598d7ebbbc8f, type: 3}
+  _bless: {fileID: 5171409412122340589, guid: 82f0b9c08fb4c8647a2d598d7ebbbc8f, type: 3}
   LevelAttribute:
     LevelUpInfo:
-    - Attribute: ID:111TestInt
+    - Attribute: ID:0TestInt
       LevelTable:
       - 1
       - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-    - Attribute: ID:111Ak
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    - Attribute: ID:0Ak
       LevelTable:
-      - 4
-      - 6
-      - 8
-      - 9
-      - 123
-      - 2
       - 3
-    TFieldNames:
-    - ID:111_testInt
-    - ID:111_attack
-    - ID:111_size
-    - ID:111_amount
+      - 4
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
     TPropertyNames:
-    - ID:111TestInt
-    - ID:111Ak
-    - ID:111Size
-    - ID:111Amount
+    - ID:0TestInt
+    - ID:0Ak
+    - ID:0Size
+    - ID:0Amount

@@ -12,7 +12,24 @@ namespace Yeon
 
         public void Start()
         {
-            LevelAttribute.LevelUp(2);
+            Init(Data);
+            StartCoroutine(test());
+        }
+        
+        IEnumerator test()
+        {
+            float timer = 0.0f;
+            while(true)
+            {
+                timer -= Time.deltaTime;
+                if(timer <= 0.0f)
+                {
+                    LevelAttribute.LevelUp(2);
+                    timer = 1.0f;
+                }
+                yield return null;
+            }
+            
         }
     }
 }

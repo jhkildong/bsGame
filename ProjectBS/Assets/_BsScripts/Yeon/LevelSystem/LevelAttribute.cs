@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Yeon
 {
@@ -21,50 +20,48 @@ namespace Yeon
         {
             public string Attribute;
             public float[] LevelTable;
-            public UnityAction<float> LevelUpAct;
+            public Action<float> LevelUpAct;
 
-            public Info(string name)
+            public Info(string name, Action<float> action)
             {
                 Attribute = name;
                 LevelTable = new float[MaxLevel];
+                LevelUpAct += action;
+            }
+            public void LevelUp(int level)
+            {
+                Debug.Log(LevelTable[level - 1]);
+                LevelUpAct?.Invoke(LevelTable[level - 1]);
             }
         }
 
         public void LevelUp(int level)
         {
+            if (level < 0 || level >= MaxLevel)
+            {
+                Debug.Log("Level Out of Range");
+                return;
+            }
+
             foreach (var info in LevelUpInfo)
             {
-                info.LevelUpAct?.Invoke(info.LevelTable[level - 1]);
+                info.LevelUp(level);
             }
-        }
-
+        }   
 #if UNITY_EDITOR
-        IEnumerable<FieldInfo> TFieldInfos;
         IEnumerable<PropertyInfo> TPropertyInfos;
-        [HideInInspector] public string[] TFieldNames;
         [HideInInspector] public string[] TPropertyNames;
+
 
         public void Initilize(object obj, int id)
         {
             _type = obj.GetType();
             _id = id;
             //int, float, short 타입만 가져옴
-            TFieldInfos = _type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance).
-                Where(field => field.FieldType == typeof(int) || field.FieldType == typeof(float) || field.FieldType == typeof(short));
-
             TPropertyInfos = _type.GetProperties(BindingFlags.Public | BindingFlags.Instance).
                 Where(property => property.PropertyType == typeof(int) || property.PropertyType == typeof(float) || property.PropertyType == typeof(short));
 
-
-            TFieldNames = new string[TFieldInfos.Count()];
             TPropertyNames = new string[TPropertyInfos.Count()];
-
-            for (int i = 0; i < TFieldInfos.Count(); i++)
-            {
-                StringBuilder sb = new StringBuilder("ID:");
-                sb.Append(_id.ToString());
-                TFieldNames[i] = sb.Append(TFieldInfos.ElementAt(i).Name).ToString();
-            }
 
             for (int i = 0; i < TPropertyInfos.Count(); i++)
             {
@@ -74,67 +71,32 @@ namespace Yeon
             }
         }
 
-        public void CreateFieldArray(int index)
-        {
-            if (index < 0 || index >= TFieldInfos.Count())
-            {
-                return;
-            }
-
-            var fieldInfo = TFieldInfos.ElementAt(index);
-            StringBuilder sb = new StringBuilder("ID:");
-            sb.Append(_id.ToString());
-            sb.Append(fieldInfo.Name);
-
-            //중복이 있으면 리턴
-            foreach (var info in LevelUpInfo)
-            {
-                if (info.Attribute == sb.ToString())
-                {
-                    return;
-                }
-            }
-            LevelUpInfo.Add(new Info(sb.ToString()));
-        }
-
         public void CreatePropertyArray(object obj, int index)
         {
             if (index < 0 || index >= TPropertyInfos.Count())
             {
+                Debug.Log("Index Out of Range");
                 return;
             }
-
             var propertyInfo = TPropertyInfos.ElementAt(index);
             StringBuilder sb = new StringBuilder("ID:");
             sb.Append(_id.ToString());
             sb.Append(propertyInfo.Name);
-            Info info = new Info(sb.ToString());
-            info.LevelUpAct = (val) => propertyInfo.SetValue(obj, val);
-            Debug.Log(info.LevelUpAct.GetMethodInfo());
-            //중복이 있으면 리턴
-            foreach (var lvInfo in LevelUpInfo)
+            string attributeName = sb.ToString();
+
+            // 동일한 속성 이름을 가진 Info 객체를 찾음
+            Info info = LevelUpInfo.Find(i => i.Attribute == attributeName);
+
+            if (info == null)
             {
-                if (lvInfo.Attribute == sb.ToString())
+                // Info 객체가 없으면 새로 생성
+                info = new Info(attributeName, (float val) =>
                 {
-                    return;
-                }
+                    propertyInfo.SetValue(obj, val);
+                    Debug.Log(propertyInfo.GetValue(obj));
+                });
+                LevelUpInfo.Add(info);
             }
-
-            LevelUpInfo.Add(info);
-        }
-
-        public void RemoveFieldArray(int index)
-        {
-            if (index < 0 || index >= TFieldInfos.Count())
-            {
-                return;
-            }
-
-            var fieldInfo = TFieldInfos.ElementAt(index);
-            StringBuilder sb = new StringBuilder("ID:");
-            sb.Append(_id.ToString());
-            sb.Append(fieldInfo.Name);
-            LevelUpInfo.RemoveAll(info => info.Attribute == sb.ToString());
         }
 
         public void RemovePropertyArray(int index)
