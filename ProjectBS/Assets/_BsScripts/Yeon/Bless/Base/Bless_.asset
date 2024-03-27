@@ -19,25 +19,7 @@ MonoBehaviour:
   _prefab: {fileID: 1713211937245518513, guid: 82f0b9c08fb4c8647a2d598d7ebbbc8f, type: 3}
   _bless: {fileID: 5171409412122340589, guid: 82f0b9c08fb4c8647a2d598d7ebbbc8f, type: 3}
   LevelAttribute:
-    LevelUpInfo:
-    - Attribute: ID:0TestInt
-      LevelTable:
-      - 1
-      - 2
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    - Attribute: ID:0Ak
-      LevelTable:
-      - 3
-      - 4
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
+    LevelUpInfo: []
     TPropertyNames:
     - ID:0TestInt
     - ID:0Ak
