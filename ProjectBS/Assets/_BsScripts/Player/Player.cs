@@ -32,8 +32,8 @@ public class Player : Combat, IDamage<Player>
 
     #region WSAD switch
 
-    byte WSInput = 0b_00;
-    byte ADInput = 0b_00;
+    [SerializeField]byte WSInput = 0b_00;
+    [SerializeField]byte ADInput = 0b_00;
     private readonly byte W = 0b_01, A = 0b_01;
     private readonly byte S = 0b_10, D = 0b_10;
 
@@ -83,7 +83,9 @@ public class Player : Combat, IDamage<Player>
     }
     private void SetAnimStop(InputAction.CallbackContext context)
     {
-        if ((WSInput | ADInput) != 0) return;
+        //if ((WSInput | ADInput) != 0) return;
+        WSInput = 0;
+        ADInput = 0;
         MyAnim.SetBool(AnimParam.isMoving, false);
     }
     #endregion
@@ -92,10 +94,10 @@ public class Player : Combat, IDamage<Player>
 
     #region Private Field
     private Rig[] myRigs;
-    private ParticleSystem myParticle;
+    [SerializeField]private ParticleSystem myParticle;
     #endregion
 
-
+    #region Init Setting
     private void InitPlayerSetting()
     {
         myRigs = GetComponentsInChildren<Rig>();
@@ -119,6 +121,7 @@ public class Player : Combat, IDamage<Player>
         playerInputs.Enable();
         #endregion
     }
+    #endregion
 
 
     void Death()
@@ -150,7 +153,10 @@ public class Player : Combat, IDamage<Player>
             return;
         //입력이 없는 상태면 return
         if((WSInput | ADInput) == 0b_00)
+        {
+            moveDir = Vector3.zero;
             return;
+        }
         
         moveDir.Normalize();
         //바라보는 방향기준의 애니메이션 방향(입력받은 방향에서 바라보는 방향의 반대방향으로 회전)

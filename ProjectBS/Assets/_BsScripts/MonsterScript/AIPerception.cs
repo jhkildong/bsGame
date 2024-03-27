@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class AIPerception : MonoBehaviour
 {
-    public UnityAction<Transform> findEnemy;
-    public UnityAction lostEnemy;
+    public event UnityAction<Transform> findEnemy;
+    public event UnityAction lostEnemy;
     public LayerMask myMask;
     public Transform myTarget;
 

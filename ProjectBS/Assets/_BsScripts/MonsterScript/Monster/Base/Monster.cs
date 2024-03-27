@@ -8,25 +8,43 @@ using Yeon;
 [RequireComponent(typeof(DropTable))]
 public abstract class Monster : Combat, IDropable, IDamage<Monster>
 {
-    Transform PlayerTransform;
-
+    #region Public Field
     public event UnityAction<Transform> DeadTransformAct;
-    [SerializeField] private MonsterData _data;
+    #endregion
+
+    #region Property
     public MonsterData Data => _data;
+    public float AttackDelay => Data.AkDelay;
+    public float CurAttackDelay { get => _curAttackDelay; set => _curAttackDelay = value; }
+    public bool isAttack => CurAttackDelay < AttackDelay;
+    #endregion
+
+    #region Private Field
+    [SerializeField] protected MonsterData _data;
+    [SerializeField] private float _curAttackDelay;
+    #endregion
+
+    #region Interface Method
     public List<dropItem> dropItems() => Data.DropItemList;
     public void WillDrop()
     {
         //GameObject go = ItemManager.Instance.A(dropItems());
         //go.transform.position = this.transform.position;
     }
-   
-    /// <summary>몬스터 공격딜레이</summary>
-    public float AttackDelay => Data.AkDelay;
 
-    [SerializeField]private float _curAttackDelay;
-    public float CurAttackDelay{ get => _curAttackDelay; set => _curAttackDelay = value; }
-    public bool isAttack => CurAttackDelay < AttackDelay;
+    public override void TakeDamage(short damage)
+    {
+        base.TakeDamage(damage);
+        if (CurHp <= 0)
+        {
+            DeadTransformAct?.Invoke(this.transform);
+        }
+    }
+    //임시
+    Transform PlayerTransform;
+    #endregion
 
+    #region Init Method
     public virtual void Init(MonsterData data)
     {
         _data = data;
@@ -43,16 +61,9 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>
         myTarget = PlayerTransform;
         DeadAct += Death;
     }
-    public override void TakeDamage(short damage)
-    {
-        base.TakeDamage(damage);
-        if(CurHp <=0)
-        {
-            DeadTransformAct?.Invoke(this.transform);
-        }
-    }
+    #endregion
 
-
+    #region Unity Start Event
     protected override void Awake()
     {
         base.Awake();
@@ -68,15 +79,35 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>
         playTime = 0.0f;
         ChangeState(State.Chase);
     }
+    #endregion
 
-    private DropTable dropTable;
+    #region Private Method
+    
     void Death()
     {
         myAnim.SetBool(AnimParam.isMoving, false);
         myAnim.SetTrigger(AnimParam.Death);
         ChangeState(State.Death);
+        //임시
+        DropTable dropTable = new DropTable();
         dropTable.WillDrop(dropItems()).transform.position = this.transform.position + new Vector3(0f, 0.3f, 0f);
     }
+
+    protected void ChangeTarget(Transform target)
+    {
+        if (myState == State.Death) return;
+        myTarget = target;
+        ChangeState(State.Chase);
+
+    }
+
+    protected void ResetTarget()
+    {
+        if (myState == State.Death) return;
+        myTarget = PlayerTransform;
+    }
+
+    #endregion
 
     #region Monster StateMachine
     public enum State
@@ -134,16 +165,9 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>
         }
     }
 
-    IEnumerator DelayChangeState(State s, float t)
+        void Update()
     {
-        yield return new WaitForSeconds(t);
-        ChangeState(s);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(myTarget == null)
+        if (myTarget == null)
             ResetTarget();
         Vector3 targetDirection = myTarget.position - transform.position;
         targetDirection.y = 0.0f;
@@ -156,21 +180,9 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>
     {
         base.FixedUpdate();
     }
+    #endregion
 
-    public void ChangeTarget(Transform target)
-    {
-        if (myState == State.Death) return;
-        myTarget = target;
-        ChangeState(State.Chase);
-        
-    }
-    
-    public void ResetTarget()
-    {
-        if (myState == State.Death) return;
-        myTarget = PlayerTransform;
-    }
-
+    #region Collision Event
     private void OnCollisionEnter(Collision collision)
     {
         if ((attackMask & (1 << collision.gameObject.layer)) != 0)
@@ -193,7 +205,5 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>
         TakeDamage(MaxHP);
         ChangeState(State.Death);
     }
-
     #endregion
-
 }

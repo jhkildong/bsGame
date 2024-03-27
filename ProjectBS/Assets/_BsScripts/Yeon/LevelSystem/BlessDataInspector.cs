@@ -1,61 +1,86 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using System.Linq;
-using System.Reflection;
 
 
 namespace Yeon
 {
+    /// <summary>
+    /// BlessData의 인스펙터를 커스터마이징
+    /// </summary>
     [CustomEditor(typeof(BlessData))]
     public class BlessDataInspector : Editor
     {
         private BlessData _blessData;
         private Bless _bless;
         private TabComponent tabComponent;
-        private TabComponent tabComponent1;
 
         private void OnEnable()
         {
-            if ((_blessData = (BlessData)target) == null)
-                return;
-            if ((_bless = _blessData.Bless) == null)
-                return;
-            _blessData.LevelAttribute = _bless.LevelAttribute;
-            _bless.LevelAttribute.Initilize(_bless, _blessData.ID);
-            if(_bless.LevelAttribute != null && _bless.LevelAttribute.TPropertyNames != null && tabComponent == null)
+            _blessData = (BlessData)target;
+            _bless = _blessData.Bless;
+
+            //ScriptalbeObject에 바인딩 안되있으면 리턴
+            if ((_blessData = (BlessData)target) == null || (_bless = _blessData.Bless) == null)
             {
-                TabMessage[] tabMessages = new TabMessage[_bless.LevelAttribute.TPropertyNames.Length];
-                for (int i = 0; i < _bless.LevelAttribute.TPropertyNames.Length; i++)
+                Debug.Log("BlessData or Bless is null");
+                return;
+            }
+
+            //BlessData의 LevelAttribute가 Bless클래스의 LevelAttribute를 참조하도록 설정(Editor에서만 사용)
+            _blessData.LevelAttribute = _bless.LevelAttribute;
+            
+            //_bless의 LevelAttribute가 null인경우
+            if(_bless.LevelAttribute == null)
+            {
+                _bless.LevelAttribute.Initialize1(_bless);
+            }
+            //LevelAttribute가 null이 아닌경우(필드 비교(Reflection)해서 다르면 초기화)
+            else
+            {
+                _bless.LevelAttribute.Initialize2(_bless);
+            }
+            //LevelAttribute가 있고, Public Property가 있을 경우 TabComponent 생성
+            if(_bless.LevelAttribute != null && _bless.LevelAttribute.PropertyNames != null)
+            {
+                TabMessage[] tabMessages = new TabMessage[_bless.LevelAttribute.PropertyNames.Length];
+                for (int i = 0; i < _bless.LevelAttribute.PropertyNames.Length; i++)
                 {
                     int index = i;
-                    string propertyName = _bless.LevelAttribute.TPropertyNames[i];
+                    string propertyName = _bless.LevelAttribute.PropertyNames[i];
                     tabMessages[i] = new TabMessage(propertyName,
-                                               () => { _bless.LevelAttribute.CreatePropertyArray(_bless, index); },
+                                               () => { _bless.LevelAttribute.CreatePropertyArray(index); },
                                                () => { _bless.LevelAttribute.RemovePropertyArray(index); });
                 }
-                tabComponent = new TabComponent(tabMessages);
+                tabComponent = new TabComponent(tabMessages, _bless.LevelAttribute.States);
             }
-            {
-                TabMessage[] tabMessages = new TabMessage[1];
-                tabMessages[0] = new TabMessage("Level2", () => { _bless.LevelAttribute.LevelUp(2); }, () => { });
-                tabComponent1 = new TabComponent(tabMessages);
-            }
-        }
             
+        }
+
+        private void OnDisable()
+        {
+            if (_bless != null)
+                EditorUtility.SetDirty(_bless);
+            _bless = null;
+            if (_blessData != null)
+                EditorUtility.SetDirty(_blessData);
+            _blessData = null;
+            tabComponent?.Destroy();
+        }
+
 
         public override void OnInspectorGUI()
         {
+            serializedObject.Update();
+
             DrawDefaultInspector();
             tabComponent?.Draw();
-            tabComponent1?.Draw();
 
-            if (EditorGUI.EndChangeCheck())
+            serializedObject.ApplyModifiedProperties();
+
+            if(GUI.changed)
             {
-                // 변경 사항이 있으면 오브젝트를 'dirty'로 표시하여 변경 사항을 저장합니다.
-                EditorUtility.SetDirty(_blessData);
                 EditorUtility.SetDirty(_bless);
+                EditorUtility.SetDirty(_blessData);
             }
         }
     }

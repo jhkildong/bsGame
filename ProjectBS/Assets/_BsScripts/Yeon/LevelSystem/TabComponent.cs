@@ -2,19 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 
 namespace Yeon
 {
     public class TabComponent
     {
-        private List<TabContainer> _tabs = new List<TabContainer>();
+        [SerializeField] private List<TabContainer> _tabs = new List<TabContainer>();
+        [SerializeField] private bool[] toggleStates;
 
-        public TabComponent(TabMessage[] drawActions)
+        public TabComponent(TabMessage[] drawActions, bool[] states)
         {
             foreach (var m in drawActions)
                 _tabs.Add(new TabContainer(m));
+            toggleStates = states;
         }
 
         public void Draw()
@@ -22,12 +23,18 @@ namespace Yeon
             using (new GUILayout.VerticalScope())
             {
                 using (new GUILayout.HorizontalScope())
-                    foreach (var t in _tabs)
-                        t.DrawToggle();
+                    for (int i = 0; i < _tabs.Count; i++)
+                    {
+                        toggleStates[i] = _tabs[i].DrawToggle(toggleStates[i]);
+                    }
                 foreach (var t in _tabs)
                     t.SetAction();
-                GUILayout.Space(10);
             }
+        }
+        public void Destroy()
+        {
+            _tabs.ForEach(t => t.Destroy());
+            _tabs.Clear();
         }
     }
 
@@ -40,25 +47,14 @@ namespace Yeon
         public TabMessage(string title, Action onTabActivated, Action onTabDeactivated)
         {
             Title = title;
-            bool isActivated = false;
-  
+
             OnTabActivated = () =>
             {
-                if(!isActivated)
-                {
-                    isActivated = true;
-                    onTabActivated?.Invoke();
-                    EditorPrefs.SetBool(Title, true);
-                }
+                onTabActivated?.Invoke();
             };
             OnTabDeactivated = () =>
             {
-                if(isActivated)
-                {
-                    isActivated = false;
-                    onTabDeactivated?.Invoke();
-                    EditorPrefs.SetBool(Title, false);
-                }
+                onTabDeactivated?.Invoke();
             };
         }
     }
@@ -66,24 +62,22 @@ namespace Yeon
     public class TabContainer
     {
         private TabMessage _message;
-        private bool _state;
+        private bool _state = false;
 
         public TabContainer(TabMessage message)
         {
             _message = message;
-            _state = EditorPrefs.GetBool(_message.Title, false);
         }
 
-        public bool DrawToggle()
+        public bool DrawToggle(bool state)
         {
-            bool newState = GUILayout.Toggle(_state, _message.Title, "Button", GUILayout.Height(50));
+            _state = state;
+            bool newState = GUILayout.Toggle(_state, _message.Title, GUI.skin.button, GUILayout.Height(30));
             if (newState != _state)
             {
                 _state = newState;
-                EditorPrefs.SetBool(_message.Title, _state);
                 SetAction();
             }
-
             return _state;
         }
 
@@ -97,7 +91,12 @@ namespace Yeon
             {
                 _message.OnTabDeactivated?.Invoke();
             }
-                
+        }
+        public void Destroy()
+        {
+            _message.OnTabActivated = null;
+            _message.OnTabDeactivated = null;
+            _message = null;
         }
     }
 }

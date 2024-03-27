@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class GroupNormalMonster : NormalMonster
 {
-    public GroupNormalMonsterData GroupData { get; private set; }
+    public GroupNormalMonsterData GroupData => _data as GroupNormalMonsterData;
 
     public override void Init(MonsterData data)
     {
         base.Init(data);
-        GroupData = (data as GroupNormalMonsterData);
     }
 
 }
