@@ -50,25 +50,7 @@ MonoBehaviour:
   _amount: 0
   _level: 2
   _levelAttribute:
-    LevelUpInfo:
-    - Attribute: ID:0TestInt
-      LevelTable:
-      - 1
-      - 2
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    - Attribute: ID:0Ak
-      LevelTable:
-      - 3
-      - 4
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
+    LevelUpInfo: []
     TPropertyNames:
     - ID:0TestInt
     - ID:0Ak
