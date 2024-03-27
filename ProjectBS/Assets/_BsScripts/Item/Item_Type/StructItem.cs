@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(increaseStruct))]
 public class StructItem : Item
 {
     public StructItemData StructItemData { get; private set; }
