@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.Log("싱글톤 인스턴스가 없습니다");
                 }
-
             }
             return _instance;
         }
@@ -84,8 +83,6 @@ public class GameManager : MonoBehaviour
                 checkAMPMTime = 0;
                 ChangeToDay();
             }
-
-            
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)&& !gameOver)
@@ -136,26 +133,26 @@ public class GameManager : MonoBehaviour
         Debug.Log("밤이 되었습니다.");
     }
 
-    void ChangeWood(int num)
+    public void AddWood(int num)
     {
         myWood += num;
         //UI로 나타낼 코드 추가 필요
         Debug.Log($"나무 갯수 변동 {myWood}");
     }
-    void ChangeStone(int num)
+    public void AddStone(int num)
     {
         myStone += num;
         //UI로 나타낼 코드 추가 필요
         Debug.Log($"돌 갯수 변동 {myStone}");
     }
-    void ChangeIron(int num)
+    public void AddIron(int num)
     {
         myIron += num;
         //UI로 나타낼 코드 추가 필요
         Debug.Log($"철 갯수 변동 {myIron}");
     }
 
-    void ChangeGold(int num)
+    public void AddGold(int num)
     {
         myIron += num;
         //UI로 나타낼 코드 추가 필요
