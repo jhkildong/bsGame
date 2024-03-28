@@ -1828,6 +1828,9 @@ MonoBehaviour:
   _speedCeof: 1
   _attackCeof: 1
   _attack: 0
+  WSInput: 0
+  ADInput: 0
+  myParticle: {fileID: 0}
   myCharacter: {fileID: 0}
 --- !u!1 &1247248060
 GameObject:

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fc1e9bb1e24dd4581c0c5e0129fae9, type: 3}
   m_Name: Item_Struct_ Stone
   m_EditorClassIdentifier: 
+  description: "\uB3CC\uC785\uB2C8\uB2E4..."
   _id: 3
   _name: stonne
   _value: 1
