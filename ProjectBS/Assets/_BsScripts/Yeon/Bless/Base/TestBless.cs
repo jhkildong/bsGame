@@ -7,11 +7,12 @@ public class TestBless : Yeon.Bless
 {
     public float testValue { get => _testValue; set => _testValue = value; }
 
-    private float _testValue;
+    [SerializeField]private float _testValue;
 
     // Start is called before the first frame update
     void Start()
     {
+        LevelProp.SetAct();
         LevelProp.LevelUp(2);
     }
 

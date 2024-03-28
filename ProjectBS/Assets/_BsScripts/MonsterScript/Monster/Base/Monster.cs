@@ -144,7 +144,9 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>
         switch (myState)
         {
             case State.Chase:
-                worldMoveDir = transform.forward;
+                Vector3 dir = transform.forward;
+                dir.y = 0;
+                SetDirection(dir.normalized);
                 break;
             case State.Attack:
                 playTime -= Time.deltaTime;
@@ -165,14 +167,20 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>
         }
     }
 
-        void Update()
+    void Update()
     {
+        //타겟이 없어지면 플레이어를 타겟으로 설정
         if (myTarget == null)
             ResetTarget();
+
+        //타겟을 향해 부드럽게 방향전환
         Vector3 targetDirection = myTarget.position - transform.position;
         targetDirection.y = 0.0f;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection.normalized);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+
+        //
+        Physics.Raycast(transform.position, targetDirection, 0.5f);
         StateProcess();
     }
 

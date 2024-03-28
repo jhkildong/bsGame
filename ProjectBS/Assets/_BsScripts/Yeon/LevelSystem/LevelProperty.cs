@@ -62,7 +62,7 @@ namespace Yeon
 
             public void LevelUp(int level)
             {
-                LevelUpAct?.Invoke(Table[level]);
+                LevelUpAct?.Invoke(Table[level - 1]);
             }
         }
 
