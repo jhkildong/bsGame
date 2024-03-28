@@ -42,7 +42,7 @@ namespace Yeon
         }
 
 #if UNITY_EDITOR
-        [SerializeField] public LevelProperty LevelAttribute;
+        [SerializeField] public LevelProperty LevelProp;
 #endif
     }
 }

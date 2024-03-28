@@ -17,7 +17,7 @@ namespace Yeon
         public float Ak {get => _attack; set => _attack = value;}
         public float Size { get => _size; set => _size = value; }
         public float Amount { get => _amount; set => _amount = value; }
-        public LevelProperty LevelAttribute => _levelAttribute;
+        public LevelProperty LevelProp => _levelProp;
         #endregion
 
         #region Field
@@ -26,7 +26,7 @@ namespace Yeon
         [SerializeField] protected float _size;
         [SerializeField] protected float _amount;
         [SerializeField] private short _level;
-        [SerializeField, ReadOnly] protected LevelProperty _levelAttribute;
+        [SerializeField, ReadOnly] protected LevelProperty _levelProp;
         #endregion
 
         public void Init(BlessData data)

@@ -26,32 +26,32 @@ namespace Yeon
                 return;
             }
 
-            //BlessData의 LevelAttribute가 Bless클래스의 LevelAttribute를 참조하도록 설정(Editor에서만 사용)
-            _blessData.LevelAttribute = _bless.LevelAttribute;
+            //BlessData의 LevelProp가 Bless클래스의 LevelProp를 참조하도록 설정(Editor에서만 사용)
+            _blessData.LevelProp = _bless.LevelProp;
             
-            //_bless의 LevelAttribute가 null인경우
-            if(_bless.LevelAttribute == null)
+            //_bless의 LevelProp가 null인경우
+            if(_bless.LevelProp == null)
             {
-                _bless.LevelAttribute.Initialize1(_bless);
+                _bless.LevelProp.Initialize1(_bless);
             }
-            //LevelAttribute가 null이 아닌경우(필드 비교(Reflection)해서 다르면 초기화)
+            //LevelProp가 null이 아닌경우(필드 비교(Reflection)해서 다르면 초기화)
             else
             {
-                _bless.LevelAttribute.Initialize2(_bless);
+                _bless.LevelProp.Initialize2(_bless);
             }
-            //LevelAttribute가 있고, Public Property가 있을 경우 TabComponent 생성
-            if(_bless.LevelAttribute != null && _bless.LevelAttribute.PropertyNames != null)
+            //LevelProp가 있고, Public Property가 있을 경우 TabComponent 생성
+            if(_bless.LevelProp != null && _bless.LevelProp.PropertyNames != null)
             {
-                TabMessage[] tabMessages = new TabMessage[_bless.LevelAttribute.PropertyNames.Length];
-                for (int i = 0; i < _bless.LevelAttribute.PropertyNames.Length; i++)
+                TabMessage[] tabMessages = new TabMessage[_bless.LevelProp.PropertyNames.Length];
+                for (int i = 0; i < _bless.LevelProp.PropertyNames.Length; i++)
                 {
                     int index = i;
-                    string propertyName = _bless.LevelAttribute.PropertyNames[i];
+                    string propertyName = _bless.LevelProp.PropertyNames[i];
                     tabMessages[i] = new TabMessage(propertyName,
-                                               () => { _bless.LevelAttribute.CreatePropertyArray(index); },
-                                               () => { _bless.LevelAttribute.RemovePropertyArray(index); });
+                                               () => { _bless.LevelProp.CreatePropertyArray(index); },
+                                               () => { _bless.LevelProp.RemovePropertyArray(index); });
                 }
-                tabComponent = new TabComponent(tabMessages, _bless.LevelAttribute.States);
+                tabComponent = new TabComponent(tabMessages, _bless.LevelProp.States);
             }
             
         }
