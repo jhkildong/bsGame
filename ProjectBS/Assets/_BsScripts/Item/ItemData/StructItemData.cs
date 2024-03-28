@@ -6,7 +6,7 @@ using UnityEngine;
 public class StructItemData : ItemData
 {
     public itemtype TypeOfItem = itemtype.structure;
-    public enum struct_mat { wood, stone, steel}
+    public enum struct_mat { None, wood, stone, steel}
     public struct_mat TypeOfMaterial;
 
 

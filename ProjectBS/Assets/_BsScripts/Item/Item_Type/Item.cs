@@ -11,7 +11,6 @@ public abstract class Item : MonoBehaviour
 
     public virtual void Init(ItemData data)
     {
-        //GameObject go= data.CreateItem();
         Instantiate(data.ItemPrefab, transform);
         this.gameObject.layer = 17;
     }
