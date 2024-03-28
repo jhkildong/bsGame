@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yeon;
 
-public class ForwardWeaponBOTCA_Bullet : Bless
+public class OrditalWeaponBOTS_Bullet : Bless
 {
-    public float bulletSpeed = 5.0f; // 이동 속도
-
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
+        
     }
 }
