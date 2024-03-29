@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ForwardWeaponBOTCA : MonoBehaviour
 {
+    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
     public Transform myTarget; // 따라갈 타겟
     public Transform myRotate; // 따라서 회전할 타겟
     public GameObject weaponPrefab; // 생성할 프리팹
@@ -142,7 +143,7 @@ public class ForwardWeaponBOTCA : MonoBehaviour
     private void SpawnWeapon()
     {
         GameObject swordBullet = Instantiate(weaponPrefab, transform.position, transform.rotation);
-        swordBullet.transform.SetParent(null);
+        swordBullet.transform.SetParent(clonesParent);
         Rigidbody SwordRigidbody = swordBullet.GetComponent<Rigidbody>();
     }
 }

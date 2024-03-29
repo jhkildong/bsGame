@@ -250,7 +250,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c9a61b7dfb4b44f95cc8476252fa13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 0
+  _data: {fileID: 0}
+  _attack: 0
+  _size: 0
+  _amount: 0
+  _level: 0
+  _levelProp:
+    states: 
+    _levelTables: []
+    SerializablePropertyInfos: []
+    PropertyNames: []
   bulletSpeed: 5
 --- !u!1 &3525773758380115628
 GameObject:
