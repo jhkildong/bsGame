@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemFollow : MonoBehaviour
+public class magnetM : MonoBehaviour
 {
     Transform target;
     Vector3 dir;
@@ -10,12 +10,13 @@ public class ItemFollow : MonoBehaviour
     float elapseTime;
     float accle = 2f;
     float willDie;
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
 
     void Update()
-    {
-        
-    }
-    private void OnTriggerStay(Collider other)
     {
         if (target != null)
         {
@@ -23,6 +24,9 @@ public class ItemFollow : MonoBehaviour
             elapseTime += Time.deltaTime;
             dir = target.position - transform.position;
             transform.position += dir.normalized * movespeed * Time.deltaTime;
+            //Debug.Log(Time.deltaTime);
+            //movespeed += 1f;
+            //transform.position = target.position;
             if (Vector3.Distance(target.position, transform.position) < willDie)
             {
                 Eat();
@@ -32,18 +36,14 @@ public class ItemFollow : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        SphereCollider sphereCollider = other.GetComponent<SphereCollider>();
-        if (sphereCollider != null)
-        {
-            willDie = other.GetComponent<CapsuleCollider>().radius;
-            movespeed = other.GetComponent<wasdMoving>().moveSpeed + other.GetComponent<SphereCollider>().radius;
-            target = other.transform;
-            Debug.Log("Item is following..");
-        }
+        willDie = other.GetComponent<CapsuleCollider>().radius;
+        movespeed = other.GetComponent<wasdMoving>().moveSpeed + other.GetComponent<SphereCollider>().radius;
+        target = other.transform;
+        //transform.position = target.position;
     }
     void Eat()
     {
         Destroy(gameObject);
-        Debug.Log(gameObject + "을(를) 얻었다..!");
+        Debug.Log(gameObject);
     }
 }
