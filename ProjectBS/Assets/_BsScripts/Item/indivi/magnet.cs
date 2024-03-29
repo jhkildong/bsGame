@@ -5,19 +5,24 @@ using UnityEngine;
 public class magnet : MonoBehaviour
 {
     private float originalRadius;
+    private float targetRadius;
     public float increaseAmount = 1.0f;
+    public float returnTime = 2f;
 
     private void OnTriggerEnter(Collider other)
     {
-        originalRadius = other.GetComponent<SphereCollider>().radius;
-        Debug.Log(originalRadius);
-        other.GetComponent<SphereCollider>().radius += increaseAmount;
-        Debug.Log("자성이 올라감.");
+        if (other.GetComponent<SphereCollider>() != null)
+        {
+            originalRadius = other.GetComponent<SphereCollider>().radius;
+            //other.GetComponent<SphereCollider>().radius += increaseAmount;
+            Debug.Log("커짐");
+            //StartCoroutine(ReturnToOriginalSize(other.GetComponent<SphereCollider>()));
+        }
     }
-
-    private void OnTriggerExit(Collider other)
+    private IEnumerator ReturnToOriginalSize(SphereCollider collider)
     {
-        other.GetComponent<SphereCollider>().radius = originalRadius;
+        new WaitForSeconds(returnTime);
         Debug.Log("자성이 원래대로 돌아감.");
+        yield return collider.radius = originalRadius;
     }
 }
