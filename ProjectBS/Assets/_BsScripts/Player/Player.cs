@@ -83,9 +83,7 @@ public class Player : Combat, IDamage<Player>
     }
     private void SetAnimStop(InputAction.CallbackContext context)
     {
-        //if ((WSInput | ADInput) != 0) return;
-        WSInput = 0;
-        ADInput = 0;
+        if ((WSInput | ADInput) != 0) return;
         MyAnim.SetBool(AnimParam.isMoving, false);
     }
     #endregion
@@ -94,7 +92,7 @@ public class Player : Combat, IDamage<Player>
 
     #region Private Field
     private Rig[] myRigs;
-    [SerializeField]private ParticleSystem myParticle;
+    [SerializeField]private Effect myParticle;
     #endregion
 
     #region Init Setting
@@ -141,6 +139,7 @@ public class Player : Combat, IDamage<Player>
         InitPlayerSetting();
     }
 
+
     Vector3 moveDir;
     Vector3 dir;
     Vector3 inputDir;
@@ -148,6 +147,11 @@ public class Player : Combat, IDamage<Player>
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ObjectPoolManager.Instance.SetPool(myParticle, 10, 10);
+        }
+
         //Á×Àº »óÅÂ¸é return
         if (IsDead)
             return;
@@ -173,8 +177,9 @@ public class Player : Combat, IDamage<Player>
     public void OnAttackPoint()
     {
         Collider[] list = Physics.OverlapSphere(myAttackPoint.position, 1.0f, attackMask);
-        myParticle.transform.parent.rotation = myCharacter.rotation;
-        myParticle.Play();
+        GameObject go = ObjectPoolManager.Instance.GetAttackEffect(myParticle, attack: Attack);
+        go.transform.position = transform.position;
+        go.transform.rotation = transform.rotation;
 
         foreach (Collider col in list)
         {

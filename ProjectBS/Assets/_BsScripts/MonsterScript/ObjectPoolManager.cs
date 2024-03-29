@@ -38,13 +38,13 @@ public class ObjectPoolManager : MonoBehaviour
     [Serializable]
     public class PoolableObjectData
     {
-        public ScriptableObject objData;
+        public IPoolable objData;
         public int MaxCount;
         public int InitCount;
 
         public PoolableObjectData(IPoolable poolalbeData, int maxCount, int initCount)
         {
-            objData = (ScriptableObject)poolalbeData;
+            objData = poolalbeData;
             MaxCount = maxCount;
             InitCount = initCount;
         }
@@ -119,7 +119,7 @@ public class ObjectPoolManager : MonoBehaviour
         {
             go = pool.Pop();
         }
-        // 2. 재고가 없는 경우 샘플로부터 복제
+        // 2. 재고가 없는 경우 원본으로부터 복제
         else
         {
             go = poolable.CreateClone();
@@ -127,6 +127,14 @@ public class ObjectPoolManager : MonoBehaviour
         go.SetActive(true);
 
         return go;
+    }
+
+    public GameObject GetAttackEffect(Effect effect, float attack = 1, float speed = 1, float size = 1)
+    {
+        effect.Attack = attack;
+        effect.Speed = speed;
+        effect.Size = size;
+        return GetObj(effect);
     }
 
     /// <summary>풀에 오브젝트 반환 최대치를 넘었을 시 순차적으로 파괴해주는 코드 작성 필요</summary>
