@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4093933648383154043}
+  - component: {fileID: -160955942233207797}
   - component: {fileID: 1493511196827884155}
   m_Layer: 0
   m_Name: Lava Puddle Prefab
@@ -34,6 +35,30 @@ Transform:
   - {fileID: 7941600631642117507}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-160955942233207797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153839096617298766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05f9ed291b6bf84ea216aad06022475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: aec51866e5d208e4fbbc6a377de601c2, type: 2}
+  _attack: 1
+  _size: 0
+  _amount: 0
+  _levelProp:
+    states: 
+    _levelTables: []
+    SerializablePropertyInfos: []
+    PropertyNames: []
+  Monster:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!136 &1493511196827884155
 CapsuleCollider:
   m_ObjectHideFlags: 0

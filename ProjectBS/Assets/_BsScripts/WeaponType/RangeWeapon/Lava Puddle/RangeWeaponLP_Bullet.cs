@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Yeon;
 
-public class OrditalWeaponRA_Bullet : Bless
+public class RangeWeaponLP_Bullet : Bless
 {
     public LayerMask Monster;
-    public float rotSpeed = 1000.0f;
-
     void SomeMethod()
     {
         float attack = Ak;
@@ -16,7 +15,7 @@ public class OrditalWeaponRA_Bullet : Bless
         LevelProperty levelProp = LevelProp;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if ((Monster & 1 << other.gameObject.layer) != 0)
         {
@@ -28,13 +27,15 @@ public class OrditalWeaponRA_Bullet : Bless
         }
     }
 
+    // Start is called before the first frame update
     void Start()
     {
-        
+
     }
+
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * rotSpeed * Time.deltaTime, Space.World);
+        
     }
 }
