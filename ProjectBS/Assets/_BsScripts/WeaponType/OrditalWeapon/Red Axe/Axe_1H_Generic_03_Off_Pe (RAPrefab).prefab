@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 7901118340358462818}
   - component: {fileID: 2579349053846058169}
   - component: {fileID: 6121016359022639017}
+  - component: {fileID: 7771490026298361659}
   m_Layer: 0
   m_Name: Axe_1H_Generic_03_Off_Pe (RAPrefab)
   m_TagString: Untagged
@@ -315,6 +316,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: 0
   rotSpeed: 1800
+--- !u!65 &7771490026298361659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416788569040324568}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.22, y: 0.68, z: 1.33}
+  m_Center: {x: 0, y: -0.06, z: 0.38}
 --- !u!1 &9023090447418698372
 GameObject:
   m_ObjectHideFlags: 0

@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 6755210224557679911}
   - component: {fileID: 5930889531708812877}
   - component: {fileID: 2986618371623489378}
+  - component: {fileID: -6332043158001316453}
   m_Layer: 0
   m_Name: Sword_1H_Runic_01_Ye (LDPrefab)
   m_TagString: Untagged
@@ -283,6 +284,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: 0
   bulletSpeed: 5
+--- !u!65 &-6332043158001316453
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6265777309717413789}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.3, z: 1.24}
+  m_Center: {x: 0, y: 0, z: 0.33}
 --- !u!1 &7937813390282899761
 GameObject:
   m_ObjectHideFlags: 0
