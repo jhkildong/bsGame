@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 2337382765761884490}
   - component: {fileID: 1631508743126195929}
   - component: {fileID: -2035465310923364427}
+  - component: {fileID: 3387600366878033816}
   m_Layer: 0
   m_Name: Arrow_Generic_03_Bl(BOTCA)
   m_TagString: Untagged
@@ -261,6 +262,27 @@ MonoBehaviour:
     SerializablePropertyInfos: []
     PropertyNames: []
   bulletSpeed: 5
+--- !u!65 &3387600366878033816
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3115327183370529776}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.06, z: 0.85}
+  m_Center: {x: 0, y: 0, z: 0.37}
 --- !u!1 &3525773758380115628
 GameObject:
   m_ObjectHideFlags: 0

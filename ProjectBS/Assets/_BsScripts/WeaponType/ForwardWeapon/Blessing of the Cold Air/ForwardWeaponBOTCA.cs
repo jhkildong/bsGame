@@ -142,8 +142,8 @@ public class ForwardWeaponBOTCA : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        GameObject swordBullet = Instantiate(weaponPrefab, transform.position, transform.rotation);
-        swordBullet.transform.SetParent(clonesParent);
-        Rigidbody SwordRigidbody = swordBullet.GetComponent<Rigidbody>();
+        GameObject bulletBOTCA = Instantiate(weaponPrefab, transform.position, transform.rotation);
+        bulletBOTCA.transform.SetParent(clonesParent);
+        Rigidbody SwordRigidbody = bulletBOTCA.GetComponent<Rigidbody>();
     }
 }

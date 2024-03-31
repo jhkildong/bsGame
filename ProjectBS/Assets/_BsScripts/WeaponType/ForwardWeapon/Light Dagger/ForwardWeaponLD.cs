@@ -142,8 +142,8 @@ public class ForwardWeaponLD : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        GameObject swordBullet = Instantiate(weaponPrefab, transform.position, transform.rotation);
-        swordBullet.transform.SetParent(clonesParent);
-        Rigidbody SwordRigidbody = swordBullet.GetComponent<Rigidbody>();
+        GameObject bulletLD = Instantiate(weaponPrefab, transform.position, transform.rotation);
+        bulletLD.transform.SetParent(clonesParent);
+        Rigidbody SwordRigidbody = bulletLD.GetComponent<Rigidbody>();
     }
 }

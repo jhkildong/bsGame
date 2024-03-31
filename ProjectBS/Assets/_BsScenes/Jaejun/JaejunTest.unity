@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76fff8f2a20e8cf4e8e54cf189cbe708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clonesParent: {fileID: 1915290935}
   myTarget: {fileID: 948781676}
   objectPrefab: {fileID: 9153839096617298766, guid: 11095c10c25f4a04d855ea0774c194b0, type: 3}
   atRange: 10
@@ -2325,6 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cc7755e081c5446a317b0a9dc4b29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clonesParent: {fileID: 1915290935}
   myTarget: {fileID: 948781676}
   objectPrefab: {fileID: 5984480896937644376, guid: fb5e93ca2a78aba4e9bd31479d108f93, type: 3}
   atRange: 10
@@ -4195,7 +4197,7 @@ Transform:
   m_GameObject: {fileID: 1875338328}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

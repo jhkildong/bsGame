@@ -100,7 +100,7 @@ public class OrditalWeaponBOTS : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        GameObject newWeapon = Instantiate(weaponPrefab, transform);
+        GameObject bulletBOTS = Instantiate(weaponPrefab, transform);
 
         int childCount = transform.childCount;
         float angleStep = 360.0f / childCount;
