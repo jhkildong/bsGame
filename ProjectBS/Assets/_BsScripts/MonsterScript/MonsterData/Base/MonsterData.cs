@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Flags]
 public enum MonsterType
 {
-    Single, Group, Surround
+    Single          = 0b_0000_0001,
+    Group           = 0b_0000_0010, 
+    Surround        = 0b_0000_0100,
+    StraightMove    = 0b_0000_1000,
 }
 
 
-public abstract class MonsterData : ScriptableObject, IPoolable
+public abstract class MonsterData : ScriptableObject
 {
     public int ID => _id;
     public string Name => _name;
@@ -33,6 +37,6 @@ public abstract class MonsterData : ScriptableObject, IPoolable
     [SerializeField] private List<dropItem> _dropItemList;
 
     /// <summary> 타입에 맞는 새로운 몬스터 생성 </summary>
-    public abstract GameObject CreateClone();
+    public abstract Monster CreateClone();
 
 }

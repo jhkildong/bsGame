@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
-public class Effect : MonoBehaviour, IPoolable<Effect>
+public class Effect : MonoBehaviour, IPoolable
 {
+    public MonoBehaviour Data => this;
     public int ID => _id;
     
     public float Attack { get => _attack; set => _attack = value; }
@@ -15,34 +17,39 @@ public class Effect : MonoBehaviour, IPoolable<Effect>
     [SerializeField] private float _attack;
     [SerializeField] private float _speed;
     [SerializeField] private float _size;
-    private ParticleSystem[] _particleSystem;
-    public GameObject prefab;
+    [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private GameObject prefab;
 
-    public GameObject CreateClone()
+    public IPoolable CreateClone()
     {
         GameObject clone = Instantiate(prefab);
-        _particleSystem = clone.GetComponentsInChildren<ParticleSystem>();
-
-        return clone;
+        
+        return clone.GetComponent<Effect>();
     }
     private void OnEnable()
     {
-        foreach(var particle in _particleSystem)
+        if(_particleSystem == null)
         {
-            particle.Play();
+            _particleSystem = GetComponent<ParticleSystem>();
+            return;
         }
+        _particleSystem.Play();
     }
 
     void Update()
     {
+        if(_particleSystem.isStopped)
+        {
+            ObjectPoolManager.Instance.ReleaseObj(this, this.gameObject);
+        }
     }
 
-
-    private void OnParticleCollision(GameObject other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IDamage<Monster> monster))
         {
             monster.TakeDamage((short)Attack);
         }
     }
+
 }

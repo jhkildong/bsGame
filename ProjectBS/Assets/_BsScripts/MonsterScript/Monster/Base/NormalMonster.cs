@@ -7,7 +7,8 @@ public abstract class NormalMonster : Monster
 
     public override void Init(MonsterData data)
     {
-        base.Init(data);
+        base.Init(data as NormalMonsterData);
+        /*
         if(NormalData.BuildingFirst)
         {
             GameObject AIPerception = new GameObject("AIPerception");
@@ -15,5 +16,6 @@ public abstract class NormalMonster : Monster
             AIPerception.AddComponent<AIPerception>().Init((int)BSLayerMasks.Building,
                 (building) => ChangeTarget(building), () => ResetTarget());
         }
+        */
     }
 }

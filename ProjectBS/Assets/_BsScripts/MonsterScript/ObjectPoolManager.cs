@@ -34,29 +34,35 @@ public class ObjectPoolManager : MonoBehaviour
         }
     }
 
+
     ///<summary>풀에 등록할 오브젝트들의 데이터 인스펙터창에 보이기 위해 ScirptableObject로 필드를 설정함</summary>
     [Serializable]
     public class PoolableObjectData
     {
-        public IPoolable objData;
+        public IPoolable objData; //임시
+        public MonoBehaviour Data; //임시
+        public int ID => _id;
         public int MaxCount;
         public int InitCount;
 
+        [SerializeField] private int _id; //임시
         public PoolableObjectData(IPoolable poolalbeData, int maxCount, int initCount)
         {
             objData = poolalbeData;
             MaxCount = maxCount;
             InitCount = initCount;
+            _id = poolalbeData.ID;
+            Data = poolalbeData.Data;
         }
     }
 
     [SerializeField]
     private List<PoolableObjectData> poolableObjectDataList = new List<PoolableObjectData>();
 
-    private Dictionary<int, Stack<GameObject>> poolDict = new Dictionary<int, Stack<GameObject>>();
+    private Dictionary<int, Stack<IPoolable>> poolDict = new Dictionary<int, Stack<IPoolable>>();
 
 
-    private void Start()
+    private void OnEnable()
     {
         Init();
     }
@@ -78,23 +84,23 @@ public class ObjectPoolManager : MonoBehaviour
                     Debug.Log("이미 존재하는 오브젝트 입니다");
                     return;
                 }
-                Stack<GameObject> pool = CreatePool(poolable, data.InitCount);
+                Stack<IPoolable> pool = CreatePool(poolable, data.InitCount);
                 poolDict.Add(poolable.ID, pool);
             }
         }
     }
     
-    //게임오브젝트를 저장하는 스택 생성
-    private Stack<GameObject> CreatePool(IPoolable poolable, int init)
+    //IPoolable를 저장하는 스택 생성
+    private Stack<IPoolable> CreatePool(IPoolable poolable, int init)
     {
-        Stack<GameObject> pool = new Stack<GameObject>(init);
+        Stack<IPoolable> pool = new Stack<IPoolable>(init);
         GameObject poolObj = new GameObject($"ID:{poolable.ID} pool");
         for (int i = 0; i < init; i++)
         {
-            GameObject clone = poolable.CreateClone();
-            clone.name += $"{i}"; //임시
-            clone.transform.SetParent(poolObj.transform);
-            clone.SetActive(false);
+            IPoolable clone = poolable.CreateClone();
+            clone.Data.gameObject.name += $"{i}"; //임시
+            clone.Data.transform.SetParent(poolObj.transform);
+            clone.Data.gameObject.SetActive(false);
             pool.Push(clone);
         }
         return pool;
@@ -103,7 +109,7 @@ public class ObjectPoolManager : MonoBehaviour
 
     #region public Method
     /// <summary>풀에서 오브젝트 가져옴. 풀에 오브젝트가 없는 경우 새로 생성</summary>
-    public GameObject GetObj(IPoolable poolable)
+    public IPoolable GetObj(IPoolable poolable)
     {
         int ID = poolable.ID;
         if (!poolDict.TryGetValue(ID, out var pool))
@@ -112,7 +118,7 @@ public class ObjectPoolManager : MonoBehaviour
             return null;
         }
 
-        GameObject go;
+        IPoolable go;
 
         // 1. 풀에 재고가 있는 경우 : 꺼내오기
         if (pool.Count > 0)
@@ -124,21 +130,24 @@ public class ObjectPoolManager : MonoBehaviour
         {
             go = poolable.CreateClone();
         }
-        go.SetActive(true);
+        go.Data.gameObject.SetActive(true);
 
         return go;
     }
 
-    public GameObject GetAttackEffect(Effect effect, float attack = 1, float speed = 1, float size = 1)
+    public Effect GetEffect(Effect poolable, float attack = 1, float speed = 1, float size = 1)
     {
+        IPoolable go = GetObj(poolable);
+        Effect effect = go.Data as Effect;
         effect.Attack = attack;
         effect.Speed = speed;
         effect.Size = size;
-        return GetObj(effect);
+
+        return effect;
     }
 
     /// <summary>풀에 오브젝트 반환 최대치를 넘었을 시 순차적으로 파괴해주는 코드 작성 필요</summary>
-    public void ReleaseObj(IPoolable poolable, GameObject obj)
+    public void ReleaseObj(IPoolable poolable, GameObject go = null)
     {
         int ID = poolable.ID;
         if (!poolDict.TryGetValue(ID, out var pool))
@@ -146,8 +155,8 @@ public class ObjectPoolManager : MonoBehaviour
             Debug.Log("키가 존재하지 않음");
         }
 
-        obj.SetActive(false);
-        pool.Push(obj);
+        poolable.Data.gameObject.SetActive(false);
+        pool.Push(poolable);
     }
 
     /// <summary>풀에 등록</summary>
@@ -159,8 +168,16 @@ public class ObjectPoolManager : MonoBehaviour
             return;
         }
         poolableObjectDataList.Add(new PoolableObjectData(poolable, max, init));
-        Stack<GameObject> pool = CreatePool(poolable, init);
+        Stack<IPoolable> pool = CreatePool(poolable, init);
         poolDict.Add(poolable.ID, pool);
+    }
+
+    public void SetPool(IPoolable[] poolables, int max, int init)
+    {
+        foreach(IPoolable poolable in poolables)
+        {
+            SetPool(poolable, max, init);
+        }
     }
     #endregion
 }

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Yeon
 {
-    public class Combat : Movement, IDamage<Combat>, IHealing
+    public class Combat : Movement, IDamage, IHealing
     {
         #region Public Field
         public event UnityAction<float> ChangeHpAct = null;
@@ -37,12 +37,29 @@ namespace Yeon
         [SerializeField] protected float _speedCeof = 1.0f;       //이동속도 계수
         [SerializeField] protected float _attackCeof = 1.0f;      //공격력 계수
         [SerializeField] protected short _attack;                 //공격력
+
+        protected int effectCount = 3;
+        protected float effectTime = 0.1f;
+        protected Color effctColor = Color.red;
+        private Renderer[] _myRenderes;
+        private Coroutine _onDamageEffect;
+        #endregion
+
+        #region Unity Event
+        protected virtual void OnEnable()
+        {
+            _myRenderes = GetComponentsInChildren<Renderer>();
+        }        
         #endregion
 
         #region Interface Method
         public virtual void TakeDamage(short damage)
         {
             CurHp -= damage;
+            if(_onDamageEffect == null)
+            {
+                _onDamageEffect = StartCoroutine(OnDamageEffect());
+            }
             Debug.Log($"받은 데미지:{damage}, 현재 체력:{CurHp}");
             if (CurHp <= 0.0f)
             {
@@ -58,9 +75,28 @@ namespace Yeon
         }
         #endregion
 
-        #region Public Method
-
-
+        #region Private Method
+        IEnumerator OnDamageEffect()
+        {
+            WaitForSeconds wait = new WaitForSeconds(effectTime);
+            Texture maimTexture = _myRenderes[0].material.mainTexture;
+            for(int i =0; i < effectCount; i++)
+            {
+                foreach(Renderer renderer in _myRenderes)
+                {
+                    renderer.material.mainTexture = null;
+                    renderer.material.color = effctColor;
+                }
+                yield return wait;
+                foreach (Renderer renderer in _myRenderes)
+                {
+                    renderer.material.mainTexture = maimTexture;
+                    renderer.material.color = Color.white;
+                }
+                yield return wait;
+            }
+            _onDamageEffect = null;
+        }
         #endregion
     }
 }

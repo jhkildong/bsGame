@@ -7,7 +7,7 @@ public interface IDamage
     void TakeDamage(short dmg);
 }
 
-public interface IDamage<T> where T : MonoBehaviour
+public interface IDamage<T> : IDamage where T : MonoBehaviour
 {
-    void TakeDamage(short dmg);
+
 }

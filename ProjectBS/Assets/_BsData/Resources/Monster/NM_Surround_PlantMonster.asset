@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbd87771e3c8304dbfb0f4b3b00034c, type: 3}
+  m_Name: NM_Surround_PlantMonster
+  m_EditorClassIdentifier: 
+  _id: 4
+  _name: PlantMonster
+  _attack: 3
+  _attackDelay: 1
+  _speed: 0.001
+  _maxHp: 20
+  _exp: 10
+  _prefab: {fileID: 3347426971228172218, guid: fcc7edfd78ee02e4dbb50096a2d40d94, type: 3}
+  _dropItemList: []
+  _type: 0

@@ -13,23 +13,7 @@ namespace Yeon
     public class Movement : MonoBehaviour
     {
         #region Component
-        private Rigidbody rBody;
-        [SerializeField] protected Animator myAnim;
-        #endregion
-
-        #region Property
-        public Animator MyAnim
-        {
-            get
-            {
-                if(myAnim == null)
-                {
-                    if(!TryGetComponent(out myAnim))
-                        myAnim = GetComponentInChildren<Animator>();
-                }
-                return myAnim;
-            }
-        }
+        protected Rigidbody rBody;
         #endregion
 
         #region Private Field
@@ -55,7 +39,7 @@ namespace Yeon
             }
         }
 
-        private void InitCapsuleCollider()
+        protected virtual void InitCollider()
         {
             CapsuleCollider capsule;
             TryGetComponent(out capsule);
@@ -75,7 +59,7 @@ namespace Yeon
         protected virtual void Awake()
         {
             InitRigidbody();
-            InitCapsuleCollider();
+            InitCollider();
         }
 
         protected virtual void FixedUpdate()

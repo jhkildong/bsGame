@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class RootMotion : MonoBehaviour
 {
-    Animator myAnim;
-    Yeon.Movement myPlayer;
+    [SerializeField]Animator myAnim;
+    Yeon.Movement myPlayer
+    {
+        get
+        {
+            if (_myPlayer == null)
+                _myPlayer = GetComponentInParent<Yeon.Movement>();
+            return _myPlayer;
+        }
+    }
 
+    [SerializeField]Yeon.Movement _myPlayer;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        myAnim = GetComponent<Animator>();
-        myPlayer = GetComponentInParent<Yeon.Movement>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void FixedUpdate()
-    {
-        //myPlayer.SetDirection(myAnim.velocity);
+        if(myAnim == null)
+            myAnim = GetComponent<Animator>();
+        if(_myPlayer == null)
+            _myPlayer = GetComponentInParent<Yeon.Movement>();
     }
 
     private void OnAnimatorMove()
     {
-
+        myPlayer.transform.position = myAnim.rootPosition;
     }
 }

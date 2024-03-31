@@ -78,8 +78,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""id"": ""b9c5990c-512f-47e9-b39a-ddad122c6a95"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(pressPoint=0.8,behavior=1)"",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Press(pressPoint=1.401298E-45,behavior=1)"",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""ReleaseS"",
@@ -87,8 +87,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""id"": ""92ef1c65-1847-4b58-839b-243461b7f3c4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(pressPoint=0.8,behavior=1)"",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Press(pressPoint=1.401298E-45,behavior=1)"",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""ReleaseA"",
@@ -96,8 +96,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""id"": ""678f9919-aeae-4534-b4e1-d36edc6fa725"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(pressPoint=0.8,behavior=1)"",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Press(pressPoint=1.401298E-45,behavior=1)"",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""ReleaseD"",
@@ -105,8 +105,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""id"": ""0e9f5abf-e208-456c-9b88-db16f96e5736"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(pressPoint=0.8,behavior=1)"",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Press(pressPoint=1.401298E-45,behavior=1)"",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""MoveAnim"",
@@ -114,7 +114,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""id"": ""3d81a626-4c03-49fd-86a8-524847396dd7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Mash(tapDelay=0.2)"",
+                    ""interactions"": ""Mash(tapDelay=0.15,pressPoint=0.1)"",
                     ""initialStateCheck"": false
                 }
             ],
