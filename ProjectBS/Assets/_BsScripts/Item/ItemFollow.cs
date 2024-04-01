@@ -10,12 +10,9 @@ public class ItemFollow : MonoBehaviour
     float elapseTime;
     float accle = 2f;
     float willDie;
+    int countCollider = 0;
 
     void Update()
-    {
-        
-    }
-    private void OnTriggerStay(Collider other)
     {
         if (target != null)
         {
@@ -32,11 +29,10 @@ public class ItemFollow : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        SphereCollider sphereCollider = other.GetComponent<SphereCollider>();
-        if (sphereCollider != null)
+        if ((int)(BSLayerMasks.MagneticField) == (1 << other.gameObject.layer))
         {
-            willDie = other.GetComponent<CapsuleCollider>().radius;
-            movespeed = other.GetComponent<wasdMoving>().moveSpeed + other.GetComponent<SphereCollider>().radius;
+            willDie = other.GetComponentInParent<CapsuleCollider>().radius;
+            movespeed = other.GetComponentInParent<wasdMoving>().moveSpeed + other.GetComponentInParent<SphereCollider>().radius;
             target = other.transform;
             Debug.Log("Item is following..");
         }

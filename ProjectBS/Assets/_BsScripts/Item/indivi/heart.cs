@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class heart : MonoBehaviour
 {
+    LayerMask Magnetic;
+    private void Start()
+    {
+
+    }
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<Player>().ReceiveHeal(10);
+        if(16 != other.gameObject.layer)
+        {
+            GameObject.Find("Player").GetComponent<Player>().ReceiveHeal(10);
+            //Destroy(gameObject);
+        }
     }
 }

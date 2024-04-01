@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private int myStone;
     private int myIron;
     private int myGold;
+    private int myMagnetic;
 
 
 
@@ -98,8 +99,6 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
-
-        
     }
 
     void PauseGame()
@@ -125,12 +124,12 @@ public class GameManager : MonoBehaviour
     void ChangeToDay()
     {
         isNight = false;
-        Debug.Log("낮이 되었습니다.");
+        //Debug.Log("낮이 되었습니다.");
     }
     void ChangeToNight()
     {
         isNight = true;
-        Debug.Log("밤이 되었습니다.");
+        //Debug.Log("밤이 되었습니다.");
     }
 
     public void AddWood(int num)

@@ -11,7 +11,7 @@ public class magnet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<SphereCollider>() != null)
+        if ((int)(BSLayerMasks.MagneticField) == (1 << other.gameObject.layer))
         {
             originalRadius = other.GetComponent<SphereCollider>().radius;
             //other.GetComponent<SphereCollider>().radius += increaseAmount;

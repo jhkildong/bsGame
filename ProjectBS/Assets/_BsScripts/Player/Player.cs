@@ -8,6 +8,8 @@ public enum BSLayerMasks
 {
     Player = 1 << 14,
     Monster = 1 << 15,
+    MagneticField = 1 << 16,
+    Item = 1 << 17,
     Building = 1 << 24,
     InCompletedBuilding = 1 << 25,
     BuildCheckObject = 1 << 26,
@@ -117,12 +119,17 @@ public class Player : Combat, IDamage<Player>
     #region Init Setting
     private void InitPlayerSetting()
     {
+<<<<<<< HEAD
+        myRigs = GetComponentsInChildren<Rig>();
+        //ChangeHpAct += PlayerUI.Instance.ChangeHP;
+=======
         if (Com == null)
             Com = GetComponentInChildren<CharacterComponent>();
         Com.MyAnim.GetBehaviour<AttackStateChange>().AttackStateChangeAct += ChangeAttackState;
         Com.MyAnimEvent.ChangeAttackStateAct += ChangeAttackState;
         Com.MyAnimEvent.AttackAct += OnAttackPoint;
         ChangeHpAct += PlayerUI.Instance.ChangeHP;
+>>>>>>> fc94db82ff65adadf6e7c8f051794e243b45e522
         DeadAct += Death;
         CurHp = MaxHP;
         attackMask = (int)BSLayerMasks.Monster;
@@ -146,6 +153,12 @@ public class Player : Combat, IDamage<Player>
         playerInputs.Enable();
         #endregion
 
+<<<<<<< HEAD
+    public void test()
+    {
+        Debug.Log("Hello");
+    }
+=======
         //게임창의 포커스가 변했을 시 실행될 메서드 등록
         Application.focusChanged += OnFocusChanged;
     }
@@ -165,6 +178,7 @@ public class Player : Combat, IDamage<Player>
         }
     }
 
+>>>>>>> fc94db82ff65adadf6e7c8f051794e243b45e522
     void Death()
     {
         Com.MyAnim.SetTrigger(AnimParam.Death);
@@ -192,7 +206,18 @@ public class Player : Combat, IDamage<Player>
             _moveDir = Vector3.zero;
             _inputDir = Vector3.Lerp(_inputDir, Vector3.zero, Time.deltaTime * 10.0f);
         }
+<<<<<<< HEAD
+        
+        moveDir.Normalize();
+        //바라보는 방향기준의 애니메이션 방향(입력받은 방향에서 바라보는 방향의 반대방향으로 회전)
+        //dir = Quaternion.AngleAxis(-myCharacter.rotation.eulerAngles.y, Vector3.up) * moveDir;
+
+        inputDir = Vector3.Lerp(inputDir, dir, Time.deltaTime * 10.0f);
+
+        if (inputDir.magnitude < 0.01f)
+=======
         else
+>>>>>>> fc94db82ff65adadf6e7c8f051794e243b45e522
         {
             _moveDir.Normalize();
             //바라보는 방향기준의 애니메이션 방향(입력받은 방향에서 바라보는 방향의 반대방향으로 회전)
