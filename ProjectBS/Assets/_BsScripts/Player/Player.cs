@@ -9,6 +9,7 @@ public enum BSLayerMasks
     Player = 1 << 14,
     Monster = 1 << 15,
     MagneticField = 1 << 16,
+    Item = 1 << 17,
     Building = 1 << 24,
     InCompletedBuilding = 1 << 25,
     BuildCheckObject = 1 << 26,

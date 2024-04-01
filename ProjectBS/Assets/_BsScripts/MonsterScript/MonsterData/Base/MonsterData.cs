@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum MonsterType
 {
-    Single, Group, Surround
+    Single, Group, Surround, StraightMove
 }
 public abstract class MonsterData : ScriptableObject
 {
