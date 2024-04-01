@@ -4861,7 +4861,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5984480896937644325}
   - component: {fileID: 5984480896937644378}
-  - component: {fileID: 3493794133472037149}
   - component: {fileID: 5984480896937644379}
   - component: {fileID: 5428825952057464487}
   m_Layer: 0
@@ -9626,30 +9625,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &3493794133472037149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5984480896937644376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4eab6dc775ff164d9f62c733f91fd48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 1b01c3c1a3c4cba41a6924441d7ba73e, type: 2}
-  _attack: 1
-  _size: 0
-  _amount: 0
-  _levelProp:
-    states: 
-    _levelTables: []
-    SerializablePropertyInfos: []
-    PropertyNames: []
-  Monster:
-    serializedVersion: 2
-    m_Bits: 32768
 --- !u!199 &5984480896937644379
 ParticleSystemRenderer:
   serializedVersion: 6
