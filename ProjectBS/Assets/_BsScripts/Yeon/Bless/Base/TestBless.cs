@@ -12,7 +12,7 @@ public class TestBless : Yeon.Bless
     // Start is called before the first frame update
     void Start()
     {
-        LevelProp.SetAct();
+        //LevelProp.SetAct();
         LevelProp.LevelUp(2);
     }
 

@@ -23,7 +23,7 @@ namespace Yeon
 
         [SerializeField, HideInInspector] private bool[] states;
         [SerializeField] private List<LevelTable> _levelTables = new List<LevelTable>();
-
+        /*
         public void SetAct()
         {
             if (states.Length != SerializablePropertyInfos.Count)
@@ -43,6 +43,7 @@ namespace Yeon
                 }
             }
         }
+        */
 
         /// <summary>
         /// 레벨업을 할 때 증가될 속성의 정보와 레벨당 값을 저장하는 클래스

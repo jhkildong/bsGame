@@ -48,7 +48,6 @@ MonoBehaviour:
   _attack: 0
   _size: 0
   _amount: 0
-  _level: 0
   _levelProp:
     states: 01000100
     _levelTables:
