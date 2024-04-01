@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2268c62a5968e0648bb33db8908039e3, type: 3}
+  m_Name: NM_Single_Scorpion_BuildFirst
+  m_EditorClassIdentifier: 
+  _id: 1
+  _name: Scorpion
+  _attack: 2
+  _attackDelay: 1
+  _speed: 1.5
+  _maxHp: 30
+  _exp: 10
+  _prefab: {fileID: 6615806220265532411, guid: 9747e732db7a36c48a8e2263422bf7a1, type: 3}
+  _dropItemList:
+  - ID: 1
+    dropChance: 100
+  - ID: 2
+    dropChance: 0
+  - ID: 3
+    dropChance: 0
+  _type: 1

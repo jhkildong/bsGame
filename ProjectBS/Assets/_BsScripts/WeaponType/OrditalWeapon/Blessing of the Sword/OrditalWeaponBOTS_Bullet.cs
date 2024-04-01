@@ -1,19 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Yeon;
 
 public class OrditalWeaponBOTS_Bullet : Bless
 {
-    // Start is called before the first frame update
-    void Start()
+    public LayerMask Monster;
+
+    void SomeMethod()
     {
-        
+        float attack = Ak;
+        float size = Size;
+        BlessData data = Data;
+        LevelProperty levelProp = LevelProp;
     }
 
-    // Update is called once per frame
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((Monster & 1 << other.gameObject.layer) != 0)
+        {
+            IDamage<Monster> obj = other.GetComponent<IDamage<Monster>>();
+            if (obj != null)
+            {
+                obj.TakeDamage((short)Mathf.Round(Ak));
+            }
+        }
+    }
+
+    void Start()
+    {
+
+    }
     void Update()
     {
-        
+
     }
 }

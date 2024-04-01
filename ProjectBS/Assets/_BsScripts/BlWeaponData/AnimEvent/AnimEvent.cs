@@ -5,22 +5,28 @@ using UnityEngine.Events;
 
 public class AnimEvent : MonoBehaviour
 {
-    public UnityEvent attackAct;
-    public UnityEvent deadAct;
-    public UnityEvent<int> skillAct;
+    public event UnityAction AttackAct;
+    public event UnityAction DeadAct;
+    public event UnityAction<int> SkillAct;
+    public event UnityAction<AttackState> ChangeAttackStateAct;
 
     public void OnAttack()
     {
-        attackAct?.Invoke();
+        AttackAct?.Invoke();
     }
 
     public void OnDead()
     {
-        deadAct?.Invoke();
+        DeadAct?.Invoke();
     }
 
     public void OnSkill(int v)
     {
-        skillAct?.Invoke(v);
+        SkillAct?.Invoke(v);
+    }
+
+    public void ChangeState(AttackState state)
+    {
+        ChangeAttackStateAct?.Invoke(state);
     }
 }

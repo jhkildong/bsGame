@@ -183,7 +183,6 @@ namespace Yeon
                 if (_propertyInfo == null)
                 {
                     var type = Type.GetType(TypeName);
-                    Debug.Log(type);
                     _propertyInfo = type.GetProperty(PropertyName);
                 }
                 return _propertyInfo;

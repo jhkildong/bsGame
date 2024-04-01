@@ -3,7 +3,9 @@ guid: beff31113e7d20449b0ce93853ec90d3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - myAttackPoint: {instanceID: 0}
+  - damageEffectMaterial: {fileID: 2100000, guid: 36f5484ea8b5b484593840742c8879e1, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

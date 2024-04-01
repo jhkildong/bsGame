@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 7901118340358462818}
   - component: {fileID: 2579349053846058169}
   - component: {fileID: 6121016359022639017}
+  - component: {fileID: 7771490026298361659}
   m_Layer: 0
   m_Name: Axe_1H_Generic_03_Off_Pe (RAPrefab)
   m_TagString: Untagged
@@ -313,8 +314,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed1060a7bf2ecb49a3e384fbb77020a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 0
+  _data: {fileID: 11400000, guid: f6ddd67f664e5284aa397932894d80e3, type: 2}
+  _attack: 10
+  _size: 0
+  _amount: 0
+  _levelProp:
+    states: 
+    _levelTables: []
+    SerializablePropertyInfos: []
+    PropertyNames: []
+  Monster:
+    serializedVersion: 2
+    m_Bits: 32768
   rotSpeed: 1800
+--- !u!65 &7771490026298361659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416788569040324568}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.22, y: 0.68, z: 1.33}
+  m_Center: {x: 0, y: -0.06, z: 0.38}
 --- !u!1 &9023090447418698372
 GameObject:
   m_ObjectHideFlags: 0

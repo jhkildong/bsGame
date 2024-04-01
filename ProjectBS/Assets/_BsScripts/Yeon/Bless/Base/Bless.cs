@@ -25,7 +25,7 @@ namespace Yeon
         [SerializeField] protected float _attack;
         [SerializeField] protected float _size;
         [SerializeField] protected float _amount;
-        [SerializeField] private short _level;
+        //[SerializeField] private short _level;
         [SerializeField, ReadOnly] protected LevelProperty _levelProp;
         #endregion
 
@@ -35,7 +35,7 @@ namespace Yeon
             _attack = data.Ak;
             _size = data.Size;
             _amount = 0;
-            _level = 0;
+            //_level = 0;
         }
         
     }

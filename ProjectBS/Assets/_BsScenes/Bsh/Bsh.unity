@@ -382,6 +382,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04813817c2156494d85e52be2b7c7da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &126330856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126330835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a43c392ee05b547a5250a79816c2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increaseAmount: 1
+  returnTime: 2
 --- !u!1 &127521430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,7 +1332,6 @@ GameObject:
   - component: {fileID: 1206330288}
   - component: {fileID: 1206330291}
   - component: {fileID: 1206330293}
-  - component: {fileID: 1206330294}
   - component: {fileID: 1206330297}
   - component: {fileID: 1206330296}
   m_Layer: 14
@@ -1430,27 +1443,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!135 &1206330294
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206330287}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 3
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &1206330296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2443,6 +2435,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6737171413972546432, guid: afaef5f2c702c5c48838b35efe34b55e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 126330853}
+    - targetCorrespondingSourceObject: {fileID: 6737171413972546432, guid: afaef5f2c702c5c48838b35efe34b55e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 126330856}
   m_SourcePrefab: {fileID: 100100000, guid: afaef5f2c702c5c48838b35efe34b55e, type: 3}
 --- !u!4 &1903535916 stripped
 Transform:
@@ -2898,6 +2893,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
+    - {fileID: -7458640578883925389, guid: 8ff339b4f81880b4d98f16661141e42f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

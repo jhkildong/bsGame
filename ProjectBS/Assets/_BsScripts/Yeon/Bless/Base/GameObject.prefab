@@ -50,8 +50,26 @@ MonoBehaviour:
   _amount: 0
   _level: 0
   _levelProp:
-    states: 00000000
-    _levelTables: []
+    states: 01000100
+    _levelTables:
+    - Attribute: testValue
+      Table:
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    - Attribute: Size
+      Table:
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
     SerializablePropertyInfos:
     - TypeName: TestBless, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       PropertyName: testValue

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RangeWeaponRM : MonoBehaviour
 {
+    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
     public Transform myTarget;
     public GameObject objectPrefab;
 
@@ -142,7 +143,8 @@ public class RangeWeaponRM : MonoBehaviour
     {
         Vector3 randomPos = Random.insideUnitSphere * atRange;
         randomPos.y = 0.0f;
-        GameObject bullet = Instantiate(objectPrefab, randomPos, Quaternion.identity);
-        Destroy(bullet, destroyTime);
+        GameObject bulletRM = Instantiate(objectPrefab, randomPos, Quaternion.identity);
+        bulletRM.transform.SetParent(clonesParent);
+        Destroy(bulletRM, destroyTime);
     }
 }
