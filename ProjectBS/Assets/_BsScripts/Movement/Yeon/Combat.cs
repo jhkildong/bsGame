@@ -60,7 +60,7 @@ namespace Yeon
             {
                 _onDamageEffect = StartCoroutine(OnDamageEffect());
             }
-            Debug.Log($"받은 데미지:{damage}, 현재 체력:{CurHp}");
+            //Debug.Log($"받은 데미지:{damage}, 현재 체력:{CurHp}");
             if (CurHp <= 0.0f)
             {
                 DeadAct?.Invoke();

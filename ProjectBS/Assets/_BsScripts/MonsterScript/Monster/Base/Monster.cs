@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using Yeon;
 using InfinityPBR;
 
+[RequireComponent(typeof(SpatialObject))]
 [RequireComponent(typeof(DropTable))]
 public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
 {

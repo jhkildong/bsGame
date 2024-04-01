@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using Yeon;
 
 /*
 계층구조
@@ -42,6 +43,8 @@ public class MonsterSpawner : MonoBehaviour
         StartCoroutine(EnemySpawn());
     }
 
+    public QuadTree quadTree;
+
     //임시
     bool checkSurround = false;
     float surroundRange = 30.0f;
@@ -63,6 +66,8 @@ public class MonsterSpawner : MonoBehaviour
                         case var type when type.HasFlag(MonsterType.Single):
                             go = ObjectPoolManager.Instance.GetObj(monster).Data.gameObject;
                             go.transform.position = rndPos;
+                            quadTree.OnItemSpawned(go); //임시
+                            quadTree.ShowStats(); //임시
                             break;
                         case var type when type.HasFlag(MonsterType.Group):
                             for (int i = 0; i < (nMonster as GroupMonster).GroupData.Amount; ++i)
@@ -74,6 +79,8 @@ public class MonsterSpawner : MonoBehaviour
                                 {
                                     go.transform.LookAt(transform.position);
                                 }
+                                quadTree.OnItemSpawned(go); //임시
+                                quadTree.ShowStats(); //임시
                             }
                             break;
                         case var type when type.HasFlag(MonsterType.Surround):
@@ -85,6 +92,7 @@ public class MonsterSpawner : MonoBehaviour
                             break;
                     }
                 }
+                
                 yield return new WaitForSeconds(respawnTime);
             }
         }
@@ -100,6 +108,8 @@ public class MonsterSpawner : MonoBehaviour
             Vector3 pos = new Vector3(Mathf.Cos(ang), 0f, Mathf.Sin(ang)) * surroundRange;
             GameObject go = ObjectPoolManager.Instance.GetObj(monster).Data.gameObject;
             go.transform.position = pos + transform.position;
+            quadTree.OnItemSpawned(go); //임시
+            quadTree.ShowStats(); //임시
             yield return null;
         }
     }

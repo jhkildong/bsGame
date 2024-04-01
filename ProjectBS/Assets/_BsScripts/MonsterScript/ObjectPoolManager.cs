@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Yeon;
 
 [DisallowMultipleComponent]
 public class ObjectPoolManager : MonoBehaviour
 {
+    //임시
+    public Yeon.QuadTree quadTree;
+
     /// <summary> 싱글턴 매니저 </summary>
     private static ObjectPoolManager _instance;
     public static ObjectPoolManager Instance
@@ -69,7 +73,7 @@ public class ObjectPoolManager : MonoBehaviour
 
     #region private Method
     //저장되어있는 poolalbeData를 기반으로 pool 미리 생성
-    //MonsterSpawner에서 Data를 보내줄예정이라 삭제 가능
+    //MonsterSpawner에서 Data를 보내줄예정이라 코드 삭제 가능
     private void Init()
     {
         int len = poolableObjectDataList.Count;
@@ -131,7 +135,6 @@ public class ObjectPoolManager : MonoBehaviour
             go = poolable.CreateClone();
         }
         go.Data.gameObject.SetActive(true);
-
         return go;
     }
 
