@@ -9,6 +9,8 @@ public enum BSLayerMasks
 {
     Player = 1 << 14,
     Monster = 1 << 15,
+    MagneticField = 1 << 16,
+    Item = 1 << 17,
     Building = 1 << 24,
     InCompletedBuilding = 1 << 25,
     BuildCheckObject = 1 << 26,
@@ -101,7 +103,7 @@ public class Player : Combat, IDamage<Player>
     private void InitPlayerSetting()
     {
         myRigs = GetComponentsInChildren<Rig>();
-        ChangeHpAct += PlayerUI.Instance.ChangeHP;
+        //ChangeHpAct += PlayerUI.Instance.ChangeHP;
         DeadAct += Death;
         CurHp = MaxHP;
         attackMask = (int)BSLayerMasks.Monster;
@@ -123,7 +125,10 @@ public class Player : Combat, IDamage<Player>
     }
     #endregion
 
-
+    public void test()
+    {
+        Debug.Log("Hello");
+    }
     void Death()
     {
         MyAnim.SetTrigger(AnimParam.Death);
@@ -160,7 +165,7 @@ public class Player : Combat, IDamage<Player>
         
         moveDir.Normalize();
         //바라보는 방향기준의 애니메이션 방향(입력받은 방향에서 바라보는 방향의 반대방향으로 회전)
-        dir = Quaternion.AngleAxis(-myCharacter.rotation.eulerAngles.y, Vector3.up) * moveDir;
+        //dir = Quaternion.AngleAxis(-myCharacter.rotation.eulerAngles.y, Vector3.up) * moveDir;
 
         inputDir = Vector3.Lerp(inputDir, dir, Time.deltaTime * 10.0f);
 

@@ -51,10 +51,11 @@ namespace Yeon
         }
         public void ReceiveHeal(short heal)
         {
+            Debug.Log(heal);
             if (IsDead)
                 return;
             CurHp += heal;
-            CurHp = (short)Mathf.Clamp(CurHp, 0, MaxHP);
+            CurHp = (short)Mathf.Clamp(CurHp, 0, MaxHP); 
         }
         #endregion
 

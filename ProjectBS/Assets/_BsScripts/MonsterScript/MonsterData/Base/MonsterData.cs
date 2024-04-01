@@ -7,8 +7,6 @@ public enum MonsterType
 {
     Single, Group, Surround
 }
-
-
 public abstract class MonsterData : ScriptableObject, IPoolable
 {
     public int ID => _id;
