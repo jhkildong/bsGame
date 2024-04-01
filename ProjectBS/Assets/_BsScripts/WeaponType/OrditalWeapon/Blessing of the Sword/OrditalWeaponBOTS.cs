@@ -25,7 +25,7 @@ public class OrditalWeaponBOTS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up, rotSpeed * Time.deltaTime); // 공전
+        transform.Rotate(Vector3.up, -rotSpeed * Time.deltaTime); // 공전
         SwitchUpdate();
     }
 

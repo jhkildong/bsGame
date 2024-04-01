@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 747013165934324086}
   - component: {fileID: 8657815182967878054}
+  - component: {fileID: 1165264303761378404}
   m_Layer: 0
   m_Name: Sword_1H_Generic_04_Rd (BOTSPrefab)
   m_TagString: Untagged
@@ -87,6 +88,28 @@ MonoBehaviour:
   - Type: 12
     Enabled: 0
     Target: {fileID: 0}
+--- !u!114 &1165264303761378404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78316188785865676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d27ab0e7383ff44abc1d503d59459ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: e85c46f4cc170b14bacebad36ec39bf5, type: 2}
+  _attack: 0
+  _size: 0
+  _amount: 0
+  _level: 0
+  _levelProp:
+    states: 
+    _levelTables: []
+    SerializablePropertyInfos: []
+    PropertyNames: []
 --- !u!1 &1928650272795614864
 GameObject:
   m_ObjectHideFlags: 0

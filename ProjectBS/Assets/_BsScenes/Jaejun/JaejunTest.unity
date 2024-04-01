@@ -886,7 +886,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279786798}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d66f3368e6fcefa42bbd875fb048c4c5, type: 3}
   m_Name: 
@@ -2180,6 +2180,9 @@ MonoBehaviour:
   _speedCeof: 1
   _attackCeof: 1
   _attack: 100
+  WSInput: 0
+  ADInput: 0
+  myParticle: {fileID: 0}
   myCharacter: {fileID: 1822660383}
 --- !u!4 &948781676
 Transform:
@@ -2754,6 +2757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d48ce630d1d2f4099bef47eaaaa9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clonesParent: {fileID: 1284827295}
   myTarget: {fileID: 948781676}
   myRotate: {fileID: 1822660383}
   weaponPrefab: {fileID: 3115327183370529776, guid: f2c174dfa9c33944aad35a1d24f9e68f, type: 3}
@@ -3235,6 +3239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd3434dfab869747b872044965255c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clonesParent: {fileID: 1284827295}
   myTarget: {fileID: 948781676}
   myRotate: {fileID: 1822660383}
   weaponPrefab: {fileID: 6265777309717413789, guid: 6910627ed32507041b0e496c1e90ebe8, type: 3}
@@ -4194,8 +4199,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 580847208}
   - {fileID: 1284827295}
+  - {fileID: 580847208}
   - {fileID: 1915290935}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

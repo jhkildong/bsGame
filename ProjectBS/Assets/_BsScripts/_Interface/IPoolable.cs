@@ -10,3 +10,8 @@ public interface IPoolable
     int ID { get; }
     GameObject CreateClone();
 }
+
+public interface IPoolable<T> : IPoolable
+{
+
+}
