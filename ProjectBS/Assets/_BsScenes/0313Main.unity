@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -907,7 +907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4a531696d1d8b4194c5b63a5594fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySlider: {fileID: 226306569}
+  _slider: {fileID: 0}
+  _canvas: {fileID: 0}
 --- !u!1 &389628471
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,6 +986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c466505bb923c44baa5e64dcefd63f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quadTree: {fileID: 0}
   poolableObjectDataList: []
 --- !u!4 &418841838
 Transform:
@@ -1223,11 +1225,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3724192508554018546, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
   m_PrefabInstance: {fileID: 442159046}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &442159049 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3724192508554018544, guid: 79fe242ef7101c24d8b36036d1286036, type: 3}
-  m_PrefabInstance: {fileID: 442159046}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &442159050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,7 +1294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4a531696d1d8b4194c5b63a5594fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySlider: {fileID: 1772424868}
+  _slider: {fileID: 0}
+  _canvas: {fileID: 0}
 --- !u!1 &551689990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,7 +1985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15595b36976634f9465d292eb97e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myAnim: {fileID: 0}
   moveSpeed: 3
   isMoving: 0
   isBlocked: 0
@@ -1999,12 +1996,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _maxHP: 100
+  _curHp: 1
   _speedCeof: 1
   _attackCeof: 1
   _attack: 100
-  _curHp: 1
-  myParticle: {fileID: 442159049}
-  myCharacter: {fileID: 1822660383}
+  WSADInput: 0
+  Com: {fileID: 0}
+  attackState: 0
 --- !u!4 &948781676
 Transform:
   m_ObjectHideFlags: 0
@@ -2955,6 +2953,7 @@ MonoBehaviour:
   respawnTime: 2
   init: 200
   max: 200
+  quadTree: {fileID: 0}
 --- !u!1 &1726570585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3734,27 +3733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34df74dd99a2fce4f9de4fbaaa5b66a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAct:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 948781675}
-        m_TargetAssemblyTypeName: Yeon.Combat, Assembly-CSharp
-        m_MethodName: OnAttackPoint
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  deadAct:
-    m_PersistentCalls:
-      m_Calls: []
-  skillAct:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1887881578
 GameObject:
   m_ObjectHideFlags: 0

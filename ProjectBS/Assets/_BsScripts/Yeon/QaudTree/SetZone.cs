@@ -13,13 +13,11 @@ public class SetZone : MonoBehaviour
     void Start()
     {
         meshes = GetComponentsInChildren<MeshRenderer>();
-        foreach (var mesh in meshes)
-        {
-            width += mesh.bounds.size.x;
-            height += mesh.bounds.size.z;
-        }
+        width += meshes[0].bounds.size.x;
+        height += meshes[0].bounds.size.z;
+        
 
-        var SpawnRect = new Rect(meshes[0].bounds.min.x, meshes[0].bounds.min.z, width, height);
+        var SpawnRect = new Rect(meshes[0].bounds.min.x, meshes[0].bounds.min.z, width * 4, height * 4);
         Debug.Log(SpawnRect);
         quadTree.On2DBoundsCalculated(SpawnRect);
     }
