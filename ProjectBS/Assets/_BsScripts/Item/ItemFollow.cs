@@ -14,7 +14,26 @@ public class ItemFollow : MonoBehaviour
 
     void Update()
     {
-        if (target != null)
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((int)(BSLayerMasks.MagneticField) == (1 << other.gameObject.layer))
+        {
+            willDie = other.GetComponentInParent<CapsuleCollider>().radius;
+            movespeed = other.GetComponentInParent<wasdMoving>().moveSpeed + other.GetComponentInParent<SphereCollider>().radius;
+            target = other.transform;
+        }
+    }
+
+    public void test(PlayerA playerA)
+    {
+        Debug.Log("recieved");
+        StartCoroutine(follow());
+    }
+    IEnumerator follow()
+    {
+        Debug.Log("Item is following..");
+        while (target != null)
         {
             float currentSpeed = movespeed + accle * elapseTime;
             elapseTime += Time.deltaTime;
@@ -26,16 +45,7 @@ public class ItemFollow : MonoBehaviour
                 target = null;
             }
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if ((int)(BSLayerMasks.MagneticField) == (1 << other.gameObject.layer))
-        {
-            willDie = other.GetComponentInParent<CapsuleCollider>().radius;
-            movespeed = other.GetComponentInParent<wasdMoving>().moveSpeed + other.GetComponentInParent<SphereCollider>().radius;
-            target = other.transform;
-            Debug.Log("Item is following..");
-        }
+        yield return null;
     }
     void Eat()
     {
