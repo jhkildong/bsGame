@@ -20,13 +20,13 @@ public class increaseStruct : MonoBehaviour
                 Debug.Log("아이템의 재료가 설정되지 않았음.");
                 break;
             case StructItemData.struct_mat.stone:
-                gM.AddStone(10);
+                gM.ChangeStone(10);
                 break;
             case StructItemData.struct_mat.wood:
-                gM.AddWood(10);
+                gM.ChangeWood(10);
                 break;
             case StructItemData.struct_mat.steel:
-                gM.AddIron(10);
+                gM.ChangeIron(10);
                 break;
             //추후 추가 할 예정
         }

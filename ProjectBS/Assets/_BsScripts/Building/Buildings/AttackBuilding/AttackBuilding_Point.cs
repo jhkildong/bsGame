@@ -7,13 +7,13 @@ public class AttackBuilding_Point : AttackBuildingBase
     protected override void Start()
     {
         base.Start();
-        AtkEvent.AddListener(PointAttack);
+        //AtkEvent.AddListener(PointAttack);
         Debug.Log("attackbuilding_Point" + _constTime);
     }
 
     protected void PointAttack()
     {
-        SetActivePointAtkEffect();
+        //SetActivePointAtkEffect();
     }
 
     void SetActivePointAtkEffect()
