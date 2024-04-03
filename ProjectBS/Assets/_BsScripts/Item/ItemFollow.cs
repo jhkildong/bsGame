@@ -7,45 +7,39 @@ public class ItemFollow : MonoBehaviour
     Transform target;
     Vector3 dir;
     float movespeed;
-    float elapseTime;
-    float accle = 2f;
-    float willDie;
-    int countCollider = 0;
-
-    void Update()
+    float accel;
+    public void follow(PlayerA playerA)
     {
+        Debug.Log("Item is following...");
+        StartCoroutine(following(playerA));
     }
-    private void OnTriggerEnter(Collider other)
+    IEnumerator following(PlayerA playerA)
     {
-        if ((int)(BSLayerMasks.MagneticField) == (1 << other.gameObject.layer))
+        target = playerA.transform;
+        while(target != null)
         {
-            willDie = other.GetComponentInParent<CapsuleCollider>().radius;
-            movespeed = other.GetComponentInParent<wasdMoving>().moveSpeed + other.GetComponentInParent<SphereCollider>().radius;
-            target = other.transform;
-        }
-    }
-
-    public void test(PlayerA playerA)
-    {
-        Debug.Log("recieved");
-        StartCoroutine(follow());
-    }
-    IEnumerator follow()
-    {
-        Debug.Log("Item is following..");
-        while (target != null)
-        {
-            float currentSpeed = movespeed + accle * elapseTime;
-            elapseTime += Time.deltaTime;
-            dir = target.position - transform.position;
-            transform.position += dir.normalized * movespeed * Time.deltaTime;
-            if (Vector3.Distance(target.position, transform.position) < willDie)
+            dir = playerA.transform.position - transform.position;
+            accel += Time.deltaTime;
+            transform.position += dir.normalized * accel;
+            if (Vector3.Distance(target.position, transform.position) < 1f)
             {
-                Eat();
+                Eat();  
+                yield break;
+            }
+            yield return null;
+        }
+        
+        /*while (target != null)
+        {
+            dir = playerA.transform.position - transform.position;
+            transform.position += dir.normalized * 0.01f * Time.deltaTime;
+            Debug.Log(transform.position);
+            if (Vector3.Distance(target.position, transform.position) < 0.1f)
+            {
+                //Eat();
                 target = null;
             }
-        }
-        yield return null;
+        }*/
     }
     void Eat()
     {
