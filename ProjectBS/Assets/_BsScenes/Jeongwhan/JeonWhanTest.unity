@@ -3696,6 +3696,56 @@ MonoBehaviour:
   ObstacleSearchRange: 30
   CachedPosition: {x: 0, y: 0, z: 0}
   _Cached2DPosition: {x: 0, y: 0}
+--- !u!136 &2968286923872189671
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968286923872189665}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &2968286923872189672
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968286923872189665}
+  serializedVersion: 4
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1001 &4384229948677047004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3774,7 +3824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8020047692030312612, guid: a31004d42509c64408eefe9c4a7348ce, type: 3}
       propertyPath: moveSpeed
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8020047692030312612, guid: a31004d42509c64408eefe9c4a7348ce, type: 3}
       propertyPath: myAttackPoint
@@ -3790,6 +3840,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5857669208957140354, guid: a31004d42509c64408eefe9c4a7348ce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2968286923872189668}
+    - targetCorrespondingSourceObject: {fileID: 5857669208957140354, guid: a31004d42509c64408eefe9c4a7348ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2968286923872189672}
+    - targetCorrespondingSourceObject: {fileID: 5857669208957140354, guid: a31004d42509c64408eefe9c4a7348ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2968286923872189671}
   m_SourcePrefab: {fileID: 100100000, guid: a31004d42509c64408eefe9c4a7348ce, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

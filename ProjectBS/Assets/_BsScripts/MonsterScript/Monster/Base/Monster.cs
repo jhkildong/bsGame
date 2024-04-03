@@ -71,6 +71,15 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         effctColor = Color.white;
         effectTime = 0.1f;
 
+        //임시
+        rBody.mass = 1;
+        rBody.angularDrag = 2f;
+        
+        if(col!=null && col is CapsuleCollider capsule)
+        {
+            capsule.radius = 0.3f;
+        }
+
         //DeadAct.AddListener(WillDrop);
         Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
         myAnim = GetComponentInChildren<Animator>();
@@ -85,6 +94,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     protected override void Awake()
     {
         base.Awake();
+        
         //dropTable = GetComponent<DropTable>();
     }
 
@@ -162,7 +172,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         //타겟을 향해 부드럽게 방향전환
         Vector3 targetDirection = myTarget.position - transform.position;
@@ -192,6 +202,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         {
             IDamage AttackTarget = collision.gameObject.GetComponent<IDamage>();
             AttackTarget.TakeDamage(Attack);
+            
             //ChangeState(State.Attack);
         }
     }
@@ -200,6 +211,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     {
         if ((attackMask & (1 << collision.gameObject.layer)) != 0)
         {
+            moveSpeed = OriginData.Sp;
             ChangeState(State.Chase);
         }
     }
