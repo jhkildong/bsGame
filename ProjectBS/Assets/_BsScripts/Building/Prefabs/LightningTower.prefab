@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2867913085272649515}
   - component: {fileID: 43368177450105637}
   - component: {fileID: 7570393000076974083}
-  - component: {fileID: 7838043590040376087}
+  - component: {fileID: -4595136012116888813}
   m_Layer: 25
   m_Name: LightningTower
   m_TagString: Untagged
@@ -220,7 +220,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &7838043590040376087
+--- !u!114 &-4595136012116888813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5732704864016183740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04efa6f8e331a9342ae1afea0bd9b9e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c6331e223641364983b03fa169c4b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData: {fileID: 11400000, guid: 7066052e26a97f544bad46925326cbf0, type: 2}
@@ -243,16 +243,20 @@ MonoBehaviour:
   _constTime: 0
   _repairSpeed: 0
   isInstalled: 0
+  iscompletedBuilding: 0
+  atkType: 2
   target: {fileID: 0}
-  detectedObj: []
   atkDelaying: 0
   attackableLayer:
     serializedVersion: 2
     m_Bits: 32768
-  atkEffect: {fileID: 995855345012900889, guid: e17f81322b971a945ab1380a4353e1ba, type: 3}
   effectList: []
   effectPool: {fileID: 5164076940604325103}
+  EffectPoolEvent:
+    m_PersistentCalls:
+      m_Calls: []
   AtkEvent:
     m_PersistentCalls:
       m_Calls: []
   _attackDelay: 0
+  myEffect: {fileID: 995855345012900889, guid: e17f81322b971a945ab1380a4353e1ba, type: 3}

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,18 +13,26 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
+    public TextMeshProUGUI myWoodCount;
+    public TextMeshProUGUI myStoneCount;
+    public TextMeshProUGUI myIronCount;
+
+
     public bool gameStart;
     public bool gameOver;
     public bool gamePaused;
-    private float curGameTime;
-    private float checkAMPMTime;
+    public float curGameTime; // 현재시간
+    public float checkAMPMTime;
     private bool isNight;
     //private int myExp;
     private int myWood;
     private int myStone;
     private int myIron;
     private int myGold;
-    private int myMagnetic;
+
+    private int myLevel;
+    private int myExp;
+    private int MaxExp;
 
 
 
@@ -39,6 +49,7 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.Log("싱글톤 인스턴스가 없습니다");
                 }
+
             }
             return _instance;
         }
@@ -63,6 +74,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameStart = true;
+        //myWoodCount.text = $"wood : {myWood.ToString()}";
     }
 
     void Update()
@@ -79,14 +91,14 @@ public class GameManager : MonoBehaviour
                 checkAMPMTime = 0;
                 ChangeToNight();
             }
-            if (isNight && checkAMPMTime >=10)
+            if (isNight && checkAMPMTime >= 10)
             {
                 checkAMPMTime = 0;
                 ChangeToDay();
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)&& !gameOver)
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameOver)
         {
             if (!gamePaused)
             {
@@ -99,6 +111,8 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
+
+
     }
 
     void PauseGame()
@@ -121,41 +135,53 @@ public class GameManager : MonoBehaviour
         Debug.Log("게임오버");
     }
 
+    public float CurTime() // 현재 게임 시간
+    {
+        return curGameTime;
+    }
+
     void ChangeToDay()
     {
         isNight = false;
-        //Debug.Log("낮이 되었습니다.");
+        Debug.Log("낮이 되었습니다.");
     }
     void ChangeToNight()
     {
         isNight = true;
-        //Debug.Log("밤이 되었습니다.");
+        Debug.Log("밤이 되었습니다.");
     }
 
-    public void AddWood(int num)
+    public void ChangeWood(int num)
     {
         myWood += num;
+        myWoodCount.text = myWood.ToString();
         //UI로 나타낼 코드 추가 필요
         Debug.Log($"나무 갯수 변동 {myWood}");
     }
-    public void AddStone(int num)
+    public void ChangeStone(int num)
     {
         myStone += num;
         //UI로 나타낼 코드 추가 필요
         Debug.Log($"돌 갯수 변동 {myStone}");
     }
-    public void AddIron(int num)
+    public void ChangeIron(int num)
     {
         myIron += num;
         //UI로 나타낼 코드 추가 필요
         Debug.Log($"철 갯수 변동 {myIron}");
     }
 
-    public void AddGold(int num)
+    public void ChangeGold(int num)
     {
         myIron += num;
         //UI로 나타낼 코드 추가 필요
-        Debug.Log($"철 갯수 변동 {myGold}");
+        Debug.Log($"골드 변동 {myGold}");
+    }
+    public void ChangeExp(int num)
+    {
+        myExp += num;
+        //UI로 나타낼 코드 추가 필요
+        Debug.Log($"경험치 변동 {myExp}");
     }
 
 }

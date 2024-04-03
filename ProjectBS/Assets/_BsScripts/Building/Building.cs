@@ -30,7 +30,7 @@ public abstract class Building : MonoBehaviour , IDamage
 
     [SerializeField] protected bool isInstalled = false;
 
-    protected bool iscompletedBuilding; // 건물의 건설 여부
+    [SerializeField] public bool iscompletedBuilding; // 건물의 건설 여부
     float curConstTime = 0.0f; //건설한 시간
 
 
@@ -153,7 +153,7 @@ public abstract class Building : MonoBehaviour , IDamage
 
     public void TakeDamage(short dmg) // IDamage 인터페이스 구현
     {
-        if(iscompletedBuilding && isInstalled)
+        if(iscompletedBuilding && isInstalled &&_curHp>0)
         {
             _curHp -= dmg;
             if (_curHp <= 0)
@@ -161,14 +161,13 @@ public abstract class Building : MonoBehaviour , IDamage
                 Destroy();
             }
         }
-
     }
-
-
 
     void Destroy()
     {
+
         Destroy(gameObject);
+
     }
 
 }

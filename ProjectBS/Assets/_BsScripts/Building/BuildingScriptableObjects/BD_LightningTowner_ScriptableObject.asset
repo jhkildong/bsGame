@@ -21,8 +21,8 @@ MonoBehaviour:
   _requireIron: 10
   _constTime: 5
   _repairSpeed: 5
-  _attackPower: 20
-  _attackDelay: 1
+  _attackPower: 2
+  _attackDelay: 0.5
   _attackRadius: 2
   _attackProjectileSize: 0
   _buildingPrefab: {fileID: 0}
