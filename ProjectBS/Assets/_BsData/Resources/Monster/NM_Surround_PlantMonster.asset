@@ -21,4 +21,4 @@ MonoBehaviour:
   _exp: 10
   _prefab: {fileID: 3347426971228172218, guid: fcc7edfd78ee02e4dbb50096a2d40d94, type: 3}
   _dropItemList: []
-  _type: 0
+  _type: 4

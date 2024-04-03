@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -719,6 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c466505bb923c44baa5e64dcefd63f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quadTree: {fileID: 0}
   poolableObjectDataList: []
 --- !u!4 &365268868
 Transform:
@@ -1077,6 +1078,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeveledStar
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fce0ecff534816b49af71ef31033c259, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fce0ecff534816b49af71ef31033c259, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1276,6 +1281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1130730156}
   - component: {fileID: 1130730157}
+  - component: {fileID: 1130730158}
   m_Layer: 16
   m_Name: MagneticField
   m_TagString: Untagged
@@ -1313,12 +1319,24 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
+  m_Radius: 3.41
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1130730158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130730155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbd359fc912f1f4faca3fb2437d4627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1206330287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,7 +1350,6 @@ GameObject:
   - component: {fileID: 1206330288}
   - component: {fileID: 1206330291}
   - component: {fileID: 1206330293}
-  - component: {fileID: 1206330297}
   - component: {fileID: 1206330296}
   m_Layer: 14
   m_Name: Player
@@ -1473,38 +1490,6 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1206330297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206330287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd15595b36976634f9465d292eb97e4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myAnim: {fileID: 0}
-  moveSpeed: 4
-  isMoving: 0
-  isBlocked: 0
-  isOutOfControl: 0
-  worldMoveDir: {x: 0, y: 0, z: 0}
-  outOfControllDuration: 0
-  myAttackPoint: {fileID: 0}
-  attackMask:
-    serializedVersion: 2
-    m_Bits: 0
-  _maxHP: 100
-  _curHp: 0
-  _speedCeof: 1
-  _attackCeof: 1
-  _attack: 0
-  WSInput: 0
-  ADInput: 0
-  myParticle: {fileID: 0}
-  myCharacter: {fileID: 0}
 --- !u!1 &1247248060
 GameObject:
   m_ObjectHideFlags: 0
@@ -2423,6 +2408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: magnet
       objectReference: {fileID: 0}
+    - target: {fileID: 6737171413972546432, guid: afaef5f2c702c5c48838b35efe34b55e, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 8082694061155135770, guid: afaef5f2c702c5c48838b35efe34b55e, type: 3}
@@ -2589,7 +2578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4a531696d1d8b4194c5b63a5594fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySlider: {fileID: 0}
+  _slider: {fileID: 0}
+  _canvas: {fileID: 0}
 --- !u!1 &1943492315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,6 +2827,10 @@ PrefabInstance:
     - target: {fileID: 1000010714891294, guid: 8ff339b4f81880b4d98f16661141e42f, type: 3}
       propertyPath: m_Name
       value: Heart
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010714891294, guid: 8ff339b4f81880b4d98f16661141e42f, type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4000013886378248, guid: 8ff339b4f81880b4d98f16661141e42f, type: 3}
       propertyPath: m_LocalScale.x
