@@ -1,0 +1,62 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Pool;
+
+public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이펙트 오브젝트 풀링 매니저.
+{
+    [SerializeField]public Dictionary<string, Stack<GameObject>> myPool = new Dictionary<string, Stack<GameObject>>();
+    private void Awake()
+    {
+        base.Initialize();
+    }
+
+    //EffectPoolManager.instance.GetObject<클래스명>(GameObject org, Transform p); 형식으로 접근하면 된다.
+    public GameObject SetActiveObject<T>(GameObject org, Transform parent, GameObject pos,  short atk = 1, float radius = 1, float size = 1, float speed = 1) // 오브젝트 활성화, 생성
+    {
+        string Key = typeof(T).ToString(); //T는 클래스 명이 될것. 클래스명을 key값으로 사용하겠다는 의미.
+        if (myPool.ContainsKey(Key)) //이미 생성된 stack이 있는 경우
+        {
+            if (myPool[Key].Count > 0)
+            {
+                GameObject obj = myPool[Key].Pop(); //가장최근에 들어온걸 return해준다.
+                                                    //obj.transform.SetParent(parent); //부모 설정
+                ISetStats reSetStats = obj.GetComponent<ISetStats>();
+                if (reSetStats != null)
+                {
+                    reSetStats.SetStats(atk, radius, size, speed);
+                }
+                obj.transform.position = pos.transform.position;
+                obj.SetActive(true); //활성화
+                //obj.transform.localPosition = p.localPosition; //해당위치로 이동
+                //obj.transform.localRotation = p.rotation;
+                return obj;
+            }
+        }
+        //return Instantiate(org, p);//없는경우 생성한다.
+
+        GameObject atkEffect = Instantiate(org, transform.position, Quaternion.identity); //없는경우 새로 생성
+        ISetStats setStats = atkEffect.GetComponent<ISetStats>(); //공격 오브젝트는 모두 ISetStats를 갖고 있어야 한다.
+        setStats.SetStats(atk, radius, size, speed); // 스탯 설정.
+        atkEffect.transform.position = pos.transform.position; // 매개변수로 넘겨받은 공격위치로 이동.
+
+        return atkEffect;
+        //return Instantiate(org, pos.transform.position,Quaternion.identity, parent);//없는경우 생성한다.
+
+    }
+
+    public void ReleaseObject<T>(GameObject obj) // 오브젝트를 풀로 되돌린다.
+    {
+        obj.transform.SetParent(transform);
+        obj.SetActive(false);
+        string Key = typeof(T).ToString();
+        if (!myPool.ContainsKey(Key))
+        {
+            myPool[Key] = new Stack<GameObject>();
+        }
+        myPool[Key].Push(obj);
+    }
+
+
+}

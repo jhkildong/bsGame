@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 1
   _buildingName: WoodBarricade
-  _maxHp: 200
-  _curHp: 200
+  _maxHp: 30
+  _curHp: 30
   _requireWood: 5
   _requireStone: 0
   _requireIron: 0
   _constTime: 10
   _repairSpeed: 20
+  _attackPower: 0
+  _attackDelay: 0
+  _attackRadius: 0
+  _attackProjectileSize: 0
   _buildingPrefab: {fileID: 8414439279532295106, guid: 373b4871c09cc944c9ec5a3e17796b83, type: 3}
   _layerMask:
     serializedVersion: 2

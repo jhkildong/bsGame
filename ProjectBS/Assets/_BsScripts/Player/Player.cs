@@ -25,12 +25,14 @@ public enum AttackState
 
 public class Player : Combat, IDamage<Player>
 {
-    /// <summary>
-    /// 플레이어의 키 조작을 버튼 형식으로 받음
-    /// 상하, 좌우를 동시에 입력시 나중에 입력된 동작으로 덮어씌워짐
-    /// 버튼을 떼어낼 때 비트 연산을 통해 이전 입력이 있었는지 확인한 후 입력값 설정
-    /// </summary>
+
     #region PlayerInput
+    ////////////////////////////////PlayerInput////////////////////////////////
+    // 플레이어의 키 조작을 버튼 형식으로 받음
+    // 상하, 좌우를 동시에 입력시 나중에 입력된 동작으로 덮어씌워짐
+    // 버튼을 떼어낼 때 비트 연산을 통해 이전 입력이 있었는지 확인한 후 입력값 설정
+    ///////////////////////////////////////////////////////////////////////////
+
     private PlayerInputs playerInputs;
     private void OnAttack(InputAction.CallbackContext context)
     {
@@ -107,6 +109,7 @@ public class Player : Combat, IDamage<Player>
     #endregion
 
     #region Private Field
+    ////////////////////////////////PrivateField////////////////////////////////
     [SerializeField] private CharacterComponent Com;
     [SerializeField] private AttackState attackState = AttackState.None;
 
@@ -116,8 +119,8 @@ public class Player : Combat, IDamage<Player>
     float _attackDir;
     #endregion
 
-
     #region Init Setting
+    ////////////////////////////////InitSetting////////////////////////////////
     private void InitPlayerSetting()
     {
         if (Com == null)
@@ -131,6 +134,8 @@ public class Player : Combat, IDamage<Player>
         attackMask = (int)BSLayerMasks.Monster;
         ObjectPoolManager.Instance.SetPool(Com.MyEffects, 10, 10);
 
+        rBody.mass = 50.0f;
+        rBody.constraints |= RigidbodyConstraints.FreezeRotationY;
 
         #region PlayerInputsCallback Setting
         playerInputs = new PlayerInputs();
@@ -179,6 +184,7 @@ public class Player : Combat, IDamage<Player>
     #endregion
 
     #region Unity Event
+    ////////////////////////////////UnityEvent////////////////////////////////
     protected override void Awake()
     {
         base.Awake();
@@ -220,6 +226,7 @@ public class Player : Combat, IDamage<Player>
     #endregion
 
     #region Public Method
+    ////////////////////////////////PublicMethod////////////////////////////////
     public void OnAttackPoint()
     {
         //공격범위 생성

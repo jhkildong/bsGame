@@ -65,6 +65,7 @@ namespace Yeon
                 EditorUtility.SetDirty(_blessData);
             _blessData = null;
             tabComponent?.Destroy();
+            serializedObject.Dispose();
         }
 
 

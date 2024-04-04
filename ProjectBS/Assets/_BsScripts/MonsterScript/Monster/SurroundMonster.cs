@@ -9,5 +9,15 @@ public class SurroundMonster : NormalMonster
     public override void Init(MonsterData data)
     {
         base.Init(data);
+        rBody.mass = 1000;
+        if (col is CapsuleCollider capsule)
+        {
+            capsule.radius = 0.5f;
+        }
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
     }
 }

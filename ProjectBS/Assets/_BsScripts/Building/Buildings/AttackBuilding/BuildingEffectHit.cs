@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BuildingEffectHit : MonoBehaviour
+
+public class BuildingEffectHit : MonoBehaviour, ISetStats
 {
 
     protected enum Type
@@ -22,23 +24,17 @@ public class BuildingEffectHit : MonoBehaviour
     float progress; // 파티클 재생 진행도
 
     private short dmg;
-    private float radius;
-    private float projectileSize;
+    private short baseAttack;
+    private float myRadius;
+    private float myProjectileSize;
+
+    [SerializeField]protected float hitTiming; // 타격 타이밍 (0~1사이)
 
     public LayerMask attackableLayer;
 
-    public UnityAction getAtkStat;
     private void Awake()
     {
-        /*
-        //등록된 공격력을 가져오는 이벤트에 등록된게 없으면 이벤트 추가하고, 이벤트 실행.
-        if(getAtkStat == null)
-        {
-            AttackBuildingBase buildingStat = GetComponentInParent<AttackBuildingBase>();
-            dmg = buildingStat.SetDmg();
-            radius = buildingStat.SetAtkRadius();
-        }
-        */
+
     }
     void Start()
     {
@@ -48,20 +44,30 @@ public class BuildingEffectHit : MonoBehaviour
     }
     void OnEnable()
     {
-        getParentBuildingAtkStats();
+        //getParentBuildingAtkStats();
         canHit = true;
         Debug.Log("켜짐");
     }
-
+    /*
     void getParentBuildingAtkStats()
     {
         
         AttackBuildingBase buildingStat = GetComponentInParent<AttackBuildingBase>(); //커플링. 부모 건물의 현재 공격력을 갖는다.
+        Debug.Log(buildingStat);
+        Debug.Log("데미지 " + dmg);
         dmg = buildingStat.SetDmg();
-        radius = buildingStat.SetAtkRadius();
-        projectileSize = buildingStat.SetAtkProjectileSize();
+        myRadius = buildingStat.SetAtkRadius();
+        myProjectileSize = buildingStat.SetAtkProjectileSize();
 
-}
+    }
+    */
+
+    public void SetStats(short atk = 1, float radius = 1, float size = 1, float speed = 1) // 건물의 스탯을 EffectPoolManager에 전달 -> 이펙트 생성시에 해당 Stat을 이펙트로 전달
+    {
+        baseAttack = atk;
+        myRadius = radius;
+        myProjectileSize = size;
+    }
 
     void Update()
     {
@@ -73,7 +79,7 @@ public class BuildingEffectHit : MonoBehaviour
         {
             progress = ps.time / ps.main.duration;
             //if (Mathf.Approximately(progress, hitTime) && canHit)
-            if((progress >0.3f) && canHit)
+            if((progress >hitTiming) && canHit)
             {
                 canHit = false;
                 Debug.Log("지금!");
@@ -82,16 +88,27 @@ public class BuildingEffectHit : MonoBehaviour
             }
             if(progress >= 1f)
             {
-                gameObject.SetActive(false);    
+                //gameObject.SetActive(false);
+                EffectPoolManager.Instance.ReleaseObject<BuildingEffectHit>(gameObject);
             }
         }
 
         
     }
 
-    public void SetAtkStats()
+    protected virtual void MeeleAttack()
     {
-        
+
+    }
+
+    protected virtual void ProjectileAttack()
+    {
+
+    }
+
+    protected virtual void PointAttack()
+    {
+
     }
 
     protected void SetHitTiming(float timing)
@@ -102,7 +119,7 @@ public class BuildingEffectHit : MonoBehaviour
 
     protected void HitSphere()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius,attackableLayer); 
+        Collider[] colliders = Physics.OverlapSphere(transform.position, myRadius,attackableLayer); 
         if(colliders.Length > 0 )
         {
             Debug.Log(colliders);
@@ -111,18 +128,7 @@ public class BuildingEffectHit : MonoBehaviour
         foreach (Collider collider in colliders)
         {
             IDamage target = collider.GetComponent<IDamage>();
-            target.TakeDamage(dmg);
-            /*
-            if(target != null && ((collider.gameObject.layer&attackableLayer)!= 0))
-            {
-                target.TakeDamage(dmg);
-            }
-            
-            else
-            {
-                Debug.Log("인식되는 타겟이 없어요");
-            }
-            */
+            target.TakeDamage(baseAttack);
         }
         //범위내의 적에게 (Idamage 가 있는)
         //데미지 전달
