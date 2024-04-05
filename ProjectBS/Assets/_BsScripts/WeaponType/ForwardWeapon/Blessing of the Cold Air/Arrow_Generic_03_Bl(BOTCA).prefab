@@ -252,16 +252,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 0}
-  _attack: 0
+  _attack: 1
   _size: 0
   _amount: 0
-  _level: 0
   _levelProp:
     states: 
     _levelTables: []
     SerializablePropertyInfos: []
     PropertyNames: []
-  bulletSpeed: 5
+  Monster:
+    serializedVersion: 2
+    m_Bits: 32768
+  bulletSpeed: 20
 --- !u!65 &3387600366878033816
 BoxCollider:
   m_ObjectHideFlags: 0
