@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-using Yeon;
 
 /*
 계층구조
@@ -17,8 +15,8 @@ respawnTime으로 리스폰 주기 결정
 public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField, ReadOnly]
-    private MonsterData[] monsterDatas;
-    private List<Monster> monsterList = new List<Monster>();
+    private MonsterData[] monsterDatas;                         //몬스터 데이터(scriptable object) Resource폴더에서 로드
+    private List<Monster> monsterList = new List<Monster>();    //ObjectPoolManager에 등록할 몬스터의 사본
     public float respawnDist = 20.0f;
     public bool applyRespawn;
     public float respawnTime = 0.5f;
@@ -34,8 +32,8 @@ public class MonsterSpawner : MonoBehaviour
 
         foreach(MonsterData data in monsterDatas)
         {
-            Monster monster = data.CreateClone();
-            monsterList.Add(monster);
+            Monster monster = data.CreateClone();   //데이터를 기반으로 사본생성
+            monsterList.Add(monster);               //사본을 리스트에 추가(추가 호출을 위해)
             ObjectPoolManager.Instance.SetPool(monster, init, max);
             ObjectPoolManager.Instance.ReleaseObj(monster);
         }
@@ -43,11 +41,11 @@ public class MonsterSpawner : MonoBehaviour
         StartCoroutine(EnemySpawn());
     }
 
-    public QuadTree quadTree;
-
-    //임시
+    //임시 surroundMonster체크, 범위설정
     bool checkSurround = false;
     float surroundRange = 30.0f;
+    Vector3 tempPos;
+
     IEnumerator EnemySpawn()
     {
         while(true)
@@ -66,8 +64,6 @@ public class MonsterSpawner : MonoBehaviour
                         case var type when type.HasFlag(MonsterType.Single):
                             go = ObjectPoolManager.Instance.GetObj(monster).Data.gameObject;
                             go.transform.position = rndPos;
-                            //quadTree.OnItemSpawned(go); //임시
-                            //quadTree.ShowStats(); //임시
                             break;
                         case var type when type.HasFlag(MonsterType.Group):
                             for (int i = 0; i < (nMonster as GroupMonster).GroupData.Amount; ++i)
@@ -79,16 +75,23 @@ public class MonsterSpawner : MonoBehaviour
                                 {
                                     go.transform.LookAt(transform.position);
                                 }
-                                //quadTree.OnItemSpawned(go); //임시
-                                //quadTree.ShowStats(); //임시
                             }
                             break;
                         case var type when type.HasFlag(MonsterType.Surround):
                             if (checkSurround == false)
                             {
-                                StartCoroutine(SurroundSpawn(monster));
+                                tempPos = transform.position;
+
+                                int amount = 100; //임시
+                                StartCoroutine(SurroundSpawn(monster, amount, tempPos));
                                 checkSurround = true;
+                                break;
                             }
+                            if ((transform.position - tempPos).sqrMagnitude > surroundRange * surroundRange * 9)
+                            {
+                                checkSurround = false;
+                            }
+
                             break;
                     }
                 }
@@ -98,20 +101,20 @@ public class MonsterSpawner : MonoBehaviour
         }
     }
 
-    IEnumerator SurroundSpawn(Monster monster)
+    IEnumerator SurroundSpawn(Monster monster, int amount, Vector3 startPos)
     {
-        float anlge = 3.6f;
-        float angleStep = 360.0f / anlge;
-        for (int i = 0; i < angleStep; i++)
+        float anlge = 360.0f / amount;
+        for (int i = 0; i < amount; i++)
         {
-            float ang = anlge * i * Mathf.Deg2Rad;
-            Vector3 pos = new Vector3(Mathf.Cos(ang), 0f, Mathf.Sin(ang)) * surroundRange;
+            Quaternion rot = Quaternion.Euler(0, anlge * i, 0);
+            Vector3 spawnPos = startPos + rot * Vector3.forward * surroundRange;
             GameObject go = ObjectPoolManager.Instance.GetObj(monster).Data.gameObject;
-            go.transform.position = pos + transform.position;
-            //quadTree.OnItemSpawned(go); //임시
-            //quadTree.ShowStats(); //임시
-            yield return null;
+            go.transform.position = spawnPos;
+            
+            if(i % 10 == 0)
+                yield return null;
         }
+        yield return null;
     }
     /*
     private void RandomMonsterGenerate(MonsterData[] monsterDatas)

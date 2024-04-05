@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class StraightMoveMonster : GroupMonster
 {
     public StraightMoveMonsterData StraightData => _data as StraightMoveMonsterData;
     Transform target;
+    Coroutine releaseCoroutine;
 
     protected override void Awake()
     {
@@ -32,6 +32,13 @@ public class StraightMoveMonster : GroupMonster
             return;
         }
         myTarget = target.transform;
+        releaseCoroutine = StartCoroutine(ReleaseAuto());
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        releaseCoroutine = null;
     }
 
     protected override void InitCollider()
@@ -43,6 +50,12 @@ public class StraightMoveMonster : GroupMonster
         sphere.isTrigger = true;
     }
 
+    IEnumerator ReleaseAuto()
+    {
+        yield return new WaitForSeconds(10.0f);
+        ObjectPoolManager.Instance.ReleaseObj(this);
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if ((attackMask & (1 << other.gameObject.layer)) != 0)

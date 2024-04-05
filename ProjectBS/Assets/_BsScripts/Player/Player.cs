@@ -138,6 +138,7 @@ public class Player : Combat, IDamage<Player>
         rBody.constraints |= RigidbodyConstraints.FreezeRotationY;
 
         #region PlayerInputsCallback Setting
+        ////////////////////////////////PlayerInputsCallbackSetting////////////////////////////////
         playerInputs = new PlayerInputs();
         playerInputs.Player.Attack.performed += OnAttack;
         playerInputs.Player.PressW.performed += PressW;
@@ -159,8 +160,9 @@ public class Player : Combat, IDamage<Player>
         Application.focusChanged += OnFocusChanged;
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         Application.focusChanged -= OnFocusChanged;
     }
 

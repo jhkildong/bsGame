@@ -9,7 +9,7 @@ namespace Yeon
     {
         #region Public Field
         public event UnityAction<float> ChangeHpAct = null;
-        public event UnityAction DeadAct;
+        public UnityAction DeadAct;
         [SerializeField] protected Transform myAttackPoint;
         [SerializeField] protected LayerMask attackMask;
         #endregion
@@ -41,15 +41,27 @@ namespace Yeon
         protected int effectCount = 3;
         protected float effectTime = 0.1f;
         protected Color effctColor = Color.red;
-        private Renderer[] _myRenderes;
+        private Renderer[] _myRenderers;
+        private Texture _myTexture;
         private Coroutine _onDamageEffect;
         #endregion
 
         #region Unity Event
         protected virtual void OnEnable()
         {
-            _myRenderes = GetComponentsInChildren<Renderer>();
+            _myRenderers = GetComponentsInChildren<Renderer>();
+            if(_myRenderers.Length != 0)
+                _myTexture = _myRenderers[0].material.mainTexture;
         }        
+        protected virtual void OnDisable()
+        {
+            StopAllCoroutines();
+            foreach (Renderer renderer in _myRenderers)
+            {
+                renderer.material.mainTexture = _myTexture;
+                renderer.material.color = Color.white;
+            }
+        }
         #endregion
 
         #region Interface Method
@@ -80,18 +92,17 @@ namespace Yeon
         IEnumerator OnDamageEffect()
         {
             WaitForSeconds wait = new WaitForSeconds(effectTime);
-            Texture maimTexture = _myRenderes[0].material.mainTexture;
             for(int i =0; i < effectCount; i++)
             {
-                foreach(Renderer renderer in _myRenderes)
+                foreach(Renderer renderer in _myRenderers)
                 {
                     renderer.material.mainTexture = null;
                     renderer.material.color = effctColor;
                 }
                 yield return wait;
-                foreach (Renderer renderer in _myRenderes)
+                foreach (Renderer renderer in _myRenderers)
                 {
-                    renderer.material.mainTexture = maimTexture;
+                    renderer.material.mainTexture = _myTexture;
                     renderer.material.color = Color.white;
                 }
                 yield return wait;
