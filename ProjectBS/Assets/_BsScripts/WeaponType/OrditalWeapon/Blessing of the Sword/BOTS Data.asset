@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
-  _attack: 0
+  _attack: 100
   _size: 0
   _prefab: {fileID: 78316188785865676, guid: 11149ae3d92005e49a9f49618e19bbbb, type: 3}
   _bless: {fileID: 0}
   LevelProp:
     states: 
-    _levelTables: []
+    _levelTables:
+    - Attribute: 
+      Table:
+      - 0
+      - 0
     SerializablePropertyInfos: []
     PropertyNames: []

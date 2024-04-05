@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class OrditalWeaponRA : MonoBehaviour
 {
     public Transform myTarget; // 회전 중심점
-    public GameObject weaponPrefabs;
+    public GameObject weaponPrefabs; // 무기 프리펩
     public float rotSpeed = 30.0f; // 공전 속도
     public float attakRange = 1.0f;
 
