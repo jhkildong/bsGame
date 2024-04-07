@@ -81,6 +81,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         //DeadAct +=WillDrop;
         Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
         myAnim = GetComponentInChildren<Animator>();
+        _myRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         //임시
         PlayerTransform = GameObject.Find("Player").transform;
         myTarget = PlayerTransform;

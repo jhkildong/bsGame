@@ -1578,7 +1578,7 @@ GameObject:
   - component: {fileID: 3593012333873927673}
   - component: {fileID: 3322020815460592200}
   m_Layer: 0
-  m_Name: Spider
+  m_Name: Spider Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1962,7 +1962,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ea0d6c768b973f741b006463b7797f76, type: 2}
+  - {fileID: 2100000, guid: 431246fb082bac44ba30078b7a5dfccf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

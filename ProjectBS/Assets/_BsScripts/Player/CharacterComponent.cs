@@ -76,6 +76,18 @@ public abstract class CharacterComponent : MonoBehaviour
             return _rigs;
         }
     }
+    public Renderer[] Myrenderers
+    {
+        get
+        {
+            if (_renderers == null)
+            {
+                if ((_renderers = GetComponentsInChildren<Renderer>()) == null)
+                    return null;
+            }
+            return _renderers;
+        }
+    }
     public abstract Effect[] MyEffects{ get; }
     #endregion
 
@@ -85,6 +97,7 @@ public abstract class CharacterComponent : MonoBehaviour
     [SerializeField] protected AnimEvent _animEvent;
     [SerializeField] protected Animator _anim;
     [SerializeField] protected Rig[] _rigs;
+    [SerializeField] protected Renderer[] _renderers;
     [SerializeField] protected Effect[] _effects = new Effect[0];
     #endregion
 

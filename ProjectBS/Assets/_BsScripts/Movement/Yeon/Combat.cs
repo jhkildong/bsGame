@@ -41,25 +41,30 @@ namespace Yeon
         protected int effectCount = 3;
         protected float effectTime = 0.1f;
         protected Color effctColor = Color.red;
-        private Renderer[] _myRenderers;
-        private Texture _myTexture;
+        protected SkinnedMeshRenderer _myRenderer;
+        protected Texture _myTexture;
         private Coroutine _onDamageEffect;
         #endregion
 
         #region Unity Event
+
         protected virtual void OnEnable()
         {
-            _myRenderers = GetComponentsInChildren<Renderer>();
-            if(_myRenderers.Length != 0)
-                _myTexture = _myRenderers[0].material.mainTexture;
-        }        
+            if(_myRenderer == null)
+            {
+                _myRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+                _myTexture = _myRenderer.material.mainTexture;
+            }
+
+        }
+
         protected virtual void OnDisable()
         {
-            StopAllCoroutines();
-            foreach (Renderer renderer in _myRenderers)
+            if (_onDamageEffect != null)
             {
-                renderer.material.mainTexture = _myTexture;
-                renderer.material.color = Color.white;
+                _myRenderer.material.mainTexture = _myTexture;
+                _myRenderer.material.color = Color.white;
+                StopAllCoroutines();
             }
         }
         #endregion
@@ -94,17 +99,12 @@ namespace Yeon
             WaitForSeconds wait = new WaitForSeconds(effectTime);
             for(int i =0; i < effectCount; i++)
             {
-                foreach(Renderer renderer in _myRenderers)
-                {
-                    renderer.material.mainTexture = null;
-                    renderer.material.color = effctColor;
-                }
+
+                _myRenderer.material.mainTexture = null;
+                _myRenderer.material.color = effctColor;
                 yield return wait;
-                foreach (Renderer renderer in _myRenderers)
-                {
-                    renderer.material.mainTexture = _myTexture;
-                    renderer.material.color = Color.white;
-                }
+                _myRenderer.material.mainTexture = _myTexture;
+                _myRenderer.material.color = Color.white;
                 yield return wait;
             }
             _onDamageEffect = null;

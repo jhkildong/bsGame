@@ -137,6 +137,7 @@ public class Player : Combat, IDamage<Player>
         rBody.mass = 50.0f;
         rBody.constraints |= RigidbodyConstraints.FreezeRotationY;
 
+
         #region PlayerInputsCallback Setting
         ////////////////////////////////PlayerInputsCallbackSetting////////////////////////////////
         playerInputs = new PlayerInputs();
