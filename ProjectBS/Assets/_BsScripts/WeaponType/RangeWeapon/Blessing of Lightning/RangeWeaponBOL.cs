@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeWeaponLP : MonoBehaviour
+public class RangeWeaponBOL : MonoBehaviour
 {
     public Transform clonesParent; // 생성한 프리펩들 보관할 곳
     public Transform myTarget;

@@ -2336,6 +2336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1419604565}
+  - component: {fileID: 1419604566}
   m_Layer: 0
   m_Name: Blessing of Lightning
   m_TagString: Untagged
@@ -2358,6 +2359,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2060840856}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1419604566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419604564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b5f1ff6d8ddf449986a019087feec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clonesParent: {fileID: 2060840856}
+  myTarget: {fileID: 2513614166102421726}
+  objectPrefab: {fileID: 1029683450922114, guid: 8f9cc77adc813124893056f91992f7f3, type: 3}
+  atRange: 10
+  reTime: 0.5
+  waitTime: 0.2
+  destroyTime: 0.5
+  Level: 0
 --- !u!1 &1425763829
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,7 +2728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c466505bb923c44baa5e64dcefd63f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quadTree: {fileID: 1183510420}
   poolableObjectDataList: []
 --- !u!4 &1827977206
 Transform:
