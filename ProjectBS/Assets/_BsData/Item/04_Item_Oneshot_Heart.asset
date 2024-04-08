@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72fc1e9bb1e24dd4581c0c5e0129fae9, type: 3}
-  m_Name: Item_Struct_ Stone
+  m_Script: {fileID: 11500000, guid: ff6a95133543b6341b2bf9ea21c4f97c, type: 3}
+  m_Name: 04_Item_Oneshot_Heart
   m_EditorClassIdentifier: 
-  description: "\uB3CC\uC785\uB2C8\uB2E4..."
-  _id: 3
-  _name: stonne
+  description: "\uCCB4\uB825\uC774 10 \uC62C\uB77C\uAC10."
+  _id: 4
+  _name: heart
   _value: 1
-  _prefab: {fileID: 1816422187447663941, guid: 401ad4bfe044873439785718bd45697f, type: 3}
-  TypeOfItem: 2
-  TypeOfMaterial: 1
+  _prefab: {fileID: 4157742439831412141, guid: e18ed00d4a1145143b80803184010b72, type: 3}
+  itemType: 3
+  _used: 0

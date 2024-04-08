@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff6a95133543b6341b2bf9ea21c4f97c, type: 3}
-  m_Name: Item_Oneshot_Heart
+  m_Name: 05_Item_Oneshot_Ice
   m_EditorClassIdentifier: 
-  description: "\uCCB4\uB825\uC774 10 \uC62C\uB77C\uAC10."
-  _id: 4
-  _name: heart
-  _value: 1
-  _prefab: {fileID: 1000010714891294, guid: 8ff339b4f81880b4d98f16661141e42f, type: 3}
+  description: "\uC804\uCCB4\uC801\uC778 \uBAAC\uC2A4\uD130 \uC18D\uB3C4\uAC00 \uB290\uB824\uC9D0."
+  _id: 5
+  _name: Ice
+  _value: 2
+  _prefab: {fileID: 5613317769471893737, guid: cd7d7f3f127d6a54e86eba46751f3e83, type: 3}
   itemType: 3
   _used: 0
