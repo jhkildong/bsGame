@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6a95133543b6341b2bf9ea21c4f97c, type: 3}
   m_Name: Item_Oneshot_Ice
   m_EditorClassIdentifier: 
-  description: 
+  description: "\uC804\uCCB4\uC801\uC778 \uBAAC\uC2A4\uD130 \uC18D\uB3C4\uAC00 \uB290\uB824"
   _id: 0
   _name: 
   _value: 0

@@ -16,6 +16,6 @@ MonoBehaviour:
   _id: 4
   _name: heart
   _value: 1
-  _prefab: {fileID: 1000010714891294, guid: 8ff339b4f81880b4d98f16661141e42f, type: 3}
+  _prefab: {fileID: 1958168085196861139, guid: baf807f82fe01f44dbeabcd9404f98e6, type: 3}
   itemType: 3
   _used: 0
