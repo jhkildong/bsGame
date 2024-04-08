@@ -12,8 +12,6 @@ namespace Yeon
     */
     public class Movement : MonoBehaviour
     {
-
-
         #region Component
         protected Rigidbody rBody;
         protected Collider col;
@@ -49,10 +47,6 @@ namespace Yeon
             if (col == null)
             {
                 col = gameObject.AddComponent<CapsuleCollider>();
-
-                (col as CapsuleCollider).height = 2.0f;
-                (col as CapsuleCollider).center = Vector3.up * 1.0f;
-                (col as CapsuleCollider).radius = 0.5f;
             }
         }
         #endregion
@@ -110,6 +104,19 @@ namespace Yeon
         public void SetDirection(Vector3 dir)
         {
             worldMoveDir = dir;
+        }
+        public void SetCollider(float radius)
+        {
+            if (col is CapsuleCollider cc)
+            {
+                cc.radius = radius;
+                cc.height = radius * 2.0f;
+                cc.center = new Vector3(0, radius, 0);
+            }
+            else if (col is SphereCollider sc)
+            {
+                sc.radius = radius;
+            }
         }
         #endregion
     }

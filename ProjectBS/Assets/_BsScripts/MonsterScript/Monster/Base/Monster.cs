@@ -64,24 +64,18 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         _curHp = data.MaxHP;
         moveSpeed = data.Sp;
 
-        //타격 이펙트 설정
-        effectCount = 1;
-        effctColor = Color.white;
-        effectTime = 0.1f;
-
-        //무게 설정
-        rBody.mass = 1;
+        rBody.mass = data.Mass;
         rBody.angularDrag = 2f;
-        
-        if(col!=null && col is CapsuleCollider capsule)
-        {
-            capsule.radius = 0.3f;
-        }
+        SetCollider(data.Radius);
 
-        //DeadAct +=WillDrop;
+        //타격 이펙트 설정
+        effectData.effectCount = 1;
+        effectData.effectColor = Color.white;
+        effectData.effectTime = 0.1f;
+
         Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
         myAnim = GetComponentInChildren<Animator>();
-        _myRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        effectData.SetRenderer(this);
         //임시
         PlayerTransform = GameObject.Find("Player").transform;
         myTarget = PlayerTransform;
@@ -117,6 +111,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     {
         myAnim.SetTrigger(AnimParam.Death);
         ChangeState(State.Death);
+        dropTable.WillDrop(OriginData.DropItemList).transform.position = this.transform.position + Vector3.up;   //아이템생성
     }
 
     protected void ChangeTarget(Transform target)

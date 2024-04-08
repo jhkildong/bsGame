@@ -19,6 +19,8 @@ MonoBehaviour:
   _speed: 1
   _maxHp: 20
   _exp: 10
+  _mass: 1
+  _radius: 0.3
   _prefab: {fileID: 767905264487814327, guid: ae4f8b952a7abca4f9150c857cfa3a88, type: 3}
   _dropItemList:
   - ID: 1

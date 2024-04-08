@@ -16,6 +16,22 @@ public enum BSLayerMasks
     Ground = 1 << 29
 }
 
+public enum BSLayers
+{
+    Player = 14,
+    Monster = 15,
+    MagneticField = 16,
+    Item = 17,
+    SurroundMonster = 18,
+    Building = 24,
+    InCompletedBuilding = 25,
+    BuildCheckObject = 26,
+    Ground = 29
+
+}
+
+
+
 public enum AttackState
 {
     None,
@@ -130,7 +146,11 @@ public class Player : Combat, IDamage<Player>
         Com.MyAnimEvent.AttackAct += OnAttackPoint;
         ChangeHpAct += PlayerUI.Instance.ChangeHP;
         DeadAct += Death;
+        
         CurHp = MaxHP;
+        effectData.renderers = new Renderer[1];
+        effectData.renderers[0] = Com.Myrenderer;
+        effectData.mainTexture = Com.Myrenderer.material.mainTexture;
         attackMask = (int)BSLayerMasks.Monster;
         ObjectPoolManager.Instance.SetPool(Com.MyEffects, 10, 10);
 
@@ -232,24 +252,12 @@ public class Player : Combat, IDamage<Player>
     ////////////////////////////////PublicMethod////////////////////////////////
     public void OnAttackPoint()
     {
-        //공격범위 생성
-        Collider[] list = Physics.OverlapSphere(myAttackPoint.position, 1.0f, attackMask);
-
         _attackDir = (attackState == AttackState.ComboCheck) ? 180.0f : 0.0f;
 
         //공격 이펙트 생성
         GameObject go = ObjectPoolManager.Instance.GetEffect(Com.GetMyEffect(), attack: Attack).Data.gameObject;
         go.transform.position = Com.MyEffectSpawn.position;
         go.transform.rotation = Quaternion.Euler(0.0f, Com.MyEffectSpawn.rotation.eulerAngles.y, _attackDir);
-
-        foreach (Collider col in list)
-        {
-            IDamage<Monster> obj = col.GetComponent<IDamage<Monster>>();
-            if (obj != null)
-            {
-                obj.TakeDamage(Attack);
-            }
-        }
     }
 
     public void ChangeAttackState(AttackState state)

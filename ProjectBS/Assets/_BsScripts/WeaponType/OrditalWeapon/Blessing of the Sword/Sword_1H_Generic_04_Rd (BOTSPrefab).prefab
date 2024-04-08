@@ -106,10 +106,40 @@ MonoBehaviour:
   _size: 0
   _amount: 0
   _levelProp:
-    states: 
-    _levelTables: []
-    SerializablePropertyInfos: []
-    PropertyNames: []
+    states: 010100
+    _levelTables:
+    - Attribute: Ak
+      Table:
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    - Attribute: Size
+      Table:
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    SerializablePropertyInfos:
+    - TypeName: OrditalWeaponBOTS_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Ak
+    - TypeName: OrditalWeaponBOTS_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Size
+    - TypeName: OrditalWeaponBOTS_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Amount
+    PropertyNames:
+    - Ak
+    - Size
+    - Amount
   Monster:
     serializedVersion: 2
     m_Bits: 32768

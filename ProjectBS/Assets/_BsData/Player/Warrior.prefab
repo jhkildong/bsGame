@@ -805,6 +805,7 @@ MonoBehaviour:
   _rigs:
   - {fileID: 9175071125000252519}
   - {fileID: 3167915928052376573}
+  _renderer: {fileID: 7404074520100386408}
   _effects: []
   _effectType: 1000
 --- !u!114 &8512334374948543214
@@ -1114,6 +1115,11 @@ Transform:
 --- !u!4 &7172891073594266044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1469909912047954204, guid: 08cc705a868d63441bb3d3ea3db312b5, type: 3}
+  m_PrefabInstance: {fileID: 581789898712172376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7404074520100386408 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1237821013350354640, guid: 08cc705a868d63441bb3d3ea3db312b5, type: 3}
   m_PrefabInstance: {fileID: 581789898712172376}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7710231938494221269 stripped

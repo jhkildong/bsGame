@@ -16,9 +16,11 @@ MonoBehaviour:
   _name: PlantMonster
   _attack: 3
   _attackDelay: 1
-  _speed: 0.1
+  _speed: 0.3
   _maxHp: 100
   _exp: 10
+  _mass: 1000
+  _radius: 0.5
   _prefab: {fileID: 3347426971228172218, guid: fcc7edfd78ee02e4dbb50096a2d40d94, type: 3}
   _dropItemList:
   - ID: 1
