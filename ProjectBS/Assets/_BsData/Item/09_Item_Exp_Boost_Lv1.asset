@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff6a95133543b6341b2bf9ea21c4f97c, type: 3}
-  m_Name: Item_Oneshot_Ice
+  m_Script: {fileID: 11500000, guid: a8b69fdfe4eb0f54ea35ec6c6b61e0f5, type: 3}
+  m_Name: 09_Item_Exp_Boost_Lv1
   m_EditorClassIdentifier: 
-  description: "\uC804\uCCB4\uC801\uC778 \uBAAC\uC2A4\uD130 \uC18D\uB3C4\uAC00 \uB290\uB824"
-  _id: 0
-  _name: 
+  description: 
+  _id: 9
+  _name: ExpBoost_Lv1
   _value: 0
-  _prefab: {fileID: 0}
-  itemType: 3
-  _used: 0
+  _prefab: {fileID: 3745198538921545538, guid: d45679f56eded6d48961b7b3a04a7984, type: 3}
+  itemType: 1
+  _exprate: 0

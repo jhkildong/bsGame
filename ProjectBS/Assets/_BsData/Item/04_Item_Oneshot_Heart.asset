@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff6a95133543b6341b2bf9ea21c4f97c, type: 3}
-  m_Name: Item_Oneshot_ Bomb
+  m_Name: 04_Item_Oneshot_Heart
   m_EditorClassIdentifier: 
-  _id: 2
-  _name: Bomb
-  _value: 10
-  _prefab: {fileID: 6178760419957704234, guid: d26dc319f3523e14b880163c565a0a2d, type: 3}
+  description: "\uCCB4\uB825\uC774 10 \uC62C\uB77C\uAC10."
+  _id: 4
+  _name: heart
+  _value: 1
+  _prefab: {fileID: 1958168085196861139, guid: baf807f82fe01f44dbeabcd9404f98e6, type: 3}
+  itemType: 3
   _used: 0
