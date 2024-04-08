@@ -38,29 +38,57 @@ namespace Yeon
         [SerializeField] protected float _attackCeof = 1.0f;      //공격력 계수
         [SerializeField] protected short _attack;                 //공격력
 
-        protected int effectCount = 3;
-        protected float effectTime = 0.1f;
-        protected Color effctColor = Color.red;
-        private Renderer[] _myRenderers;
-        private Texture _myTexture;
+
+        #endregion
+
+        #region DamageEffect
+        [System.Serializable]
+        public class EffectData
+        {
+            public int effectCount = 3;
+            public float effectTime = 0.1f;
+            public Color effectColor = Color.red;
+            public Renderer[] renderers;
+            public Texture mainTexture;
+
+            public void SetRenderer(Combat combat)
+            {
+                renderers = combat.gameObject.GetComponentsInChildren<Renderer>();
+                mainTexture = renderers.Length > 0 ? renderers[0].material.mainTexture : null;
+            }
+
+            public void ChangeTexture(Texture texture)
+            {
+                foreach (Renderer renderer in renderers)
+                {
+                    renderer.material.mainTexture = texture;
+                }
+            }
+            public void ChangeColor(Color color)
+            {
+                foreach (Renderer renderer in renderers)
+                {
+                    renderer.material.color = color;
+                }
+            }
+        }
+        public EffectData effectData => _effectData;
+        [SerializeField]private EffectData _effectData = new();
         private Coroutine _onDamageEffect;
         #endregion
 
         #region Unity Event
+
         protected virtual void OnEnable()
         {
-            _myRenderers = GetComponentsInChildren<Renderer>();
-            if(_myRenderers.Length != 0)
-                _myTexture = _myRenderers[0].material.mainTexture;
-        }        
+
+        }
+
         protected virtual void OnDisable()
         {
             StopAllCoroutines();
-            foreach (Renderer renderer in _myRenderers)
-            {
-                renderer.material.mainTexture = _myTexture;
-                renderer.material.color = Color.white;
-            }
+            effectData.ChangeTexture(effectData.mainTexture);
+            effectData.ChangeColor(Color.white);
         }
         #endregion
 
@@ -91,20 +119,14 @@ namespace Yeon
         #region Private Method
         IEnumerator OnDamageEffect()
         {
-            WaitForSeconds wait = new WaitForSeconds(effectTime);
-            for(int i =0; i < effectCount; i++)
+            WaitForSeconds wait = new WaitForSeconds(effectData.effectTime);
+            for(int i =0; i < effectData.effectCount; i++)
             {
-                foreach(Renderer renderer in _myRenderers)
-                {
-                    renderer.material.mainTexture = null;
-                    renderer.material.color = effctColor;
-                }
+                effectData.ChangeTexture(null);
+                effectData.ChangeColor(effectData.effectColor);
                 yield return wait;
-                foreach (Renderer renderer in _myRenderers)
-                {
-                    renderer.material.mainTexture = _myTexture;
-                    renderer.material.color = Color.white;
-                }
+                effectData.ChangeTexture(effectData.mainTexture);
+                effectData.ChangeColor(Color.white);
                 yield return wait;
             }
             _onDamageEffect = null;

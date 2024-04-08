@@ -43,11 +43,8 @@ public class StraightMoveMonster : GroupMonster
 
     protected override void InitCollider()
     {
-        SphereCollider sphere;
-        sphere = gameObject.AddComponent<SphereCollider>();
-        sphere.radius = 1.5f;
-        sphere.center = new Vector3(0, 1.8f, 0);
-        sphere.isTrigger = true;
+        base.InitCollider();
+        col.isTrigger = true;
     }
 
     IEnumerator ReleaseAuto()

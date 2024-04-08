@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2268c62a5968e0648bb33db8908039e3, type: 3}
+  m_Name: 05_NM_Single_SpiderBlue
+  m_EditorClassIdentifier: 
+  _id: 5
+  _name: SpiderBlue
+  _attack: 7
+  _attackDelay: 10
+  _speed: 2
+  _maxHp: 100
+  _exp: 20
+  _mass: 7
+  _radius: 2
+  _prefab: {fileID: 4221879471387922243, guid: b2ebd14a1cbfb254a9d13b334caea29a, type: 3}
+  _dropItemList:
+  - ID: 4
+    dropChance: 100
+  _type: 1

@@ -326,7 +326,7 @@ MonoBehaviour:
   Monster:
     serializedVersion: 2
     m_Bits: 32768
-  rotSpeed: 1800
+  rotSpeed: 900
 --- !u!65 &7771490026298361659
 BoxCollider:
   m_ObjectHideFlags: 0

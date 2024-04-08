@@ -37,6 +37,11 @@ namespace Yeon
             _amount = 0;
             //_level = 0;
         }
-        
+
+        public void Awake()
+        {
+            Init(_data);
+        }
+
     }
 }

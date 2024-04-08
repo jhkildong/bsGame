@@ -47,10 +47,9 @@ MonoBehaviour:
   monsterDatas: []
   respawnDist: 20
   applyRespawn: 1
-  respawnTime: 0.5
+  respawnTime: 1
   init: 200
   max: 200
-  quadTree: {fileID: 0}
 --- !u!1 &2659509768014043797
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15595b36976634f9465d292eb97e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 5
   isMoving: 0
   isBlocked: 0
   isOutOfControl: 0
@@ -168,7 +167,13 @@ MonoBehaviour:
   _curHp: 1
   _speedCeof: 1
   _attackCeof: 1
-  _attack: 1
+  _attack: 20
+  _effectData:
+    effectCount: 3
+    effectTime: 0.1
+    effectColor: {r: 1, g: 0, b: 0, a: 1}
+    renderers: []
+    mainTexture: {fileID: 0}
   WSADInput: 0
   Com: {fileID: 0}
   attackState: 0
