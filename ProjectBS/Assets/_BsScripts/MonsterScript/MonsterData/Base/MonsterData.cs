@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>리스폰 타입</summary>
 [System.Flags]
 public enum MonsterType
 {

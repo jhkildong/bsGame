@@ -6,7 +6,6 @@ public class StraightMoveMonster : GroupMonster
 {
     public StraightMoveMonsterData StraightData => _data as StraightMoveMonsterData;
     Transform target;
-    Coroutine releaseCoroutine;
 
     protected override void Awake()
     {
@@ -21,7 +20,7 @@ public class StraightMoveMonster : GroupMonster
         go.transform.SetParent(this.transform);
         go.transform.localPosition = new Vector3(0, 0, 1);
         target = go.transform;
-        myTarget = target;
+        ChangeTarget(target);
     }
 
     protected override void OnEnable()
@@ -31,16 +30,9 @@ public class StraightMoveMonster : GroupMonster
         {
             return;
         }
-        myTarget = target.transform;
-        releaseCoroutine = StartCoroutine(ReleaseAuto());
+        ChangeTarget(target);
+        StartCoroutine(ReleaseAuto());
     }
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        releaseCoroutine = null;
-    }
-
     protected override void InitCollider()
     {
         base.InitCollider();

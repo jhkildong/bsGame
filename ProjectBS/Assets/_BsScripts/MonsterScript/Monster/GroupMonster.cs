@@ -8,7 +8,7 @@ public class GroupMonster : NormalMonster
 
     public override void Init(MonsterData data)
     {
-        base.Init(data as GroupMonsterData);
+        base.Init(data);
     }
 
 }

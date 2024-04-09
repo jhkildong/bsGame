@@ -19,9 +19,9 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
 
     #region Private Field
     [SerializeField] protected MonsterData _data;
-    [SerializeField] private float _curAttackDelay;
-    [SerializeField] private Animator myAnim;
-    [SerializeField] private DropTable dropTable;
+    [SerializeField] protected float _curAttackDelay;
+    [SerializeField] protected Animator myAnim;
+    [SerializeField] protected DropTable dropTable;
     #endregion
 
     #region Interface Method
@@ -58,7 +58,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         _maxHP = data.MaxHP;
         attackMask = (int)(BSLayerMasks.Player | BSLayerMasks.Building);
         _attack = (short)data.Ak;
-        gameObject.layer = 15;
+        gameObject.layer = (int)BSLayers.Monster;
 
         _curAttackDelay = data.AkDelay;
         _curHp = data.MaxHP;
@@ -68,17 +68,18 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         rBody.angularDrag = 2f;
         SetCollider(data.Radius);
 
+        Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
+        myAnim = GetComponentInChildren<Animator>();
+
         //타격 이펙트 설정
         effectData.effectCount = 1;
         effectData.effectColor = Color.white;
         effectData.effectTime = 0.1f;
-
-        Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
-        myAnim = GetComponentInChildren<Animator>();
         effectData.SetRenderer(this);
+
         //임시
         PlayerTransform = GameObject.Find("Player").transform;
-        myTarget = PlayerTransform;
+        ResetTarget();
         DeadAct += Die;
     }
     #endregion
@@ -100,7 +101,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         _curAttackDelay = OriginData.AkDelay;
         _curHp = OriginData.MaxHP;
         moveSpeed = OriginData.Sp;
-        myTarget = PlayerTransform;
+        ResetTarget();
         ChangeState(State.Chase);
     }
 
@@ -147,9 +148,9 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         switch (myState)
         {
             case State.Chase:
-                myTarget = PlayerTransform;
                 break;
             case State.Attack:
+                SetDirection(Vector3.zero);
                 attackTarget.TakeDamage(Attack);
                 playTime = CurAttackDelay;
                 break;

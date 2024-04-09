@@ -32,6 +32,11 @@ public class MonsterSpawner : MonoBehaviour
 
         foreach(MonsterData data in monsterDatas)
         {
+            if(data.Prefab == null)
+            {
+                Debug.Log("MonsterData Prefab is null");
+                continue;
+            }
             Monster monster = data.CreateClone();   //데이터를 기반으로 사본생성
             monsterList.Add(monster);               //사본을 리스트에 추가(추가 호출을 위해)
             ObjectPoolManager.Instance.SetPool(monster, init, max);

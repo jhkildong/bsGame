@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-//플레이어블 캐릭터 컴포넌트 관리해주는 클래스
+//캐릭터 컴포넌트 관리해주는 클래스
 public abstract class CharacterComponent : MonoBehaviour
 {
     #region Property

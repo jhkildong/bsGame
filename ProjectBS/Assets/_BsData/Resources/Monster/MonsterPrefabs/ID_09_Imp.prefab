@@ -1,0 +1,3716 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &46992803105562842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6236224331099608766}
+  m_Layer: 0
+  m_Name: GargLLegToe1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6236224331099608766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46992803105562842}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.2699027, y: 0.18630517, z: -0.1628989, w: 0.9305412}
+  m_LocalPosition: {x: -0.19397114, y: 0.00023854066, z: -0.009622635}
+  m_LocalScale: {x: 0.9999711, y: 1.0000308, z: 0.9999988}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 298095859223205958}
+  m_Father: {fileID: 8977443226075242603}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &138027646843954082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6557436914661357843}
+  m_Layer: 0
+  m_Name: GargLArmDigit31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6557436914661357843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138027646843954082}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.10439103, y: -0.14940336, z: 0.3589101, w: 0.9154041}
+  m_LocalPosition: {x: -0.085063905, y: -0.013298829, z: -0.025187906}
+  m_LocalScale: {x: 0.99998796, y: 1.0000204, z: 0.9999917}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5800408488080801588}
+  m_Father: {fileID: 6928422887404643551}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &195033681577075728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8868670522289948961}
+  m_Layer: 0
+  m_Name: GargRForearm2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8868670522289948961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195033681577075728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.025332123, y: 0.000000003735891, z: 3.7114234e-10, w: 0.9996791}
+  m_LocalPosition: {x: -0.072227724, y: -0.00000003051758, z: 0.00000012207032}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5261902089487010578}
+  m_Father: {fileID: 1503710826956598178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &210257169947909951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7820850502240385333}
+  m_Layer: 0
+  m_Name: GargRDigit32
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7820850502240385333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210257169947909951}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.009765683, y: 0.007984697, z: 0.13688518, w: 0.9905066}
+  m_LocalPosition: {x: -0.040789705, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999951, y: 1.0000156, z: 0.9999888}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6302861140789197211}
+  m_Father: {fileID: 8162041972386190817}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &304629463837761717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8162402874730789504}
+  m_Layer: 0
+  m_Name: GargLArmDigit01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8162402874730789504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304629463837761717}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.54778886, y: 0.4178537, z: 0.026567163, w: 0.72430646}
+  m_LocalPosition: {x: -0.021494264, y: -0.013934204, z: 0.033146318}
+  m_LocalScale: {x: 0.9999753, y: 1.000018, z: 1.0000054}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8367811000706067323}
+  m_Father: {fileID: 6928422887404643551}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &443888569210321863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2885558285953443055}
+  m_Layer: 0
+  m_Name: GargLArmForearm3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2885558285953443055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443888569210321863}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0647128, y: 0.0000000037777506, z: -6.8829653e-10, w: 0.99790394}
+  m_LocalPosition: {x: -0.072227605, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6928422887404643551}
+  m_Father: {fileID: 4060825959464995310}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &569133708171166934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2927454311663866322}
+  m_Layer: 0
+  m_Name: GargRDigit22
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2927454311663866322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569133708171166934}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0006913146, y: -0.011314551, z: 0.08902647, w: 0.99596477}
+  m_LocalPosition: {x: -0.038751956, y: 0, z: 0.000000007629395}
+  m_LocalScale: {x: 0.99999577, y: 0.9999899, z: 1.0000143}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5682821637487239075}
+  m_Father: {fileID: 8802673386290228050}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &710075996187122608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3706672939576026478}
+  - component: {fileID: 7378132637392784854}
+  - component: {fileID: 8074728180283863716}
+  m_Layer: 0
+  m_Name: ID_09_Imp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3706672939576026478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710075996187122608}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6309881203791380461}
+  - {fileID: 376045368598786176}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7378132637392784854
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710075996187122608}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0d6046eac07550f4f95a3ddce65b930a, type: 3}
+  m_Controller: {fileID: 9100000, guid: a901cb90e4121e44b867574b1446d6d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8074728180283863716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710075996187122608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34df74dd99a2fce4f9de4fbaaa5b66a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &726710691747403186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5520184452098698736}
+  m_Layer: 0
+  m_Name: GargLLegThigh1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5520184452098698736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726710691747403186}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.09224213, y: -0.16187882, z: 0.9804527, w: -0.06323887}
+  m_LocalPosition: {x: 0.07589404, y: 0.0459129, z: 0.06510997}
+  m_LocalScale: {x: 0.9999869, y: 1.0000131, z: 1.0000013}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1154473178854107488}
+  m_Father: {fileID: 3552251974125255370}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &784673287203124468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3521671890129878337}
+  m_Layer: 0
+  m_Name: GargTail2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3521671890129878337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784673287203124468}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00000020809134, y: -0.00000008535389, z: 0.20724818, w: 0.9782884}
+  m_LocalPosition: {x: -0.18791932, y: 0, z: 1.4551916e-14}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7344179322763869351}
+  m_Father: {fileID: 1951730579366627470}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &828988452827418119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6309881203791380461}
+  m_Layer: 0
+  m_Name: GargRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6309881203791380461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828988452827418119}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3552251974125255370}
+  m_Father: {fileID: 3706672939576026478}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &873992285734248751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3552251974125255370}
+  m_Layer: 0
+  m_Name: GargPelvis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3552251974125255370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873992285734248751}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7050494, y: 0.053901438, z: -0.7050494, w: -0.053901814}
+  m_LocalPosition: {x: -0, y: 0.031723138, z: 0.894577}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5520184452098698736}
+  - {fileID: 403438494278400083}
+  - {fileID: 4049612161605499640}
+  - {fileID: 1951730579366627470}
+  m_Father: {fileID: 6309881203791380461}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &945559458480397177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8162041972386190817}
+  m_Layer: 0
+  m_Name: GargRDigit31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8162041972386190817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945559458480397177}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.10438817, y: 0.14940017, z: 0.35891503, w: 0.91540307}
+  m_LocalPosition: {x: -0.08506476, y: -0.013299073, z: 0.025188314}
+  m_LocalScale: {x: 0.9999953, y: 1.0000104, z: 0.99999416}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7820850502240385333}
+  m_Father: {fileID: 198438506842734420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1036098309779607705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5742221272376428830}
+  m_Layer: 0
+  m_Name: GargRDigit41
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5742221272376428830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036098309779607705}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.073874466, y: 0.2315476, z: 0.38150784, w: 0.8918408}
+  m_LocalPosition: {x: -0.07510456, y: -0.02157019, z: 0.04876006}
+  m_LocalScale: {x: 0.9999902, y: 1.0000114, z: 0.9999981}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1801358952074376404}
+  m_Father: {fileID: 198438506842734420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1037059746971487670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5682821637487239075}
+  m_Layer: 0
+  m_Name: GargRDigit23
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5682821637487239075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037059746971487670}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0021356565, y: 0.0035899808, z: 0.18473567, w: 0.9827794}
+  m_LocalPosition: {x: -0.03577631, y: 0, z: 0.0000000038146974}
+  m_LocalScale: {x: 0.999994, y: 0.999992, z: 1.0000143}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2927454311663866322}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1051798498705722210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6302861140789197211}
+  m_Layer: 0
+  m_Name: GargRDigit33
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6302861140789197211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051798498705722210}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.016398393, y: 0.018353635, z: 0.08305835, w: 0.99624074}
+  m_LocalPosition: {x: -0.017823549, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999577, y: 1.0000153, z: 0.9999889}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7820850502240385333}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1092738017056865873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 376045368598786176}
+  - component: {fileID: 7515927651927757966}
+  m_Layer: 0
+  m_Name: MeshBaker-mesh-mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &376045368598786176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092738017056865873}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3706672939576026478}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &7515927651927757966
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092738017056865873}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: fa444499a6c15ab4c8c3a80a51d8f910, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4300000, guid: 6e554a1cb03a2ff4b9b3e5421196adec, type: 2}
+  m_Bones:
+  - {fileID: 3552251974125255370}
+  - {fileID: 4049612161605499640}
+  - {fileID: 6808617679597301689}
+  - {fileID: 7218675450175283848}
+  - {fileID: 4162750425257027942}
+  - {fileID: 7497516766754872878}
+  - {fileID: 8314651730915653406}
+  - {fileID: 2549507741233107005}
+  - {fileID: 5686021879404945871}
+  - {fileID: 5126368416328911963}
+  - {fileID: 534029189643892693}
+  - {fileID: 9165657000460424384}
+  - {fileID: 4856442797109572503}
+  - {fileID: 8738168422894445120}
+  - {fileID: 8793849436472578267}
+  - {fileID: 7060640192495655796}
+  - {fileID: 1800551726276650769}
+  - {fileID: 1503710826956598178}
+  - {fileID: 8868670522289948961}
+  - {fileID: 5261902089487010578}
+  - {fileID: 198438506842734420}
+  - {fileID: 3399938376616968030}
+  - {fileID: 7803872626913672214}
+  - {fileID: 6284635984040439837}
+  - {fileID: 2455151070858862691}
+  - {fileID: 2476874029496112798}
+  - {fileID: 4212001527629634980}
+  - {fileID: 8802673386290228050}
+  - {fileID: 2927454311663866322}
+  - {fileID: 5682821637487239075}
+  - {fileID: 8162041972386190817}
+  - {fileID: 7820850502240385333}
+  - {fileID: 6302861140789197211}
+  - {fileID: 5742221272376428830}
+  - {fileID: 1801358952074376404}
+  - {fileID: 8686444750671364843}
+  - {fileID: 1134249534387271492}
+  - {fileID: 5200592392457969004}
+  - {fileID: 3592759946616619592}
+  - {fileID: 1454860696394136047}
+  - {fileID: 6356167378784804581}
+  - {fileID: 3703957191324826127}
+  - {fileID: 5389038227799995281}
+  - {fileID: 7398663223480920639}
+  - {fileID: 7442038147494978246}
+  - {fileID: 7332537552092997729}
+  - {fileID: 5349285341623723947}
+  - {fileID: 4060825959464995310}
+  - {fileID: 2885558285953443055}
+  - {fileID: 6928422887404643551}
+  - {fileID: 8162402874730789504}
+  - {fileID: 8367811000706067323}
+  - {fileID: 2569796494513216630}
+  - {fileID: 5837227780228197191}
+  - {fileID: 8149117325336295294}
+  - {fileID: 781757185509037926}
+  - {fileID: 646162705593588945}
+  - {fileID: 8526175526640398648}
+  - {fileID: 7389505054475626538}
+  - {fileID: 6557436914661357843}
+  - {fileID: 5800408488080801588}
+  - {fileID: 3780792291286914538}
+  - {fileID: 1979744302093053492}
+  - {fileID: 437325436133642834}
+  - {fileID: 6393707194666968086}
+  - {fileID: 1951730579366627470}
+  - {fileID: 3521671890129878337}
+  - {fileID: 7344179322763869351}
+  - {fileID: 403438494278400083}
+  - {fileID: 6805879088925278533}
+  - {fileID: 1576149335486270511}
+  - {fileID: 7101521881644041484}
+  - {fileID: 5741387824337210322}
+  - {fileID: 7085347455230079931}
+  - {fileID: 5666739472988493506}
+  - {fileID: 2983519998273440649}
+  - {fileID: 7158980688169029728}
+  - {fileID: 5520184452098698736}
+  - {fileID: 1154473178854107488}
+  - {fileID: 4176275243083213251}
+  - {fileID: 1502460935369721515}
+  - {fileID: 8977443226075242603}
+  - {fileID: 6236224331099608766}
+  - {fileID: 298095859223205958}
+  - {fileID: 7788636546085535680}
+  - {fileID: 1425527551159186375}
+  - {fileID: 5220706646204255845}
+  - {fileID: 8362397721609337134}
+  - {fileID: 2931123115625718525}
+  - {fileID: 4621234714646046670}
+  - {fileID: 4637773579539820973}
+  - {fileID: 1294678085517173137}
+  - {fileID: 2339196685968188424}
+  - {fileID: 2629413561004809462}
+  - {fileID: 2524163374803384141}
+  - {fileID: 4215942322859614134}
+  - {fileID: 2720598187495499511}
+  - {fileID: 327217195325483986}
+  - {fileID: 6834761146105433086}
+  - {fileID: 4629824619112303995}
+  - {fileID: 6185718683982970443}
+  - {fileID: 6270931623029969115}
+  - {fileID: 3500134652725876461}
+  - {fileID: 5664015249853406556}
+  - {fileID: 7451112725963212934}
+  - {fileID: 2333956998570567476}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: -0.0023314953, y: 0.9299943, z: -0.41328073}
+    m_Extent: {x: 1.628715, y: 1.0474676, z: 0.9207556}
+  m_DirtyAABB: 0
+--- !u!1 &1134485286106837139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7398663223480920639}
+  m_Layer: 0
+  m_Name: GargLArmUpperarm1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7398663223480920639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134485286106837139}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.26714587, y: -0.023977764, z: -0.15301861, w: 0.95112747}
+  m_LocalPosition: {x: -0.1406819, y: -0.00000001525879, z: 0}
+  m_LocalScale: {x: 0.9999978, y: 0.9999993, z: 1.0000035}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7442038147494978246}
+  m_Father: {fileID: 5389038227799995281}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1423942720386797722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3780792291286914538}
+  m_Layer: 0
+  m_Name: GargLArmDigit33
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3780792291286914538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423942720386797722}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.016398964, y: -0.018354012, z: 0.08305728, w: 0.9962408}
+  m_LocalPosition: {x: -0.017823609, y: -0.00000012207032, z: 0}
+  m_LocalScale: {x: 0.9999958, y: 1.000016, z: 0.99998945}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5800408488080801588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1448135411649525719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6808617679597301689}
+  m_Layer: 0
+  m_Name: GargSpine2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6808617679597301689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448135411649525719}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00000001746471, y: -0.000000057293075, z: 0.07947159, w: 0.99683714}
+  m_LocalPosition: {x: -0.1449045, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 0.9999998, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7218675450175283848}
+  m_Father: {fileID: 4049612161605499640}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1632017360461873051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7451112725963212934}
+  m_Layer: 0
+  m_Name: GargRWingRDigit2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7451112725963212934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632017360461873051}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.014945867, y: 0.05594718, z: 0.013326754, w: 0.99823296}
+  m_LocalPosition: {x: -0.4944374, y: 0.00000006103516, z: -0.00000012207032}
+  m_LocalScale: {x: 1.0000027, y: 0.9999972, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5664015249853406556}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1667283952951343610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2524163374803384141}
+  m_Layer: 0
+  m_Name: GargLWingRDigit1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2524163374803384141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667283952951343610}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0045406204, y: -0.06193318, z: 0.072955616, w: 0.9954}
+  m_LocalPosition: {x: -0.43162507, y: 0.00000003051758, z: -0.008332276}
+  m_LocalScale: {x: 0.9999957, y: 1.0000042, z: 1.0000014}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4215942322859614134}
+  m_Father: {fileID: 2629413561004809462}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2043699792858949425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8738168422894445120}
+  m_Layer: 0
+  m_Name: GargRCollarbone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8738168422894445120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043699792858949425}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.102210075, y: -0.66356903, z: 0.12259946, w: 0.7308889}
+  m_LocalPosition: {x: 0.04273157, y: 0.06385753, z: -0.03513027}
+  m_LocalScale: {x: 0.9999981, y: 1.0000004, z: 1.0000021}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8793849436472578267}
+  m_Father: {fileID: 4162750425257027942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2279708554385461080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1134249534387271492}
+  m_Layer: 0
+  m_Name: GargLWingWCollarbone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1134249534387271492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2279708554385461080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.05765236, y: 0.68367994, z: 0.42673108, w: 0.5892017}
+  m_LocalPosition: {x: 0.0002097168, y: -0.043072727, z: 0.004841237}
+  m_LocalScale: {x: 0.99999994, y: 1.0000011, z: 0.99999934}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5200592392457969004}
+  m_Father: {fileID: 4162750425257027942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2440195157522178493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5200592392457969004}
+  m_Layer: 0
+  m_Name: GargLWing1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5200592392457969004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440195157522178493}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.23088679, y: -0.32108602, z: 0.17315485, w: 0.9020047}
+  m_LocalPosition: {x: -0.09694626, y: -0.00000006103516, z: 0}
+  m_LocalScale: {x: 0.9999996, y: 1.0000001, z: 1.0000004}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3592759946616619592}
+  m_Father: {fileID: 1134249534387271492}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2492675353744135547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7389505054475626538}
+  m_Layer: 0
+  m_Name: GargLArmDigit23
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7389505054475626538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2492675353744135547}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0021356102, y: -0.0035899768, z: 0.18473297, w: 0.98277986}
+  m_LocalPosition: {x: -0.035776246, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999195, y: 0.9999942, z: 1.000014}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8526175526640398648}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2524347228913789540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8686444750671364843}
+  m_Layer: 0
+  m_Name: GargRDigit43
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8686444750671364843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524347228913789540}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.018304592, y: -0.007655786, z: 0.27983204, w: 0.95984393}
+  m_LocalPosition: {x: -0.026742188, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999964, y: 1.0000147, z: 0.9999889}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1801358952074376404}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2537120426500572515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4856442797109572503}
+  m_Layer: 0
+  m_Name: GargEyeL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4856442797109572503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537120426500572515}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.052126195, y: 0.06098908, z: -0.7346082, w: 0.67373145}
+  m_LocalPosition: {x: -0.04437024, y: 0.080810495, z: 0.028124025}
+  m_LocalScale: {x: 0.99999875, y: 1.0000012, z: 1.0000002}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2549507741233107005}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2550223028657794077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7332537552092997729}
+  m_Layer: 0
+  m_Name: GargLArmUpperarm3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7332537552092997729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2550223028657794077}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.043632712, y: -0.0000000018608712, z: -8.127226e-11, w: 0.99904764}
+  m_LocalPosition: {x: -0.06716571, y: 0, z: -0.00000012207032}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5349285341623723947}
+  m_Father: {fileID: 7442038147494978246}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2596619160857404121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7101521881644041484}
+  m_Layer: 0
+  m_Name: GargRCalf2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7101521881644041484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2596619160857404121}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.010417205, y: 0, z: -0, w: 0.99994576}
+  m_LocalPosition: {x: -0.1822727, y: 0.000000011444092, z: -0.00000001525879}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5741387824337210322}
+  m_Father: {fileID: 1576149335486270511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2605557104930444093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1576149335486270511}
+  m_Layer: 0
+  m_Name: GargRCalf1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1576149335486270511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605557104930444093}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6917943, y: -0.058754805, z: 0.051624943, w: 0.7178464}
+  m_LocalPosition: {x: -0.18910004, y: 0.00000012207032, z: 0.0000012874603}
+  m_LocalScale: {x: 1.0000566, y: 0.99994856, z: 0.99999547}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7101521881644041484}
+  m_Father: {fileID: 6805879088925278533}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2619719735840333428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2455151070858862691}
+  m_Layer: 0
+  m_Name: GargRDigit11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2455151070858862691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2619719735840333428}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0892134, y: -0.09320947, z: 0.20597623, w: 0.9700138}
+  m_LocalPosition: {x: -0.086443916, y: -0.0062507326, z: -0.028676348}
+  m_LocalScale: {x: 0.99998957, y: 0.9999939, z: 1.0000162}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2476874029496112798}
+  m_Father: {fileID: 198438506842734420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2805278081260210647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6356167378784804581}
+  m_Layer: 0
+  m_Name: GargRWing1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6356167378784804581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2805278081260210647}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.25845653, y: 0.3200383, z: 0.14961372, w: 0.8991059}
+  m_LocalPosition: {x: -0.09694623, y: 0.00000006103516, z: 0}
+  m_LocalScale: {x: 0.99999917, y: 1.0000004, z: 0.9999998}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3703957191324826127}
+  m_Father: {fileID: 1454860696394136047}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2836526785874071835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7060640192495655796}
+  m_Layer: 0
+  m_Name: GargRUpperarm2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7060640192495655796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836526785874071835}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.023518302, y: -0, z: -0, w: 0.99972343}
+  m_LocalPosition: {x: -0.067165665, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1800551726276650769}
+  m_Father: {fileID: 8793849436472578267}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2925185454441292960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3399938376616968030}
+  m_Layer: 0
+  m_Name: GargRDigit01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3399938376616968030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2925185454441292960}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.54779, y: -0.4178526, z: 0.026573986, w: 0.724306}
+  m_LocalPosition: {x: -0.02149347, y: -0.013933838, z: -0.03314612}
+  m_LocalScale: {x: 0.99997383, y: 1.000017, z: 1.0000088}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7803872626913672214}
+  m_Father: {fileID: 198438506842734420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3071930608214293234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2983519998273440649}
+  m_Layer: 0
+  m_Name: GargRToe011
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2983519998273440649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071930608214293234}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.03231428, y: -0.12871014, z: -0.14400202, w: 0.98063904}
+  m_LocalPosition: {x: -0.07343883, y: -0.010553673, z: -0.02928267}
+  m_LocalScale: {x: 1.0000113, y: 0.99999213, z: 0.9999961}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7158980688169029728}
+  m_Father: {fileID: 5741387824337210322}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3076982142177558614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5261902089487010578}
+  m_Layer: 0
+  m_Name: GargRForearm3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5261902089487010578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076982142177558614}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.064712614, y: -0.0000000019491435, z: -0.0000000012735191, w: 0.99790394}
+  m_LocalPosition: {x: -0.072227605, y: 0, z: 0.00000012207032}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 198438506842734420}
+  m_Father: {fileID: 8868670522289948961}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3089099835296879853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7158980688169029728}
+  m_Layer: 0
+  m_Name: GargRToe012
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7158980688169029728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3089099835296879853}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0031387599, y: -0.000047621066, z: 0.13576402, w: 0.99073625}
+  m_LocalPosition: {x: -0.07805901, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000072, y: 0.9999931, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2983519998273440649}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3168790230712744033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1502460935369721515}
+  m_Layer: 0
+  m_Name: GargLLegCalf2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1502460935369721515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168790230712744033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.010410008, y: -0.0000000073726163, z: 0.0000000075277375, w: 0.9999458}
+  m_LocalPosition: {x: -0.18227272, y: 0, z: -0.00000001525879}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8977443226075242603}
+  m_Father: {fileID: 4176275243083213251}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3283918481590050017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3703957191324826127}
+  m_Layer: 0
+  m_Name: GargRWing2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3703957191324826127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3283918481590050017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.36711133, y: -0.3347152, z: -0.5037987, w: 0.70666957}
+  m_LocalPosition: {x: -0.19905375, y: -0.00000012207032, z: -0.00000006103516}
+  m_LocalScale: {x: 0.999999, y: 1.0000013, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 327217195325483986}
+  - {fileID: 6185718683982970443}
+  - {fileID: 3500134652725876461}
+  - {fileID: 2333956998570567476}
+  m_Father: {fileID: 6356167378784804581}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3292117500752659780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8149117325336295294}
+  m_Layer: 0
+  m_Name: GargLArmDigit12
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8149117325336295294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3292117500752659780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.011919637, y: -0.009237197, z: 0.10549606, w: 0.9943054}
+  m_LocalPosition: {x: -0.04939075, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999944, y: 0.99999064, z: 1.0000138}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 781757185509037926}
+  m_Father: {fileID: 5837227780228197191}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3312845486255987634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4212001527629634980}
+  m_Layer: 0
+  m_Name: GargRDigit13
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4212001527629634980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312845486255987634}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.08768776, y: 0.01583657, z: 0.09891368, w: 0.99109846}
+  m_LocalPosition: {x: -0.03354285, y: 0, z: -0.00000006103516}
+  m_LocalScale: {x: 0.99999595, y: 0.99998784, z: 1.0000162}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2476874029496112798}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3644790171617069720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4215942322859614134}
+  m_Layer: 0
+  m_Name: GargLWingRDigit2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4215942322859614134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644790171617069720}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.014946054, y: -0.055946093, z: 0.013326358, w: 0.998233}
+  m_LocalPosition: {x: -0.4944374, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999973, y: 1.0000029, z: 1.0000006}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2524163374803384141}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3720436701528186942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3526166928992623207}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3526166928992623207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3720436701528186942}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.252, y: 0.069, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2549507741233107005}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3733386669888810768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5389038227799995281}
+  m_Layer: 0
+  m_Name: GargLArmCollarbone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5389038227799995281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3733386669888810768}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.10221029, y: 0.663569, z: 0.1225993, w: 0.730889}
+  m_LocalPosition: {x: 0.04273157, y: 0.06385752, z: 0.035130274}
+  m_LocalScale: {x: 0.9999982, y: 1.0000004, z: 1.0000019}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7398663223480920639}
+  m_Father: {fileID: 4162750425257027942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3805131845431543777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6270931623029969115}
+  m_Layer: 0
+  m_Name: GargRDigitPink2 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6270931623029969115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3805131845431543777}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.009941318, y: -0.003051905, z: 0.014137688, w: 0.999846}
+  m_LocalPosition: {x: -0.32295406, y: -0.00000006103516, z: 0.00000001525879}
+  m_LocalScale: {x: 0.99999744, y: 1.0000032, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6185718683982970443}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3810995280870760813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1294678085517173137}
+  m_Layer: 0
+  m_Name: GargRDigitPink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1294678085517173137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3810995280870760813}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.10162771, y: -0.068914145, z: 0.85670835, w: 0.5009725}
+  m_LocalPosition: {x: -0.26935175, y: -0.08398804, z: -0.0025976868}
+  m_LocalScale: {x: 0.9999992, y: 0.9999987, z: 1.0000031}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2339196685968188424}
+  m_Father: {fileID: 3592759946616619592}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3861728595497690679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154473178854107488}
+  m_Layer: 0
+  m_Name: GargLLegThigh2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1154473178854107488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3861728595497690679}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.69391394, y: -0.000000007626752, z: -0.0000000028229399, w: 0.72005796}
+  m_LocalPosition: {x: -0.18910016, y: 0, z: 0.00000001525879}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4176275243083213251}
+  m_Father: {fileID: 5520184452098698736}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3896774746651620836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1979744302093053492}
+  m_Layer: 0
+  m_Name: GargLArmDigit41
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1979744302093053492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3896774746651620836}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.07387628, y: -0.23155257, z: 0.38150212, w: 0.8918418}
+  m_LocalPosition: {x: -0.07510383, y: -0.021569947, z: -0.048759595}
+  m_LocalScale: {x: 0.9999668, y: 1.0000387, z: 0.99999356}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 437325436133642834}
+  m_Father: {fileID: 6928422887404643551}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3900467183289873353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 437325436133642834}
+  m_Layer: 0
+  m_Name: GargLArmDigit42
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &437325436133642834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3900467183289873353}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0028763763, y: -0.012777124, z: 0.07620133, w: 0.9970065}
+  m_LocalPosition: {x: -0.02674814, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000119, y: 0.9999979, z: 0.999989}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6393707194666968086}
+  m_Father: {fileID: 1979744302093053492}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3908729410471854629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2931123115625718525}
+  m_Layer: 0
+  m_Name: GargRDigitMiddle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2931123115625718525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908729410471854629}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.10132707, y: 0.015422963, z: 0.64583534, w: 0.75656575}
+  m_LocalPosition: {x: -0.2987181, y: -0.049764283, z: -0.043031007}
+  m_LocalScale: {x: 0.99999505, y: 1.0000032, z: 1.0000029}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4621234714646046670}
+  m_Father: {fileID: 3592759946616619592}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4322393074383314424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8793849436472578267}
+  m_Layer: 0
+  m_Name: GargRUpperarm1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8793849436472578267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322393074383314424}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.2671458, y: 0.023977982, z: -0.15301794, w: 0.9511276}
+  m_LocalPosition: {x: -0.1406819, y: -0.00000001525879, z: 0}
+  m_LocalScale: {x: 0.9999974, y: 0.999999, z: 1.0000036}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7060640192495655796}
+  m_Father: {fileID: 8738168422894445120}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4326440680592868099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 534029189643892693}
+  m_Layer: 0
+  m_Name: GargTongue2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &534029189643892693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326440680592868099}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000017419488, y: 5.1382604e-10, z: -0.31751364, w: 0.9482537}
+  m_LocalPosition: {x: -0.032731682, y: -0.00000012207032, z: -5.8207664e-14}
+  m_LocalScale: {x: 1.0000011, y: 0.99999905, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5126368416328911963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4336962369819019728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6805879088925278533}
+  m_Layer: 0
+  m_Name: GargRThigh2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6805879088925278533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336962369819019728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6939164, y: -6.4626005e-10, z: -6.706041e-10, w: 0.7200556}
+  m_LocalPosition: {x: -0.1891001, y: -0.0000000019073487, z: -0.00000001525879}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1576149335486270511}
+  m_Father: {fileID: 403438494278400083}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4402917351315877601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6284635984040439837}
+  m_Layer: 0
+  m_Name: GargRDigit03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6284635984040439837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4402917351315877601}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.025149914, y: 0.013607923, z: 0.14154598, w: 0.9895186}
+  m_LocalPosition: {x: -0.051463168, y: -0.00000003051758, z: 0}
+  m_LocalScale: {x: 0.999991, y: 1.00002, z: 0.9999888}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7803872626913672214}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4457888271967147843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4162750425257027942}
+  m_Layer: 0
+  m_Name: GargRibcage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4162750425257027942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4457888271967147843}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000021606642, y: 0.000000017135905, z: -0.052280433, w: 0.9986325}
+  m_LocalPosition: {x: -0.12331837, y: 0, z: -2.9103832e-14}
+  m_LocalScale: {x: 0.99999934, y: 1.0000004, z: 1.0000007}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5389038227799995281}
+  - {fileID: 1134249534387271492}
+  - {fileID: 7497516766754872878}
+  - {fileID: 8738168422894445120}
+  - {fileID: 1454860696394136047}
+  m_Father: {fileID: 7218675450175283848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4465523707468316982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1454860696394136047}
+  m_Layer: 0
+  m_Name: GargRWingWCollarbone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1454860696394136047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4465523707468316982}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.05765218, y: -0.68368, z: 0.42673096, w: 0.5892016}
+  m_LocalPosition: {x: 0.00020959474, y: -0.04307271, z: -0.004841229}
+  m_LocalScale: {x: 1.0000002, y: 0.9999996, z: 1.0000007}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6356167378784804581}
+  m_Father: {fileID: 4162750425257027942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4678713693160588892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8977443226075242603}
+  m_Layer: 0
+  m_Name: GargLLegAnkle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8977443226075242603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4678713693160588892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.022070583, y: 0.06232874, z: -0.63701457, w: 0.7680108}
+  m_LocalPosition: {x: -0.18227267, y: -0.000000007629395, z: 0.00000001525879}
+  m_LocalScale: {x: 0.99986356, y: 1.0001385, z: 1.0000002}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6236224331099608766}
+  - {fileID: 7788636546085535680}
+  m_Father: {fileID: 1502460935369721515}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4781179391249748915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6185718683982970443}
+  m_Layer: 0
+  m_Name: GargRDigitPink 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6185718683982970443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781179391249748915}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.10162775, y: 0.068914175, z: 0.85670847, w: 0.50097233}
+  m_LocalPosition: {x: -0.2693522, y: -0.08398792, z: 0.0025976563}
+  m_LocalScale: {x: 0.9999982, y: 1.000005, z: 0.9999974}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6270931623029969115}
+  m_Father: {fileID: 3703957191324826127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4868329135729256450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8367811000706067323}
+  m_Layer: 0
+  m_Name: GargLArmDigit02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8367811000706067323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4868329135729256450}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.019222014, y: 0.0032168971, z: 0.15243733, w: 0.988121}
+  m_LocalPosition: {x: -0.034156498, y: 0.00000003051758, z: 0}
+  m_LocalScale: {x: 0.99999255, y: 1.0000182, z: 0.99998873}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2569796494513216630}
+  m_Father: {fileID: 8162402874730789504}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4881922565756198956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 781757185509037926}
+  m_Layer: 0
+  m_Name: GargLArmDigit13
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &781757185509037926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881922565756198956}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.08769049, y: -0.015836846, z: 0.09891202, w: 0.9910984}
+  m_LocalPosition: {x: -0.033542786, y: 0, z: 0.00000003051758}
+  m_LocalScale: {x: 0.99999577, y: 0.99998957, z: 1.0000145}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8149117325336295294}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4921288803089634977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8362397721609337134}
+  m_Layer: 0
+  m_Name: GargTail5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8362397721609337134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921288803089634977}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00000072536994, y: 0.000000030134157, z: -0.06729447, w: 0.9977332}
+  m_LocalPosition: {x: -0.14005797, y: 0, z: -5.8207664e-14}
+  m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5220706646204255845}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5333939085891769042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6928422887404643551}
+  m_Layer: 0
+  m_Name: GargLArmPalm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6928422887404643551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333939085891769042}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.73239607, y: 0.052264046, z: 0.013340303, w: 0.67873895}
+  m_LocalPosition: {x: -0.072227664, y: -0.000000007629395, z: 0}
+  m_LocalScale: {x: 0.99998903, y: 1.0000263, z: 0.99998486}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8162402874730789504}
+  - {fileID: 5837227780228197191}
+  - {fileID: 646162705593588945}
+  - {fileID: 6557436914661357843}
+  - {fileID: 1979744302093053492}
+  m_Father: {fileID: 2885558285953443055}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5356817457124353710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2333956998570567476}
+  m_Layer: 0
+  m_Name: GargWingThumbR 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2333956998570567476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356817457124353710}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.040719077, y: 0.0824148, z: -0.28634435, w: 0.9537068}
+  m_LocalPosition: {x: -0.28108546, y: 0.034834657, z: 0.014409425}
+  m_LocalScale: {x: 0.999997, y: 1.0000039, z: 0.99999946}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3703957191324826127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5360812861928079178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5686021879404945871}
+  m_Layer: 0
+  m_Name: GargJaw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5686021879404945871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360812861928079178}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00000002434474, y: 0.000000022728562, z: 0.873601, w: -0.48664284}
+  m_LocalPosition: {x: 0.0016469727, y: 0.010997162, z: 0.0000000030107332}
+  m_LocalScale: {x: 0.99999785, y: 1.0000015, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5126368416328911963}
+  m_Father: {fileID: 2549507741233107005}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5526261614712188109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5741387824337210322}
+  m_Layer: 0
+  m_Name: GargRAnkle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5741387824337210322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5526261614712188109}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.022073472, y: -0.06231181, z: -0.6370536, w: 0.7679796}
+  m_LocalPosition: {x: -0.18227272, y: 0.000000007629395, z: 0}
+  m_LocalScale: {x: 1.0000861, y: 0.99991345, z: 1.0000024}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7085347455230079931}
+  - {fileID: 2983519998273440649}
+  m_Father: {fileID: 7101521881644041484}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5574155629549176258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 298095859223205958}
+  m_Layer: 0
+  m_Name: GargLLegToe2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &298095859223205958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5574155629549176258}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0092158355, y: -0.0016454541, z: 0.15133397, w: 0.98843837}
+  m_LocalPosition: {x: -0.08908191, y: 0, z: 0.00000003051758}
+  m_LocalScale: {x: 0.99998266, y: 1.000017, z: 1.0000004}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6236224331099608766}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5596723170163943932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4637773579539820973}
+  m_Layer: 0
+  m_Name: GargRDigitMiddle3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4637773579539820973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596723170163943932}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.022249015, y: -0.0681273, z: 0.13982289, w: 0.9875795}
+  m_LocalPosition: {x: -0.39432004, y: 0, z: -0.00000006103516}
+  m_LocalScale: {x: 1.0000004, y: 0.99999774, z: 1.0000033}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4621234714646046670}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5699765247037229648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1951730579366627470}
+  m_Layer: 0
+  m_Name: GargTail1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1951730579366627470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699765247037229648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0000001623866, y: -0.000000026755067, z: 0.91088253, w: 0.41266578}
+  m_LocalPosition: {x: 0.01791034, y: -0.08815596, z: 0.000000004362228}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3521671890129878337}
+  m_Father: {fileID: 3552251974125255370}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5770250931114284069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 403438494278400083}
+  m_Layer: 0
+  m_Name: GargRThigh1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &403438494278400083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5770250931114284069}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.09224595, y: 0.16186766, z: 0.98044705, w: -0.06334923}
+  m_LocalPosition: {x: 0.07589404, y: 0.045912888, z: -0.06510995}
+  m_LocalScale: {x: 0.9999866, y: 1.0000132, z: 1.0000008}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6805879088925278533}
+  m_Father: {fileID: 3552251974125255370}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5783160782801884821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5664015249853406556}
+  m_Layer: 0
+  m_Name: GargRWingRDigit1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5664015249853406556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5783160782801884821}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.004540559, y: 0.061933797, z: 0.072956376, w: 0.9953999}
+  m_LocalPosition: {x: -0.4316258, y: 0.00000003051758, z: 0.008332032}
+  m_LocalScale: {x: 1.0000044, y: 0.99999595, z: 0.99999905}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7451112725963212934}
+  m_Father: {fileID: 3500134652725876461}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5797830717832250846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801358952074376404}
+  m_Layer: 0
+  m_Name: GargRDigit42
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1801358952074376404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5797830717832250846}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0028763635, y: 0.012777126, z: 0.07620507, w: 0.9970062}
+  m_LocalPosition: {x: -0.02674823, y: 0, z: -0.00000001525879}
+  m_LocalScale: {x: 1.0000135, y: 0.9999969, z: 0.999989}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8686444750671364843}
+  m_Father: {fileID: 5742221272376428830}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5820527569623932659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7788636546085535680}
+  m_Layer: 0
+  m_Name: GargLLegToe011
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7788636546085535680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820527569623932659}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.032326348, y: 0.12869804, z: -0.14396757, w: 0.9806453}
+  m_LocalPosition: {x: -0.073437996, y: -0.010554276, z: 0.0292827}
+  m_LocalScale: {x: 0.999984, y: 1.0000113, z: 1.0000043}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1425527551159186375}
+  m_Father: {fileID: 8977443226075242603}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6034938785401190475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4629824619112303995}
+  m_Layer: 0
+  m_Name: GargRDigitMiddle3 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4629824619112303995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6034938785401190475}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.022249045, y: 0.06812882, z: 0.13982481, w: 0.9875791}
+  m_LocalPosition: {x: -0.39432004, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000004, y: 1.0000032, z: 0.9999978}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6834761146105433086}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6050976113706505469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1425527551159186375}
+  m_Layer: 0
+  m_Name: GargLLegToe012
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1425527551159186375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6050976113706505469}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0031389561, y: 0.000047594334, z: 0.13573268, w: 0.99074054}
+  m_LocalPosition: {x: -0.07805901, y: 0.0000000038146974, z: 0}
+  m_LocalScale: {x: 0.9999894, y: 1.0000103, z: 0.99999964}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7788636546085535680}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6133022965473766899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3592759946616619592}
+  m_Layer: 0
+  m_Name: GargLWing2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3592759946616619592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133022965473766899}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.36711127, y: 0.33471528, z: -0.50379866, w: 0.7066697}
+  m_LocalPosition: {x: -0.19905373, y: 0, z: -0.00000006103516}
+  m_LocalScale: {x: 0.9999983, y: 1.0000011, z: 1.0000015}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2629413561004809462}
+  - {fileID: 2931123115625718525}
+  - {fileID: 1294678085517173137}
+  - {fileID: 2720598187495499511}
+  m_Father: {fileID: 5200592392457969004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6266580634133211352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2339196685968188424}
+  m_Layer: 0
+  m_Name: GargRDigitPink2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2339196685968188424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6266580634133211352}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.009940962, y: 0.0030517895, z: 0.014137874, w: 0.999846}
+  m_LocalPosition: {x: -0.322954, y: 0, z: 0.00000001525879}
+  m_LocalScale: {x: 1.0000031, y: 0.9999968, z: 1.0000006}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1294678085517173137}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6281396675132961477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1503710826956598178}
+  m_Layer: 0
+  m_Name: GargRForearm1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1503710826956598178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281396675132961477}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.023506396, y: -0.0000016548962, z: -0.0000011260422, w: 0.99972373}
+  m_LocalPosition: {x: -0.06716568, y: -0.00000003051758, z: -0.00000012207032}
+  m_LocalScale: {x: 0.9999891, y: 1.0000143, z: 0.9999968}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8868670522289948961}
+  m_Father: {fileID: 1800551726276650769}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6290472422780958895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4049612161605499640}
+  m_Layer: 0
+  m_Name: GargSpine1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4049612161605499640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290472422780958895}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000009831004, y: -0.000000022874515, z: 0.08697738, w: 0.9962103}
+  m_LocalPosition: {x: -0.0465, y: -0.005630463, z: -6.76715e-10}
+  m_LocalScale: {x: 1.0000002, y: 1.0000004, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6808617679597301689}
+  m_Father: {fileID: 3552251974125255370}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6309855912881137218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 327217195325483986}
+  m_Layer: 0
+  m_Name: GargRDigitMiddle 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &327217195325483986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6309855912881137218}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.10132719, y: -0.015423067, z: 0.6458353, w: 0.75656575}
+  m_LocalPosition: {x: -0.29871827, y: -0.049764346, z: 0.043030854}
+  m_LocalScale: {x: 1.0000014, y: 1.0000015, z: 0.9999976}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6834761146105433086}
+  m_Father: {fileID: 3703957191324826127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6459019752381419172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3500134652725876461}
+  m_Layer: 0
+  m_Name: GargRWingRWingPalm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3500134652725876461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6459019752381419172}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6787741, y: 0.124929756, z: 0.12024193, w: 0.7135827}
+  m_LocalPosition: {x: -0.31133375, y: 0.00000006103516, z: -0.00000003051758}
+  m_LocalScale: {x: 1.000003, y: 0.99999946, z: 0.9999978}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5664015249853406556}
+  m_Father: {fileID: 3703957191324826127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6459240304109517768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4176275243083213251}
+  m_Layer: 0
+  m_Name: GargLLegCalf1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4176275243083213251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6459240304109517768}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6917944, y: 0.058648877, z: 0.05152252, w: 0.7178623}
+  m_LocalPosition: {x: -0.18909962, y: 0.000000045776368, z: -0.0000013465882}
+  m_LocalScale: {x: 0.99994695, y: 1.000058, z: 0.9999958}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1502460935369721515}
+  m_Father: {fileID: 1154473178854107488}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6547022406626758114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5220706646204255845}
+  m_Layer: 0
+  m_Name: GargTail4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5220706646204255845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6547022406626758114}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00000040801703, y: -0.0000004042649, z: 0.19283637, w: 0.981231}
+  m_LocalPosition: {x: -0.13076802, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8362397721609337134}
+  m_Father: {fileID: 7344179322763869351}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6625791109755850727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2549507741233107005}
+  m_Layer: 0
+  m_Name: GargHead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2549507741233107005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6625791109755850727}
+  serializedVersion: 2
+  m_LocalRotation: {x: -5.790047e-10, y: -0.000000055367376, z: 0.0647008, w: 0.9979047}
+  m_LocalPosition: {x: -0.036000002, y: -0.00000003051758, z: 2.9103832e-14}
+  m_LocalScale: {x: 0.999999, y: 1.0000012, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4856442797109572503}
+  - {fileID: 9165657000460424384}
+  - {fileID: 5686021879404945871}
+  - {fileID: 3526166928992623207}
+  m_Father: {fileID: 8314651730915653406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6657300449848782633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5349285341623723947}
+  m_Layer: 0
+  m_Name: GargLArmForearm1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5349285341623723947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6657300449848782633}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.023506308, y: 0.0000016328676, z: -0.0000011400682, w: 0.99972373}
+  m_LocalPosition: {x: -0.06716571, y: 0.00000003051758, z: 0}
+  m_LocalScale: {x: 0.99998915, y: 1.0000143, z: 0.99999654}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4060825959464995310}
+  m_Father: {fileID: 7332537552092997729}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6678396793718315652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5800408488080801588}
+  m_Layer: 0
+  m_Name: GargLArmDigit32
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5800408488080801588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6678396793718315652}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.009765988, y: -0.007984888, z: 0.13688299, w: 0.9905069}
+  m_LocalPosition: {x: -0.040789675, y: 0, z: 0.00000003051758}
+  m_LocalScale: {x: 0.99999386, y: 1.0000163, z: 0.99998903}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3780792291286914538}
+  m_Father: {fileID: 6557436914661357843}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6838255788718587901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7085347455230079931}
+  m_Layer: 0
+  m_Name: GargRToe1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7085347455230079931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838255788718587901}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.26987553, y: -0.1863242, z: -0.16294234, w: 0.9305377}
+  m_LocalPosition: {x: -0.1939733, y: 0.00023851395, z: 0.00962265}
+  m_LocalScale: {x: 1.0000186, y: 0.9999831, z: 0.99999845}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5666739472988493506}
+  m_Father: {fileID: 5741387824337210322}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6838663194799491412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8802673386290228050}
+  m_Layer: 0
+  m_Name: GargRDigit21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8802673386290228050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838663194799491412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.004990539, y: 0.031930216, z: 0.33211708, w: 0.94268435}
+  m_LocalPosition: {x: -0.09201386, y: -0.0050679934, z: 0.000045398716}
+  m_LocalScale: {x: 0.9999823, y: 1.0000031, z: 1.0000143}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2927454311663866322}
+  m_Father: {fileID: 198438506842734420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6903738076906883315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9165657000460424384}
+  m_Layer: 0
+  m_Name: GargEyeR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9165657000460424384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6903738076906883315}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.052085347, y: -0.060933866, z: -0.7346128, w: 0.67373455}
+  m_LocalPosition: {x: -0.04437012, y: 0.080810495, z: -0.028308107}
+  m_LocalScale: {x: 0.9999996, y: 0.999999, z: 1.0000002}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2549507741233107005}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7023175791437954573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4621234714646046670}
+  m_Layer: 0
+  m_Name: GargRDigitMiddle2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4621234714646046670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7023175791437954573}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.06882276, y: 0.061000854, z: 0.006742671, w: 0.99573934}
+  m_LocalPosition: {x: -0.30876008, y: 0, z: 0.00000006103516}
+  m_LocalScale: {x: 0.99999696, y: 1.000001, z: 1.000003}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4637773579539820973}
+  m_Father: {fileID: 2931123115625718525}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7048669140915011360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198438506842734420}
+  m_Layer: 0
+  m_Name: GargRPalm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &198438506842734420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048669140915011360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7323959, y: -0.052264117, z: 0.013340376, w: 0.67873913}
+  m_LocalPosition: {x: -0.072227664, y: -0.000000007629395, z: 0.00000012207032}
+  m_LocalScale: {x: 0.9999891, y: 1.0000085, z: 1.0000029}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3399938376616968030}
+  - {fileID: 2455151070858862691}
+  - {fileID: 8802673386290228050}
+  - {fileID: 8162041972386190817}
+  - {fileID: 5742221272376428830}
+  m_Father: {fileID: 5261902089487010578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7130523174507310391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5126368416328911963}
+  m_Layer: 0
+  m_Name: GargTongue1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5126368416328911963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7130523174507310391}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000032186318, y: -0.000000082484576, z: 0.25388286, w: 0.96723497}
+  m_LocalPosition: {x: -0.03609131, y: -0.015373047, z: 0.000000006000337}
+  m_LocalScale: {x: 1.0000004, y: 0.99999946, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 534029189643892693}
+  m_Father: {fileID: 5686021879404945871}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7221535781077862917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2476874029496112798}
+  m_Layer: 0
+  m_Name: GargRDigit12
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2476874029496112798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221535781077862917}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.011919316, y: 0.0092370305, z: 0.10549756, w: 0.99430525}
+  m_LocalPosition: {x: -0.04939063, y: -0.00000012207032, z: 0}
+  m_LocalScale: {x: 0.9999954, y: 0.99999017, z: 1.0000142}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4212001527629634980}
+  m_Father: {fileID: 2455151070858862691}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7594771770896005211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7218675450175283848}
+  m_Layer: 0
+  m_Name: GargSpine3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7218675450175283848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7594771770896005211}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000005048168, y: -0.000000075670755, z: 0.028484784, w: 0.9995942}
+  m_LocalPosition: {x: -0.1078429, y: -0.00000001525879, z: -1.4551916e-14}
+  m_LocalScale: {x: 1.0000004, y: 1, z: 0.99999976}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4162750425257027942}
+  m_Father: {fileID: 6808617679597301689}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7643718506228455433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2720598187495499511}
+  m_Layer: 0
+  m_Name: GargWingThumbR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2720598187495499511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7643718506228455433}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.040719155, y: -0.08241469, z: -0.28634447, w: 0.9537068}
+  m_LocalPosition: {x: -0.2810854, y: 0.03483435, z: -0.014409516}
+  m_LocalScale: {x: 1.0000023, y: 0.999998, z: 1.0000012}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3592759946616619592}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7696794669909936685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4060825959464995310}
+  m_Layer: 0
+  m_Name: GargLArmForearm2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4060825959464995310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7696794669909936685}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.025332207, y: 0, z: -0, w: 0.9996791}
+  m_LocalPosition: {x: -0.072227634, y: -0.00000003051758, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2885558285953443055}
+  m_Father: {fileID: 5349285341623723947}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7768731769459301057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7497516766754872878}
+  m_Layer: 0
+  m_Name: GargNeck1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7497516766754872878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768731769459301057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000020849477, y: -0.00000003375657, z: -0.17800373, w: 0.9840298}
+  m_LocalPosition: {x: -0.030998293, y: 0.068322055, z: 0.000000074213986}
+  m_LocalScale: {x: 0.9999998, y: 1.0000005, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8314651730915653406}
+  m_Father: {fileID: 4162750425257027942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7812667948301129826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6834761146105433086}
+  m_Layer: 0
+  m_Name: GargRDigitMiddle2 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6834761146105433086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812667948301129826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.06882332, y: -0.06100181, z: 0.0067428164, w: 0.9957393}
+  m_LocalPosition: {x: -0.30876, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000033, y: 0.99999964, z: 0.9999976}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4629824619112303995}
+  m_Father: {fileID: 327217195325483986}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7920939517080829801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800551726276650769}
+  m_Layer: 0
+  m_Name: GargRUpperarm3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1800551726276650769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920939517080829801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.043632474, y: -0.000000003762379, z: -7.678921e-10, w: 0.9990477}
+  m_LocalPosition: {x: -0.06716568, y: 0, z: -0.00000012207032}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1503710826956598178}
+  m_Father: {fileID: 7060640192495655796}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7923781957267156455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 646162705593588945}
+  m_Layer: 0
+  m_Name: GargLArmDigit21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &646162705593588945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7923781957267156455}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.004990744, y: -0.031930994, z: 0.3321131, w: 0.9426857}
+  m_LocalPosition: {x: -0.0920138, y: -0.0050678714, z: -0.000044841767}
+  m_LocalScale: {x: 0.99997574, y: 1.0000099, z: 1.0000141}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8526175526640398648}
+  m_Father: {fileID: 6928422887404643551}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7927960396413088319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2629413561004809462}
+  m_Layer: 0
+  m_Name: GargLWingRWingPalm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2629413561004809462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7927960396413088319}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.678774, y: -0.12492967, z: 0.120241866, w: 0.71358275}
+  m_LocalPosition: {x: -0.3113338, y: -0.00000006103516, z: 0.00000003051758}
+  m_LocalScale: {x: 0.99999696, y: 1.0000026, z: 1.0000017}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2524163374803384141}
+  m_Father: {fileID: 3592759946616619592}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7930636589582506998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5837227780228197191}
+  m_Layer: 0
+  m_Name: GargLArmDigit11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5837227780228197191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930636589582506998}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0892166, y: 0.09321115, z: 0.20597263, w: 0.97001415}
+  m_LocalPosition: {x: -0.086444706, y: -0.006250977, z: 0.028675947}
+  m_LocalScale: {x: 0.9999867, y: 0.99999756, z: 1.000015}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8149117325336295294}
+  m_Father: {fileID: 6928422887404643551}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8022586216477905448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5666739472988493506}
+  m_Layer: 0
+  m_Name: GargRToe2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5666739472988493506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8022586216477905448}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0092150625, y: 0.0016455317, z: 0.15136813, w: 0.9884331}
+  m_LocalPosition: {x: -0.08908193, y: -0.00000001525879, z: 0.00000001525879}
+  m_LocalScale: {x: 1.0000043, y: 0.99999535, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7085347455230079931}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8101406416681376040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8314651730915653406}
+  m_Layer: 0
+  m_Name: GargNeck2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8314651730915653406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101406416681376040}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000018504103, y: 0.00000003969009, z: -0.0018958937, w: 0.9999982}
+  m_LocalPosition: {x: -0.03999988, y: 0.00000003051758, z: -5.8207664e-14}
+  m_LocalScale: {x: 0.99999964, y: 1.0000006, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2549507741233107005}
+  m_Father: {fileID: 7497516766754872878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8561212349241580248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7803872626913672214}
+  m_Layer: 0
+  m_Name: GargRDigit02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7803872626913672214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8561212349241580248}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.019222362, y: -0.0032169365, z: 0.15243593, w: 0.9881212}
+  m_LocalPosition: {x: -0.034156498, y: 0.00000003051758, z: 0.00000012207032}
+  m_LocalScale: {x: 0.9999917, y: 1.0000188, z: 0.99998885}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6284635984040439837}
+  m_Father: {fileID: 3399938376616968030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8688011372051063151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6393707194666968086}
+  m_Layer: 0
+  m_Name: GargLArmDigit43
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6393707194666968086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688011372051063151}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.01830539, y: 0.0076557836, z: 0.27982086, w: 0.9598472}
+  m_LocalPosition: {x: -0.026742373, y: 0, z: 0.00000001525879}
+  m_LocalScale: {x: 0.99998194, y: 1.0000303, z: 0.99998933}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 437325436133642834}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8736675228421243721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2569796494513216630}
+  m_Layer: 0
+  m_Name: GargLArmDigit03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2569796494513216630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8736675228421243721}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.025149582, y: -0.013607834, z: 0.14154729, w: 0.98951846}
+  m_LocalPosition: {x: -0.051463168, y: -0.00000003051758, z: 0.00000012207032}
+  m_LocalScale: {x: 0.9999912, y: 1.0000196, z: 0.99998814}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8367811000706067323}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8868817154029269871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7442038147494978246}
+  m_Layer: 0
+  m_Name: GargLArmUpperarm2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7442038147494978246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8868817154029269871}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.02351841, y: -0.0000000036804537, z: -0.000000001949743, w: 0.99972343}
+  m_LocalPosition: {x: -0.06716568, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7332537552092997729}
+  m_Father: {fileID: 7398663223480920639}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8990054440058568011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8526175526640398648}
+  m_Layer: 0
+  m_Name: GargLArmDigit22
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8526175526640398648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990054440058568011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0006913412, y: 0.011314844, z: 0.08902483, w: 0.99596494}
+  m_LocalPosition: {x: -0.038751893, y: -0.00000012207032, z: 0}
+  m_LocalScale: {x: 0.99999577, y: 0.99999034, z: 1.000014}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7389505054475626538}
+  m_Father: {fileID: 646162705593588945}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9015760113185647629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7344179322763869351}
+  m_Layer: 0
+  m_Name: GargTail3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7344179322763869351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9015760113185647629}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0000000205713, y: -0.00000003106153, z: 0.13439135, w: 0.99092835}
+  m_LocalPosition: {x: -0.1505329, y: 0, z: 5.8207664e-14}
+  m_LocalScale: {x: 0.99999976, y: 0.99999976, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5220706646204255845}
+  m_Father: {fileID: 3521671890129878337}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

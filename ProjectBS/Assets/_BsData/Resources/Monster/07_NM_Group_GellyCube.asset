@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92a8a0549dd11b478e994a2cb8efe2b, type: 3}
+  m_Name: 07_NM_Group_GellyCube
+  m_EditorClassIdentifier: 
+  _id: 7
+  _name: GellyCube
+  _attack: 1
+  _attackDelay: 1
+  _speed: 0
+  _maxHp: 10
+  _exp: 100
+  _mass: 1
+  _radius: 0.7
+  _prefab: {fileID: 725481704732476185, guid: decbaf0ea519cdb4cb24182b8dbaba4a, type: 3}
+  _dropItemList:
+  - ID: 2
+    dropChance: 100
+  _type: 2
+  _amount: 3

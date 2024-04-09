@@ -50,11 +50,13 @@ namespace Yeon
             public Color effectColor = Color.red;
             public Renderer[] renderers;
             public Texture mainTexture;
+            public Color mainColor;
 
             public void SetRenderer(Combat combat)
             {
                 renderers = combat.gameObject.GetComponentsInChildren<Renderer>();
                 mainTexture = renderers.Length > 0 ? renderers[0].material.mainTexture : null;
+                mainColor = renderers.Length > 0 ? renderers[0].material.color : Color.white;
             }
 
             public void ChangeTexture(Texture texture)
@@ -87,8 +89,9 @@ namespace Yeon
         protected virtual void OnDisable()
         {
             StopAllCoroutines();
+            _onDamageEffect = null;
             effectData.ChangeTexture(effectData.mainTexture);
-            effectData.ChangeColor(Color.white);
+            effectData.ChangeColor(effectData.mainColor);
         }
         #endregion
 
@@ -126,7 +129,7 @@ namespace Yeon
                 effectData.ChangeColor(effectData.effectColor);
                 yield return wait;
                 effectData.ChangeTexture(effectData.mainTexture);
-                effectData.ChangeColor(Color.white);
+                effectData.ChangeColor(effectData.mainColor);
                 yield return wait;
             }
             _onDamageEffect = null;
