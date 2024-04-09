@@ -6,43 +6,59 @@ using UnityEngine;
 
 public class BuildingData : ScriptableObject
 {
-       public int ID => _id;
-       public string buildingName => _buildingName;
-       public short maxHp => _maxHp;
-       public short curHp => _curHp;
-       public short requireWood => _requireWood;
-       public short requireStone => _requireStone;
-       public short requireIron => _requireIron;
-       public float constTime => _constTime;
-       public float repairSpeed => _repairSpeed;
+    public int ID => _id;
+    public string buildingName => _buildingName;
+    public short maxHp => _maxHp;
+    public short curHp => _curHp;
+    public short requireWood => _requireWood;
+    public short requireStone => _requireStone;
+    public short requireIron => _requireIron;
+    public float constTime => _constTime;
+    public float repairSpeed => _repairSpeed;
 
-       public short attackPower => _attackPower;
-       public float attackDelay => _attackDelay;
-       public float attackRadius => _attackRadius;
-       public float attackProjectileSize => _attackProjectileSize;
+    public short atkPower => _atkPower;
+    public float atkDelay => _atkDelay;
+    public float hitDelay => _hitDelay;
+    public float atkDuration => _atkDuration;
 
 
-       public GameObject buildingPrefab => _buildingPrefab;
+    public float atkRadius => _atkRadius;
+    public float atkProjectileSize => _atkProjectileSize;
+    public float atkProjectileSpeed => _atkProjectileSpeed; // 건물 투사체 속도
+    public float atkProjectileRange => _atkProjectileRange; // 건물 투사체 사거리
+    public bool atkCanPen => _atkCanPen; //관통가능한 공격인가?
+    public int atkPenCount => _atkPenCount; //관통가능한 물체수
 
-       public LayerMask layerMask => _layerMask;
 
-       [SerializeField] private int _id;               // 건물 ID
-       [SerializeField] private string _buildingName;  // 건물 이름
-       [SerializeField] private short _maxHp;          // 건물 최대체력
-       [SerializeField] private short _curHp;          // 건물 현재체력
-       [SerializeField] private short _requireWood;      // 나무 요구 재료개수
-       [SerializeField] private short _requireStone;      // 돌 요구 재료개수
-       [SerializeField] private short _requireIron;      // 철 요구 재료개수
-       [SerializeField] private float _constTime;     // 건물 총 건설시간
-       [SerializeField] private float _repairSpeed;    // 건물 수리속도
+    public GameObject buildingPrefab => _buildingPrefab;
 
-       [SerializeField] private short _attackPower;
-       [SerializeField] private float _attackDelay;  // 건물의 공격 딜레이
-       [SerializeField] private short _attackRadius;
-       [SerializeField] private float _attackProjectileSize;
+    public LayerMask attackableLayer => _attackableLayer;
 
-       [SerializeField] private GameObject _buildingPrefab;    // 건물 prefab
-       [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private int _id;               // 건물 ID
+    [SerializeField] private string _buildingName;  // 건물 이름
+    [SerializeField] private short _maxHp;          // 건물 최대체력
+    [SerializeField] private short _curHp;          // 건물 현재체력
+    [SerializeField] private short _requireWood;      // 나무 요구 재료개수
+    [SerializeField] private short _requireStone;      // 돌 요구 재료개수
+    [SerializeField] private short _requireIron;      // 철 요구 재료개수
+    [SerializeField] private float _constTime;     // 건물 총 건설시간
+    [SerializeField] private float _repairSpeed;    // 건물 수리속도
+
+    [SerializeField] private short _atkPower;
+    [SerializeField] private float _atkDelay;  // 건물의 공격 주기
+    [SerializeField] private float _hitDelay; // 건물공격의 타격 간격(장판형 공격의 경우)
+    [SerializeField] private float _atkDuration; // 건물 공격의 지속시간 (장판형 공격의 경우)
+    [SerializeField] private short _atkRadius; // 지점형 공격의 범위
+
+    [SerializeField] private float _atkProjectileSize; // 건물 투사체 크기
+    [SerializeField] private float _atkProjectileSpeed;// 건물 투사체 속도
+    [SerializeField] private float _atkProjectileRange;// 건물 투사체 사거리
+    [SerializeField] private bool _atkCanPen; //관통가능한 공격인가?
+    [SerializeField] private int _atkPenCount; //관통가능한 오브젝트 수
+
+
+    [SerializeField] private GameObject _buildingPrefab;    // 건물 prefab
+    [SerializeField] private LayerMask _attackableLayer;
 
        
     /*

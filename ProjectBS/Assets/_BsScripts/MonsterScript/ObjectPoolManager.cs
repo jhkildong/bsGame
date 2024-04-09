@@ -8,8 +8,6 @@ using Yeon;
 [DisallowMultipleComponent]
 public class ObjectPoolManager : MonoBehaviour
 {
-    //임시
-    public Yeon.QuadTree quadTree;
 
     /// <summary> 싱글턴 매니저 </summary>
     private static ObjectPoolManager _instance;

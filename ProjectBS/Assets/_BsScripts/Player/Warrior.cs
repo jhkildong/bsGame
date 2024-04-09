@@ -13,7 +13,7 @@ public enum EffectType
 public class Warrior : CharacterComponent
 {
     const int defaultID = 1000;
-    
+
     public override Effect[] MyEffects
     { 
         get
@@ -25,21 +25,15 @@ public class Warrior : CharacterComponent
             return _effects;
         }
     }
+    [SerializeField] private EffectType _effectType;
+
     public override Effect GetMyEffect()
     {
         return MyEffects[(int)_effectType - defaultID];
     }
 
-    [SerializeField]private EffectType _effectType;
-
-
     public void SelectMyEffect(int id)
     {
         _effectType = (EffectType)id;
-    }
-
-    private void OnEnable()
-    {
-        //GameManager.Instance.OnEffectChange += SelectMyEffect;
     }
 }

@@ -14,10 +14,11 @@ namespace Yeon
     {
         #region Component
         protected Rigidbody rBody;
+        protected Collider col;
         #endregion
 
         #region Private Field
-        [SerializeField, Range(1f, 10f), Tooltip("이동속도")]
+        [SerializeField]
         protected float moveSpeed = 1f;
 
         [SerializeField] protected bool isMoving;
@@ -35,24 +36,40 @@ namespace Yeon
             {
                 rBody = gameObject.AddComponent<Rigidbody>();
                 //rBody.useGravity = false;
-                rBody.freezeRotation = true;
+                rBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                rBody.constraints |= RigidbodyConstraints.FreezePositionY;
             }
         }
 
         protected virtual void InitCollider()
         {
-            CapsuleCollider capsule;
-            TryGetComponent(out capsule);
-            if (capsule == null)
+            TryGetComponent(out col);
+            if (col == null)
             {
-                capsule = gameObject.AddComponent<CapsuleCollider>();
-
-                capsule.height = 2.0f;
-                capsule.center = Vector3.up * 1.0f;
-                capsule.radius = 0.5f;
+                col = gameObject.AddComponent<CapsuleCollider>();
             }
         }
         #endregion
+
+        private void OnDrawGizmos()
+        {
+            if(col is CapsuleCollider cc)
+            {
+
+                Gizmos.color = Color.red;
+
+
+                float height = cc.height * 0.5f; // 캡슐 콜라이더의 높이의 절반
+                Vector3 center = transform.position + cc.center; // 캡슐 콜라이더의 중심 위치
+
+                // 캡슐의 두 끝을 그립니다.
+                Gizmos.DrawWireSphere(center + Vector3.up * (height - cc.radius), cc.radius);
+                Gizmos.DrawWireSphere(center + Vector3.down * (height - cc.radius), cc.radius);
+
+                // 캡슐의 두 끝을 연결합니다.
+                Gizmos.DrawLine(center + Vector3.up * (height - cc.radius), center + Vector3.down * (height - cc.radius));
+            }
+        }
 
         #region Unity Event
         ///<summary>시작시 rigidBody와 캡슐콜라이더 설정</summary>
@@ -87,6 +104,19 @@ namespace Yeon
         public void SetDirection(Vector3 dir)
         {
             worldMoveDir = dir;
+        }
+        public void SetCollider(float radius)
+        {
+            if (col is CapsuleCollider cc)
+            {
+                cc.radius = radius;
+                cc.height = radius * 2.0f;
+                cc.center = new Vector3(0, radius, 0);
+            }
+            else if (col is SphereCollider sc)
+            {
+                sc.radius = radius;
+            }
         }
         #endregion
     }

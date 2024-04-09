@@ -14,18 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 4
   _buildingName: LightningTower
-  _maxHp: 100
-  _curHp: 100
+  _maxHp: 1000
+  _curHp: 1000
   _requireWood: 5
   _requireStone: 10
   _requireIron: 10
   _constTime: 5
   _repairSpeed: 5
-  _attackPower: 2
-  _attackDelay: 0.5
-  _attackRadius: 2
-  _attackProjectileSize: 0
+  _atkPower: 5
+  _atkDelay: 0.5
+  _hitDelay: 0
+  _atkDuration: 0
+  _atkRadius: 2
+  _atkProjectileSize: 0
+  _atkProjectileSpeed: 0
+  _atkProjectileRange: 0
+  _atkCanPen: 0
+  _atkPenCount: 0
   _buildingPrefab: {fileID: 0}
-  _layerMask:
+  _attackableLayer:
     serializedVersion: 2
-    m_Bits: 16777216
+    m_Bits: 32768

@@ -10,19 +10,17 @@ public class enemydrop : MonoBehaviour
 
     void Start()
     {
-        // DropTable 스크립트가 포함된 게임 오브젝트의 DropTable 컴포넌트 가져오기
         dropTable = GetComponent<DropTable>();
     }
     //생사 여부
     void Update()
     {
-        if (hp <= 0 && !hasDead)
+        if (hp <= 0)
         {
-            hasDead = true;
-            //dropTable.WillDrop().transform.position = this.transform.position;
+            //hasDead = true;
+            dropTable.WillDrop(dropTable.dropItems).transform.position = this.transform.position + Vector3.up;
             DestroyObject();
-        }
-        //죽으면 애니매이션 > 아이템 스폰 > 옵젝 사라짐.      
+        }  
     }
     void DestroyObject()
     {
@@ -32,6 +30,6 @@ public class enemydrop : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         hp -= 5;
-        Debug.Log("부딛혀서 체력이 깎임");
+        Debug.Log("부딛혀서 체력이 깎임. 현재 체력 : " + hp);
     }
 }

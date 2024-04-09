@@ -165,16 +165,17 @@ MonoBehaviour:
   atkDelaying: 0
   attackableLayer:
     serializedVersion: 2
-    m_Bits: 49152
-  atkEffect: {fileID: 1153730961705006, guid: f1aeeba2f9003904da5c0a24ba150198, type: 3}
+    m_Bits: 32768
   effectList: []
   effectPool: {fileID: 5933481128536531054}
+  EffectPoolEvent:
+    m_PersistentCalls:
+      m_Calls: []
   AtkEvent:
     m_PersistentCalls:
       m_Calls: []
-  _attackDelay: 0
+  _atkDelay: 0
   myAtkCollider: {fileID: 8354525759616858174}
-  canAttack: 0
 --- !u!1 &7805184506146942513
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,10 +273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8654ffdc162c564eba01d7322c2bc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDelay: 0
+  detectedObj: []
+  canHit: 0
   attackableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32768
 --- !u!1001 &8711661605395587187
 PrefabInstance:
   m_ObjectHideFlags: 0

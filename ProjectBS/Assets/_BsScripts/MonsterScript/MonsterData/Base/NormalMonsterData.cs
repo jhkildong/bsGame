@@ -11,5 +11,5 @@ public abstract class NormalMonsterData : MonsterData
         
     }
     
-    [SerializeField, ReadOnly] protected MonsterType _type;
+    [SerializeField] protected MonsterType _type;
 }

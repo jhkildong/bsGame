@@ -16,6 +16,22 @@ public enum BSLayerMasks
     Ground = 1 << 29
 }
 
+public enum BSLayers
+{
+    Player = 14,
+    Monster = 15,
+    MagneticField = 16,
+    Item = 17,
+    SurroundMonster = 18,
+    Building = 24,
+    InCompletedBuilding = 25,
+    BuildCheckObject = 26,
+    Ground = 29
+
+}
+
+
+
 public enum AttackState
 {
     None,
@@ -25,12 +41,14 @@ public enum AttackState
 
 public class Player : Combat, IDamage<Player>
 {
-    /// <summary>
-    /// 플레이어의 키 조작을 버튼 형식으로 받음
-    /// 상하, 좌우를 동시에 입력시 나중에 입력된 동작으로 덮어씌워짐
-    /// 버튼을 떼어낼 때 비트 연산을 통해 이전 입력이 있었는지 확인한 후 입력값 설정
-    /// </summary>
+
     #region PlayerInput
+    ////////////////////////////////PlayerInput////////////////////////////////
+    // 플레이어의 키 조작을 버튼 형식으로 받음
+    // 상하, 좌우를 동시에 입력시 나중에 입력된 동작으로 덮어씌워짐
+    // 버튼을 떼어낼 때 비트 연산을 통해 이전 입력이 있었는지 확인한 후 입력값 설정
+    ///////////////////////////////////////////////////////////////////////////
+
     private PlayerInputs playerInputs;
     private void OnAttack(InputAction.CallbackContext context)
     {
@@ -107,6 +125,7 @@ public class Player : Combat, IDamage<Player>
     #endregion
 
     #region Private Field
+    ////////////////////////////////PrivateField////////////////////////////////
     [SerializeField] private CharacterComponent Com;
     [SerializeField] private AttackState attackState = AttackState.None;
 
@@ -116,8 +135,8 @@ public class Player : Combat, IDamage<Player>
     float _attackDir;
     #endregion
 
-
     #region Init Setting
+    ////////////////////////////////InitSetting////////////////////////////////
     private void InitPlayerSetting()
     {
         if (Com == null)
@@ -127,12 +146,20 @@ public class Player : Combat, IDamage<Player>
         Com.MyAnimEvent.AttackAct += OnAttackPoint;
         ChangeHpAct += PlayerUI.Instance.ChangeHP;
         DeadAct += Death;
+        
         CurHp = MaxHP;
+        effectData.renderers = new Renderer[1];
+        effectData.renderers[0] = Com.Myrenderer;
+        effectData.mainTexture = Com.Myrenderer.material.mainTexture;
         attackMask = (int)BSLayerMasks.Monster;
         ObjectPoolManager.Instance.SetPool(Com.MyEffects, 10, 10);
 
+        rBody.mass = 50.0f;
+        rBody.constraints |= RigidbodyConstraints.FreezeRotationY;
+
 
         #region PlayerInputsCallback Setting
+        ////////////////////////////////PlayerInputsCallbackSetting////////////////////////////////
         playerInputs = new PlayerInputs();
         playerInputs.Player.Attack.performed += OnAttack;
         playerInputs.Player.PressW.performed += PressW;
@@ -154,8 +181,9 @@ public class Player : Combat, IDamage<Player>
         Application.focusChanged += OnFocusChanged;
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         Application.focusChanged -= OnFocusChanged;
     }
 
@@ -179,6 +207,7 @@ public class Player : Combat, IDamage<Player>
     #endregion
 
     #region Unity Event
+    ////////////////////////////////UnityEvent////////////////////////////////
     protected override void Awake()
     {
         base.Awake();
@@ -220,26 +249,15 @@ public class Player : Combat, IDamage<Player>
     #endregion
 
     #region Public Method
+    ////////////////////////////////PublicMethod////////////////////////////////
     public void OnAttackPoint()
     {
-        //공격범위 생성
-        Collider[] list = Physics.OverlapSphere(myAttackPoint.position, 1.0f, attackMask);
-
         _attackDir = (attackState == AttackState.ComboCheck) ? 180.0f : 0.0f;
 
         //공격 이펙트 생성
         GameObject go = ObjectPoolManager.Instance.GetEffect(Com.GetMyEffect(), attack: Attack).Data.gameObject;
         go.transform.position = Com.MyEffectSpawn.position;
         go.transform.rotation = Quaternion.Euler(0.0f, Com.MyEffectSpawn.rotation.eulerAngles.y, _attackDir);
-
-        foreach (Collider col in list)
-        {
-            IDamage<Monster> obj = col.GetComponent<IDamage<Monster>>();
-            if (obj != null)
-            {
-                obj.TakeDamage(Attack);
-            }
-        }
     }
 
     public void ChangeAttackState(AttackState state)

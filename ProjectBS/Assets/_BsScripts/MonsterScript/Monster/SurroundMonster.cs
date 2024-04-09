@@ -9,5 +9,6 @@ public class SurroundMonster : NormalMonster
     public override void Init(MonsterData data)
     {
         base.Init(data);
+        gameObject.layer = (int)BSLayers.SurroundMonster;
     }
 }

@@ -23,7 +23,7 @@ TagManager:
   - Monster
   - MagneticField
   - Item
-  - 
+  - SurroundMonster
   - 
   - 
   - 
@@ -35,7 +35,7 @@ TagManager:
   - BuildingAtk
   - 
   - Ground
-  - 
+  - EndArea
   - 
   m_SortingLayers:
   - name: Default

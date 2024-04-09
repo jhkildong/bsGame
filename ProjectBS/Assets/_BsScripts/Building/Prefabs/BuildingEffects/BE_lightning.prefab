@@ -19451,7 +19451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35394ac973e11b54ba6bd6756c58cc0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkType: 1
+  atkType: 0
   canHit: 0
   hitTiming: 0.3
   attackableLayer:

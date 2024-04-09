@@ -3,7 +3,12 @@ guid: d3df4542add994c488c3f2a5b48f9920
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - myAttackPoint: {instanceID: 0}
+  - physicMaterial: {instanceID: 0}
+  - _data: {instanceID: 0}
+  - myAnim: {instanceID: 0}
+  - myTarget: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

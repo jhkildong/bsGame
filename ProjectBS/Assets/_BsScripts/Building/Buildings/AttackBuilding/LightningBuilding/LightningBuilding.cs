@@ -10,15 +10,13 @@ public class LightningBuilding : AttackBuildingBase
     {
         base.Start();
         AtkEvent.AddListener(SetActiveEffects);
-
-
     }
 
     void SetActiveEffects()
     {
         if (target != null && atkDelaying)
         {
-            EffectPoolManager.Instance.SetActiveObject<BuildingEffectHit>(myEffect, effectPool, target, _attackPower, _attackRadius);
+            EffectPoolManager.Instance.SetActiveObject<PointAtkEffectHit>(myEffect, effectPool, target, _atkPower, _atkRadius, 0, 0,_hitDelay,_atkDuration);
 
         }
     }

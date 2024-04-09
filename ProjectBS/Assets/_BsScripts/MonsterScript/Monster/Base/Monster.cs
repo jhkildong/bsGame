@@ -1,12 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using Yeon;
-using InfinityPBR;
 
-//[RequireComponent(typeof(SpatialObject))]
 [RequireComponent(typeof(DropTable))]
 public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
 {
@@ -25,14 +21,15 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     [SerializeField] protected MonsterData _data;
     [SerializeField] private float _curAttackDelay;
     [SerializeField] private Animator myAnim;
+    [SerializeField] private DropTable dropTable;
     #endregion
 
     #region Interface Method
     public List<dropItem> dropItems() => OriginData.DropItemList;
     public void WillDrop()
     {
-        //GameObject go = ItemManager.Instance.A(dropItems());
-        //go.transform.position = this.transform.position;
+        GameObject go = ItemManager.Instance.A(dropItems());
+        go.transform.position = this.transform.position + new Vector3(0f, 0.3f, 0f);
     }
 
     public override void TakeDamage(short damage)
@@ -67,13 +64,18 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         _curHp = data.MaxHP;
         moveSpeed = data.Sp;
 
-        effectCount = 1;
-        effctColor = Color.white;
-        effectTime = 0.1f;
+        rBody.mass = data.Mass;
+        rBody.angularDrag = 2f;
+        SetCollider(data.Radius);
 
-        //DeadAct.AddListener(WillDrop);
+        //타격 이펙트 설정
+        effectData.effectCount = 1;
+        effectData.effectColor = Color.white;
+        effectData.effectTime = 0.1f;
+
         Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
         myAnim = GetComponentInChildren<Animator>();
+        effectData.SetRenderer(this);
         //임시
         PlayerTransform = GameObject.Find("Player").transform;
         myTarget = PlayerTransform;
@@ -85,7 +87,8 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     protected override void Awake()
     {
         base.Awake();
-        //dropTable = GetComponent<DropTable>();
+        
+        dropTable = GetComponent<DropTable>();
     }
 
     //활성화 될 때 상태 초기화
@@ -93,23 +96,22 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     {
         base.OnEnable();
         if (OriginData == null) return;
+
         _curAttackDelay = OriginData.AkDelay;
         _curHp = OriginData.MaxHP;
         moveSpeed = OriginData.Sp;
         myTarget = PlayerTransform;
         ChangeState(State.Chase);
     }
+
     #endregion
 
     #region Private Method
     private void Die()
     {
-        myAnim.SetBool(AnimParam.isMoving, false);
         myAnim.SetTrigger(AnimParam.Death);
         ChangeState(State.Death);
-        //임시
-        //DropTable dropTable = new DropTable();
-        //dropTable.WillDrop(dropItems()).transform.position = this.transform.position + new Vector3(0f, 0.3f, 0f);
+        dropTable.WillDrop(OriginData.DropItemList).transform.position = this.transform.position + Vector3.up;   //아이템생성
     }
 
     protected void ChangeTarget(Transform target)
@@ -130,10 +132,13 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     #region StateMachine
     public enum State
     {
-        Create, Chase, Attack, Death
+        Chase, Attack, Death
     }
-    [SerializeField]protected State myState = State.Create;
+    [SerializeField]protected State myState = State.Chase;
     [SerializeField]protected Transform myTarget;
+    [SerializeField] protected IDamage attackTarget;
+    [SerializeField] protected float playTime;
+
 
     protected virtual void ChangeState(State s)
     {
@@ -142,9 +147,14 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         switch (myState)
         {
             case State.Chase:
-                myAnim.SetBool(AnimParam.isMoving, true);
+                myTarget = PlayerTransform;
+                break;
+            case State.Attack:
+                attackTarget.TakeDamage(Attack);
+                playTime = CurAttackDelay;
                 break;
             case State.Death:
+                SetDirection(Vector3.zero);
                 ObjectPoolManager.Instance.ReleaseObj(this);
                 break;
         }
@@ -159,23 +169,28 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
                 dir.y = 0;
                 SetDirection(dir);
                 break;
+            case State.Attack:
+                playTime -= Time.deltaTime;
+                if(playTime <= 0)
+                {
+                    attackTarget.TakeDamage(Attack);
+                    playTime = CurAttackDelay;
+                }
+                break;
+            case State.Death:
+                break;
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
+        if (myState == State.Death) return;
         //타겟을 향해 부드럽게 방향전환
         Vector3 targetDirection = myTarget.position - transform.position;
         targetDirection.y = 0.0f;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection.normalized);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
 
-        Physics.Raycast(transform.position, targetDirection, out RaycastHit hit, 0.5f,
-                        (int)BSLayerMasks.Player | (int)BSLayerMasks.Building);
-        if(hit.collider != null)
-        {
-            
-        }
         StateProcess();
     }
 
@@ -191,8 +206,11 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         if ((attackMask & (1 << collision.gameObject.layer)) != 0)
         {
             IDamage AttackTarget = collision.gameObject.GetComponent<IDamage>();
-            AttackTarget.TakeDamage(Attack);
-            //ChangeState(State.Attack);
+            if(AttackTarget != null)
+            {
+                attackTarget = AttackTarget;
+                ChangeState(State.Attack);
+            }
         }
     }
 

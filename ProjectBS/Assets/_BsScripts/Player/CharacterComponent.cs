@@ -76,6 +76,18 @@ public abstract class CharacterComponent : MonoBehaviour
             return _rigs;
         }
     }
+    public SkinnedMeshRenderer Myrenderer
+    {
+        get
+        {
+            if (_renderer == null)
+            {
+                if ((_renderer = GetComponentInChildren<SkinnedMeshRenderer>()) == null)
+                    return null;
+            }
+            return _renderer;
+        }
+    }
     public abstract Effect[] MyEffects{ get; }
     #endregion
 
@@ -85,6 +97,7 @@ public abstract class CharacterComponent : MonoBehaviour
     [SerializeField] protected AnimEvent _animEvent;
     [SerializeField] protected Animator _anim;
     [SerializeField] protected Rig[] _rigs;
+    [SerializeField] protected SkinnedMeshRenderer _renderer;
     [SerializeField] protected Effect[] _effects = new Effect[0];
     #endregion
 
