@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8b69fdfe4eb0f54ea35ec6c6b61e0f5, type: 3}
-  m_Name: 01_Item_Exp_Key
+  m_Name: 08_Item_Exp_orb
   m_EditorClassIdentifier: 
-  description: "\uACBD\uD5D8\uCE58\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  _id: 1
-  _name: key
-  _value: 1
-  _prefab: {fileID: 3799868614507099205, guid: a84316f9f9f6d5a42a10635b413568f6, type: 3}
+  description: "\uACBD\uD5D8\uCE58\uB97C \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  _id: 8
+  _name: Orb
+  _value: 5
+  _prefab: {fileID: 6178760419957704234, guid: d26dc319f3523e14b880163c565a0a2d, type: 3}
   itemType: 1
-  _exprate: 1
+  _exprate: 5
