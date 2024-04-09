@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72fc1e9bb1e24dd4581c0c5e0129fae9, type: 3}
-  m_Name: 03_Item_Struct_ Stone
+  m_Name: 07_Item_Struct_steel
   m_EditorClassIdentifier: 
-  description: "\uB3CC\uC785\uB2C8\uB2E4...\nValue\uAC12 \uB9CC\uD07C \uC7AC\uB8CC\uB97C
+  description: "\uCCA0\uC785\uB2C8\uB2E4.\nValue\uAC12 \uB9CC\uD07C \uC7AC\uB8CC\uB97C
     \uC5BB\uC2B5\uB2C8\uB2E4."
-  _id: 3
-  _name: stonne
-  _value: 1
-  _prefab: {fileID: 1442900166024121003, guid: 6d8f0f85b7e6fc44794854d75f0537ea, type: 3}
+  _id: 7
+  _name: steel
+  _value: 10
+  _prefab: {fileID: 0}
   TypeOfItem: 2
-  TypeOfMaterial: 2
+  TypeOfMaterial: 3

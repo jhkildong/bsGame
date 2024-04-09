@@ -5,30 +5,30 @@ using UnityEngine;
 public class increaseStruct : MonoBehaviour
 {
     GameManager gM;
-    StructItemData.struct_mat struct_Mat;
+    StructItemData struct_Item_data;
     private void Start()
     {
         gM = GameManager.Instance;
-        struct_Mat = GetComponent<StructItem>().StructItemData.TypeOfMaterial;
+        struct_Item_data = GetComponent<StructItem>().StructItemData;
     }
-    // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        switch (struct_Mat)
+        switch (struct_Item_data.TypeOfMaterial)
         {
             case StructItemData.struct_mat.None:
                 Debug.Log("아이템의 재료가 설정되지 않았음.");
                 break;
             case StructItemData.struct_mat.stone:
-                gM.ChangeStone(10);
+                gM.ChangeStone(struct_Item_data.Value);
                 break;
             case StructItemData.struct_mat.wood:
-                gM.ChangeWood(10);
+                gM.ChangeWood(struct_Item_data.Value);
                 break;
             case StructItemData.struct_mat.steel:
-                gM.ChangeIron(10);
+                gM.ChangeIron(struct_Item_data.Value);
                 break;
             //추후 추가 할 예정
         }
+        
     }
 }

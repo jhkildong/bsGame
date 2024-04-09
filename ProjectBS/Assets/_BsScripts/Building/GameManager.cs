@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
     public void ChangeWood(int num)
     {
         myWood += num;
-        myWoodCount.text = myWood.ToString();
+        //myWoodCount.text = myWood.ToString();
         //UI로 나타낼 코드 추가 필요
         Debug.Log($"나무 갯수 변동 {myWood}");
     }
@@ -168,22 +168,21 @@ public class GameManager : MonoBehaviour
     {
         myIron += num;
         //UI로 나타낼 코드 추가 필요
-        Debug.Log($"철 갯수 변동 {myIron}");
+        Debug.Log($"철 갯수 변동. 현재 철 : {myIron}");
     }
 
     public void ChangeGold(int num)
     {
         myIron += num;
         //UI로 나타낼 코드 추가 필요
-        Debug.Log($"골드 변동 {myGold}");
+        Debug.Log($"골드 변동. 현재 골드 : {myGold}");
     }
     public void ChangeExp(int num)
     {
         myExp += num;
         //UI로 나타낼 코드 추가 필요
-        Debug.Log($"경험치 변동 {myExp}");
+        Debug.Log($"경험치 변동. 현재 경형치 : {myExp}");
     }
-
 }
 
 

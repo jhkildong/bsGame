@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6a95133543b6341b2bf9ea21c4f97c, type: 3}
   m_Name: 02_Item_Oneshot_ Bomb
   m_EditorClassIdentifier: 
+  description: "\uC77C\uD68C\uC131 \uC544\uC774\uD15C. \uD3ED\uD0C4\uC744 \uB358\uC9D1\uB2C8\uB2E4."
   _id: 2
   _name: Bomb
   _value: 10
   _prefab: {fileID: 6178760419957704234, guid: d26dc319f3523e14b880163c565a0a2d, type: 3}
+  itemType: 3
   _used: 0
