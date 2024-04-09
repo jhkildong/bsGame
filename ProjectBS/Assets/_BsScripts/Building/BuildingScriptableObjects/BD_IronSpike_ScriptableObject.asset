@@ -21,11 +21,17 @@ MonoBehaviour:
   _requireIron: 10
   _constTime: 5
   _repairSpeed: 10
-  _attackPower: 3
-  _attackDelay: 0.5
-  _attackRadius: 0
-  _attackProjectileSize: 0
+  _atkPower: 2
+  _atkDelay: 0.2
+  _hitDelay: 0
+  _atkDuration: 0
+  _atkRadius: 0
+  _atkProjectileSize: 0
+  _atkProjectileSpeed: 0
+  _atkProjectileRange: 0
+  _atkCanPen: 0
+  _atkPenCount: 0
   _buildingPrefab: {fileID: 7215726233801088367, guid: b87f8b2fa9976fe488546514a7e45aa3, type: 3}
-  _layerMask:
+  _attackableLayer:
     serializedVersion: 2
-    m_Bits: 16777216
+    m_Bits: 32768

@@ -2,48 +2,86 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
 
-public class BuildingMeeleHit : MonoBehaviour
+public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
 {
-    private short dmg;
-    public float attackDelay;
-    public LayerMask attackableLayer;
+    //이 클래스가 하는일. 닿은 오브젝트 검사. 물체가 감지되면, 이펙트 호출.
+    //근접 공격 유형 -> 주기마다,키입력시 해당 위치에 생성,타이밍에 공격
+    //               -> 생성 되어있는 상태로 지속. 충돌시 타격.
+    //근접 공격 로직 -> 스탯을 받아와서, 위치에 생성. 타이밍에 공격.
+    ParticleSystem ps;
+
+    [SerializeField]List<Transform> detectedObj = new List<Transform>();
+
+    public bool canHit;
+
+    protected float hitTime = 1f; //공격 타이밍
+    float progress; // 파티클 재생 진행도
+
+    private short baseAttack;
+    private float mySize;
+    private Vector3 myColSize;
+    private float myAtkDelay;
     private bool atkDelaying;
-    private BoxCollider atkCollider;
-    public UnityEvent setActiveEffectsEvent;
+    public LayerMask attackableLayer;
+    /*
+    public void SetMeeleStats(short atk = 1, float radius = 1, float size = 1, float speed = 1, float atkDelay = 1)
+    {
+        baseAttack = atk;
+        mySize = size;
+        myAtkDelay = atkDelay; 
+    }
+    */
 
 
-    // Start is called before the first frame update
+
     void OnEnable()
     {
         getParentBuildingAtkStats();
-        atkCollider = GetComponent<BoxCollider>();
-        
     }
 
     void getParentBuildingAtkStats()
     {
-        AttackBuildingBase buildingStat = GetComponentInParent<AttackBuildingBase>(); //커플링. 부모 건물의 현재 공격력을 갖는다.
-        dmg = buildingStat.SetDmg();
-        attackDelay = buildingStat.SetAtkDelay();
+        AttackBuildingBase buildingStat = GetComponentInParent<AttackBuildingBase>();
+        baseAttack = buildingStat.SetDmg();
+        myAtkDelay = buildingStat.SetAtkDelay();
         attackableLayer = buildingStat.SetAttackableMask();
     }
-
-    protected virtual void OnTriggerStay(Collider other)
+    void Start()
     {
-        if (other != null && (1 << other.gameObject.layer & attackableLayer) != 0)
+        ps = GetComponent<ParticleSystem>();
+        myColSize = GetComponent<Collider>().bounds.size;
+    }
+    void Update()
+    {
+        if(!atkDelaying)
         {
-            if (!atkDelaying)
-            {
-                atkDelaying = true;
-                StartCoroutine(AtkDelay(attackDelay, other));
-            }
+            atkDelaying = true;
+            StartCoroutine(AtkDelay(myAtkDelay));
         }
+    }
+
+    IEnumerator AtkDelay(float delay)
+    {
+        //여기서 공격
+        Collider[] colliders = Physics.OverlapBox(transform.position, myColSize, Quaternion.identity, attackableLayer);
+        Debug.Log(myColSize);
+        Debug.Log(delay);
+        foreach (Collider collider in colliders)
+        {
+            IDamage target = collider.GetComponent<IDamage>();
+            target.TakeDamage(baseAttack);
+        }
+        yield return new WaitForSeconds(delay);
+        atkDelaying = false;
 
     }
 
+    /*
     protected IEnumerator AtkDelay(float delay, Collider other)
     {
+
         Debug.Log("공격!");
         MeeleAtk();
         //SetActiveEffects(other);
@@ -79,14 +117,6 @@ public class BuildingMeeleHit : MonoBehaviour
         }
 
     }
-    
+    */
 
-    
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

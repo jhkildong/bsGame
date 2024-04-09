@@ -32,10 +32,21 @@ public class AttackBuildingBase : Building
 
     public UnityEvent AtkEvent; //AtkDelay 에서 Invoke
 
-    protected short _attackPower;// 공격가능한 건물의 공격력
-    public float _attackDelay;  // 건물의 공격 딜레이
-    protected float _attackRadius; // 건물의 공격 반지름 (좌표 범위형 공격)
-    protected float _attackProjectileSize; //건물의 투사체 사이즈 (투사체형 공격)
+   
+    protected Vector3 relativeDir; // 투사체를 발사할 방향벡터
+
+    protected short _atkPower;// 공격가능한 건물의 공격력
+    public float _atkDelay;  // 건물의 공격 생성 딜레이
+    protected float _hitDelay; // 건물 공격의 타격 간격 (지속 공격의 경우)
+    protected float _atkDuration; // 건물 공격의 지속 시간( 장판 공격의 경우)
+    protected float _atkRadius; // 건물의 공격 반지름 (좌표 범위형 공격)
+    protected float _atkProjectileSize; //건물의 투사체 사이즈 (투사체형 공격)
+    protected float _atkProjectileSpeed; // 건물 투사체 속도
+    protected float _atkProjectileRange; // 건물 투사체 사거리
+    protected bool _atkCanPen; //관통가능한 공격인가?
+    protected int _atkPenCount; //관통가능한 물체수
+
+    
 //    protected Vector3 _attackBoxSize;
     /*
     public short Damage
@@ -47,10 +58,17 @@ public class AttackBuildingBase : Building
     protected override void Start()
     {
         base.Start();
-        _attackPower = Data.attackPower;
-        _attackDelay = Data.attackDelay;
-        _attackRadius = Data.attackRadius;
-        _attackProjectileSize = Data.attackProjectileSize;
+        attackableLayer = Data.attackableLayer;
+        _atkPower = Data.atkPower;
+        _atkDelay = Data.atkDelay;
+        _hitDelay = Data.hitDelay;
+        _atkDuration = Data.atkDuration;
+        _atkRadius = Data.atkRadius;
+        _atkProjectileSize = Data.atkProjectileSize;
+        _atkProjectileSpeed = Data.atkProjectileSpeed;
+        _atkProjectileRange = Data.atkProjectileRange;
+        _atkCanPen = Data.atkCanPen;
+        _atkPenCount = Data.atkPenCount;
         Debug.Log("attackbuilding" + _constTime);
     }
 
@@ -61,9 +79,19 @@ public class AttackBuildingBase : Building
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (iscompletedBuilding && (atkType == AtkType.Projectile || atkType == AtkType.Point))
+
+
+        if (iscompletedBuilding && (atkType == AtkType.Point))
         {
             SetAttackTarget(other);
+        }
+        else if(iscompletedBuilding && atkType == AtkType.Projectile)
+        {
+            SetAttackTarget(other);
+        }
+        else if(iscompletedBuilding && atkType == AtkType.Meele)
+        {
+            //SetAttackTarget(other);
         }
 
     }
@@ -139,13 +167,10 @@ public class AttackBuildingBase : Building
 
     protected virtual void AttackToTarget()
     {
-        if (target != null)
-        {
-            if (!atkDelaying)
-            {
-                atkDelaying = true;
-                StartCoroutine(AtkDelay(_attackDelay));
-            }
+        if (target != null&&!atkDelaying)
+        {   
+            atkDelaying = true;
+            StartCoroutine(AtkDelay(_atkDelay));
         }
     }
 
@@ -200,19 +225,19 @@ public class AttackBuildingBase : Building
     }
     public short SetDmg()
     {
-        return _attackPower;
+        return _atkPower;
     }
     public float SetAtkRadius()
     {
-        return _attackRadius;
+        return _atkRadius;
     }
     public float SetAtkProjectileSize()
     {
-        return _attackProjectileSize;
+        return _atkProjectileSize;
     }
     public float SetAtkDelay()
     {
-        return _attackDelay;
+        return _atkDelay;
     }
 
 

@@ -28,19 +28,18 @@ public class AttackBuilding_Meele : AttackBuildingBase
         myAtkCollider.SetActive(true);
     }
 
-
-
     protected override void AttackToTarget()
     {
         if (!atkDelaying)
         {
             atkDelaying = true;
-            StartCoroutine(AtkDelay(_attackDelay));
+            StartCoroutine(AtkDelay(_atkDelay));
         }
     }
 
     
 
+    /*
     void SetActiveEffects(Collider target)
     {
         for (int i = 0; i < effectList.Count; i++)
@@ -61,6 +60,7 @@ public class AttackBuilding_Meele : AttackBuildingBase
             }
         }
     }
+    */
     /*
     public void MeeleAtk()
     {

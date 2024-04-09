@@ -5,13 +5,13 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class BuildingEffectHit : MonoBehaviour, ISetStats
+public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
 {
 
     protected enum Type
     {
-        Projectile,
-        Point,
+        Once,
+        Last
     }
     
     [SerializeField]protected Type atkType;
@@ -26,7 +26,10 @@ public class BuildingEffectHit : MonoBehaviour, ISetStats
     private short dmg;
     private short baseAttack;
     private float myRadius;
-    private float myProjectileSize;
+    private float atkDelay; // 공격 간격
+    private float atkDuration; // 지속시간
+    private float curDur; //현재 지속시간
+    private bool atkDelaying;
 
     [SerializeField]protected float hitTiming; // 타격 타이밍 (0~1사이)
 
@@ -34,7 +37,7 @@ public class BuildingEffectHit : MonoBehaviour, ISetStats
 
     private void Awake()
     {
-
+       
     }
     void Start()
     {
@@ -46,7 +49,7 @@ public class BuildingEffectHit : MonoBehaviour, ISetStats
     {
         //getParentBuildingAtkStats();
         canHit = true;
-        Debug.Log("켜짐");
+        curDur = 0f;
     }
     /*
     void getParentBuildingAtkStats()
@@ -62,54 +65,59 @@ public class BuildingEffectHit : MonoBehaviour, ISetStats
     }
     */
 
-    public void SetStats(short atk = 1, float radius = 1, float size = 1, float speed = 1) // 건물의 스탯을 EffectPoolManager에 전달 -> 이펙트 생성시에 해당 Stat을 이펙트로 전달
+    public void SetPointStats(short atk = 1, float radius = 1, float size = 1, float speed = 1,float delay = 1, float durTime = 1) // 건물의 스탯을 EffectPoolManager에 전달 -> 이펙트 생성시에 해당 Stat을 이펙트로 전달
     {
         baseAttack = atk;
         myRadius = radius;
-        myProjectileSize = size;
+        atkDelay = delay;
+        atkDuration = durTime;
     }
 
     void Update()
     {
-        if(atkType == Type.Projectile)
-        {
-            
-        }
-        else if(atkType == Type.Point)
+
+        if (atkType == Type.Once) // 1회 타격 공격인 경우
         {
             progress = ps.time / ps.main.duration;
             //if (Mathf.Approximately(progress, hitTime) && canHit)
-            if((progress >hitTiming) && canHit)
+            if ((progress > hitTiming) && canHit)
             {
                 canHit = false;
-                Debug.Log("지금!");
                 HitSphere();
-                
             }
-            if(progress >= 1f)
+            if (progress >= 1f)
             {
                 //gameObject.SetActive(false);
-                EffectPoolManager.Instance.ReleaseObject<BuildingEffectHit>(gameObject);
+                EffectPoolManager.Instance.ReleaseObject<PointAtkEffectHit>(gameObject);
             }
         }
 
-        
+        else if (atkType == Type.Last) // 지속공격인 경우 ( 장판기 )
+        {
+             progress = ps.time / ps.main.duration;
+             curDur += Time.deltaTime;
+            //지속시간까지 반복해서 딜레이마다 공격.
+            if (!atkDelaying && (progress > hitTiming) && curDur < atkDuration)
+            {
+                atkDelaying = true;
+                StartCoroutine(LastAtk(atkDelay));
+            }
+            else if(curDur >= atkDuration) // 지속시간이 끝나면 풀로 되돌림
+            {       
+                atkDelaying = false;
+                EffectPoolManager.Instance.ReleaseObject<PointAtkEffectHit>(gameObject);
+            }
+        }
+
     }
 
-    protected virtual void MeeleAttack()
+    IEnumerator LastAtk(float delay) //타격 시간간격을 구현하기 위한 코루틴 함수
     {
-
+        HitSphere();
+        yield return new WaitForSeconds(delay);
+        atkDelaying = false;
     }
 
-    protected virtual void ProjectileAttack()
-    {
-
-    }
-
-    protected virtual void PointAttack()
-    {
-
-    }
 
     protected void SetHitTiming(float timing)
     {
@@ -119,10 +127,10 @@ public class BuildingEffectHit : MonoBehaviour, ISetStats
 
     protected void HitSphere()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, myRadius,attackableLayer); 
+        Collider[] colliders = Physics.OverlapSphere(transform.position, myRadius, attackableLayer); 
         if(colliders.Length > 0 )
         {
-            Debug.Log(colliders);
+            //Debug.Log(colliders);
         }
 
         foreach (Collider collider in colliders)
