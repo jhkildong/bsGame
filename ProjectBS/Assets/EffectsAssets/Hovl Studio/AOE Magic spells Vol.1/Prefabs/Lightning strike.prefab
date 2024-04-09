@@ -4848,10 +4848,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d5dfb7b499f5de840871d37b9f54d073, type: 2}
-<<<<<<< Updated upstream
   - {fileID: 0}
-=======
->>>>>>> Stashed changes
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9752,10 +9749,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: fe3fbcea8e93fec468be670c547e0aa1, type: 2}
-<<<<<<< Updated upstream
   - {fileID: 0}
-=======
->>>>>>> Stashed changes
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14656,10 +14650,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a1b5342d56c8edf4caeeb103dcf3053e, type: 2}
-<<<<<<< Updated upstream
   - {fileID: 0}
-=======
->>>>>>> Stashed changes
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29551,10 +29542,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 54a6c1f6ac7494944a32a1d6fd599997, type: 2}
-<<<<<<< Updated upstream
   - {fileID: 0}
-=======
->>>>>>> Stashed changes
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29622,11 +29610,7 @@ GameObject:
   - component: {fileID: 108990421757153786}
   - component: {fileID: 82033017084784452}
   - component: {fileID: 114635776230039818}
-<<<<<<< Updated upstream
   - component: {fileID: 4771507558842387675}
-=======
-  - component: {fileID: 6164756866101403524}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Lightning strike
   m_TagString: Untagged
@@ -34856,11 +34840,7 @@ MonoBehaviour:
   RandomVolume: 0
   minVolume: 0.4
   maxVolume: 1
-<<<<<<< Updated upstream
 --- !u!114 &4771507558842387675
-=======
---- !u!114 &6164756866101403524
->>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39731,10 +39711,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 12f6739229ffaa942acbec6f18fb7ee8, type: 2}
-<<<<<<< Updated upstream
   - {fileID: 0}
-=======
->>>>>>> Stashed changes
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -49478,10 +49455,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 1b5f613319e0f324c9637cfac64149e4, type: 2}
-<<<<<<< Updated upstream
   - {fileID: 0}
-=======
->>>>>>> Stashed changes
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54382,6 +54356,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9aaa13d175bcf1c4b8acc4d930ee06ee, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -59340,6 +59315,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 1b5f613319e0f324c9637cfac64149e4, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

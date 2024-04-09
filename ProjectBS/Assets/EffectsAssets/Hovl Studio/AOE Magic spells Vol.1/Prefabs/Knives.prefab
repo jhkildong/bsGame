@@ -15,11 +15,7 @@ GameObject:
   - component: {fileID: 108166228675917214}
   - component: {fileID: 114536902040008898}
   - component: {fileID: 82660171331382076}
-<<<<<<< Updated upstream
   - component: {fileID: 3404077543351404711}
-=======
-  - component: {fileID: 307338010650393968}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Knives
   m_TagString: Untagged
@@ -5108,11 +5104,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
 --- !u!114 &3404077543351404711
-=======
---- !u!114 &307338010650393968
->>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10010,6 +10002,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a5058d915be7b8c4b874a6d45c51d72b, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

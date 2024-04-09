@@ -15,11 +15,7 @@ GameObject:
   - component: {fileID: 108106897617494064}
   - component: {fileID: 114745230419815290}
   - component: {fileID: 82820276732194086}
-<<<<<<< Updated upstream
   - component: {fileID: -6543694267618238376}
-=======
-  - component: {fileID: -4077472681649420676}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Meteor shower
   m_TagString: Untagged
@@ -5138,11 +5134,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
 --- !u!114 &-6543694267618238376
-=======
---- !u!114 &-4077472681649420676
->>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
