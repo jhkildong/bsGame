@@ -10,14 +10,7 @@ public class RangeWeaponLP_Bullet : Bless
     public float delayTime = 1.0f;
     float inTime = 0.0f;
 
-    void SomeMethod()
-    {
-        float attack = Ak;
-        float size = Size;
-        BlessData data = Data;
-        LevelProperty levelProp = LevelProp;
-    }
-
+    
     private void OnTriggerStay(Collider other)
     {
         inTime += Time.deltaTime;

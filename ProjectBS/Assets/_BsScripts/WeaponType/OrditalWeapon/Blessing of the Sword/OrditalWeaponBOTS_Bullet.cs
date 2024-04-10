@@ -7,14 +7,6 @@ public class OrditalWeaponBOTS_Bullet : Bless
 {
     public LayerMask Monster;
 
-    void SomeMethod()
-    {
-        float attack = Ak;
-        float size = Size;
-        BlessData data = Data;
-        LevelProperty levelProp = LevelProp;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if ((Monster & 1 << other.gameObject.layer) != 0)

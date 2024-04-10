@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed1060a7bf2ecb49a3e384fbb77020a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 90b86956fa4f7754b9393f9c481428a0, type: 2}
   _attack: 1
   _size: 0
   _amount: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
     PropertyNames: []
   Monster:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 294912
   rotSpeed: 900
 --- !u!65 &7771490026298361659
 BoxCollider:

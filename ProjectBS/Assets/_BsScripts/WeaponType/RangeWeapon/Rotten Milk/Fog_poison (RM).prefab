@@ -9638,18 +9638,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5314c8524c23a419a3a9f63df1bcf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: b1fc48c2a880e744a906d07db0aa698f, type: 2}
   _attack: 1
   _size: 0
   _amount: 0
   _levelProp:
-    states: 
+    states: 000000
     _levelTables: []
-    SerializablePropertyInfos: []
-    PropertyNames: []
+    SerializablePropertyInfos:
+    - TypeName: RangeWeaponRM_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Ak
+    - TypeName: RangeWeaponRM_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Size
+    - TypeName: RangeWeaponRM_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Amount
+    PropertyNames:
+    - Ak
+    - Size
+    - Amount
   Monster:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 294912
   delayTime: 0.5
   atRange: 5
 --- !u!199 &5984480896937644379
@@ -9745,8 +9757,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
-  m_Height: 9
+  m_Radius: 1
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5984480896999622459
