@@ -67,14 +67,14 @@ public class MonsterSpawner : MonoBehaviour
                     switch (MonsterType)
                     {
                         case var type when type.HasFlag(MonsterType.Single):
-                            go = ObjectPoolManager.Instance.GetObj(monster).Data.gameObject;
+                            go = ObjectPoolManager.Instance.GetObj(monster).This.gameObject;
                             go.transform.position = rndPos;
                             break;
                         case var type when type.HasFlag(MonsterType.Group):
                             for (int i = 0; i < (nMonster as GroupMonster).GroupData.Amount; ++i)
                             {
                                 Vector3 addPos = new Vector3(Random.Range(0, 2.0f), 0, Random.Range(0, 2.0f));
-                                go = ObjectPoolManager.Instance.GetObj(monster).Data.gameObject;
+                                go = ObjectPoolManager.Instance.GetObj(monster).This.gameObject;
                                 go.transform.position = rndPos + addPos;
                                 if(type.HasFlag(MonsterType.StraightMove))
                                 {
@@ -113,7 +113,7 @@ public class MonsterSpawner : MonoBehaviour
         {
             Quaternion rot = Quaternion.Euler(0, anlge * i, 0);
             Vector3 spawnPos = startPos + rot * Vector3.forward * surroundRange;
-            GameObject go = ObjectPoolManager.Instance.GetObj(monster).Data.gameObject;
+            GameObject go = ObjectPoolManager.Instance.GetObj(monster).This.gameObject;
             go.transform.position = spawnPos;
             
             if(i % 10 == 0)

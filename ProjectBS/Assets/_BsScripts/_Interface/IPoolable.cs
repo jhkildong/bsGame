@@ -8,6 +8,6 @@ using UnityEngine;
 public interface IPoolable
 {
     int ID { get; }
-    MonoBehaviour Data { get; }
+    MonoBehaviour This { get; }
     IPoolable CreateClone();
 }

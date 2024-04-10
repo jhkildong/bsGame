@@ -2361,6 +2361,7 @@ GameObject:
   - component: {fileID: 7396800292360680606}
   - component: {fileID: 1325091090100966025}
   - component: {fileID: 7136729261528111960}
+  - component: {fileID: 7225178815696946361}
   m_Layer: 0
   m_Name: ID_02_Gazer
   m_TagString: Untagged
@@ -2420,6 +2421,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAnim: {fileID: 0}
   _myPlayer: {fileID: 0}
+--- !u!114 &7225178815696946361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921099476613836324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fcd9abcd5a20994ea946f34427a1556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackPoint: {fileID: 0}
+  _animEvent: {fileID: 0}
+  _anim: {fileID: 1325091090100966025}
+  _renderer: {fileID: 2724969594836517736}
 --- !u!1 &7930567603654046060
 GameObject:
   m_ObjectHideFlags: 0

@@ -1577,6 +1577,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3593012333873927673}
   - component: {fileID: 3322020815460592200}
+  - component: {fileID: 4133291627774611230}
   m_Layer: 0
   m_Name: ID_04_Spider
   m_TagString: Untagged
@@ -1622,6 +1623,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4133291627774611230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221879471387922243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fcd9abcd5a20994ea946f34427a1556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackPoint: {fileID: 0}
+  _animEvent: {fileID: 0}
+  _anim: {fileID: 3322020815460592200}
+  _renderer: {fileID: 3214437884106728053}
 --- !u!1 &4352569580330515736
 GameObject:
   m_ObjectHideFlags: 0

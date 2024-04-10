@@ -16,7 +16,7 @@ MonoBehaviour:
   _name: Spider
   _attack: 5
   _attackDelay: 1
-  _speed: 2
+  _speed: 1.5
   _maxHp: 60
   _exp: 100
   _mass: 20

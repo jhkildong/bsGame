@@ -10,7 +10,7 @@ public enum EffectType
     Stone = 1003
 }
 
-public class Warrior : CharacterComponent
+public class Warrior : PlayerComponent
 {
     const int defaultID = 1000;
 

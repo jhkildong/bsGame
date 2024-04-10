@@ -11,21 +11,21 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     #endregion
 
     #region Property
-    public MonsterData OriginData => _data;
-    public float AttackDelay => OriginData.AkDelay;
-    public float CurAttackDelay { get => _curAttackDelay; set => _curAttackDelay = value; }
-    public bool isAttack => CurAttackDelay < AttackDelay;
+    ////////////////////////////////Property////////////////////////////////
+    public MonsterComponent Com => _monsterComponent;
+    public MonsterData Data => _data;
+    public float AttackDelay => Data.AkDelay;
     #endregion
 
     #region Private Field
+    ////////////////////////////////PrivateField////////////////////////////////
+    [SerializeField] protected MonsterComponent _monsterComponent;
     [SerializeField] protected MonsterData _data;
-    [SerializeField] protected float _curAttackDelay;
-    [SerializeField] protected Animator myAnim;
     [SerializeField] protected DropTable dropTable;
     #endregion
 
     #region Interface Method
-    public List<dropItem> dropItems() => OriginData.DropItemList;
+    public List<dropItem> dropItems() => Data.DropItemList;
     public void WillDrop()
     {
         GameObject go = ItemManager.Instance.A(dropItems());
@@ -40,36 +40,40 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
             DeadTransformAct?.Invoke(this.transform);
         }
     }
+
     //임시
     protected Transform PlayerTransform;
 
     public IPoolable CreateClone()
     {
-        return OriginData.CreateClone();
+        return Data.CreateClone();
     }
-    public int ID => OriginData.ID;
-    public MonoBehaviour Data => this;
+    public int ID => Data.ID;
+    public MonoBehaviour This => this;
     #endregion
 
     #region Init Method
+    ////////////////////////////////InitMethod////////////////////////////////
     public virtual void Init(MonsterData data)
     {
         _data = data;
-        _maxHP = data.MaxHP;
-        attackMask = (int)(BSLayerMasks.Player | BSLayerMasks.Building);
-        _attack = (short)data.Ak;
-        gameObject.layer = (int)BSLayers.Monster;
+        
+        Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
 
-        _curAttackDelay = data.AkDelay;
+        _maxHP = data.MaxHP;
+        _attack = (short)data.Ak;
+
         _curHp = data.MaxHP;
         moveSpeed = data.Sp;
+
+        attackMask = (int)(BSLayerMasks.Player | BSLayerMasks.Building);
+        gameObject.layer = (int)BSLayers.Monster;
 
         rBody.mass = data.Mass;
         rBody.angularDrag = 2f;
         SetCollider(data.Radius);
 
-        Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
-        myAnim = GetComponentInChildren<Animator>();
+        _monsterComponent = GetComponentInChildren<MonsterComponent>();
 
         //타격 이펙트 설정
         effectData.effectCount = 1;
@@ -96,11 +100,10 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     protected override void OnEnable()
     {
         base.OnEnable();
-        if (OriginData == null) return;
+        if (Data == null) return;
 
-        _curAttackDelay = OriginData.AkDelay;
-        _curHp = OriginData.MaxHP;
-        moveSpeed = OriginData.Sp;
+        _curHp = Data.MaxHP;
+        moveSpeed = Data.Sp;
         ResetTarget();
         ChangeState(State.Chase);
     }
@@ -110,20 +113,18 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     #region Private Method
     private void Die()
     {
-        myAnim.SetTrigger(AnimParam.Death);
+        Com.MyAnim.SetTrigger(AnimParam.Death);
         ChangeState(State.Death);
-        dropTable.WillDrop(OriginData.DropItemList).transform.position = this.transform.position + Vector3.up;   //아이템생성
+        dropTable.WillDrop(Data.DropItemList).transform.position = this.transform.position + Vector3.up;   //아이템생성
     }
 
-    protected void ChangeTarget(Transform target)
+    protected virtual void ChangeTarget(Transform target)
     {
         if (myState == State.Death) return;
         myTarget = target;
-        ChangeState(State.Chase);
-
     }
 
-    protected void ResetTarget()
+    protected virtual void ResetTarget()
     {
         if (myState == State.Death) return;
         myTarget = PlayerTransform;
@@ -137,8 +138,8 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     }
     [SerializeField]protected State myState = State.Chase;
     [SerializeField]protected Transform myTarget;
-    [SerializeField] protected IDamage attackTarget;
-    [SerializeField] protected float playTime;
+    [SerializeField]protected IDamage attackTarget;
+    [SerializeField]protected float playTime;
 
 
     protected virtual void ChangeState(State s)
@@ -152,7 +153,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
             case State.Attack:
                 SetDirection(Vector3.zero);
                 attackTarget.TakeDamage(Attack);
-                playTime = CurAttackDelay;
+                playTime = Data.AkDelay;
                 break;
             case State.Death:
                 SetDirection(Vector3.zero);
@@ -166,16 +167,14 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         switch (myState)
         {
             case State.Chase:
-                Vector3 dir = transform.forward;
-                dir.y = 0;
-                SetDirection(dir);
+                SetDirection(transform.forward);
                 break;
             case State.Attack:
                 playTime -= Time.deltaTime;
                 if(playTime <= 0)
                 {
                     attackTarget.TakeDamage(Attack);
-                    playTime = CurAttackDelay;
+                    playTime = Data.AkDelay;
                 }
                 break;
             case State.Death:
@@ -186,6 +185,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     protected virtual void Update()
     {
         if (myState == State.Death) return;
+        if (myTarget == null) ResetTarget();
         //타겟을 향해 부드럽게 방향전환
         Vector3 targetDirection = myTarget.position - transform.position;
         targetDirection.y = 0.0f;
@@ -202,7 +202,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     #endregion
 
     #region Collision Event
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         if ((attackMask & (1 << collision.gameObject.layer)) != 0)
         {

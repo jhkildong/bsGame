@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour, IPoolable
 {
-    public MonoBehaviour Data => this;
+    public MonoBehaviour This => this;
     public int ID => _id;
     
     public float Attack { get => _attack; set => _attack = value; }

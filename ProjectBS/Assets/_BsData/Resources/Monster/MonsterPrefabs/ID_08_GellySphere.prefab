@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 3628826279388406804}
   - component: {fileID: 1494567747800289786}
   - component: {fileID: 6213438829096138195}
+  - component: {fileID: 1253681859228720360}
   m_Layer: 0
   m_Name: ID_08_GellySphere
   m_TagString: Untagged
@@ -224,6 +225,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAnim: {fileID: 0}
   _myPlayer: {fileID: 0}
+--- !u!114 &1253681859228720360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802871909332010857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fcd9abcd5a20994ea946f34427a1556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackPoint: {fileID: 0}
+  _animEvent: {fileID: 0}
+  _anim: {fileID: 1494567747800289786}
+  _renderer: {fileID: 2190510000909634256}
 --- !u!1 &7021102757304140291
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,13 +19,19 @@ public class AIPerception : MonoBehaviour
         SphereCollider col = gameObject.AddComponent<SphereCollider>();
         col.radius = 5.0f;
         col.isTrigger = true;
+        gameObject.layer = 13; //юс╫ц
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if ((myMask & (1 << other.gameObject.layer)) != 0)
         {
-            if (myTarget == null)
+            if(myTarget == null)
+            {
+                myTarget = other.transform;
+                findEnemy?.Invoke(myTarget);
+            }
+            if(other.gameObject.layer == (int)BSLayers.Building)
             {
                 myTarget = other.transform;
                 findEnemy?.Invoke(myTarget);
@@ -40,5 +46,11 @@ public class AIPerception : MonoBehaviour
             myTarget = null;
             lostEnemy?.Invoke();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 5.0f);
     }
 }

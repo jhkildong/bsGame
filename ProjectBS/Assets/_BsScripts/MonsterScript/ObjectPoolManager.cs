@@ -54,7 +54,7 @@ public class ObjectPoolManager : MonoBehaviour
             MaxCount = maxCount;
             InitCount = initCount;
             _id = poolalbeData.ID;
-            Data = poolalbeData.Data;
+            Data = poolalbeData.This;
         }
     }
 
@@ -100,9 +100,9 @@ public class ObjectPoolManager : MonoBehaviour
         for (int i = 0; i < init; i++)
         {
             IPoolable clone = poolable.CreateClone();
-            clone.Data.gameObject.name += $"{i}"; //임시
-            clone.Data.transform.SetParent(poolObj.transform);
-            clone.Data.gameObject.SetActive(false);
+            clone.This.gameObject.name += $"{i}"; //임시
+            clone.This.transform.SetParent(poolObj.transform);
+            clone.This.gameObject.SetActive(false);
             pool.Push(clone);
         }
         return pool;
@@ -132,14 +132,14 @@ public class ObjectPoolManager : MonoBehaviour
         {
             go = poolable.CreateClone();
         }
-        go.Data.gameObject.SetActive(true);
+        go.This.gameObject.SetActive(true);
         return go;
     }
 
     public Effect GetEffect(Effect poolable, float attack = 1, float speed = 1, float size = 1)
     {
         IPoolable go = GetObj(poolable);
-        Effect effect = go.Data as Effect;
+        Effect effect = go.This as Effect;
         effect.Attack = attack;
         effect.Speed = speed;
         effect.Size = size;
@@ -156,7 +156,7 @@ public class ObjectPoolManager : MonoBehaviour
             Debug.Log("키가 존재하지 않음");
         }
 
-        poolable.Data.gameObject.SetActive(false);
+        poolable.This.gameObject.SetActive(false);
         pool.Push(poolable);
     }
 

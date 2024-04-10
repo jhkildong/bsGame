@@ -6,8 +6,10 @@ using UnityEngine;
 public class DemolitionMonsterData : GroupMonsterData
 {
     public short BuildingDmg => _buildingDmg;
+    public float AttackRange => _attackRange;
 
     [SerializeField] private short _buildingDmg;    //건물 추가 데미지
+    [SerializeField] private float _attackRange;    //공격 범위
 
     public override Monster CreateClone()
     {

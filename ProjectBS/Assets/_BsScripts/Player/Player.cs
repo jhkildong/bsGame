@@ -3,35 +3,6 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Yeon;
 
-[System.Flags]
-public enum BSLayerMasks
-{
-    Player = 1 << 14,
-    Monster = 1 << 15,
-    MagneticField = 1 << 16,
-    Item = 1 << 17,
-    Building = 1 << 24,
-    InCompletedBuilding = 1 << 25,
-    BuildCheckObject = 1 << 26,
-    Ground = 1 << 29
-}
-
-public enum BSLayers
-{
-    Player = 14,
-    Monster = 15,
-    MagneticField = 16,
-    Item = 17,
-    SurroundMonster = 18,
-    Building = 24,
-    InCompletedBuilding = 25,
-    BuildCheckObject = 26,
-    Ground = 29
-
-}
-
-
-
 public enum AttackState
 {
     None,
@@ -126,7 +97,7 @@ public class Player : Combat, IDamage<Player>
 
     #region Private Field
     ////////////////////////////////PrivateField////////////////////////////////
-    [SerializeField] private CharacterComponent Com;
+    [SerializeField] private PlayerComponent Com;
     [SerializeField] private AttackState attackState = AttackState.None;
 
     Vector3 _moveDir;
@@ -140,7 +111,7 @@ public class Player : Combat, IDamage<Player>
     private void InitPlayerSetting()
     {
         if (Com == null)
-            Com = GetComponentInChildren<CharacterComponent>();
+            Com = GetComponentInChildren<PlayerComponent>();
         Com.MyAnim.GetBehaviour<AttackStateChange>().AttackStateChangeAct += ChangeAttackState;
         Com.MyAnimEvent.ChangeAttackStateAct += ChangeAttackState;
         Com.MyAnimEvent.AttackAct += OnAttackPoint;
@@ -255,7 +226,7 @@ public class Player : Combat, IDamage<Player>
         _attackDir = (attackState == AttackState.ComboCheck) ? 180.0f : 0.0f;
 
         //공격 이펙트 생성
-        GameObject go = ObjectPoolManager.Instance.GetEffect(Com.GetMyEffect(), attack: Attack).Data.gameObject;
+        GameObject go = ObjectPoolManager.Instance.GetEffect(Com.GetMyEffect(), attack: Attack).This.gameObject;
         go.transform.position = Com.MyEffectSpawn.position;
         go.transform.rotation = Quaternion.Euler(0.0f, Com.MyEffectSpawn.rotation.eulerAngles.y, _attackDir);
     }
