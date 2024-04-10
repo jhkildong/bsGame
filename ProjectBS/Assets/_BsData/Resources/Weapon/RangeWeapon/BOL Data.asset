@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d03fbb1d3612ff4092b86ec8f51215a, type: 3}
+  m_Name: BOL Data
+  m_EditorClassIdentifier: 
+  _id: 0
+  _name: 
+  _attack: 100
+  _size: 0
+  _prefab: {fileID: 1029683450922114, guid: 8f9cc77adc813124893056f91992f7f3, type: 3}
+  _bless: {fileID: -7548047708892593034, guid: 8f9cc77adc813124893056f91992f7f3, type: 3}
+  LevelProp:
+    states: 000000
+    _levelTables: []
+    SerializablePropertyInfos:
+    - TypeName: RangeWeaponBOL_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Ak
+    - TypeName: RangeWeaponBOL_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Size
+    - TypeName: RangeWeaponBOL_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Amount
+    PropertyNames:
+    - Ak
+    - Size
+    - Amount

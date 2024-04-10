@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d03fbb1d3612ff4092b86ec8f51215a, type: 3}
-  m_Name: BOTS Data
+  m_Name: RA Data
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
@@ -19,26 +19,8 @@ MonoBehaviour:
   _prefab: {fileID: 78316188785865676, guid: 11149ae3d92005e49a9f49618e19bbbb, type: 3}
   _bless: {fileID: 1165264303761378404, guid: 11149ae3d92005e49a9f49618e19bbbb, type: 3}
   LevelProp:
-    states: 010100
-    _levelTables:
-    - Attribute: Ak
-      Table:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    - Attribute: Size
-      Table:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
+    states: 000000
+    _levelTables: []
     SerializablePropertyInfos:
     - TypeName: OrditalWeaponBOTS_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
