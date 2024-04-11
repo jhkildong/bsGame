@@ -106,26 +106,8 @@ MonoBehaviour:
   _size: 0
   _amount: 0
   _levelProp:
-    states: 010100
-    _levelTables:
-    - Attribute: Ak
-      Table:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    - Attribute: Size
-      Table:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
+    states: 000000
+    _levelTables: []
     SerializablePropertyInfos:
     - TypeName: OrditalWeaponBOTS_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
@@ -142,7 +124,7 @@ MonoBehaviour:
     - Amount
   Monster:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 294912
 --- !u!65 &3043296378309940188
 BoxCollider:
   m_ObjectHideFlags: 0

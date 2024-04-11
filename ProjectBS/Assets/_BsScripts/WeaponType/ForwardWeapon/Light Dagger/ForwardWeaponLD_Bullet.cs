@@ -8,14 +8,6 @@ public class ForwardWeaponLD_Bullet : Bless
     public LayerMask Monster;
     public float bulletSpeed = 5.0f; // 이동 속도
 
-    void SomeMethod()
-    {
-        float attack = Ak;
-        float size = Size;
-        BlessData data = Data;
-        LevelProperty levelProp = LevelProp;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if ((Monster & 1 << other.gameObject.layer) != 0)

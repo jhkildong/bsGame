@@ -94,6 +94,5 @@ public class RangeWeaponRM : MonoBehaviour
     private void SpawnWeapon()
     {
         GameObject bulletRM = Instantiate(objectPrefab, transform);
-        bulletRM.transform.SetParent(myTarget);
     }
 }

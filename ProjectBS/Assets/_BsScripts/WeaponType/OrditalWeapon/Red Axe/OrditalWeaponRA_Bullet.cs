@@ -8,14 +8,6 @@ public class OrditalWeaponRA_Bullet : Bless
     public LayerMask Monster;
     public float rotSpeed = 1000.0f;
 
-    void SomeMethod()
-    {
-        float attack = Ak;
-        float size = Size;
-        BlessData data = Data;
-        LevelProperty levelProp = LevelProp;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if ((Monster & 1 << other.gameObject.layer) != 0)
