@@ -7,30 +7,46 @@ public class DemolitionMonster : GroupMonster
     public DemolitionMonsterData DemolitionData => _data as DemolitionMonsterData;
 
     private AnimEvent animEvent;
+    private Queue<Transform> targetQueue = new Queue<Transform>();
 
     public override void Init(MonsterData data)
     {
         base.Init(data);
         GameObject go = new GameObject("AIPerception");
         go.transform.SetParent(this.transform);
-        go.AddComponent<AIPerception>().Init(attackMask, ChangeTarget, ResetTarget);
+        go.AddComponent<AIPerception>().Init(attackMask, FindTarget, LostPlayerInRange);
         animEvent = GetComponentInChildren<AnimEvent>();
-        myAttackPoint = transform.Find("AttackPoint");
         animEvent.AttackAct += OnAttackPoint;
     }
 
-    //AIperception에서 범위내에 적이 들어 왔을 때 공격 상태로 전환
     protected override void ChangeTarget(Transform target)
     {
         base.ChangeTarget(target);
+        attackTarget = myTarget.gameObject.GetComponent<IDamage>();
+    }
+
+    private void FindTarget(Transform target)
+    {
+        if(target != PlayerTransform)
+            targetQueue.Enqueue(target);
         ChangeState(State.Attack);
     }
 
-    //적이 사라졌을 때 추적 상태로 전환
-    protected override void ResetTarget()
+    private Transform FindNextTarget()
     {
-        base.ResetTarget();
-        ChangeState(State.Chase);
+        while(targetQueue.Count > 0 && targetQueue.Peek() == null)
+        {
+            targetQueue.Dequeue();
+        }
+        return targetQueue.Count > 0 ? targetQueue.Peek() : null;
+    }
+
+    private void LostPlayerInRange()
+    {
+        if(targetQueue.Count == 0)
+        {
+            ChangeState(State.Chase);
+        }
     }
     
     protected override void ChangeState(State s)
@@ -41,8 +57,13 @@ public class DemolitionMonster : GroupMonster
         {
             case State.Chase:
                 Com.MyAnim.SetBool(AnimParam.isAttacking, false);
+                attackTarget = null;
                 break;
             case State.Attack:
+                if (targetQueue.Count > 0)
+                    ChangeTarget(targetQueue.Peek());
+                else
+                    ChangeTarget(PlayerTransform);
                 break;
             case State.Death:
                 SetDirection(Vector3.zero);
@@ -59,6 +80,17 @@ public class DemolitionMonster : GroupMonster
                 SetDirection(transform.forward);
                 break;
             case State.Attack:
+                if(targetQueue.Count > 0)
+                {
+                    if (targetQueue.Peek() == null)
+                    {
+                        Transform nextTarget = FindNextTarget();
+                        if (nextTarget == null)
+                            ChangeTarget(PlayerTransform);
+                        else
+                            ChangeTarget(nextTarget);
+                    }
+                }
                 Vector3 dir = myTarget.position - transform.position;
                 if(dir.sqrMagnitude > DemolitionData.AttackRange * DemolitionData.AttackRange)
                 {
@@ -78,19 +110,21 @@ public class DemolitionMonster : GroupMonster
     
     public void OnAttackPoint()
     {
-        Collider[] colliders = Physics.OverlapSphere(Com.MyAttackPoint.position, 0.5f, (int)attackMask);
-        if(colliders.Length == 0)
-            return;
-        foreach(var col in colliders)
+        Vector3 dir = myTarget.position - transform.position;
+        if (dir.sqrMagnitude < DemolitionData.AttackRange * DemolitionData.AttackRange)
         {
-            IDamage AttackTarget = col.GetComponent<IDamage>();
             float Damage = Attack;
-            if (AttackTarget is Building) Damage += DemolitionData.BuildingDmg;
-            AttackTarget?.TakeDamage((short)Damage);
+            if (attackTarget is Building) Damage += DemolitionData.BuildingDmg;
+            attackTarget?.TakeDamage((short)Damage);
         }
     }
 
     protected override void OnCollisionEnter(Collision collision)
+    {
+
+    }
+
+    protected override void OnCollisionExit(Collision collision)
     {
 
     }

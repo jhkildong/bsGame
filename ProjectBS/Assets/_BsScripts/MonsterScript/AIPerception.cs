@@ -7,13 +7,11 @@ public class AIPerception : MonoBehaviour
 {
     public event UnityAction<Transform> findEnemy;
     public event UnityAction lostEnemy;
-    public LayerMask myMask;
-    public Transform myTarget;
+    private LayerMask myMask;
 
     public void Init(LayerMask mask, UnityAction<Transform> find = null, UnityAction lost = null)
     {
         myMask = mask;
-        myTarget = null;
         findEnemy += find;
         lostEnemy += lost;
         SphereCollider col = gameObject.AddComponent<SphereCollider>();
@@ -26,31 +24,15 @@ public class AIPerception : MonoBehaviour
     {
         if ((myMask & (1 << other.gameObject.layer)) != 0)
         {
-            if(myTarget == null)
-            {
-                myTarget = other.transform;
-                findEnemy?.Invoke(myTarget);
-            }
-            if(other.gameObject.layer == (int)BSLayers.Building)
-            {
-                myTarget = other.transform;
-                findEnemy?.Invoke(myTarget);
-            }
+            findEnemy?.Invoke(other.transform);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (myTarget == other.transform)
+        if (((int)BSLayerMasks.Player & (1 << other.gameObject.layer)) != 0)
         {
-            myTarget = null;
             lostEnemy?.Invoke();
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 5.0f);
     }
 }

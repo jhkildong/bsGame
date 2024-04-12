@@ -8,6 +8,7 @@ namespace Yeon
     public class Combat : Movement, IDamage, IHealing
     {
         #region Public Field
+        ////////////////////////////////Public Field////////////////////////////////
         public event UnityAction<float> ChangeHpAct = null;
         public UnityAction DeadAct;
         [SerializeField] protected Transform myAttackPoint;
@@ -15,6 +16,7 @@ namespace Yeon
         #endregion
 
         #region Property
+        ////////////////////////////////Property////////////////////////////////
         public short MaxHP => _maxHP;           //최대 체력
         protected short CurHp
         {
@@ -32,6 +34,7 @@ namespace Yeon
         #endregion
 
         #region Private Field
+        ////////////////////////////////Private Field////////////////////////////////
         [SerializeField] protected short _maxHP;                  //최대 체력
         [SerializeField] protected short _curHp;                  //현재 체력
         [SerializeField] protected float _speedCeof = 1.0f;       //이동속도 계수
@@ -42,6 +45,7 @@ namespace Yeon
         #endregion
 
         #region DamageEffect
+        ////////////////////////////////DamageEffect////////////////////////////////
         [System.Serializable]
         public class EffectData
         {
@@ -80,7 +84,7 @@ namespace Yeon
         #endregion
 
         #region Unity Event
-
+        ////////////////////////////////UnityEvent////////////////////////////////
         protected virtual void OnEnable()
         {
 
@@ -96,6 +100,7 @@ namespace Yeon
         #endregion
 
         #region Interface Method
+        ////////////////////////////////InterfaceMethod////////////////////////////////
         public virtual void TakeDamage(short damage)
         {
             CurHp -= damage;
@@ -120,6 +125,7 @@ namespace Yeon
         #endregion
 
         #region Private Method
+        ////////////////////////////////PrivateMethod////////////////////////////////
         IEnumerator OnDamageEffect()
         {
             WaitForSeconds wait = new WaitForSeconds(effectData.effectTime);

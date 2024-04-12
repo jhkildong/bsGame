@@ -13,11 +13,13 @@ namespace Yeon
     public class Movement : MonoBehaviour
     {
         #region Component
+        ////////////////////////////////Component////////////////////////////////
         protected Rigidbody rBody;
         protected Collider col;
         #endregion
 
         #region Private Field
+        ////////////////////////////////Private Field////////////////////////////////
         [SerializeField]
         protected float moveSpeed = 1f;
 
@@ -30,7 +32,8 @@ namespace Yeon
         #endregion
 
         #region Init Method
-        private void InitRigidbody()
+        ////////////////////////////////InitMethod////////////////////////////////
+        protected void InitRigidbody()
         {
             if (TryGetComponent(out rBody) == false)
             {
@@ -69,9 +72,15 @@ namespace Yeon
                 // 캡슐의 두 끝을 연결합니다.
                 Gizmos.DrawLine(center + Vector3.up * (height - cc.radius), center + Vector3.down * (height - cc.radius));
             }
+            else if(col is SphereCollider sc)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(transform.position + sc.center, sc.radius);
+            }
         }
 
         #region Unity Event
+        ////////////////////////////////UnityEvent////////////////////////////////
         ///<summary>시작시 rigidBody와 캡슐콜라이더 설정</summary>
         protected virtual void Awake()
         {
@@ -86,6 +95,7 @@ namespace Yeon
         #endregion
 
         #region Private Method
+        ////////////////////////////////PrivateMethod////////////////////////////////
         /// <summary> 리지드바디 최종 속도 적용 </summary>
         private void MovementToRigidbody()
         {
@@ -101,22 +111,10 @@ namespace Yeon
         #endregion
 
         #region Public Method
+        ////////////////////////////////Public Method////////////////////////////////
         public void SetDirection(Vector3 dir)
         {
             worldMoveDir = dir;
-        }
-        public void SetCollider(float radius)
-        {
-            if (col is CapsuleCollider cc)
-            {
-                cc.radius = radius;
-                cc.height = radius * 2.0f;
-                cc.center = new Vector3(0, radius, 0);
-            }
-            else if (col is SphereCollider sc)
-            {
-                sc.radius = radius;
-            }
         }
         #endregion
     }

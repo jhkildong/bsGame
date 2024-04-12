@@ -7,6 +7,7 @@ using Yeon;
 public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
 {
     #region Public Field
+    //임시
     public event UnityAction<Transform> DeadTransformAct;
     #endregion
 
@@ -25,6 +26,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     #endregion
 
     #region Interface Method
+    ////////////////////////////////InterfaceMethod////////////////////////////////
     public List<dropItem> dropItems() => Data.DropItemList;
     public void WillDrop()
     {
@@ -86,13 +88,33 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         ResetTarget();
         DeadAct += Die;
     }
+
+    private void SetCollider(float radius)
+    {
+        if (radius < 0.5f)
+        {
+            col = gameObject.AddComponent<CapsuleCollider>();
+            CapsuleCollider cc = col as CapsuleCollider;
+            cc.radius = radius;
+            cc.height = 1.0f;
+            cc.center = new Vector3(0, 0.5f, 0);
+        }
+        else
+        {
+            col = gameObject.AddComponent<SphereCollider>();
+            SphereCollider sc = col as SphereCollider;
+            sc.radius = radius;
+            sc.center = new Vector3(0, radius, 0);
+        }
+    }
+
     #endregion
 
     #region Unity Event
+    ////////////////////////////////UnityEvent////////////////////////////////
     protected override void Awake()
     {
-        base.Awake();
-        
+        InitRigidbody();
         dropTable = GetComponent<DropTable>();
     }
 
@@ -111,6 +133,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     #endregion
 
     #region Private Method
+    ////////////////////////////////PrivateMethod////////////////////////////////
     private void Die()
     {
         Com.MyAnim.SetTrigger(AnimParam.Death);
@@ -132,6 +155,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     #endregion
 
     #region StateMachine
+    ////////////////////////////////StateMachine////////////////////////////////
     public enum State
     {
         Chase, Attack, Death
@@ -184,15 +208,14 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
 
     protected virtual void Update()
     {
+        StateProcess();
+
         if (myState == State.Death) return;
-        if (myTarget == null) ResetTarget();
         //타겟을 향해 부드럽게 방향전환
         Vector3 targetDirection = myTarget.position - transform.position;
         targetDirection.y = 0.0f;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection.normalized);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
-
-        StateProcess();
     }
 
     protected override void FixedUpdate()
@@ -202,6 +225,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     #endregion
 
     #region Collision Event
+    ////////////////////////////////CollisionEvent////////////////////////////////
     protected virtual void OnCollisionEnter(Collision collision)
     {
         if ((attackMask & (1 << collision.gameObject.layer)) != 0)
@@ -215,7 +239,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    protected virtual void OnCollisionExit(Collision collision)
     {
         if ((attackMask & (1 << collision.gameObject.layer)) != 0)
         {

@@ -20,7 +20,7 @@ MonoBehaviour:
   _maxHp: 30
   _exp: 0
   _mass: 2
-  _radius: 0.7
+  _radius: 0.4
   _prefab: {fileID: 710075996187122608, guid: 9d48d77671a907742bbfecdec4990941, type: 3}
   _dropItemList:
   - ID: 4
