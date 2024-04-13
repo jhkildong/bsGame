@@ -7,11 +7,11 @@ public class RangeWeaponLP_Bullet : Bless
 {
     public LayerMask Monster;
 
-    public float delayTime = 1.0f;
+    public float delayTime = 1.0f; // 다음 공격 까지 시간
     float inTime = 0.0f;
 
     
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other) // 대미지
     {
         inTime += Time.deltaTime;
         if(inTime >= delayTime)

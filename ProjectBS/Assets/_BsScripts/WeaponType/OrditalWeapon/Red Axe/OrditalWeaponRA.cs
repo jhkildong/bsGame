@@ -8,7 +8,7 @@ public class OrditalWeaponRA : MonoBehaviour
     public Transform myTarget; // 회전 중심점
     public GameObject weaponPrefabs; // 무기 프리펩
     public float rotSpeed = 30.0f; // 공전 속도
-    public float attakRange = 1.0f;
+    public float attakRange = 1.0f; // 공격 거리
 
     public short Level = 0;
     short weaponCount = 0;
@@ -99,8 +99,9 @@ public class OrditalWeaponRA : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        GameObject bulletRA = Instantiate(weaponPrefabs, transform);
+        GameObject bulletRA = Instantiate(weaponPrefabs, transform); // 무기 생성
 
+        // 생성한 무기들 간격 맞춤.
         int childCount = transform.childCount;
         float angleStep = 360.0f / childCount;
         for (int i = 0; i < childCount; i++)

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RangeWeaponRM : MonoBehaviour
 {
-    public Transform myTarget;
-    public GameObject objectPrefab;
+    public Transform myTarget; // 따라갈 타겟
+    public GameObject objectPrefab; // 생성할 프리펩
 
     public short Level = 0;
     short weaponCount = 0; // 무기 개수
@@ -93,6 +93,6 @@ public class RangeWeaponRM : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        GameObject bulletRM = Instantiate(objectPrefab, transform);
+        GameObject bulletRM = Instantiate(objectPrefab, transform); // 무기 생성
     }
 }

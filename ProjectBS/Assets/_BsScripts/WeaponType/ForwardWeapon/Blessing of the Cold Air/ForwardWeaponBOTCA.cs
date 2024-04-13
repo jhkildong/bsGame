@@ -22,19 +22,19 @@ public class ForwardWeaponBOTCA : MonoBehaviour
     void Start()
     {
         Level = weaponCount = Count =  0;
-        if (myTarget != null) transform.SetParent(myTarget);
+        if (myTarget != null) transform.SetParent(myTarget); // 플레이어에 부착
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = myRotate.rotation;
+        transform.rotation = myRotate.rotation; // 회전 맞춤
         time += Time.deltaTime;
         SwitchUpdate();
         
     }
 
-    public void OnOkSpawnForwardWeapon()
+    public void OnOkSpawnForwardWeapon() // 클릭시 호출
     {
         if(Level < 7)
         {
@@ -142,8 +142,9 @@ public class ForwardWeaponBOTCA : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        GameObject bulletBOTCA = Instantiate(weaponPrefab, transform.position, transform.rotation);
-        bulletBOTCA.transform.SetParent(clonesParent);
+        GameObject bulletBOTCA = Instantiate(weaponPrefab, transform.position, transform.rotation); // 무기 생성
+        bulletBOTCA.transform.SetParent(clonesParent); // 생성한 무기 똥처리
+        Destroy(bulletBOTCA, 10.0f);
         Rigidbody SwordRigidbody = bulletBOTCA.GetComponent<Rigidbody>();
     }
 }
