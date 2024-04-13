@@ -8,7 +8,7 @@ public class ForwardWeaponBOTCA_Bullet : Bless
     public LayerMask Monster;
     public float bulletSpeed = 5.0f; // 이동 속도
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // 대미지
     {
         if ((Monster & 1 << other.gameObject.layer) != 0)
         {
@@ -30,6 +30,6 @@ public class ForwardWeaponBOTCA_Bullet : Bless
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime); // 이동
     }
 }

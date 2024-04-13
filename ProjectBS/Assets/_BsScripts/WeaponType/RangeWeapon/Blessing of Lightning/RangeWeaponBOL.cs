@@ -5,7 +5,7 @@ using UnityEngine;
 public class RangeWeaponBOL : MonoBehaviour
 {
     public Transform clonesParent; // 생성한 프리펩들 보관할 곳
-    public Transform myTarget;
+    public Transform myTarget; // 따라갈 타겟
     public GameObject objectPrefab;
 
     public float atRange = 10.0f; // 생성반경
@@ -144,7 +144,7 @@ public class RangeWeaponBOL : MonoBehaviour
         Vector3 randomPos = Random.insideUnitSphere * atRange;
         Vector3 spawnPos = myTarget.position + randomPos;
         spawnPos.y = 0.0f;
-        GameObject bulletLP = Instantiate(objectPrefab, spawnPos, Quaternion.identity);
+        GameObject bulletLP = Instantiate(objectPrefab, spawnPos, Quaternion.identity); // 무기 생성
         bulletLP.transform.SetParent(clonesParent);
         Destroy(bulletLP, destroyTime);
     }

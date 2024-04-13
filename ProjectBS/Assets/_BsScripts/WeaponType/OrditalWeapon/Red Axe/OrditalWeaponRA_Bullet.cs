@@ -6,9 +6,9 @@ using Yeon;
 public class OrditalWeaponRA_Bullet : Bless
 {
     public LayerMask Monster;
-    public float rotSpeed = 1000.0f;
+    public float rotSpeed = 1000.0f; // 회전속도
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // 대미지
     {
         if ((Monster & 1 << other.gameObject.layer) != 0)
         {
@@ -27,6 +27,6 @@ public class OrditalWeaponRA_Bullet : Bless
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * rotSpeed * Time.deltaTime, Space.World);
+        transform.Rotate(Vector3.up * rotSpeed * Time.deltaTime, Space.World);// 회전
     }
 }

@@ -154,6 +154,8 @@ Transform:
   m_Children:
   - {fileID: 1324144855}
   - {fileID: 319231536}
+  - {fileID: 456019485}
+  - {fileID: 1708090090}
   m_Father: {fileID: 1906710986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &214776159
@@ -677,6 +679,61 @@ MonoBehaviour:
   reTime: 2
   waitTime: 0.05
   Level: 0
+--- !u!1 &456019484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 456019485}
+  - component: {fileID: 456019486}
+  m_Layer: 0
+  m_Name: Cross Spear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &456019485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456019484}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 191745413}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &456019486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456019484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44eeb443d217ad8478083714df0e4d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTarget: {fileID: 2513614166102421726}
+  myRotate: {fileID: 595880030}
+  weaponPrefab: {fileID: 2154230161679812429, guid: af77ec86b0d0f3b49b4fad8f29096e38, type: 3}
+  maxRange: 1
+  minRange: -1
+  prefabScale: 2
+  destroyTime: 0.1
+  atRange: 1
+  reTime: 2
+  waitTime: 0.1
+  Level: 0
 --- !u!1 &462435684
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +765,7 @@ Transform:
   m_Children:
   - {fileID: 1907174369}
   - {fileID: 998037846}
+  - {fileID: 1537139027}
   m_Father: {fileID: 1906710986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &476378250
@@ -1810,6 +1868,11 @@ MonoBehaviour:
   rotSpeed: 190
   attakRange: 3.5
   Level: 0
+--- !u!4 &1068372992 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3339780186407549500, guid: a31004d42509c64408eefe9c4a7348ce, type: 3}
+  m_PrefabInstance: {fileID: 4384229948677047004}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1102646927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,6 +2652,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449601125}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1537139026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1537139027}
+  - component: {fileID: 1537139028}
+  m_Layer: 0
+  m_Name: Pet Flame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1537139027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537139026}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 462435685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1537139028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537139026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da2fc97e7503bc44ac8062f044f91a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTarget: {fileID: 2513614166102421726}
+  weaponPrefab: {fileID: 7677096721163759830, guid: 3cc47988dce141642be35fa13d0a4493, type: 3}
+  rotSpeed: 50
+  attakRange: 3
+  Level: 0
 --- !u!1 &1616600868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2694,6 +2806,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616600868}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1708090089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1708090090}
+  - component: {fileID: 1708090091}
+  m_Layer: 0
+  m_Name: Vile Globe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1708090090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708090089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 191745413}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1708090091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708090089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7eb26d7122d054698b386b4638df96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTarget: {fileID: 2513614166102421726}
+  myRotate: {fileID: 1068372992}
+  weaponPrefab: {fileID: 1608000175455400579, guid: a555eea40e664564e970bf780590e762, type: 3}
+  maxRange: 0.5
+  minRange: -0.5
+  prefabScale: 2
+  destroyTime: 0.1
+  atRange: 1
+  reTime: 1.5
+  waitTime: 0.05
+  Level: 0
 --- !u!4 &1718089121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5098046871333520854, guid: a7e45aaef27f68142a3ae70de5701cf5, type: 3}
@@ -3385,6 +3552,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1058732384588776364, guid: a31004d42509c64408eefe9c4a7348ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4087311019217202910, guid: a31004d42509c64408eefe9c4a7348ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

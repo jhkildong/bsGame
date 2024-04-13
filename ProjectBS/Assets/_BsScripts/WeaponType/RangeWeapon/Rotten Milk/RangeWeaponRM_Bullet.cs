@@ -32,7 +32,7 @@ public class RangeWeaponRM_Bullet : Bless
         inTime += Time.deltaTime;
     }
 
-    private void OnAttacking()
+    private void OnAttacking() // ´ë¹ÌÁö
     {
         Collider[] list = Physics.OverlapSphere(transform.position, atRange, Monster);
 

@@ -144,7 +144,7 @@ public class RangeWeaponLP : MonoBehaviour
         Vector3 randomPos = Random.insideUnitSphere * atRange;
         Vector3 spawnPos = myTarget.position + randomPos;
         spawnPos.y = 0.0f;
-        GameObject bulletLP = Instantiate(objectPrefab, spawnPos, Quaternion.identity);
+        GameObject bulletLP = Instantiate(objectPrefab, spawnPos, Quaternion.identity); // 무기 생성
         bulletLP.transform.SetParent(clonesParent);
         Destroy(bulletLP, destroyTime);
     }

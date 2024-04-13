@@ -99,8 +99,9 @@ public class OrditalWeaponBOTS : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        GameObject bulletBOTS = Instantiate(weaponPrefab, transform);
+        GameObject bulletBOTS = Instantiate(weaponPrefab, transform); // 무기 생성
 
+        // 생성한 무기 간격을 일정하게 맞춤.
         int childCount = transform.childCount;
         float angleStep = 360.0f / childCount;
         for (int i = 0; i < childCount; i++)

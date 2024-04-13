@@ -7,7 +7,7 @@ public class RangeWeaponBOL_Bullet : Bless
 {
     public LayerMask Monster;
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // ´ë¹ÌÁö
     {
         if ((Monster & 1 << other.gameObject.layer) != 0)
         {

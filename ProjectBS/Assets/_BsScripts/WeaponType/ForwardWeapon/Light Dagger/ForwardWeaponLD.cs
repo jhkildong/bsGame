@@ -9,6 +9,7 @@ public class ForwardWeaponLD : MonoBehaviour
     public Transform myTarget; // 따라갈 타겟
     public Transform myRotate; // 따라서 회전할 타겟
     public GameObject weaponPrefab; // 생성할 프리팹
+    public static Quaternion myRotation; // 회전값
 
     public float reTime = 2.0f; // 공격속도
     public float waitTime = 0.05f; // 재 생성 간격
@@ -28,7 +29,7 @@ public class ForwardWeaponLD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = myRotate.rotation;
+        myRotation = transform.rotation = myRotate.rotation; // 회전 맞춤
         time += Time.deltaTime;
         SwitchUpdate();
         
@@ -142,8 +143,8 @@ public class ForwardWeaponLD : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        GameObject bulletLD = Instantiate(weaponPrefab, transform.position, transform.rotation);
-        bulletLD.transform.SetParent(clonesParent);
+        GameObject bulletLD = Instantiate(weaponPrefab, transform.position, transform.rotation); // 무기 생성
+        bulletLD.transform.SetParent(clonesParent); // 생성 무기 똥처리
         Rigidbody SwordRigidbody = bulletLD.GetComponent<Rigidbody>();
     }
 }
