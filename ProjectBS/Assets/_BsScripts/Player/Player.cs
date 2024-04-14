@@ -112,7 +112,7 @@ public class Player : Combat, IDamage<Player>
     {
         if (Com == null)
             Com = GetComponentInChildren<PlayerComponent>();
-        Com.MyAnim.GetBehaviour<AttackStateChange>().AttackStateChangeAct += ChangeAttackState;
+        //Com.MyAnim.GetBehaviour<AttackStateChange>().AttackStateChangeAct += ChangeAttackState;
         Com.MyAnimEvent.ChangeAttackStateAct += ChangeAttackState;
         Com.MyAnimEvent.AttackAct += OnAttackPoint;
         ChangeHpAct += PlayerUI.Instance.ChangeHP;
