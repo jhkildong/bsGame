@@ -12,6 +12,7 @@ public enum AttackState
 
 public class Player : Combat, IDamage<Player>
 {
+    public AttackState AttackState => attackState;
 
     #region PlayerInput
     ////////////////////////////////PlayerInput////////////////////////////////
@@ -29,6 +30,7 @@ public class Player : Combat, IDamage<Player>
                 Com.MyAnim.SetTrigger(AnimParam.Attack);
                 break;
             case AttackState.Attack:
+                //Attack 상태일때는 입력을 받지 않음
                 Com.MyAnim.SetBool(AnimParam.isAttacking, true);
                 break;
             case AttackState.ComboCheck:
@@ -104,7 +106,6 @@ public class Player : Combat, IDamage<Player>
     Vector3 _moveDir;
     Vector3 _dir;
     Vector3 _inputDir;
-    float _attackDir;
     #endregion
 
     #region Init Setting
@@ -183,6 +184,15 @@ public class Player : Combat, IDamage<Player>
         InitPlayerSetting();
     }
 
+    private void Start()
+    {
+        Com.MyAnim.GetBehaviour<AttackStateChange>().AttackStateChangeAct += ChangeAttackState;
+        Com.MyAnimEvent.ChangeAttackStateAct += ChangeAttackState;
+
+        Com.MyAnimEvent.AttackAct += SetEffectAttack;
+        Com.MyAnimEvent.AttackAct += Com.OnAttackPoint;
+    }
+
     private void Update()
     {
         //죽은 상태면 return
@@ -219,14 +229,9 @@ public class Player : Combat, IDamage<Player>
 
     #region Public Method
     ////////////////////////////////PublicMethod////////////////////////////////
-    public void OnAttackPoint()
+    public void SetEffectAttack()
     {
-        _attackDir = (attackState == AttackState.ComboCheck) ? 180.0f : 0.0f;
-
-        //공격 이펙트 생성
-        GameObject go = ObjectPoolManager.Instance.GetEffect(Com.GetMyEffect(), attack: Attack).This.gameObject;
-        go.transform.position = Com.MyEffectSpawn.position;
-        go.transform.rotation = Quaternion.Euler(0.0f, Com.MyEffectSpawn.rotation.eulerAngles.y, _attackDir);
+        Com.Attack = Attack;
     }
 
     public void ChangeAttackState(AttackState state)

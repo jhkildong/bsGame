@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EffectType
-{
-    Fire = 1000,
-    Magic = 1001,
-    Snow = 1002,
-    Stone = 1003
-}
-
 public class Warrior : PlayerComponent
 {
-    const int defaultID = 1000;
+    private enum EffectType
+    {
+        Fire = 3500,
+        Magic = 3501,
+        Snow = 3502,
+        Stone = 3503
+    }
+    const int defaultID = 3500;
 
     public override Effect[] MyEffects
     { 
@@ -37,12 +36,25 @@ public class Warrior : PlayerComponent
         _effectType = (EffectType)id;
     }
 
-    private void Start()
+    Player player
     {
-        Player myPlayer = GetComponentInParent<Player>();
-        MyAnim.GetBehaviour<AttackStateChange>().AttackStateChangeAct += myPlayer.ChangeAttackState;
-        MyAnimEvent.ChangeAttackStateAct += myPlayer.ChangeAttackState;
-        MyAnimEvent.AttackAct += myPlayer.OnAttackPoint;
+        get
+        {
+            if(_player == null)
+            {
+                _player = GetComponentInParent<Player>();
+            }
+            return _player;
+        }
     }
+    Player _player;
+    public override void OnAttackPoint()
+    {
+        float _attackDir = (player.AttackState == AttackState.ComboCheck) ? 180.0f : 0.0f;
 
+        //공격 이펙트 생성
+        GameObject go = ObjectPoolManager.Instance.GetEffect(GetMyEffect(), Attack).This.gameObject;
+        go.transform.position = MyEffectSpawn.position;
+        go.transform.rotation = Quaternion.Euler(0.0f, MyEffectSpawn.rotation.eulerAngles.y, _attackDir);
+    }
 }

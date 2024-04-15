@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
@@ -5,6 +6,7 @@ using UnityEngine.Animations.Rigging;
 public abstract class PlayerComponent : CharacterComponent
 {
     #region Property
+    ////////////////////////////////Property////////////////////////////////
     public Transform MyEffectSpawn 
     {
         get
@@ -21,7 +23,6 @@ public abstract class PlayerComponent : CharacterComponent
             return _effectSpawn;
         }
     }
-
     public Rig[] MyRigs
     {
         get
@@ -35,14 +36,23 @@ public abstract class PlayerComponent : CharacterComponent
         }
     }
     public abstract Effect[] MyEffects{ get; }
+    public float Attack
+    {
+        get => _attack;
+        set => _attack = value;
+    }
     #endregion
 
     #region Private Field
+    ////////////////////////////////PrivateField////////////////////////////////
     [SerializeField] protected Transform _effectSpawn;
     [SerializeField] protected Rig[] _rigs;
     [SerializeField] protected Effect[] _effects = new Effect[0];
+    [SerializeField] protected float _attack;
     #endregion
 
+    #region Public Method
+    ////////////////////////////////PublicMethod////////////////////////////////
     public void SetRigWeight(float weight)
     {
         foreach (Rig rig in MyRigs)
@@ -51,4 +61,7 @@ public abstract class PlayerComponent : CharacterComponent
         }
     }
     public abstract Effect GetMyEffect();
+
+    public abstract void OnAttackPoint();
+    #endregion
 }
