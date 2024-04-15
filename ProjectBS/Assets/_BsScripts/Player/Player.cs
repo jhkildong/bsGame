@@ -29,6 +29,7 @@ public class Player : Combat, IDamage<Player>
                 Com.MyAnim.SetTrigger(AnimParam.Attack);
                 break;
             case AttackState.Attack:
+                Com.MyAnim.SetBool(AnimParam.isAttacking, true);
                 break;
             case AttackState.ComboCheck:
                 Com.MyAnim.SetBool(AnimParam.isComboReady, true);
@@ -112,9 +113,6 @@ public class Player : Combat, IDamage<Player>
     {
         if (Com == null)
             Com = GetComponentInChildren<PlayerComponent>();
-        //Com.MyAnim.GetBehaviour<AttackStateChange>().AttackStateChangeAct += ChangeAttackState;
-        Com.MyAnimEvent.ChangeAttackStateAct += ChangeAttackState;
-        Com.MyAnimEvent.AttackAct += OnAttackPoint;
         ChangeHpAct += PlayerUI.Instance.ChangeHP;
         DeadAct += Death;
         

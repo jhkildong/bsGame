@@ -36,4 +36,13 @@ public class Warrior : PlayerComponent
     {
         _effectType = (EffectType)id;
     }
+
+    private void Start()
+    {
+        Player myPlayer = GetComponentInParent<Player>();
+        MyAnim.GetBehaviour<AttackStateChange>().AttackStateChangeAct += myPlayer.ChangeAttackState;
+        MyAnimEvent.ChangeAttackStateAct += myPlayer.ChangeAttackState;
+        MyAnimEvent.AttackAct += myPlayer.OnAttackPoint;
+    }
+
 }
