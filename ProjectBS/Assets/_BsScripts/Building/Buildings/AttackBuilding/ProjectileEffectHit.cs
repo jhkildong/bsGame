@@ -8,7 +8,7 @@ public class ProjectileEffectHit : MonoBehaviour , ISetProjectileStats
 {
     ParticleSystem ps;
 
-    private short baseAttack; // 투사체 기본 공격력
+    private float baseAttack; // 투사체 기본 공격력
     private float myProjectileSize; // 투사체 크기
     private float mySpeed; // 투사체 속도
     private float myRange; // 투사체 사거리
@@ -19,7 +19,7 @@ public class ProjectileEffectHit : MonoBehaviour , ISetProjectileStats
     Vector3 oldPos;
     public LayerMask attackableLayer;
 
-    public void SetProjectileStats(short atk = 1, float size = 1, float speed = 1, float range = 1, bool canPenetrate = false, int penetrateCount = 0) 
+    public void SetProjectileStats(float atk = 1, float size = 1, float speed = 1, float range = 1, bool canPenetrate = false, int penetrateCount = 0) 
     {
         baseAttack = atk;
         myProjectileSize = size;

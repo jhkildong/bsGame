@@ -19,7 +19,7 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
     protected float hitTime = 1f; //공격 타이밍
     float progress; // 파티클 재생 진행도
 
-    private short baseAttack;
+    private float baseAttack;
     private float mySize;
     private Vector3 myColSize;
     private float myAtkDelay;

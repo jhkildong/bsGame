@@ -12,7 +12,7 @@ public class AttackBuilding_Projectile : AttackBuildingBase
         set { AreaBuildingData = value; }
     }
 
-    [SerializeField] public short _atkPower;
+    [SerializeField] public float _atkPower;
     [SerializeField] public float _atkDelay;
     [SerializeField] public float _atkProjectileSize;
     [SerializeField] public float _atkProjectileSpeed; // 건물 투사체 속도

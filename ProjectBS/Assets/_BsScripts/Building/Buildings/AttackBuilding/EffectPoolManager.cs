@@ -72,7 +72,7 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
 
     }
 
-    public GameObject SetActiveProjectileObject<T>(GameObject org, Transform parent, GameObject pos, short atk = 1, float size = 1, float speed = 1,
+    public GameObject SetActiveProjectileObject<T>(GameObject org, Transform parent, GameObject pos, float atk = 1, float size = 1, float speed = 1,
         float range = 1,bool canPenetrate = false, int penetrateCount = 0, Vector3 dir = default(Vector3)) // 오브젝트 활성화, 생성
     {
         string Key = typeof(T).ToString(); //T는 클래스 명이 될것. 클래스명을 key값으로 사용하겠다는 의미.
