@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe26ac52d55aea419c028a691417d6f, type: 3}
+  m_Name: BD_WoodWall
+  m_EditorClassIdentifier: 
+  _id: 4000
+  _buildingName: WoodWall
+  _maxHp: 50
+  _curHp: 50
+  _requireWood: 5
+  _requireStone: 0
+  _requireIron: 0
+  _constTime: 5
+  _repairSpeed: 10
+  _atkPower: 0
+  _atkDelay: 0
+  _hitDelay: 0
+  _atkDuration: 0
+  _atkRadius: 0
+  _atkProjectileSize: 0
+  _atkProjectileSpeed: 0
+  _atkProjectileRange: 0
+  _atkCanPen: 0
+  _atkPenCount: 0
+  _buildingPrefab: {fileID: 8414439279532295106, guid: 373b4871c09cc944c9ec5a3e17796b83, type: 3}
+  _attackableLayer:
+    serializedVersion: 2
+    m_Bits: 0

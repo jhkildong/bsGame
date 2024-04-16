@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public abstract class Building : MonoBehaviour , IDamage
+public abstract class Building : MonoBehaviour , IDamage, IHealing
 {
     [SerializeField]
     private BuildingData buildingData;
-    public BuildingData Data
+    public virtual BuildingData Data
     {
         get { return buildingData; }
         set { buildingData = value; }
@@ -18,8 +18,8 @@ public abstract class Building : MonoBehaviour , IDamage
 
     [SerializeField] protected int _id;               // 건물 ID
     [SerializeField] protected string _buildingName;  // 건물 이름
-    [SerializeField] protected short _maxHp;          // 건물 최대체력
-    [SerializeField] protected short _curHp;          // 건물 현재체력
+    [SerializeField] protected float _maxHp;          // 건물 최대체력
+    [SerializeField] protected float _curHp;          // 건물 현재체력
     [SerializeField] protected short _requireWood;      // 나무 요구 재료개수
     [SerializeField] protected short _requireStone;      // 돌 요구 재료개수
     [SerializeField] protected short _requireIron;      // 철 요구 재료개수
@@ -137,12 +137,18 @@ public abstract class Building : MonoBehaviour , IDamage
         Debug.Log("건설 완료");
     }
 
+    public void ReceiveHeal(float heal)
+    {
+        Debug.Log("건물 힐 됨 현재 체력 : " + _curHp);
+        _curHp += heal;
+        _curHp = Mathf.Clamp(_curHp, 0, _maxHp);
+    }
     public void Repair(float RepairSpeed)
     {
         if (_curHp < _maxHp)
         {
             Debug.Log("수리중" + _curHp);
-            _curHp += (short)RepairSpeed;
+            _curHp += RepairSpeed;
             if(_curHp >= _maxHp)
             {
                 _curHp = _maxHp;
@@ -151,7 +157,7 @@ public abstract class Building : MonoBehaviour , IDamage
 
     }
 
-    public void TakeDamage(short dmg) // IDamage 인터페이스 구현
+    public void TakeDamage(float dmg) // IDamage 인터페이스 구현
     {
         if(iscompletedBuilding && isInstalled &&_curHp>0)
         {

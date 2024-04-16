@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IcicleBuilding : AttackBuildingBase
+public class IcicleBuilding : AttackBuilding_Projectile
 {
     public GameObject myProjectile;
     public GameObject muzzle;

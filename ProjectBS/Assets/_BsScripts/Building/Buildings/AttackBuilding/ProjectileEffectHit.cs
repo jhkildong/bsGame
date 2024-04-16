@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEngine.GraphicsBuffer;
+
 
 public class ProjectileEffectHit : MonoBehaviour , ISetProjectileStats
 {

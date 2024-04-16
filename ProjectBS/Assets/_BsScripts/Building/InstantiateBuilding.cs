@@ -97,7 +97,7 @@ public class InstantiateBuilding : MonoBehaviour
                     renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 0.3f); //투명도 0.5
                 }
                 selectedBuildingCollider.enabled = true; // 박스 콜라이더 다시 켜기.(콜라이더가 켜져도 Layer가 IncompletedBuilding 이기때문에 여전히 충돌 불가능)
-                rigid.isKinematic = false; // isKinematic도 다시 끈다.
+                //rigid.isKinematic = false; // isKinematic도 다시 끈다.
                 //건물이 설치되면서, instBuilding가 가진 컴포넌트 Building의 OnInstalled가 호출되어야한다. (건물이 설치된 상태로 변경) (커플링 발생 인터페이스로 수정할 예정)
                 Building isInstalled  = instBuilding.GetComponent<Building>();
                 isInstalled.OnInstalled();

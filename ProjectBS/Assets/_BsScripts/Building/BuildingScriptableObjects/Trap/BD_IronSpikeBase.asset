@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe26ac52d55aea419c028a691417d6f, type: 3}
+  m_Name: BD_IronSpikeBase
+  m_EditorClassIdentifier: 
+  _id: 2
+  _buildingName: IronSpike
+  _maxHp: 100
+  _curHp: 100
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 10
+  _constTime: 5
+  _repairSpeed: 10
+  _atkPower: 2
+  _atkDelay: 0.2
+  _hitDelay: 0
+  _atkDuration: 0
+  _atkRadius: 0
+  _atkProjectileSize: 0
+  _atkProjectileSpeed: 0
+  _atkProjectileRange: 0
+  _atkCanPen: 0
+  _atkPenCount: 0
+  _buildingPrefab: {fileID: 7215726233801088367, guid: b87f8b2fa9976fe488546514a7e45aa3, type: 3}
+  _attackableLayer:
+    serializedVersion: 2
+    m_Bits: 32768

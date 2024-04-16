@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.Pool;
+using static UnityEditor.PlayerSettings;
 
 public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이펙트 오브젝트 풀링 매니저.
 {
@@ -11,9 +13,29 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
     {
         base.Initialize();
     }
+    
+    public GameObject SetActiveEffect<T>(GameObject org, Transform parent, GameObject pos) //이펙트 풀링, 생성. (공격이 아닌 이펙트들)
+    {
+        string Key = typeof(T).ToString(); //T는 클래스 명이 될것. 클래스명을 key값으로 사용하겠다는 의미.
+        if (myPool.ContainsKey(Key)) //이미 생성된 stack이 있는 경우
+        {
+            if (myPool[Key].Count > 0)
+            {
+                GameObject obj = myPool[Key].Pop();
+                obj.transform.position = pos.transform.position;
+                obj.SetActive(true); //활성화
+                //obj.transform.localPosition = p.localPosition; //해당위치로 이동
+                //obj.transform.localRotation = p.rotation;
+                return obj;
+            }
+        }
+        GameObject Effect = Instantiate(org, pos.transform.position, Quaternion.identity); //없는경우 새로 생성
+        return Effect;
+    }
+    
 
     //EffectPoolManager.instance.GetObject<클래스명>(GameObject org, Transform p); 형식으로 접근하면 된다.
-    public GameObject SetActiveObject<T>(GameObject org, Transform parent, GameObject pos,  short atk = 1, float radius = 1, 
+    public GameObject SetActiveRangeObject<T>(GameObject org, Transform parent, GameObject pos,  float atk = 1, float radius = 1, 
         float size = 1, float speed = 1, float delay = 1, float durTime = 1) // 오브젝트 활성화, 생성
     {
         string Key = typeof(T).ToString(); //T는 클래스 명이 될것. 클래스명을 key값으로 사용하겠다는 의미.
@@ -86,6 +108,7 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
 
     }
 
+    /*
     //지속형 근접 공격 오브젝트 생성. (ex 가시건물) 자식으로 생성됨.
     public GameObject SetActiveMeeleLastObject<T>(GameObject org, Transform parent, GameObject pos, short atk = 1, float radius = 1, float size = 1, float speed = 1,
         float atkDelay = 1) // 오브젝트 활성화, 생성
@@ -120,6 +143,7 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
         //return Instantiate(org, pos.transform.position,Quaternion.identity, parent);//없는경우 생성한다.
 
     }
+    */
 
 
 

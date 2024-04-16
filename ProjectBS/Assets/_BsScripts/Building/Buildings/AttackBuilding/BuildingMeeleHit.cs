@@ -43,10 +43,17 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
 
     void getParentBuildingAtkStats()
     {
+        /* 0412 ¼öÁ¤Àü
         AttackBuildingBase buildingStat = GetComponentInParent<AttackBuildingBase>();
         baseAttack = buildingStat.SetDmg();
         myAtkDelay = buildingStat.SetAtkDelay();
         attackableLayer = buildingStat.SetAttackableMask();
+        */
+        AttackBuilding_Meele buildingStat = GetComponentInParent<AttackBuilding_Meele>();
+        baseAttack = buildingStat.SetDmg();
+        myAtkDelay = buildingStat.SetHitDelay();
+        attackableLayer = buildingStat.SetAttackableMask();
+
     }
     void Start()
     {
