@@ -48,7 +48,7 @@ public class Effect : MonoBehaviour, IPoolable
     {
         if (other.TryGetComponent(out IDamage<Monster> monster))
         {
-            monster.TakeDamage((short)Attack);
+            monster.TakeDamage(Attack);
         }
     }
 

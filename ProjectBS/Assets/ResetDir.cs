@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AttackStateChange : StateMachineBehaviour
+public class ResetDir : StateMachineBehaviour
 {
-    public event UnityAction<AttackState> AttackStateChangeAct;
+    public event UnityAction ResetDirAct;
 
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        ResetDirAct?.Invoke();
+    }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -38,14 +38,14 @@ public class AttackStateChange : StateMachineBehaviour
     //}
 
     // OnStateMachineEnter is called when entering a state machine via its Entry Node
-    override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
-    {
-        AttackStateChangeAct?.Invoke(AttackState.Attack);
-    }
+    //override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+    //{
+    //    
+    //}
 
     // OnStateMachineExit is called when exiting a state machine via its Exit Node
-    override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
-    {
-        AttackStateChangeAct?.Invoke(AttackState.None);
-    }
+    //override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+    //{
+    //    
+    //}
 }

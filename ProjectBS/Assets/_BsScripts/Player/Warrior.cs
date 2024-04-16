@@ -36,21 +36,24 @@ public class Warrior : PlayerComponent
         _effectType = (EffectType)id;
     }
 
-    Player player
+    private void Start()
     {
-        get
-        {
-            if(_player == null)
-            {
-                _player = GetComponentInParent<Player>();
-            }
-            return _player;
-        }
+        MyAnim.GetBehaviour<ResetDir>().ResetDirAct += ResetAtackDir;
     }
-    Player _player;
+    private bool attackDirSwitch = false;
+    private void ChangeAttackDir()
+    {
+        attackDirSwitch = !attackDirSwitch;
+    }
+    public void ResetAtackDir()
+    {
+        attackDirSwitch = false;
+    }
+   
     public override void OnAttackPoint()
     {
-        float _attackDir = (player.AttackState == AttackState.ComboCheck) ? 180.0f : 0.0f;
+        float _attackDir = attackDirSwitch ? 0f : 180f;
+        ChangeAttackDir();
 
         //공격 이펙트 생성
         GameObject go = ObjectPoolManager.Instance.GetEffect(GetMyEffect(), Attack).This.gameObject;

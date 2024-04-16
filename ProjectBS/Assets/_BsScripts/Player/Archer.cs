@@ -34,8 +34,9 @@ public class Archer : PlayerComponent
     public override void OnAttackPoint()
     {
         //공격 이펙트 생성
-        GameObject go = ObjectPoolManager.Instance.GetEffect(GetMyEffect(), Attack).This.gameObject;
-        go.transform.position = MyEffectSpawn.position;
-        go.transform.rotation = transform.rotation;
+        ArrowEffect arrow = ObjectPoolManager.Instance.GetEffect(GetMyEffect(), Attack) as ArrowEffect;
+        arrow.This.transform.position = MyEffectSpawn.position;
+        arrow.This.transform.rotation = MyEffectSpawn.rotation;
+        arrow.Shoot();
     }
 }

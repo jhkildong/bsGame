@@ -17,8 +17,8 @@ namespace Yeon
 
         #region Property
         ////////////////////////////////Property////////////////////////////////
-        public short MaxHP => _maxHP;           //최대 체력
-        protected short CurHp
+        public float MaxHP => _maxHP;           //최대 체력
+        protected float CurHp
         {
             get => _curHp;
             set
@@ -29,17 +29,17 @@ namespace Yeon
         }
         public float SpeedCeof => _speedCeof;   //이동속도 계수
         public float AttackCeof => _attackCeof; //공격력 계수
-        protected short Attack { get => (short)(_attack * _attackCeof); }
+        protected float Attack { get => (_attack * _attackCeof); }
         public bool IsDead => CurHp <= 0;
         #endregion
 
         #region Private Field
         ////////////////////////////////Private Field////////////////////////////////
-        [SerializeField] protected short _maxHP;                  //최대 체력
-        [SerializeField] protected short _curHp;                  //현재 체력
+        [SerializeField] protected float _maxHP;                  //최대 체력
+        [SerializeField] protected float _curHp;                  //현재 체력
         [SerializeField] protected float _speedCeof = 1.0f;       //이동속도 계수
         [SerializeField] protected float _attackCeof = 1.0f;      //공격력 계수
-        [SerializeField] protected short _attack;                 //공격력
+        [SerializeField] protected float _attack;                 //공격력
 
 
         #endregion
@@ -101,7 +101,7 @@ namespace Yeon
 
         #region Interface Method
         ////////////////////////////////InterfaceMethod////////////////////////////////
-        public virtual void TakeDamage(short damage)
+        public virtual void TakeDamage(float damage)
         {
             CurHp -= damage;
             if(_onDamageEffect == null)
@@ -114,13 +114,13 @@ namespace Yeon
                 DeadAct?.Invoke();
             }
         }
-        public void ReceiveHeal(short heal)
+        public void ReceiveHeal(float heal)
         {
             Debug.Log(heal);
             if (IsDead)
                 return;
             CurHp += heal;
-            CurHp = (short)Mathf.Clamp(CurHp, 0, MaxHP); 
+            CurHp = Mathf.Clamp(CurHp, 0, MaxHP); 
         }
         #endregion
 

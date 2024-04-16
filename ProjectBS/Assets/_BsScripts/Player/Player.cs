@@ -3,17 +3,9 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Yeon;
 
-public enum AttackState
-{
-    None,
-    Attack,
-    ComboCheck
-}
 
 public class Player : Combat, IDamage<Player>
 {
-    public AttackState AttackState => attackState;
-
     #region PlayerInput
     ////////////////////////////////PlayerInput////////////////////////////////
     // 플레이어의 키 조작을 버튼 형식으로 받음
@@ -22,22 +14,15 @@ public class Player : Combat, IDamage<Player>
     ///////////////////////////////////////////////////////////////////////////
 
     private PlayerInputs playerInputs;
-    private void OnAttack(InputAction.CallbackContext context)
+    private void StartAttack(InputAction.CallbackContext context)
     {
-        switch (attackState)
-        {
-            case AttackState.None:
-                Com.MyAnim.SetTrigger(AnimParam.Attack);
-                break;
-            case AttackState.Attack:
-                //Attack 상태일때는 입력을 받지 않음
-                Com.MyAnim.SetBool(AnimParam.isAttacking, true);
-                break;
-            case AttackState.ComboCheck:
-                Com.MyAnim.SetBool(AnimParam.isComboReady, true);
-                break;
-        }
+        Com.MyAnim.SetBool(AnimParam.isAttacking, true);
     }
+    private void EndAttack(InputAction.CallbackContext context)
+    {
+        Com.MyAnim.SetBool(AnimParam.isAttacking, false);
+    }
+
 
     #region WSAD switch
 
@@ -101,7 +86,6 @@ public class Player : Combat, IDamage<Player>
     #region Private Field
     ////////////////////////////////PrivateField////////////////////////////////
     [SerializeField] private PlayerComponent Com;
-    [SerializeField] private AttackState attackState = AttackState.None;
 
     Vector3 _moveDir;
     Vector3 _dir;
@@ -131,7 +115,9 @@ public class Player : Combat, IDamage<Player>
         #region PlayerInputsCallback Setting
         ////////////////////////////////PlayerInputsCallbackSetting////////////////////////////////
         playerInputs = new PlayerInputs();
-        playerInputs.Player.Attack.performed += OnAttack;
+        playerInputs.Player.Attack.performed += StartAttack;
+        playerInputs.Player.Attack.canceled += EndAttack;
+        
         playerInputs.Player.PressW.performed += PressW;
         playerInputs.Player.PressS.performed += PressS;
         playerInputs.Player.PressA.performed += PressA;
@@ -186,9 +172,6 @@ public class Player : Combat, IDamage<Player>
 
     private void Start()
     {
-        Com.MyAnim.GetBehaviour<AttackStateChange>().AttackStateChangeAct += ChangeAttackState;
-        Com.MyAnimEvent.ChangeAttackStateAct += ChangeAttackState;
-
         Com.MyAnimEvent.AttackAct += SetEffectAttack;
         Com.MyAnimEvent.AttackAct += Com.OnAttackPoint;
     }
@@ -232,11 +215,6 @@ public class Player : Combat, IDamage<Player>
     public void SetEffectAttack()
     {
         Com.Attack = Attack;
-    }
-
-    public void ChangeAttackState(AttackState state)
-    {
-        attackState = state;
     }
     #endregion
 }

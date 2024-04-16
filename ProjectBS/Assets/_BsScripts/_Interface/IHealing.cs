@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IHealing
 {
-    void ReceiveHeal(short dmg);
+    void ReceiveHeal(float dmg);
 }

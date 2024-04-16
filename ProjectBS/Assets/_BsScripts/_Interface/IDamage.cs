@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IDamage
 {
-    void TakeDamage(short dmg);
+    void TakeDamage(float dmg);
 }
 
 public interface IDamage<T> : IDamage where T : MonoBehaviour

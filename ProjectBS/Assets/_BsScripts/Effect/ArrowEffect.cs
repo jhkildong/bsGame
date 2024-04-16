@@ -5,15 +5,17 @@ using UnityEngine;
 public class ArrowEffect : Effect
 {
     Rigidbody rb;
-    private void OnEnable()
+
+    public void Shoot()
     {
-        if (rb == null)
+        if(rb == null)
             rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 20, ForceMode.Impulse);
+        rb.AddForce(transform.forward * 25, ForceMode.Impulse);
     }
 
     private void OnDisable()
     {
-        rb.velocity = Vector3.zero;
+        if(rb != null)
+            rb.velocity = Vector3.zero;
     }
 }

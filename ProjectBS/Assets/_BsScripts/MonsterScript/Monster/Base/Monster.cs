@@ -34,7 +34,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         go.transform.position = this.transform.position + new Vector3(0f, 0.3f, 0f);
     }
 
-    public override void TakeDamage(short damage)
+    public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
         if (CurHp <= 0)
@@ -63,7 +63,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
 
         _maxHP = data.MaxHP;
-        _attack = (short)data.Ak;
+        _attack = data.Ak;
 
         _curHp = data.MaxHP;
         moveSpeed = data.Sp;
@@ -91,13 +91,13 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
 
     private void SetCollider(float radius)
     {
-        if (radius < 0.5f)
+        if (radius < 1.0f)
         {
             col = gameObject.AddComponent<CapsuleCollider>();
             CapsuleCollider cc = col as CapsuleCollider;
             cc.radius = radius;
-            cc.height = 1.0f;
-            cc.center = new Vector3(0, 0.5f, 0);
+            cc.height = 2.0f;
+            cc.center = new Vector3(0, 1.0f, 0);
         }
         else
         {

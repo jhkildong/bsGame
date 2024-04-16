@@ -8,7 +8,6 @@ public class AnimEvent : MonoBehaviour
     public event UnityAction AttackAct;
     public event UnityAction DeadAct;
     public event UnityAction<int> SkillAct;
-    public event UnityAction<AttackState> ChangeAttackStateAct;
 
     public void OnAttack()
     {
@@ -23,10 +22,5 @@ public class AnimEvent : MonoBehaviour
     public void OnSkill(int v)
     {
         SkillAct?.Invoke(v);
-    }
-
-    public void ChangeState(AttackState state)
-    {
-        ChangeAttackStateAct?.Invoke(state);
     }
 }
