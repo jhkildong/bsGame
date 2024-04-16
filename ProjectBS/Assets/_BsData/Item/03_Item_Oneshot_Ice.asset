@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff6a95133543b6341b2bf9ea21c4f97c, type: 3}
-  m_Name: 05_Item_Oneshot_Ice
+  m_Name: 03_Item_Oneshot_Ice
   m_EditorClassIdentifier: 
   description: "\uC804\uCCB4\uC801\uC778 \uBAAC\uC2A4\uD130 \uC18D\uB3C4\uAC00 \uB290\uB824\uC9D0."
   _id: 5

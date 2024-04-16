@@ -26,8 +26,6 @@ public class Dragon_Script : BossMonster
             /*while(transform.position.y < 4) {
                 transform.position += Vector3.up;
             }*/
-
-
         }
     }
 
