@@ -17,7 +17,7 @@ public class SpikeBuilding : AttackBuildingBase
     {
         if (target != null && atkDelaying)
         {
-            EffectPoolManager.Instance.SetActiveMeeleLastObject<BuildingMeeleHit>(myEffect, effectPool,effectPool.gameObject,_atkPower, _atkRadius,0,0,_atkDelay);
+            //EffectPoolManager.Instance.SetActiveMeeleLastObject<BuildingMeeleHit>(myEffect, effectPool,effectPool.gameObject,_atkPower, _atkRadius,0,0,_atkDelay);
         }
     }
 }

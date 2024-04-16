@@ -6,15 +6,28 @@ using UnityEngine.UIElements;
 
 public class AttackBuilding_Meele : AttackBuildingBase
 {
-    //ontriggerstay 상태라면 공격가능 상태로. 해당 범위안에(overlapbox)있는 모든 목표에게 데미지를 간격마다 준다.
+    [SerializeField] private MeeleAttackBuildingData MeeleBuildingData;
+    public MeeleAttackBuildingData MData
+    {
+        get { return MeeleBuildingData; }
+        set { MeeleBuildingData = value; }
+    }
+
     public GameObject myAtkCollider; //공격 범위 Collider
 
-    
+    [SerializeField] private float _atkPower;
+    [SerializeField] private float _hitDelay; // 건물공격의 타격 간격
+    [SerializeField] private float _atkRadius; // 지점형 공격의 범위
+    //[SerializeField] private LayerMask _attackableLayer;
+
+
     protected override void Start()
     {
         base.Start();
-        //AtkEvent.AddListener(MeeleAttack);
-        Debug.Log("attackbuilding_Meele" + _constTime);
+        attackableLayer = MData.attackableLayer;
+        _atkPower = MData.atkPower;
+        _hitDelay = MData.hitDelay;
+        _atkRadius = MData.atkRadius;
     }
     protected void MeeleAttack()
     {
@@ -28,6 +41,26 @@ public class AttackBuilding_Meele : AttackBuildingBase
         myAtkCollider.SetActive(true);
     }
 
+
+    public float SetDmg()
+    {
+        return _atkPower;
+    }
+    public float SetAtkRadius()
+    {
+        return _atkRadius;
+    }
+    public float SetHitDelay()
+    {
+        return _hitDelay;
+    }
+    public LayerMask SetAttackableMask()
+    {
+        return attackableLayer;
+    }
+
+
+    /* 0412 임시 주석처리. 
     protected override void AttackToTarget()
     {
         if (!atkDelaying)
@@ -36,8 +69,11 @@ public class AttackBuilding_Meele : AttackBuildingBase
             StartCoroutine(AtkDelay(_atkDelay));
         }
     }
+    */
 
-    
+
+
+
 
     /*
     void SetActiveEffects(Collider target)

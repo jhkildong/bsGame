@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class AttackBuildingBase : Building
+public class AttackBuildingBase : Building, IBuffable
 {
     // Start is called before the first frame update
 
@@ -13,7 +13,7 @@ public class AttackBuildingBase : Building
     {
         Meele,
         Projectile,
-        Point
+        Area
     }
     [SerializeField] protected AtkType atkType;
 
@@ -35,6 +35,10 @@ public class AttackBuildingBase : Building
    
     protected Vector3 relativeDir; // 투사체를 발사할 방향벡터
 
+    public Buff getBuff { get; set; }
+    
+
+    /*
     protected short _atkPower;// 공격가능한 건물의 공격력
     public float _atkDelay;  // 건물의 공격 생성 딜레이
     protected float _hitDelay; // 건물 공격의 타격 간격 (지속 공격의 경우)
@@ -45,16 +49,8 @@ public class AttackBuildingBase : Building
     protected float _atkProjectileRange; // 건물 투사체 사거리
     protected bool _atkCanPen; //관통가능한 공격인가?
     protected int _atkPenCount; //관통가능한 물체수
-
-    
-//    protected Vector3 _attackBoxSize;
-    /*
-    public short Damage
-    {
-        get { return _attackPower; }
-        set { _attackPower = value; }
-    }
     */
+    /*0412 수정전 내용
     protected override void Start()
     {
         base.Start();
@@ -71,6 +67,13 @@ public class AttackBuildingBase : Building
         _atkPenCount = Data.atkPenCount;
         Debug.Log("attackbuilding" + _constTime);
     }
+    */
+
+    protected override void Start()
+    {
+        base.Start();
+        
+    }
 
     public void SetAtkStats()
     {
@@ -79,9 +82,7 @@ public class AttackBuildingBase : Building
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
-
-
-        if (iscompletedBuilding && (atkType == AtkType.Point))
+        if (iscompletedBuilding && (atkType == AtkType.Area))
         {
             SetAttackTarget(other);
         }
@@ -93,7 +94,6 @@ public class AttackBuildingBase : Building
         {
             //SetAttackTarget(other);
         }
-
     }
 
     protected void SetAttackTarget(Collider other) //가장 먼저 범위안에 들어온 적을 타겟으로
@@ -111,12 +111,9 @@ public class AttackBuildingBase : Building
             }
         }
     }
-
-
-
     void OnTriggerExit(Collider other)
     {
-        if (iscompletedBuilding && (atkType == AtkType.Projectile || atkType == AtkType.Point) && (1 << other.gameObject.layer & attackableLayer) != 0)
+        if (iscompletedBuilding && (atkType == AtkType.Projectile || atkType == AtkType.Area) && (1 << other.gameObject.layer & attackableLayer) != 0)
         {
             IDamage obj = other.GetComponent<IDamage>();
             if (obj != null)
@@ -158,7 +155,7 @@ public class AttackBuildingBase : Building
         }
     }
 
-
+    /* 0412 수정전 내용
     protected override void Update() // 사실상 override 아님. Building에서 update로 하는게 없음
     {
         base.Update();
@@ -189,6 +186,7 @@ public class AttackBuildingBase : Building
         base.ConstructComplete();
         //InstEffects();
     }
+    */
 
     protected void InstEffects() // 이펙트 오브젝트 풀링 (생성)
     {
@@ -219,10 +217,7 @@ public class AttackBuildingBase : Building
     */
 
 
-    public LayerMask SetAttackableMask()
-    {
-        return attackableLayer;
-    }
+    /*0412 수정전
     public short SetDmg()
     {
         return _atkPower;
@@ -239,6 +234,6 @@ public class AttackBuildingBase : Building
     {
         return _atkDelay;
     }
-
+    */
 
 }

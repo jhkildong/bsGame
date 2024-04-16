@@ -7,9 +7,9 @@ public class CampFire : Building
 {
 
     [SerializeField] private LayerMask findPlayerMask;
-    [SerializeField]private float duration;
-    [SerializeField]private short healAmount;
-    [SerializeField]private float healTick;
+    [SerializeField] private float duration;
+    [SerializeField] private short healAmount;
+    [SerializeField] private float healTick;
     [SerializeField] private float healRadius;
 
     bool playerIsInRange;

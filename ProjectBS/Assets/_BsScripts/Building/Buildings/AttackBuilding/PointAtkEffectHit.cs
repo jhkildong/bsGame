@@ -23,8 +23,8 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
     protected float hitTime = 1f; //공격 타이밍
     float progress; // 파티클 재생 진행도
 
-    private short dmg;
-    private short baseAttack;
+    private float dmg;
+    private float baseAttack;
     private float myRadius;
     private float atkDelay; // 공격 간격
     private float atkDuration; // 지속시간
@@ -42,8 +42,6 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
     void Start()
     {
         ps = GetComponent<ParticleSystem>();
-
-
     }
     void OnEnable()
     {
@@ -65,7 +63,7 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
     }
     */
 
-    public void SetPointStats(short atk = 1, float radius = 1, float size = 1, float speed = 1,float delay = 1, float durTime = 1) // 건물의 스탯을 EffectPoolManager에 전달 -> 이펙트 생성시에 해당 Stat을 이펙트로 전달
+    public void SetPointStats(float atk = 1, float radius = 1, float size = 1, float speed = 1,float delay = 1, float durTime = 1) // 건물의 스탯을 EffectPoolManager에 전달 -> 이펙트 생성시에 해당 Stat을 이펙트로 전달
     {
         baseAttack = atk;
         myRadius = radius;
