@@ -4,15 +4,6 @@ public abstract class CharacterComponent : MonoBehaviour
 {
     #region Property
     public Transform MyTransform => this.transform;
-    public Transform MyAttackPoint
-    {
-        get
-        {
-            if (_attackPoint == null)
-                _attackPoint = transform.Find("AttackPoint");
-            return _attackPoint;
-        }
-    }
     public AnimEvent MyAnimEvent
     {
         get
@@ -43,7 +34,6 @@ public abstract class CharacterComponent : MonoBehaviour
     #endregion
 
     #region Private Field
-    [SerializeField] protected Transform _attackPoint;
     [SerializeField] protected AnimEvent _animEvent;
     [SerializeField] protected Animator _anim;
     [SerializeField] protected SkinnedMeshRenderer _renderer;

@@ -168,6 +168,7 @@ MonoBehaviour:
   _attack: 0
   _size: 0
   _amount: 0
+  _blessPrefab: {fileID: 0}
   _levelProp:
     states: 000000
     _levelTables: []

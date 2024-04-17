@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LookAtPoint : MonoBehaviour
 {
-    public LayerMask mask;
+    public LayerMask mask = (int)BSLayerMasks.Ground;
     private Camera myCam;
     public void IsDead() => this.enabled = false;
     // Start is called before the first frame update
