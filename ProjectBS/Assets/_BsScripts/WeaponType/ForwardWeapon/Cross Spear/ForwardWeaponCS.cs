@@ -3,33 +3,37 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
+using Yeon;
 
-public class ForwardWeaponCS : MonoBehaviour
+public class ForwardWeaponCS : Bless
 {
     public Transform myTarget; // 따라갈 타겟
     public Transform myRotate; // 따라서 회전할 타겟
     public GameObject weaponPrefab; // 생성할 프리팹
 
-    public float maxRange = 1.0f; // 최대 폭
-    public float minRange = -1.0f; // 최소 폭
+    public float ReTime { get => _reTime; set => _reTime = value; }
+    public float WaitTime { get => _waitTime; set => _waitTime = value; }
+    public float DestroyTime { get => _destroyTime; set => _destroyTime = value; }
+    public float AtRange { get => _atRange; set => _atRange = value; }
+    public float MaxRange { get => _maxRange; set => _maxRange = value; }
+    public float MinRange { get => _minRange; set => _minRange = value; }
 
-    public float prefabScale = 1.0f; // 프리펩 크기
-    public float destroyTime = 0.5f; // 생성한 무기 없는 시간
-    public float atRange = 5.0f; // 플레이어로부터 무기 생성거리
 
-    public float reTime = 2.0f; // 공격속도
-    public float waitTime = 0.05f; // 재 생성 간격
+    [SerializeField] private float _reTime; // 공격속도
+    [SerializeField] private float _waitTime; // 다음 프리펩 재생성시간
+    [SerializeField] private float _destroyTime; // 생성한 무기 없는 시간
+    [SerializeField] private float _atRange; // 플레이어로부터 무기 생성거리
+    [SerializeField] private float _maxRange; // 최대 폭
+    [SerializeField] private float _minRange; // 최소 폭
 
-    float time = 0.0f; // 시간 저장 변수
-
-    public short Level = 0;
-    short weaponCount = 0; // 무기 개수
-    short Count = 0; // 단순 반복 횟수
+    float time = 0.0f;
+    short Level = 0;
+    short Count = 0; 
 
     // Start is called before the first frame update
     void Start()
     {
-        Level = weaponCount = Count = 0;
+        Level = Count = 0;
         if (myTarget != null) transform.SetParent(myTarget);
     }
 
@@ -56,7 +60,7 @@ public class ForwardWeaponCS : MonoBehaviour
         switch (Level)
         {
             case 1:  //  1개 생성
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
                     SpawnWeapon();
@@ -66,12 +70,12 @@ public class ForwardWeaponCS : MonoBehaviour
                 if (Count < 2)
                 {
                     Count++;
-                    weaponCount++;
+                    Amount++;
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 3:  //  대미지 20% 증가
@@ -80,59 +84,59 @@ public class ForwardWeaponCS : MonoBehaviour
                     Count++;
                     Debug.Log("대미지 20% 증가");
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 4:  //  3개가 된다.
                 if (Count < 1)
                 {
                     Count++;
-                    weaponCount++;
+                    Amount++;
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 5:  //  공격속도 50% 증가
                 if (Count < 1)
                 {
                     Count++;
-                    reTime -= reTime * 0.5f;
+                    ReTime -= ReTime * 0.5f;
                     Debug.Log("공격속도 50% 증가");
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 6:  //  4개가 된다.
                 if (Count < 1)
                 {
                     Count++;
-                    weaponCount++;
+                    Amount++;
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 7:  //  5개가 된다.
                 if (Count < 1)
                 {
                     Count++;
-                    weaponCount++;
+                    Amount++;
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
 
@@ -144,7 +148,7 @@ public class ForwardWeaponCS : MonoBehaviour
         for (int i = 0; i < v; i++)
         {
             SpawnWeapon();
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(WaitTime);
         }
     }
 
@@ -156,12 +160,11 @@ public class ForwardWeaponCS : MonoBehaviour
         {
             Transform child = transform.GetChild(i);
             Vector3 direction = Quaternion.Euler(0, 0, 0) * transform.forward;
-            float randomXPos = Random.Range(minRange, maxRange); // 랜덤 최소, 최대 폭 설정
-            child.position = transform.position + new Vector3(randomXPos, 0.0f, 0.0f) + direction * atRange;
-            child.localScale = new Vector3(prefabScale, prefabScale, prefabScale);
+            float randomXPos = Random.Range(MinRange, MaxRange); // 랜덤 최소, 최대 폭 설정
+            child.position = transform.position + new Vector3(randomXPos, 0.0f, 0.0f) + direction * AtRange;
+            child.localScale = new Vector3(Size, Size, Size);
         }
         bulletBOTCA.transform.SetParent(null);
-        Destroy(bulletBOTCA, destroyTime);
-
+        Destroy(bulletBOTCA, DestroyTime);
     }
 }

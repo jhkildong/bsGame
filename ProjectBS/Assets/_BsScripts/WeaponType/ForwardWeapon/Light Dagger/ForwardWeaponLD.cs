@@ -2,27 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using Yeon;
 
-public class ForwardWeaponLD : MonoBehaviour
+public class ForwardWeaponLD : Bless
 {
-    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
+    public static Quaternion myRotation; // 회전값
+
     public Transform myTarget; // 따라갈 타겟
     public Transform myRotate; // 따라서 회전할 타겟
     public GameObject weaponPrefab; // 생성할 프리팹
-    public static Quaternion myRotation; // 회전값
+    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
 
-    public float reTime = 2.0f; // 공격속도
-    public float waitTime = 0.05f; // 재 생성 간격
+    public float ReTime { get => _reTime; set => _reTime = value; }
+    public float WaitTime { get => _waitTime; set => _waitTime = value; }
+    public float DestroyTime { get => _destroyTime; set => _destroyTime = value; }
+
+    [SerializeField] private float _reTime; // 공격속도
+    [SerializeField] private float _waitTime; // 다음 프리펩 재생성시간
+    [SerializeField] private float _destroyTime; // 생성한 무기 없는 시간
 
     float time = 0.0f; // 시간 저장 변수
-
-    public short Level = 0;
-    short weaponCount = 0; // 무기 개수
+    short Level = 0;
     short Count = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        Level = weaponCount = Count =  0;
+        Level = Count =  0;
         if (myTarget != null) transform.SetParent(myTarget);
     }
 
@@ -50,7 +56,7 @@ public class ForwardWeaponLD : MonoBehaviour
         switch (Level)
         {
             case 1:  //  1개 생성
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
                     SpawnWeapon();
@@ -62,7 +68,7 @@ public class ForwardWeaponLD : MonoBehaviour
                     Count++;
                     Debug.Log("대미지 20% 증가");
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
                     SpawnWeapon();
@@ -72,12 +78,12 @@ public class ForwardWeaponLD : MonoBehaviour
                 if (Count < 2)
                 {
                     Count++;
-                    weaponCount++;
+                    Amount++;
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 4:  //  대미지 30% 증가.
@@ -86,47 +92,47 @@ public class ForwardWeaponLD : MonoBehaviour
                     Count++;
                     Debug.Log("대미지 30% 증가");
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 5:  //  3개가 된다.
                 if (Count < 1)
                 {
                     Count++;
-                    weaponCount++;
+                    Amount++;
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 6:  //  공격속도 30% 증가.
                 if (Count < 1)
                 {
                     Count++;
-                    reTime -= reTime * 0.3f;
+                    ReTime -= ReTime * 0.3f;
                     Debug.Log("공격속도 30% 증가.");
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 7:  //  4개가 된다.
                 if (Count < 1)
                 {
                     Count++;
-                    weaponCount++;
+                    Amount++;
                 }
-                if (time >= reTime)
+                if (time >= ReTime)
                 {
                     time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(weaponCount));
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
 
@@ -137,14 +143,20 @@ public class ForwardWeaponLD : MonoBehaviour
         for (int i = 0; i < v; i++)
         {
             SpawnWeapon();
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(WaitTime);
         }
     }
 
     private void SpawnWeapon()
     {
-        GameObject bulletLD = Instantiate(weaponPrefab, transform.position, transform.rotation); // 무기 생성
+        GameObject bulletLD = Instantiate(weaponPrefab, transform); // 무기 생성
+        int childCount = transform.childCount;
+        for (int i = 0; i < childCount; ++i)
+        {
+            Transform child = transform.GetChild(i);
+            child.localScale = new Vector3(Size, Size, Size);
+        }
         bulletLD.transform.SetParent(clonesParent); // 생성 무기 똥처리
-        Rigidbody SwordRigidbody = bulletLD.GetComponent<Rigidbody>();
+        Destroy(bulletLD, DestroyTime);
     }
 }

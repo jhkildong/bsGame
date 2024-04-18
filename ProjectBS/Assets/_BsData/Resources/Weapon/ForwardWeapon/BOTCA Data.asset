@@ -14,24 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
-  _attack: 100
-  _size: 0
-  _prefab: {fileID: 3115327183370529776, guid: f2c174dfa9c33944aad35a1d24f9e68f, type: 3}
-  _bless: {fileID: -2035465310923364427, guid: f2c174dfa9c33944aad35a1d24f9e68f, type: 3}
+  _attack: 30
+  _size: 5
+  _prefab: {fileID: 5188791887647992852, guid: 865028827c674bb4eaecabe8318849a3, type: 3}
+  _bless: {fileID: 2874234111288918806, guid: 865028827c674bb4eaecabe8318849a3, type: 3}
   LevelProp:
-    states: 000000
+    states: 000000000000
     _levelTables: []
     SerializablePropertyInfos:
-    - TypeName: ForwardWeaponBOTCA_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: ReTime
+    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: WaitTime
+    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: DestroyTime
+    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Ak
-    - TypeName: ForwardWeaponBOTCA_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Size
-    - TypeName: ForwardWeaponBOTCA_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Amount
     PropertyNames:
+    - ReTime
+    - WaitTime
+    - DestroyTime
     - Ak
     - Size
     - Amount

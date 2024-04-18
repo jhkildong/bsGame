@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3596779703993820696
+--- !u!1 &3662512694256035027
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2724135079879129035}
-  - component: {fileID: -2226007896732508947}
+  - component: {fileID: 2085107102353076291}
+  - component: {fileID: 1605225607963631048}
   m_Layer: 0
-  m_Name: Dagger
+  m_Name: VG Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2724135079879129035
+--- !u!4 &2085107102353076291
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596779703993820696}
+  m_GameObject: {fileID: 3662512694256035027}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,38 +32,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2226007896732508947
+--- !u!114 &1605225607963631048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596779703993820696}
+  m_GameObject: {fileID: 3662512694256035027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 776bcdabc6d1aa340999c1140d20d079, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e7eb26d7122d054698b386b4638df96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: c6b722f761c2052498180d5c7dcbcaf3, type: 2}
+  _data: {fileID: 11400000, guid: 9a4b2bd672a871e4e850b1d9063ed86c, type: 2}
   _attack: 0
   _size: 0
   _amount: 0
   _blessPrefab: {fileID: 0}
   _levelProp:
-    states: 00000000
+    states: 000000
     _levelTables: []
     SerializablePropertyInfos:
-    - TypeName: FowardBless, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      PropertyName: Speed
-    - TypeName: FowardBless, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       PropertyName: Ak
-    - TypeName: FowardBless, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       PropertyName: Size
-    - TypeName: FowardBless, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       PropertyName: Amount
     PropertyNames:
-    - Speed
     - Ak
     - Size
     - Amount
-  _speed: 0
+  myTarget: {fileID: 0}
+  myRotate: {fileID: 0}
+  weaponPrefab: {fileID: 1077365919215883442, guid: 4539119fd36e3974fb6d6ef2d07da2e2, type: 3}
+  _reTime: 2
+  _waitTime: 0.05
+  _destroyTime: 0.1
+  _atRange: 0.5
+  _maxRange: 1
+  _minRange: -1

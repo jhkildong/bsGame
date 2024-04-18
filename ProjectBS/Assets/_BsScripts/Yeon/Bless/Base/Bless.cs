@@ -16,7 +16,7 @@ namespace Yeon
         public BlessData Data => _data;
         public float Ak {get => _attack; set => _attack = value;}
         public float Size { get => _size; set => _size = value; }
-        public float Amount { get => _amount; set => _amount = value; }
+        public short Amount { get => _amount; set => _amount = value; }
         public GameObject BlessPrefab { get => _blessPrefab; set => _blessPrefab = value; }
         public LevelProperty LevelProp => _levelProp;
         #endregion
@@ -25,7 +25,7 @@ namespace Yeon
         [SerializeField] protected BlessData _data;
         [SerializeField] protected float _attack;
         [SerializeField] protected float _size;
-        [SerializeField] protected float _amount;
+        [SerializeField] protected short _amount;
         [SerializeField] protected GameObject _blessPrefab;
         //[SerializeField] private short _level;
         [SerializeField, ReadOnly] protected LevelProperty _levelProp;

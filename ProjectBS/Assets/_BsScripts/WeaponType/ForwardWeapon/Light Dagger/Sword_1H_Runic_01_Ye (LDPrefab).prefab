@@ -282,31 +282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7298f44d625bdbd45af4b087bbf94f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 68879e3f02f6d9242aae5cdb7fe56906, type: 2}
-  _attack: 1
-  _size: 0
-  _amount: 0
-  _levelProp:
-    states: 000000
-    _levelTables: []
-    SerializablePropertyInfos:
-    - TypeName: ForwardWeaponLD_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Ak
-    - TypeName: ForwardWeaponLD_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Size
-    - TypeName: ForwardWeaponLD_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Amount
-    PropertyNames:
-    - Ak
-    - Size
-    - Amount
   Monster:
     serializedVersion: 2
     m_Bits: 294912
-  bulletSpeed: 20
 --- !u!65 &-6332043158001316453
 BoxCollider:
   m_ObjectHideFlags: 0

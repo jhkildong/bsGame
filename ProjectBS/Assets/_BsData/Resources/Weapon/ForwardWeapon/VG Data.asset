@@ -14,12 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
-  _attack: 100
-  _size: 0
-  _prefab: {fileID: 1608000175455400579, guid: a555eea40e664564e970bf780590e762, type: 3}
-  _bless: {fileID: 6417941611322234027, guid: a555eea40e664564e970bf780590e762, type: 3}
+  _attack: 30
+  _size: 5
+  _prefab: {fileID: 3662512694256035027, guid: 905ea63628a7b2242be117044394d3a8, type: 3}
+  _bless: {fileID: 1605225607963631048, guid: 905ea63628a7b2242be117044394d3a8, type: 3}
   LevelProp:
-    states: 
+    states: 000000
     _levelTables: []
-    SerializablePropertyInfos: []
-    PropertyNames: []
+    SerializablePropertyInfos:
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Ak
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Size
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Amount
+    PropertyNames:
+    - Ak
+    - Size
+    - Amount
