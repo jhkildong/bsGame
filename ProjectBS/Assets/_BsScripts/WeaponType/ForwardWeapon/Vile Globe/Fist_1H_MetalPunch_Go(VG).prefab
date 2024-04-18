@@ -165,19 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51ad8e79c2fd2ae4fa35998ffb11ce73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 9a4b2bd672a871e4e850b1d9063ed86c, type: 2}
-  _attack: 0
-  _size: 0
-  _amount: 0
-  _levelProp:
-    states: 
-    _levelTables: []
-    SerializablePropertyInfos: []
-    PropertyNames: []
   Monster:
     serializedVersion: 2
     m_Bits: 294912
-  bulletSpeed: 15
 --- !u!65 &1849408616928935609
 BoxCollider:
   m_ObjectHideFlags: 0

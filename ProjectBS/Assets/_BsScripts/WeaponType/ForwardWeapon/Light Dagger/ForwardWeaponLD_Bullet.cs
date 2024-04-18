@@ -3,10 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yeon;
 
-public class ForwardWeaponLD_Bullet : Bless
+public class ForwardWeaponLD_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
-    public float bulletSpeed = 5.0f; // 이동 속도
+    float Ak;
+
+    private void OnEnable()
+    {
+        ForwardWeaponLD forwardWeaponLD = FindObjectOfType<ForwardWeaponLD>();
+        if (forwardWeaponLD != null)
+        {
+            Ak = forwardWeaponLD.Ak;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,7 +24,7 @@ public class ForwardWeaponLD_Bullet : Bless
             IDamage<Monster> obj = other.GetComponent<IDamage<Monster>>();
             if (obj != null)
             {
-                obj.TakeDamage((short)Mathf.Round(Ak));
+                obj.TakeDamage(Ak);
                 Destroy(gameObject);
             }
         }
@@ -30,6 +39,6 @@ public class ForwardWeaponLD_Bullet : Bless
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
+        
     }
 }
