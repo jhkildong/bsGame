@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 
@@ -34,13 +33,19 @@ public class Effect : MonoBehaviour, IPoolable
             return;
         }
         _particleSystem.Play();
+        StartCoroutine(EffectPlaying());
     }
 
-    void Update()
+    protected virtual IEnumerator EffectPlaying()
     {
-        if(_particleSystem.isStopped)
+        while (true)
         {
-            ObjectPoolManager.Instance.ReleaseObj(this, this.gameObject);
+            if (_particleSystem.isStopped)
+            {
+                ObjectPoolManager.Instance.ReleaseObj(this, this.gameObject);
+                yield break;
+            }
+            yield return null;
         }
     }
 
