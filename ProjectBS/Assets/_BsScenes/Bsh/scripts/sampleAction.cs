@@ -8,12 +8,14 @@ public class sampleAction : MonoBehaviour
     Vector3 dir;
     public float Hp;
     public GameObject firePrefab;
+    public Animator animator;
 
     void Start()
     {
         Hp = 100;
         StartCoroutine(CheckState());
         target = gameObject.transform.Find("Player");
+        animator = gameObject.GetComponent<Animator>();
     }
     void Update()
     {
@@ -39,6 +41,7 @@ public class sampleAction : MonoBehaviour
         //Vector3 go = transform.position - target.position;
         if(target != null)
         {
+            
             //머리 위를 돈다.
             //플레이어 위치에 공격한다
             Instantiate(firePrefab, target.position, Quaternion.identity);
@@ -49,6 +52,7 @@ public class sampleAction : MonoBehaviour
     {
         float elapsedTime = 0f;
         float duration = 3f;
+        animator.SetTrigger("goAir");
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -70,7 +74,6 @@ public class sampleAction : MonoBehaviour
             if (Hp <= 60 && firstPhase)
             {
                 Debug.Log("체력 60일때 모션");
-                // 날아 오르는 애니매이션 추가
                 firstPhase = false;
                 StartCoroutine(MoveHeight(10f));
                 attackInSky();
@@ -85,6 +88,11 @@ public class sampleAction : MonoBehaviour
                 attackInSky();
                 yield return new WaitForSeconds(5f);
                 StartCoroutine(MoveHeight(originY));
+            }
+            if (Hp <= 0)
+            {
+                //animator.SetTrigger("collapse");
+                //Destroy(gameObject);
             }
             yield return null;
         }

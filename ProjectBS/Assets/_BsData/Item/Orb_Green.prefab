@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7565172115264293655}
   - component: {fileID: 1858556861404708404}
   m_Layer: 0
-  m_Name: Red_Orb
+  m_Name: Orb_Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6750a4752a14d6a40b69b68950b3e3de, type: 2}
+  - {fileID: 2100000, guid: 0e7cf3b107aa1fe48b881e232105dda9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
