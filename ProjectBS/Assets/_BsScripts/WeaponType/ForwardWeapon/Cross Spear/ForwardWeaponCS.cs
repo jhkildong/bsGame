@@ -60,14 +60,19 @@ public class ForwardWeaponCS : Bless
         switch (Level)
         {
             case 1:  //  1개 생성
+                if (Count < 1)
+                {
+                    Count++;
+                    Amount++;
+                }
                 if (time >= ReTime)
                 {
                     time = 0.0f;
-                    SpawnWeapon();
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 2:  //  2개가 된다.
-                if (Count < 2)
+                if (Count < 1)
                 {
                     Count++;
                     Amount++;
@@ -143,6 +148,23 @@ public class ForwardWeaponCS : Bless
         }
     }
 
+    private void SpawnWeapon()
+    {
+        GameObject bullet = Instantiate(weaponPrefab, transform); // 무기 생성
+        int childCount = transform.childCount;
+        for (int i = 0; i < childCount; ++i)
+        {
+            Transform child = transform.GetChild(i);
+            Vector3 direction = Quaternion.Euler(0, 0, 0) * transform.forward;
+            float randomXPos = Random.Range(MinRange, MaxRange); // 랜덤 최소, 최대 폭 설정
+            child.position = transform.position + new Vector3(randomXPos, 0.0f, 0.0f) + direction * AtRange;
+
+            bullet.transform.localScale = new Vector3(Size, Size, Size);
+        }
+        bullet.transform.SetParent(null);
+        Destroy(bullet, DestroyTime);
+    }
+
     IEnumerator SpawnMultipleWeapons(int v)
     {
         for (int i = 0; i < v; i++)
@@ -152,19 +174,4 @@ public class ForwardWeaponCS : Bless
         }
     }
 
-    private void SpawnWeapon()
-    {
-        GameObject bulletBOTCA = Instantiate(weaponPrefab, transform); // 무기 생성
-        int childCount = transform.childCount;
-        for (int i = 0; i < childCount; ++i)
-        {
-            Transform child = transform.GetChild(i);
-            Vector3 direction = Quaternion.Euler(0, 0, 0) * transform.forward;
-            float randomXPos = Random.Range(MinRange, MaxRange); // 랜덤 최소, 최대 폭 설정
-            child.position = transform.position + new Vector3(randomXPos, 0.0f, 0.0f) + direction * AtRange;
-            child.localScale = new Vector3(Size, Size, Size);
-        }
-        bulletBOTCA.transform.SetParent(null);
-        Destroy(bulletBOTCA, DestroyTime);
-    }
 }

@@ -50,10 +50,46 @@ MonoBehaviour:
   _amount: 0
   _blessPrefab: {fileID: 0}
   _levelProp:
-    states: 
+    states: 000000000000000000
     _levelTables: []
-    SerializablePropertyInfos: []
-    PropertyNames: []
+    SerializablePropertyInfos:
+    - TypeName: ForwardWeaponCS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: ReTime
+    - TypeName: ForwardWeaponCS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: WaitTime
+    - TypeName: ForwardWeaponCS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: DestroyTime
+    - TypeName: ForwardWeaponCS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: AtRange
+    - TypeName: ForwardWeaponCS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: MaxRange
+    - TypeName: ForwardWeaponCS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: MinRange
+    - TypeName: ForwardWeaponCS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Ak
+    - TypeName: ForwardWeaponCS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Size
+    - TypeName: ForwardWeaponCS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Amount
+    PropertyNames:
+    - ReTime
+    - WaitTime
+    - DestroyTime
+    - AtRange
+    - MaxRange
+    - MinRange
+    - Ak
+    - Size
+    - Amount
   myTarget: {fileID: 0}
   myRotate: {fileID: 0}
   weaponPrefab: {fileID: 3692521660452131038, guid: 9c164c04d88b2a84eb7a442f15dd9812, type: 3}

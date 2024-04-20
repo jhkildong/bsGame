@@ -1,12 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Yeon;
 
-public class OrditalWeaponRA_Bullet : Bless
+public class OrditalWeaponRA_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
-    public float rotSpeed = 1000.0f; // 회전속도
+    float bulletRotSpeed; // 회전속도
+    float Ak;
+
+    private void OnEnable()
+    {
+        OrditalWeaponRA forwardWeaponRA = FindObjectOfType<OrditalWeaponRA>();
+        if (forwardWeaponRA != null)
+        {
+            Ak = forwardWeaponRA.Ak;
+            bulletRotSpeed = forwardWeaponRA.BulletRotSpeed;
+        }
+    }
 
     private void OnTriggerEnter(Collider other) // 대미지
     {
@@ -15,7 +25,7 @@ public class OrditalWeaponRA_Bullet : Bless
             IDamage<Monster> obj = other.GetComponent<IDamage<Monster>>();
             if (obj != null)
             {
-                obj.TakeDamage((short)Mathf.Round(Ak));
+                obj.TakeDamage(Ak);
             }
         }
     }
@@ -27,6 +37,6 @@ public class OrditalWeaponRA_Bullet : Bless
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * rotSpeed * Time.deltaTime, Space.World);// 회전
+        transform.Rotate(Vector3.up * bulletRotSpeed * Time.deltaTime, Space.World);// 회전
     }
 }

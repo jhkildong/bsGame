@@ -2,29 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Yeon;
 
-public class OrditalWeaponRA : MonoBehaviour
+public class OrditalWeaponRA : Bless
 {
     public Transform myTarget; // 회전 중심점
-    public GameObject weaponPrefabs; // 무기 프리펩
-    public float rotSpeed = 30.0f; // 공전 속도
-    public float attakRange = 1.0f; // 공격 거리
+    public GameObject weaponPrefab; // 무기 프리펩
 
-    public short Level = 0;
-    short weaponCount = 0;
+    public float AtRange { get => _atRange; set => _atRange = value; }
+    public float RotSpeed { get => _rotSpeed; set => _rotSpeed = value; }
+    public float BulletRotSpeed { get => _bulletRotSpeed; set => _bulletRotSpeed = value; }
+
+    [SerializeField] private float _atRange; // 플레이어로부터 무기 생성거리
+    [SerializeField] private float _rotSpeed; // 공전속도
+    [SerializeField] private float _bulletRotSpeed; // 발사체 공전 속도
+
+    short Level = 0;
     short Count = 0;
-
     // Start is called before the first frame update
     void Start()
     {
-        Level = weaponCount = Count = 0;
+        Level = Count = 0;
         if (myTarget != null) transform.SetParent(myTarget);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up, rotSpeed * Time.deltaTime); // 공전
+        transform.Rotate(Vector3.up, RotSpeed * Time.deltaTime); // 공전
         SwitchUpdate();
     }
 
@@ -43,16 +48,16 @@ public class OrditalWeaponRA : MonoBehaviour
         switch (Level)
         {
             case 1:  //  1개 생성
-                if (weaponCount < 1)
+                if (Amount < 1)
                 {
-                    weaponCount++;
+                    Amount++;
                     SpawnWeapon();
                 }
                 break;
             case 2:  //  2개가 된다.
-                if (weaponCount < 2)
+                if (Amount < 2)
                 {
-                    weaponCount++;
+                    Amount++;
                     SpawnWeapon();
                 }
                 break;
@@ -64,9 +69,9 @@ public class OrditalWeaponRA : MonoBehaviour
                 }
                 break;
             case 4:  //  3개가 된다.
-                if(weaponCount < 3)
+                if(Amount < 3)
                 {
-                    weaponCount++;
+                    Amount++;
                     SpawnWeapon();
                 }
                 break;
@@ -74,21 +79,21 @@ public class OrditalWeaponRA : MonoBehaviour
                 if (Count < 1)
                 {
                     Count++;
-                    attakRange += attakRange * 0.3f;
+                    AtRange += AtRange * 0.3f;
                     Debug.Log("범위가 30% 증가");
                 }
                 break;
             case 6:  //  4개가 된다.
-                if (weaponCount < 4)
+                if (Amount < 4)
                 {
-                    weaponCount++;
+                    Amount++;
                     SpawnWeapon();
                 }
                 break;
             case 7:  //  5개가 된다.
-                if (weaponCount < 5)
+                if (Amount < 5)
                 {
-                    weaponCount++;
+                    Amount++;
                     SpawnWeapon();
                 }
                 break;
@@ -96,10 +101,10 @@ public class OrditalWeaponRA : MonoBehaviour
         }
     }
 
-
     private void SpawnWeapon()
     {
-        GameObject bulletRA = Instantiate(weaponPrefabs, transform); // 무기 생성
+        GameObject bullet = Instantiate(weaponPrefab, transform); // 무기 생성
+        bullet.transform.localScale = new Vector3(Size, Size, Size);
 
         // 생성한 무기들 간격 맞춤.
         int childCount = transform.childCount;
@@ -109,8 +114,8 @@ public class OrditalWeaponRA : MonoBehaviour
             Transform child = transform.GetChild(i);
             Vector3 eulerAngle = child.localRotation.eulerAngles;
             Vector3 direction = Quaternion.Euler(0, angleStep * i, 0) * transform.forward;
-            child.position = transform.position + direction * attakRange;
-            child.localRotation = Quaternion.Euler(eulerAngle.x, angleStep * i, eulerAngle.z);
+            child.position = transform.position + direction * AtRange;
+            child.localRotation = Quaternion.Euler(eulerAngle.x, angleStep * i, eulerAngle.z); // 프리팹 rotation을 타켓쪽으로 맞춤.
         }
     }
 }

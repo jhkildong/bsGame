@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1345635395758532283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2247269809614144970}
+  - component: {fileID: 5448120426374311839}
+  m_Layer: 0
+  m_Name: PF Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2247269809614144970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345635395758532283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5448120426374311839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345635395758532283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da2fc97e7503bc44ac8062f044f91a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 09db193d73ff05341bd1ac1ee5bb492a, type: 2}
+  _attack: 0
+  _size: 0
+  _amount: 0
+  _blessPrefab: {fileID: 0}
+  _levelProp:
+    states: 00000000000000000000
+    _levelTables: []
+    SerializablePropertyInfos:
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: ReTime
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: WaitTime
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: DestroyTime
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: AtRange
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: RotSpeed
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: BulletSpeed
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: ArrowAmount
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Ak
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Size
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Amount
+    PropertyNames:
+    - ReTime
+    - WaitTime
+    - DestroyTime
+    - AtRange
+    - RotSpeed
+    - BulletSpeed
+    - ArrowAmount
+    - Ak
+    - Size
+    - Amount
+  myTarget: {fileID: 0}
+  weaponBowPrefab: {fileID: 7677096721163759830, guid: aae0e3b84c849ae40a8aa6de2168ff0f, type: 3}
+  _reTime: 1
+  _waitTime: 0.05
+  _destroyTime: 10
+  _atRange: 2
+  _rotSpeed: 90
+  _bulletSpeed: 20
+  _arrowAmount: 0

@@ -14,24 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
-  _attack: 100
-  _size: 0
-  _prefab: {fileID: 78316188785865676, guid: 11149ae3d92005e49a9f49618e19bbbb, type: 3}
-  _bless: {fileID: 1165264303761378404, guid: 11149ae3d92005e49a9f49618e19bbbb, type: 3}
+  _attack: 30
+  _size: 2
+  _prefab: {fileID: 5875949191823715278, guid: 70fb47a1c8b74ea4b8018d233dbede6b, type: 3}
+  _bless: {fileID: 7962120819172675497, guid: 70fb47a1c8b74ea4b8018d233dbede6b, type: 3}
   LevelProp:
-    states: 000000
+    states: 0000000000
     _levelTables: []
     SerializablePropertyInfos:
-    - TypeName: OrditalWeaponBOTS_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: OrditalWeaponBOTS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: AtRange
+    - TypeName: OrditalWeaponBOTS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: RotSpeed
+    - TypeName: OrditalWeaponBOTS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Ak
-    - TypeName: OrditalWeaponBOTS_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: OrditalWeaponBOTS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Size
-    - TypeName: OrditalWeaponBOTS_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: OrditalWeaponBOTS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Amount
     PropertyNames:
+    - AtRange
+    - RotSpeed
     - Ak
     - Size
     - Amount

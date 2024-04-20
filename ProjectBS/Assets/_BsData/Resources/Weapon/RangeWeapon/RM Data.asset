@@ -14,24 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
-  _attack: 100
-  _size: 0
-  _prefab: {fileID: 5984480896937644376, guid: fb5e93ca2a78aba4e9bd31479d108f93, type: 3}
-  _bless: {fileID: -3326690250213967859, guid: fb5e93ca2a78aba4e9bd31479d108f93, type: 3}
+  _attack: 30
+  _size: 1
+  _prefab: {fileID: 3540576751485843617, guid: 9708fd17065614047a838de3220525e3, type: 3}
+  _bless: {fileID: 2787601495141444686, guid: 9708fd17065614047a838de3220525e3, type: 3}
   LevelProp:
-    states: 000000
+    states: 0000000000
     _levelTables: []
     SerializablePropertyInfos:
-    - TypeName: RangeWeaponRM_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: RangeWeaponRM, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: DelayTime
+    - TypeName: RangeWeaponRM, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: AtRange
+    - TypeName: RangeWeaponRM, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Ak
-    - TypeName: RangeWeaponRM_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: RangeWeaponRM, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Size
-    - TypeName: RangeWeaponRM_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: RangeWeaponRM, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Amount
     PropertyNames:
+    - DelayTime
+    - AtRange
     - Ak
     - Size
     - Amount

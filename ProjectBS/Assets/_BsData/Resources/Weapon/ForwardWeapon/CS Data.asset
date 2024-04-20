@@ -15,7 +15,7 @@ MonoBehaviour:
   _id: 0
   _name: 
   _attack: 30
-  _size: 5
+  _size: 2
   _prefab: {fileID: 2336909956578856692, guid: 52dc9034c50881146869f6cd8f97a028, type: 3}
   _bless: {fileID: 7373370453549619212, guid: 52dc9034c50881146869f6cd8f97a028, type: 3}
   LevelProp:

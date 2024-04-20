@@ -4942,27 +4942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cde6f59bf7f3714683324453694d534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: b2cf8e54040975c458a68cb3f2e1f808, type: 2}
-  _attack: 100
-  _size: 0
-  _amount: 0
-  _levelProp:
-    states: 000000
-    _levelTables: []
-    SerializablePropertyInfos:
-    - TypeName: RangeWeaponBOL_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Ak
-    - TypeName: RangeWeaponBOL_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Size
-    - TypeName: RangeWeaponBOL_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Amount
-    PropertyNames:
-    - Ak
-    - Size
-    - Amount
   Monster:
     serializedVersion: 2
     m_Bits: 294912
@@ -35048,7 +35027,6 @@ GameObject:
   - component: {fileID: 4936501878518584}
   - component: {fileID: 198674827734476228}
   - component: {fileID: 199315809523895524}
-  - component: {fileID: 82516241007848222}
   - component: {fileID: 114740085848767584}
   m_Layer: 0
   m_Name: Crater
@@ -39966,102 +39944,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!82 &82516241007848222
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891696586959850}
-  m_Enabled: 0
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bfca528ec585a864ebff437b4ab6d80e, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 5
-  MaxDistance: 50
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -2.5890806
-      outSlope: -2.5890806
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.109433964
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.041666668
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &114740085848767584
 MonoBehaviour:
   m_ObjectHideFlags: 0

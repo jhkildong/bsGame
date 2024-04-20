@@ -1,11 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Yeon;
 
-public class OrditalWeaponBOTS_Bullet : Bless
+public class OrditalWeaponBOTS_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
+
+    float Ak;
+
+    private void OnEnable()
+    {
+        OrditalWeaponBOTS forwardWeaponBOTS = FindObjectOfType<OrditalWeaponBOTS>();
+        if (forwardWeaponBOTS != null)
+        {
+            Ak = forwardWeaponBOTS.Ak;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +24,7 @@ public class OrditalWeaponBOTS_Bullet : Bless
             IDamage<Monster> obj = other.GetComponent<IDamage<Monster>>();
             if (obj != null)
             {
-                obj.TakeDamage((short)Mathf.Round(Ak));
+                obj.TakeDamage(Ak);
             }
         }
     }
