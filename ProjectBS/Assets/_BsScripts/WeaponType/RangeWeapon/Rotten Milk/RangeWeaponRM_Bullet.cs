@@ -1,22 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Yeon;
 
-public class RangeWeaponRM_Bullet : Bless
+public class RangeWeaponRM_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
 
-    public float delayTime = 1.0f;
-    public float atRange = 2.0f;
-    float inTime = 0.0f;
+    float Ak;
+    float delayTime;
+    float atRange;
 
-    
+    float inTime = 0.0f;
+    private void OnEnable()
+    {
+        RangeWeaponRM rangeWeaponRM = FindObjectOfType<RangeWeaponRM>();
+        if (rangeWeaponRM != null)
+        {
+            Ak = rangeWeaponRM.Ak;
+            delayTime = rangeWeaponRM.DelayTime;
+            atRange = rangeWeaponRM.AtRange;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (inTime >= delayTime)
         {
             OnAttacking();
+            inTime = 0.0f;
         }
     }
 
@@ -41,9 +52,10 @@ public class RangeWeaponRM_Bullet : Bless
             IDamage<Monster> obj = col.GetComponent<IDamage<Monster>>();
             if (obj != null)
             {
-                obj.TakeDamage((short)Mathf.Round(Ak));
-                inTime = 0.0f;
+                obj.TakeDamage(Ak);
             }
         }
     }
+
+
 }

@@ -1,30 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
+using Yeon;
 
-public class OrditalWeaponBOTS : MonoBehaviour
+public class OrditalWeaponBOTS : Bless
 {
     public Transform myTarget; // 따라갈 타겟
     public GameObject weaponPrefab; // 생성한 프리펩
-    public float rotSpeed = 30.0f; // 공전 속도
-    public float attakRange = 1.0f; // 범위
 
-    public short Level = 0;
-    short weaponCount = 0;
+    public float AtRange { get => _atRange; set => _atRange = value; }
+    public float RotSpeed { get => _rotSpeed; set => _rotSpeed = value; }
+
+    [SerializeField] private float _rotSpeed; // 플레이어로부터 무기 생성거리
+    [SerializeField] private float _atRange; // 플레이어로부터 무기 생성거리
+
+    short Level = 0;
     short Count = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        Level = weaponCount = Count = 0;
+        Level = Count = 0;
         if (myTarget != null) transform.SetParent(myTarget);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up, -rotSpeed * Time.deltaTime); // 공전
+        transform.Rotate(Vector3.up, -RotSpeed * Time.deltaTime); // 공전
         SwitchUpdate();
     }
 
@@ -43,16 +48,16 @@ public class OrditalWeaponBOTS : MonoBehaviour
         switch (Level)
         {
             case 1:  //  1개 생성
-                if (weaponCount < 1)
+                if (Amount < 1)
                 {
-                    weaponCount++;
+                    Amount++;
                     SpawnWeapon();
                 }
                 break;
             case 2:  //  2개가 된다.
-                if (weaponCount < 2)
+                if (Amount < 2)
                 {
-                    weaponCount++;
+                    Amount++;
                     SpawnWeapon();
                 }
                 break;
@@ -64,9 +69,9 @@ public class OrditalWeaponBOTS : MonoBehaviour
                 }
                 break;
             case 4:  //  3개가 된다.
-                if (weaponCount < 3)
+                if (Amount < 3)
                 {
-                    weaponCount++;
+                    Amount++;
                     SpawnWeapon();
                 }
                 break;
@@ -74,7 +79,7 @@ public class OrditalWeaponBOTS : MonoBehaviour
                 if (Count < 1)
                 {
                     Count++;
-                    rotSpeed += rotSpeed * 0.5f;
+                    RotSpeed += RotSpeed * 0.5f;
                     Debug.Log("회전속도 50% 증가");
                 }
                 break;
@@ -86,9 +91,9 @@ public class OrditalWeaponBOTS : MonoBehaviour
                 }
                 break;
             case 7:  //  4개가 된다.
-                if (weaponCount < 4)
+                if (Amount < 4)
                 {
-                    weaponCount++;
+                    Amount++;
                     SpawnWeapon();
                 }
                 break;
@@ -99,7 +104,8 @@ public class OrditalWeaponBOTS : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        GameObject bulletBOTS = Instantiate(weaponPrefab, transform); // 무기 생성
+        GameObject bullet = Instantiate(weaponPrefab, transform); // 무기 생성
+        bullet.transform.localScale = new Vector3(Size, Size, Size);
 
         // 생성한 무기 간격을 일정하게 맞춤.
         int childCount = transform.childCount;
@@ -109,8 +115,9 @@ public class OrditalWeaponBOTS : MonoBehaviour
             Transform child = transform.GetChild(i);
             Vector3 eulerAngle = child.localRotation.eulerAngles;
             Vector3 direction = Quaternion.Euler(0, angleStep * i, 0) * transform.forward;
-            child.position = transform.position + direction * attakRange;
-            child.localRotation = Quaternion.Euler(eulerAngle.x, angleStep * i, eulerAngle.z);
+            child.position = transform.position + direction * AtRange;
+            child.localRotation = Quaternion.Euler(eulerAngle.x, angleStep * i, eulerAngle.z); // 프리팹 rotation을 타켓쪽으로 맞춤.
+
         }
     }
 }

@@ -25,7 +25,6 @@ public class ForwardWeaponLD_Bullet : MonoBehaviour
             if (obj != null)
             {
                 obj.TakeDamage(Ak);
-                Destroy(gameObject);
             }
         }
     }

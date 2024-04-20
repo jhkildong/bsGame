@@ -1,6 +1,8 @@
 [System.Flags]
 public enum BSLayerMasks
 {
+    PlayerAttackEffect = 1 << 12,
+    PerceptionField = 1 << 13,
     Player = 1 << 14,
     Monster = 1 << 15,
     MagneticField = 1 << 16,
@@ -13,6 +15,8 @@ public enum BSLayerMasks
 
 public enum BSLayers
 {
+    PlayerAttackEffect = 12,
+    PerceptionField = 13,
     Player = 14,
     Monster = 15,
     MagneticField = 16,

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5875949191823715278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6460150767888953508}
+  - component: {fileID: 7962120819172675497}
+  m_Layer: 0
+  m_Name: BOFS Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6460150767888953508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875949191823715278}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7962120819172675497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875949191823715278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1efebd1dfc575c4183341c478ade05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: e85c46f4cc170b14bacebad36ec39bf5, type: 2}
+  _attack: 0
+  _size: 0
+  _amount: 0
+  _blessPrefab: {fileID: 0}
+  _levelProp:
+    states: 0000000000
+    _levelTables: []
+    SerializablePropertyInfos:
+    - TypeName: OrditalWeaponBOTS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: AtRange
+    - TypeName: OrditalWeaponBOTS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: RotSpeed
+    - TypeName: OrditalWeaponBOTS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Ak
+    - TypeName: OrditalWeaponBOTS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Size
+    - TypeName: OrditalWeaponBOTS, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: Amount
+    PropertyNames:
+    - AtRange
+    - RotSpeed
+    - Ak
+    - Size
+    - Amount
+  myTarget: {fileID: 0}
+  weaponPrefab: {fileID: 6901338954309393824, guid: 261c8cbcf24acd54a9cd9181b81bc836, type: 3}
+  _rotSpeed: 130
+  _atRange: 1

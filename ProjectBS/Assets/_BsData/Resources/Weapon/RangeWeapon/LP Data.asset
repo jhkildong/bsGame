@@ -14,24 +14,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
-  _attack: 100
+  _attack: 30
   _size: 0
-  _prefab: {fileID: 9153839096617298766, guid: 11095c10c25f4a04d855ea0774c194b0, type: 3}
-  _bless: {fileID: -1456059112586184346, guid: 11095c10c25f4a04d855ea0774c194b0, type: 3}
+  _prefab: {fileID: 5824648880119881452, guid: 66e157a978cf4b6429d841138b8a24e9, type: 3}
+  _bless: {fileID: 1832982482314295655, guid: 66e157a978cf4b6429d841138b8a24e9, type: 3}
   LevelProp:
-    states: 000000
+    states: 0000000000000000
     _levelTables: []
     SerializablePropertyInfos:
-    - TypeName: RangeWeaponLP_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: RangeWeaponLP, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: ReTime
+    - TypeName: RangeWeaponLP, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: WaitTime
+    - TypeName: RangeWeaponLP, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: DelayTime
+    - TypeName: RangeWeaponLP, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: DestroyTime
+    - TypeName: RangeWeaponLP, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: AtRange
+    - TypeName: RangeWeaponLP, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Ak
-    - TypeName: RangeWeaponLP_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: RangeWeaponLP, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Size
-    - TypeName: RangeWeaponLP_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: RangeWeaponLP, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Amount
     PropertyNames:
+    - ReTime
+    - WaitTime
+    - DelayTime
+    - DestroyTime
+    - AtRange
     - Ak
     - Size
     - Amount

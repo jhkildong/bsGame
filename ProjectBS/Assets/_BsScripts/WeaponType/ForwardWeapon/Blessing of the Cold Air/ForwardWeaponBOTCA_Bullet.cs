@@ -23,7 +23,6 @@ public class ForwardWeaponBOTCA_Bullet : MonoBehaviour
             if (obj != null)
             {
                 obj.TakeDamage(Ak);
-                Destroy(gameObject);
             }
         }
     }

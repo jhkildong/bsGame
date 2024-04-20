@@ -24,7 +24,7 @@ public class WizardAnimSet : MonoBehaviour
         {
             if (weight < 1.0f)
             {
-                weight += Time.deltaTime * 10;
+                weight += Time.deltaTime * 2;
                 weight = Mathf.Min(weight, 1.0f);
             }
             myAnim.SetIKPositionWeight(AvatarIKGoal.RightHand, weight);
@@ -33,10 +33,10 @@ public class WizardAnimSet : MonoBehaviour
         {
             if (weight > 0.0f)
             {
-                weight -= Time.deltaTime * 10;
+                weight -= Time.deltaTime * 2;
                 weight = Mathf.Max(weight, 0.0f);
             }
-            myAnim.SetIKPositionWeight(AvatarIKGoal.RightHand, 0.0f);
+            myAnim.SetIKPositionWeight(AvatarIKGoal.RightHand, weight);
         }
     }
 

@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Yeon;
 
-public class RangeWeaponBOL_Bullet : Bless
+public class RangeWeaponBOL_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
-    
+    float Ak;
+
+    private void OnEnable()
+    {
+        RangeWeaponBOL rangeWeaponBOL = FindObjectOfType<RangeWeaponBOL>();
+        if (rangeWeaponBOL != null)
+        {
+            Ak = rangeWeaponBOL.Ak;
+        }
+    }
+
     private void OnTriggerEnter(Collider other) // ´ë¹ÌÁö
     {
         if ((Monster & 1 << other.gameObject.layer) != 0)
@@ -14,7 +23,7 @@ public class RangeWeaponBOL_Bullet : Bless
             IDamage<Monster> obj = other.GetComponent<IDamage<Monster>>();
             if (obj != null)
             {
-                obj.TakeDamage((short)Mathf.Round(Ak));
+                obj.TakeDamage(Ak);
             }
         }
     }

@@ -19,7 +19,7 @@ public class ForwardWeaponVG : Bless
     public float MinRange { get => _minRange; set => _minRange = value; }
 
     [SerializeField] private float _reTime; // 공격속도
-    [SerializeField] private float _waitTime; // 다음 프리펩 재생성시간
+    [SerializeField] private float _waitTime; // 재생성 시간
     [SerializeField] private float _destroyTime; // 생성한 무기 없는 시간
     [SerializeField] private float _atRange; // 플레이어로부터 무기 생성거리
     [SerializeField] private float _maxRange; // 최대 폭
@@ -59,14 +59,19 @@ public class ForwardWeaponVG : Bless
         switch (Level)
         {
             case 1:  //  1개 생성
+                if (Count < 1)
+                {
+                    Count++;
+                    Amount++;
+                }
                 if (time >= ReTime)
                 {
                     time = 0.0f;
-                    SpawnWeapon();
+                    StartCoroutine(SpawnMultipleWeapons(Amount));
                 }
                 break;
             case 2:  //  2개가 된다.
-                if (Count < 2)
+                if (Count < 1)
                 {
                     Count++;
                     Amount++;
@@ -142,19 +147,10 @@ public class ForwardWeaponVG : Bless
         }
     }
 
-    IEnumerator SpawnMultipleWeapons(int v)
-    {
-        for (int i = 0; i < v; i++)
-        {
-            SpawnWeapon();
-            yield return new WaitForSeconds(WaitTime);
-        }
-    }
-
     private void SpawnWeapon()
     {
 
-        GameObject bulletVG = Instantiate(weaponPrefab, transform); // 무기 생성
+        GameObject bullet = Instantiate(weaponPrefab, transform); // 무기 생성
         int childCount = transform.childCount;
         for (int i = 0; i < childCount; ++i)
         {
@@ -163,10 +159,18 @@ public class ForwardWeaponVG : Bless
             float randomXPos = Random.Range(MinRange, MaxRange); // 랜덤 최소, 최대 폭 설정
             child.position = transform.position + new Vector3(randomXPos, 0.0f, 0.0f) + direction * AtRange;
 
-            child.localScale = new Vector3(Size, Size, Size);
+            bullet.transform.localScale = new Vector3(Size, Size, Size);
         }
-        bulletVG.transform.SetParent(null);
-        Destroy(bulletVG, DestroyTime);
+        bullet.transform.SetParent(null);
+        Destroy(bullet, DestroyTime);
+    }
 
+    IEnumerator SpawnMultipleWeapons(int v)
+    {
+        for (int i = 0; i < v; i++)
+        {
+            SpawnWeapon();
+            yield return new WaitForSeconds(WaitTime);
+        }
     }
 }
