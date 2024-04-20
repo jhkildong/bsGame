@@ -14,24 +14,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
-  _attack: 100
-  _size: 0
-  _prefab: {fileID: 4883506980111705528, guid: 6639277b3f14e8842982310f2b70866a, type: 3}
-  _bless: {fileID: -1049751078385639422, guid: 6639277b3f14e8842982310f2b70866a, type: 3}
+  _attack: 10
+  _size: 2
+  _prefab: {fileID: 1345635395758532283, guid: 74c555f52e0e4454e99b8349ba2d27be, type: 3}
+  _bless: {fileID: 5448120426374311839, guid: 74c555f52e0e4454e99b8349ba2d27be, type: 3}
   LevelProp:
-    states: 000000
+    states: 00000000000000000000
     _levelTables: []
     SerializablePropertyInfos:
-    - TypeName: OrditalWeaponPF_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: ReTime
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: WaitTime
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: DestroyTime
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: AtRange
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: RotSpeed
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: BulletSpeed
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: ArrowAmount
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Ak
-    - TypeName: OrditalWeaponPF_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Size
-    - TypeName: OrditalWeaponPF_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: OrditalWeaponPF, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Amount
     PropertyNames:
+    - ReTime
+    - WaitTime
+    - DestroyTime
+    - AtRange
+    - RotSpeed
+    - BulletSpeed
+    - ArrowAmount
     - Ak
     - Size
     - Amount

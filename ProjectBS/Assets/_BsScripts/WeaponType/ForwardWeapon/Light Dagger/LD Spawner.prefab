@@ -50,7 +50,7 @@ MonoBehaviour:
   _amount: 0
   _blessPrefab: {fileID: 0}
   _levelProp:
-    states: 0000000000
+    states: 000000000000
     _levelTables: []
     SerializablePropertyInfos:
     - TypeName: ForwardWeaponLD, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
@@ -59,6 +59,9 @@ MonoBehaviour:
     - TypeName: ForwardWeaponLD, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: WaitTime
+    - TypeName: ForwardWeaponLD, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: DestroyTime
     - TypeName: ForwardWeaponLD, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Ak
@@ -71,13 +74,14 @@ MonoBehaviour:
     PropertyNames:
     - ReTime
     - WaitTime
+    - DestroyTime
     - Ak
     - Size
     - Amount
+  clonesParent: {fileID: 0}
   myTarget: {fileID: 0}
   myRotate: {fileID: 0}
   weaponPrefab: {fileID: 8956203174936637677, guid: 354a9f4e48ad99c499afb50262a89459, type: 3}
-  clonesParent: {fileID: 0}
   _reTime: 2
   _waitTime: 0.05
   _destroyTime: 10

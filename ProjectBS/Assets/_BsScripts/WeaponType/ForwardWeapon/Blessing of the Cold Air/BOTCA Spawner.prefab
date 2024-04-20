@@ -78,10 +78,10 @@ MonoBehaviour:
     - Ak
     - Size
     - Amount
+  clonesParent: {fileID: 0}
   myTarget: {fileID: 0}
   myRotate: {fileID: 0}
   weaponPrefab: {fileID: 3278610813507465420, guid: 0c8e7c177d79d79438452946f1f2ba26, type: 3}
-  clonesParent: {fileID: 0}
   _reTime: 2
   _waitTime: 0.05
   _destroyTime: 10

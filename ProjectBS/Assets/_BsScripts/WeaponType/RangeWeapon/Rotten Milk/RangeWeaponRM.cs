@@ -1,20 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yeon;
 
-public class RangeWeaponRM : MonoBehaviour
+public class RangeWeaponRM : Bless
 {
     public Transform myTarget; // 따라갈 타겟
     public GameObject objectPrefab; // 생성할 프리펩
+    public Color GizmosColor = Color.black;
 
-    public short Level = 0;
-    short weaponCount = 0; // 무기 개수
+    public float DelayTime { get => _delayTime; set => _delayTime = value; }
+    public float AtRange { get => _atRange; set => _atRange = value; }
+
+    [SerializeField] private float _delayTime; // 재 공격시간
+    [SerializeField] private float _atRange; // 공격범위
+
+    short Level = 0;
     short Count = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        Level = weaponCount = Count = 0;
+        Level = Count = 0;
         if (myTarget != null) transform.SetParent(myTarget);
     }
 
@@ -39,9 +46,9 @@ public class RangeWeaponRM : MonoBehaviour
         switch (Level)
         {
             case 1:  //  1개 생성
-                if (weaponCount < 1)
+                if (Amount < 1)
                 {
-                    weaponCount++;
+                    Amount++;
                     SpawnWeapon();
                 }
                 break;
@@ -93,6 +100,6 @@ public class RangeWeaponRM : MonoBehaviour
 
     private void SpawnWeapon()
     {
-        GameObject bulletRM = Instantiate(objectPrefab, transform); // 무기 생성
+        Instantiate(objectPrefab, transform); // 무기 생성
     }
 }

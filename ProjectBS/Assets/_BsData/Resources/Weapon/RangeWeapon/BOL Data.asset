@@ -14,24 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
-  _attack: 100
-  _size: 0
-  _prefab: {fileID: 1029683450922114, guid: 8f9cc77adc813124893056f91992f7f3, type: 3}
-  _bless: {fileID: -7548047708892593034, guid: 8f9cc77adc813124893056f91992f7f3, type: 3}
+  _attack: 30
+  _size: 1
+  _prefab: {fileID: 2365774773641346219, guid: 337bdc6c500ff8f47a1fcb5876a76e03, type: 3}
+  _bless: {fileID: 9163909094862456878, guid: 337bdc6c500ff8f47a1fcb5876a76e03, type: 3}
   LevelProp:
-    states: 000000
+    states: 00000000000000
     _levelTables: []
     SerializablePropertyInfos:
-    - TypeName: RangeWeaponBOL_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: RangeWeaponBOL, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: ReTime
+    - TypeName: RangeWeaponBOL, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: WaitTime
+    - TypeName: RangeWeaponBOL, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: DestroyTime
+    - TypeName: RangeWeaponBOL, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: AtRange
+    - TypeName: RangeWeaponBOL, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Ak
-    - TypeName: RangeWeaponBOL_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: RangeWeaponBOL, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Size
-    - TypeName: RangeWeaponBOL_Bullet, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    - TypeName: RangeWeaponBOL, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Amount
     PropertyNames:
+    - ReTime
+    - WaitTime
+    - DestroyTime
+    - AtRange
     - Ak
     - Size
     - Amount

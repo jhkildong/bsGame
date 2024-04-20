@@ -15,13 +15,31 @@ MonoBehaviour:
   _id: 0
   _name: 
   _attack: 30
-  _size: 5
+  _size: 2
   _prefab: {fileID: 3662512694256035027, guid: 905ea63628a7b2242be117044394d3a8, type: 3}
   _bless: {fileID: 1605225607963631048, guid: 905ea63628a7b2242be117044394d3a8, type: 3}
   LevelProp:
-    states: 000000
+    states: 000000000000000000
     _levelTables: []
     SerializablePropertyInfos:
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: ReTime
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: WaitTime
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: DestroyTime
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: AtRange
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: MaxRange
+    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      PropertyName: MinRange
     - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       PropertyName: Ak
@@ -32,6 +50,12 @@ MonoBehaviour:
         PublicKeyToken=null
       PropertyName: Amount
     PropertyNames:
+    - ReTime
+    - WaitTime
+    - DestroyTime
+    - AtRange
+    - MaxRange
+    - MinRange
     - Ak
     - Size
     - Amount
