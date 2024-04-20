@@ -27,6 +27,6 @@ MonoBehaviour:
     dropChance: 0
   - ID: 2
     dropChance: 100
-  - ID: 3
+  - ID: 6
     dropChance: 0
   _type: 1
