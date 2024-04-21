@@ -62,8 +62,13 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
     }
     public void SetBuildingStat()
     {
+        _id = Data.ID;
+        _buildingName = Data.buildingName;
         _maxHp = Data.maxHp;
         _curHp = Data.curHp;
+        _requireWood = Data.requireWood;
+        _requireStone = Data.requireStone;
+        _requireIron = Data.requireIron;
         _constTime = Data.constTime;
         _repairSpeed = Data.repairSpeed;
         layerNum = LayerMask.NameToLayer("Building");
@@ -169,7 +174,7 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
         }
     }
 
-    void Destroy()
+    protected virtual void Destroy()
     {
 
         Destroy(gameObject);

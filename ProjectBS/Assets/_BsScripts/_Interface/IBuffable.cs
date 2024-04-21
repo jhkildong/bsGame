@@ -5,25 +5,24 @@ using UnityEngine;
     public interface IBuffable
     {
         Buff getBuff { get; set; }
-        /*
-        void AtkBuff(float buff){}// 공격력 버프
-        void HPBuff(float buff) {} // 체력 버프
-        void ASBuff(float buff) {} // 공격속도 버프
-        void MSBuff(float buff) {} // 이동속도 버프
-        */
     }
 
     public class Buff
     {
-        public List<float> aktBuffList;
-        public float atkBuff;
+        public List<float> atkBuffList = new List<float>();
+        public Dictionary<string, float> atkBuffDict = new Dictionary<string,float>();
+        public float atkBuff = 1.0f;//공격력 버프
 
-        public List<float> hpBuffList;
-        public float hpBuff;
+        public List<float> hpBuffList = new List<float>();
+        public Dictionary<string, float> hpBuffDict = new Dictionary<string, float>();
+        public float hpBuff = 1.0f;//체력 버프
 
-        public List<float> asBuffList;
-        public float asBuff;
+        public List<float> asBuffList = new List<float>();
+        public Dictionary<string, float> asBuffDict = new Dictionary<string, float>();
+        public float asBuff = 1.0f; //공속 버프
     
-        public List<float> msBuffList;
-        public float msBuff;
+        public List<float> msBuffList = new List<float>();
+        public Dictionary<string, float> msBuffDict = new Dictionary<string, float>();
+        public float msBuff = 1.0f; //이속 버프
+
     }

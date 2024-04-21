@@ -35,7 +35,7 @@ public class AttackBuildingBase : Building, IBuffable
    
     protected Vector3 relativeDir; // 투사체를 발사할 방향벡터
 
-    public Buff getBuff { get; set; }
+    public Buff getBuff { get; set; } = new Buff();
     
 
     /*
@@ -82,7 +82,7 @@ public class AttackBuildingBase : Building, IBuffable
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (iscompletedBuilding && (atkType == AtkType.Area))
+        if (iscompletedBuilding && atkType == AtkType.Area)
         {
             SetAttackTarget(other);
         }

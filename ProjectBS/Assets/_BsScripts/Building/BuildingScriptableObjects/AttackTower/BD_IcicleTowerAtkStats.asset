@@ -15,7 +15,7 @@ MonoBehaviour:
   _atkPower: 5
   _atkDelay: 0.5
   _atkProjectileSize: 1
-  _atkProjectileSpeed: 5
+  _atkProjectileSpeed: 20
   _atkProjectileRange: 15
   _atkCanPen: 1
   _atkPenCount: 3

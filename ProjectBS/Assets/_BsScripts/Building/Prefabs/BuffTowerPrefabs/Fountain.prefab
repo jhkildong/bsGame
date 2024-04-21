@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1737947968390310693}
-  - component: {fileID: 6792679281614560340}
   - component: {fileID: 853323928690611369}
   - component: {fileID: 9012588309949874432}
-  - component: {fileID: 1707699927708083093}
+  - component: {fileID: 1337456092942012982}
   m_Layer: 25
   m_Name: Fountain
   m_TagString: Untagged
@@ -30,66 +29,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8856745492815549937}
-  - {fileID: 7019879198227176338}
-  - {fileID: 6636024952962194980}
-  - {fileID: 1737947968465425753}
-  - {fileID: 1737947968110034850}
-  - {fileID: 4153313241519715841}
-  - {fileID: 2452008249074437446}
+  - {fileID: 5773726379866514421}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &6792679281614560340
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393229479709798815}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 1.9292123, z: 0.89056635}
-  m_Size: 8.700899
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.25
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 1751051338565017289}
-    - renderer: {fileID: 600459400172307661}
-    - renderer: {fileID: 600459399854665270}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-  - screenRelativeHeight: 0.125
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 4446396353697483695}
-    - renderer: {fileID: 600459400172307661}
-    - renderer: {fileID: 600459399854665270}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-  - screenRelativeHeight: 0.07944959
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 8644197059636476598}
-    - renderer: {fileID: 600459400172307661}
-    - renderer: {fileID: 600459399854665270}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-    - renderer: {fileID: 0}
-  m_Enabled: 1
 --- !u!114 &853323928690611369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,8 +95,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &1707699927708083093
-BoxCollider:
+--- !u!135 &1337456092942012982
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -169,7 +114,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 1, z: 4}
+  m_Radius: 1.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3182754575243430247
 GameObject:
@@ -202,7 +147,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1737947968390310693}
+  m_Father: {fileID: 5773726379866514421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1153234439215805419
 MeshFilter:
@@ -285,7 +230,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1737947968390310693}
+  m_Father: {fileID: 5773726379866514421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1769199099154926880
 MeshFilter:
@@ -368,7 +313,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1737947968390310693}
+  m_Father: {fileID: 5773726379866514421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7943366514601748495
 MeshFilter:
@@ -420,6 +365,93 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6487758682555731857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5773726379866514421}
+  - component: {fileID: 6707509220862975085}
+  m_Layer: 0
+  m_Name: FountainBody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5773726379866514421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487758682555731857}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8856745492815549937}
+  - {fileID: 7019879198227176338}
+  - {fileID: 6636024952962194980}
+  - {fileID: 1737947968465425753}
+  - {fileID: 1737947968110034850}
+  - {fileID: 4153313241519715841}
+  - {fileID: 2452008249074437446}
+  m_Father: {fileID: 1737947968390310693}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &6707509220862975085
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487758682555731857}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 1.9292123, z: 0.89056635}
+  m_Size: 8.700899
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.25
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1751051338565017289}
+    - renderer: {fileID: 600459400172307661}
+    - renderer: {fileID: 600459399854665270}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+  - screenRelativeHeight: 0.125
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4446396353697483695}
+    - renderer: {fileID: 600459400172307661}
+    - renderer: {fileID: 600459399854665270}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+  - screenRelativeHeight: 0.07944959
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 8644197059636476598}
+    - renderer: {fileID: 600459400172307661}
+    - renderer: {fileID: 600459399854665270}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+    - renderer: {fileID: 0}
+  m_Enabled: 1
 --- !u!1 &8685505747858451956
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +482,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1737947968390310693}
+  m_Father: {fileID: 5773726379866514421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &5780940269258148277
 SphereCollider:
@@ -479,7 +511,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1737947968390310693}
+    m_TransformParent: {fileID: 5773726379866514421}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d09e23cb627146a468d473d4471a898f, type: 3}
       propertyPath: m_RootOrder
@@ -554,7 +586,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1737947968390310693}
+    m_TransformParent: {fileID: 5773726379866514421}
     m_Modifications:
     - target: {fileID: 237589483555932282, guid: addf4df4d59a5514fb0eb6abd1550c50, type: 3}
       propertyPath: m_Name
@@ -636,7 +668,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1737947968390310693}
+    m_TransformParent: {fileID: 5773726379866514421}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c38e3cbd04988a241b8e9d2d2fd41860, type: 3}
       propertyPath: m_RootOrder

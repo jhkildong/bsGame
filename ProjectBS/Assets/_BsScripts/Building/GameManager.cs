@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI myStoneCount;
     public TextMeshProUGUI myIronCount;
 
+    public Transform playerTransform;
 
     public bool gameStart;
     public bool gameOver;
