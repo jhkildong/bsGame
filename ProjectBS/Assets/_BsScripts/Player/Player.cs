@@ -94,7 +94,7 @@ public class Player : Combat, IDamage<Player>
 
     #region Init Setting
     ////////////////////////////////InitSetting////////////////////////////////
-    private void InitPlayerSetting()
+    public void InitPlayerSetting()
     {
         if (Com == null)
             Com = GetComponentInChildren<PlayerComponent>();
@@ -106,12 +106,13 @@ public class Player : Combat, IDamage<Player>
         effectData.renderers[0] = Com.Myrenderer;
         effectData.mainTexture = Com.Myrenderer.material.mainTexture;
         attackMask = (int)BSLayerMasks.Monster;
-        ObjectPoolManager.Instance.SetPool(Com.MyEffects, 10, 10);
+        ObjectPoolManager.Instance.SetPool(Com.MyEffect, 10, 10);
 
         rBody.mass = 50.0f;
         rBody.constraints |= RigidbodyConstraints.FreezeRotationY;
 
-
+        Com.MyAnimEvent.AttackAct += SetEffectAttack;
+        Com.MyAnimEvent.AttackAct += Com.OnAttackPoint;
         #region PlayerInputsCallback Setting
         ////////////////////////////////PlayerInputsCallbackSetting////////////////////////////////
         playerInputs = new PlayerInputs();
@@ -164,18 +165,6 @@ public class Player : Combat, IDamage<Player>
 
     #region Unity Event
     ////////////////////////////////UnityEvent////////////////////////////////
-    protected override void Awake()
-    {
-        base.Awake();
-        InitPlayerSetting();
-    }
-
-    private void Start()
-    {
-        Com.MyAnimEvent.AttackAct += SetEffectAttack;
-        Com.MyAnimEvent.AttackAct += Com.OnAttackPoint;
-    }
-
     private void Update()
     {
         //Á×Àº »óÅÂ¸é return

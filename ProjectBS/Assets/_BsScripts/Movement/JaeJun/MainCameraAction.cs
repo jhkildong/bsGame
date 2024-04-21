@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainCameraAction : MonoBehaviour
 {
-    public GameObject Target;
+    public Transform Target;
 
     public float offsetX = 0.0f;
     public float offsetY = 10.0f;
@@ -27,10 +27,12 @@ public class MainCameraAction : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Target == null)
+            return;
         TargetPos = new Vector3(
-            Target.transform.position.x + offsetX,
-            Target.transform.position.y + offsetY,
-            Target.transform.position.z + offsetZ);
+            Target.position.x + offsetX,
+            Target.position.y + offsetY,
+            Target.position.z + offsetZ);
         transform.position = Vector3.Lerp(transform.position, TargetPos, 
             Time.deltaTime * cameraSpeed);
     }

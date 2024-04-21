@@ -47,7 +47,7 @@ namespace Yeon
         #region DamageEffect
         ////////////////////////////////DamageEffect////////////////////////////////
         [System.Serializable]
-        public class EffectData
+        public class HitEffectData
         {
             public int effectCount = 3;
             public float effectTime = 0.1f;
@@ -78,8 +78,8 @@ namespace Yeon
                 }
             }
         }
-        public EffectData effectData => _effectData;
-        [SerializeField]private EffectData _effectData = new();
+        public HitEffectData effectData => _effectData;
+        [SerializeField]private HitEffectData _effectData = new();
         private Coroutine _onDamageEffect;
         #endregion
 
