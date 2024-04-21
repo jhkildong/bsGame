@@ -16,6 +16,6 @@ MonoBehaviour:
   _id: 10
   _name: 
   _value: 0
-  _prefab: {fileID: 6178760419957704234, guid: 11b5450465756e045accc4ff9db38e71, type: 3}
+  _prefab: {fileID: 6178760419957704234, guid: bcf98f7e817f6644eb607a4fec713b76, type: 3}
   itemType: 1
   _exprate: 0

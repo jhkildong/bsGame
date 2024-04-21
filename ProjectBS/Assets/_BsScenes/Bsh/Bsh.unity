@@ -865,6 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A: {x: 0, y: 0, z: 0}
+  itemprefab: {fileID: 7027973725108082282, guid: b0069946ad1ab0149a248592794d49fc, type: 3}
 --- !u!65 &348444943
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2461,6 +2462,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0109303894450c48a1a9feb44155fec, type: 3}
   m_PrefabInstance: {fileID: 1086161313}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1498639609 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: c0109303894450c48a1a9feb44155fec, type: 3}
+  m_PrefabInstance: {fileID: 1086161313}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1498639610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2476,7 +2482,7 @@ MonoBehaviour:
   target: {fileID: 0}
   Hp: 0
   firePrefab: {fileID: 5013878782555061258, guid: 6a52a05a9431b0b4389128b8592defaf, type: 3}
-  animator: {fileID: 0}
+  animator: {fileID: 1498639609}
 --- !u!135 &1498639611
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3210,8 +3216,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - data: {fileID: 11400000, guid: 1cc8d47902f51fa47a5c7f5ac1a60dc2, type: 2}
-  - data: {fileID: 11400000, guid: 1cc8d47902f51fa47a5c7f5ac1a60dc2, type: 2}
   - data: {fileID: 11400000, guid: 10ffcfb7f7f689c439629a28b6eaaf6d, type: 2}
+  - data: {fileID: 11400000, guid: a90a4c8e9eaafa34e8d3020b2845cf56, type: 2}
   - data: {fileID: 11400000, guid: a90a4c8e9eaafa34e8d3020b2845cf56, type: 2}
   - data: {fileID: 11400000, guid: cda88bd40e245bf49b114d0cd40cd477, type: 2}
   - data: {fileID: 11400000, guid: 7696f5c3e683b4345a75a69d04471700, type: 2}

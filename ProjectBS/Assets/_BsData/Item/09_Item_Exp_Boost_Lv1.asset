@@ -16,6 +16,6 @@ MonoBehaviour:
   _id: 9
   _name: ExpBoost_Lv1
   _value: 10
-  _prefab: {fileID: 6178760419957704234, guid: e5cefbb2ba27328409d26f9faee3a6bc, type: 3}
+  _prefab: {fileID: 6178760419957704234, guid: 2b5cb0d3490de294da102bd3f0c4593f, type: 3}
   itemType: 1
   _exprate: 2

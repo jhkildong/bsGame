@@ -13,19 +13,10 @@ public class sampleAction : MonoBehaviour
     void Start()
     {
         Hp = 100;
-        StartCoroutine(CheckState());
         target = gameObject.transform.Find("Player");
-        animator = gameObject.GetComponent<Animator>();
+        StartCoroutine(CheckState());
+        //animator = gameObject.GetComponent<Animator>();
     }
-    void Update()
-    {
-        /*if(target != null)
-        {
-            dir = target.position - transform.position;
-            transform.position += dir.normalized * Time.deltaTime;
-        }*/
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         Hp -= 20;
@@ -38,13 +29,11 @@ public class sampleAction : MonoBehaviour
     void attackInSky()
     {
         Debug.Log("공격함");
-        //Vector3 go = transform.position - target.position;
         if(target != null)
         {
-            
-            //머리 위를 돈다.
-            //플레이어 위치에 공격한다
-            Instantiate(firePrefab, target.position, Quaternion.identity);
+            Vector3 randomPosition = target.position + Random.insideUnitSphere * 3f;
+            randomPosition.y = 0f;
+            Instantiate(firePrefab, randomPosition, Quaternion.identity);
             //위에 instantiate 대신 떨어지는 모션만 추가해서 데미지 넣음.
         }
     }
@@ -53,6 +42,8 @@ public class sampleAction : MonoBehaviour
         float elapsedTime = 0f;
         float duration = 3f;
         animator.SetTrigger("goAir");
+        Vector3 originPosition = transform.position;
+
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -60,7 +51,6 @@ public class sampleAction : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, height, transform.position.z), t);
             yield return null;
         }
-        Debug.Log("올라감.");
     }
 
     IEnumerator CheckState()
@@ -76,8 +66,12 @@ public class sampleAction : MonoBehaviour
                 Debug.Log("체력 60일때 모션");
                 firstPhase = false;
                 StartCoroutine(MoveHeight(10f));
-                attackInSky();
-                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < 3; i++)
+                {
+                    yield return new WaitForSeconds(2f);
+                    attackInSky();
+                }
+                yield return new WaitForSeconds(2f);
                 StartCoroutine(MoveHeight(originY));
             }
             if (Hp <= 30 && secondPhase)
@@ -85,8 +79,12 @@ public class sampleAction : MonoBehaviour
                 secondPhase = false;
                 Debug.Log("체력 30일때 모션");
                 StartCoroutine(MoveHeight(10f));
-                attackInSky();
-                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < 3; i++)
+                {
+                    yield return new WaitForSeconds(2f);
+                    attackInSky();
+                }
+                yield return new WaitForSeconds(2f);
                 StartCoroutine(MoveHeight(originY));
             }
             if (Hp <= 0)
@@ -97,4 +95,5 @@ public class sampleAction : MonoBehaviour
             yield return null;
         }
     }
+
 }
