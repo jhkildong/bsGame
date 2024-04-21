@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuffBuilding_Buff : BuffBuildingBase
+public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
 {
 
     [SerializeField] private BuffBuildingData BuffBuildingData;
@@ -12,26 +12,38 @@ public class BuffBuilding_Buff : BuffBuildingBase
         set { BuffBuildingData = value; }
     }
 
+    /*
     [SerializeField] private string buffName;
     [SerializeField] private float buffAmount;
     [SerializeField] private bool hasDuration;
     [SerializeField] private float duration;
     [SerializeField] private bool canStack;
+    */
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
+
         targetLayer = BData.targetLayer;
+        /*
         buffName = BData.buffName;
         buffAmount = BData.buffAmount;
         hasDuration = BData.hasDuration;
         duration = BData.duration;
         canStack = BData.canStack;
+        */
+        buffController = new BuffController(this, BData.buffName, BData.buffAmount, BData.hasDuration, BData.duration, BData.canStack);
     }
+
+    public BuffController buffController { get; set; }
+
 
     protected override void StartBuff(Collider other) // ontriggerenter시
     {
+        IBuffable buffable = other.GetComponent<IBuffable>();
+        buffController.StartBuff(buffable);
+        /*
         IBuffable buffable = other.GetComponent<IBuffable>();
         Debug.Log(buffable);
         if (buffable != null)
@@ -97,10 +109,14 @@ public class BuffBuilding_Buff : BuffBuildingBase
             buffable.getBuff = buff; // 버프 적용
             Debug.Log("버프됨" + buffName);
         }
-    }
+        */
+}
 
     protected override void RemoveBuff(Collider other)
     {
+        IBuffable buffable = other.GetComponent<IBuffable>();
+        buffController.RemoveBuff(buffable);
+        /*
         //targets 리스트에 해당 오브젝트가 있는지 체크
         IBuffable buffable = other.GetComponent<IBuffable>();
         Debug.Log(buffable);
@@ -119,13 +135,15 @@ public class BuffBuilding_Buff : BuffBuildingBase
             buffable.getBuff = buff; // 버프 적용
             Debug.Log("버프해제됨");
         }
+        */
     }
-
+    /*
     IEnumerator BuffTime(Buff buff, float dur)
     {
         yield return new WaitForSeconds(dur);
         buff.atkBuffDict.Remove(buffName); // 지속시간이 끝나면 버프 제거
     }
+    */
 
     protected override void Destroy() //파괴시 호출되는 Destroy함수. 파괴전에 주고있는 버프를 모두 제거한다
     {
@@ -144,7 +162,7 @@ public class BuffBuilding_Buff : BuffBuildingBase
                     }
                     // 버프 값 설정
                     //buff.atkBuffList.Add(buffAmount);
-                    buff.atkBuffDict.Remove(buffName); // 0419 수정중
+                    buff.atkBuffDict.Remove(buffController.BuffName); // 0419 수정중
 
                     buffable.getBuff = buff; // 버프 적용
                 }
@@ -152,4 +170,5 @@ public class BuffBuilding_Buff : BuffBuildingBase
             base.Destroy();
         }
     }
+
 }
