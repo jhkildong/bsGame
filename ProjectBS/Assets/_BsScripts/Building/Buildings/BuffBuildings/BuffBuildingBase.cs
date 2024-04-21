@@ -56,14 +56,27 @@ public class BuffBuildingBase : Building
             if (targets.Contains(other.gameObject))
             {
                 targets.Remove(other.gameObject);
+                RemoveBuff(other);
             }
         }
     }
 
-    protected virtual void StartBuff(Collider other)
+    protected virtual void StartBuff(Collider other) //자식에서 구현
     {
 
     }
+
+    protected virtual void RemoveBuff(Collider other)//자식에서 구현
+    {
+
+    }
+
+    protected override void Destroy()
+    {
+        base.Destroy();
+    }
+
+
 
     void activeHeal()
     {

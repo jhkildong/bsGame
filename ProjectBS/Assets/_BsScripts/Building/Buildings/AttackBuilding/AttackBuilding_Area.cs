@@ -47,6 +47,7 @@ public class AttackBuilding_Area : AttackBuildingBase
         if (target != null && !atkDelaying)
         {
             atkDelaying = true;
+
             StartCoroutine(AtkDelay(_atkDelay));
         }
     }
@@ -55,11 +56,17 @@ public class AttackBuilding_Area : AttackBuildingBase
     {
         Debug.Log("공격!");
         //여기를 이벤트로 호출할 함수를 추가해야됨.
-
-        float bd = getBuff.atkBuff;
-
+        float sumBuff = 0; // 버프의 합을 계산할 변수
         //버프 가산 계산하여 최종데미지 구하기.
-        _finalDmg = Mathf.Round((float)_atkPower * bd);
+        foreach (float buffs in getBuff.atkBuffDict.Values) //공버프 리스트의 값들을 모두 합연산
+        {
+            sumBuff += buffs;
+            Debug.Log("버프합산" + sumBuff);
+        }
+        getBuff.atkBuff = sumBuff;
+
+        _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
+        Debug.Log(_finalDmg);
         AtkEvent?.Invoke();
         yield return new WaitForSeconds(delay);
         atkDelaying = false;

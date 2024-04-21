@@ -12,26 +12,144 @@ public class BuffBuilding_Buff : BuffBuildingBase
         set { BuffBuildingData = value; }
     }
 
-    [SerializeField] private float buffAmount; // 버프량
+    [SerializeField] private string buffName;
+    [SerializeField] private float buffAmount;
+    [SerializeField] private bool hasDuration;
+    [SerializeField] private float duration;
+    [SerializeField] private bool canStack;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         targetLayer = BData.targetLayer;
+        buffName = BData.buffName;
         buffAmount = BData.buffAmount;
+        hasDuration = BData.hasDuration;
+        duration = BData.duration;
+        canStack = BData.canStack;
     }
 
-    protected override void StartBuff(Collider other)
+    protected override void StartBuff(Collider other) // ontriggerenter시
     {
         IBuffable buffable = other.GetComponent<IBuffable>();
+        Debug.Log(buffable);
         if (buffable != null)
         {
-            Buff buff = new Buff();
+            Buff buff = buffable.getBuff; // 기존의 버프 가져오기
+            if (buff == null)
+            {
+                buff = new Buff(); // 버프가 없으면 새로 생성
+            }
             // 버프 값 설정
-            buff.atkBuff = 1.5f; // 예시로 공격력 버프를 10으로 설정
-            buffable.getBuff = buff;
+            //buff.atkBuffList.Add(buffAmount);
+            if(canStack) // 중첩이 가능한 경우
+            {
+                if (hasDuration) // 지속시간이 있는 버프의 경우
+                {
+                    while (true)
+                    {
+                        if (buff.atkBuffDict.ContainsKey(buffName))
+                        {
+                            buffName += "1";
+                        }
+                        else
+                        {
+                            buff.atkBuffDict.Add(buffName, buffAmount); //버프 갱신
+                            StartCoroutine(BuffTime(buff, duration)); //버프 지속시간 코루틴
+                            break;
+                        }
+                    }
+                }
+                else // 지속시간이 없는 버프의 경우
+                {
+                        while (true)
+                        {
+                            if (buff.atkBuffDict.ContainsKey(buffName))
+                            {
+                                buffName += "1";
+                            }
+                            else
+                            {
+                                buff.atkBuffDict.Add(buffName, buffAmount); //버프 갱신
+                                break;
+                            }
+                        }
+                }
+            }
+            else // 중첩이 불가능한 경우
+            {
+                if (hasDuration) // 지속시간이 있는 버프의 경우
+                {
+                    buff.atkBuffDict.Remove(buffName);
+                    buff.atkBuffDict.Add(buffName, buffAmount); //버프 추가
+                   StartCoroutine(BuffTime(buff, duration)); //버프 지속시간 코루틴
+
+                }
+                else // 지속시간이 없는 버프의 경우
+                {
+                    buff.atkBuffDict.Remove(buffName);
+                    buff.atkBuffDict.Add(buffName, buffAmount); //버프 추가
+                }
+            }
             
+            //buff.atkBuffDict.Add(buffName, buffAmount); 
+            buffable.getBuff = buff; // 버프 적용
+            Debug.Log("버프됨" + buffName);
+        }
+    }
+
+    protected override void RemoveBuff(Collider other)
+    {
+        //targets 리스트에 해당 오브젝트가 있는지 체크
+        IBuffable buffable = other.GetComponent<IBuffable>();
+        Debug.Log(buffable);
+        if (buffable != null)
+        {
+            Buff buff = buffable.getBuff; // 기존의 버프 가져오기
+            if (buff == null)
+            {
+                //buff = new Buff(); // 버프가 없으면 새로 생성
+                return;
+            }
+            // 버프 값 설정
+            //buff.atkBuffList.Add(buffAmount);
+            buff.atkBuffDict.Remove(buffName); // 0419 수정중
+
+            buffable.getBuff = buff; // 버프 적용
+            Debug.Log("버프해제됨");
+        }
+    }
+
+    IEnumerator BuffTime(Buff buff, float dur)
+    {
+        yield return new WaitForSeconds(dur);
+        buff.atkBuffDict.Remove(buffName); // 지속시간이 끝나면 버프 제거
+    }
+
+    protected override void Destroy() //파괴시 호출되는 Destroy함수. 파괴전에 주고있는 버프를 모두 제거한다
+    {
+        if (targets.Count > 0)
+        {
+            foreach (GameObject target in targets) //targets list가 <GameObject>로 되어있다. 추후 Collider로 수정 가능할 경우 수정할 것.
+            {
+                IBuffable buffable = target.GetComponent<IBuffable>();
+                if (buffable != null)
+                {
+                    Buff buff = buffable.getBuff; // 기존의 버프 가져오기
+                    if (buff == null)
+                    {
+                        //buff = new Buff(); // 버프가 없으면 새로 생성
+                        return;
+                    }
+                    // 버프 값 설정
+                    //buff.atkBuffList.Add(buffAmount);
+                    buff.atkBuffDict.Remove(buffName); // 0419 수정중
+
+                    buffable.getBuff = buff; // 버프 적용
+                }
+            }
+            base.Destroy();
         }
     }
 }

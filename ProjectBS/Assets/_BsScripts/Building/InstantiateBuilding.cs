@@ -18,8 +18,11 @@ public class InstantiateBuilding : MonoBehaviour
     public GameObject selectBuilding; //선택한 건물 (UI 버튼을 누르면 해당 건물이 여기로 입력되어야함)
     public GameObject selectedBuilding;//건설위치를 정하기 위해 마우스를 따라다닐 표시를 위한 임시 건물
     Collider selectedBuildingCollider;//건설할 임시 건물의 콜라이더
-    BoxCollider checkBuildingCollider; // 건설가능 위치를 감지할 오브젝트의 Collider
+    BoxCollider checkBuildingBoxCollider; // 건설가능 위치를 감지할 오브젝트의 BoxCollider
+    SphereCollider checkBuildingSphereCollider; 
+    CapsuleCollider checkBuildingCapsuleCollider;
     public GameObject checkBuilding; //건설 가능 위치를 감지할 오브젝트
+    public Transform checkBuildingTransform; //건설 가능 위치를 감지할 오브젝트의 Transform 값. (scale 값을 사용하기 위해)
     public GameObject instBuilding; //실제로 생성될 건물
     bool isBuildReady;
     public bool canBuild;
@@ -38,6 +41,9 @@ public class InstantiateBuilding : MonoBehaviour
     {
         state = State.Normal;
         canBuild = true;
+        checkBuildingBoxCollider = checkBuilding.GetComponent<BoxCollider>();
+        checkBuildingSphereCollider = checkBuilding.GetComponent<SphereCollider>();
+        checkBuildingCapsuleCollider = checkBuilding.GetComponent<CapsuleCollider>();
     }
 
 
@@ -167,6 +173,9 @@ public class InstantiateBuilding : MonoBehaviour
         isBuildReady = false; // 건설대기상태 끝.
         ChangeState(State.Normal);//일반상태로 돌아간다.
         Destroy(selectedBuilding);//임시 오브젝트 파괴
+        checkBuildingBoxCollider.enabled = false;
+        checkBuildingCapsuleCollider.enabled = false;
+        checkBuildingSphereCollider.enabled = false;
         checkBuilding.SetActive(false);//콜라이더 체크 오브젝트 비활성화
     }
 
@@ -177,7 +186,8 @@ public class InstantiateBuilding : MonoBehaviour
 
         isBuildReady = true; // 건설 대기상태로 전환
         //selectedBuilding = Instantiate(selectBuilding, this.transform.position, Quaternion.identity); //임시 건물오브젝트 생성 (선택한 건물과 동일하게)
-        
+
+
         selectedBuilding = Instantiate(selectBuilding, this.transform.position, Quaternion.identity, checkBuilding.transform); //임시 건물오브젝트 생성 (선택한 건물과 동일하게)
         //selectedBuilding을 istrigger로 바꿔야됨.
 
@@ -187,16 +197,45 @@ public class InstantiateBuilding : MonoBehaviour
 
         selectedBuilding.transform.position = checkBuilding.transform.position; // 임시 건물 오브젝트의 위치를 조정 (충돌감지하는 오브젝트와 위치 맞추기)
         selectedBuilding.transform.rotation = checkBuilding.transform.rotation; // rotation맞추기
+
+
         selectedBuildingCollider = selectedBuilding.GetComponent<Collider>(); // 임시 건물의 콜라이더를 
         selectedBuildingCollider.enabled = false; //끈다.(임시건물은 충돌이 감지되면 안됨)
-        checkBuildingCollider = checkBuilding.GetComponent<BoxCollider>(); //충돌감지하는 오브젝트의 콜라이더를 가져와서
+        if(selectedBuildingCollider is BoxCollider)
+        {
+            //checkBuildingBoxCollider = checkBuilding.GetComponent<BoxCollider>(); //충돌감지하는 오브젝트의 콜라이더를 가져와서
+            checkBuildingBoxCollider.enabled = true; // 콜라이더 체크 활성화. endbuild()에서 비활성화
+            Vector3 newSize = selectedBuilding.GetComponent<BoxCollider>().size; //임시 오브젝트의 크기를 구한다음
+                                                                                 //checkBuilding.transform.localScale = new Vector3(1, 1, 1); // 알수없는 충돌감지오브젝트의 Scale변동 문제가 있어서 강제로 scale을 고정시켰다 (임시방편)
+            checkBuildingBoxCollider.size = newSize; //체크 콜라이더 오브젝트의 크기를 임시 오브젝트의 크기와 동일하게 맞춘다.    
+            checkBuildingBoxCollider.center = selectedBuilding.GetComponent<BoxCollider>().center;
+        }
 
-        Vector3 newSize = selectedBuilding.GetComponent<BoxCollider>().size; //임시 오브젝트의 크기를 구한다음
-        //checkBuilding.transform.localScale = new Vector3(1, 1, 1); // 알수없는 충돌감지오브젝트의 Scale변동 문제가 있어서 강제로 scale을 고정시켰다 (임시방편)
-        checkBuildingCollider.size = newSize; //체크 콜라이더 오브젝트의 크기를 임시 오브젝트의 크기와 동일하게 맞춘다.    
-        checkBuildingCollider.center = selectedBuilding.GetComponent<BoxCollider>().center;
+        else if (selectedBuildingCollider is CapsuleCollider)
+        {
+            //checkBuildingCapsuleCollider = checkBuilding.GetComponent<CapsuleCollider>();
+            checkBuildingCapsuleCollider.enabled=true;
+            float radius = selectedBuilding.GetComponent<CapsuleCollider>().radius;
+            float height = selectedBuilding.GetComponent<CapsuleCollider>().height;
 
+            checkBuildingCapsuleCollider.radius = radius;
+            checkBuildingCapsuleCollider.height = height;
+            checkBuildingCapsuleCollider.center = selectedBuilding.GetComponent<CapsuleCollider>().center;
+        }
 
+        else if (selectedBuildingCollider is SphereCollider)
+        {
+            //checkBuildingSphereCollider = checkBuilding.GetComponent<SphereCollider>();
+            checkBuildingSphereCollider.enabled = true;
+            float radius = selectedBuilding.GetComponent<SphereCollider>().radius;
+
+            checkBuildingSphereCollider.radius = radius;
+            checkBuildingSphereCollider.center = selectedBuilding.GetComponent<SphereCollider>().center;
+        }
+        else
+        {
+            Debug.Log("건물의 콜라이더가 box,capsule,sphere가 아닙니다!");
+        }
         checkBuilding.SetActive(true); //건물을 지을 위치에 다른 물체가 있는지 체크할 collider 활성화
     }
 

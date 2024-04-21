@@ -1,5 +1,69 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2591945189154696815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1779682060071325293}
+  - component: {fileID: 7760973548111488285}
+  m_Layer: 0
+  m_Name: FireplaceBody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1779682060071325293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591945189154696815}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4306222598441494759}
+  - {fileID: 1679044416671405391}
+  - {fileID: 5723245065732113946}
+  - {fileID: 2641125960302418887}
+  - {fileID: 5948493345054520232}
+  m_Father: {fileID: 587708597600240843}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &7760973548111488285
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591945189154696815}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.02473101, y: 0.011341825, z: -0.009554267}
+  m_Size: 0.640552
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.09960926
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4881395821025027417}
+  - screenRelativeHeight: 0.026475437
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 355812013522207501}
+  - screenRelativeHeight: 0.006039508
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 986097869459228958}
+  m_Enabled: 1
 --- !u!1 &2892304791384566231
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,7 +95,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 587708597600240843}
+  m_Father: {fileID: 1779682060071325293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5030735467245250492
 MeshFilter:
@@ -92,10 +156,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 587708597600240843}
-  - component: {fileID: 2174925432850068456}
   - component: {fileID: 6504071567443741886}
   - component: {fileID: 174889777698423813}
-  - component: {fileID: 4637389195281179246}
+  - component: {fileID: 4951437247624643133}
   m_Layer: 25
   m_Name: Fireplace
   m_TagString: Untagged
@@ -112,44 +175,13 @@ Transform:
   m_GameObject: {fileID: 5686909921988133878}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7870518, y: -0.12295067, z: 0.61887634}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: -1.0129558, y: 0, z: -6.93115}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4306222598441494759}
-  - {fileID: 1679044416671405391}
-  - {fileID: 5723245065732113946}
-  - {fileID: 2641125960302418887}
-  - {fileID: 5948493345054520232}
+  - {fileID: 1779682060071325293}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &2174925432850068456
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5686909921988133878}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.02473101, y: 0.011341825, z: -0.009554267}
-  m_Size: 0.640552
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.09960926
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 4881395821025027417}
-  - screenRelativeHeight: 0.026475437
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 355812013522207501}
-  - screenRelativeHeight: 0.006039508
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 986097869459228958}
-  m_Enabled: 1
 --- !u!114 &6504071567443741886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,8 +242,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &4637389195281179246
-BoxCollider:
+--- !u!135 &4951437247624643133
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -229,8 +261,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6368378, y: 0.20224792, z: 0.6176287}
-  m_Center: {x: 0.022873908, y: 0.008301277, z: -0.009971514}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5969196676410937469
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +293,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 587708597600240843}
+  m_Father: {fileID: 1779682060071325293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2903469531063465515
 SphereCollider:
@@ -315,7 +347,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 587708597600240843}
+  m_Father: {fileID: 1779682060071325293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3106377656361956716
 MeshFilter:
@@ -398,7 +430,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 587708597600240843}
+  m_Father: {fileID: 1779682060071325293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7020536177284119450
 MeshFilter:
@@ -456,7 +488,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 587708597600240843}
+    m_TransformParent: {fileID: 1779682060071325293}
     m_Modifications:
     - target: {fileID: 939950093435679183, guid: b5a00439e2e0a5b46a880ff0997ef947, type: 3}
       propertyPath: ColorModule.enabled
