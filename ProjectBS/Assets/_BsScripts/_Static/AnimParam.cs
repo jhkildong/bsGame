@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -12,4 +10,9 @@ public static class AnimParam
     public static int Death = Animator.StringToHash("Death");
     public static int x = Animator.StringToHash("x");
     public static int y = Animator.StringToHash("y");
+
+    public static int OnSkill1 = Animator.StringToHash("OnSkill1");
+    public static int OnSkill2 = Animator.StringToHash("OnSkill2");
+
+    public static int Wait = Animator.StringToHash("Wait"); //ImpOnly
 }

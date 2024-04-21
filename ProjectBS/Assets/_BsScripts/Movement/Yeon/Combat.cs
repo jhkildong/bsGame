@@ -104,7 +104,7 @@ namespace Yeon
         public virtual void TakeDamage(float damage)
         {
             CurHp -= damage;
-            if(_onDamageEffect == null)
+            if(_onDamageEffect == null && CurHp > 0.0f)
             {
                 _onDamageEffect = StartCoroutine(OnDamageEffect());
             }

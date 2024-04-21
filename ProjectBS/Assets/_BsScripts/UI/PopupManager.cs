@@ -21,7 +21,7 @@ public class PopupManager : MonoBehaviour
             buildingPopupCount++;
             if(buildingPopupCount == 1)
             {
-                Instantiate(Resources.Load<GameObject>("Prefabs/UI/Popup"), this.transform);
+                Instantiate(Resources.Load<GameObject>(FilePath.Popup), this.transform);
             }
         }
 

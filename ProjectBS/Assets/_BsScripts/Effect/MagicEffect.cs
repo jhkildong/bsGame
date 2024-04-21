@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class MagicEffect : Effect
@@ -10,7 +11,10 @@ public class MagicEffect : Effect
     protected override void Awake()
     {
         base.Awake();
-        string path = $"Effect/MagicHit/MagicHit_{ID+100}";
+        StringBuilder sb = new StringBuilder(FilePath.MagicHitTypes);
+        sb.Append("/MagicHit_");
+        sb.Append(ID + 100);
+        string path = sb.ToString();
         hitEffect = Resources.Load<Effect>(path);
         ObjectPoolManager.Instance.SetPool(hitEffect , 10, 10);
     }

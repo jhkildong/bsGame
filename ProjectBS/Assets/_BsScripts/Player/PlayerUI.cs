@@ -18,7 +18,7 @@ public class PlayerUI : MonoBehaviour
                 _instance = FindObjectOfType<PlayerUI>();
                 if (_instance == null)
                 {
-                    Instantiate(Resources.Load<GameObject>("Prefabs/UI/PlayerUI"));
+                    Instantiate(Resources.Load<GameObject>(FilePath.PlayerUI));
                 }
             }
             return _instance;

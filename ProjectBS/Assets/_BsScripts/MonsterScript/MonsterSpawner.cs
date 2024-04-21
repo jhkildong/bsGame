@@ -15,11 +15,15 @@ respawnTime으로 리스폰 주기 결정
 public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField, ReadOnly]
-    private MonsterData[] monsterDatas;                         //몬스터 데이터(scriptable object) Resource폴더에서 로드
-    private List<Monster> monsterList = new List<Monster>();    //ObjectPoolManager에 등록할 몬스터의 사본
+    private MonsterData[] normalMonsterDatas;                         //몬스터 데이터(scriptable object) Resource폴더에서 로드
+    [SerializeField, ReadOnly]
+    private BossMonsterData[] bossMonsterDatas;                //보스몬스터 데이터(scriptable object) Resource폴더에서 로드
+    private List<NormalMonster> normalMonsterList = new List<NormalMonster>();    //ObjectPoolManager에 등록할 몬스터의 사본
+    private List<BossMonster> bossMonsterList = new List<BossMonster>();
     public float respawnDist = 20.0f;
     public bool applyRespawn;
     public float respawnTime = 0.5f;
+    public float bossRespawnTime = 20.0f;
 
 
     public int init = 10;
@@ -28,79 +32,93 @@ public class MonsterSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monsterDatas = Resources.LoadAll<MonsterData>("Monster");
+        normalMonsterDatas = Resources.LoadAll<MonsterData>(FilePath.Monsters);
+        bossMonsterDatas = Resources.LoadAll<BossMonsterData>(FilePath.BossMonsters);
 
-        foreach(MonsterData data in monsterDatas)
+        DataSetPool(normalMonsterDatas);
+        DataSetPool(bossMonsterDatas);
+
+        applyRespawn = true;
+        //StartCoroutine(NormalMonsterSpawn());
+        StartCoroutine(BossMonsterSpawn());
+    }
+
+    void DataSetPool(MonsterData[] datas)
+    {
+        foreach (MonsterData data in datas)
         {
-            if(data.Prefab == null)
+            if (data.Prefab == null)
             {
                 Debug.Log("MonsterData Prefab is null");
                 continue;
             }
             Monster monster = data.CreateClone();   //데이터를 기반으로 사본생성
-            monsterList.Add(monster);               //사본을 리스트에 추가(추가 호출을 위해)
-            ObjectPoolManager.Instance.SetPool(monster, init, max);
+            if(monster is BossMonster bossMonster)
+            {
+                bossMonsterList.Add(bossMonster);                       //사본을 리스트에 추가(추가 호출을 위해)
+                ObjectPoolManager.Instance.SetPool(monster, 10, 10);
+            }
+            else if(monster is NormalMonster normalMonster)
+            {
+                normalMonsterList.Add(normalMonster);                   //사본을 리스트에 추가(추가 호출을 위해)
+                ObjectPoolManager.Instance.SetPool(monster, init, max);
+            }
             ObjectPoolManager.Instance.ReleaseObj(monster);
         }
-        applyRespawn = true;
-        StartCoroutine(EnemySpawn());
     }
+
 
     //임시 surroundMonster체크, 범위설정
     bool checkSurround = false;
     float surroundRange = 30.0f;
     Vector3 tempPos;
 
-    IEnumerator EnemySpawn()
+    IEnumerator NormalMonsterSpawn()
     {
         while(true)
         {
-            foreach (Monster monster in monsterList)
+            foreach (NormalMonster monster in normalMonsterList)
             {
                 float rndAngle = Random.value * Mathf.PI * 2.0f;
                 Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
                 rndPos += transform.position;
                 GameObject go;
-                if (monster is NormalMonster nMonster)
+                var MonsterType = monster.NormalData.Type;
+                switch (MonsterType)
                 {
-                    var MonsterType = nMonster.NormalData.Type;
-                    switch (MonsterType)
-                    {
-                        case var type when type.HasFlag(MonsterType.Single):
+                    case var type when type.HasFlag(MonsterType.Single):
+                        go = ObjectPoolManager.Instance.GetObj(monster).This.gameObject;
+                        go.transform.position = rndPos;
+                        break;
+                    case var type when type.HasFlag(MonsterType.Group):
+                        for (int i = 0; i < (monster as GroupMonster).GroupData.Amount; ++i)
+                        {
+                            Vector3 addPos = new Vector3(Random.Range(0, 2.0f), 0, Random.Range(0, 2.0f));
                             go = ObjectPoolManager.Instance.GetObj(monster).This.gameObject;
-                            go.transform.position = rndPos;
-                            break;
-                        case var type when type.HasFlag(MonsterType.Group):
-                            for (int i = 0; i < (nMonster as GroupMonster).GroupData.Amount; ++i)
+                            go.transform.position = rndPos + addPos;
+                            if (type.HasFlag(MonsterType.StraightMove))
                             {
-                                Vector3 addPos = new Vector3(Random.Range(0, 2.0f), 0, Random.Range(0, 2.0f));
-                                go = ObjectPoolManager.Instance.GetObj(monster).This.gameObject;
-                                go.transform.position = rndPos + addPos;
-                                if(type.HasFlag(MonsterType.StraightMove))
-                                {
-                                    go.transform.LookAt(transform.position);
-                                }
+                                go.transform.LookAt(transform.position);
                             }
-                            break;
-                        case var type when type.HasFlag(MonsterType.Surround):
-                            if (checkSurround == false)
-                            {
-                                tempPos = transform.position;
+                        }
+                        break;
+                    case var type when type.HasFlag(MonsterType.Surround):
+                        if (checkSurround == false)
+                        {
+                            tempPos = transform.position;
 
-                                int amount = 100; //임시
-                                StartCoroutine(SurroundSpawn(monster, amount, tempPos));
-                                checkSurround = true;
-                                break;
-                            }
-                            if ((transform.position - tempPos).sqrMagnitude > surroundRange * surroundRange * 9)
-                            {
-                                checkSurround = false;
-                            }
-
+                            int amount = 100; //임시
+                            StartCoroutine(SurroundSpawn(monster, amount, tempPos));
+                            checkSurround = true;
                             break;
-                    }
+                        }
+                        if ((transform.position - tempPos).sqrMagnitude > surroundRange * surroundRange * 9)
+                        {
+                            checkSurround = false;
+                        }
+                        break;
                 }
-                
+
                 yield return new WaitForSeconds(respawnTime);
             }
         }
@@ -121,35 +139,23 @@ public class MonsterSpawner : MonoBehaviour
         }
         yield return null;
     }
-    /*
-    private void RandomMonsterGenerate(MonsterData[] monsterDatas)
-    {
-        foreach(MonsterData md in monsterDatas)
-        {
-            float rndAngle = Random.value * Mathf.PI * 2.0f;
-            Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
-            rndPos += transform.position;
-            if (md is NormalMonsterData nmd)
-            {
-                switch(nmd.Type)
-                {
-                    case MonsterType.Single:
-                        ObjectPoolManager.Instance.GetObj(md).gameObject.transform.position = rndPos;
-                        break;
-                    case MonsterType.Group:
-                        for(int i = 0; i<(nmd as GroupNormalMonsterData).Amount; ++i)
-                        {
-                            Vector3 addPos = new Vector3(Random.Range(0, 2.0f), 0, Random.Range(0, 2.0f));
-                            ObjectPoolManager.Instance.GetObj(md).gameObject.transform.position = rndPos + addPos;
-                        }
-                        break;
-                    case MonsterType.Surround:
 
-                        break;
-                }
+    IEnumerator BossMonsterSpawn()
+    {
+        while (true)
+        {
+            foreach (BossMonster monster in bossMonsterList)
+            {
+                float rndAngle = Random.value * Mathf.PI * 2.0f;
+                Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
+                rndPos += transform.position;
+                GameObject go;
+
+                go = ObjectPoolManager.Instance.GetObj(monster).This.gameObject;
+                go.transform.position = rndPos;
+
+                yield return new WaitForSeconds(bossRespawnTime);
             }
         }
     }
-    */
-
 }

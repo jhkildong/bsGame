@@ -19,6 +19,20 @@ public class DemolitionMonster : GroupMonster
         animEvent.AttackAct += OnAttackPoint;
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if (Data == null)
+            return;
+        Com.MyAnim.SetBool(AnimParam.Wait, false);
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        Com.MyAnim.SetBool(AnimParam.Wait, true);
+    }
+
     protected override void ChangeTarget(Transform target)
     {
         base.ChangeTarget(target);

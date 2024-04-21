@@ -15,9 +15,9 @@ public class PlayerSetup : MonoBehaviour
 
     private void Awake()
     {
-        playerPrefab = Resources.Load<GameObject>("Player/Player");
-        jobs = Resources.LoadAll<PlayerComponent>("Player/Job");
-        playerSelectWindow = Resources.Load<PlayerSelectWindow>("Prefabs/UI/PlayerSelectWindow");
+        playerPrefab = Resources.Load<GameObject>(FilePath.PlayerPrefab);
+        jobs = Resources.LoadAll<PlayerComponent>(FilePath.Job);
+        playerSelectWindow = Resources.Load<PlayerSelectWindow>(FilePath.PlayerSelectWindow);
     }
     private void Start()
     {
@@ -52,9 +52,10 @@ public class PlayerSetup : MonoBehaviour
     #region Select Type
     private void SetTypeSelect(PlayerComponent job)
     {
-        StringBuilder sb = new StringBuilder("Effect/");
+        StringBuilder sb = new StringBuilder(FilePath.AttackType);
+        sb.Append("/");
         sb.Append(job.gameObject.name.Substring(3));
-        string path = sb.ToString();                            //경로: Effect/JobName
+        string path = sb.ToString();                            //경로: AttackType/JobName
         types = Resources.LoadAll<Effect>(path);    
         string[] names = new string[types.Length];
         for (int i = 0; i < types.Length; i++)

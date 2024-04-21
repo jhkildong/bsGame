@@ -89,7 +89,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         DeadAct += Die;
     }
 
-    private void SetCollider(float radius)
+    protected virtual void SetCollider(float radius)
     {
         if (radius < 1.0f)
         {
@@ -231,7 +231,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         if ((attackMask & (1 << collision.gameObject.layer)) != 0)
         {
             IDamage AttackTarget = collision.gameObject.GetComponent<IDamage>();
-            if(AttackTarget != null)
+            if (AttackTarget != null)
             {
                 attackTarget = AttackTarget;
                 ChangeState(State.Attack);

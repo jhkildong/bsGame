@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "BM_", menuName = "Monster/BossMonster", order = 0)]
 public class BossMonsterData : MonsterData
 {
-    public MonsterType Type => _type;
-    protected virtual void OnEnable()
-    {
+    public float AttackRange => _attackRange;
 
-    }
-    [SerializeField, ReadOnly] protected MonsterType _type;
+    [SerializeField] private float _attackRange;    //공격 범위
+
     public override Monster CreateClone()
     {
         GameObject go = new GameObject(Name);
-        Monster clone = go.AddComponent<BossMonster>();
+
+        Monster clone = go.AddComponent(BossMonsterList.Lists[ID]) as BossMonster;
         clone.Init(this);
 
         return clone;
