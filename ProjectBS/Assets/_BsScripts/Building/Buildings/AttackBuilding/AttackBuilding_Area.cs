@@ -54,6 +54,7 @@ public class AttackBuilding_Area : AttackBuildingBase
 
     protected virtual IEnumerator AtkDelay(float delay)
     {
+        /*
         Debug.Log("공격!");
         //여기를 이벤트로 호출할 함수를 추가해야됨.
         float sumBuff = 0; // 버프의 합을 계산할 변수
@@ -64,7 +65,7 @@ public class AttackBuilding_Area : AttackBuildingBase
             Debug.Log("버프합산" + sumBuff);
         }
         getBuff.atkBuff = sumBuff;
-
+        */
         _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
         Debug.Log(_finalDmg);
         AtkEvent?.Invoke();
