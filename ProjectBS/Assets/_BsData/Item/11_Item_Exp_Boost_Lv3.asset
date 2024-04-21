@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b69fdfe4eb0f54ea35ec6c6b61e0f5, type: 3}
   m_Name: 11_Item_Exp_Boost_Lv3
   m_EditorClassIdentifier: 
-  description: 
-  _id: 0
+  description: "\uACBD\uD5D8\uCE58\uAC00 10\uB9CC\uD07C \uC62C\uB77C\uAC10"
+  _id: 11
   _name: 
   _value: 0
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 6178760419957704234, guid: 52b35f8ad7ac8374b8aa188c200fa7ad, type: 3}
   itemType: 1
   _exprate: 0

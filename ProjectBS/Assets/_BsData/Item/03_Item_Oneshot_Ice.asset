@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 03_Item_Oneshot_Ice
   m_EditorClassIdentifier: 
   description: "\uC804\uCCB4\uC801\uC778 \uBAAC\uC2A4\uD130 \uC18D\uB3C4\uAC00 \uB290\uB824\uC9D0."
-  _id: 5
+  _id: 3
   _name: Ice
   _value: 2
-  _prefab: {fileID: 5613317769471893737, guid: cd7d7f3f127d6a54e86eba46751f3e83, type: 3}
+  _prefab: {fileID: 6178760419957704234, guid: 090336a628e57914bb453efadb1d72be, type: 3}
   itemType: 3
   _used: 0
