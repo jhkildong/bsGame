@@ -1,0 +1,32 @@
+{
+  "Bless2_": [
+    {
+      "name": "attack",
+      "defaultValue": 1.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        1.0,
+        0.0,
+        3.0,
+        0.0,
+        5.0,
+        0.0,
+        8.0
+      ]
+    },
+    {
+      "name": "size",
+      "defaultValue": 0.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}
