@@ -16,14 +16,25 @@ MonoBehaviour:
   _name: 
   _prefab: {fileID: 0}
   _lvDataList:
-  - name: attack
-    defaultValue: 1
-    levelUpType: 1
+  - name: Attack
+    defaultValue: 5
+    levelUpType: 0
     levelUpTable:
     - 1
     - 0
     - 3
     - 0
-    - 5
+    - 3
     - 0
-    - 8
+    - 5
+  - name: Amount
+    defaultValue: 1
+    levelUpType: 0
+    levelUpTable:
+    - 1
+    - 1
+    - 0
+    - 1
+    - 0
+    - 1
+    - 0

@@ -86,6 +86,7 @@ public class Player : Combat, IDamage<Player>
     #region Private Field
     ////////////////////////////////PrivateField////////////////////////////////
     [SerializeField] private PlayerComponent Com;
+    [SerializeField] private float buildApplyRange = 2.0f;
 
     Vector3 _moveDir;
     Vector3 _dir;
@@ -186,6 +187,12 @@ public class Player : Combat, IDamage<Player>
         }
         Com.MyAnim.SetFloat(AnimParam.x, _inputDir.x);
         Com.MyAnim.SetFloat(AnimParam.y, _inputDir.z);
+        
+        if(Physics.Raycast(transform.position, Com.MyTransform.forward, out RaycastHit hit, buildApplyRange, (int)BSLayerMasks.Building))
+        {
+
+        }
+    
     }
 
     protected override void FixedUpdate()

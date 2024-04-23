@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Yeon
 {
-    public class Combat : Movement, IDamage, IHealing
+    public class Combat : Movement, IDamage, IHealing, IBuffable
     {
         #region Public Field
         ////////////////////////////////Public Field////////////////////////////////
@@ -28,8 +28,7 @@ namespace Yeon
             }
         }
         public float SpeedCeof => _speedCeof;   //이동속도 계수
-        public float AttackCeof => _attackCeof; //공격력 계수
-        protected float Attack { get => (_attack * _attackCeof); }
+        protected float Attack { get => _attack * getBuff.atkBuff; }
         public bool IsDead => CurHp <= 0;
         #endregion
 
@@ -122,6 +121,9 @@ namespace Yeon
             CurHp += heal;
             CurHp = Mathf.Clamp(CurHp, 0, MaxHP); 
         }
+
+        public Buff getBuff { get => _buff; set => _buff = value; }
+        private Buff _buff = new Buff();
         #endregion
 
         #region Private Method
