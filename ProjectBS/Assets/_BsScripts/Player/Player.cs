@@ -97,9 +97,14 @@ public class Player : Combat, IDamage<Player>
     ////////////////////////////////InitSetting////////////////////////////////
     public void InitPlayerSetting()
     {
-        GameManager.Instance.playerTransform = transform;
         if (Com == null)
-            Com = GetComponentInChildren<PlayerComponent>();
+        {
+            if((Com = GetComponentInChildren<PlayerComponent>()) ==null)
+            {
+                return;
+            }
+        }
+
         ChangeHpAct += PlayerUI.Instance.ChangeHP;
         DeadAct += Death;
         
@@ -115,29 +120,7 @@ public class Player : Combat, IDamage<Player>
 
         Com.MyAnimEvent.AttackAct += SetEffectAttack;
         Com.MyAnimEvent.AttackAct += Com.OnAttackPoint;
-        #region PlayerInputsCallback Setting
-        ////////////////////////////////PlayerInputsCallbackSetting////////////////////////////////
-        playerInputs = new PlayerInputs();
-        playerInputs.Player.Attack.performed += StartAttack;
-        playerInputs.Player.Attack.canceled += EndAttack;
-        
-        playerInputs.Player.PressW.performed += PressW;
-        playerInputs.Player.PressS.performed += PressS;
-        playerInputs.Player.PressA.performed += PressA;
-        playerInputs.Player.PressD.performed += PressD;
 
-        playerInputs.Player.ReleaseW.performed += ReleaseW;
-        playerInputs.Player.ReleaseS.performed += ReleaseS;
-        playerInputs.Player.ReleaseA.performed += ReleaseA;
-        playerInputs.Player.ReleaseD.performed += ReleaseD;
-
-        playerInputs.Player.MoveAnim.performed += SetAnimMove;
-        playerInputs.Player.MoveAnim.canceled += SetAnimStop;
-        playerInputs.Enable();
-        #endregion
-
-        //게임창의 포커스가 변했을 시 실행될 메서드 등록
-        Application.focusChanged += OnFocusChanged;
     }
 
     protected override void OnDisable()
@@ -167,6 +150,36 @@ public class Player : Combat, IDamage<Player>
 
     #region Unity Event
     ////////////////////////////////UnityEvent////////////////////////////////
+    protected override void Awake()
+    {
+        base.Awake();
+        GameManager.Instance.playerTransform = transform;
+
+        #region PlayerInputsCallback Setting
+        ////////////////////////////////PlayerInputsCallbackSetting////////////////////////////////
+        playerInputs = new PlayerInputs();
+        playerInputs.Player.Attack.performed += StartAttack;
+        playerInputs.Player.Attack.canceled += EndAttack;
+
+        playerInputs.Player.PressW.performed += PressW;
+        playerInputs.Player.PressS.performed += PressS;
+        playerInputs.Player.PressA.performed += PressA;
+        playerInputs.Player.PressD.performed += PressD;
+
+        playerInputs.Player.ReleaseW.performed += ReleaseW;
+        playerInputs.Player.ReleaseS.performed += ReleaseS;
+        playerInputs.Player.ReleaseA.performed += ReleaseA;
+        playerInputs.Player.ReleaseD.performed += ReleaseD;
+
+        playerInputs.Player.MoveAnim.performed += SetAnimMove;
+        playerInputs.Player.MoveAnim.canceled += SetAnimStop;
+        playerInputs.Enable();
+        #endregion
+
+        //게임창의 포커스가 변했을 시 실행될 메서드 등록
+        Application.focusChanged += OnFocusChanged;
+    }
+
     private void Update()
     {
         //죽은 상태면 return
