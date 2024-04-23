@@ -9,8 +9,16 @@ namespace Yeon2
         public BlessData Data => _data;
         [SerializeField] private BlessData _data;
 
+        [SerializeField] protected PlayerComponent myPlayer;
+
         //레벨업시 변경될 스테이터스를 저장하는 딕셔너리
         protected Dictionary<string, float> myStatus = new Dictionary<string, float>();
+        private void Start()
+        {
+            Init(Data);
+
+            //myPlayer = GameManager.Instance.playerTransform.GetComponentInChildren<PlayerComponent>();
+        }
 
         public void Init(BlessData data)
         {

@@ -44,44 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d48ce630d1d2f4099bef47eaaaa9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 341a1a399fb298d4293ecc72c729180f, type: 2}
-  _attack: 0
-  _size: 0
-  _amount: 0
-  _blessPrefab: {fileID: 0}
-  _levelProp:
-    states: 000000000000
-    _levelTables: []
-    SerializablePropertyInfos:
-    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: ReTime
-    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: WaitTime
-    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: DestroyTime
-    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Ak
-    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Size
-    - TypeName: ForwardWeaponBOTCA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Amount
-    PropertyNames:
-    - ReTime
-    - WaitTime
-    - DestroyTime
-    - Ak
-    - Size
-    - Amount
-  clonesParent: {fileID: 0}
-  myTarget: {fileID: 0}
-  myRotate: {fileID: 0}
+  _data: {fileID: 11400000, guid: 0d5c4486354bb64478d2c2e4cce6af79, type: 2}
   weaponPrefab: {fileID: 3278610813507465420, guid: 0c8e7c177d79d79438452946f1f2ba26, type: 3}
+  clonesParent: {fileID: 0}
   _reTime: 2
   _waitTime: 0.05
   _destroyTime: 10

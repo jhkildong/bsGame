@@ -67,7 +67,6 @@ public abstract class PlayerComponent : CharacterComponent
     ////////////////////////////////AbstractMethod////////////////////////////////
     public abstract void OnAttackPoint();           //_effectSpawn에 공격 생성(애니메이션에서 호출)
     #endregion
-
     #region Public Method
     ////////////////////////////////PublicMethod////////////////////////////////
     public void SetRigWeight(float weight)
@@ -77,6 +76,5 @@ public abstract class PlayerComponent : CharacterComponent
             rig.weight = weight;
         }
     }
-
     #endregion
 }

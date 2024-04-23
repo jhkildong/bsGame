@@ -1,11 +1,11 @@
 {
-  "Bless_Example": [
+  "Bless2_BOTCA": [
     {
       "name": "Attack",
       "defaultValue": 5.0,
       "levelUpType": 0,
       "levelUpTable": [
-        1.0,
+        3.0,
         0.0,
         3.0,
         0.0,
@@ -17,11 +17,11 @@
     {
       "name": "Amount",
       "defaultValue": 1.0,
-      "levelUpType": 0,
+      "levelUpType": 1,
       "levelUpTable": [
         1.0,
-        1.0,
         0.0,
+        1.0,
         1.0,
         0.0,
         1.0,
