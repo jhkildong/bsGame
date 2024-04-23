@@ -49,9 +49,11 @@ public class Bless2DataEditor : Editor
             element.FindPropertyRelative("name").stringValue = "";
             element.FindPropertyRelative("defaultValue").floatValue = 0;
             element.FindPropertyRelative("levelUpType").enumValueIndex = 0;
+            var levelUpTable = element.FindPropertyRelative("levelUpTable");
+            levelUpTable.arraySize = 7;
             for (int i = 0; i < LevelUpData.MAX_LEVEL; i++)
             {
-                element.FindPropertyRelative("levelUpTable").GetArrayElementAtIndex(i).floatValue = 0;
+                levelUpTable.GetArrayElementAtIndex(i).floatValue = 0;
             }
         };
         //리스트의 헤더를 그리는 콜백함수 설정
