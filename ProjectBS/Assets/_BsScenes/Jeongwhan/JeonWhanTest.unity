@@ -1052,7 +1052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &688607928
 Transform:
   m_ObjectHideFlags: 0
@@ -1337,6 +1337,7 @@ MonoBehaviour:
   myWoodCount: {fileID: 0}
   myStoneCount: {fileID: 0}
   myIronCount: {fileID: 0}
+  playerTransform: {fileID: 0}
   gameStart: 0
   gameOver: 0
   gamePaused: 0
@@ -1445,6 +1446,7 @@ MonoBehaviour:
   selectBuilding: {fileID: 0}
   selectedBuilding: {fileID: 0}
   checkBuilding: {fileID: 2044164402}
+  checkBuildingTransform: {fileID: 0}
   instBuilding: {fileID: 0}
   canBuild: 0
   mousePos: {x: 0, y: 0, z: 0}

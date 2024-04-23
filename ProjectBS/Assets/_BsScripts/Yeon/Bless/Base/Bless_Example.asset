@@ -14,27 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
+  _attack: 0
+  _size: 0
   _prefab: {fileID: 0}
-  _lvDataList:
-  - name: Attack
-    defaultValue: 5
-    levelUpType: 0
-    levelUpTable:
-    - 1
-    - 0
-    - 3
-    - 0
-    - 3
-    - 0
-    - 5
-  - name: Amount
-    defaultValue: 1
-    levelUpType: 0
-    levelUpTable:
-    - 1
-    - 1
-    - 0
-    - 1
-    - 0
-    - 1
-    - 0
+  _bless: {fileID: 0}
+  LevelProp:
+    states: 
+    _levelTables: []
+    SerializablePropertyInfos: []
+    PropertyNames: []
