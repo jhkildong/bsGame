@@ -24,12 +24,12 @@ namespace Yeon2
 
         public void LevelUp(int level)
         {
-            if (level < 0 || level >= 7)
+            if (level <= 0 || level > 7)
                 return;
 
             foreach (var lvData in _data.LvDataList)
             {
-                myStatus[lvData.name] = lvData[level];
+                myStatus[lvData.name] = lvData[level - 1];
             }
         }
     }

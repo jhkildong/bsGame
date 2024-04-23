@@ -96,6 +96,7 @@ public class Player : Combat, IDamage<Player>
     ////////////////////////////////InitSetting////////////////////////////////
     public void InitPlayerSetting()
     {
+        GameManager.Instance.playerTransform = transform;
         if (Com == null)
             Com = GetComponentInChildren<PlayerComponent>();
         ChangeHpAct += PlayerUI.Instance.ChangeHP;
