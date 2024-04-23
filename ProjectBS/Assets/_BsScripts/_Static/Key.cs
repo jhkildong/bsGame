@@ -4,5 +4,6 @@ using UnityEngine;
 
 public static class Key
 {
-	public const string attack = "attack";	public const string size = "size";
+	public const string Attack = "Attack";
+	public const string Amount = "Amount";
 }

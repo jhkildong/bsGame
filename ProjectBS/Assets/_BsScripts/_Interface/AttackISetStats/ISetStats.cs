@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ISetPointStats
 {
-    void SetPointStats(float atk = 1, float radius = 1, float size = 1, float speed = 1, float delay = 1, float durTime = 1);
+    void SetPointStats(float atk = 1, float radius = 1, float size = 1, float speed = 1, float atkDelay = 1,float hitDelay = 1, float durTime = 1);
 }
 
 public interface ISetProjectileStats

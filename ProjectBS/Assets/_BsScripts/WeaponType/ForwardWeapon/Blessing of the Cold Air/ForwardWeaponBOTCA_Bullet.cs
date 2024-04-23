@@ -5,15 +5,7 @@ using UnityEngine;
 public class ForwardWeaponBOTCA_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
-    float Ak;
-    private void OnEnable()
-    {
-        ForwardWeaponBOTCA forwardWeaponBOTCA = FindObjectOfType<ForwardWeaponBOTCA>();
-        if(forwardWeaponBOTCA != null )
-        {
-            Ak = forwardWeaponBOTCA.Ak;
-        }
-    }
+    public float Ak;
 
     private void OnTriggerEnter(Collider other) // ´ë¹ÌÁö
     {

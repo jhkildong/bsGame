@@ -27,7 +27,7 @@ public class BuffController
     }
 
 
-    public void StartBuff(IBuffable buffable) // ontriggerenter시
+    public void StartBuff(IBuffable buffable, Dictionary<string,float> buffTypeDict) // ontriggerenter시
     {
         Debug.Log(buffable);
         if (buffable != null)
@@ -45,14 +45,14 @@ public class BuffController
                 {
                     while (true)
                     {
-                        if (buff.atkBuffDict.ContainsKey(BuffName))
+                        if (buffTypeDict.ContainsKey(BuffName)) // buff.atkBuffDict -> buffType
                         {
                             BuffName += "1";
                         }
                         else
                         {
-                            buff.atkBuffDict.Add(BuffName, BuffAmount); //버프 갱신
-                            This.StartCoroutine(BuffTime(buff, Duration)); //버프 지속시간 코루틴
+                            buffTypeDict.Add(BuffName, BuffAmount); //버프 갱신
+                            This.StartCoroutine(BuffTime(buffTypeDict, Duration)); //버프 지속시간 코루틴 // 수정전 (buff, duration)
                             break;
                         }
                     }
@@ -61,13 +61,13 @@ public class BuffController
                 {
                     while (true)
                     {
-                        if (buff.atkBuffDict.ContainsKey(BuffName))
+                        if (buffTypeDict.ContainsKey(BuffName))
                         {
                             BuffName += "1";
                         }
                         else
                         {
-                            buff.atkBuffDict.Add(BuffName, BuffAmount); //버프 갱신
+                            buffTypeDict.Add(BuffName, BuffAmount); //버프 갱신
                             break;
                         }
                     }
@@ -77,15 +77,15 @@ public class BuffController
             {
                 if (HasDuration) // 지속시간이 있는 버프의 경우
                 {
-                    buff.atkBuffDict.Remove(BuffName);
-                    buff.atkBuffDict.Add(BuffName, BuffAmount); //버프 추가
-                    This.StartCoroutine(BuffTime(buff, Duration)); //버프 지속시간 코루틴
+                    buffTypeDict.Remove(BuffName);
+                    buffTypeDict.Add(BuffName, BuffAmount); //버프 추가
+                    This.StartCoroutine(BuffTime(buffTypeDict, Duration)); //버프 지속시간 코루틴
 
                 }
                 else // 지속시간이 없는 버프의 경우
                 {
-                    buff.atkBuffDict.Remove(BuffName);
-                    buff.atkBuffDict.Add(BuffName, BuffAmount); //버프 추가
+                    buffTypeDict.Remove(BuffName);
+                    buffTypeDict.Add(BuffName, BuffAmount); //버프 추가
                 }
             }
 
@@ -95,7 +95,7 @@ public class BuffController
         }
     }
 
-    public void RemoveBuff(IBuffable buffable)
+    public void RemoveBuff(IBuffable buffable, Dictionary<string,float> buffTypeDict)
     {
         //targets 리스트에 해당 오브젝트가 있는지 체크
         Debug.Log(buffable);
@@ -109,16 +109,16 @@ public class BuffController
             }
             // 버프 값 설정
             //buff.atkBuffList.Add(buffAmount);
-            buff.atkBuffDict.Remove(BuffName); // 0419 수정중
+            buffTypeDict.Remove(BuffName); // buff.atkBuffDict -> buffTypeDict
 
             buffable.getBuff = buff; // 버프 적용
             Debug.Log("버프해제됨");
         }
     }
 
-    IEnumerator BuffTime(Buff buff, float dur)
+    IEnumerator BuffTime(Dictionary<string, float> buffTypeDict, float dur)
     {
         yield return new WaitForSeconds(dur);
-        buff.atkBuffDict.Remove(BuffName); // 지속시간이 끝나면 버프 제거
+        buffTypeDict.Remove(BuffName); // 지속시간이 끝나면 버프 제거
     }
 }

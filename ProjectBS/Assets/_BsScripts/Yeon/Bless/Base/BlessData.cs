@@ -2,47 +2,77 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Yeon
+namespace Yeon2
 {
-    /// <summary>
-    /// 축복 base 데이터
-    /// Bless 스크립트가 바인딩 되어있는 프리팹을 Bless와 Prefab에 지정해줘야함
-    /// </summary>
-    [CreateAssetMenu(fileName = "Bless_", menuName = "Bless/Bless", order = 0)]
+    [CreateAssetMenu(fileName = "Bless2_", menuName = "Bless2", order = 0)]
     public class BlessData : ScriptableObject
     {
         public int ID => _id;
         public string Name => _name;
-        public float Ak => _attack;
-        public float Size => _size;
         public GameObject Prefab => _prefab;
-        public Bless Bless => _bless;
+        public List<LevelUpData> LvDataList { get => _lvDataList; set => _lvDataList = value; }
 
         [SerializeField] private int _id;               // 축복 아이디
         [SerializeField] private string _name;          // 축복 이름
-        [SerializeField] private float _attack;         // 축복 공격력
-        [SerializeField] private float _size;           // 축복 크기
         [SerializeField] private GameObject _prefab;    // 축복 프리팹
-        [SerializeField] private Bless _bless;          // 축복 스크립트
+        [SerializeField] private List<LevelUpData> _lvDataList;
 
-
-        /// <summary>
-        /// 클론 생성 prefab이 null이거나 Bless 컴포넌트가 없으면 null 반환
-        /// </summary>
-        public GameObject CreateClone()
+        public Bless CreateClone()
         {
-            if(_prefab == null || _prefab.GetComponent<Bless>() == null)
+            GameObject go = Instantiate(_prefab, GameManager.Instance.playerTransform);
+            Bless bless = go.GetComponent<Bless>();
+            if (bless != null)
+                bless.Init(this);
+            return bless;
+        }
+    }
+
+    [System.Serializable]
+    public class LevelUpData
+    {
+        public const int MAX_LEVEL = 7;
+        public enum LevelUpType
+        {
+            Add,
+            Multiply,
+        }
+        public string name;
+        public float defaultValue;
+        public LevelUpType levelUpType;
+        public float[] levelUpTable = new float[MAX_LEVEL];
+
+        //레벨을 입력하면 자동으로 레벨에 맞는 값을 반환
+        public float this[int level]
+        {
+            get
             {
-                return null;
+                if (level < 0)
+                    return 0;
+                if (level >= MAX_LEVEL)
+                    level = MAX_LEVEL;
+                float value = defaultValue;
+                for (int i = 0; i < level; i++)
+                {
+                    switch (levelUpType)
+                    {
+                        case LevelUpType.Add:
+                            value += levelUpTable[i];
+                            break;
+                        case LevelUpType.Multiply:
+                            value *= levelUpTable[i];
+                            break;
+                    }
+                }
+                return value;
             }
-            GameObject clone = new GameObject(Name);
-            Instantiate(_prefab, clone.transform);
-            clone.GetComponentInChildren<Bless>().Init(this);
-            return clone;
         }
 
-#if UNITY_EDITOR
-        [SerializeField] public LevelProperty LevelProp;
-#endif
+        public LevelUpData()
+        {
+            name = "";
+            defaultValue = 0;
+            levelUpType = LevelUpType.Add;
+            levelUpTable = new float[MAX_LEVEL];
+        }
     }
 }

@@ -39,4 +39,11 @@ public static class FilePath
     /// <summary>Prefabs/UI/PlayerUI</summary>
     public const string PlayerUI = "Prefabs/UI/PlayerUI";
     #endregion
+
+#if UNITY_EDITOR
+    /// <summary>Assets/_BsData/Resources/BlessLevelTable.json</summary>
+    public const string BlessLevelTableJson = "Assets/_BsData/Resources/BlessLevelTable.json";
+    /// <summary>Assets/_BsScripts/_Static/Key.cs</summary>
+    public const string KeyCs = "Assets/_BsScripts/_Static/Key.cs";
+#endif
 }

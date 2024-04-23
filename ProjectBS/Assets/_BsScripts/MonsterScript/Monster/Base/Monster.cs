@@ -16,6 +16,17 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     public MonsterComponent Com => _monsterComponent;
     public MonsterData Data => _data;
     public float AttackDelay => Data.AkDelay;
+    protected Transform PlayerTransform
+    {
+        get
+        {
+            if(_playerTransform == null)
+            {
+                _playerTransform = GameManager.Instance.playerTransform;
+            }
+            return _playerTransform;
+        }
+    }
     #endregion
 
     #region Private Field
@@ -23,6 +34,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     [SerializeField] protected MonsterComponent _monsterComponent;
     [SerializeField] protected MonsterData _data;
     [SerializeField] protected DropTable dropTable;
+    private Transform _playerTransform;
     #endregion
 
     #region Interface Method
@@ -42,9 +54,6 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
             DeadTransformAct?.Invoke(this.transform);
         }
     }
-
-    //임시
-    protected Transform PlayerTransform;
 
     public IPoolable CreateClone()
     {
@@ -83,8 +92,6 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         effectData.effectTime = 0.1f;
         effectData.SetRenderer(this);
 
-        //임시
-        PlayerTransform = GameObject.Find("Player").transform;
         ResetTarget();
         DeadAct += Die;
     }
