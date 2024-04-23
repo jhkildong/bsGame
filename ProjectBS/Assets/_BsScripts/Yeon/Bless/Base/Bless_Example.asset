@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
-  m_Name: Bless2_
+  m_Name: Bless_Example
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
@@ -27,14 +27,3 @@ MonoBehaviour:
     - 5
     - 0
     - 8
-  - name: size
-    defaultValue: 0
-    levelUpType: 0
-    levelUpTable:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
