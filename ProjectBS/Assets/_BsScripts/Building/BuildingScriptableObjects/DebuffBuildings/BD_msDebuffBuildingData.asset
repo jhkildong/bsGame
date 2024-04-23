@@ -20,3 +20,4 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 32768
+  _buffType: 4

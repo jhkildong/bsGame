@@ -26,7 +26,8 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
     private float dmg;
     private float baseAttack;
     private float myRadius;
-    private float atkDelay; // 공격 간격
+    private float myAtkDelay; // 공격 속도
+    private float myHitDelay; // 타격 간격(장판기)
     private float atkDuration; // 지속시간
     private float curDur; //현재 지속시간
     private bool atkDelaying;
@@ -63,11 +64,12 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
     }
     */
 
-    public void SetPointStats(float atk = 1, float radius = 1, float size = 1, float speed = 1,float delay = 1, float durTime = 1) // 건물의 스탯을 EffectPoolManager에 전달 -> 이펙트 생성시에 해당 Stat을 이펙트로 전달
+    public void SetPointStats(float atk = 1, float radius = 1, float size = 1, float speed = 1,float atkDelay = 1,float hitDelay = 1,  float durTime = 1) // 건물의 스탯을 EffectPoolManager에 전달 -> 이펙트 생성시에 해당 Stat을 이펙트로 전달
     {
         baseAttack = atk;
         myRadius = radius;
-        atkDelay = delay;
+        myAtkDelay = atkDelay;
+        myHitDelay = hitDelay;
         atkDuration = durTime;
     }
 
@@ -98,7 +100,7 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
             if (!atkDelaying && (progress > hitTiming) && curDur < atkDuration)
             {
                 atkDelaying = true;
-                StartCoroutine(LastAtk(atkDelay));
+                StartCoroutine(LastAtk(myHitDelay));
             }
             else if(curDur >= atkDuration) // 지속시간이 끝나면 풀로 되돌림
             {       

@@ -12,6 +12,7 @@ public class AttackBuilding_Area : AttackBuildingBase
     }
 
     [SerializeField] protected float _finalDmg; // 최종데미지
+    [SerializeField] protected float _finalAs; // 최종공속
     [SerializeField] protected float _atkPower;// 공격가능한 건물의 공격력
     [SerializeField] protected float _atkDelay;  // 건물의 공격 생성 딜레이
     [SerializeField] protected float _hitDelay; // 건물 공격의 타격 간격 (지속 공격의 경우)
@@ -28,6 +29,9 @@ public class AttackBuilding_Area : AttackBuildingBase
         _hitDelay = AData.hitDelay;
         _atkDuration = AData.atkDuration;
         _atkRadius = AData.atkRadius;
+
+        _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
+        _finalAs = _atkDelay - (_atkDelay * (getBuff.asBuff)); // 공격속도 계산
     }
 
 
@@ -66,10 +70,12 @@ public class AttackBuilding_Area : AttackBuildingBase
         }
         getBuff.atkBuff = sumBuff;
         */
-        _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
+        _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff)); // 공격력 계산
+        _finalAs = delay - (delay * (getBuff.asBuff)); // 공격속도 계산
         Debug.Log(_finalDmg);
+        Debug.Log("최종 공속" + _finalAs);
         AtkEvent?.Invoke();
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(_finalAs);
         atkDelaying = false;
     }
 
