@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d03fbb1d3612ff4092b86ec8f51215a, type: 3}
   m_Name: BOTCA Data
   m_EditorClassIdentifier: 
-  _id: 0
-  _name: 
+  _id: 1010
+  _name: BlessingOfTheColdAir
   _attack: 30
   _size: 2
   _prefab: {fileID: 5188791887647992852, guid: 865028827c674bb4eaecabe8318849a3, type: 3}
-  _bless: {fileID: 2874234111288918806, guid: 865028827c674bb4eaecabe8318849a3, type: 3}
+  _bless: {fileID: 0}
   LevelProp:
     states: 000000000000
     _levelTables: []
