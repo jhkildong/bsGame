@@ -13,9 +13,13 @@ public class sampleAction : MonoBehaviour
     void Start()
     {
         Hp = 100;
-        target = gameObject.transform.Find("Player");
+        target = GameObject.Find("Player").transform;
+        animator.SetFloat("groundLocomotion", 0.5f);
         StartCoroutine(CheckState());
-        //animator = gameObject.GetComponent<Animator>();
+    }
+    void Update()
+    {
+        transform.LookAt(target);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -28,7 +32,6 @@ public class sampleAction : MonoBehaviour
     }
     void attackInSky()
     {
-        Debug.Log("°ø°ÝÇÔ");
         if(target != null)
         {
             Vector3 randomPosition = target.position + Random.insideUnitSphere * 3f;
