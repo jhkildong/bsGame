@@ -5,14 +5,9 @@ using UnityEngine;
 
 public class BuffBuildingBase : Building
 {
-
-    public enum Type
-    {
-        Heal, Buff
-    }
-
     public LayerMask targetLayer;
     public List<GameObject> targets;
+
     //bool isWorking; // targets list가 비어있지않으면 true
 
     /*

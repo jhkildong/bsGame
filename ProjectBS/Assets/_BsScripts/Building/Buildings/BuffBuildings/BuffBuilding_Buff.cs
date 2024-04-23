@@ -12,6 +12,7 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
         set { BuffBuildingData = value; }
     }
 
+    Dictionary<string, float> buffType = null;
     /*
     [SerializeField] private string buffName;
     [SerializeField] private float buffAmount;
@@ -19,6 +20,7 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
     [SerializeField] private float duration;
     [SerializeField] private bool canStack;
     */
+    
 
     // Start is called before the first frame update
     protected override void Start()
@@ -26,6 +28,7 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
         base.Start();
 
         targetLayer = BData.targetLayer;
+        
         /*
         buffName = BData.buffName;
         buffAmount = BData.buffAmount;
@@ -34,15 +37,47 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
         canStack = BData.canStack;
         */
         buffController = new BuffController(this, BData.buffName, BData.buffAmount, BData.hasDuration, BData.duration, BData.canStack);
+
     }
 
     public BuffController buffController { get; set; }
 
-
+    
+    
     protected override void StartBuff(Collider other) // ontriggerenter시
     {
         IBuffable buffable = other.GetComponent<IBuffable>();
-        buffController.StartBuff(buffable);
+        if (buffable != null)
+        {
+            Buff buff = buffable.getBuff; // 기존의 버프 가져오기
+            if (buff == null)
+            {
+                buff = new Buff(); // 버프가 없으면 새로 생성
+            }
+            switch (BData.buffType)
+            {
+                case BuffBuildingData.BuffType.Heal:
+                    // 처리할 내용
+                    break;
+                case BuffBuildingData.BuffType.atkBuff:
+                    buffType = buff.atkBuffDict;
+                    break;
+                case BuffBuildingData.BuffType.hpBuff:
+                    buffType = buff.hpBuffDict;
+                    break;
+                case BuffBuildingData.BuffType.asBuff:
+                    buffType = buff.asBuffDict;
+                    break;
+                case BuffBuildingData.BuffType.msBuff:
+                    buffType = buff.msBuffDict;
+                    break;
+                default:
+                    break;
+            }
+
+            buffController.StartBuff(buffable, buffType);
+        } 
+
         /*
         IBuffable buffable = other.GetComponent<IBuffable>();
         Debug.Log(buffable);
@@ -115,7 +150,35 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
     protected override void RemoveBuff(Collider other)
     {
         IBuffable buffable = other.GetComponent<IBuffable>();
-        buffController.RemoveBuff(buffable);
+        if (buffable != null)
+        {
+            Buff buff = buffable.getBuff; // 기존의 버프 가져오기
+            if (buff == null)
+            {
+                buff = new Buff(); // 버프가 없으면 새로 생성
+            }
+            switch (BData.buffType)
+            {
+                case BuffBuildingData.BuffType.Heal:
+                    // 처리할 내용
+                    break;
+                case BuffBuildingData.BuffType.atkBuff:
+                    buffType = buff.atkBuffDict;
+                    break;
+                case BuffBuildingData.BuffType.hpBuff:
+                    buffType = buff.hpBuffDict;
+                    break;
+                case BuffBuildingData.BuffType.asBuff:
+                    buffType = buff.asBuffDict;
+                    break;
+                case BuffBuildingData.BuffType.msBuff:
+                    buffType = buff.msBuffDict;
+                    break;
+                default:
+                    break;
+            }
+            buffController.RemoveBuff(buffable, buffType);
+        }
         /*
         //targets 리스트에 해당 오브젝트가 있는지 체크
         IBuffable buffable = other.GetComponent<IBuffable>();
@@ -136,6 +199,7 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
             Debug.Log("버프해제됨");
         }
         */
+
     }
     /*
     IEnumerator BuffTime(Buff buff, float dur)
@@ -162,8 +226,9 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
                     }
                     // 버프 값 설정
                     //buff.atkBuffList.Add(buffAmount);
-                    buff.atkBuffDict.Remove(buffController.BuffName); // 0419 수정중
+                    buff.atkBuffDict.Remove(buffController.BuffName);
 
+                    
                     buffable.getBuff = buff; // 버프 적용
                 }
             }
