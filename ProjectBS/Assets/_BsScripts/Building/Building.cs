@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -33,6 +34,10 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
     [SerializeField] public bool iscompletedBuilding; // 건물의 건설 여부
     float curConstTime = 0.0f; //건설한 시간
 
+    //Yeon 추가
+    [NonSerialized]public bool isConstructing = false;  // 건설중인지 여부
+    private UnityAction<float> ConstructionProgress;    // 건설 진행도 증가시 호출
+    public UnityAction<bool> SelectedProgress;          // 건설 선택/해제시 호출
 
 
     /*
@@ -76,10 +81,12 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
     protected virtual void Update()
     {
         
+        /*
         if (Input.GetKey(KeyCode.B))
         {
             Construction(2*Time.deltaTime);
         }
+        */
         /*
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -101,11 +108,19 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
         isInstalled = true;
     }
     
-    void Construction(float constSpeed) //건설중
+    public void Construction(float constSpeed) //건설중
     {
         //canBuild상태에서 상호작용키 입력시, constructing 활성화, 건설애니메이션 시작, constructing인 동안 이벤트 호출. 
 
-
+        //건설중이 아닐때, 건설중 상태로 전환
+        if (!isConstructing)
+        {
+            ProgressBar progressBar = UIManager.Instance.GetUI(UIID.ProgressBar, CanvasType.DynamicCanvas) as ProgressBar;
+            progressBar.myTarget = transform;
+            ConstructionProgress += progressBar.ChnageProgress;
+            SelectedProgress += progressBar.Selected;
+            isConstructing = true;
+        }
 
         //이벤트 내용
         //건물은 건설상태를 구분한다 ( 완성 , 미완성 ).
@@ -117,11 +132,14 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
         if (!iscompletedBuilding && isInstalled) //미완성 건물일때, 건설 세팅 상태일때
         {
             curConstTime += constSpeed;
+            ConstructionProgress?.Invoke(curConstTime / _constTime);
             Debug.Log("건설 진행 시간 :"  + curConstTime);
             if (curConstTime >= _constTime)
             {
                 ConstructComplete();
             }
+
+            
         }
 
 

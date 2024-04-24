@@ -22,7 +22,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         {
             if(_playerTransform == null)
             {
-                _playerTransform = GameManager.Instance.playerTransform;
+                _playerTransform = GameManager.Instance.Player.transform;
             }
             return _playerTransform;
         }

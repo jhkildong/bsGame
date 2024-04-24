@@ -40,7 +40,7 @@ public class MonsterSpawner : MonoBehaviour
 
         applyRespawn = true;
         //StartCoroutine(NormalMonsterSpawn());
-        StartCoroutine(BossMonsterSpawn());
+        //StartCoroutine(BossMonsterSpawn());
     }
 
     void DataSetPool(MonsterData[] datas)

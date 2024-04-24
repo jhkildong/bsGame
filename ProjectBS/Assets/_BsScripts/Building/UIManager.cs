@@ -1,84 +1,157 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
-    private static UIManager _instance;
-
-    public GameObject BuildPopUp;
-    private bool BuildIsOpen = false;
-
-    public static UIManager Instance //인스턴스에 접근하기 위한 프로퍼티
+    protected override void Awake()
     {
-        get
+        base.Awake();
+        Initialize();
+    }
+
+    //Resources/UI 폴더에 있는 UIComponent를 저장할 딕셔너리
+    public Dictionary<int, UIComponent> UIDict => _uiDict;
+    private Dictionary<int, UIComponent> _uiDict;
+    //풀링된 UI의 ID를 저장할 리스트
+    private List<int> pooledUIIDList = new List<int>();
+
+    //캔버스와 다이나믹 캔버스를 저장할 변수
+    [SerializeField]private Transform canvas;
+    [SerializeField]private Transform dynamicCanvas;
+
+    private void Initialize()
+    {
+        //UIComponent를 상속받은 모든 클래스를 Resources/UI 폴더에서 로드하여 딕셔너리에 저장
+        UIComponent[] UILists = Resources.LoadAll<UIComponent>(FilePath.UI);
+        _uiDict = new Dictionary<int, UIComponent>();
+        foreach (UIComponent ui in UILists)
         {
-            // 인스턴스가 없는 경우에 접근하려 하면 인스턴스를 할당해준다.
-            if (!_instance)
+            _uiDict.Add(ui.ID, ui);
+        }
+        //캔버스와 다이나믹 캔버스가 없을 경우 생성
+        if (canvas == null)
+        {
+            string name = "Canvas";
+            GameObject go = GameObject.Find(name);
+            if(go != null)
             {
-                _instance = FindObjectOfType(typeof(UIManager)) as UIManager;
-
-                if (_instance == null)
-                {
-                    Debug.Log("싱글톤 인스턴스가 없습니다");
-                }
-
-            }
-            return _instance;
-        }
-    }
-
-    void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
-        // 인스턴스가 존재하는 경우 새로생기는 인스턴스를 삭제한다. (GameManager 인스턴스는 언제나 하나여야 한다 )
-        else if (_instance != this)
-        {
-            Debug.Log("씬에 두개이상의 인스턴스가 있습니다");
-            Destroy(gameObject);
-        }
-        //이렇게 하면 씬이 전환되더라도 선언되었던 인스턴스가 파괴되지 않는다.
-        DontDestroyOnLoad(gameObject);
-    }
-
-    void Start()
-    {
-        BuildPopUp.SetActive(false);
-        BuildIsOpen = false;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (!BuildIsOpen)
-            {
-                OpenBuildTab();
+                canvas = go.transform;
             }
             else
             {
-                CloseBuildTab();
+                canvas = CreateCanvas(name).transform;
             }
-        }    
+        }
+        if (dynamicCanvas == null)
+        {
+            string name = "DynamicCanvas";
+            GameObject go = GameObject.Find(name);
+            if (go != null)
+            {
+                dynamicCanvas = go.transform;
+            }
+            else
+            {
+                dynamicCanvas = CreateCanvas(name).transform;
+            }
+        }
+        CanvasSetting(canvas.gameObject);
+        CanvasSetting(dynamicCanvas.gameObject);
     }
 
-    public void OpenBuildTab()
+    //캔버스 생성 함수
+    private GameObject CreateCanvas(string name)
     {
-        if(!BuildIsOpen)
+        GameObject go = new GameObject(name);
+        go.AddComponent<Canvas>();
+        go.AddComponent<CanvasScaler>();
+        go.AddComponent<GraphicRaycaster>();
+
+        return go;
+    }
+
+    //캔버스 기본 설정 함수
+    private void CanvasSetting(GameObject go)
+    {
+        go.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+        CanvasScaler cs = go.GetComponent<CanvasScaler>();
+        cs.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        cs.referenceResolution = new Vector2(1920, 1080);
+        cs.matchWidthOrHeight = 0.5f;
+    }
+
+    //풀링할 UI를 설정하는 함수
+    public void SetPool(UIID ID, int max, int init)
+    {
+        if (!_uiDict.ContainsKey((int)ID))
+            return;
+        ObjectPoolManager.Instance.SetPool(UIDict[(int)ID], max, init);
+        pooledUIIDList.Add((int)ID);
+    }
+
+    //풀링한 UI를 가져오는 함수
+    public UIComponent GetUI(UIID ID, CanvasType type)
+    {
+        if (!_uiDict.ContainsKey((int)ID))
         {
-            BuildPopUp.SetActive(true);
-            BuildIsOpen = true;
+            return null;
+        }
+        //풀링된 UI일 경우 가져옴
+        if(pooledUIIDList.Contains((int)ID))
+        {
+            UIComponent clone = ObjectPoolManager.Instance.GetObj(UIDict[(int)ID]) as UIComponent;
+            clone.transform.SetParent(type == CanvasType.Canvas ? canvas : dynamicCanvas);
+            return clone;
+        }
+        //풀링되지 않은 UI일 경우 생성해줌
+        else
+        {
+            return CreateUI(ID, type);
         }
     }
-    public void CloseBuildTab()
+
+    //풀링한 UI를 반환하는 함수
+    public void ReleaseUI(UIComponent ui)
     {
-        if (BuildIsOpen)
+        if (!_uiDict.ContainsKey(ui.ID))
         {
-            BuildPopUp.SetActive(false);
-            BuildIsOpen = false;
+            return;
+        }
+        //풀링된 UI일 경우 반환
+        if (pooledUIIDList.Contains(ui.ID))
+        {
+            ObjectPoolManager.Instance.ReleaseObj(ui);
+        }
+        //풀링되지 않은 UI일 경우 파괴
+        else
+        {
+            Destroy(ui.gameObject);
         }
     }
+
+    //UI를 생성하는 함수 생성시 캔버스 결정
+    public UIComponent CreateUI(UIID ID, CanvasType type)
+    {
+        if (!_uiDict.ContainsKey((int)ID))
+            return null;
+        return Instantiate(UIDict[(int)ID], type == CanvasType.Canvas ? canvas : dynamicCanvas);
+    }
+}
+
+public enum CanvasType
+{
+    Canvas = 0,
+    DynamicCanvas = 1,
+}
+
+public enum UIID
+{
+    BlessPopup = 5000,
+    PlayerUI = 5001,
+    PlayerSelectWindow = 5002,
+    BuildingPopup = 5003,
+    ConstructionKeyUI = 5004,
+    ProgressBar = 5005,
 }

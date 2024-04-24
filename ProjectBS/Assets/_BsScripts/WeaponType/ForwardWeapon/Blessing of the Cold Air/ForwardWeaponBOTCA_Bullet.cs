@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ForwardWeaponBOTCA_Bullet : MonoBehaviour
@@ -15,6 +13,7 @@ public class ForwardWeaponBOTCA_Bullet : MonoBehaviour
             if (obj != null)
             {
                 obj.TakeDamage(Ak);
+                Debug.Log($"´ë¹ÌÁö {Ak}");
             }
         }
     }

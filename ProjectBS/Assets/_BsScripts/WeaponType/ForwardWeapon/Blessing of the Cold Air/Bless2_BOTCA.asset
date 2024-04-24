@@ -12,29 +12,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
   m_Name: Bless2_BOTCA
   m_EditorClassIdentifier: 
-  _id: 1010
+  _id: 1050
   _name: BlessingOfTheColdAir
   _prefab: {fileID: 5188791887647992852, guid: 865028827c674bb4eaecabe8318849a3, type: 3}
   _lvDataList:
   - name: Attack
-    defaultValue: 5
-    levelUpType: 0
-    levelUpTable:
-    - 3
-    - 0
-    - 3
-    - 0
-    - 3
-    - 0
-    - 5
-  - name: Amount
-    defaultValue: 1
+    defaultValue: 20
     levelUpType: 1
     levelUpTable:
     - 1
+    - 2
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+  - name: Amount
+    defaultValue: 0
+    levelUpType: 0
+    levelUpTable:
+    - 1
     - 0
     - 1
+    - 0
     - 1
     - 0
     - 1
+  - name: ReTime
+    defaultValue: 2
+    levelUpType: 1
+    levelUpTable:
+    - 1
+    - 0.8
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+  - name: Size
+    defaultValue: 0
+    levelUpType: 0
+    levelUpTable:
+    - 2
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     - 0

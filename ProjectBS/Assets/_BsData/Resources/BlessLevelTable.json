@@ -1,31 +1,45 @@
 {
-  "Bless2_BOTCA": [
+  "Bless2_RM": [
     {
       "name": "Attack",
-      "defaultValue": 5.0,
-      "levelUpType": 0,
+      "defaultValue": 20.0,
+      "levelUpType": 1,
       "levelUpTable": [
-        3.0,
-        0.0,
-        3.0,
-        0.0,
-        3.0,
-        0.0,
-        5.0
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
       ]
     },
     {
-      "name": "Amount",
+      "name": "DelayTime",
       "defaultValue": 1.0,
       "levelUpType": 1,
       "levelUpTable": [
         1.0,
-        0.0,
         1.0,
         1.0,
-        0.0,
         1.0,
-        0.0
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "AtRange",
+      "defaultValue": 10.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
       ]
     }
   ]

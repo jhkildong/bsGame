@@ -32,12 +32,10 @@ public static class FilePath
     #endregion
 
     #region UI
-    /// <summary>Prefabs/UI/Popup</summary>
-    public const string Popup = "Prefabs/UI/Popup";
-    /// <summary>Prefabs/UI/PlayerSelectWindow</summary>
-    public const string PlayerSelectWindow = "Prefabs/UI/PlayerSelectWindow";
+    /// <summary>Prefabs/UI</summary>
+    public const string UI = "Prefabs/UI";
     /// <summary>Prefabs/UI/PlayerUI</summary>
-    public const string PlayerUI = "Prefabs/UI/PlayerUI";
+    public const string PlayerUI = "Prefabs/UI/5001_PlayerUI";
     #endregion
 
 #if UNITY_EDITOR

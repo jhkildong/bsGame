@@ -56,7 +56,7 @@ public class Effect : MonoBehaviour, IPoolable
             if (isStopped || _particleSystem.isStopped)
             {
                 isStopped = false;
-                ObjectPoolManager.Instance.ReleaseObj(this, this.gameObject);   //onDisable
+                ObjectPoolManager.Instance.ReleaseObj(this);   //onDisable
                 yield break;
             }
             yield return null;

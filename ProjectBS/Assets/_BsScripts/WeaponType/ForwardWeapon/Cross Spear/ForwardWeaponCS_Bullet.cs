@@ -1,20 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ForwardWeaponCS_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
-    float Ak;
-
-    private void OnEnable()
-    {
-        ForwardWeaponCS forwardWeaponCS = FindObjectOfType<ForwardWeaponCS>();
-        if (forwardWeaponCS != null)
-        {
-            Ak = forwardWeaponCS.Ak;
-        }
-    }
+    public float Ak;
 
     private void OnTriggerEnter(Collider other) // ´ë¹ÌÁö
     {

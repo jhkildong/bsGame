@@ -5,38 +5,37 @@ using UnityEngine.UIElements;
 
 public class PopupManager : MonoBehaviour
 {
-    public GameObject popup;
-    public static short buildingPopupCount = 0;
+    private PopupWindow BlessPopup;
+    private PopupWindow BuildingPopup;
+
+    private bool blessSwitch;
+    private bool buildingSwitch;
     // Start is called before the first frame update
     void Start()
     {
-        
+        BlessPopup = UIManager.Instance.CreateUI(UIID.BlessPopup, CanvasType.Canvas) as PopupWindow;
+        BuildingPopup = UIManager.Instance.CreateUI(UIID.BuildingPopup, CanvasType.Canvas) as PopupWindow;
+
+        blessSwitch = false;
+        buildingSwitch = false;
+        BlessPopup.gameObject.SetActive(blessSwitch);
+        BuildingPopup.gameObject.SetActive(buildingSwitch);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.F2))
         {
-            buildingPopupCount++;
-            if(buildingPopupCount == 1)
-            {
-                Instantiate(Resources.Load<GameObject>(FilePath.Popup), this.transform);
-            }
+            blessSwitch = !blessSwitch;
+            BlessPopup.gameObject.SetActive(blessSwitch);
+            if(blessSwitch) BlessPopup.transform.SetAsLastSibling();
         }
-
-        if (Input.GetKeyUp(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
-            DestroyAllChildren();
-            buildingPopupCount = 0;
-        }
-    }
-
-    void DestroyAllChildren()
-    {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
+            buildingSwitch = !buildingSwitch;
+            BuildingPopup.gameObject.SetActive(buildingSwitch);
+            if(buildingSwitch) BuildingPopup.transform.SetAsLastSibling();
         }
     }
 }

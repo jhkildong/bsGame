@@ -19,7 +19,7 @@ namespace Yeon2
 
         public Bless CreateClone()
         {
-            GameObject go = Instantiate(_prefab, GameManager.Instance.playerTransform);
+            GameObject go = Instantiate(_prefab, GameManager.Instance.Player.transform);
             Bless bless = go.GetComponent<Bless>();
             if (bless != null)
                 bless.Init(this);

@@ -2,8 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class PlayerSelectWindow : MonoBehaviour
+public class PlayerSelectWindow : UIComponent
 {
+    public override int ID => _id;
+    [SerializeField] private int _id = 5002;
     public PlayerSelectUI playerSelectUI;
     [SerializeField]private Button UndoButton;
 
