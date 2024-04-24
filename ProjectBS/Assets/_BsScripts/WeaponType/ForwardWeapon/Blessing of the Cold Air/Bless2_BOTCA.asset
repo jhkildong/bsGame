@@ -29,12 +29,12 @@ MonoBehaviour:
     - 5
   - name: Amount
     defaultValue: 1
-    levelUpType: 1
+    levelUpType: 0
     levelUpTable:
     - 1
-    - 0
     - 1
     - 1
-    - 0
     - 1
-    - 0
+    - 1
+    - 1
+    - 1

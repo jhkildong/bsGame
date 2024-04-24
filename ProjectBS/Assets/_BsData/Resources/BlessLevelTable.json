@@ -2,10 +2,10 @@
   "Bless2_BOTCA": [
     {
       "name": "Attack",
-      "defaultValue": 5.0,
+      "defaultValue": 0.0,
       "levelUpType": 0,
       "levelUpTable": [
-        3.0,
+        100.0,
         0.0,
         3.0,
         0.0,
@@ -16,15 +16,57 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 1.0,
-      "levelUpType": 1,
+      "defaultValue": 0.0,
+      "levelUpType": 0,
       "levelUpTable": [
+        4.0,
+        3.0,
         1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "ReTime",
+      "defaultValue": 0.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        2.0,
         0.0,
-        1.0,
-        1.0,
         0.0,
-        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "DestroyTime",
+      "defaultValue": 0.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        10.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Size",
+      "defaultValue": 0.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
         0.0
       ]
     }
