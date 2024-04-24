@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
-  m_Name: Bless2_CS
+  m_Name: Bless2_PF
   m_EditorClassIdentifier: 
-  _id: 1060
-  _name: CrossSpear
-  _prefab: {fileID: 2336909956578856692, guid: 52dc9034c50881146869f6cd8f97a028, type: 3}
+  _id: 1030
+  _name: PetFlame
+  _prefab: {fileID: 1345635395758532283, guid: 74c555f52e0e4454e99b8349ba2d27be, type: 3}
   _lvDataList:
   - name: Attack
     defaultValue: 20
@@ -31,32 +31,32 @@ MonoBehaviour:
     defaultValue: 0
     levelUpType: 0
     levelUpTable:
-    - 5
+    - 1
     - 0
+    - 1
     - 0
+    - 1
     - 0
-    - 0
-    - 0
-    - 0
+    - 1
   - name: ReTime
     defaultValue: 2
     levelUpType: 1
     levelUpTable:
     - 1
+    - 0.5
     - 1
     - 1
     - 1
     - 1
     - 1
-    - 1
-  - name: Size
+  - name: ArrowAmount
     defaultValue: 0
     levelUpType: 0
     levelUpTable:
-    - 2
+    - 1
     - 0
     - 0
-    - 0
+    - 1
     - 0
     - 0
     - 0

@@ -349,6 +349,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponArrowPrefab: {fileID: 885452322155594386, guid: 5027f60239a4978459fc8e3acd95811e, type: 3}
+  ReTime: 0
+  ArrowAmount: 0
+  Size: 2
 --- !u!1 &8238131280183294300
 GameObject:
   m_ObjectHideFlags: 0

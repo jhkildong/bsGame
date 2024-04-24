@@ -44,58 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7eb26d7122d054698b386b4638df96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 9a4b2bd672a871e4e850b1d9063ed86c, type: 2}
-  _attack: 0
-  _size: 0
-  _amount: 0
-  _blessPrefab: {fileID: 0}
-  _levelProp:
-    states: 000000000000000000
-    _levelTables: []
-    SerializablePropertyInfos:
-    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: ReTime
-    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: WaitTime
-    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: DestroyTime
-    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: AtRange
-    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: MaxRange
-    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: MinRange
-    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Ak
-    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Size
-    - TypeName: ForwardWeaponVG, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Amount
-    PropertyNames:
-    - ReTime
-    - WaitTime
-    - DestroyTime
-    - AtRange
-    - MaxRange
-    - MinRange
-    - Ak
-    - Size
-    - Amount
-  myTarget: {fileID: 0}
-  myRotate: {fileID: 0}
+  _data: {fileID: 11400000, guid: 2a67248b90a8dec45acc6427a1396c84, type: 2}
+  myPlayer: {fileID: 0}
   weaponPrefab: {fileID: 1077365919215883442, guid: 4539119fd36e3974fb6d6ef2d07da2e2, type: 3}
-  _reTime: 2
-  _waitTime: 0.05
-  _destroyTime: 0.1
+  clonesParent: {fileID: 0}
   _atRange: 0.5
   _maxRange: 1
   _minRange: -1

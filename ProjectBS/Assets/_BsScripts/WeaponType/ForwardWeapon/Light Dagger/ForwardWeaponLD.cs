@@ -1,44 +1,40 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using Yeon;
+using Yeon2;
 
 public class ForwardWeaponLD : Bless
 {
-    public static Quaternion myRotation; // 회전값
-
-    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
-    public Transform myTarget; // 따라갈 타겟
-    public Transform myRotate; // 따라서 회전할 타겟
     public GameObject weaponPrefab; // 생성할 프리팹
-
-    public float ReTime { get => _reTime; set => _reTime = value; }
-    public float WaitTime { get => _waitTime; set => _waitTime = value; }
-    public float DestroyTime { get => _destroyTime; set => _destroyTime = value; }
-
-    [SerializeField] private float _reTime; // 공격속도
-    [SerializeField] private float _waitTime; // 다음 프리펩 재생성시간
-    [SerializeField] private float _destroyTime; // 생성한 무기 없는 시간
+    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
 
     float time = 0.0f;
     short Level = 0;
-    short Count = 0;
+    float WaitTime = 0.05f;
+    float DestroyTime = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Level = Count =  0;
-        if (myTarget != null) transform.SetParent(myTarget);
+        Level = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        myRotation = transform.rotation = myRotate.rotation; // 회전 맞춤
+        transform.position = myPlayer.transform.position + new Vector3(0, 0.5f, 0);
+        transform.rotation = myPlayer.transform.rotation;
         time += Time.deltaTime;
-        SwitchUpdate();
-        
+
+        if (Level >= 1)
+        {
+            if (time >= myStatus[Key.ReTime])
+            {
+                time = 0.0f;
+                StartCoroutine(SpawnMultipleWeapons(myStatus[Key.Amount]));
+                Debug.Log($"시간 {myStatus[Key.ReTime]}");
+            }
+        }
+
     }
 
     public void OnOkSpawnForwardWeapon()
@@ -46,111 +42,22 @@ public class ForwardWeaponLD : Bless
         if(Level < 7)
         {
             Level++;
-            Count = 0;
+            LevelUp(Level);
             Debug.Log($"{Level}Level 입니다.");
-        }
-    }
-    void SwitchUpdate()
-    {
-        switch (Level)
-        {
-            case 1:  //  1개 생성
-                if (Count < 1)
-                {
-                    Count++;
-                    Amount++;
-                }
-                if (time >= ReTime)
-                {
-                    time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(Amount));
-                }
-                break;
-            case 2:  //  대미지 20% 증가.
-                if (Count < 1)
-                {
-                    Count++;
-                    Debug.Log("대미지 20% 증가");
-                }
-                if (time >= ReTime)
-                {
-                    time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(Amount));
-                }
-                break;
-            case 3:  //  2개가 된다.
-                if (Count < 1)
-                {
-                    Count++;
-                    Amount++;
-                }
-                if (time >= ReTime)
-                {
-                    time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(Amount));
-                }
-                break;
-            case 4:  //  대미지 30% 증가.
-                if (Count < 1)
-                {
-                    Count++;
-                    Debug.Log("대미지 30% 증가");
-                }
-                if (time >= ReTime)
-                {
-                    time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(Amount));
-                }
-                break;
-            case 5:  //  3개가 된다.
-                if (Count < 1)
-                {
-                    Count++;
-                    Amount++;
-                }
-                if (time >= ReTime)
-                {
-                    time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(Amount));
-                }
-                break;
-            case 6:  //  공격속도 30% 증가.
-                if (Count < 1)
-                {
-                    Count++;
-                    ReTime -= ReTime * 0.3f;
-                    Debug.Log("공격속도 30% 증가.");
-                }
-                if (time >= ReTime)
-                {
-                    time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(Amount));
-                }
-                break;
-            case 7:  //  4개가 된다.
-                if (Count < 1)
-                {
-                    Count++;
-                    Amount++;
-                }
-                if (time >= ReTime)
-                {
-                    time = 0.0f;
-                    StartCoroutine(SpawnMultipleWeapons(Amount));
-                }
-                break;
-
         }
     }
 
     private void SpawnWeapon()
     {
-        GameObject bullet = Instantiate(weaponPrefab, transform.position, transform.rotation); // 무기 생성
-        bullet.transform.localScale = new Vector3(Size, Size, Size);
-        bullet.transform.SetParent(clonesParent); // 생성 무기 똥처리
-        Destroy(bullet, DestroyTime);
+        GameObject go = Instantiate(weaponPrefab, transform.position, transform.rotation); // 무기 생성
+        go.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); //사이즈
+        go.transform.SetParent(clonesParent); // 생성한 무기 똥처리
+        Destroy(go, DestroyTime);
+
+        var bullet = go.GetComponentInChildren<ForwardWeaponLD_Bullet>();
+        bullet.Ak = myStatus[Key.Attack];
     }
-     IEnumerator SpawnMultipleWeapons(int v)
+    IEnumerator SpawnMultipleWeapons(float v)
     {
         for (int i = 0; i < v; i++)
         {

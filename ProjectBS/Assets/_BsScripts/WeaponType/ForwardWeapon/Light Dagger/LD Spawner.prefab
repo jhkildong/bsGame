@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1212579847085898387}
-  - component: {fileID: 7921142815068386844}
+  - component: {fileID: 4046655001319778902}
   m_Layer: 0
   m_Name: LD Spawner
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7921142815068386844
+--- !u!114 &4046655001319778902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,44 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd3434dfab869747b872044965255c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 68879e3f02f6d9242aae5cdb7fe56906, type: 2}
-  _attack: 0
-  _size: 0
-  _amount: 0
-  _blessPrefab: {fileID: 0}
-  _levelProp:
-    states: 000000000000
-    _levelTables: []
-    SerializablePropertyInfos:
-    - TypeName: ForwardWeaponLD, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: ReTime
-    - TypeName: ForwardWeaponLD, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: WaitTime
-    - TypeName: ForwardWeaponLD, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: DestroyTime
-    - TypeName: ForwardWeaponLD, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Ak
-    - TypeName: ForwardWeaponLD, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Size
-    - TypeName: ForwardWeaponLD, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Amount
-    PropertyNames:
-    - ReTime
-    - WaitTime
-    - DestroyTime
-    - Ak
-    - Size
-    - Amount
-  clonesParent: {fileID: 0}
-  myTarget: {fileID: 0}
-  myRotate: {fileID: 0}
+  _data: {fileID: 11400000, guid: fb802d234b7b7164bbd0a018d031a236, type: 2}
+  myPlayer: {fileID: 0}
   weaponPrefab: {fileID: 8956203174936637677, guid: 354a9f4e48ad99c499afb50262a89459, type: 3}
-  _reTime: 2
-  _waitTime: 0.05
-  _destroyTime: 10
+  clonesParent: {fileID: 0}

@@ -1,22 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OrditalWeaponRA_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
-    float bulletRotSpeed; // 회전속도
-    float Ak;
+    public float Ak;
 
-    private void OnEnable()
-    {
-        OrditalWeaponRA forwardWeaponRA = FindObjectOfType<OrditalWeaponRA>();
-        if (forwardWeaponRA != null)
-        {
-            Ak = forwardWeaponRA.Ak;
-            bulletRotSpeed = forwardWeaponRA.BulletRotSpeed;
-        }
-    }
+    float bulletRotSpeed = 1000.0f; // 회전속도
 
     private void OnTriggerEnter(Collider other) // 대미지
     {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ForwardWeaponBOTCA_Bullet : MonoBehaviour
@@ -9,13 +7,13 @@ public class ForwardWeaponBOTCA_Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) // 대미지
     {
-        Debug.Log($"대미지 {Ak}");
         if ((Monster & 1 << other.gameObject.layer) != 0)
         {
             IDamage<Monster> obj = other.GetComponent<IDamage<Monster>>();
             if (obj != null)
             {
                 obj.TakeDamage(Ak);
+                Debug.Log($"대미지 {Ak}");
             }
         }
     }

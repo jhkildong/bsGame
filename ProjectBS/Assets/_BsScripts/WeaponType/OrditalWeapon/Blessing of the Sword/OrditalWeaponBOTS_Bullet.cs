@@ -1,21 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OrditalWeaponBOTS_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
-
-    float Ak;
-
-    private void OnEnable()
-    {
-        OrditalWeaponBOTS forwardWeaponBOTS = FindObjectOfType<OrditalWeaponBOTS>();
-        if (forwardWeaponBOTS != null)
-        {
-            Ak = forwardWeaponBOTS.Ak;
-        }
-    }
+    public float Ak;
 
     private void OnTriggerEnter(Collider other)
     {
