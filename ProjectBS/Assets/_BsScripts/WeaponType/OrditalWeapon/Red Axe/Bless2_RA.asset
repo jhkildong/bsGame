@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
-  m_Name: Bless2_CS
+  m_Name: Bless2_RA
   m_EditorClassIdentifier: 
-  _id: 1060
-  _name: CrossSpear
-  _prefab: {fileID: 2336909956578856692, guid: 52dc9034c50881146869f6cd8f97a028, type: 3}
+  _id: 1020
+  _name: RedAxe
+  _prefab: {fileID: 3613535943109023014, guid: 1f80aae093df5c043aa0117abdddff0d, type: 3}
   _lvDataList:
   - name: Attack
     defaultValue: 20
@@ -31,15 +31,26 @@ MonoBehaviour:
     defaultValue: 0
     levelUpType: 0
     levelUpTable:
-    - 5
+    - 1
     - 0
+    - 1
+    - 1
     - 0
+    - 1
     - 0
-    - 0
-    - 0
-    - 0
-  - name: ReTime
-    defaultValue: 2
+  - name: AtRange
+    defaultValue: 5
+    levelUpType: 1
+    levelUpTable:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+  - name: RotSpeed
+    defaultValue: 130
     levelUpType: 1
     levelUpTable:
     - 1
@@ -50,13 +61,13 @@ MonoBehaviour:
     - 1
     - 1
   - name: Size
-    defaultValue: 0
-    levelUpType: 0
+    defaultValue: 2
+    levelUpType: 1
     levelUpTable:
-    - 2
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1

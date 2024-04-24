@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
-  m_Name: Bless2_CS
+  m_Name: Bless2_LD
   m_EditorClassIdentifier: 
-  _id: 1060
-  _name: CrossSpear
-  _prefab: {fileID: 2336909956578856692, guid: 52dc9034c50881146869f6cd8f97a028, type: 3}
+  _id: 1040
+  _name: LightDagger
+  _prefab: {fileID: 2396756261227933011, guid: f58d5a649f0de324483f54ea0ead3f54, type: 3}
   _lvDataList:
   - name: Attack
     defaultValue: 20

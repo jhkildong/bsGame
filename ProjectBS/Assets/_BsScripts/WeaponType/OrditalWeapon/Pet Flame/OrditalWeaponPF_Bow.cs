@@ -1,33 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class OrditalWeaponPF_Bow : MonoBehaviour
 {
     public GameObject weaponArrowPrefab; // 생성한 프리펩
 
-    float reTime; // 공격속도
-    float waitTime; // 재 발사 시간
-    float destroyTime; // 생성한 무기 없는 시간
-    short arrowAmount; // 화살 갯수
-    float size;
+    public float ReTime; // 공격속도
+    public float ArrowAmount; // 화살 갯수
+
+    public float Size = 2.0f;
 
     float time = 0;
-
-    private void OnEnable()
-    {
-        OrditalWeaponPF orditalWeaponPF = FindObjectOfType<OrditalWeaponPF>();
-        if (orditalWeaponPF != null)
-        {
-            reTime = orditalWeaponPF.ReTime;
-            waitTime = orditalWeaponPF.WaitTime;
-            destroyTime = orditalWeaponPF.DestroyTime;
-            arrowAmount = orditalWeaponPF.ArrowAmount;
-            size = orditalWeaponPF.Size;
-        }
-    }
+    float WaitTime = 0.05f;
+    float DestroyTime = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,28 +24,29 @@ public class OrditalWeaponPF_Bow : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        Quaternion rotation = ForwardWeaponLD.myRotation;
+        Quaternion rotation = OrditalWeaponPF.myRotation;
         transform.rotation = rotation;
-        if (time >= reTime)
+        if (time >= ReTime)
         {
             time = 0.0f;
-            StartCoroutine(SpawnMultipleWeapons(arrowAmount));
+            StartCoroutine(SpawnMultipleWeapons(ArrowAmount));
         }
     }
 
     private void SpawnWeaponArrow() // 화살 생성
     {
-        GameObject bullet = Instantiate(weaponArrowPrefab, transform.position, transform.rotation); // 무기 생성
-        bullet.transform.localScale = new Vector3(size, size, size);
-        bullet.transform.SetParent(null); // 생성 무기 똥처리
-        Destroy(bullet, destroyTime);
+        GameObject go = Instantiate(weaponArrowPrefab, transform.position, transform.rotation); // 무기 생성
+        go.transform.localScale = new Vector3(Size, Size, Size);
+
+        go.transform.SetParent(null); // 생성 무기 똥처리
+        Destroy(go, DestroyTime);
     }
-    IEnumerator SpawnMultipleWeapons(int v)
+    IEnumerator SpawnMultipleWeapons(float v)
     {
         for (int i = 0; i < v; i++)
         {
             SpawnWeaponArrow();
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(WaitTime);
         }
     }
 }

@@ -1,21 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Yeon;
 
 public class ForwardWeaponLD_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
-    float Ak;
-
-    private void OnEnable()
-    {
-        ForwardWeaponLD forwardWeaponLD = FindObjectOfType<ForwardWeaponLD>();
-        if (forwardWeaponLD != null)
-        {
-            Ak = forwardWeaponLD.Ak;
-        }
-    }
+    public float Ak;
 
     private void OnTriggerEnter(Collider other)
     {

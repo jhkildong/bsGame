@@ -1,24 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Yeon2;
 
 public class ForwardWeaponCS : Bless
 {
-
-    /*
-    1레벨 - 전방으로 1개 발사
-    2레벨 - 대미지 20% 증가
-    3레벨 - 전방으로 2개 발사
-    4레벨 - 공격속도 30% 증가
-    5레벨 - 대미지 20% 증가
-    6레벨 - 전방으로 3개 발사
-    7레벨 - 공격속도 30% 증가
-    */
-
     public GameObject weaponPrefab; // 생성할 프리팹
     public Transform clonesParent; // 생성한 프리펩들 보관할 곳
 
@@ -33,11 +18,12 @@ public class ForwardWeaponCS : Bless
     float time = 0.0f;
     short Level = 0;
     float WaitTime = 0.05f;
+    float DestroyTime = 0.1f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Level = 0;
     }
 
     // Update is called once per frame
@@ -46,10 +32,15 @@ public class ForwardWeaponCS : Bless
         transform.position = myPlayer.transform.position + new Vector3(0, 0.5f, 0);
         transform.rotation = myPlayer.transform.rotation;
         time += Time.deltaTime;
-        if (time >= myStatus[Key.ReTime])
+
+        if (Level >= 1)
         {
-            time = 0.0f;
-            StartCoroutine(SpawnMultipleWeapons(myStatus[Key.Amount]));
+            if (time >= myStatus[Key.ReTime])
+            {
+                time = 0.0f;
+                StartCoroutine(SpawnMultipleWeapons(myStatus[Key.Amount]));
+                Debug.Log($"시간 {myStatus[Key.ReTime]}");
+            }
         }
     }
 
@@ -65,22 +56,17 @@ public class ForwardWeaponCS : Bless
 
     private void SpawnWeapon()
     {
+        Vector3 direction = Quaternion.Euler(0, 0, 0) * transform.forward;
+        float randomXPos = Random.Range(MinRange, MaxRange); // 랜덤 최소, 최대 폭 설정
+
         GameObject go = Instantiate(weaponPrefab, transform.position, transform.rotation); // 무기 생성
-        go.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]);
+        go.transform.position = transform.position + new Vector3(randomXPos, 0.5f, 0.0f) + direction * AtRange;
+        go.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); // 사이즈
         go.transform.SetParent(null);
-        Destroy(go, myStatus[Key.DestroyTime]);
+        Destroy(go, DestroyTime);
 
-        var bullet = go.GetComponent<ForwardWeaponBOTCA_Bullet>();
+        var bullet = go.GetComponentInChildren<ForwardWeaponCS_Bullet>();
         bullet.Ak = myStatus[Key.Attack];
-
-        int childCount = go.transform.childCount;
-        for (int i = 0; i < childCount; ++i)
-        {
-            Transform child = transform.GetChild(i);
-            Vector3 direction = Quaternion.Euler(0, 0, 0) * transform.forward;
-            float randomXPos = Random.Range(MinRange, MaxRange); // 랜덤 최소, 최대 폭 설정
-            child.position = transform.position + new Vector3(randomXPos, 0.0f, 0.0f) + direction * AtRange;
-        }
     }
 
     IEnumerator SpawnMultipleWeapons(float v)

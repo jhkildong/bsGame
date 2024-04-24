@@ -44,42 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dba92ae581636c48b2768e788c8278a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 90b86956fa4f7754b9393f9c481428a0, type: 2}
-  _attack: 0
-  _size: 0
-  _amount: 0
-  _blessPrefab: {fileID: 0}
-  _levelProp:
-    states: 000000000000
-    _levelTables: []
-    SerializablePropertyInfos:
-    - TypeName: OrditalWeaponRA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: AtRange
-    - TypeName: OrditalWeaponRA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: RotSpeed
-    - TypeName: OrditalWeaponRA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: BulletRotSpeed
-    - TypeName: OrditalWeaponRA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Ak
-    - TypeName: OrditalWeaponRA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Size
-    - TypeName: OrditalWeaponRA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      PropertyName: Amount
-    PropertyNames:
-    - AtRange
-    - RotSpeed
-    - BulletRotSpeed
-    - Ak
-    - Size
-    - Amount
-  myTarget: {fileID: 0}
+  _data: {fileID: 11400000, guid: c8dc365104821f74bace589b065c5d21, type: 2}
+  myPlayer: {fileID: 0}
   weaponPrefab: {fileID: 3276367427151041791, guid: af21e4bc370ea4d4ca96a8f8aff3f1a5, type: 3}
-  _atRange: 4
-  _rotSpeed: 180
-  _bulletRotSpeed: 1000
+  _atRange: 0
+  _rotSpeed: 0

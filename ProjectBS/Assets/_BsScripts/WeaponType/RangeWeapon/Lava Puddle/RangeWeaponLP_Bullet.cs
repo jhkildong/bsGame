@@ -5,34 +5,22 @@ using UnityEngine;
 public class RangeWeaponLP_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
+    public float Ak;
 
-    float delayTime; // 다음 공격 까지 시간
-    float Ak;
-
-    float inTime = 0.0f;
-
-    private void OnEnable()
-    {
-        RangeWeaponLP rangeWeaponLP = FindObjectOfType<RangeWeaponLP>();
-        if (rangeWeaponLP != null)
-        {
-            Ak = rangeWeaponLP.Ak;
-            delayTime = rangeWeaponLP.DelayTime;
-        }
-    }
+    float time = 0.0f;
+    float DelayTime = 0.3f;
 
     private void OnTriggerStay(Collider other) // 대미지
     {
-        inTime += Time.deltaTime;
-        if(inTime >= delayTime)
+        if(time >= DelayTime)
         {
             if ((Monster & 1 << other.gameObject.layer) != 0)
             {
+                time = 0.0f;
                 IDamage<Monster> obj = other.GetComponent<IDamage<Monster>>();
                 if (obj != null)
                 {
                     obj.TakeDamage(Ak);
-                    inTime = 0.0f;
                 }
             }
         }
@@ -47,6 +35,6 @@ public class RangeWeaponLP_Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        time += Time.deltaTime;
     }
 }

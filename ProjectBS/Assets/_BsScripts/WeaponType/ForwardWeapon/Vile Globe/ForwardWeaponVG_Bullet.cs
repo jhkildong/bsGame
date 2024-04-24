@@ -1,19 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ForwardWeaponVG_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
-    float Ak;
-    private void OnEnable()
-    {
-        ForwardWeaponVG forwardWeaponVG = FindObjectOfType<ForwardWeaponVG>();
-        if (forwardWeaponVG != null)
-        {
-            Ak = forwardWeaponVG.Ak;
-        }
-    }
+    public float Ak;
 
     private void OnTriggerEnter(Collider other) // ´ë¹ÌÁö
     {
@@ -23,7 +13,6 @@ public class ForwardWeaponVG_Bullet : MonoBehaviour
             if (obj != null)
             {
                 obj.TakeDamage(Ak);
-                Destroy(gameObject);
             }
         }
     }

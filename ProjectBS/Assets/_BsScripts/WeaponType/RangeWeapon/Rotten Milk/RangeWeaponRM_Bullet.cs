@@ -5,29 +5,18 @@ using UnityEngine;
 public class RangeWeaponRM_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
+    public float Ak;
+    public float DelayTime;
+    public float AtRange;
 
-    float Ak;
-    float delayTime;
-    float atRange;
-
-    float inTime = 0.0f;
-    private void OnEnable()
-    {
-        RangeWeaponRM rangeWeaponRM = FindObjectOfType<RangeWeaponRM>();
-        if (rangeWeaponRM != null)
-        {
-            Ak = rangeWeaponRM.Ak;
-            delayTime = rangeWeaponRM.DelayTime;
-            atRange = rangeWeaponRM.AtRange;
-        }
-    }
+    float time = 0.0f;
 
     private void OnTriggerStay(Collider other)
     {
-        if (inTime >= delayTime)
+        if (time >= DelayTime)
         {
             OnAttacking();
-            inTime = 0.0f;
+            time = 0.0f;
         }
     }
 
@@ -40,12 +29,12 @@ public class RangeWeaponRM_Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inTime += Time.deltaTime;
+        time += Time.deltaTime;
     }
 
     private void OnAttacking() // ´ë¹ÌÁö
     {
-        Collider[] list = Physics.OverlapSphere(transform.position, atRange, Monster);
+        Collider[] list = Physics.OverlapSphere(transform.position, AtRange, Monster);
 
         foreach (Collider col in list)
         {

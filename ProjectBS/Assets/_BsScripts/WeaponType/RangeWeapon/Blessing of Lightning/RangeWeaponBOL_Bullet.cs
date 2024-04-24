@@ -1,20 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RangeWeaponBOL_Bullet : MonoBehaviour
 {
     public LayerMask Monster;
-    float Ak;
-
-    private void OnEnable()
-    {
-        RangeWeaponBOL rangeWeaponBOL = FindObjectOfType<RangeWeaponBOL>();
-        if (rangeWeaponBOL != null)
-        {
-            Ak = rangeWeaponBOL.Ak;
-        }
-    }
+    public float Ak;
 
     private void OnTriggerEnter(Collider other) // ´ë¹ÌÁö
     {

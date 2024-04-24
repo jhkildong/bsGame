@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
-  m_Name: Bless2_CS
+  m_Name: Bless2_RM
   m_EditorClassIdentifier: 
-  _id: 1060
-  _name: CrossSpear
-  _prefab: {fileID: 2336909956578856692, guid: 52dc9034c50881146869f6cd8f97a028, type: 3}
+  _id: 1090
+  _name: RottenMilk
+  _prefab: {fileID: 3540576751485843617, guid: 9708fd17065614047a838de3220525e3, type: 3}
   _lvDataList:
   - name: Attack
     defaultValue: 20
@@ -27,19 +27,8 @@ MonoBehaviour:
     - 1
     - 1
     - 1
-  - name: Amount
-    defaultValue: 0
-    levelUpType: 0
-    levelUpTable:
-    - 5
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-  - name: ReTime
-    defaultValue: 2
+  - name: DelayTime
+    defaultValue: 1
     levelUpType: 1
     levelUpTable:
     - 1
@@ -49,14 +38,14 @@ MonoBehaviour:
     - 1
     - 1
     - 1
-  - name: Size
-    defaultValue: 0
-    levelUpType: 0
+  - name: AtRange
+    defaultValue: 5
+    levelUpType: 1
     levelUpTable:
-    - 2
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
