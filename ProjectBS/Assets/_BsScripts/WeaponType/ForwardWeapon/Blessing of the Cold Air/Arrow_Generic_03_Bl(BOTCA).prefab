@@ -254,6 +254,7 @@ MonoBehaviour:
   Monster:
     serializedVersion: 2
     m_Bits: 294912
+  Ak: 0
 --- !u!65 &3387600366878033816
 BoxCollider:
   m_ObjectHideFlags: 0
