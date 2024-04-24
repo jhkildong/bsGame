@@ -159,7 +159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 991145913834916185}
   - component: {fileID: 2974422617350250277}
-  - component: {fileID: 8666535197426472584}
   m_Layer: 0
   m_Name: 02_Archer
   m_TagString: Untagged
@@ -205,22 +204,7 @@ MonoBehaviour:
   _attack: 0
   _effects: []
   _effectIdx: 0
-  _effectType: 3510
---- !u!114 &8666535197426472584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 358009593870113363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ffc280280c5d0b4abbb677abcc9550c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mask:
-    serializedVersion: 2
-    m_Bits: 536870912
+  _effect: {fileID: 0}
 --- !u!1 &579800107314198620
 GameObject:
   m_ObjectHideFlags: 0

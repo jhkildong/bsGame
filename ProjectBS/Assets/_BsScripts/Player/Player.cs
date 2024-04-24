@@ -86,11 +86,13 @@ public class Player : Combat, IDamage<Player>
     #region Private Field
     ////////////////////////////////PrivateField////////////////////////////////
     [SerializeField] private PlayerComponent Com;
-    [SerializeField] private float buildApplyRange = 2.0f;
+    [SerializeField] private Transform rotatingBody;
+    private PlayerUI playerUI;
 
     Vector3 _moveDir;
     Vector3 _dir;
     Vector3 _inputDir;
+
     #endregion
 
     #region Init Setting
@@ -104,8 +106,8 @@ public class Player : Combat, IDamage<Player>
                 return;
             }
         }
-
-        ChangeHpAct += PlayerUI.Instance.ChangeHP;
+        playerUI = UIManager.Instance.CreateUI(UIID.PlayerUI, CanvasType.DynamicCanvas) as PlayerUI;
+        ChangeHpAct += playerUI.ChangeHP;
         DeadAct += Death;
         
         CurHp = MaxHP;
@@ -153,7 +155,7 @@ public class Player : Combat, IDamage<Player>
     protected override void Awake()
     {
         base.Awake();
-        GameManager.Instance.playerTransform = transform;
+        GameManager.Instance.Player = this;
 
         #region PlayerInputsCallback Setting
         ////////////////////////////////PlayerInputsCallbackSetting////////////////////////////////
@@ -195,18 +197,13 @@ public class Player : Combat, IDamage<Player>
         {
             _moveDir.Normalize();
             //바라보는 방향기준의 애니메이션 방향(입력받은 방향에서 바라보는 방향의 반대방향으로 회전)
-            _dir = Quaternion.AngleAxis(-Com.MyTransform.rotation.eulerAngles.y, Vector3.up) * _moveDir;
+            _dir = Quaternion.AngleAxis(-rotatingBody.rotation.eulerAngles.y, Vector3.up) * _moveDir;
             _inputDir = Vector3.Lerp(_inputDir, _dir, Time.deltaTime * 10.0f);
         }
         Com.MyAnim.SetFloat(AnimParam.x, _inputDir.x);
         Com.MyAnim.SetFloat(AnimParam.y, _inputDir.z);
-        
-        if(Physics.Raycast(transform.position, Com.MyTransform.forward, out RaycastHit hit, buildApplyRange, (int)BSLayerMasks.Building))
-        {
-
-        }
-    
     }
+
 
     protected override void FixedUpdate()
     {
@@ -222,6 +219,8 @@ public class Player : Combat, IDamage<Player>
 
     #region Public Method
     ////////////////////////////////PublicMethod////////////////////////////////
+    public Transform RotatingBody => rotatingBody;
+    
     public void SetEffectAttack()
     {
         Com.Attack = Attack;

@@ -9,10 +9,10 @@ using static UnityEditor.PlayerSettings;
 public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이펙트 오브젝트 풀링 매니저.
 {
     [SerializeField]public Dictionary<string, Stack<GameObject>> myPool = new Dictionary<string, Stack<GameObject>>();
-    private void Awake()
+    /*private void Awake()
     {
-        base.Initialize();
-    }
+        base.Initialize(this);
+    }*/
     
     public GameObject SetActiveEffect<T>(GameObject org, Transform parent, GameObject pos) //이펙트 풀링, 생성. (공격이 아닌 이펙트들)
     {

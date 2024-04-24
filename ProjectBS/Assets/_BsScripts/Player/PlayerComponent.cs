@@ -11,6 +11,7 @@ public abstract class PlayerComponent : CharacterComponent
         public const int Archer = 3510;
         public const int Mage = 3520;
     }
+
     #region Property
     ////////////////////////////////Property////////////////////////////////
     public Transform MyEffectSpawn 

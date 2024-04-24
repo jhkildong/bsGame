@@ -16,8 +16,6 @@ namespace Yeon2
         private void OnEnable()
         {
             Init(Data);
-
-            //myPlayer = GameManager.Instance.playerTransform.GetComponentInChildren<PlayerComponent>();
         }
 
         public void Init(BlessData data)
@@ -39,6 +37,11 @@ namespace Yeon2
             {
                 myStatus[lvData.name] = lvData[level];
             }
+        }
+
+        protected void SetFowardPlayerLook()
+        {
+            transform.SetParent(GameManager.Instance.Player.RotatingBody);
         }
     }
 }

@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 8378227418897827377}
   - component: {fileID: 3366372053069885738}
   m_Layer: 5
-  m_Name: PlayerSelectWindow
+  m_Name: 5002_PlayerSelectWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,6 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1e37bf04902fe4e904b7582773d4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 2302998177511993782}
+  _id: 5002
   playerSelectUI: {fileID: 5607675655336022095}
   UndoButton: {fileID: 7454841747238649554}
 --- !u!1 &2818828109095444465

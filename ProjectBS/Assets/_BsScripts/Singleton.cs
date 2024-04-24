@@ -5,9 +5,8 @@ using UnityEngine;
 //°øÅëÀûÀ¸·Î »ç¿ëÇÒ ½ÌÅ¬ÅÏ Å¬·¡½º. ½Ì±ÛÅÏÀ» »ç¿ëÇÒ ÄÄÆ÷³ÍÆ®´Â »ó¼Ó¹Þ¾Æ »ç¿ëÇÏ¸é µÈ´Ù.
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour // where -> T´Â monobehavior¸¦ »ó¼Ó¹Þ±â ¶§¹®¿¡ ÂüÁ¶ÇüÀÌ´Ù. ( ¸ðÈ£¼ºÀ» ¾ø¾Ö±â À§ÇØ »ó¼ÓÇÑÁ¤ÀÚ¸¦ »ç¿ëÇß´Ù.)
 {
-
     //½Ì±ÛÅÏÀº ¾îµð¼­µç ¼Õ½±°Ô Á¢±Ù°¡´É
-    static T _inst = null;
+    private static T _inst;
     public static T Instance
     {
         get
@@ -18,7 +17,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour // where -> T´
                 if (_inst == null)//Ã£Áö¸øÇß´Ù¸é -> Á¸ÀçÇÏÁö ¾Ê´Â´Ù¸é
                 {
                     GameObject obj = new GameObject(); //°ÔÀÓ¿ÀºêÁ§Æ®¸¦ ¸¸µé¾î
-                    obj.name = typeof(T).ToString(); // °ÔÀÓ ¿ÀºêÁ§Æ®ÀÇ ÀÌ¸§À» SingletonÀ¸·Î ¹Ù²ãÁØ´Ù. ( ¾Ë±â ½±°Ô )
+                    obj.name = typeof(T).ToString(); // °ÔÀÓ ¿ÀºêÁ§Æ®ÀÇ ÀÌ¸§À» T(classÀÌ¸§)À¸·Î ¹Ù²ãÁØ´Ù. ( ¾Ë±â ½±°Ô )
                     _inst = obj.AddComponent<T>(); // °ÔÀÓ¿ÀºêÁ§Æ®¿¡ ÀÌ ÄÄÆ÷³ÍÆ®¸¦ Ãß°¡ÇØÁØ´Ù.
                 }
             }
@@ -26,10 +25,11 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour // where -> T´
         }
 
     }
-    protected void Initialize()
+    protected void Initialize(T This)
     {
-        //_inst = this; // Èü¿µ¿ªÀÇ ÀÚ±âÀÚ½ÅÀ» ÂüÁ¶ÀÚ¿¡ ÂüÁ¶ÇÏ¶ó°í ÇØÁØ´Ù.
-        if (_inst != null && _inst != this) //´Ù¸¥ ÀÎ½ºÅÏ½º°¡ »ý¼ºµÉ¶§
+        if(_inst == null)
+            _inst = This; // ÀÎ½ºÅÏ½º°¡ ¾øÀ¸¸é ÀÚ±âÀÚ½ÅÀ» Èü¿µ¿ªÀÇ ÂüÁ¶ÀÚ¿¡ ÂüÁ¶ÇÏ¶ó°í ÇØÁØ´Ù.
+        if (_inst != null && _inst != this) //ÀÌ¹Ì »ý¼ºµÈ ÀÎ½ºÅÏ½º°¡ ÀÖ´Ù¸é
         {
             Destroy(this.gameObject); //ÀÌ¹ø¿¡ »ý¼ºµÈ ÀÚ½ÅÀ» ÆÄ±«ÇÏ¿© À¯ÀÏ¼ºÀ» À¯Áö
         }
@@ -37,5 +37,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour // where -> T´
         {
             DontDestroyOnLoad(gameObject); // ¾ÀÀ» ÀÌµ¿ÇØµµ Áö¿öÁöÁö ¾Ê°Ô.
         }
+    }
+    protected virtual void Awake()
+    {
+        Initialize(this as T);
     }
 }

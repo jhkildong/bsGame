@@ -17,11 +17,10 @@ public class PlayerSetup : MonoBehaviour
     {
         playerPrefab = Resources.Load<GameObject>(FilePath.PlayerPrefab);
         jobs = Resources.LoadAll<PlayerComponent>(FilePath.Job);
-        playerSelectWindow = Resources.Load<PlayerSelectWindow>(FilePath.PlayerSelectWindow);
     }
     private void Start()
-    {
-        playerSelectWindow = Instantiate(playerSelectWindow, Canvas);
+    {        
+        playerSelectWindow = UIManager.Instance.CreateUI(UIID.PlayerSelectWindow, CanvasType.Canvas) as PlayerSelectWindow;
         SetJobSelect();
     }
 
@@ -81,7 +80,7 @@ public class PlayerSetup : MonoBehaviour
         job.MyEffect = types[idx];
         Player player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Player>();
         player.gameObject.name = "Player";
-        Instantiate(myJobPrefab, player.transform);
+        Instantiate(myJobPrefab, player.RotatingBody);
         player.InitPlayerSetting();
         mainCameraAction.Target = player.transform;
         Destroy(playerSelectWindow.gameObject);

@@ -148,12 +148,13 @@ public class ObjectPoolManager : MonoBehaviour
     }
 
     /// <summary>풀에 오브젝트 반환 최대치를 넘었을 시 순차적으로 파괴해주는 코드 작성 필요</summary>
-    public void ReleaseObj(IPoolable poolable, GameObject go = null)
+    public void ReleaseObj(IPoolable poolable)
     {
         int ID = poolable.ID;
         if (!poolDict.TryGetValue(ID, out var pool))
         {
             Debug.Log("키가 존재하지 않음");
+            return;
         }
 
         poolable.This.gameObject.SetActive(false);
