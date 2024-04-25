@@ -38,6 +38,10 @@ public static class FilePath
     public const string PlayerUI = "Prefabs/UI/5001_PlayerUI";
     #endregion
 
+    #region Bless
+    public const string Bless = "Bless";
+    #endregion
+
 #if UNITY_EDITOR
     /// <summary>Assets/_BsData/Resources/BlessLevelTable.json</summary>
     public const string BlessLevelTableJson = "Assets/_BsData/Resources/BlessLevelTable.json";
