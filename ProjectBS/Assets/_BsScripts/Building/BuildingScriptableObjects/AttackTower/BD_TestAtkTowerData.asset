@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BD_TestAtkTowerData
   m_EditorClassIdentifier: 
   _atkPower: 3
-  _atkDelay: 2
+  _atkSpeed: 0.2
   _hitDelay: 0.5
   _atkDuration: 5
-  _atkRadius: 5
+  _atkRadius: 2
   _attackableLayer:
     serializedVersion: 2
     m_Bits: 32768

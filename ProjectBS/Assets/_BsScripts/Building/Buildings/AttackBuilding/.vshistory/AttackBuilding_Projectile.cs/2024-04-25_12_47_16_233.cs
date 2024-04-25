@@ -37,7 +37,7 @@ public class AttackBuilding_Projectile : AttackBuildingBase
 
         _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
         _finalAs = 1 / (_atkSpeed * (1 + getBuff.asBuff)); // 1/ (기본공격속도 * (1 + %공격속도합산))
-        _finalSize = _atkProjectileSize + (_atkProjectileSize * getBuff.rangeBuff); 
+        _finalSize = _atkProjectileSize + (_atkProjectileSize * getBuff.rangeBuff);
 
     }
 
@@ -60,12 +60,9 @@ public class AttackBuilding_Projectile : AttackBuildingBase
     protected virtual IEnumerator AtkDelay(float delay)
     {
         Debug.Log("공격!");
-        _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
-        _finalAs = 1 / (_atkSpeed * (1 + getBuff.asBuff)); // 1/ (기본공격속도 * (1 + %공격속도합산))
-        _finalSize = _atkProjectileSize + (_atkProjectileSize * getBuff.rangeBuff);
 
         AtkEvent?.Invoke();
-        yield return new WaitForSeconds(_finalAs);
+        yield return new WaitForSeconds(delay);
         atkDelaying = false;
     }
 

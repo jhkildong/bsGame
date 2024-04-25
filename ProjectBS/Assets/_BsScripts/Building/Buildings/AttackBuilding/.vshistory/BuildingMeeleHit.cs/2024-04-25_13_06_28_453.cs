@@ -75,7 +75,7 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
 
     IEnumerator AtkDelay(float delay)
     {
-        getParentBuildingAtkStats(); // 공격시마다 스탯 갱신 ( 방식 수정 필요 )
+        getParentBuildingAtkStats(); // 공격시마다 스탯 갱신
         //여기서 공격
         Collider[] colliders = Physics.OverlapBox(transform.position, myColSize, Quaternion.identity, attackableLayer);
         Debug.Log(myColSize);

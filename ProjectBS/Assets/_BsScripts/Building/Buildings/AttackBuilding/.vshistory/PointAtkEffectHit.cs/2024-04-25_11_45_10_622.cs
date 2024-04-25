@@ -49,7 +49,6 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
         //getParentBuildingAtkStats();
         canHit = true;
         curDur = 0f;
-        gameObject.transform.localScale = new Vector3(myRadius,myRadius,myRadius);
     }
     /*
     void getParentBuildingAtkStats()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BD_IcicleTowerAtkStats
   m_EditorClassIdentifier: 
   _atkPower: 5
-  _atkDelay: 0.5
+  _atkSpeed: 1
   _atkProjectileSize: 1
   _atkProjectileSpeed: 20
   _atkProjectileRange: 15

@@ -77,8 +77,6 @@ public class AttackBuilding_Area : AttackBuildingBase
         _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff) + _additionalAtk); // 기본공격력 * (1 + (%공격력합산)) + 추가데미지
 
         _finalAs = 1 / (_atkSpeed * (1 + getBuff.asBuff)); // 1/ (기본공격속도 * (1 + %공격속도합산))
-
-        _finalRadius = _atkRadius + (_atkRadius * getBuff.rangeBuff); // 기본 범위 + (기본범위 * %범위합산)
         Debug.Log(_finalDmg);
         Debug.Log("최종 공속" + _finalAs);
         AtkEvent?.Invoke();

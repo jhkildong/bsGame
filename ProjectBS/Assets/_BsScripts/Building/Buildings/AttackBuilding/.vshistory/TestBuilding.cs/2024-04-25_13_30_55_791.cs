@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
-public class LightningBuilding : AttackBuilding_Area // 0412 변경전 -> AttackBuildingBase
+public class TestBuilding : AttackBuilding_Area
 {
     public GameObject myEffect;
 
@@ -16,13 +17,9 @@ public class LightningBuilding : AttackBuilding_Area // 0412 변경전 -> AttackBui
     {
         if (target != null && atkDelaying)
         {
-            
-            EffectPoolManager.Instance.SetActiveRangeObject<PointAtkEffectHit>(myEffect, effectPool, target, _finalDmg, _atkRadius, 0, 0,_atkSpeed,_hitDelay,_atkDuration);
-            
+
+            EffectPoolManager.Instance.SetActiveRangeObject<PointAtkEffectHit>(myEffect, effectPool, target, _finalDmg, _atkRadius, 0, 0, _atkSpeed, _hitDelay, _atkDuration);
+
         }
     }
-
-
-
-
 }
