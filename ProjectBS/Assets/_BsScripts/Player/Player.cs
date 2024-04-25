@@ -184,8 +184,8 @@ public class Player : Combat, IDamage<Player>
 
     private void Update()
     {
-        //죽은 상태면 return
-        if (IsDead)
+        //죽은 상태거나 건물 짓는중이면 return
+        if (IsDead || _isBuilding)
             return;
         //입력이 없는 상태면
         if (WSADInput == 0b_0000)
@@ -220,6 +220,16 @@ public class Player : Combat, IDamage<Player>
     #region Public Method
     ////////////////////////////////PublicMethod////////////////////////////////
     public Transform RotatingBody => rotatingBody;
+    public bool IsBuilding
+    {
+        get => _isBuilding;
+        set
+        {
+            _isBuilding = value;
+            RotatingBody.GetComponent<LookAtPoint>().enabled = !value;
+        }
+    }
+    private bool _isBuilding;
     
     public void SetEffectAttack()
     {

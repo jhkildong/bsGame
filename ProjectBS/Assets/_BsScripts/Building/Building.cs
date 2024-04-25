@@ -158,6 +158,8 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
         gameObject.SetActive(false);
         gameObject.SetActive(true);
         Debug.Log("건설 완료");
+
+        GameManager.Instance.Player.IsBuilding = false;
     }
 
     public void ReceiveHeal(float heal)

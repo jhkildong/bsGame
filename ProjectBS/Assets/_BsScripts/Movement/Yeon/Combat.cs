@@ -28,7 +28,7 @@ namespace Yeon
             }
         }
         public float SpeedCeof => _speedCeof;   //이동속도 계수
-        protected float Attack { get => _attack * getBuff.atkBuff; }
+        protected float Attack { get => Mathf.Round((float)_attack * (1 + getBuff.atkBuff) + additonalAtk); }
         public bool IsDead => CurHp <= 0;
         #endregion
 
@@ -102,12 +102,14 @@ namespace Yeon
         ////////////////////////////////InterfaceMethod////////////////////////////////
         public virtual void TakeDamage(float damage)
         {
+            FloatingFontUI damageUI = UIManager.Instance.GetUI(UIID.DamageUI, CanvasType.DynamicCanvas) as FloatingFontUI;
+            damageUI.SetDamage((int)damage, transform);
             CurHp -= damage;
             if(_onDamageEffect == null && CurHp > 0.0f)
             {
                 _onDamageEffect = StartCoroutine(OnDamageEffect());
             }
-            //Debug.Log($"받은 데미지:{damage}, 현재 체력:{CurHp}");
+            Debug.Log($"받은 데미지:{damage}, 현재 체력:{CurHp}");
             if (CurHp <= 0.0f)
             {
                 DeadAct?.Invoke();
@@ -124,6 +126,7 @@ namespace Yeon
 
         public Buff getBuff { get => _buff; set => _buff = value; }
         private Buff _buff = new Buff();
+        public float additonalAtk;
         #endregion
 
         #region Private Method
