@@ -58,15 +58,6 @@ using UnityEngine;
         }
     }
 
-    public Dictionary<string, float> rangeBuffDict = new Dictionary<string, float>();
-    public float rangeBuff
-    {
-        get
-        {
-            return CalcBuff(rangeBuffDict);
-        }
-    }
-
     public float CalcBuff(Dictionary<string, float> buffDict)
     {
         //¼ö½Ä

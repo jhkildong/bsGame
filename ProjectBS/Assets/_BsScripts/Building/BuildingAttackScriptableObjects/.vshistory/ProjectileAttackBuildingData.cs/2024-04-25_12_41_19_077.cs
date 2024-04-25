@@ -17,7 +17,7 @@ public class ProjectileAttackBuildingData : ScriptableObject
 
 
     [SerializeField] private float _atkPower;
-    [SerializeField] private float _atkSpeed;  // 건물의 공격 속도
+    [SerializeField] private float _atkSpeed;  // 건물의 공격 주기
     [SerializeField] private float _atkProjectileSize; // 건물 투사체 크기
     [SerializeField] private float _atkProjectileSpeed;// 건물 투사체 속도
     [SerializeField] private float _atkProjectileRange;// 건물 투사체 사거리

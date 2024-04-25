@@ -15,15 +15,15 @@ public class AttackBuilding_Meele : AttackBuildingBase
 
     public GameObject myAtkCollider; //공격 범위 Collider
 
-
+    [SerializeField] protected float _finalDmg; // 최종데미지
     [SerializeField] protected float _finalRadius; // 최종 공격범위
-    [SerializeField] protected float _finalDmg; // 최종 공격력
+
 
     [SerializeField] private float _atkPower;
     [SerializeField] private float _hitDelay; // 건물공격의 타격 간격
     [SerializeField] private float _atkRadius; // 공격의 범위
     //[SerializeField] private LayerMask _attackableLayer;
-    [SerializeField] private float _additionalAtk; // 공격의 범위
+
 
     protected override void Start()
     {
@@ -33,7 +33,7 @@ public class AttackBuilding_Meele : AttackBuildingBase
         _hitDelay = MData.hitDelay;
         _atkRadius = MData.atkRadius;
 
-        _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff) + _additionalAtk); // 기본공격력 * (1 + (%공격력합산)) + 추가데미지
+        _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
         _finalRadius = _atkRadius + (_atkRadius * getBuff.rangeBuff); // 기본 범위 + (기본범위 * %범위합산)
     }
     protected void MeeleAttack()
@@ -51,7 +51,7 @@ public class AttackBuilding_Meele : AttackBuildingBase
 
     public float SetDmg()
     {
-        return _atkPower;
+        return _finalDmg;
     }
     public float SetAtkRadius()
     {

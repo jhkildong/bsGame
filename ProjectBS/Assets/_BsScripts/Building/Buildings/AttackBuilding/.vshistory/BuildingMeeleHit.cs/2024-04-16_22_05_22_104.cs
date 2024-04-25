@@ -19,8 +19,7 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
     protected float hitTime = 1f; //공격 타이밍
     float progress; // 파티클 재생 진행도
 
-    [SerializeField] protected float _finalDmg; // 최종데미지
-    private float damage;
+    private float baseAttack;
     private float mySize;
     private Vector3 myColSize;
     private float myAtkDelay;
@@ -34,7 +33,7 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
         myAtkDelay = atkDelay; 
     }
     */
-    public Buff getBuff { get; set; } = new Buff();
+
 
 
     void OnEnable()
@@ -51,7 +50,7 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
         attackableLayer = buildingStat.SetAttackableMask();
         */
         AttackBuilding_Meele buildingStat = GetComponentInParent<AttackBuilding_Meele>();
-        damage = buildingStat.SetDmg();
+        baseAttack = buildingStat.SetDmg();
         myAtkDelay = buildingStat.SetHitDelay();
         attackableLayer = buildingStat.SetAttackableMask();
 
@@ -60,9 +59,6 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
     {
         ps = GetComponent<ParticleSystem>();
         myColSize = GetComponent<Collider>().bounds.size;
-
-        
-
     }
     void Update()
     {
@@ -75,7 +71,6 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
 
     IEnumerator AtkDelay(float delay)
     {
-        getParentBuildingAtkStats(); // 공격시마다 스탯 갱신 ( 방식 수정 필요 )
         //여기서 공격
         Collider[] colliders = Physics.OverlapBox(transform.position, myColSize, Quaternion.identity, attackableLayer);
         Debug.Log(myColSize);
@@ -83,7 +78,7 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
         foreach (Collider collider in colliders)
         {
             IDamage target = collider.GetComponent<IDamage>();
-            target.TakeDamage(damage);
+            target.TakeDamage(baseAttack);
         }
         yield return new WaitForSeconds(delay);
         atkDelaying = false;
