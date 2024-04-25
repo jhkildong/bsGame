@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public short Attack;
+    private LayerMask Monster;
+    public float Ak;
 
-    public void onDamage(IDamage obj)
+    protected virtual void Start()
     {
-        obj.TakeDamage(Attack);
+        Monster = (int)BSLayerMasks.Monster | (int)BSLayerMasks.SurroundMonster;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((Monster & 1 << other.gameObject.layer) != 0)
+        {
+            IDamage<Monster> obj = other.GetComponent<IDamage<Monster>>();
+            if (obj != null)
+            {
+                obj.TakeDamage(Ak);
+            }
+        }
     }
 }

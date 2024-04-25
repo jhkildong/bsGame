@@ -15,7 +15,7 @@ namespace Yeon2
         protected Dictionary<string, float> myStatus = new Dictionary<string, float>();
         private void OnEnable()
         {
-            Init(Data);
+            //Init(Data);
         }
 
         public void Init(BlessData data)

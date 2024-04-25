@@ -21,8 +21,6 @@ public class ForwardWeaponBOTCA : Bless
     // Update is called once per frame
     void Update()
     {
-        transform.position = myPlayer.transform.position + new Vector3(0, 0.5f, 0);
-        transform.rotation = myPlayer.transform.rotation;
         time += Time.deltaTime;
 
         if (Level >= 1)
@@ -50,11 +48,12 @@ public class ForwardWeaponBOTCA : Bless
     {
         GameObject go = Instantiate(weaponPrefab, transform.position, transform.rotation); // 公扁 积己
         go.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); //荤捞令
-        go.transform.SetParent(clonesParent); // 积己茄 公扁 端贸府
-        Destroy(go, DestroyTime);
+        //go.transform.SetParent(clonesParent); // 积己茄 公扁 端贸府
 
-        var bullet = go.GetComponentInChildren<ForwardWeaponBOTCA_Bullet>();
+        var bullet = go.GetComponentInChildren<ForwardMovingWeapon>();
         bullet.Ak = myStatus[Key.Attack];
+        bullet.Shoot(25);
+        Destroy(go, DestroyTime);
     }
     IEnumerator SpawnMultipleWeapons(float v)
     {
