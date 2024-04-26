@@ -1443,7 +1443,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 2e0162506cd1d26439f1c4314cea16e7, type: 3}
   m_Controller: {fileID: 9100000, guid: 26b298a9cba1ac244ae364eed2b3329f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1464,10 +1464,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fcd9abcd5a20994ea946f34427a1556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackPoint: {fileID: 0}
   _animEvent: {fileID: 0}
   _anim: {fileID: 5380361144826904137}
   _renderer: {fileID: 8107158518180907188}
+  _attackPoints: []
 --- !u!1 &3399346740932230548
 GameObject:
   m_ObjectHideFlags: 0

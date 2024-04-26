@@ -102,8 +102,6 @@ namespace Yeon
         ////////////////////////////////InterfaceMethod////////////////////////////////
         public virtual void TakeDamage(float damage)
         {
-            FloatingFontUI damageUI = UIManager.Instance.GetUI(UIID.DamageUI, CanvasType.DynamicCanvas) as FloatingFontUI;
-            damageUI.SetDamage((int)damage, transform);
             CurHp -= damage;
             if(_onDamageEffect == null && CurHp > 0.0f)
             {
@@ -115,6 +113,29 @@ namespace Yeon
                 DeadAct?.Invoke();
             }
         }
+        public virtual float Height
+        {
+            get
+            {
+                if (_height == 0.0f)
+                {
+                    if(col is CapsuleCollider cc)
+                    {
+                        _height = cc.height;
+                    }
+                    else if(col is BoxCollider bc)
+                    {
+                        _height = bc.size.y;
+                    }
+                    else if(col is SphereCollider sc)
+                    {
+                        _height = sc.radius * 2;
+                    }
+                }
+                return _height;
+            }
+        }
+        private float _height;
         public void ReceiveHeal(float heal)
         {
             Debug.Log(heal);

@@ -7,12 +7,12 @@ public class FloatingFontUI : FollowingTargetUI
     [SerializeField]private int _id;
     [SerializeField]private TextMeshProUGUI text;
 
-    public void SetDamage(int dmg, Transform target)
+    public void SetDamageUI(int dmg, Vector3 pos)
     {
         text.text = dmg.ToString("N0");
-        currentPos = target.position;
-        
+        currentPos = pos;
     }
+
 
     public void Release()
     {

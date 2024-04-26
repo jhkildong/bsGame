@@ -1030,7 +1030,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 08cc705a868d63441bb3d3ea3db312b5, type: 3}
   m_Controller: {fileID: 9100000, guid: 295b0767009667f4aa607f7ad89bbea0, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

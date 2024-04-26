@@ -92,7 +92,7 @@ public class UIManager : Singleton<UIManager>
     }
 
     //풀링한 UI를 가져오는 함수
-    public UIComponent GetUI(UIID ID, CanvasType type)
+    public UIComponent GetUI(UIID ID, CanvasType type = CanvasType.DynamicCanvas)
     {
         if (!_uiDict.ContainsKey((int)ID))
         {
@@ -137,6 +137,11 @@ public class UIManager : Singleton<UIManager>
         if (!_uiDict.ContainsKey((int)ID))
             return null;
         return Instantiate(UIDict[(int)ID], type == CanvasType.Canvas ? canvas : dynamicCanvas);
+    }
+
+    public void testcode(GameObject prefab, Vector3 pos)
+    {
+        Instantiate(prefab, pos, Quaternion.identity);
     }
 }
 
