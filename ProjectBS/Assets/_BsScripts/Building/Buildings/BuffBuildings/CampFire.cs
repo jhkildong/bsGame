@@ -88,7 +88,7 @@ public class CampFire : Building
             else if (inTime >= healTick)
             {
                 Debug.Log("Èú!");
-                healable.ReceiveHeal(healAmount);
+                healable.ReceiveHealEffect(healAmount);
                 //activeHeal();
                 inTime = 0;
             }

@@ -71,7 +71,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         
         Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
 
-        _maxHP = data.MaxHP;
+        _maxHp = data.MaxHP;
         _attack = data.Ak;
 
         _curHp = data.MaxHP;

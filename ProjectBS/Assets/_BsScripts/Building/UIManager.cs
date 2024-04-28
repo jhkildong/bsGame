@@ -161,6 +161,6 @@ public enum UIID
     ProgressBar = 5005,
     DamageUI = 5006,
     BlessSelectWindow = 5007,
-
+    HealFontUI = 5008,
     BuildingHpBar = 5010
 }

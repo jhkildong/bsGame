@@ -122,7 +122,7 @@ public class Player : Combat, IDamage<Player>
 
         //GameManager.Instance.GoldChangeAct
 
-        CurHp = MaxHP;
+        CurHp = MaxHp;
         effectData.renderers = new Renderer[1];
         effectData.renderers[0] = Com.Myrenderer;
         effectData.mainTexture = Com.Myrenderer.material.mainTexture;

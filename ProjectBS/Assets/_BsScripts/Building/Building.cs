@@ -30,6 +30,8 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
     [SerializeField] protected float _repairSpeed;    // 건물 수리속도
     [SerializeField] protected GameObject _nextUpgrade;  //다음 업그레이드 건물
 
+
+
     protected int layerNum;
 
     [SerializeField] protected bool isInstalled = false;
@@ -46,6 +48,17 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
     [SerializeField] private BuildingHpBar hpBar;
 
     [SerializeField]private GameObject AuraEffect;
+
+    public float MaxHp => _maxHp;           //최대 체력
+    public float CurHp
+    {
+        get => _curHp;
+        set
+        {
+            _curHp = value;
+            ChangeHpAct?.Invoke((float)_curHp / (float)_maxHp);
+        }
+    }
     /*
     public Building(BuildingData data)
     {
@@ -198,10 +211,6 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         if (iscompletedBuilding && AuraEffect != null) // 건설 완료시에 오라 이펙트 켜기
         {
             AuraEffect.SetActive(true);
-        }
-        else
-        {
-            return;
         }
         Debug.Log("건설 완료");
 

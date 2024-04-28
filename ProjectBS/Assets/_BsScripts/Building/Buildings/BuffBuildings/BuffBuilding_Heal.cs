@@ -64,7 +64,7 @@ public class BuffBuilding_Heal : BuffBuildingBase
                 Debug.Log("Èú!");
                 if (targets.Contains(obj))
                 {
-                    healable.ReceiveHeal(healAmount);
+                    healable.ReceiveHealEffect(healAmount);
                 }
                 else
                 {
