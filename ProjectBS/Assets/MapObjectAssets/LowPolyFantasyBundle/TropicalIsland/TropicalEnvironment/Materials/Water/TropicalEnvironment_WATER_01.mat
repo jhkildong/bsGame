@@ -165,7 +165,7 @@ Material:
     - FoamColor: {r: 1, g: 1, b: 1, a: 0.9019608}
     - ShallowColor: {r: 0.49902093, g: 0.8075593, b: 0.8396226, a: 0.7254902}
     - _BaseColor: {r: 0.43942085, g: 0.66570854, b: 0.8679245, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.43942085, g: 0.66570854, b: 0.8679245, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
