@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public float curGameTime; // 현재시간
     public float checkAMPMTime;
     private bool isNight;
+    public int curDay;
     //private int myExp;
     private int myWood = 999;
     private int myStone = 999;
@@ -38,6 +39,10 @@ public class GameManager : MonoBehaviour
     public event UnityAction<int> IronChangeAct;
     public event UnityAction<int> GoldChangeAct;
     public event UnityAction<int> ExpChangeAct;
+
+    public event UnityAction<int> ChangeDayAct;
+    public event UnityAction<bool> ChangeAMPMAct;
+
 
     private PlayerUI playerUI;
 
@@ -201,11 +206,16 @@ public class GameManager : MonoBehaviour
     {
         isNight = false;
         Debug.Log("낮이 되었습니다.");
+        ChangeAMPMAct?.Invoke(isNight);
+        
+        curDay += 1;
+        ChangeDayAct?.Invoke(curDay);
     }
     void ChangeToNight()
     {
         isNight = true;
         Debug.Log("밤이 되었습니다.");
+        ChangeAMPMAct?.Invoke(isNight);
     }
 
     public void ChangeWood(int num)
