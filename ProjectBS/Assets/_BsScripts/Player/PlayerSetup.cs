@@ -9,7 +9,7 @@ public class PlayerSetup : MonoBehaviour
     private PlayerComponent[] jobs;
     private Effect[] types;
     private GameObject myJobPrefab;
-    private PlayerSelectWindow playerSelectWindow;
+    private SelectWindow playerSelectWindow;
     [SerializeField] Transform Canvas;
     [SerializeField] private MainCameraAction mainCameraAction;
 
@@ -21,7 +21,7 @@ public class PlayerSetup : MonoBehaviour
     private void Start()
     {
         UIManager.Instance.SetPool(UIID.DamageUI, 30, 30);
-        playerSelectWindow = UIManager.Instance.CreateUI(UIID.PlayerSelectWindow, CanvasType.Canvas) as PlayerSelectWindow;
+        playerSelectWindow = UIManager.Instance.CreateUI(UIID.PlayerSelectWindow, CanvasType.Canvas) as SelectWindow;
         SetJobSelect();
     }
 
@@ -34,11 +34,11 @@ public class PlayerSetup : MonoBehaviour
             names[i] = jobs[i].gameObject.name.Substring(3);    //00_JobName 형식으로 되있음
         }
 
-        playerSelectWindow.playerSelectUI.SetSelectButtons(names);
+        playerSelectWindow.SelectButtons.SetButtonName(names);
         for(int i = 0; i < jobs.Length; i++)
         {
             int idx = i;
-            playerSelectWindow.playerSelectUI.SetButtonAction(idx, () => SelectJob(idx));
+            playerSelectWindow.SelectButtons.SetButtonAction(idx, () => SelectJob(idx));
         }
     }
 
@@ -63,11 +63,11 @@ public class PlayerSetup : MonoBehaviour
             names[i] = types[i].gameObject.name.Substring(5);   //0000_TypeName 형식으로 되있음
         }
 
-        playerSelectWindow.playerSelectUI.SetSelectButtons(names);
+        playerSelectWindow.SelectButtons.SetButtonName(names);
         for (int i = 0; i < types.Length; i++)
         {
             int idx = i;
-            playerSelectWindow.playerSelectUI.SetButtonAction(idx, () => SelectType(job, idx));
+            playerSelectWindow.SelectButtons.SetButtonAction(idx, () => SelectType(job, idx));
         }
         playerSelectWindow.SetUndoButton(
             () => {
@@ -85,6 +85,12 @@ public class PlayerSetup : MonoBehaviour
         player.InitPlayerSetting();
         mainCameraAction.Target = player.transform;
         Destroy(playerSelectWindow.gameObject);
+
+    }
+
+    public void OnPlay()
+    {
+        Loading.LoadScene(3);
     }
     #endregion
 }

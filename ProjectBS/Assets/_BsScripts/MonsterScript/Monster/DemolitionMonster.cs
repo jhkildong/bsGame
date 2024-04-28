@@ -137,7 +137,7 @@ public class DemolitionMonster : GroupMonster
         {
             float Damage = Attack;
             if (attackTarget is Building) Damage += DemolitionData.BuildingDmg;
-            attackTarget?.TakeDamage((short)Damage);
+            attackTarget?.TakeDamageEffect(Damage);
         }
     }
 

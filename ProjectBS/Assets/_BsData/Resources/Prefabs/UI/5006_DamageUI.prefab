@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6726946e1df18ec40a86868753433eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myTarget: {fileID: 0}
+  currentPos: {x: 0, y: 0, z: 0}
   _id: 5006
   text: {fileID: 3269805834212499556}
 --- !u!95 &4156747222715576220
@@ -147,8 +149,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3357016319
-  m_fontColor: {r: 1, g: 0, b: 0.09391117, a: 0.78431374}
+    rgba: 3355478015
+  m_fontColor: {r: 1, g: 0.5310631, b: 0, a: 0.78431374}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

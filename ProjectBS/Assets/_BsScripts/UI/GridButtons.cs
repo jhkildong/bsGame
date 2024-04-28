@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GridButtons : MonoBehaviour
 {
     [SerializeField]protected List<Button> buttons;
-    protected RectTransform RT => (transform as RectTransform);
-    protected GridLayoutGroup GridLayout
+    private RectTransform RT => (transform as RectTransform);
+    private GridLayoutGroup GridLayout
     {
         get
         {
@@ -21,14 +22,52 @@ public class GridButtons : MonoBehaviour
     }
     private GridLayoutGroup _gridLayout;
 
-    protected void AddButton()
+    private void Awake()
+    {
+        buttons.AddRange(GetComponentsInChildren<Button>());
+        if (buttons.Count == 0)
+        {
+            AddButton();
+        }
+        else
+        {
+            ReSize();
+        }
+    }
+
+    #region Public Method
+    public void SetButtonName(params string[] names)
+    {
+        if (names.Length < buttons.Count)
+        {
+            DeleteButton(buttons.Count - names.Length);
+        }
+        else if (names.Length > buttons.Count)
+        {
+            AddButton(names.Length - buttons.Count);
+        }
+        for (int i = 0; i < names.Length; i++)
+        {
+            SetName(buttons[i], names[i]);
+        }
+    }
+
+    public void SetButtonAction(int idx, UnityAction action)
+    {
+        buttons[idx].onClick.RemoveAllListeners();
+        buttons[idx].onClick.AddListener(action);
+    }
+    #endregion
+
+    #region Private Method
+    private void AddButton()
     {
         Button newButton = Instantiate(buttons[0], transform);
         buttons.Add(newButton);
-        Reposition(true);
+        ReSize();
     }
 
-    protected void AddButton(int count)
+    private void AddButton(int count)
     {
         for (int i = 0; i < count; i++)
         {
@@ -36,16 +75,16 @@ public class GridButtons : MonoBehaviour
         }
     }
 
-    protected void DeleteButton()
+    private void DeleteButton()
     {
         if (buttons.Count <= 1) return;
         int last = buttons.Count - 1;
         Destroy(buttons[last].gameObject);
         buttons.RemoveAt(last);
-        Reposition(false);
+        ReSize();
     }
 
-    protected void DeleteButton(int count)
+    private void DeleteButton(int count)
     {
         for (int i = 0; i < count; i++)
         {
@@ -53,28 +92,43 @@ public class GridButtons : MonoBehaviour
         }
     }
 
-    /// <summary> true : Add, false : Delete </summary>
-    protected virtual void Reposition(bool flag)
+    private void ReSize()
     {
-        //기본 중앙 정렬
-        if (GridLayout.startAxis == GridLayoutGroup.Axis.Vertical)
+        switch(GridLayout.constraint)
         {
-            float width = (GridLayout.cellSize.x + GridLayout.spacing.x) * 0.5f;
-            width = flag ? -width : width; // true : Add, false : Delete
-            RT.anchoredPosition += new Vector2(width, 0);
-        }
-        else // Horizontal
-        {
-            float height = (GridLayout.cellSize.y + GridLayout.spacing.y) * 0.5f;
-            height = flag ? -height : height; // true : Add, false : Delete
-            RT.anchoredPosition += new Vector2(0, height);
+            case GridLayoutGroup.Constraint.Flexible:
+                break;
+            case GridLayoutGroup.Constraint.FixedRowCount:  //행 갯수 고정
+                if (GridLayout.constraintCount <= 1)
+                    RT.sizeDelta = new Vector2(GridLayout.cellSize.x * buttons.Count + GridLayout.spacing.x * (buttons.Count - 1), GridLayout.cellSize.y);
+                else
+                {
+                    int widthCount = Mathf.CeilToInt((float)buttons.Count / (float)GridLayout.constraintCount);
+                    float width = GridLayout.cellSize.x * widthCount + GridLayout.spacing.x * (widthCount - 1);
+                    float height = GridLayout.cellSize.y * GridLayout.constraintCount + GridLayout.spacing.y * (GridLayout.constraintCount - 1);
+                    
+                    RT.sizeDelta = new Vector2(width, height);
+                }
+                break;
+            case GridLayoutGroup.Constraint.FixedColumnCount: //열 갯수 고정
+                if (GridLayout.constraintCount <= 1)
+                    RT.sizeDelta = new Vector2(GridLayout.cellSize.x, GridLayout.cellSize.y * buttons.Count + GridLayout.spacing.y * (buttons.Count - 1));
+                else
+                {
+                    int heightCount = Mathf.CeilToInt((float)buttons.Count / (float)GridLayout.constraintCount);
+                    float width = GridLayout.cellSize.x * GridLayout.constraintCount + GridLayout.spacing.x * (GridLayout.constraintCount - 1);
+                    float height = GridLayout.cellSize.y * heightCount + GridLayout.spacing.y * (heightCount - 1);
+
+                    RT.sizeDelta = new Vector2(width, height);
+                }
+                break;
         }
     }
-    
 
-    protected void SetName(Button button, string name)
+    private void SetName(Button button, string name)
     {
         button.name = name;
         button.GetComponentInChildren<TextMeshProUGUI>().text = name;
     }
+    #endregion
 }

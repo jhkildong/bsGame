@@ -21,8 +21,12 @@ public static class IDamageExtension
     /// <param name="dmg">데미지 수치</param>
     /// <param name="effectprefab">이펙트 프리팹</param>
     /// <param name="myPos">trasform.position</param>
-    public static void TakeDamageEffect(this IDamage obj, float dmg, GameObject effectprefab = null, Vector3 myPos = default, float radius = 0.0f)
+    public static void TakeDamageEffect(this IDamage obj, float dmg, GameObject effectprefab = null)
     {
+        dmg += Random.Range(-1, 2);
+        if (dmg < 1)
+            dmg = 1;
+
         obj.TakeDamage(dmg);
         MonoBehaviour mono = obj as MonoBehaviour;
         Vector3 objPos = mono.transform.position;
@@ -34,24 +38,8 @@ public static class IDamageExtension
         if(effectprefab != null)
         {
             Vector3 effectSpawn;
-            //position값을 전달 하지 않았을 경우 중앙에 생성
-            if(myPos == default)
-            {
-                effectSpawn = objPos + obj.Height * 0.5f * Vector3.up;
-            }
-            //position값 전달 했을 경우 계산된 위치에 생성
-            else
-            {
-                Vector3 objTop = objPos + Vector3.up * obj.Height;
-                Vector3 v1 = objPos - myPos;    //내 중앙에서 IDamage 위치까지의 벡터
-                Vector3 v2 = objTop - myPos;    //내 중앙에서 IDamage의 상단까지의 벡터
-                if (radius == 0) radius = v1.magnitude * 0.5f;  //거리값이 설정이 안된 경우 두 지점의 중간값으로 설정
-                v1.Normalize();
-                v2.Normalize();
-                float angle = Vector3.Angle(v1, v2);
-                float spawnHeight = Mathf.Tan(angle * Mathf.Deg2Rad) * radius;    //h = tan(θ) * r
-                effectSpawn = myPos + v1 * radius + Vector3.up * spawnHeight;
-            }
+            //중앙에 생성
+            effectSpawn = objPos + obj.Height * 0.5f * Vector3.up;
             //이펙트 생성
             UIManager.Instance.testcode(effectprefab, effectSpawn);
         }

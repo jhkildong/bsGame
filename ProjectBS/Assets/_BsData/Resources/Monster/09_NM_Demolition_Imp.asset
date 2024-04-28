@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 9
   _name: Imp
-  _attack: 0
+  _attack: 2
   _attackDelay: 1
   _speed: 2.5
   _maxHp: 30
