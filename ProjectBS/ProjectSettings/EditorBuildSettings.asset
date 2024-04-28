@@ -8,5 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_BsScenes/Jimin/Jimin_Test0324.unity
     guid: 22248f5fb114e82449068ace6f296e53
+  - enabled: 1
+    path: Assets/_BsScenes/Jaejun/Main Menu.unity
+    guid: 48fc03b45a0ea244a8bdbc556b0dadbe
+  - enabled: 1
+    path: Assets/_BsScenes/Jaejun/LoadingScene.unity
+    guid: b833e9ab26343074e93638770180c244
+  - enabled: 1
+    path: Assets/_BsScenes/Jaejun/JaejunTest.unity
+    guid: e4467ae2d3ec8244ba9fad7d506e0daa
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: cd3d68a7b3598e542949340da9cc1f51, type: 2}

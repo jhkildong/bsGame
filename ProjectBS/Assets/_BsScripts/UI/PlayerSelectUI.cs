@@ -30,4 +30,9 @@ public class PlayerSelectUI : GridButtons
         buttons[idx].onClick.RemoveAllListeners();
         buttons[idx].onClick.AddListener(action);
     }
+
+    public void OnPlay()
+    {
+        Loading.LoadScene(3);
+    }
 }

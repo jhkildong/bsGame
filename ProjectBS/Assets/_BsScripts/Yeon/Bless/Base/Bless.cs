@@ -42,6 +42,7 @@ namespace Yeon2
         protected void SetFowardPlayerLook()
         {
             transform.SetParent(GameManager.Instance.Player.RotatingBody);
+            transform.localRotation = Quaternion.identity;
         }
     }
 }

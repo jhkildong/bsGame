@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
+  m_Name: Bless_BOL
+  m_EditorClassIdentifier: 
+  _id: 1100
+  _name: BelssingOfLightning
+  _prefab: {fileID: 2365774773641346219, guid: 337bdc6c500ff8f47a1fcb5876a76e03, type: 3}
+  _lvDataList:
+  - name: Attack
+    defaultValue: 20
+    levelUpType: 1
+    levelUpTable:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+  - name: Amount
+    defaultValue: 0
+    levelUpType: 0
+    levelUpTable:
+    - 1
+    - 0
+    - 1
+    - 0
+    - 1
+    - 1
+    - 0
+  - name: ReTime
+    defaultValue: 2
+    levelUpType: 1
+    levelUpTable:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+  - name: AtRange
+    defaultValue: 10
+    levelUpType: 1
+    levelUpTable:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1

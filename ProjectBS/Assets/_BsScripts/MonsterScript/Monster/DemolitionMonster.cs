@@ -36,13 +36,21 @@ public class DemolitionMonster : GroupMonster
     protected override void ChangeTarget(Transform target)
     {
         base.ChangeTarget(target);
-        attackTarget = myTarget.gameObject.GetComponent<IDamage>();
+        if (myTarget != null) 
+            attackTarget = myTarget.gameObject.GetComponent<IDamage>();
+        else
+            attackTarget = null;
     }
 
     private void FindTarget(Transform target)
     {
         if(target != PlayerTransform)
+        {
             targetQueue.Enqueue(target);
+            Transform tr = targetQueue.Peek();
+            ChangeTarget(tr);
+        }
+
         ChangeState(State.Attack);
     }
 
@@ -74,10 +82,6 @@ public class DemolitionMonster : GroupMonster
                 attackTarget = null;
                 break;
             case State.Attack:
-                if (targetQueue.Count > 0)
-                    ChangeTarget(targetQueue.Peek());
-                else
-                    ChangeTarget(PlayerTransform);
                 break;
             case State.Death:
                 SetDirection(Vector3.zero);
@@ -105,8 +109,12 @@ public class DemolitionMonster : GroupMonster
                             ChangeTarget(nextTarget);
                     }
                 }
+                else
+                {
+                    ChangeTarget(PlayerTransform);
+                }
                 Vector3 dir = myTarget.position - transform.position;
-                if(dir.sqrMagnitude > DemolitionData.AttackRange * DemolitionData.AttackRange)
+                if(dir.magnitude > DemolitionData.AttackRange)
                 {
                     SetDirection(transform.forward);
                     Com.MyAnim.SetBool(AnimParam.isAttacking, false);
@@ -125,7 +133,7 @@ public class DemolitionMonster : GroupMonster
     public void OnAttackPoint()
     {
         Vector3 dir = myTarget.position - transform.position;
-        if (dir.sqrMagnitude < DemolitionData.AttackRange * DemolitionData.AttackRange)
+        if (dir.magnitude <= DemolitionData.AttackRange)
         {
             float Damage = Attack;
             if (attackTarget is Building) Damage += DemolitionData.BuildingDmg;

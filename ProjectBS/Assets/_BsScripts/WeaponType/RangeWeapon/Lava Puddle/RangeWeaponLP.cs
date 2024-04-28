@@ -5,23 +5,20 @@ using Yeon2;
 public class RangeWeaponLP : Bless
 {
     public GameObject weaponPrefab;
-    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
 
     float time = 0.0f;
     short Level = 0;
-
     float WaitTime = 0.05f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        SetFowardPlayerLook();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = myPlayer.transform.position;
         time += Time.deltaTime;
 
         if (Level >= 1)
@@ -52,11 +49,11 @@ public class RangeWeaponLP : Bless
         Vector3 spawnPos = transform.position + randomPos;
         spawnPos.y = 0.0f;
         GameObject go = Instantiate(weaponPrefab, spawnPos, Quaternion.identity); // 무기 생성
-        go.transform.SetParent(null);
         Destroy(go, myStatus[Key.DestroyTime]);
 
-        var bullet = go.GetComponentInChildren<RangeWeaponLP_Bullet>();
+        var bullet = go.GetComponentInChildren<Weapon>();
         bullet.Ak = myStatus[Key.Attack];
+
     }
 
     IEnumerator SpawnMultipleWeapons(float v)

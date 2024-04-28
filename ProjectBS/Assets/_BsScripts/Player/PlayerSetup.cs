@@ -19,7 +19,8 @@ public class PlayerSetup : MonoBehaviour
         jobs = Resources.LoadAll<PlayerComponent>(FilePath.Job);
     }
     private void Start()
-    {        
+    {
+        UIManager.Instance.SetPool(UIID.DamageUI, 30, 30);
         playerSelectWindow = UIManager.Instance.CreateUI(UIID.PlayerSelectWindow, CanvasType.Canvas) as PlayerSelectWindow;
         SetJobSelect();
     }

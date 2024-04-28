@@ -12,13 +12,12 @@ public class RangeWeaponRM : Bless
     void Start()
     {
         Count = 0;
+        SetFowardPlayerLook();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = myPlayer.transform.position;
-
         if (Level >= 1)
         {
             if (Count < 1)

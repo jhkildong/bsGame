@@ -40,8 +40,8 @@ public class BlessManager : Singleton<BlessManager>
 
 public enum BlessID
 {
-    LD = 1040,
-    BOTCA = 1050,
-    CS = 1060,
-    VG = 1070,
+    BOTS = 1010, RA = 1020, PF = 1030,
+    LD = 1040, BOTCA = 1050, CS = 1060, VG = 1070,
+    LP = 1080, RM = 1090, BOL = 1100,
+
 }

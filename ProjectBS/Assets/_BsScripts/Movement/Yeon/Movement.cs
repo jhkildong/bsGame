@@ -44,12 +44,14 @@ namespace Yeon
             }
         }
 
-        protected virtual void InitCollider()
+        protected virtual void InitCollider(float radius = 0.5f)
         {
             TryGetComponent(out col);
             if (col == null)
             {
                 col = gameObject.AddComponent<CapsuleCollider>();
+                (col as CapsuleCollider).radius = radius;
+                (col as CapsuleCollider).height = 2.0f;
             }
         }
         #endregion

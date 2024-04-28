@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ConstructionController : MonoBehaviour
 {
@@ -41,6 +42,14 @@ public class ConstructionController : MonoBehaviour
                 buildUI.myTarget = null;
                 //색깔 변경
                 buildTarget.SelectedProgress?.Invoke(true);
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                GameManager.Instance.Player.IsBuilding = true;
+            }
+            if(Input.GetKeyUp(KeyCode.B))
+            {
+                GameManager.Instance.Player.IsBuilding = false;
             }
             //상호작용키 입력시 건설
             if (Input.GetKey(KeyCode.B))

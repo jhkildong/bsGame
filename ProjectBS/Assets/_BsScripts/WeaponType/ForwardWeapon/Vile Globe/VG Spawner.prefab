@@ -47,7 +47,6 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: 2a67248b90a8dec45acc6427a1396c84, type: 2}
   myPlayer: {fileID: 0}
   weaponPrefab: {fileID: 1077365919215883442, guid: 4539119fd36e3974fb6d6ef2d07da2e2, type: 3}
-  clonesParent: {fileID: 0}
   _atRange: 0.5
   _maxRange: 1
   _minRange: -1

@@ -82,7 +82,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
 
         rBody.mass = data.Mass;
         rBody.angularDrag = 2f;
-        SetCollider(data.Radius);
+        InitCollider(data.Radius);  //data의 radius값으로 콜라이더 설정
 
         _monsterComponent = GetComponentInChildren<MonsterComponent>();
 
@@ -96,7 +96,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         DeadAct += Die;
     }
 
-    protected virtual void SetCollider(float radius)
+    protected override void InitCollider(float radius)
     {
         if (radius < 1.0f)
         {

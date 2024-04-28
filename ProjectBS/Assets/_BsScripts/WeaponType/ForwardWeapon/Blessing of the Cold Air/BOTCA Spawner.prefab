@@ -45,8 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 0d5c4486354bb64478d2c2e4cce6af79, type: 2}
+  myPlayer: {fileID: 0}
   weaponPrefab: {fileID: 3278610813507465420, guid: 0c8e7c177d79d79438452946f1f2ba26, type: 3}
-  clonesParent: {fileID: 0}
-  _reTime: 2
-  _waitTime: 0.05
-  _destroyTime: 10
