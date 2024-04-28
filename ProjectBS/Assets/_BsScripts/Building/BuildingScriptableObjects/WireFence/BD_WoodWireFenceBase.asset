@@ -16,9 +16,9 @@ MonoBehaviour:
   _buildingName: WoodWireFence
   _maxHp: 300
   _curHp: 300
-  _requireWood: 5
+  _requireWood: 10
   _requireStone: 0
   _requireIron: 10
   _constTime: 5
   _repairSpeed: 1
-  _buildingPrefab: {fileID: 0}
+  _nextUpgrade: {fileID: 2078908572340995146, guid: 126df369520cd0349932b2e3c9a36160, type: 3}

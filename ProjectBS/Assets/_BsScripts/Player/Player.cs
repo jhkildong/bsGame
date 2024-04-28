@@ -109,7 +109,19 @@ public class Player : Combat, IDamage<Player>
         playerUI = UIManager.Instance.CreateUI(UIID.PlayerUI, CanvasType.DynamicCanvas) as PlayerUI;
         ChangeHpAct += playerUI.ChangeHP;
         DeadAct += Death;
-        
+
+        GameManager.Instance.WoodChangeAct += playerUI.ChangeWoodText;
+        GameManager.Instance.StoneChangeAct += playerUI.ChangeStoneText;
+        GameManager.Instance.IronChangeAct += playerUI.ChangeIronText;
+        GameManager.Instance.ExpChangeAct += playerUI.ChangeExpText;
+        GameManager.Instance.ChangeWood(0);
+        GameManager.Instance.ChangeStone(0);
+        GameManager.Instance.ChangeIron(0);
+        GameManager.Instance.ChangeGold(0);
+        GameManager.Instance.ChangeExp(0);
+
+        //GameManager.Instance.GoldChangeAct
+
         CurHp = MaxHP;
         effectData.renderers = new Renderer[1];
         effectData.renderers[0] = Com.Myrenderer;

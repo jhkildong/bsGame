@@ -19,5 +19,5 @@ MonoBehaviour:
   _canStack: 0
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 49152
   _buffType: 4

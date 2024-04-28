@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 
-public abstract class Building : MonoBehaviour , IDamage, IHealing
+public abstract class Building : MonoBehaviour, IDamage, IHealing
 {
     [SerializeField]
     private BuildingData buildingData;
@@ -26,6 +28,7 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
     [SerializeField] protected short _requireIron;      // 철 요구 재료개수
     [SerializeField] protected float _constTime;     // 건물 총 건설시간
     [SerializeField] protected float _repairSpeed;    // 건물 수리속도
+    [SerializeField] protected GameObject _nextUpgrade;  //다음 업그레이드 건물
 
     protected int layerNum;
 
@@ -35,11 +38,14 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
     float curConstTime = 0.0f; //건설한 시간
 
     //Yeon 추가
-    [NonSerialized]public bool isConstructing = false;  // 건설중인지 여부
+    [NonSerialized] public bool isConstructing = false;  // 건설중인지 여부
     private UnityAction<float> ConstructionProgress;    // 건설 진행도 증가시 호출
     public UnityAction<bool> SelectedProgress;          // 건설 선택/해제시 호출
 
+    public event UnityAction<float> ChangeHpAct;
+    [SerializeField] private BuildingHpBar hpBar;
 
+    [SerializeField]private GameObject AuraEffect;
     /*
     public Building(BuildingData data)
     {
@@ -61,10 +67,13 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
             renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 1f);
         }
         */
-        
-        //installBuilding.BuildingInstalled += IsInstalled;
 
+        //installBuilding.BuildingInstalled += IsInstalled;
+        hpBar = UIManager.Instance.CreateUI(UIID.BuildingHpBar, CanvasType.DynamicCanvas) as BuildingHpBar; // 체력바 생성
+        ChangeHpAct += hpBar.ChangeHP; //체력변동이벤트를 등록
+        hpBar.gameObject.SetActive(true);
     }
+    
     public void SetBuildingStat()
     {
         _id = Data.ID;
@@ -76,6 +85,7 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
         _requireIron = Data.requireIron;
         _constTime = Data.constTime;
         _repairSpeed = Data.repairSpeed;
+        _nextUpgrade = Data.nextUpgrade;
         layerNum = LayerMask.NameToLayer("Building");
     }
     protected virtual void Update()
@@ -94,9 +104,31 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
             Debug.Log("남은 체력" + _curHp);
         }
         */
+
+        //////ConstructionController로 옮길것!!!!!!!!!!!!
         if (Input.GetKey(KeyCode.R))
         {
             Repair(0.1f);
+        }
+        if(iscompletedBuilding && _nextUpgrade != null && Input.GetKeyDown(KeyCode.U)) 
+        {
+            //다음 업그레이드가있고, 재화가 충족될시
+            Building upgradeBD = _nextUpgrade.GetComponent<Building>();
+            if (GameManager.Instance.CurWood() >= upgradeBD.Data.requireWood && GameManager.Instance.CurStone() >= upgradeBD.Data.requireStone
+                && GameManager.Instance.CurIron() >= upgradeBD.Data.requireIron)
+            {
+                //자원소모
+                GameManager.Instance.ChangeWood(-upgradeBD.Data.requireWood);
+                GameManager.Instance.ChangeStone(-upgradeBD.Data.requireStone);
+                GameManager.Instance.ChangeIron(-upgradeBD.Data.requireIron);
+                //건물 교체
+                Upgrade();
+
+            }
+            else
+            {
+                return;
+            }
         }
         
         
@@ -106,8 +138,14 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
     public void OnInstalled() // 건물이 세팅될때(클릭으로 건설위치가 정해질때) instantiateBuilding 에서 직접 호출중
     {
         isInstalled = true;
+        
+        //세팅될때 자원 소모
+        GameManager.Instance.ChangeWood(-_requireWood);
+        GameManager.Instance.ChangeStone(-_requireStone);
+        GameManager.Instance.ChangeIron(-_requireIron);
+
     }
-    
+
     public void Construction(float constSpeed) //건설중
     {
         //canBuild상태에서 상호작용키 입력시, constructing 활성화, 건설애니메이션 시작, constructing인 동안 이벤트 호출. 
@@ -157,10 +195,33 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
         gameObject.layer = layerNum; // 레이어를 Building으로 변경
         gameObject.SetActive(false);
         gameObject.SetActive(true);
+        if (iscompletedBuilding && AuraEffect != null) // 건설 완료시에 오라 이펙트 켜기
+        {
+            AuraEffect.SetActive(true);
+        }
+        else
+        {
+            return;
+        }
         Debug.Log("건설 완료");
 
         GameManager.Instance.Player.IsBuilding = false;
     }
+
+    protected void Upgrade() //건물 업그레이드
+    {
+        Vector3 pos = transform.position;
+        GameObject upgradeBD = Instantiate(_nextUpgrade.gameObject,pos,transform.rotation);
+        Building bd = upgradeBD.GetComponent<Building>();
+        bd.isInstalled = true;
+        bd.iscompletedBuilding = true;
+        bd.gameObject.layer = layerNum; 
+        bd.gameObject.SetActive(false);
+        bd.gameObject.SetActive(true);
+        Destroy();
+    
+    }
+
 
     public void ReceiveHeal(float heal)
     {

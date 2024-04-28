@@ -159,6 +159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 7109192342924118199, guid: 0df4d77c733e9e14eaccb4121bdbae29, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!1 &1445944877574579284
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +321,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5647818942448586349, guid: be433cc5af3803f40bd8b17e74265cc5, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!1 &1888051288751675982
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +573,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 1190186066781599322, guid: 3156a4c8dfb2b0646ac1c47e783c078e, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &2555880273833453879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,6 +972,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 8692592371598191780, guid: f83c8f7e8fb0ef24990b8ca87bd15d92, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &8376139908301710719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1348,6 +1360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 7215726233801088367, guid: b87f8b2fa9976fe488546514a7e45aa3, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!1 &4596099863283236758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,7 +1600,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb12a8ec1817104295b7ae8fb646892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building: {fileID: 5647818942448586349, guid: be433cc5af3803f40bd8b17e74265cc5, type: 3}
+  building: {fileID: 1601445593432041249, guid: 7fd5c4d726ab002479214e4f228afa90, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!1 &5084256973813886949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1763,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 1393229479709798815, guid: ed3947d5ef94eab47bdcb63b5d3933bd, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!1 &5167933405529244530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,6 +1925,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5686909921988133878, guid: 526978ef17ae4344aa7269091f2a7cb5, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!1 &5329507002433424421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,6 +2166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5732704864016183740, guid: 18a0b9192432c0e4dbc7a1990eaa651e, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!1 &5591273752178121602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,7 +2338,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb12a8ec1817104295b7ae8fb646892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building: {fileID: 8692592371598191780, guid: f83c8f7e8fb0ef24990b8ca87bd15d92, type: 3}
+  building: {fileID: 8692592371598191780, guid: 26da96566c1a86246900db57ab6ac840, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &2262929449210908735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2441,7 +2471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7d52c84ce9d0d4b82d6f7c26077073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6676310489559237100}
   _id: 5003
 --- !u!1 &7030539296800450630
 GameObject:
@@ -2613,6 +2642,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 1886382828072545872, guid: 7ee9fc279ffc9524f93b7329e4a26d87, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &8026669340200068306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2840,6 +2872,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5732704864016183740, guid: f7dca73a90d20ce4b96de712495b37b6, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!1 &8154403119260998002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,6 +2966,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 2078908572340995146, guid: 126df369520cd0349932b2e3c9a36160, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &2613119771869177850
 MonoBehaviour:
   m_ObjectHideFlags: 0

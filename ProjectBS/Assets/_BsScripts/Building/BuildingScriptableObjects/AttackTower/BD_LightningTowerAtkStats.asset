@@ -16,7 +16,7 @@ MonoBehaviour:
   _atkSpeed: 0.5
   _hitDelay: 0
   _atkDuration: 0
-  _atkRadius: 2
+  _atkRadius: 1
   _attackableLayer:
     serializedVersion: 2
     m_Bits: 32768

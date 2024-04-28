@@ -160,4 +160,6 @@ public enum UIID
     ConstructionKeyUI = 5004,
     ProgressBar = 5005,
     DamageUI = 5006,
+    
+    BuildingHpBar = 5010
 }

@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5084134691692dd4dacb0ebf05165677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingData: {fileID: 11400000, guid: 1bbdfd3984429934daaddada721ce5de, type: 2}
+  buildingData: {fileID: 11400000, guid: a0aaee029e472cd43bf3d8d75ccc8d9a, type: 2}
   _id: 0
   _buildingName: 
   _maxHp: 0
@@ -188,5 +188,6 @@ MonoBehaviour:
   _requireIron: 0
   _constTime: 0
   _repairSpeed: 0
+  _nextUpgrade: {fileID: 0}
   isInstalled: 0
   iscompletedBuilding: 0

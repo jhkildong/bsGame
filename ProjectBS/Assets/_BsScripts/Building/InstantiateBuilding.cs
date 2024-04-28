@@ -117,6 +117,7 @@ public class InstantiateBuilding : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(1)) // 우클릭 입력시 건설 취소
             {
+
                 EndBuild();
             }
         }       

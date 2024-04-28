@@ -50,7 +50,7 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
                 {
                     reSetStats.SetPointStats(atk, radius, size, speed, atkSpeed ,hitDelay,durTime);
                 }
-                obj.transform.position = pos.transform.position;
+                obj.transform.position = new Vector3(pos.transform.position.x,obj.transform.position.y,pos.transform.position.z);
                 obj.SetActive(true); //활성화
                 //obj.transform.localPosition = p.localPosition; //해당위치로 이동
                 //obj.transform.localRotation = p.rotation;
@@ -59,13 +59,13 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
         }
         //return Instantiate(org, p);//없는경우 생성한다.
 
-        GameObject atkEffect = Instantiate(org, transform.position, Quaternion.identity); //없는경우 새로 생성
+        GameObject atkEffect = Instantiate(org, transform.position, org.transform.rotation); //없는경우 새로 생성
         ISetPointStats setStats = atkEffect.GetComponent<ISetPointStats>(); //공격 오브젝트는 모두 ISetStats를 갖고 있어야 한다.
         if (setStats != null)
         {
             setStats.SetPointStats(atk, radius, size, speed, atkSpeed,hitDelay, durTime); // 스탯 설정.
         }
-        atkEffect.transform.position = pos.transform.position; // 매개변수로 넘겨받은 공격위치로 이동.
+        atkEffect.transform.position = new Vector3(pos.transform.position.x, org.transform.position.y, pos.transform.position.z); // 매개변수로 넘겨받은 공격위치로 이동.
 
         return atkEffect;
         //return Instantiate(org, pos.transform.position,Quaternion.identity, parent);//없는경우 생성한다.
@@ -97,7 +97,7 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
         }
         //return Instantiate(org, p);//없는경우 생성한다.
 
-        GameObject atkEffect = Instantiate(org, transform.position, Quaternion.identity); //없는경우 새로 생성
+        GameObject atkEffect = Instantiate(org, transform.position, org.transform.rotation); //없는경우 새로 생성
         ISetProjectileStats setStats = atkEffect.GetComponent<ISetProjectileStats>(); //공격 오브젝트는 모두 ISetStats를 갖고 있어야 한다.
         setStats.SetProjectileStats(atk, size, speed, range, canPenetrate, penetrateCount); // 스탯 설정.
         atkEffect.transform.position = pos.transform.position; // 매개변수로 넘겨받은 공격위치로 이동.

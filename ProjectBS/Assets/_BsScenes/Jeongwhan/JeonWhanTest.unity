@@ -1295,9 +1295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66f3368e6fcefa42bbd875fb048c4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myWoodCount: {fileID: 0}
-  myStoneCount: {fileID: 0}
-  myIronCount: {fileID: 0}
   Player: {fileID: 0}
   gameStart: 0
   gameOver: 0

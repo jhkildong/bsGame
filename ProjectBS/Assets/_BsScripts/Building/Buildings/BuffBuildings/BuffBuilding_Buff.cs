@@ -71,6 +71,9 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
                 case BuffBuildingData.BuffType.msBuff:
                     buffType = buff.msBuffDict;
                     break;
+                case BuffBuildingData.BuffType.rangeBuff:
+                    buffType = buff.rangeBuffDict;
+                    break;
                 default:
                     break;
             }
@@ -174,6 +177,9 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
                 case BuffBuildingData.BuffType.msBuff:
                     buffType = buff.msBuffDict;
                     break;
+                case BuffBuildingData.BuffType.rangeBuff:
+                    buffType = buff.rangeBuffDict;
+                    break;
                 default:
                     break;
             }
@@ -226,14 +232,14 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
                     }
                     // 버프 값 설정
                     //buff.atkBuffList.Add(buffAmount);
-                    buff.atkBuffDict.Remove(buffController.BuffName);
-
-                    
-                    buffable.getBuff = buff; // 버프 적용
+                    //buff.atkBuffDict.Remove(buffController.BuffName);
+                    buffController.RemoveBuff(buffable, buffType); // 버프 제거
+                    buffable.getBuff = buff; //버프제거후 적용
                 }
             }
-            base.Destroy();
+            
         }
+        base.Destroy();
     }
 
 }
