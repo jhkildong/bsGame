@@ -380,8 +380,11 @@ MonoBehaviour:
   _requireIron: 0
   _constTime: 0
   _repairSpeed: 0
+  _nextUpgrade: {fileID: 0}
   isInstalled: 0
   iscompletedBuilding: 0
+  hpBar: {fileID: 0}
+  AuraEffect: {fileID: 0}
   atkType: 1
   target: {fileID: 0}
   atkDelaying: 0
@@ -397,8 +400,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   AreaBuildingData: {fileID: 11400000, guid: e45aa19873115f942a7fe855149c783c, type: 2}
+  _finalDmg: 0
+  _finalAs: 0
+  _finalSize: 0
   _atkPower: 0
-  _atkDelay: 0
+  _atkSpeed: 0
   _atkProjectileSize: 0
   _atkProjectileSpeed: 0
   _atkProjectileRange: 0

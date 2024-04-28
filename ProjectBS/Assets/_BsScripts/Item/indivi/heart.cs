@@ -9,7 +9,7 @@ public class heart : MonoBehaviour
         Debug.Log("1");
         if((int)BSLayerMasks.MagneticField != other.gameObject.layer)
         {
-            GameObject.Find("Player").GetComponent<Player>().ReceiveHeal(10);
+            GameObject.Find("Player").GetComponent<Player>().ReceiveHealEffect(10);
         }
     }
 }

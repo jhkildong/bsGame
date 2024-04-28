@@ -226,8 +226,8 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 0
-  _maxHP: 500
-  _curHp: 1
+  _maxHp: 500
+  _curHp: 500
   _speedCeof: 1
   _attackCeof: 1
   _attack: 20
@@ -238,6 +238,7 @@ MonoBehaviour:
     renderers: []
     mainTexture: {fileID: 0}
     mainColor: {r: 1, g: 1, b: 1, a: 1}
+  additonalAtk: 0
   WSADInput: 0
   Com: {fileID: 0}
   rotatingBody: {fileID: 3329387691305622105}
