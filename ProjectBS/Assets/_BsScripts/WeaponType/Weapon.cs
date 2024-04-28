@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour, IPoolable
 {
     private LayerMask Monster;
     public float Ak;
@@ -21,5 +21,17 @@ public class Weapon : MonoBehaviour
                 obj.TakeDamage(Ak);
             }
         }
+    }
+    public void SetID(int id)
+    {
+        _id = id;
+    }
+
+    public int ID => _id;
+    private int _id;
+    public MonoBehaviour This => this;
+    public IPoolable CreateClone()
+    {
+        return Instantiate(this);
     }
 }

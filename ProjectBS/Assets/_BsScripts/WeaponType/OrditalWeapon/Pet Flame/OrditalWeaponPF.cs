@@ -23,8 +23,7 @@ public class OrditalWeaponPF : Bless
     // Update is called once per frame
     void Update()
     {
-        transform.position = myPlayer.transform.position + new Vector3(0, 0.7f, 0);
-        myRotation = myPlayer.transform.rotation;
+        myRotation = rotatingBody.rotation;
         transform.Rotate(Vector3.up, -RotSpeed * Time.deltaTime); // °øÀü
 
         if (Level >= 1)

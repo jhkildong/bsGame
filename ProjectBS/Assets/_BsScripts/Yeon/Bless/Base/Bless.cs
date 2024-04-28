@@ -9,7 +9,7 @@ namespace Yeon2
         public BlessData Data => _data;
         [SerializeField] private BlessData _data;
 
-        [SerializeField] protected PlayerComponent myPlayer;
+        protected Transform rotatingBody;
 
         //레벨업시 변경될 스테이터스를 저장하는 딕셔너리
         protected Dictionary<string, float> myStatus = new Dictionary<string, float>();
@@ -21,6 +21,7 @@ namespace Yeon2
         public void Init(BlessData data)
         {
             _data = data;
+            rotatingBody = GameManager.Instance.Player.RotatingBody;
 
             foreach (var lvData in data.LvDataList)
             {

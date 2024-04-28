@@ -20,7 +20,6 @@ public class OrditalWeaponBOTS : Bless
     // Update is called once per frame
     void Update()
     {
-        transform.position = myPlayer.transform.position + new Vector3(0.0f, 0.7f, 0.0f);
         transform.Rotate(Vector3.up, -myStatus[Key.RotSpeed] * Time.deltaTime); // °øÀü
         if (Level >= 1)
         {
