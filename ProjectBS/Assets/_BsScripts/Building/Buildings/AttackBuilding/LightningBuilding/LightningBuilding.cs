@@ -17,7 +17,7 @@ public class LightningBuilding : AttackBuilding_Area // 0412 º¯°æÀü -> AttackBui
         if (target != null && atkDelaying)
         {
             
-            EffectPoolManager.Instance.SetActiveRangeObject<PointAtkEffectHit>(myEffect, effectPool, target, _finalDmg, _atkRadius, 0, 0,_atkDelay,_hitDelay,_atkDuration);
+            EffectPoolManager.Instance.SetActiveRangeObject<PointAtkEffectHit>(myEffect, effectPool, target, _finalDmg, _atkRadius, 0, 0,_atkSpeed,_hitDelay,_atkDuration);
             
         }
     }

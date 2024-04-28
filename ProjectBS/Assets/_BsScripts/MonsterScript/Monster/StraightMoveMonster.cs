@@ -33,9 +33,9 @@ public class StraightMoveMonster : GroupMonster
         ChangeTarget(target);
         StartCoroutine(ReleaseAuto());
     }
-    protected override void InitCollider()
+    protected override void InitCollider(float radius)
     {
-        base.InitCollider();
+        base.InitCollider(radius);
         col.isTrigger = true;
     }
 

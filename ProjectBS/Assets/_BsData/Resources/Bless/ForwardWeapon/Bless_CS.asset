@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
-  m_Name: Bless2_BOTCA
+  m_Name: Bless_CS
   m_EditorClassIdentifier: 
-  _id: 1050
-  _name: BlessingOfTheColdAir
-  _prefab: {fileID: 5188791887647992852, guid: 865028827c674bb4eaecabe8318849a3, type: 3}
+  _id: 1060
+  _name: CrossSpear
+  _prefab: {fileID: 2336909956578856692, guid: 52dc9034c50881146869f6cd8f97a028, type: 3}
   _lvDataList:
   - name: Attack
     defaultValue: 20
     levelUpType: 1
     levelUpTable:
     - 1
-    - 2
+    - 1
     - 1
     - 1
     - 1
@@ -31,24 +31,24 @@ MonoBehaviour:
     defaultValue: 0
     levelUpType: 0
     levelUpTable:
-    - 1
+    - 5
     - 0
-    - 1
     - 0
-    - 1
     - 0
-    - 1
+    - 0
+    - 0
+    - 0
   - name: ReTime
     defaultValue: 2
     levelUpType: 1
     levelUpTable:
     - 1
-    - 0.8
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
   - name: Size
     defaultValue: 0
     levelUpType: 0

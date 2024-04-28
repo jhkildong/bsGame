@@ -10,7 +10,7 @@ public class ProgressBar : FollowingTargetUI
 
     [SerializeField] private Slider slider;
     [SerializeField] private Image sliderImage;
-    [SerializeField] private Color sliderColor;
+    private Color sliderColor;
 
     private void Start()
     {

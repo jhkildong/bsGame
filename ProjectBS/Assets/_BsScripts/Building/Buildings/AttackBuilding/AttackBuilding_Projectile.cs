@@ -11,10 +11,13 @@ public class AttackBuilding_Projectile : AttackBuildingBase
         get { return AreaBuildingData; }
         set { AreaBuildingData = value; }
     }
+    [SerializeField] protected float _finalDmg; // 최종데미지
+    [SerializeField] protected float _finalAs; // 최종공속
+    [SerializeField] protected float _finalSize; // 최종 투사체 크기
 
     [SerializeField] public float _atkPower;
-    [SerializeField] public float _atkDelay;
-    [SerializeField] public float _atkProjectileSize;
+    [SerializeField] public float _atkSpeed;
+    [SerializeField] public float _atkProjectileSize; // 투사체 크기
     [SerializeField] public float _atkProjectileSpeed; // 건물 투사체 속도
     [SerializeField] public float _atkProjectileRange; // 건물 투사체 사거리
     [SerializeField] public bool _atkCanPen; //관통가능한 공격인가?
@@ -25,12 +28,17 @@ public class AttackBuilding_Projectile : AttackBuildingBase
         base.Start();
         attackableLayer = PData.attackableLayer;
         _atkPower = PData.atkPower;
-        _atkDelay = PData.atkDelay;
+        _atkSpeed = PData.atkSpeed;
         _atkProjectileSize = PData.atkProjectileSize;
         _atkProjectileSpeed = PData.atkProjectileSpeed;
         _atkProjectileRange = PData.atkProjectileRange;
         _atkCanPen = PData.atkCanPen;
         _atkPenCount = PData.atkPenCount;
+
+        _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
+        _finalAs = 1 / (_atkSpeed * (1 + getBuff.asBuff)); // 1/ (기본공격속도 * (1 + %공격속도합산))
+        _finalSize = _atkProjectileSize + (_atkProjectileSize * getBuff.rangeBuff); 
+
     }
 
 
@@ -45,16 +53,19 @@ public class AttackBuilding_Projectile : AttackBuildingBase
         if (target != null && !atkDelaying)
         {
             atkDelaying = true;
-            StartCoroutine(AtkDelay(_atkDelay));
+            StartCoroutine(AtkDelay(_atkSpeed));
         }
     }
 
     protected virtual IEnumerator AtkDelay(float delay)
     {
         Debug.Log("공격!");
+        _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
+        _finalAs = 1 / (_atkSpeed * (1 + getBuff.asBuff)); // 1/ (기본공격속도 * (1 + %공격속도합산))
+        _finalSize = _atkProjectileSize + (_atkProjectileSize * getBuff.rangeBuff);
 
         AtkEvent?.Invoke();
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(_finalAs);
         atkDelaying = false;
     }
 

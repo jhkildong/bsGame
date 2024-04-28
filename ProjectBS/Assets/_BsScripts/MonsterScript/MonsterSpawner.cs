@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 /*
@@ -41,6 +42,7 @@ public class MonsterSpawner : MonoBehaviour
         applyRespawn = true;
         //StartCoroutine(NormalMonsterSpawn());
         //StartCoroutine(BossMonsterSpawn());
+        StartCoroutine(TestSpawn());
     }
 
     void DataSetPool(MonsterData[] datas)
@@ -156,6 +158,31 @@ public class MonsterSpawner : MonoBehaviour
 
                 yield return new WaitForSeconds(bossRespawnTime);
             }
+        }
+    }
+
+    IEnumerator TestSpawn()
+    {
+        Monster test = null;
+        foreach(NormalMonster monster in normalMonsterList)
+        {
+            if (monster is DemolitionMonster dm)
+            {
+                test = dm;
+                break;
+            }
+        }
+        for(int i = 0; i < 5; i++)
+        {
+            float rndAngle = Random.value * Mathf.PI * 2.0f;
+            Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
+            rndPos += transform.position;
+            GameObject go;
+
+            go = ObjectPoolManager.Instance.GetObj(test).This.gameObject;
+            go.transform.position = rndPos;
+
+            yield return new WaitForSeconds(2f);
         }
     }
 }

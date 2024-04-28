@@ -36,7 +36,7 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
 
     //EffectPoolManager.instance.GetObject<클래스명>(GameObject org, Transform p); 형식으로 접근하면 된다.
     public GameObject SetActiveRangeObject<T>(GameObject org, Transform parent, GameObject pos,  float atk = 1, float radius = 1, 
-        float size = 1, float speed = 1, float atkDelay = 1, float hitDelay = 1 ,float durTime = 1) // 오브젝트 활성화, 생성
+        float size = 1, float speed = 1, float atkSpeed = 1, float hitDelay = 1 ,float durTime = 1) // 오브젝트 활성화, 생성
     {
         string Key = typeof(T).ToString(); //T는 클래스 명이 될것. 클래스명을 key값으로 사용하겠다는 의미.
         if (myPool.ContainsKey(Key)) //이미 생성된 stack이 있는 경우
@@ -48,7 +48,7 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
                 ISetPointStats reSetStats = obj.GetComponent<ISetPointStats>();
                 if (reSetStats != null)
                 {
-                    reSetStats.SetPointStats(atk, radius, size, speed, atkDelay ,hitDelay,durTime);
+                    reSetStats.SetPointStats(atk, radius, size, speed, atkSpeed ,hitDelay,durTime);
                 }
                 obj.transform.position = pos.transform.position;
                 obj.SetActive(true); //활성화
@@ -63,7 +63,7 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
         ISetPointStats setStats = atkEffect.GetComponent<ISetPointStats>(); //공격 오브젝트는 모두 ISetStats를 갖고 있어야 한다.
         if (setStats != null)
         {
-            setStats.SetPointStats(atk, radius, size, speed, atkDelay,hitDelay, durTime); // 스탯 설정.
+            setStats.SetPointStats(atk, radius, size, speed, atkSpeed,hitDelay, durTime); // 스탯 설정.
         }
         atkEffect.transform.position = pos.transform.position; // 매개변수로 넘겨받은 공격위치로 이동.
 

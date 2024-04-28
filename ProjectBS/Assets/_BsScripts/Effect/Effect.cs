@@ -67,7 +67,11 @@ public class Effect : MonoBehaviour, IPoolable
     {
         if (other.TryGetComponent(out IDamage<Monster> monster))
         {
-            monster.TakeDamage(Attack);
+            //monster.TakeDamage(Attack);
+            GameObject Sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            Sphere.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            Sphere.GetComponent<Renderer>().material.color = Color.red;
+            monster.TakeDamageEffect(Attack, Sphere, transform.position);
         }
     }
 

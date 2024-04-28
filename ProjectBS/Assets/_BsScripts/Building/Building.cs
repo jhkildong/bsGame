@@ -158,6 +158,8 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
         gameObject.SetActive(false);
         gameObject.SetActive(true);
         Debug.Log("건설 완료");
+
+        GameManager.Instance.Player.IsBuilding = false;
     }
 
     public void ReceiveHeal(float heal)
@@ -191,6 +193,32 @@ public abstract class Building : MonoBehaviour , IDamage, IHealing
             }
         }
     }
+    public virtual float Height
+    {
+        get
+        {
+            TryGetComponent(out Collider col);
+            if (_height == 0.0f)
+            {
+                if (col == null)
+                    return 0.0f;
+                if (col is CapsuleCollider cc)
+                {
+                    _height = cc.height;
+                }
+                else if (col is BoxCollider bc)
+                {
+                    _height = bc.size.y;
+                }
+                else if (col is SphereCollider sc)
+                {
+                    _height = sc.radius * 2;
+                }
+            }
+            return _height;
+        }
+    }
+    private float _height;
 
     protected virtual void Destroy()
     {

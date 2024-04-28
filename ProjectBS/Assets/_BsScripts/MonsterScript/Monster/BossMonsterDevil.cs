@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossMonsterDevil : BossMonster
 {
-    protected override void SetCollider(float radius)
+    protected override void InitCollider(float radius)
     {
         col = gameObject.AddComponent<CapsuleCollider>();
         (col as CapsuleCollider).radius = radius;
