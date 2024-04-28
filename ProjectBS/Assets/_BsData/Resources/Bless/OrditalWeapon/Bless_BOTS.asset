@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
-  m_Name: Bless2_RA
+  m_Name: Bless_BOTS
   m_EditorClassIdentifier: 
-  _id: 1020
-  _name: RedAxe
-  _prefab: {fileID: 3613535943109023014, guid: 1f80aae093df5c043aa0117abdddff0d, type: 3}
+  _id: 1010
+  _name: BlessingOfTheSword
+  _prefab: {fileID: 5875949191823715278, guid: 70fb47a1c8b74ea4b8018d233dbede6b, type: 3}
   _lvDataList:
   - name: Attack
     defaultValue: 20
@@ -32,14 +32,14 @@ MonoBehaviour:
     levelUpType: 0
     levelUpTable:
     - 1
-    - 0
     - 1
+    - 0
     - 1
     - 0
     - 1
     - 0
   - name: AtRange
-    defaultValue: 5
+    defaultValue: 3
     levelUpType: 1
     levelUpTable:
     - 1
@@ -61,13 +61,13 @@ MonoBehaviour:
     - 1
     - 1
   - name: Size
-    defaultValue: 2
-    levelUpType: 1
+    defaultValue: 0
+    levelUpType: 0
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 2
+    - 4
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0

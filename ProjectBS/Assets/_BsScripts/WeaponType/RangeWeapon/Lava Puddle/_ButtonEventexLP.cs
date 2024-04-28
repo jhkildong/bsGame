@@ -13,7 +13,7 @@ public class _ButtonEventexLP : MonoBehaviour
     {
         button = GetComponent<Button>(); //버튼 component 가져오기
         button.onClick.AddListener(OnButtonClick); //인자가 없을 때 함수 호출
-        Weapon = FindObjectOfType<RangeWeaponLP>();
+        Weapon = BlessManager.Instance.CreateBless(BlessID.LP) as RangeWeaponLP;
     }
 
     private void OnButtonClick()

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
-  m_Name: Bless2_RM
+  m_Name: Bless_PF
   m_EditorClassIdentifier: 
-  _id: 1090
-  _name: RottenMilk
-  _prefab: {fileID: 3540576751485843617, guid: 9708fd17065614047a838de3220525e3, type: 3}
+  _id: 1030
+  _name: PetFlame
+  _prefab: {fileID: 1345635395758532283, guid: 74c555f52e0e4454e99b8349ba2d27be, type: 3}
   _lvDataList:
   - name: Attack
     defaultValue: 20
@@ -27,25 +27,36 @@ MonoBehaviour:
     - 1
     - 1
     - 1
-  - name: DelayTime
-    defaultValue: 1
+  - name: Amount
+    defaultValue: 0
+    levelUpType: 0
+    levelUpTable:
+    - 1
+    - 0
+    - 1
+    - 0
+    - 1
+    - 0
+    - 1
+  - name: ReTime
+    defaultValue: 2
     levelUpType: 1
     levelUpTable:
     - 1
+    - 0.5
     - 1
     - 1
     - 1
     - 1
     - 1
-    - 1
-  - name: AtRange
-    defaultValue: 5
-    levelUpType: 1
+  - name: ArrowAmount
+    defaultValue: 0
+    levelUpType: 0
     levelUpTable:
     - 1
+    - 0
+    - 0
     - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0

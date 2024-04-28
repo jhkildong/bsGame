@@ -5,7 +5,6 @@ using Yeon2;
 public class ForwardWeaponCS : Bless
 {
     public GameObject weaponPrefab; // 생성할 프리팹
-    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
 
     public float AtRange { get => _atRange; set => _atRange = value; }
     public float MaxRange { get => _maxRange; set => _maxRange = value; }
@@ -24,13 +23,12 @@ public class ForwardWeaponCS : Bless
     void Start()
     {
         Level = 0;
+        SetFowardPlayerLook();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = myPlayer.transform.position + new Vector3(0, 0.5f, 0);
-        transform.rotation = myPlayer.transform.rotation;
         time += Time.deltaTime;
 
         if (Level >= 1)
@@ -60,13 +58,14 @@ public class ForwardWeaponCS : Bless
         float randomXPos = Random.Range(MinRange, MaxRange); // 랜덤 최소, 최대 폭 설정
 
         GameObject go = Instantiate(weaponPrefab, transform.position, transform.rotation); // 무기 생성
-        go.transform.position = transform.position + new Vector3(randomXPos, 0.5f, 0.0f) + direction * AtRange;
+        go.transform.position = transform.position + new Vector3(randomXPos, 0.7f, 0.0f) + direction * AtRange; // 거리랑 폭 설정
         go.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); // 사이즈
-        go.transform.SetParent(null);
+
+        var bullet = go.GetComponentInChildren<ForwardMovingWeapon>();
+        bullet.Ak = myStatus[Key.Attack];
+        bullet.Shoot(35);
         Destroy(go, DestroyTime);
 
-        var bullet = go.GetComponentInChildren<ForwardWeaponCS_Bullet>();
-        bullet.Ak = myStatus[Key.Attack];
     }
 
     IEnumerator SpawnMultipleWeapons(float v)

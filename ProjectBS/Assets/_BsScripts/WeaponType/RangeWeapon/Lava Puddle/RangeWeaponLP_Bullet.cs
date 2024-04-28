@@ -4,37 +4,38 @@ using UnityEngine;
 
 public class RangeWeaponLP_Bullet : MonoBehaviour
 {
-    public LayerMask Monster;
+    private LayerMask Monster;
+
     public float Ak;
 
-    float time = 0.0f;
-    float DelayTime = 0.3f;
-
-    private void OnTriggerStay(Collider other) // ´ë¹ÌÁö
-    {
-        if(time >= DelayTime)
-        {
-            if ((Monster & 1 << other.gameObject.layer) != 0)
-            {
-                time = 0.0f;
-                IDamage<Monster> obj = other.GetComponent<IDamage<Monster>>();
-                if (obj != null)
-                {
-                    obj.TakeDamage(Ak);
-                }
-            }
-        }
-    }
+    float DelayTime = 0.2f;
+    float time;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Monster = (int)BSLayerMasks.Monster | (int)BSLayerMasks.SurroundMonster;
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
+
+        Collider[] list = Physics.OverlapSphere(transform.position, 2.0f, Monster);
+
+        if (time >= DelayTime)
+        {
+            time = 0.0f;
+            foreach (Collider col in list)
+            {
+                IDamage<Monster> obj = col.GetComponent<IDamage<Monster>>();
+                if (obj != null)
+                {
+                    obj.TakeDamage(Ak);
+                    Debug.Log("Attack");
+                }
+            }
+        }
     }
 }

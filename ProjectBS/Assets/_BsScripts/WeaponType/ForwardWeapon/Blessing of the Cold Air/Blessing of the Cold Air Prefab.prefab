@@ -144,9 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfb9073ee6705c4c8a0798952597e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Monster:
-    serializedVersion: 2
-    m_Bits: 0
   Ak: 0
 --- !u!65 &1581578617082372872
 BoxCollider:
@@ -346,7 +343,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.724}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6617217486945401079}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -393,7 +390,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 0.2
-  m_PreviewTimeScale: 1
+  m_PreviewTimeScale: 0
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -401,8 +398,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.16949904
+        time: 0.015830994
+        value: 0.24597609
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -410,26 +407,26 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.09537825
-        value: 0.35869282
-        inSlope: 1.4121116
-        outSlope: 1.4121116
+        time: 0.08745894
+        value: 0.51752156
+        inSlope: 4.307692
+        outSlope: 4.307692
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.4503008
       - serializedVersion: 3
-        time: 0.24363607
-        value: 0.5254173
-        inSlope: 0
-        outSlope: 0
+        time: 0.23308462
+        value: 0.7548256
+        inSlope: 1.6313227
+        outSlope: 1.6313227
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.6312349
       - serializedVersion: 3
-        time: 0.4039259
-        value: 0.54551387
+        time: 0.41976452
+        value: 0.9102218
         inSlope: -0.4602794
         outSlope: -0.4602794
         tangentMode: 0

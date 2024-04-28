@@ -6,4 +6,5 @@ public class PopupWindow : UIComponent
 {
     public override int ID => _id;
     [SerializeField] private int _id;
+
 }

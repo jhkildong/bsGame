@@ -256,8 +256,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3892559318724798601}
-  - component: {fileID: 6492477075852900692}
   - component: {fileID: 2680783652713249521}
+  - component: {fileID: 6492477075852900692}
   m_Layer: 0
   m_Name: Blessing of th Sword Prefab
   m_TagString: Untagged
@@ -281,6 +281,19 @@ Transform:
   - {fileID: 3063650093624595413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2680783652713249521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901338954309393824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e77e2cd2f563c4aaa8d220fc62623f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ak: 0
 --- !u!65 &6492477075852900692
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -300,21 +313,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: -0.1, y: 0.19, z: 1.3}
+  m_Size: {x: 0.3, y: 0.1, z: 1.3}
   m_Center: {x: 0, y: 0, z: 0.4}
---- !u!114 &2680783652713249521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6901338954309393824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e77e2cd2f563c4aaa8d220fc62623f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Ak: 0
 --- !u!1 &7426170335745600296
 GameObject:
   m_ObjectHideFlags: 0
