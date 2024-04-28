@@ -38,8 +38,10 @@ public class OrditalWeaponPF_Bow : MonoBehaviour
         GameObject go = Instantiate(weaponArrowPrefab, transform.position, transform.rotation); // 公扁 积己
         go.transform.localScale = new Vector3(Size, Size, Size);
 
-        go.transform.SetParent(null); // 积己 公扁 端贸府
+        var Arrow = go.GetComponentInChildren<ForwardMovingWeapon>();
+        Arrow.Shoot(25);
         Destroy(go, DestroyTime);
+
     }
     IEnumerator SpawnMultipleWeapons(float v)
     {

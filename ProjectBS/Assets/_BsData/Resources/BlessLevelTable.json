@@ -1,5 +1,5 @@
 {
-  "Bless2_RM": [
+  "Bless_BOTS": [
     {
       "name": "Attack",
       "defaultValue": 20.0,
@@ -15,8 +15,22 @@
       ]
     },
     {
-      "name": "DelayTime",
-      "defaultValue": 1.0,
+      "name": "Amount",
+      "defaultValue": 0.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "AtRange",
+      "defaultValue": 3.0,
       "levelUpType": 1,
       "levelUpTable": [
         1.0,
@@ -29,8 +43,8 @@
       ]
     },
     {
-      "name": "AtRange",
-      "defaultValue": 10.0,
+      "name": "RotSpeed",
+      "defaultValue": 130.0,
       "levelUpType": 1,
       "levelUpTable": [
         1.0,
@@ -40,6 +54,20 @@
         1.0,
         1.0,
         1.0
+      ]
+    },
+    {
+      "name": "Size",
+      "defaultValue": 0.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        2.0,
+        4.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     }
   ]

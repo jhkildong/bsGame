@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using Yeon2;
+using static UnityEngine.GraphicsBuffer;
 
 public class ForwardWeaponBOTCA : Bless
 {
     public GameObject weaponPrefab; // 생성할 프리팹
-    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
 
     float time = 0.0f;
     short Level = 0;
@@ -16,13 +16,13 @@ public class ForwardWeaponBOTCA : Bless
     void Start()
     {
         Level = 0;
+        SetFowardPlayerLook();
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-
         if (Level >= 1)
         {
             if (time >= myStatus[Key.ReTime])
@@ -48,12 +48,11 @@ public class ForwardWeaponBOTCA : Bless
     {
         GameObject go = Instantiate(weaponPrefab, transform.position, transform.rotation); // 무기 생성
         go.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); //사이즈
-        //go.transform.SetParent(clonesParent); // 생성한 무기 똥처리
-
         var bullet = go.GetComponentInChildren<ForwardMovingWeapon>();
         bullet.Ak = myStatus[Key.Attack];
         bullet.Shoot(25);
         Destroy(go, DestroyTime);
+
     }
     IEnumerator SpawnMultipleWeapons(float v)
     {

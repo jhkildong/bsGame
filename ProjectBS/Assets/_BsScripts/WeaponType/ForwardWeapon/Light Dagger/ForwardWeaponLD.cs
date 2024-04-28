@@ -5,7 +5,6 @@ using Yeon2;
 public class ForwardWeaponLD : Bless
 {
     public GameObject weaponPrefab; // 생성할 프리팹
-    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
 
     float time = 0.0f;
     short Level = 0;
@@ -16,13 +15,12 @@ public class ForwardWeaponLD : Bless
     void Start()
     {
         Level = 0;
+        SetFowardPlayerLook();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = myPlayer.transform.position + new Vector3(0, 0.5f, 0);
-        transform.rotation = myPlayer.transform.rotation;
         time += Time.deltaTime;
 
         if (Level >= 1)
@@ -51,11 +49,11 @@ public class ForwardWeaponLD : Bless
     {
         GameObject go = Instantiate(weaponPrefab, transform.position, transform.rotation); // 무기 생성
         go.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); //사이즈
-        go.transform.SetParent(clonesParent); // 생성한 무기 똥처리
+        var bullet = go.GetComponentInChildren<ForwardMovingWeapon>();
+        bullet.Ak = myStatus[Key.Attack];
+        bullet.Shoot(30);
         Destroy(go, DestroyTime);
 
-        var bullet = go.GetComponentInChildren<ForwardWeaponLD_Bullet>();
-        bullet.Ak = myStatus[Key.Attack];
     }
     IEnumerator SpawnMultipleWeapons(float v)
     {

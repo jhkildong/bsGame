@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6460150767888953508}
   - component: {fileID: 7962120819172675497}
   m_Layer: 0
-  m_Name: BOFS Spawner
+  m_Name: BOTS Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

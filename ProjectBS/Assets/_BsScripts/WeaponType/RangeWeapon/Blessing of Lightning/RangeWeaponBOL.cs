@@ -5,7 +5,6 @@ using Yeon2;
 public class RangeWeaponBOL : Bless
 {    
     public GameObject weaponPrefab; // 생성할 프리팹
-    public Transform clonesParent; // 생성한 프리펩들 보관할 곳
 
     float time = 0.0f;
     short Level = 0;
@@ -15,13 +14,12 @@ public class RangeWeaponBOL : Bless
     // Start is called before the first frame update
     void Start()
     {
-
+        SetFowardPlayerLook();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = myPlayer.transform.position;
         time += Time.deltaTime;
 
         if (Level >= 1)
@@ -30,7 +28,6 @@ public class RangeWeaponBOL : Bless
             {
                 time = 0.0f;
                 StartCoroutine(SpawnMultipleWeapons(myStatus[Key.Amount]));
-                Debug.Log($"시간 {myStatus[Key.ReTime]}");
             }
         }
     }
@@ -51,11 +48,12 @@ public class RangeWeaponBOL : Bless
         Vector3 spawnPos = transform.position + randomPos;
         spawnPos.y = 0.0f;
         GameObject go = Instantiate(weaponPrefab, spawnPos, Quaternion.identity); // 무기 생성
-        go.transform.SetParent(null);
+
+        var bullet = go.GetComponentInChildren<Weapon>();
+        bullet.Ak = myStatus[Key.Attack];
+
         Destroy(go, DestroyTime);
 
-        var bullet = go.GetComponentInChildren<RangeWeaponBOL_Bullet>();
-        bullet.Ak = myStatus[Key.Attack];
     }
 
     IEnumerator SpawnMultipleWeapons(float v)

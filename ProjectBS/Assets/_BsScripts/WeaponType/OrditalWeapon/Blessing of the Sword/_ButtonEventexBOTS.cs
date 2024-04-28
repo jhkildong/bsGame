@@ -8,6 +8,7 @@ public class _ButtonEventexBOTS : MonoBehaviour
     //버튼 프리펩에 넣어야 되는 스크립.
     private Button button;
     private OrditalWeaponBOTS Weapon;
+
     // Start is called before the first frame update
     private void Start()
     {

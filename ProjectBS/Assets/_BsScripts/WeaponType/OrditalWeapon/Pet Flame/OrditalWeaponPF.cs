@@ -8,9 +8,9 @@ public class OrditalWeaponPF : Bless
     public GameObject weaponBowPrefab; // 활 생성한 프리펩
     public GameObject weaponArrowPrefab; // 화살 생성한 프리펩
 
-    public float RotSpeed = 100.0f;
-    public float size = 2.0f;
-    public float AtRange = 1.0f;
+    float RotSpeed = 100.0f;
+    float AtRange = 1.0f;
+
     short Level = 0;
     short Count = 0;
 
@@ -52,21 +52,22 @@ public class OrditalWeaponPF : Bless
     {
         GameObject go = Instantiate(weaponBowPrefab, transform); // 무기 생성
 
-        // 생성한 무기 간격을 일정하게 맞춤.
         int childCount = transform.childCount;
         float angleStep = 360.0f / childCount;
         for (int i = 0; i < childCount; i++)
         {
+            // 생성한 무기 간격을 일정하게 맞춤.
             Transform child = transform.GetChild(i);
             Vector3 direction = Quaternion.Euler(0, angleStep * i, 0) * transform.forward;
             child.position = transform.position + direction * AtRange;
+
+            // 생성한 무기들 값 대입
+            var Bow = child.GetComponent<OrditalWeaponPF_Bow>();
+            Bow.ReTime = myStatus[Key.ReTime];
+            Bow.ArrowAmount = myStatus[Key.ArrowAmount];
+
+            var Arrow = child.GetComponentInChildren<ForwardMovingWeapon>();
+            Arrow.Ak = myStatus[Key.Attack];
         }
-
-        var Bow = go.GetComponent<OrditalWeaponPF_Bow>();
-        Bow.ReTime = myStatus[Key.ReTime];
-        Bow.ArrowAmount = myStatus[Key.ArrowAmount];
-
-        var Arrow = weaponArrowPrefab.GetComponentInChildren<OrditalWeaponPF_Arrow>();
-        Arrow.Ak = myStatus[Key.Attack];
     }
 }

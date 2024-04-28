@@ -14,12 +14,13 @@ public class OrditalWeaponBOTS : Bless
     void Start()
     {
         Level = Count = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = myPlayer.transform.position + new Vector3(0, 0.5f, 0);
+        transform.position = myPlayer.transform.position + new Vector3(0.0f, 0.7f, 0.0f);
         transform.Rotate(Vector3.up, -myStatus[Key.RotSpeed] * Time.deltaTime); // 공전
         if (Level >= 1)
         {
@@ -44,7 +45,6 @@ public class OrditalWeaponBOTS : Bless
     private void SpawnWeapon()
     {
         GameObject go = Instantiate(weaponPrefab, transform); // 무기 생성
-        go.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]);
 
         // 생성한 무기 간격을 일정하게 맞춤.
         int childCount = transform.childCount;
@@ -52,13 +52,15 @@ public class OrditalWeaponBOTS : Bless
         for (int i = 0; i < childCount; i++)
         {
             Transform child = transform.GetChild(i);
+            child.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]);
             Vector3 eulerAngle = child.localRotation.eulerAngles;
             Vector3 direction = Quaternion.Euler(0, angleStep * i, 0) * transform.forward;
             child.position = transform.position + direction * myStatus[Key.AtRange];
             child.localRotation = Quaternion.Euler(eulerAngle.x, angleStep * i, eulerAngle.z); // 프리팹 rotation을 타켓쪽으로 맞춤.
-        }
 
-        var bullet = go.GetComponentInChildren<OrditalWeaponBOTS_Bullet>();
-        bullet.Ak = myStatus[Key.Attack];
+            var bullet = child.GetComponentInChildren<Weapon>();
+            bullet.Ak = myStatus[Key.Attack];
+
+        }
     }
 }
