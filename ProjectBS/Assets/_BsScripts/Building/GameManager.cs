@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -13,9 +14,6 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
-    public TextMeshProUGUI myWoodCount;
-    public TextMeshProUGUI myStoneCount;
-    public TextMeshProUGUI myIronCount;
 
     public Player Player;
 
@@ -26,15 +24,22 @@ public class GameManager : MonoBehaviour
     public float checkAMPMTime;
     private bool isNight;
     //private int myExp;
-    private int myWood;
-    private int myStone;
-    private int myIron;
+    private int myWood = 999;
+    private int myStone = 999;
+    private int myIron = 999;
     private int myGold;
 
     private int myLevel;
     private int myExp;
     private int MaxExp;
 
+    public event UnityAction<int> WoodChangeAct;
+    public event UnityAction<int> StoneChangeAct;
+    public event UnityAction<int> IronChangeAct;
+    public event UnityAction<int> GoldChangeAct;
+    public event UnityAction<int> ExpChangeAct;
+
+    private PlayerUI playerUI;
 
 
     public static GameManager Instance //인스턴스에 접근하기 위한 프로퍼티
@@ -76,7 +81,35 @@ public class GameManager : MonoBehaviour
     {
         gameStart = true;
         //myWoodCount.text = $"wood : {myWood.ToString()}";
+            
+
+
     }
+    /*
+    private void UpdateWoodText()
+    {
+        playerUI.ChangeWoodText(myWood);
+    }
+    private void UpdateStoneText()
+    {
+        playerUI.ChangeStoneText(myStone);
+    }
+
+    private void UpdateIronText()
+    {
+        playerUI.ChangeIronText(myIron);
+    }
+    private void UpdateExpText()
+    {
+        playerUI.ChangeExpText(myExp);
+    }
+
+    private void UpdateExpBar()
+    {
+        playerUI.ChangeExpBar(myExp);
+    }
+    
+    */
 
     void Update()
     {
@@ -141,6 +174,29 @@ public class GameManager : MonoBehaviour
         return curGameTime;
     }
 
+    public int CurWood()
+    {
+        return myWood;
+    }
+
+    public int CurStone()
+    {
+        return myStone;
+    }
+    public int CurIron() 
+    {
+        return myIron;
+    }
+    public int CurGold()
+    {
+        return myGold;
+    }
+    public int CurExp()
+    {
+        return myExp;
+    }
+
+
     void ChangeToDay()
     {
         isNight = false;
@@ -157,18 +213,21 @@ public class GameManager : MonoBehaviour
         myWood += num;
         //myWoodCount.text = myWood.ToString();
         //UI로 나타낼 코드 추가 필요
+        WoodChangeAct?.Invoke(myWood);
         Debug.Log($"나무 갯수 변동 {myWood}");
     }
     public void ChangeStone(int num)
     {
         myStone += num;
         //UI로 나타낼 코드 추가 필요
+        StoneChangeAct?.Invoke(myStone);
         Debug.Log($"돌 갯수 변동 {myStone}");
     }
     public void ChangeIron(int num)
     {
         myIron += num;
         //UI로 나타낼 코드 추가 필요
+        IronChangeAct?.Invoke(myIron);
         Debug.Log($"철 갯수 변동. 현재 철 : {myIron}");
     }
 
@@ -176,12 +235,15 @@ public class GameManager : MonoBehaviour
     {
         myIron += num;
         //UI로 나타낼 코드 추가 필요
+        GoldChangeAct?.Invoke(myGold);
         Debug.Log($"골드 변동. 현재 골드 : {myGold}");
     }
+    
     public void ChangeExp(int num)
     {
         myExp += num;
         //UI로 나타낼 코드 추가 필요
+        ExpChangeAct?.Invoke(myExp);
         Debug.Log($"경험치 변동. 현재 경형치 : {myExp}");
     }
 }

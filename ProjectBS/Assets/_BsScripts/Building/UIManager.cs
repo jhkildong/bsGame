@@ -154,4 +154,6 @@ public enum UIID
     BuildingPopup = 5003,
     ConstructionKeyUI = 5004,
     ProgressBar = 5005,
+    
+    BuildingHpBar = 5010
 }

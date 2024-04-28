@@ -11,7 +11,8 @@ public class BuffBuildingData : ScriptableObject
         atkBuff,
         hpBuff,
         asBuff,
-        msBuff
+        msBuff,
+        rangeBuff
     }
     public string buffName => _buffName; //버프명
     public float buffAmount => _buffAmount; // 버프량

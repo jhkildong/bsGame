@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 2867913085272649515}
   - component: {fileID: 43368177450105637}
   - component: {fileID: 7570393000076974083}
-  - component: {fileID: -4595136012116888813}
+  - component: {fileID: 413169751698127808}
   m_Layer: 25
-  m_Name: TestTower
+  m_Name: FlameCircleTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.57599527, y: 1.5085621, z: 0.6046792}
   m_Center: {x: 0.0014377236, y: 0.75428104, z: 0}
@@ -215,12 +215,12 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &-4595136012116888813
+--- !u!114 &413169751698127808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5732704864016183740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6331e223641364983b03fa169c4b14, type: 3}
+  m_Script: {fileID: 11500000, guid: c386ef371b621eb4cb438b2873124771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData: {fileID: 11400000, guid: 55115dd402cf86d43a6922f648b4f816, type: 2}
@@ -242,16 +242,18 @@ MonoBehaviour:
   _requireIron: 0
   _constTime: 0
   _repairSpeed: 0
+  _nextUpgrade: {fileID: 0}
   isInstalled: 0
   iscompletedBuilding: 0
+  AuraEffect: {fileID: 0}
   atkType: 2
   target: {fileID: 0}
   atkDelaying: 0
   attackableLayer:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 0
   effectList: []
-  effectPool: {fileID: 5164076940604325103}
+  effectPool: {fileID: 0}
   EffectPoolEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -260,9 +262,12 @@ MonoBehaviour:
       m_Calls: []
   AreaBuildingData: {fileID: 11400000, guid: c728e805153be194db57e2fd6e65b68d, type: 2}
   _finalDmg: 0
+  _finalAs: 0
+  _finalRadius: 0
   _atkPower: 0
-  _atkDelay: 0
+  _atkSpeed: 0
   _hitDelay: 0
   _atkDuration: 0
   _atkRadius: 0
-  myEffect: {fileID: 6968519993446407895, guid: 2ac2222f93881584bbddcb09d310371f, type: 3}
+  _additionalAtk: 0
+  myEffect: {fileID: 1182614328576822, guid: c5602e058be16c9488d9b361c248f58c, type: 3}
