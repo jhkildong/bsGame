@@ -25,6 +25,7 @@ public class sampleAction : MonoBehaviour
     {
         Hp -= 20;
         Debug.Log(Hp);
+
         if(other.gameObject.layer == 16)
         { 
             target = other.gameObject.transform;

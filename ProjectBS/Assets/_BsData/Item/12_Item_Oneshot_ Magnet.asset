@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6a95133543b6341b2bf9ea21c4f97c, type: 3}
   m_Name: 12_Item_Oneshot_ Magnet
   m_EditorClassIdentifier: 
-  description: 
+  description: "\uC790\uC11D"
   _id: 0
   _name: 
   _value: 0
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 3938512323750667503, guid: 28fabe57865a12e4c988f72d1557b8a9, type: 3}
   itemType: 3
   _used: 0
