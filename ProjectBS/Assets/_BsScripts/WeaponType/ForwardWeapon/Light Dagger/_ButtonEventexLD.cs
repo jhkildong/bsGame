@@ -18,6 +18,6 @@ public class _ButtonEventexLD : MonoBehaviour
 
     private void OnButtonClick()
     {
-        Weapon.OnOkSpawnForwardWeapon();
+        Weapon.LevelUp();
     }
 }

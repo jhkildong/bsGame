@@ -2,48 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Yeon2
+
+public class Bless : MonoBehaviour
 {
-    public class Bless : MonoBehaviour
+    public BlessData Data => _data;
+    public int CurLv => _curLevel;
+        
+    [SerializeField] private BlessData _data;
+    private int _curLevel;
+    private static int _maxLevel = 7;
+
+    [SerializeField] protected Weapon weaponPrefab;
+    protected Transform rotatingBody;
+    
+
+    //레벨업시 변경될 스테이터스를 저장하는 딕셔너리
+    protected Dictionary<string, float> myStatus = new Dictionary<string, float>();
+
+    public void Init(BlessData data)
     {
-        public BlessData Data => _data;
-        [SerializeField] private BlessData _data;
+        _data = data;
+        rotatingBody = GameManager.Instance.Player.RotatingBody;
+        _curLevel = 0;
 
-        protected Transform rotatingBody;
-
-        //레벨업시 변경될 스테이터스를 저장하는 딕셔너리
-        protected Dictionary<string, float> myStatus = new Dictionary<string, float>();
-        private void OnEnable()
+        foreach (var lvData in data.LvDataList)
         {
-            //Init(Data);
-        }
-
-        public void Init(BlessData data)
-        {
-            _data = data;
-            rotatingBody = GameManager.Instance.Player.RotatingBody;
-
-            foreach (var lvData in data.LvDataList)
-            {
-                myStatus.Add(lvData.name, lvData.defaultValue);
-            }
-        }
-
-        public void LevelUp(int level)
-        {
-            if (level <= 0 || level > 7)
-                return;
-
-            foreach (var lvData in _data.LvDataList)
-            {
-                myStatus[lvData.name] = lvData[level];
-            }
-        }
-
-        protected void SetFowardPlayerLook()
-        {
-            transform.SetParent(GameManager.Instance.Player.RotatingBody);
-            transform.localRotation = Quaternion.identity;
+            myStatus.Add(lvData.name, lvData.defaultValue);
         }
     }
+
+    public void LevelUp()
+    {
+        if (_curLevel >= _maxLevel)
+            return;
+        _curLevel++;
+        foreach (var lvData in _data.LvDataList)
+        {
+            myStatus[lvData.name] = lvData[_curLevel];
+        }
+    }
+
+    protected void SetFowardPlayerLook()
+    {
+        transform.SetParent(GameManager.Instance.Player.RotatingBody);
+        transform.localRotation = Quaternion.identity;
+    }
+
+    protected Weapon SpawnWeapon()
+    {
+        return ObjectPoolManager.Instance.GetObj(weaponPrefab) as Weapon;
+    }
 }
+

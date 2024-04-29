@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: d36af1e43352e444097d3b4c08ec8f6b, type: 2}
-  myPlayer: {fileID: 0}
-  weaponPrefab: {fileID: 3692521660452131038, guid: 9c164c04d88b2a84eb7a442f15dd9812, type: 3}
+  weaponPrefab: {fileID: 6265733566564387035, guid: 9c164c04d88b2a84eb7a442f15dd9812, type: 3}
   _atRange: 0.5
   _maxRange: 1
   _minRange: -1

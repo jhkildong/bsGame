@@ -1,13 +1,10 @@
 using System.Collections;
 using UnityEngine;
-using Yeon2;
+
 
 public class RangeWeaponLP : Bless
 {
-    public GameObject weaponPrefab;
-
     float time = 0.0f;
-    short Level = 0;
     float WaitTime = 0.05f;
 
     // Start is called before the first frame update
@@ -21,7 +18,7 @@ public class RangeWeaponLP : Bless
     {
         time += Time.deltaTime;
 
-        if (Level >= 1)
+        if (CurLv >= 1)
         {
             if (time >= myStatus[Key.ReTime])
             {
@@ -33,25 +30,13 @@ public class RangeWeaponLP : Bless
 
     }
 
-    public void OnOkSpawnRangeWaepon()
-    {
-        if (Level < 7)
-        {
-            Level++;
-            LevelUp(Level);
-            Debug.Log($"{Level}Level 涝聪促.");
-        }
-    }
-
-    private void SpawnWeapon()
+    private void SetSpawnWeapon()
     {
         Vector3 randomPos = Random.insideUnitSphere * myStatus[Key.AtRange];
         Vector3 spawnPos = transform.position + randomPos;
         spawnPos.y = 0.0f;
-        GameObject go = Instantiate(weaponPrefab, spawnPos, Quaternion.identity); // 公扁 积己
-        Destroy(go, myStatus[Key.DestroyTime]);
-
-        var bullet = go.GetComponentInChildren<Weapon>();
+        var bullet = SpawnWeapon(); // 公扁 积己
+        bullet.transform.position = spawnPos;
         bullet.Ak = myStatus[Key.Attack];
 
     }
@@ -60,7 +45,7 @@ public class RangeWeaponLP : Bless
     {
         for (int i = 0; i < v; i++)
         {
-            SpawnWeapon();
+            SetSpawnWeapon();
             yield return new WaitForSeconds(WaitTime);
         }
     }

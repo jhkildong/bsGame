@@ -19,6 +19,6 @@ public class _ButtonEventexVG: MonoBehaviour
 
     private void OnButtonClick()
     {
-        Weapon.OnOkSpawnForwardWeapon();
+        Weapon.LevelUp();
     }
 }

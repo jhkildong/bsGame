@@ -45,6 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 7c33685e24913104fb166546ab9ddc87, type: 2}
-  myPlayer: {fileID: 0}
+  weaponPrefab: {fileID: 2419102505978352390, guid: 5027f60239a4978459fc8e3acd95811e, type: 3}
   weaponBowPrefab: {fileID: 7677096721163759830, guid: aae0e3b84c849ae40a8aa6de2168ff0f, type: 3}
-  weaponArrowPrefab: {fileID: 885452322155594386, guid: 5027f60239a4978459fc8e3acd95811e, type: 3}
