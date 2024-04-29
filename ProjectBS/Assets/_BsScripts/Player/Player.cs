@@ -238,6 +238,7 @@ public class Player : Combat, IDamage<Player>
         set
         {
             _isBuilding = value;
+            Com.MyAnim.SetBool(AnimParam.isBuilding, value);
             RotatingBody.GetComponent<LookAtPoint>().enabled = !value;
         }
     }

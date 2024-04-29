@@ -17,6 +17,7 @@ public class OrditalWeaponPF : Bless
     void Start()
     {
         Count = 0;
+        myBows = new List<GameObject>();
     }
 
     // Update is called once per frame

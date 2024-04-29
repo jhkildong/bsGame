@@ -7,11 +7,13 @@ public class BlessData : ScriptableObject
 {
     public int ID => _id;
     public string Name => _name;
+    public string Description => _description;
     public GameObject Prefab => _prefab;
     public List<LevelUpData> LvDataList { get => _lvDataList; set => _lvDataList = value; }
 
     [SerializeField] private int _id;               // 축복 아이디
     [SerializeField] private string _name;          // 축복 이름
+    [SerializeField, Multiline] private string _description;   // 축복 설명
     [SerializeField] private GameObject _prefab;    // 축복 프리팹
     [SerializeField] private List<LevelUpData> _lvDataList;
 
@@ -21,7 +23,7 @@ public class BlessData : ScriptableObject
         Transform playerTransform = GameManager.Instance.Player.transform;
         if(playerTransform != null)
             go.transform.SetParent(playerTransform);
-        go.transform.position += Vector3.up * 0.7f;
+        go.transform.localPosition = Vector3.up * 0.7f;
         Bless bless = go.GetComponent<Bless>();
         if (bless != null)
             bless.Init(this);

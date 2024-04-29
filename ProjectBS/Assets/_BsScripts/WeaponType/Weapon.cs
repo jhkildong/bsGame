@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour, IPoolable
 {
-    private LayerMask Monster;
+    protected LayerMask Monster;
     public float Ak;
 
     protected virtual void Start()

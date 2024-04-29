@@ -29,6 +29,7 @@ public class OrditalWeaponPF_Bow : MonoBehaviour
     private void SpawnWeaponArrow() // 화살 생성
     {
         var Arrow = ObjectPoolManager.Instance.GetObj(weaponArrowPrefab) as ForwardMovingWeapon;
+        Arrow.transform.SetPositionAndRotation(transform.position, transform.rotation);
         Arrow.transform.localScale = new Vector3(Size, Size, Size);
         Arrow.Shoot(25);
     }

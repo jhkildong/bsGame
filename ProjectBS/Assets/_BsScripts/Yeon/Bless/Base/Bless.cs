@@ -24,6 +24,8 @@ public class Bless : MonoBehaviour
         _data = data;
         rotatingBody = GameManager.Instance.Player.RotatingBody;
         _curLevel = 0;
+        weaponPrefab.SetID(data.ID);
+        ObjectPoolManager.Instance.SetPool(weaponPrefab, 10, 10);
 
         foreach (var lvData in data.LvDataList)
         {
@@ -34,7 +36,10 @@ public class Bless : MonoBehaviour
     public void LevelUp()
     {
         if (_curLevel >= _maxLevel)
+        {
+            BlessManager.Instance.FinishLevelUp(Data.ID);
             return;
+        }
         _curLevel++;
         foreach (var lvData in _data.LvDataList)
         {

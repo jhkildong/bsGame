@@ -13,15 +13,24 @@ public class BlessManager : Singleton<BlessManager>
     private List<int> keyList;
     private SelectWindow blessSelectWindow;
     private Stack<UnityAction> callStack;
+    private Dictionary<int, Bless> spawnedBless;
 
     BlessData[] temp;
     int[] weights;
+    float[] normalizedWeight;
 
     protected override void Awake()
     {
         base.Awake();
         Initialize();
     }
+
+    private void Start()
+    {
+        blessSelectWindow = UIManager.Instance.CreateUI(UIID.BlessSelectWindow, CanvasType.Canvas) as SelectWindow;
+        blessSelectWindow.gameObject.SetActive(false);
+    }
+
 
     private void Initialize()
     {
@@ -31,7 +40,9 @@ public class BlessManager : Singleton<BlessManager>
         keyList = new List<int>();
         callStack = new Stack<UnityAction>();
         blessDataWeight = new WeightedRandomPicker<BlessData>();
-        
+        spawnedBless = new Dictionary<int, Bless>();
+
+
         foreach (BlessData data in BlessLists)
         {
             _blessDict.Add(data.ID, data);
@@ -42,7 +53,7 @@ public class BlessManager : Singleton<BlessManager>
             blessDataWeight.Add(item.Value, 1);
         }
     }
-
+    #region Public Method
     public Bless CreateBless(BlessID id)
     {
         if (_blessDict.ContainsKey((int)id))
@@ -56,33 +67,37 @@ public class BlessManager : Singleton<BlessManager>
 
     public void AppearRandomBlessList()
     {
-        //참조하는 윈도우가 없을경우 생성
-        if(blessSelectWindow == null)
-        {
-            blessSelectWindow = UIManager.Instance.CreateUI(UIID.BlessSelectWindow, CanvasType.Canvas) as SelectWindow;
-        }
+        Time.timeScale = 0;
         //윈도우가 활성화 되있을 경우 callStack에 저장
         if(blessSelectWindow.gameObject.activeSelf == true)
+        {
             callStack.Push(() => AppearRandomBlessList());
+            return;
+        }
         //아닐 경우 활성화
         else
             blessSelectWindow.gameObject.SetActive(true);
 
         temp = new BlessData[3];
         weights = new int[3];
+        normalizedWeight = new float[3];
         //랜덤으로 3개의 블레스를 선택
         for (int i = 0; i < 3; i++)
         {
             temp[i] = blessDataWeight.GetRandomPick();
             weights[i] = blessDataWeight.GetWeight(temp[i]);
-            Debug.Log($"{temp[i].name}: {weights[i]}");
+            normalizedWeight[i] = blessDataWeight.GetNormalizedWeight(temp[i]);
+            Debug.Log($"{temp[i].name}: {weights[i]}, {normalizedWeight[i] * 100.0f}%");
             blessDataWeight.Remove(temp[i]);
         }
 
         string[] names = new string[3];
         for(int i = 0; i < 3; i++)
         {
-            names[i] = temp[i].Name;
+            if (spawnedBless.ContainsKey(temp[i].ID))
+                names[i] = $"{temp[i].Name} Lv:{spawnedBless[temp[i].ID].CurLv}";
+            else
+                names[i] = $"{temp[i].Name}";
         }
         blessSelectWindow.SelectButtons.SetButtonName(names);
         for(int i = 0; i < 3; i++)
@@ -94,26 +109,39 @@ public class BlessManager : Singleton<BlessManager>
 
     public void SelectBless(int idx)
     {
-        //선택된 블레스를 플레이어에게 부여
-        CreateBless((BlessID)temp[idx].ID);
         //선택된 블레스를 WeightedRandomPicker에 추가
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
-            if(i == idx)
+            if (i == idx)
                 blessDataWeight.Add(temp[i], weights[i] + 10);
             else
                 blessDataWeight.Add(temp[i], weights[i]);
         }
-        //선택된 블레스를 제거한 후 callStack에 저장된 함수 실행
-        if(callStack.Count > 0)
+        //소환되어있지 않은 블레스이면 생성
+        if (!spawnedBless.ContainsKey(temp[idx].ID))
         {
-            callStack.Pop().Invoke();
+            Bless clone = CreateBless((BlessID)temp[idx].ID);
+            spawnedBless.Add(temp[idx].ID, clone);
+            spawnedBless[temp[idx].ID].LevelUp();
         }
         else
         {
-            blessSelectWindow.gameObject.SetActive(false);
+            spawnedBless[temp[idx].ID].LevelUp();
+        }
+        Time.timeScale = 1;
+        blessSelectWindow.gameObject.SetActive(false);
+        //선택된 블레스를 제거한 후 callStack에 저장된 함수 실행
+        if (callStack.Count > 0)
+        {
+            callStack.Pop().Invoke();
         }
     }
+
+    public void FinishLevelUp(int ID)
+    {
+        blessDataWeight.Remove(BlessDict[ID]);
+    }
+    #endregion
 }
 
 public enum BlessID

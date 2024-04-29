@@ -33,6 +33,7 @@ public class ForwardWeaponLD : Bless
     private void SetSpawnWeapon()
     {
         var bullet = SpawnWeapon() as ForwardMovingWeapon; // 무기 생성
+        bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
         bullet.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); //사이즈
         bullet.Ak = myStatus[Key.Attack];
         bullet.Shoot(30);

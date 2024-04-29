@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: "\uACBD\uD5D8\uCE58\uAC00 10\uB9CC\uD07C \uC62C\uB77C\uAC10"
   _id: 11
-  _name: 
-  _value: 0
+  _name: ExpBoost_Lv3
+  _value: 10
   _prefab: {fileID: 6178760419957704234, guid: 52b35f8ad7ac8374b8aa188c200fa7ad, type: 3}
   itemType: 1
   _exprate: 0

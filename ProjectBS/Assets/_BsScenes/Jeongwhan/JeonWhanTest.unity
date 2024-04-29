@@ -1302,6 +1302,7 @@ MonoBehaviour:
   gamePaused: 0
   curGameTime: 0
   checkAMPMTime: 0
+  curDay: 0
 --- !u!4 &858329458
 Transform:
   m_ObjectHideFlags: 0

@@ -17,9 +17,20 @@ public class ForwardMovingWeapon : Weapon
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(DelayRelease(5.0f));
+    }
+
     public void Shoot(float speed)
     {
         rb.AddForce(transform.forward * speed, ForceMode.VelocityChange);
+    }
+
+    IEnumerator DelayRelease(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ObjectPoolManager.Instance.ReleaseObj(this);
     }
 
 }

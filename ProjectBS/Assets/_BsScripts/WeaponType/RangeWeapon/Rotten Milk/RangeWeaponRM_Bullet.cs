@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class RangeWeaponRM_Bullet : Weapon
 {
-    private LayerMask Monster;
-
     public float DelayTime;
     public float AtRange;
 
