@@ -4,14 +4,14 @@ public class Mage : PlayerComponent
 {
     [SerializeField]private Transform handEffectPoint;
 
-    public override Effect MyEffect
+    public void SetHandEffect(GameObject handEffect)
     {
-        get => base.MyEffect;
-        set
+        if(handEffectPoint == null)
         {
-            base.MyEffect = value;
-
+            handEffectPoint = transform.Find("HandEffect");
         }
+        handEffect.transform.SetParent(handEffectPoint);
+        handEffect.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 
     public override void OnAttackPoint()

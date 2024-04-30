@@ -9666,6 +9666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3521
+  _name: "\uC5BC\uC74C"
   _attack: 0
   _speed: 1
   _size: 1

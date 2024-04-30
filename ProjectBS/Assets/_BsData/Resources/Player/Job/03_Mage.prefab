@@ -2646,6 +2646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAnim: {fileID: 3304073722649678989}
   effectSpawn: {fileID: 4595644253339077544}
+  HandEffect: {fileID: 1925353983974924510}
 --- !u!1 &9027553772721191547
 GameObject:
   m_ObjectHideFlags: 0

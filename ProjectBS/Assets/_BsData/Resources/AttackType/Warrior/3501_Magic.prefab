@@ -14577,6 +14577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3501
+  _name: "\uB9C8\uBC95"
   _attack: 100
   _speed: 1
   _size: 1

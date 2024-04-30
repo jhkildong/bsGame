@@ -8,7 +8,7 @@ public class PlayerSetup : MonoBehaviour
     private GameObject playerPrefab;
     private PlayerComponent[] jobs;
     private Effect[] types;
-    private GameObject myJobPrefab;
+    private GameObject[] mageHandTypes;
     private SelectWindow playerSelectWindow;
     [SerializeField] Transform Canvas;
     [SerializeField] private MainCameraAction mainCameraAction;
@@ -17,6 +17,7 @@ public class PlayerSetup : MonoBehaviour
     {
         playerPrefab = Resources.Load<GameObject>(FilePath.PlayerPrefab);
         jobs = Resources.LoadAll<PlayerComponent>(FilePath.Job);
+        mageHandTypes = Resources.LoadAll<GameObject>(FilePath.MageHandTypes);
     }
     private void Start()
     {
@@ -44,7 +45,6 @@ public class PlayerSetup : MonoBehaviour
 
     private void SelectJob(int idx)
     {
-        myJobPrefab = jobs[idx].gameObject;
         SetTypeSelect(jobs[idx]);
     }
     #endregion
@@ -54,21 +54,23 @@ public class PlayerSetup : MonoBehaviour
     {
         StringBuilder sb = new StringBuilder(FilePath.AttackType);
         sb.Append("/");
-        sb.Append(job.gameObject.name.Substring(3));
+        sb.Append(job.GetType().Name);
         string path = sb.ToString();                            //경로: AttackType/JobName
         types = Resources.LoadAll<Effect>(path);    
         string[] names = new string[types.Length];
         for (int i = 0; i < types.Length; i++)
         {
-            names[i] = types[i].gameObject.name.Substring(5);   //0000_TypeName 형식으로 되있음
+            names[i] = types[i].Name;
         }
 
+        //선택 버튼설정
         playerSelectWindow.SelectButtons.SetButtonName(names);
         for (int i = 0; i < types.Length; i++)
         {
             int idx = i;
             playerSelectWindow.SelectButtons.SetButtonAction(idx, () => SelectType(job, idx));
         }
+        //Undo버튼 설정
         playerSelectWindow.SetUndoButton(
             () => {
                 SetJobSelect();
@@ -78,14 +80,20 @@ public class PlayerSetup : MonoBehaviour
 
     private void SelectType(PlayerComponent job, int idx)
     {
-        //이펙트설정
-        job.MyEffect = types[idx];
         //플레이어 생성
         Player player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Player>();
         //플레이어 이름 설정
         player.gameObject.name = "Player";
+        //직업이펙트 설정
+        job.MyEffect = types[idx];
         //직업 생성
-        Instantiate(myJobPrefab, player.RotatingBody);
+        PlayerComponent clone = Instantiate(job, player.RotatingBody);
+        //Mage라면 MageHand도 생성
+        if (clone is Mage mage)
+        {
+            GameObject go = Instantiate(mageHandTypes[idx]);
+            mage.SetHandEffect(go);
+        }
         //플레이어 초기설정(job(PlayerComponent)의 데이터를 받아서 설정)
         player.InitPlayerSetting();
         //메인카메라 타겟설정
