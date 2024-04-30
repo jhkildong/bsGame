@@ -27,6 +27,7 @@ public class RangeWeaponRM : Bless
     private void SetSpawnWeapon()
     {
         var bullet = SpawnWeapon() as RangeWeaponRM_Bullet;
+        bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
         bullet.Ak = myStatus[Key.Attack];
         bullet.DelayTime = myStatus[Key.DelayTime];
         bullet.AtRange = myStatus[Key.AtRange];

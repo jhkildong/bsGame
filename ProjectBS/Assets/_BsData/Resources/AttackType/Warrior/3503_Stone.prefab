@@ -19470,6 +19470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3503
+  _name: "\uC554\uC11D"
   _attack: 0
   _speed: 0
   _size: 0

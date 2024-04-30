@@ -41,10 +41,8 @@ public class ForwardWeaponCS : Bless
         float randomXPos = Random.Range(MinRange, MaxRange); // 랜덤 최소, 최대 폭 설정
 
         var bullet = SpawnWeapon() as ForwardMovingWeapon; // 무기 생성
-        Transform bulletTransform = bullet.transform;
-
-        bulletTransform.SetPositionAndRotation(transform.position + Vector3.right * randomXPos + transform.forward * AtRange, transform.rotation);
-        bulletTransform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); // 사이즈
+        bullet.transform.SetPositionAndRotation(transform.position + Vector3.right * randomXPos + transform.forward * AtRange, transform.rotation);
+        bullet.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); // 사이즈
         
         bullet.Ak = myStatus[Key.Attack];
         bullet.Shoot(35);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ForwardMovingWeapon : Weapon
 {
     private Rigidbody rb;
-    private ParticleSystem ps;
+    private TrailRenderer tr;
 
     // Start is called before the first frame update
     private void Awake()
@@ -14,9 +14,9 @@ public class ForwardMovingWeapon : Weapon
         {
             rb = gameObject.AddComponent<Rigidbody>();
         }
-        if(!TryGetComponent(out ps))
+        if(!TryGetComponent(out tr))
         {
-            ps = gameObject.AddComponent<ParticleSystem>();
+            tr = gameObject.GetComponentInChildren<TrailRenderer>();
         }
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -24,7 +24,7 @@ public class ForwardMovingWeapon : Weapon
 
     private void OnEnable()
     {
-        StartCoroutine(DelayRelease(5.0f));
+        StartCoroutine(DelayRelease(1.5f));
     }
 
     public void Shoot(float speed)
@@ -34,8 +34,16 @@ public class ForwardMovingWeapon : Weapon
 
     IEnumerator DelayRelease(float time)
     {
+        yield return new WaitForEndOfFrame();
+        if(tr != null)
+            tr.enabled = true;
         yield return new WaitForSeconds(time);
         rb.velocity = Vector3.zero;
+        if(tr != null)
+        {
+            tr.Clear();
+            tr.enabled = false;
+        }
         ObjectPoolManager.Instance.ReleaseObj(this);
     }
 

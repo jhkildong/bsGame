@@ -24294,6 +24294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3500
+  _name: "\uD654\uC5FC"
   _attack: 100
   _speed: 1
   _size: 1

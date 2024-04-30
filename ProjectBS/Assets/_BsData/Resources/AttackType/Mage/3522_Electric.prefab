@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3522
+  _name: "\uC804\uAE30"
   _attack: 0
   _speed: 1
   _size: 1
