@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class OrditalWeaponPF_Bow : MonoBehaviour
 {
-    public GameObject weaponArrowPrefab; // 생성한 프리펩
+    public ForwardMovingWeapon weaponArrowPrefab; // 생성한 프리펩
 
     public float ReTime; // 공격속도
     public float ArrowAmount; // 화살 갯수
@@ -12,13 +12,6 @@ public class OrditalWeaponPF_Bow : MonoBehaviour
 
     float time = 0;
     float WaitTime = 0.05f;
-    float DestroyTime = 5.0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -35,13 +28,10 @@ public class OrditalWeaponPF_Bow : MonoBehaviour
 
     private void SpawnWeaponArrow() // 화살 생성
     {
-        GameObject go = Instantiate(weaponArrowPrefab, transform.position, transform.rotation); // 무기 생성
-        go.transform.localScale = new Vector3(Size, Size, Size);
-
-        var Arrow = go.GetComponentInChildren<ForwardMovingWeapon>();
+        var Arrow = ObjectPoolManager.Instance.GetObj(weaponArrowPrefab) as ForwardMovingWeapon;
+        Arrow.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        Arrow.transform.localScale = new Vector3(Size, Size, Size);
         Arrow.Shoot(25);
-        Destroy(go, DestroyTime);
-
     }
     IEnumerator SpawnMultipleWeapons(float v)
     {

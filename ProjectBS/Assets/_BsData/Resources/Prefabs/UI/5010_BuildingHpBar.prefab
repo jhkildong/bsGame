@@ -227,7 +227,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1524793484086404788}
   m_HandleRect: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3064348386440701855
 RectTransform:
   m_ObjectHideFlags: 0
@@ -288,6 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1fb184c6fd4d24494031307c85814d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myTarget: {fileID: 0}
+  currentPos: {x: 0, y: 0, z: 0}
   _id: 5010
   _slider: {fileID: 5710340521321195527}
 --- !u!1 &7533855209930444993

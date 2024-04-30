@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildingHpBar : UIComponent
+public class BuildingHpBar : FollowingTargetUI
 {
     public override int ID => _id;
     [SerializeField] private int _id = 5006;
@@ -17,5 +17,14 @@ public class BuildingHpBar : UIComponent
         if (_slider == null)
             return;
         _slider.value = hp;
+        if(_slider.value <= 0) // 건물 파괴시 체력바 제거
+        {
+            Release();
+        }
+    }
+
+    public void Release()
+    {
+        UIManager.Instance.ReleaseUI(this);
     }
 }

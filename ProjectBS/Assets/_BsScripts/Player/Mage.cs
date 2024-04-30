@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class Mage : PlayerComponent
 {
-    private Transform handEffectPoint;
+    [SerializeField]private Transform handEffectPoint;
 
-    private void Start()
+    public void SetHandEffect(GameObject handEffect)
     {
-        
+        if(handEffectPoint == null)
+        {
+            handEffectPoint = transform.Find("HandEffect");
+        }
+        handEffect.transform.SetParent(handEffectPoint);
+        handEffect.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 
     public override void OnAttackPoint()

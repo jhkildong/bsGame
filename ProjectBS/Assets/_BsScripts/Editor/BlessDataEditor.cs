@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Collections.Generic;
 using UnityEditorInternal;
-using Yeon2;
 
 /// <summary>
 /// json파일에 저장을 위해 사용하는 Dictionary <string, List<LevetUpData>>

@@ -15,7 +15,7 @@ MonoBehaviour:
   description: "\uACBD\uD5D8\uCE58\uAC00 3\uB9CC\uD07C \uC62C\uB77C\uAC10"
   _id: 8
   _name: Orb
-  _value: 5
+  _value: 3
   _prefab: {fileID: 6178760419957704234, guid: d26dc319f3523e14b880163c565a0a2d, type: 3}
   itemType: 1
   _exprate: 5

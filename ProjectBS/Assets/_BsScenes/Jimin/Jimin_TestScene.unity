@@ -270,6 +270,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 8414439279532295106, guid: 373b4871c09cc944c9ec5a3e17796b83, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!1 &81531025
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +308,7 @@ MonoBehaviour:
   selectBuilding: {fileID: 0}
   selectedBuilding: {fileID: 0}
   checkBuilding: {fileID: 530482572}
+  checkBuildingTransform: {fileID: 0}
   instBuilding: {fileID: 0}
   canBuild: 0
   mousePos: {x: 0, y: 0, z: 0}
@@ -1047,9 +1051,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66f3368e6fcefa42bbd875fb048c4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   gameStart: 0
   gameOver: 0
   gamePaused: 0
+  curGameTime: 0
+  checkAMPMTime: 0
+  curDay: 0
 --- !u!4 &938764811
 Transform:
   m_ObjectHideFlags: 0
@@ -1118,6 +1126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 3521843912368141584, guid: e63ee91e47ca24b47b1ba0db9c6abc57, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &982200600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,6 +1276,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 7215726233801088367, guid: b87f8b2fa9976fe488546514a7e45aa3, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &1474060329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,6 +1426,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5732704864016183740, guid: f7dca73a90d20ce4b96de712495b37b6, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &1496166548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1621,6 +1638,7 @@ MonoBehaviour:
   selectBuilding: {fileID: 0}
   selectedBuilding: {fileID: 0}
   checkBuilding: {fileID: 0}
+  checkBuildingTransform: {fileID: 0}
   instBuilding: {fileID: 9004047873827764686, guid: 9cdd97adec7f5344f8569f94c74ec57b, type: 3}
   canBuild: 0
   mousePos: {x: 0, y: 0, z: 0}

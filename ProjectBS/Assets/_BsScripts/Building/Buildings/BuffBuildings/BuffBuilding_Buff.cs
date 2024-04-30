@@ -215,7 +215,7 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
     }
     */
 
-    protected override void Destroy() //파괴시 호출되는 Destroy함수. 파괴전에 주고있는 버프를 모두 제거한다
+    public override void Destroy() //파괴시 호출되는 Destroy함수. 파괴전에 주고있는 버프를 모두 제거한다
     {
         if (targets.Count > 0)
         {

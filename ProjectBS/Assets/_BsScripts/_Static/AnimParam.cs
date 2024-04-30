@@ -15,4 +15,6 @@ public static class AnimParam
     public static int OnSkill2 = Animator.StringToHash("OnSkill2");
 
     public static int Wait = Animator.StringToHash("Wait"); //ImpOnly
+
+    public static int isBuilding = Animator.StringToHash("isBuilding");
 }

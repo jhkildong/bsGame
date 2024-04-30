@@ -509,6 +509,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5732704864016183740, guid: f7dca73a90d20ce4b96de712495b37b6, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &196330676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,9 +843,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66f3368e6fcefa42bbd875fb048c4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   gameStart: 0
   gameOver: 0
   gamePaused: 0
+  curGameTime: 0
+  checkAMPMTime: 0
+  curDay: 0
 --- !u!4 &279786800
 Transform:
   m_ObjectHideFlags: 0
@@ -907,8 +914,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4a531696d1d8b4194c5b63a5594fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 5001
   _slider: {fileID: 0}
-  _canvas: {fileID: 0}
+  _myWoodText: {fileID: 0}
+  _myStoneText: {fileID: 0}
+  _myIronText: {fileID: 0}
+  _myExpText: {fileID: 0}
 --- !u!1 &389628471
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c466505bb923c44baa5e64dcefd63f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quadTree: {fileID: 0}
   poolableObjectDataList: []
 --- !u!4 &418841838
 Transform:
@@ -1294,8 +1304,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4a531696d1d8b4194c5b63a5594fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 5001
   _slider: {fileID: 0}
-  _canvas: {fileID: 0}
+  _myWoodText: {fileID: 0}
+  _myStoneText: {fileID: 0}
+  _myIronText: {fileID: 0}
+  _myExpText: {fileID: 0}
 --- !u!1 &551689990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,6 +1376,7 @@ MonoBehaviour:
   selectBuilding: {fileID: 0}
   selectedBuilding: {fileID: 0}
   checkBuilding: {fileID: 777639445}
+  checkBuildingTransform: {fileID: 0}
   instBuilding: {fileID: 0}
   canBuild: 0
   mousePos: {x: 0, y: 0, z: 0}
@@ -1639,6 +1654,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 3521843912368141584, guid: e63ee91e47ca24b47b1ba0db9c6abc57, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &869101199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1995,14 +2013,22 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 0
-  _maxHP: 100
+  _maxHp: 0
   _curHp: 1
   _speedCeof: 1
   _attackCeof: 1
   _attack: 100
+  _effectData:
+    effectCount: 3
+    effectTime: 0.1
+    effectColor: {r: 1, g: 0, b: 0, a: 1}
+    renderers: []
+    mainTexture: {fileID: 0}
+    mainColor: {r: 0, g: 0, b: 0, a: 0}
+  additonalAtk: 0
   WSADInput: 0
   Com: {fileID: 0}
-  attackState: 0
+  rotatingBody: {fileID: 0}
 --- !u!4 &948781676
 Transform:
   m_ObjectHideFlags: 0
@@ -2735,6 +2761,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 8414439279532295106, guid: 373b4871c09cc944c9ec5a3e17796b83, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &1542187603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2944,16 +2973,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b0ec2250f80604ebb8b34708cee748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterDatas:
-  - {fileID: 11400000, guid: 9ad55dc6258519245acd514efd8f1562, type: 2}
-  - {fileID: 11400000, guid: e9460f905858ea04a8e04391c6b48db0, type: 2}
-  - {fileID: 11400000, guid: d289a2c78d6489d48a721670a8656aad, type: 2}
+  normalMonsterDatas: []
+  bossMonsterDatas: []
   respawnDist: 20
   applyRespawn: 1
   respawnTime: 2
+  bossRespawnTime: 20
   init: 200
   max: 200
-  quadTree: {fileID: 0}
 --- !u!1 &1726570585
 GameObject:
   m_ObjectHideFlags: 0
@@ -4043,6 +4070,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 7215726233801088367, guid: b87f8b2fa9976fe488546514a7e45aa3, type: 3}
+  _requireWood: 0
+  _requireStone: 0
+  _requireIron: 0
 --- !u!114 &2085763855
 MonoBehaviour:
   m_ObjectHideFlags: 0

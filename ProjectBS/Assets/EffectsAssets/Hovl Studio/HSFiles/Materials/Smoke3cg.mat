@@ -31,12 +31,11 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 5000
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
   - SHADOWCASTER
-  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -131,7 +130,7 @@ Material:
     - _OcclusionStrength: 1
     - _Opacity: 1
     - _Parallax: 0.02
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -142,9 +141,9 @@ Material:
     - _Usecenterglow: 0
     - _Usecustomrandom: 0
     - _Usedepth: 1
-    - _ZTest: 4
-    - _ZWrite: 0
-    - _ZWriteControl: 0
+    - _ZTest: 8
+    - _ZWrite: 1
+    - _ZWriteControl: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DistortionSpeedXYPowerZ: {r: 0, g: 0, b: 0, a: 0}

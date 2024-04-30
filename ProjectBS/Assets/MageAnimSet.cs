@@ -6,6 +6,7 @@ public class MageAnimSet : MonoBehaviour
 {
     [SerializeField] private Animator myAnim;
     [SerializeField] private Transform effectSpawn;
+    [SerializeField] private GameObject HandEffect;
 
     bool ikActive = false;
     float weight = 0.0f;
@@ -48,5 +49,15 @@ public class MageAnimSet : MonoBehaviour
     public void ClearIK()
     {
         ikActive = false;
+    }
+    
+    public void OffHandEffect()
+    {
+        HandEffect.SetActive(false);
+    }
+
+    public void OnHandEffect()
+    {
+        HandEffect.SetActive(true);
     }
 }

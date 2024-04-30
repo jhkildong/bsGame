@@ -14,22 +14,23 @@ public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이
         base.Initialize(this);
     }*/
     
-    public GameObject SetActiveEffect<T>(GameObject org, Transform parent, GameObject pos) //이펙트 풀링, 생성. (공격이 아닌 이펙트들)
+    public GameObject SetActiveEffect<T>(GameObject org, GameObject pos, Transform parent = null) //이펙트 풀링, 생성. (공격이 아닌 이펙트들)
     {
+        Vector3 instPos = new Vector3(pos.transform.position.x, 1f, pos.transform.position.z);
         string Key = typeof(T).ToString(); //T는 클래스 명이 될것. 클래스명을 key값으로 사용하겠다는 의미.
         if (myPool.ContainsKey(Key)) //이미 생성된 stack이 있는 경우
         {
             if (myPool[Key].Count > 0)
             {
                 GameObject obj = myPool[Key].Pop();
-                obj.transform.position = pos.transform.position;
+                obj.transform.position = instPos;
                 obj.SetActive(true); //활성화
                 //obj.transform.localPosition = p.localPosition; //해당위치로 이동
                 //obj.transform.localRotation = p.rotation;
                 return obj;
             }
         }
-        GameObject Effect = Instantiate(org, pos.transform.position, Quaternion.identity); //없는경우 새로 생성
+        GameObject Effect = Instantiate(org, instPos, Quaternion.identity); //없는경우 새로 생성
         return Effect;
     }
     
