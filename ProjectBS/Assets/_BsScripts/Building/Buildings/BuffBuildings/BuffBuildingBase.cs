@@ -66,7 +66,7 @@ public class BuffBuildingBase : Building
 
     }
 
-    protected override void Destroy()
+    public override void Destroy()
     {
         base.Destroy();
     }

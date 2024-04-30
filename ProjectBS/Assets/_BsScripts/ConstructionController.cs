@@ -7,6 +7,7 @@ public class ConstructionController : MonoBehaviour
 {
     [SerializeField]private float buildApplyRange = 2.0f;
     private ConstructionKeyUI buildUI;
+    private BuildingInteractionUI buildInteractionUI;
     private Transform hitTarget = null;
     private Building buildTarget = null;
 
@@ -15,13 +16,18 @@ public class ConstructionController : MonoBehaviour
         buildUI = UIManager.Instance.CreateUI(UIID.ConstructionKeyUI, CanvasType.DynamicCanvas) as ConstructionKeyUI;
         UIManager.Instance.SetPool(UIID.ProgressBar, 10, 10);
         buildUI.gameObject.SetActive(false);
+
+        buildInteractionUI = UIManager.Instance.CreateUI(UIID.BuildingInteractionUI, CanvasType.DynamicCanvas) as BuildingInteractionUI;
+        buildInteractionUI.gameObject.SetActive(false);
     }
 
     private void Update()
     {
+        RaycastHit hit;
+
         //레이캐스트로 건설할 수 있는 오브젝트 탐색
         if (Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), transform.forward,
-            out RaycastHit hit, buildApplyRange, (int)BSLayerMasks.InCompletedBuilding))
+            out hit, buildApplyRange, ((int)BSLayerMasks.InCompletedBuilding)| (int)BSLayerMasks.Building))
         {
             //새로운 타겟일 경우 갱신
             if (hitTarget != hit.transform)
@@ -43,20 +49,58 @@ public class ConstructionController : MonoBehaviour
                 //색깔 변경
                 buildTarget.SelectedProgress?.Invoke(true);
             }
-            if (Input.GetKeyDown(KeyCode.B))
+            if (Input.GetKeyDown(KeyCode.B)|| Input.GetKeyDown(KeyCode.R))
             {
                 GameManager.Instance.Player.IsBuilding = true;
             }
-            if(Input.GetKeyUp(KeyCode.B))
+            if(Input.GetKeyUp(KeyCode.B)|| Input.GetKeyUp(KeyCode.R))
             {
                 GameManager.Instance.Player.IsBuilding = false;
             }
             //상호작용키 입력시 건설
             if (Input.GetKey(KeyCode.B))
             {
-                buildTarget.Construction(Time.deltaTime);
+                buildTarget.Construction(GameManager.Instance.Player.ConstSpeed* Time.deltaTime);
+            }
+
+            if (Input.GetKey(KeyCode.R) && buildTarget.CurHp < buildTarget.MaxHp)
+            {
+                //수리구현
+                buildTarget.Repair(GameManager.Instance.Player.RepairSpeed * Time.deltaTime);
+                Debug.Log("수리!");
+            }
+            //키 입력시 파괴
+            else if (Input.GetKeyDown(KeyCode.G))
+            {
+                buildTarget.Destroy();
             }
         }
+        /*
+        else if (Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), transform.forward,
+            out hit, buildApplyRange, (int)BSLayerMasks.Building))
+        {
+
+            if(Input.GetKeyDown (KeyCode.R)) 
+            {
+                GameManager.Instance.Player.IsBuilding = true;
+            }
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                GameManager.Instance.Player.IsBuilding = false;
+            }
+            if (Input.GetKey(KeyCode.R) && buildTarget.CurHp < buildTarget.MaxHp)
+            {
+                //수리구현
+                buildTarget.Repair(GameManager.Instance.Player.RepairSpeed*Time.deltaTime);
+                Debug.Log("수리!");
+            }
+            //키 입력시 파괴
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                buildTarget.Destroy();
+            }
+        }
+        */
         //레이에 감지된 건물이 없을 경우
         else
         {

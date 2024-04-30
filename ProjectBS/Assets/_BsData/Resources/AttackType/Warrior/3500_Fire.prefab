@@ -24294,12 +24294,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3500
-  _name: "\uD654\uC5FC"
+  _name: 
   _attack: 100
   _speed: 1
   _size: 1
   _particleSystem: {fileID: 3724192508554018544}
   prefab: {fileID: 3724192508554018546}
+  hitEffectPrefab: {fileID: 6034881848329743055, guid: 60ea48008a49e1f42905b360b5c14e76, type: 3}
 --- !u!198 &3724192508554018544
 ParticleSystem:
   m_ObjectHideFlags: 0

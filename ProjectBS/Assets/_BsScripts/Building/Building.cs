@@ -82,9 +82,8 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         */
 
         //installBuilding.BuildingInstalled += IsInstalled;
-        hpBar = UIManager.Instance.CreateUI(UIID.BuildingHpBar, CanvasType.DynamicCanvas) as BuildingHpBar; // 체력바 생성
-        ChangeHpAct += hpBar.ChangeHP; //체력변동이벤트를 등록
-        hpBar.gameObject.SetActive(true);
+        //hpBar = UIManager.Instance.CreateUI(UIID.BuildingHpBar, CanvasType.DynamicCanvas) as BuildingHpBar; // 체력바 생성
+        //hpBar.gameObject.SetActive(true);
     }
     
     public void SetBuildingStat()
@@ -103,7 +102,7 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
     }
     protected virtual void Update()
     {
-        
+
         /*
         if (Input.GetKey(KeyCode.B))
         {
@@ -119,11 +118,8 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         */
 
         //////ConstructionController로 옮길것!!!!!!!!!!!!
-        if (Input.GetKey(KeyCode.R))
-        {
-            Repair(0.1f);
-        }
-        if(iscompletedBuilding && _nextUpgrade != null && Input.GetKeyDown(KeyCode.U)) 
+
+        if (iscompletedBuilding && _nextUpgrade != null && Input.GetKeyDown(KeyCode.U)) 
         {
             //다음 업그레이드가있고, 재화가 충족될시
             Building upgradeBD = _nextUpgrade.GetComponent<Building>();
@@ -213,7 +209,11 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
             AuraEffect.SetActive(true);
         }
         Debug.Log("건설 완료");
-
+        BuildingHpBar buildingHpBar = UIManager.Instance.GetUI(UIID.BuildingHpBar, CanvasType.DynamicCanvas) as BuildingHpBar;
+        buildingHpBar.myTarget = transform;
+        
+        ChangeHpAct += buildingHpBar.ChangeHP; //체력변동이벤트를 등록
+        CurHp = _maxHp;
         GameManager.Instance.Player.IsBuilding = false;
     }
 
@@ -235,8 +235,8 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
     public void ReceiveHeal(float heal)
     {
         Debug.Log("건물 힐 됨 현재 체력 : " + _curHp);
-        _curHp += heal;
-        _curHp = Mathf.Clamp(_curHp, 0, _maxHp);
+        CurHp += heal;
+        CurHp = Mathf.Clamp(_curHp, 0, _maxHp);
     }
     public void Repair(float RepairSpeed)
     {
@@ -256,8 +256,8 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
     {
         if(iscompletedBuilding && isInstalled &&_curHp>0)
         {
-            _curHp -= dmg;
-            if (_curHp <= 0)
+            CurHp -= dmg;
+            if (CurHp <= 0)
             {
                 Destroy();
             }
@@ -290,9 +290,9 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
     }
     private float _height;
 
-    protected virtual void Destroy()
+    public virtual void Destroy()
     {
-
+        CurHp = 0.0f;
         Destroy(gameObject);
 
     }

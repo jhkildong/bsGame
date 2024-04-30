@@ -35,6 +35,7 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
     [SerializeField]protected float hitTiming; // 타격 타이밍 (0~1사이)
 
     public LayerMask attackableLayer;
+    public GameObject hitEffect; 
 
     private void Awake()
     {
@@ -137,6 +138,8 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
         foreach (Collider collider in colliders)
         {
             IDamage target = collider.GetComponent<IDamage>();
+            EffectPoolManager.Instance.SetActiveEffect<GameObject>(hitEffect, collider.gameObject); // 피격대상 위치에 타격 이펙트 생성
+            Debug.Log(collider.gameObject.transform.position);
             target.TakeDamage(baseAttack);
         }
         //범위내의 적에게 (Idamage 가 있는)

@@ -242,8 +242,21 @@ public class Player : Combat, IDamage<Player>
             RotatingBody.GetComponent<LookAtPoint>().enabled = !value;
         }
     }
+    public float ConstSpeed
+    {
+        get => _constSpeed;
+        set => _constSpeed = value;
+    }
+    public float RepairSpeed
+    {
+        get => _repairSpeed;
+        set => _repairSpeed = value;
+    }
+
     private bool _isBuilding;
-    
+    [SerializeField] private float _constSpeed;
+    [SerializeField] private float _repairSpeed;
+
     public void SetEffectAttack()
     {
         Com.Attack = Attack;
