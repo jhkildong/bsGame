@@ -32,6 +32,7 @@ public class Effect : MonoBehaviour, IPoolable
     [SerializeField] private float _size;
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject hitEffectPrefab;
     #endregion
 
     protected bool isStopped = false;
@@ -71,6 +72,8 @@ public class Effect : MonoBehaviour, IPoolable
         {
             //monster.TakeDamage(Attack);
             monster.TakeDamageEffect(Attack);
+            if(hitEffectPrefab != null)
+            EffectPoolManager.Instance.SetActiveEffect<GameObject>(hitEffectPrefab, other.gameObject); //피격이펙트 생성
         }
     }
 
