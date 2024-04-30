@@ -19457,6 +19457,7 @@ MonoBehaviour:
   attackableLayer:
     serializedVersion: 2
     m_Bits: 32768
+  hitEffect: {fileID: 8442984799047500724, guid: 83bdc720e7107a8479f1183d783d8f4e, type: 3}
 --- !u!135 &3847220124791232232
 SphereCollider:
   m_ObjectHideFlags: 0

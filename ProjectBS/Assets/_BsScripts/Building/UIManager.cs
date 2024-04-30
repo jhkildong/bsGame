@@ -162,5 +162,6 @@ public enum UIID
     DamageUI = 5006,
     BlessSelectWindow = 5007,
     HealFontUI = 5008,
-    BuildingHpBar = 5010
+    BuildingHpBar = 5010,
+    BuildingInteractionUI = 5011
 }

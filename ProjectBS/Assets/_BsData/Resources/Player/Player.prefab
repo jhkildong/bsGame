@@ -242,6 +242,8 @@ MonoBehaviour:
   WSADInput: 0
   Com: {fileID: 0}
   rotatingBody: {fileID: 3329387691305622105}
+  _constSpeed: 1
+  _repairSpeed: 100
 --- !u!114 &3872214994456316594
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -62,6 +62,8 @@ public abstract class PlayerComponent : CharacterComponent
     [SerializeField] protected Effect[] _effects;
     [SerializeField] protected int _effectIdx;
     [SerializeField] protected Effect _effect;
+
+    
     #endregion
 
     #region Abstract Method
