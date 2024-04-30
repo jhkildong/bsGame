@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using Yeon2;
 
 [CustomPropertyDrawer(typeof(LevelUpData))]
 public class LevelUpDataDrawer : PropertyDrawer

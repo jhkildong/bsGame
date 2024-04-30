@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeWeaponLP_Bullet : MonoBehaviour
+public class RangeWeaponLP_Bullet : Weapon
 {
-    private LayerMask Monster;
-
-    public float Ak;
-
     float DelayTime = 0.2f;
     float time;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        Monster = (int)BSLayerMasks.Monster | (int)BSLayerMasks.SurroundMonster;
+        StartCoroutine(DelayRelease(5.0f));
+    }
+
+    IEnumerator DelayRelease(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ObjectPoolManager.Instance.ReleaseObj(this);
     }
 
     // Update is called once per frame

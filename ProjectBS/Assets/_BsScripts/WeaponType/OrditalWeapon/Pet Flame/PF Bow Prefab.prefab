@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b4c9476b52261479b4d6fbdefdb3f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponArrowPrefab: {fileID: 885452322155594386, guid: 5027f60239a4978459fc8e3acd95811e, type: 3}
+  weaponArrowPrefab: {fileID: 2419102505978352390, guid: 5027f60239a4978459fc8e3acd95811e, type: 3}
   ReTime: 0
   ArrowAmount: 0
   Size: 2

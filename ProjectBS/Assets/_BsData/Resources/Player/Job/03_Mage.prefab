@@ -1760,6 +1760,7 @@ MonoBehaviour:
   _effects: []
   _effectIdx: 0
   _effect: {fileID: 0}
+  handEffectPoint: {fileID: 2670382497305005748}
 --- !u!1 &5182516196938231232
 GameObject:
   m_ObjectHideFlags: 0

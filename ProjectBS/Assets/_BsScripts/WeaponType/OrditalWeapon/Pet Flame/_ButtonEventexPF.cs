@@ -18,6 +18,6 @@ public class _ButtonEventexPF : MonoBehaviour
 
     private void OnButtonClick()
     {
-        Weapon.OnOkSpawnOrditalWeapon(); // OrditalWeapon의 OnOkSpawnOrditalWeapon() 메서드 호출
+        Weapon.LevelUp(); // OrditalWeapon의 OnOkSpawnOrditalWeapon() 메서드 호출
     }
 }

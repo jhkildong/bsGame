@@ -78,14 +78,20 @@ public class PlayerSetup : MonoBehaviour
 
     private void SelectType(PlayerComponent job, int idx)
     {
+        //이펙트설정
         job.MyEffect = types[idx];
+        //플레이어 생성
         Player player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Player>();
+        //플레이어 이름 설정
         player.gameObject.name = "Player";
+        //직업 생성
         Instantiate(myJobPrefab, player.RotatingBody);
+        //플레이어 초기설정(job(PlayerComponent)의 데이터를 받아서 설정)
         player.InitPlayerSetting();
+        //메인카메라 타겟설정
         mainCameraAction.Target = player.transform;
+        //플레이어 선택창 제거
         Destroy(playerSelectWindow.gameObject);
-
     }
 
     public void OnPlay()

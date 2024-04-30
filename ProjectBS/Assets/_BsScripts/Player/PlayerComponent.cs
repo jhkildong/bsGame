@@ -47,7 +47,7 @@ public abstract class PlayerComponent : CharacterComponent
         get => _attack;
         set => _attack = value;
     }
-    public Effect MyEffect
+    public virtual Effect MyEffect
     { 
         get => _effect;
         set => _effect = value;
@@ -70,6 +70,7 @@ public abstract class PlayerComponent : CharacterComponent
     ////////////////////////////////AbstractMethod////////////////////////////////
     public abstract void OnAttackPoint();           //_effectSpawn에 공격 생성(애니메이션에서 호출)
     #endregion
+
     #region Public Method
     ////////////////////////////////PublicMethod////////////////////////////////
     public void SetRigWeight(float weight)

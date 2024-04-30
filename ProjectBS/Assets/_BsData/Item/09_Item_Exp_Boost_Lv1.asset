@@ -15,7 +15,7 @@ MonoBehaviour:
   description: "\uACBD\uD5D8\uCE58\uAC00 5\uB9CC\uD07C \uC62C\uB77C\uAC10"
   _id: 9
   _name: ExpBoost_Lv1
-  _value: 10
+  _value: 5
   _prefab: {fileID: 6178760419957704234, guid: 2b5cb0d3490de294da102bd3f0c4593f, type: 3}
   itemType: 1
   _exprate: 2
