@@ -59,7 +59,6 @@ public class BlessManager : Singleton<BlessManager>
         if (_blessDict.ContainsKey((int)id))
         {
             Bless clone = _blessDict[(int)id].CreateClone();
-            clone.transform.position += new Vector3(0, 0.7f, 0);
             return clone;
         }
         return null;
@@ -316,7 +315,7 @@ public class WeightedRandomPicker<T>
         normalizedItemWeightDict.Clear();
         foreach (var pair in itemWeightDict)
         {
-            normalizedItemWeightDict.Add(pair.Key, pair.Value / _sumOfWeights);
+            normalizedItemWeightDict.Add(pair.Key, (float)pair.Value / (float)_sumOfWeights);
         }
     }
 

@@ -32,6 +32,8 @@ public class Weapon : MonoBehaviour, IPoolable
     public MonoBehaviour This => this;
     public IPoolable CreateClone()
     {
-        return Instantiate(this);
+        Weapon clone = Instantiate(this);
+        clone.SetID(ID);
+        return clone;
     }
 }

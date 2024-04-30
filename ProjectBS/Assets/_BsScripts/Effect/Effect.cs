@@ -18,6 +18,7 @@ public class Effect : MonoBehaviour, IPoolable
     #endregion
 
     #region Property
+    public string Name { get => _name;}
     public float Attack { get => _attack; set => _attack = value; }
     public float Speed { get => _speed; set => _speed = value; }
     public float Size { get => _size; set => _size = value; }
@@ -25,6 +26,7 @@ public class Effect : MonoBehaviour, IPoolable
 
     #region Field
     [SerializeField] private int _id;
+    [SerializeField] private string _name;
     [SerializeField] private float _attack;
     [SerializeField] private float _speed;
     [SerializeField] private float _size;

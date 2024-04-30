@@ -159,8 +159,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2337382765761884490}
-  - component: {fileID: 1631508743126195929}
-  - component: {fileID: -2035465310923364427}
   - component: {fileID: 3387600366878033816}
   m_Layer: 0
   m_Name: Arrow_Generic_03_Bl(BOTCA)
@@ -186,75 +184,6 @@ Transform:
   - {fileID: 5080427870698831984}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1631508743126195929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3115327183370529776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b63d4491d14e4588a9177a05a9c58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 10
-  Mappers: []
-  IsTakeTwoHands: 0
-  CopySkinMaterial: 0
-  Wrappers:
-  - Type: 0
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 1
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 2
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 4
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 5
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 6
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 7
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 8
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 9
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 10
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 11
-    Enabled: 0
-    Target: {fileID: 0}
-  - Type: 12
-    Enabled: 0
-    Target: {fileID: 0}
---- !u!114 &-2035465310923364427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3115327183370529776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c9a61b7dfb4b44f95cc8476252fa13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Monster:
-    serializedVersion: 2
-    m_Bits: 294912
-  Ak: 0
 --- !u!65 &3387600366878033816
 BoxCollider:
   m_ObjectHideFlags: 0

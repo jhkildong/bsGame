@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class Mage : PlayerComponent
 {
-    private Transform handEffectPoint;
+    [SerializeField]private Transform handEffectPoint;
 
-    private void Start()
+    public override Effect MyEffect
     {
-        
+        get => base.MyEffect;
+        set
+        {
+            base.MyEffect = value;
+
+        }
     }
 
     public override void OnAttackPoint()
