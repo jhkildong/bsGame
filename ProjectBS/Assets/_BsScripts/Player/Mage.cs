@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Mage : PlayerComponent
 {
+    public override Job MyJob => Job.Mage;
+
     [SerializeField]private Transform handEffectPoint;
 
     public void SetHandEffect(GameObject handEffect)

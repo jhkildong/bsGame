@@ -56,6 +56,44 @@ public class BowAnimSet : MonoBehaviour
     }
     #endregion
 
+    #region SkillAim
+    ////////////////////////////////SkillAim////////////////////////////////
+
+    [SerializeField] private MultiAimConstraint skillAim;
+    private Coroutine skillAiming;
+
+    public void OnSkillAim()
+    {
+        skillAiming = StartCoroutine(OnSkillAiming());
+    }
+
+    IEnumerator OnSkillAiming()
+    {
+        while(skillAim.weight <= 1f)
+        {
+            skillAim.weight += Time.deltaTime * 1f;
+            yield return null;
+        }
+    }
+
+    public void OffSkillAim()
+    {
+        StopCoroutine(skillAiming);
+        StartCoroutine(OffSkillAiming());
+    }
+
+    IEnumerator OffSkillAiming()
+    {
+        while (skillAim.weight >= 0.1f)
+        {
+            skillAim.weight -= Time.deltaTime * 5.0f;
+            yield return null;
+        }
+        skillAim.weight = 0.0f;
+        yield break;
+    }
+    #endregion
+
     #region IK
     ////////////////////////////////IK////////////////////////////////
     [SerializeField]private Transform bowString;

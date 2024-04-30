@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -21,6 +22,14 @@ public class Player : Combat, IDamage<Player>
     private void EndAttack(InputAction.CallbackContext context)
     {
         Com.MyAnim.SetBool(AnimParam.isAttacking, false);
+    }
+    private void StartSkill(InputAction.CallbackContext context)
+    {
+        OnSkill();
+    }
+    private void EndSkill(InputAction.CallbackContext context)
+    {
+        OffSkill();
     }
 
 
@@ -122,7 +131,14 @@ public class Player : Combat, IDamage<Player>
 
         //GameManager.Instance.GoldChangeAct
 
-        CurHp = MaxHp;
+        _maxHp = Com.MyStat.MaxHp;
+        CurHp = Com.MyStat.MaxHp;
+        moveSpeed = Com.MyStat.Sp;
+        _attack = Com.MyStat.Ak;
+        Com.MyAnim.SetFloat(AnimParam.AttackSpeed, Com.MyStat.AkSp);
+
+        skillCoolTime = Com.MyStat.SkillCoolTime;
+
         effectData.renderers = new Renderer[1];
         effectData.renderers[0] = Com.Myrenderer;
         effectData.mainTexture = Com.Myrenderer.material.mainTexture;
@@ -187,6 +203,9 @@ public class Player : Combat, IDamage<Player>
 
         playerInputs.Player.MoveAnim.performed += SetAnimMove;
         playerInputs.Player.MoveAnim.canceled += SetAnimStop;
+
+        playerInputs.Player.Skill.performed += StartSkill;
+        playerInputs.Player.Skill.canceled += EndSkill;
         playerInputs.Enable();
         #endregion
 
@@ -225,7 +244,56 @@ public class Player : Combat, IDamage<Player>
     #endregion
 
     #region Private Method
+    private float skillCoolTime;
+    private float maxCastingTime = 5.0f;
+    private bool isCoolTime = false;
+    private Coroutine skillCooltimer;
+    
+    private void OnSkill()  //스킬키를 눌렀을 때 실행
+    {
+        if (isCoolTime)
+            return;
+        isCoolTime = true;
+        switch(Com.MyJob)
+        {
+            case Job.Mage:
+            case Job.Warrior:   //마법사, 전사는 키다운 스킬시전
+                Com.MyAnim.SetBool(AnimParam.isSkill, true);
+                break;
+            case Job.Archer:    //궁수는 범위 보여줌
+                (Com as Archer).ShowRange();
+                break;
+        }
+        StartCoroutine(CastingTimer());
+    }
 
+    private void OffSkill()
+    {
+        switch (Com.MyJob)
+        {
+            case Job.Mage:
+            case Job.Warrior:   //키다운 종료 혹은 시전시간 종료
+                Com.MyAnim.SetBool(AnimParam.isSkill, false);
+                break;
+            case Job.Archer:
+                return;
+        }
+        StartCoroutine(SkillCoolTimer());
+
+    }
+
+    private IEnumerator SkillCoolTimer()
+    {
+        yield return new WaitForSeconds(skillCoolTime);
+        isCoolTime = false;
+        skillCooltimer = null;
+    }
+
+    private IEnumerator CastingTimer()
+    {
+        yield return new WaitForSeconds(maxCastingTime);
+        OffSkill();
+    }
 
     #endregion
 

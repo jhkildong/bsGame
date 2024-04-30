@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Warrior : PlayerComponent
 {
+    public override Job MyJob => Job.Warrior;
+
     private void Start()
     {
         MyAnim.GetBehaviour<ResetDir>().ResetDirAct += ResetAtackDir;

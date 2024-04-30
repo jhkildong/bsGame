@@ -106,7 +106,7 @@ Material:
     - _Cull: 2
     - _CullMode: 0
     - _Cutoff: 0.5
-    - _Depthpower: 0.15
+    - _Depthpower: 1
     - _DetailNormalMapScale: 1
     - _DistortionBlend: 0
     - _DistortionEnabled: 0
@@ -141,7 +141,7 @@ Material:
     - _Surface: 1
     - _UVSec: 0
     - _Usecenterglow: 0
-    - _Usedepth: 1
+    - _Usedepth: 0
     - _ZTest: 8
     - _ZWrite: 1
     - _ZWriteControl: 1

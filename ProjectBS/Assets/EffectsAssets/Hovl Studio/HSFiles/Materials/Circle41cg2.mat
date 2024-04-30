@@ -21,8 +21,8 @@ Material:
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
-  - DepthOnly
   - SHADOWCASTER
+  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -102,7 +102,7 @@ Material:
     - _Cull: 0
     - _CullMode: 0
     - _Cutoff: 0.5
-    - _Depthpower: 0.3
+    - _Depthpower: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 1
     - _Emission: 4
@@ -115,7 +115,7 @@ Material:
     - _OcclusionStrength: 1
     - _Opacity: 1
     - _Parallax: 0.02
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

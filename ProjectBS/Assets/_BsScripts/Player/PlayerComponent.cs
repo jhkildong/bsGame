@@ -1,17 +1,16 @@
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
+public enum Job
+{
+    Warrior,
+    Archer,
+    Mage
+}
 
 //캐릭터 컴포넌트 관리해주는 클래스
 public abstract class PlayerComponent : CharacterComponent
 {
-    protected static class EffectID
-    {
-        public const int Warrior = 3500;
-        public const int Archer = 3510;
-        public const int Mage = 3520;
-    }
-
     #region Property
     ////////////////////////////////Property////////////////////////////////
     public Transform MyEffectSpawn 
@@ -52,6 +51,7 @@ public abstract class PlayerComponent : CharacterComponent
         get => _effect;
         set => _effect = value;
     }
+    public PlayerStat MyStat => _playerStat;
     #endregion
 
     #region Field
@@ -62,13 +62,13 @@ public abstract class PlayerComponent : CharacterComponent
     [SerializeField] protected Effect[] _effects;
     [SerializeField] protected int _effectIdx;
     [SerializeField] protected Effect _effect;
-
-    
+    [SerializeField] protected PlayerStat _playerStat = new PlayerStat();
     #endregion
 
     #region Abstract Method
     ////////////////////////////////AbstractMethod////////////////////////////////
     public abstract void OnAttackPoint();           //_effectSpawn에 공격 생성(애니메이션에서 호출)
+    public abstract Job MyJob { get; }
     #endregion
 
     #region Public Method
