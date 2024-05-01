@@ -27,7 +27,8 @@ public class BuffController
     }
 
 
-    public void StartBuff(IBuffable buffable, Dictionary<string,float> buffTypeDict) // ontriggerenter시
+    //public void StartBuff(IBuffable buffable, Dictionary<string,float> buffTypeDict) // ontriggerenter시
+    public void StartBuff(IBuffable buffable, BuffDict buffTypeDict)
     {
         Debug.Log(buffable);
         if (buffable != null)
@@ -95,7 +96,8 @@ public class BuffController
         }
     }
 
-    public void RemoveBuff(IBuffable buffable, Dictionary<string,float> buffTypeDict)
+    //public void RemoveBuff(IBuffable buffable, Dictionary<string,float> buffTypeDict)
+    public void RemoveBuff(IBuffable buffable, BuffDict buffTypeDict)
     {
         //targets 리스트에 해당 오브젝트가 있는지 체크
         Debug.Log(buffable);
@@ -116,9 +118,10 @@ public class BuffController
         }
     }
 
-    
 
-    IEnumerator BuffTime(Dictionary<string, float> buffTypeDict, float dur)
+
+    //IEnumerator BuffTime(Dictionary<string, float> buffTypeDict, float dur)
+    IEnumerator BuffTime(BuffDict buffTypeDict, float dur)
     {
         yield return new WaitForSeconds(dur);
         buffTypeDict.Remove(BuffName); // 지속시간이 끝나면 버프 제거
