@@ -14618,11 +14618,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3621
+  _name: 
   _attack: 0
   _speed: 0
   _size: 0
   _particleSystem: {fileID: 8260617210669617124}
   prefab: {fileID: 8260617210669617129}
+  hitEffectPrefab: {fileID: 0}
 --- !u!198 &8260617210669617124
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -14631,7 +14633,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8260617210669617129}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0

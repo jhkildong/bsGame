@@ -177,7 +177,7 @@ MonoBehaviour:
   _effectIdx: 0
   _effect: {fileID: 0}
   _playerStat:
-    _maxHp: 70
+    _maxHp: 500
     _ak: 20
     _sp: 4
     _akSp: 1

@@ -34,6 +34,8 @@ public class MagicEffect : Effect
 
     protected override void OnTriggerEnter(Collider other)
     {
+        if (isStopped)
+            return;
         ObjectPoolManager.Instance.GetEffect(hitEffect, attack : Attack).
             This.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
         isStopped = true;

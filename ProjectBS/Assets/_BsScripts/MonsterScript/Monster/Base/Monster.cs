@@ -215,6 +215,8 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
 
     protected virtual void Update()
     {
+        if (myTarget == null)
+            ResetTarget();
         StateProcess();
 
         if (myState == State.Death) return;
