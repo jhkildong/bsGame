@@ -13,18 +13,20 @@ MonoBehaviour:
   m_Name: Bless_BOL
   m_EditorClassIdentifier: 
   _id: 1100
-  _name: BelssingOfLightning
+  _name: "\uBC88\uAC1C\uC758 \uCD95\uBCF5"
+  _description: "\uC801\uC5D0\uAC8C \uB0B4\uB9AC\uCE58\uB294 \uBC88\uAC1C\uB97C 1\uAC1C
+    \uC0DD\uC131\uD55C\uB2E4."
   _prefab: {fileID: 2365774773641346219, guid: 337bdc6c500ff8f47a1fcb5876a76e03, type: 3}
   _lvDataList:
   - name: Attack
-    defaultValue: 20
+    defaultValue: 10
     levelUpType: 1
     levelUpTable:
     - 1
     - 1
     - 1
     - 1
-    - 1
+    - 1.2
     - 1
     - 1
   - name: Amount
@@ -32,12 +34,12 @@ MonoBehaviour:
     levelUpType: 0
     levelUpTable:
     - 1
-    - 0
     - 1
     - 0
     - 1
-    - 1
     - 0
+    - 1
+    - 1
   - name: ReTime
     defaultValue: 2
     levelUpType: 1
@@ -55,7 +57,7 @@ MonoBehaviour:
     levelUpTable:
     - 1
     - 1
-    - 1
+    - 1.3
     - 1
     - 1
     - 1

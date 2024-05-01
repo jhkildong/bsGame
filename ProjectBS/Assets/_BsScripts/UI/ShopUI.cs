@@ -17,6 +17,6 @@ public class ShopUI : MonoBehaviour
     }
     public void OnBackButton()
     {
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
     }
 }
