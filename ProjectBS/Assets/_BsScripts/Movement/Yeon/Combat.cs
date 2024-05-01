@@ -52,14 +52,21 @@ namespace Yeon
             public float effectTime = 0.1f;
             public Color effectColor = Color.red;
             public Renderer[] renderers;
-            public Texture mainTexture;
-            public Color mainColor;
+            public Texture[] mainTextures;
+            public Color[] mainColor;
 
-            public void SetRenderer(Combat combat)
+            public void SetRenderer(Renderer[] renderers)
             {
-                renderers = combat.gameObject.GetComponentsInChildren<Renderer>();
-                mainTexture = renderers.Length > 0 ? renderers[0].material.mainTexture : null;
-                mainColor = renderers.Length > 0 ? renderers[0].material.color : Color.white;
+                if (renderers.Length == 0)  //렌더러가 없으면 리턴
+                    return;
+                this.renderers = renderers;
+                mainTextures = new Texture[renderers.Length];
+                mainColor = new Color[renderers.Length];
+                for(int i = 0; i < renderers.Length; i++)
+                {
+                    mainTextures[i] = renderers[i].material.mainTexture;
+                    mainColor[i] = renderers[i].material.color;
+                }
             }
 
             public void ChangeTexture(Texture texture)
@@ -74,6 +81,15 @@ namespace Yeon
                 foreach (Renderer renderer in renderers)
                 {
                     renderer.material.color = color;
+                }
+            }
+
+            public void ResetTextureColor()
+            {
+                for(int i = 0; i < renderers.Length; i++)
+                {
+                    renderers[i].material.mainTexture = mainTextures[i];
+                    renderers[i].material.color = mainColor[i];
                 }
             }
         }
@@ -93,8 +109,8 @@ namespace Yeon
         {
             StopAllCoroutines();
             _onDamageEffect = null;
-            effectData.ChangeTexture(effectData.mainTexture);
-            effectData.ChangeColor(effectData.mainColor);
+            if(effectData.renderers != null)
+                effectData.ResetTextureColor();
         }
         #endregion
 
@@ -160,8 +176,7 @@ namespace Yeon
                 effectData.ChangeTexture(null);
                 effectData.ChangeColor(effectData.effectColor);
                 yield return wait;
-                effectData.ChangeTexture(effectData.mainTexture);
-                effectData.ChangeColor(effectData.mainColor);
+                effectData.ResetTextureColor();
                 yield return wait;
             }
             _onDamageEffect = null;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
+
 public class PlayerSetup : MonoBehaviour
 {
     private GameObject playerPrefab;
@@ -32,10 +33,10 @@ public class PlayerSetup : MonoBehaviour
         string[] names = new string[jobs.Length];
         for (int i = 0; i < jobs.Length; i++)
         {
-            names[i] = jobs[i].gameObject.name.Substring(3);    //00_JobName 형식으로 되있음
+            names[i] = jobs[i].MyJob.GetDescription();
         }
-
         playerSelectWindow.SelectButtons.SetButtonName(names);
+        
         for(int i = 0; i < jobs.Length; i++)
         {
             int idx = i;
@@ -95,7 +96,7 @@ public class PlayerSetup : MonoBehaviour
             mage.SetHandEffect(go);
         }
         //플레이어 초기설정(job(PlayerComponent)의 데이터를 받아서 설정)
-        player.InitPlayerSetting();
+        player.InitPlayerSetting(clone);
         //메인카메라 타겟설정
         mainCameraAction.Target = player.transform;
         //플레이어 선택창 제거

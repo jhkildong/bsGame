@@ -30,4 +30,22 @@ public class Warrior : PlayerComponent
         GameObject go = ObjectPoolManager.Instance.GetEffect(MyEffect, Attack).This.gameObject;
         go.transform.SetPositionAndRotation(MyEffectSpawn.position, Quaternion.Euler(0.0f, MyEffectSpawn.rotation.eulerAngles.y, _attackDir));
     }
+
+    public override void SetSkillAct(Player player)
+    {
+        player.OnSkillAct += OnSkill;
+        player.OffSkillAct += OffSkill;
+    }
+
+    private void OnSkill()
+    {
+        SetRigWeight(0);
+        GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().enabled = false;   //스킬 사용시 마우스 방향으로 회전하는 스크립트 비활성화
+    }
+
+    private void OffSkill()
+    {
+        SetRigWeight(1);
+        GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().enabled = true;    //스킬 사용 종료시 마우스 방향으로 회전하는 스크립트 활성화
+    }
 }
