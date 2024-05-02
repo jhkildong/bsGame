@@ -14624,7 +14624,7 @@ MonoBehaviour:
   _size: 0
   _particleSystem: {fileID: 8260617210669617124}
   prefab: {fileID: 8260617210669617129}
-  hitEffectPrefab: {fileID: 7726104144861148437, guid: eb99b7676875c25489b057740cc0c554, type: 3}
+  hitEffectPrefab: {fileID: 0}
 --- !u!198 &8260617210669617124
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -14633,7 +14633,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8260617210669617129}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0

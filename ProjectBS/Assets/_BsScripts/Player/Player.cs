@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -6,6 +7,50 @@ using Yeon;
 
 public class Player : Combat, IDamage<Player>
 {
+    #region Public Field, Method
+    ////////////////////////////////Public Field, Method////////////////////////////////
+    public event UnityAction OnSkillAct;
+    public event UnityAction OffSkillAct;
+    
+    public Transform RotatingBody => rotatingBody;
+    public bool IsBuilding
+    {
+        get => _isBuilding;
+        set
+        {
+            _isBuilding = value;
+            Com.MyAnim.SetBool(AnimParam.isBuilding, value);
+            RotatingBody.GetComponent<LookAtPoint>().enabled = !value;
+        }
+    }
+    public float ConstSpeed
+    {
+        get => _constSpeed;
+        set => _constSpeed = value;
+    }
+    public float RepairSpeed
+    {
+        get => _repairSpeed;
+        set => _repairSpeed = value;
+    }
+
+    private bool _isBuilding;
+    [SerializeField] private float _constSpeed;
+    [SerializeField] private float _repairSpeed;
+
+    public void SetEffectAttack()
+    {
+        Com.Attack = Attack;
+    }
+    public void SetMyStat(float attack, float coolTime, float aksp = 1.0f, float castingTime = 5.0f)
+    {
+        _attack = attack;
+        Com.MyAnim.SetFloat(AnimParam.AttackSpeed, aksp);
+        skillCoolTime = coolTime;
+        maxCastingTime = castingTime;
+    }
+    #endregion
+
     #region PlayerInput
     ////////////////////////////////PlayerInput////////////////////////////////
     // 플레이어의 키 조작을 버튼 형식으로 받음
@@ -21,6 +66,21 @@ public class Player : Combat, IDamage<Player>
     private void EndAttack(InputAction.CallbackContext context)
     {
         Com.MyAnim.SetBool(AnimParam.isAttacking, false);
+    }
+    private void StartSkill(InputAction.CallbackContext context)
+    {
+        if(isCoolTime)  //쿨타임이면 리턴
+        {
+            Debug.Log($"쿨타임: {remainCoolTime}");
+            return;
+        }
+        OnSkillAct?.Invoke();
+    }
+    private void EndSkill(InputAction.CallbackContext context)
+    {
+        if (!isCastingSkill)    //스킬 시전중이 아니면 리턴
+            return;
+        OffSkillAct?.Invoke();
     }
 
 
@@ -97,18 +157,12 @@ public class Player : Combat, IDamage<Player>
 
     #region Init Setting
     ////////////////////////////////InitSetting////////////////////////////////
-    public void InitPlayerSetting()
+    public void InitPlayerSetting(PlayerComponent com)
     {
-        if (Com == null)
-        {
-            if((Com = GetComponentInChildren<PlayerComponent>()) ==null)
-            {
-                return;
-            }
-        }
-        playerUI = UIManager.Instance.CreateUI(UIID.PlayerUI, CanvasType.DynamicCanvas) as PlayerUI;
-        ChangeHpAct += playerUI.ChangeHP;
-        DeadAct += Death;
+        Com = com;
+        playerUI = UIManager.Instance.CreateUI(UIID.PlayerUI, CanvasType.DynamicCanvas) as PlayerUI;    //플레이어 UI생성 이부분은 고민해봐야함
+        ChangeHpAct += playerUI.ChangeHP;   //체력이 변할때 UI에 반영
+        DeadAct += Death;                   //죽었을 때 실행할 메서드 등록
 
         GameManager.Instance.WoodChangeAct += playerUI.ChangeWoodText;
         GameManager.Instance.StoneChangeAct += playerUI.ChangeStoneText;
@@ -122,19 +176,27 @@ public class Player : Combat, IDamage<Player>
 
         //GameManager.Instance.GoldChangeAct
 
-        CurHp = MaxHp;
-        effectData.renderers = new Renderer[1];
-        effectData.renderers[0] = Com.Myrenderer;
-        effectData.mainTexture = Com.Myrenderer.material.mainTexture;
-        attackMask = (int)BSLayerMasks.Monster;
-        ObjectPoolManager.Instance.SetPool(Com.MyEffect, 10, 10);
+        _maxHp = Com.MyStat.MaxHp;          //최대 체력 설정 직업마다 스탯을 저장해둠
+        CurHp = Com.MyStat.MaxHp;           //현재 체력 설정
+        moveSpeed = Com.MyStat.Sp;          //이동속도 설정
+     
+        effectData.SetRenderer(Com.Myrenderers);        //피격 이펙트 설정
 
+        ObjectPoolManager.Instance.SetPool(Com.MyEffect, 10, 10);   //공격 이펙트 오브젝트 풀 설정
+
+        attackMask = (int)BSLayerMasks.Monster;     //공격할 레이어 설정
+
+        //rigidbody 설정
         rBody.mass = 50.0f;
         rBody.constraints |= RigidbodyConstraints.FreezeRotationY;
 
-        Com.MyAnimEvent.AttackAct += SetEffectAttack;
+        //유니티 이벤트 등록
+        Com.MyAnimEvent.AttackAct += SetEffectAttack;   //애니메이션에서 공격 하는 시점에서 실행
         Com.MyAnimEvent.AttackAct += Com.OnAttackPoint;
 
+        OnSkillAct += OnSkill;      //스킬키를 눌렀을 때 실행
+        OffSkillAct += OffSkill;    //스킬키를 떼었을 때 실행
+        Com.SetSkillAct(this);      //스킬 사용시 실행할 메서드 설정
     }
 
     protected override void OnDisable()
@@ -187,6 +249,9 @@ public class Player : Combat, IDamage<Player>
 
         playerInputs.Player.MoveAnim.performed += SetAnimMove;
         playerInputs.Player.MoveAnim.canceled += SetAnimStop;
+
+        playerInputs.Player.Skill.performed += StartSkill;
+        playerInputs.Player.Skill.canceled += EndSkill;
         playerInputs.Enable();
         #endregion
 
@@ -225,41 +290,71 @@ public class Player : Combat, IDamage<Player>
     #endregion
 
     #region Private Method
-
-
-    #endregion
-
-    #region Public Method
-    ////////////////////////////////PublicMethod////////////////////////////////
-    public Transform RotatingBody => rotatingBody;
-    public bool IsBuilding
+    private float skillCoolTime;
+    private float remainCoolTime;
+    private float maxCastingTime;
+    private bool isCoolTime = false;
+    private bool isCastingSkill = false;
+    private Coroutine skillCasting;
+    
+    private void OnSkill()  //스킬키를 눌렀을 때 실행
     {
-        get => _isBuilding;
-        set
+        if (isCoolTime)
+            return;
+        isCoolTime = true;
+        isCastingSkill = true;
+        switch(Com.MyJob)
         {
-            _isBuilding = value;
-            Com.MyAnim.SetBool(AnimParam.isBuilding, value);
-            RotatingBody.GetComponent<LookAtPoint>().enabled = !value;
+            case Job.Mage:
+            case Job.Warrior:   //마법사, 전사는 키다운 스킬시전
+                Com.MyAnim.SetBool(AnimParam.isSkill, true);
+                break;
+            case Job.Archer:    //궁수는 범위 지정
+                (Com as Archer).ShowRange();
+                break;
         }
-    }
-    public float ConstSpeed
-    {
-        get => _constSpeed;
-        set => _constSpeed = value;
-    }
-    public float RepairSpeed
-    {
-        get => _repairSpeed;
-        set => _repairSpeed = value;
+        skillCasting = StartCoroutine(CastingTimer()); //최대 시전시간 이후 스킬종료
     }
 
-    private bool _isBuilding;
-    [SerializeField] private float _constSpeed;
-    [SerializeField] private float _repairSpeed;
-
-    public void SetEffectAttack()
+    private void OffSkill()
     {
-        Com.Attack = Attack;
+        if (!isCastingSkill)   //스킬 시전중이 아니면 리턴
+            return;
+        isCastingSkill = false;
+        if(skillCasting != null)
+            StopCoroutine(skillCasting);
+        //키다운 종료 혹은 시전시간 종료시 실행
+        switch (Com.MyJob)
+        {
+            case Job.Mage:
+            case Job.Warrior:   //마법사, 전사는 스킬시전 종료
+                Com.MyAnim.SetBool(AnimParam.isSkill, false);
+                break;
+            case Job.Archer:    //궁수는 스킬시전
+                Com.MyAnim.SetTrigger(AnimParam.OnSkill);
+                return;
+        }
+        StartCoroutine(SkillCoolTimer());
     }
+
+    private IEnumerator SkillCoolTimer()
+    {
+        remainCoolTime = skillCoolTime;
+        while(remainCoolTime > 0.0f)
+        {
+            remainCoolTime -= Time.deltaTime;
+            yield return null;
+        }
+        isCoolTime = false;
+        yield break;
+    }
+
+    private IEnumerator CastingTimer()
+    {
+        yield return new WaitForSeconds(maxCastingTime);
+        OffSkillAct?.Invoke();
+        skillCasting = null;
+    }
+
     #endregion
 }

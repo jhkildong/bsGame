@@ -1,17 +1,11 @@
+using System.ComponentModel;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-
 
 //캐릭터 컴포넌트 관리해주는 클래스
 public abstract class PlayerComponent : CharacterComponent
 {
-    protected static class EffectID
-    {
-        public const int Warrior = 3500;
-        public const int Archer = 3510;
-        public const int Mage = 3520;
-    }
-
     #region Property
     ////////////////////////////////Property////////////////////////////////
     public Transform MyEffectSpawn 
@@ -47,11 +41,14 @@ public abstract class PlayerComponent : CharacterComponent
         get => _attack;
         set => _attack = value;
     }
-    public virtual Effect MyEffect
+    public virtual PlayerAttackType MyEffect
     { 
         get => _effect;
         set => _effect = value;
     }
+    public PlayerSkill MySkillEffect { get => _skillEffect; set => _skillEffect = value; }
+    public PlayerStat MyStat => _playerStat;
+    public JobBless MyJobBless => _jobBless;
     #endregion
 
     #region Field
@@ -59,16 +56,17 @@ public abstract class PlayerComponent : CharacterComponent
     [SerializeField] protected Transform _effectSpawn;
     [SerializeField] protected Rig[] _rigs;
     [SerializeField] protected float _attack;
-    [SerializeField] protected Effect[] _effects;
     [SerializeField] protected int _effectIdx;
-    [SerializeField] protected Effect _effect;
-
-    
+    [SerializeField] protected PlayerAttackType _effect;
+    [SerializeField] protected PlayerSkill _skillEffect;
+    [SerializeField] protected PlayerStat _playerStat = new PlayerStat();
+    [SerializeField] protected JobBless _jobBless;
     #endregion
 
     #region Abstract Method
     ////////////////////////////////AbstractMethod////////////////////////////////
     public abstract void OnAttackPoint();           //_effectSpawn에 공격 생성(애니메이션에서 호출)
+    public abstract Job MyJob { get; }
     #endregion
 
     #region Public Method
@@ -80,5 +78,41 @@ public abstract class PlayerComponent : CharacterComponent
             rig.weight = weight;
         }
     }
+    public virtual void SetSkillAct(Player player)
+    {
+
+    }
+
+    //애니메이션 이벤트는 bool값을 지원안함
+    public void OnSkillEffect(int onSkill)
+    {
+        if (onSkill == 0)
+            MySkillEffect.gameObject.SetActive(false);
+        else if (onSkill == 1)
+            MySkillEffect.gameObject.SetActive(true);
+    }
     #endregion
+}
+
+public enum Job
+{
+    [Description("전사")]
+    Warrior,
+    [Description("궁수")]
+    Archer,
+    [Description("마법사")]
+    Mage
+}
+
+/// <summary>
+/// Description을 가져오는 확장메서드 TODO?: 다른 Enum에도 사용할 수 있게 확장
+/// </summary>
+public static class JobExtension
+{
+    public static string GetDescription(this Job job)
+    {
+        FieldInfo fi = job.GetType().GetField(job.ToString());
+        DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        return attributes.Length > 0 ? attributes[0].Description : job.ToString();
+    }
 }

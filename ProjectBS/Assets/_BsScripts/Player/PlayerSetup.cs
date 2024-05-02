@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
+
 public class PlayerSetup : MonoBehaviour
 {
     private GameObject playerPrefab;
     private PlayerComponent[] jobs;
-    private Effect[] types;
+    private PlayerAttackType[] types;
     private GameObject[] mageHandTypes;
     private SelectWindow playerSelectWindow;
     [SerializeField] Transform Canvas;
@@ -32,10 +33,10 @@ public class PlayerSetup : MonoBehaviour
         string[] names = new string[jobs.Length];
         for (int i = 0; i < jobs.Length; i++)
         {
-            names[i] = jobs[i].gameObject.name.Substring(3);    //00_JobName 형식으로 되있음
+            names[i] = jobs[i].MyJob.GetDescription();
         }
-
         playerSelectWindow.SelectButtons.SetButtonName(names);
+        
         for(int i = 0; i < jobs.Length; i++)
         {
             int idx = i;
@@ -56,7 +57,7 @@ public class PlayerSetup : MonoBehaviour
         sb.Append("/");
         sb.Append(job.GetType().Name);
         string path = sb.ToString();                            //경로: AttackType/JobName
-        types = Resources.LoadAll<Effect>(path);    
+        types = Resources.LoadAll<PlayerAttackType>(path);    
         string[] names = new string[types.Length];
         for (int i = 0; i < types.Length; i++)
         {
@@ -80,6 +81,13 @@ public class PlayerSetup : MonoBehaviour
 
     private void SelectType(PlayerComponent job, int idx)
     {
+        StringBuilder sb = new StringBuilder(FilePath.AttackType);
+        sb.Append("/");
+        sb.Append(job.GetType().Name);
+        sb.Append("/Skill");
+        string path = sb.ToString();        //경로: AttackType/JobName/Skill
+        PlayerSkill[] skills = Resources.LoadAll<PlayerSkill>(path);
+
         //플레이어 생성
         Player player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Player>();
         //플레이어 이름 설정
@@ -88,6 +96,9 @@ public class PlayerSetup : MonoBehaviour
         job.MyEffect = types[idx];
         //직업 생성
         PlayerComponent clone = Instantiate(job, player.RotatingBody);
+        //직업 생성 및 설정
+        clone.MySkillEffect = Instantiate(skills[idx], clone.transform);
+        clone.MySkillEffect.gameObject.SetActive(false);
         //Mage라면 MageHand도 생성
         if (clone is Mage mage)
         {
@@ -95,7 +106,7 @@ public class PlayerSetup : MonoBehaviour
             mage.SetHandEffect(go);
         }
         //플레이어 초기설정(job(PlayerComponent)의 데이터를 받아서 설정)
-        player.InitPlayerSetting();
+        player.InitPlayerSetting(clone);
         //메인카메라 타겟설정
         mainCameraAction.Target = player.transform;
         //플레이어 선택창 제거

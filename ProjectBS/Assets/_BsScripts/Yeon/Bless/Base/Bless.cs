@@ -7,10 +7,11 @@ public class Bless : MonoBehaviour
 {
     public BlessData Data => _data;
     public int CurLv => _curLevel;
+    public Dictionary<string, float> MyStatus => myStatus;
         
-    [SerializeField] private BlessData _data;
-    private int _curLevel;
-    private static int _maxLevel = 7;
+    [SerializeField] protected BlessData _data;
+    protected int _curLevel;
+    protected static int _maxLevel = 7;
 
     [SerializeField] protected Weapon weaponPrefab;
     protected Transform rotatingBody;
@@ -19,7 +20,7 @@ public class Bless : MonoBehaviour
     //레벨업시 변경될 스테이터스를 저장하는 딕셔너리
     protected Dictionary<string, float> myStatus = new Dictionary<string, float>();
 
-    public void Init(BlessData data)
+    public virtual void Init(BlessData data)
     {
         _data = data;
         rotatingBody = GameManager.Instance.Player.RotatingBody;

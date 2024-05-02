@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2099114646251466811}
   - component: {fileID: 5587021447432123891}
   - component: {fileID: 2842846949445098560}
-  - component: {fileID: 668020963073582320}
-  - component: {fileID: 8635693137762643904}
   - component: {fileID: 771393221870836686}
   m_Layer: 17
   m_Name: Heart 1
@@ -86,39 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &668020963073582320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1958168085196861139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04813817c2156494d85e52be2b7c7da8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!135 &8635693137762643904
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1958168085196861139}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.0839537
-  m_Center: {x: 0.0014882088, y: -0.002572678, z: -0.04659739}
 --- !u!114 &771393221870836686
 MonoBehaviour:
   m_ObjectHideFlags: 0

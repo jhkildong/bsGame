@@ -6,6 +6,7 @@ public class ForwardMovingWeapon : Weapon
 {
     private Rigidbody rb;
     private TrailRenderer tr;
+    [SerializeField]private float ReleaseTime = 1.5f;
 
     // Start is called before the first frame update
     private void Awake()
@@ -24,7 +25,7 @@ public class ForwardMovingWeapon : Weapon
 
     private void OnEnable()
     {
-        StartCoroutine(DelayRelease(1.5f));
+        StartCoroutine(DelayRelease(ReleaseTime));
     }
 
     public void Shoot(float speed)

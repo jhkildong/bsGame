@@ -12,7 +12,8 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
         set { BuffBuildingData = value; }
     }
 
-    Dictionary<string, float> buffType = null;
+    BuffDict buffType = new BuffDict();
+    //Dictionary<string, float> buffType = null;
     /*
     [SerializeField] private string buffName;
     [SerializeField] private float buffAmount;

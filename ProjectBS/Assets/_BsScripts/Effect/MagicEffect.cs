@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-public class MagicEffect : Effect
+public class MagicEffect : PlayerAttackType
 {
     private Rigidbody myRb;
-    private Effect hitEffect;
+    private PlayerAttackType hitEffect;
 
     protected override void Awake()
     {
@@ -15,7 +15,7 @@ public class MagicEffect : Effect
         sb.Append("/MagicHit_");
         sb.Append(ID + 100);
         string path = sb.ToString();
-        hitEffect = Resources.Load<Effect>(path);
+        hitEffect = Resources.Load<PlayerAttackType>(path);
         ObjectPoolManager.Instance.SetPool(hitEffect , 10, 10);
     }
 
@@ -34,6 +34,8 @@ public class MagicEffect : Effect
 
     protected override void OnTriggerEnter(Collider other)
     {
+        if (isStopped)
+            return;
         ObjectPoolManager.Instance.GetEffect(hitEffect, attack : Attack).
             This.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
         isStopped = true;

@@ -90,7 +90,7 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
         effectData.effectCount = 1;
         effectData.effectColor = Color.white;
         effectData.effectTime = 0.1f;
-        effectData.SetRenderer(this);
+        effectData.SetRenderer(_monsterComponent.Myrenderers);
 
         ResetTarget();
         DeadAct += Die;
@@ -215,6 +215,8 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
 
     protected virtual void Update()
     {
+        if (myTarget == null)
+            ResetTarget();
         StateProcess();
 
         if (myState == State.Death) return;

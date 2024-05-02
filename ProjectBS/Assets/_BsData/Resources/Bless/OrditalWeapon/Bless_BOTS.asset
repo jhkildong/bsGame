@@ -13,22 +13,23 @@ MonoBehaviour:
   m_Name: Bless_BOTS
   m_EditorClassIdentifier: 
   _id: 1010
-  _name: BlessingOfTheSword
+  _name: "\uAC80\uC758 \uCD95\uBCF5"
+  _description: "\uACF5\uC804\uD558\uB294 \uAC80\uC744 1\uAC1C \uC0DD\uC131\uD55C\uB2E4."
   _prefab: {fileID: 5875949191823715278, guid: 70fb47a1c8b74ea4b8018d233dbede6b, type: 3}
   _lvDataList:
   - name: Attack
-    defaultValue: 20
+    defaultValue: 10
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0.2
+    - 0
+    - 0
+    - 0.2
+    - 0
   - name: Amount
-    defaultValue: 0
+    defaultValue: 1
     levelUpType: 0
     levelUpTable:
     - 1
@@ -36,36 +37,36 @@ MonoBehaviour:
     - 0
     - 1
     - 0
-    - 1
     - 0
+    - 1
   - name: AtRange
     defaultValue: 3
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   - name: RotSpeed
     defaultValue: 130
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0.5
+    - 0
+    - 0
   - name: Size
-    defaultValue: 0
+    defaultValue: 2
     levelUpType: 0
     levelUpTable:
-    - 2
-    - 4
+    - 0
+    - 0
     - 0
     - 0
     - 0

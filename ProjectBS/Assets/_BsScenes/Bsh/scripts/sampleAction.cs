@@ -14,7 +14,8 @@ public class sampleAction : MonoBehaviour
     {
         Hp = 100;
         target = GameObject.Find("Player").transform;
-        animator.SetFloat("groundLocomotion", 0.5f);
+        //밑에 애니매이션에 앞으로 걸어가는거도 포함되어 있으니 주의(뒤가 가는 속도)
+        animator.SetFloat("groundLocomotion", 0.02f);
         StartCoroutine(CheckState());
     }
     void Update()
@@ -25,6 +26,7 @@ public class sampleAction : MonoBehaviour
     {
         Hp -= 20;
         Debug.Log(Hp);
+
         if(other.gameObject.layer == 16)
         { 
             target = other.gameObject.transform;

@@ -13,20 +13,22 @@ MonoBehaviour:
   m_Name: Bless_PF
   m_EditorClassIdentifier: 
   _id: 1030
-  _name: PetFlame
+  _name: "\uD3AB\uBD88"
+  _description: "\uD30C\uC774\uC5B4\uBCFC \uACF5\uACA9\uC744 \uD558\uB294 \uD654\uC2E0\uC744
+    1\uBA85 \uC0DD\uC131\uD55C\uB2E4."
   _prefab: {fileID: 1345635395758532283, guid: 74c555f52e0e4454e99b8349ba2d27be, type: 3}
   _lvDataList:
   - name: Attack
-    defaultValue: 20
+    defaultValue: 10
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0.2
+    - 0
+    - 0
+    - 0.3
+    - 0
   - name: Amount
     defaultValue: 0
     levelUpType: 0
@@ -35,20 +37,20 @@ MonoBehaviour:
     - 0
     - 1
     - 0
-    - 1
+    - 0
     - 0
     - 1
   - name: ReTime
     defaultValue: 2
-    levelUpType: 1
+    levelUpType: 2
     levelUpTable:
-    - 1
-    - 0.5
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0
+    - 0
+    - 0.2
   - name: ArrowAmount
     defaultValue: 0
     levelUpType: 0
@@ -56,7 +58,7 @@ MonoBehaviour:
     - 1
     - 0
     - 0
-    - 1
     - 0
+    - 1
     - 0
     - 0

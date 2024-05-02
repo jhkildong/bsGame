@@ -1751,7 +1751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animEvent: {fileID: 7283719751552211798}
   _anim: {fileID: 3304073722649678989}
-  _renderer: {fileID: 4019850966563498428}
+  _renderers: []
   _effectSpawn: {fileID: 4595644253339077544}
   _rigs:
   - {fileID: 5858276601391895136}
@@ -1759,7 +1759,15 @@ MonoBehaviour:
   _attack: 0
   _effects: []
   _effectIdx: 0
-  _effect: {fileID: 0}
+  _effect: {fileID: 1577195566173930833, guid: e78bac1815a7fb340bf845d2836468f3, type: 3}
+  _playerStat:
+    _maxHp: 500
+    _ak: 15
+    _sp: 4
+    _akSp: 1
+    _skillDmg: 20
+    _skillCoolTime: 1
+    _castingTime: 5
   handEffectPoint: {fileID: 2670382497305005748}
 --- !u!1 &5182516196938231232
 GameObject:

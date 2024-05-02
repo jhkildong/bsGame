@@ -176,6 +176,13 @@ MonoBehaviour:
   _effects: []
   _effectIdx: 0
   _effect: {fileID: 0}
+  _playerStat:
+    _maxHp: 500
+    _ak: 20
+    _sp: 4
+    _akSp: 1
+    _skillDmg: 50
+    _skillCoolTime: 50
 --- !u!1 &401940463410464698
 GameObject:
   m_ObjectHideFlags: 0

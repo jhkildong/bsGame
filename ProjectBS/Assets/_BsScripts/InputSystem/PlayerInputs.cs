@@ -116,6 +116,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Mash(tapDelay=0.15,pressPoint=0.1)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skill"",
+                    ""type"": ""Button"",
+                    ""id"": ""bcb0285b-fca1-43bf-9332-61b6cbde6c4d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -261,6 +270,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""MoveAnim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb8498da-3e26-44e2-996c-b7a94545367c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -296,6 +316,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_ReleaseA = m_Player.FindAction("ReleaseA", throwIfNotFound: true);
         m_Player_ReleaseD = m_Player.FindAction("ReleaseD", throwIfNotFound: true);
         m_Player_MoveAnim = m_Player.FindAction("MoveAnim", throwIfNotFound: true);
+        m_Player_Skill = m_Player.FindAction("Skill", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -367,6 +388,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ReleaseA;
     private readonly InputAction m_Player_ReleaseD;
     private readonly InputAction m_Player_MoveAnim;
+    private readonly InputAction m_Player_Skill;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -381,6 +403,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @ReleaseA => m_Wrapper.m_Player_ReleaseA;
         public InputAction @ReleaseD => m_Wrapper.m_Player_ReleaseD;
         public InputAction @MoveAnim => m_Wrapper.m_Player_MoveAnim;
+        public InputAction @Skill => m_Wrapper.m_Player_Skill;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -420,6 +443,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @MoveAnim.started += instance.OnMoveAnim;
             @MoveAnim.performed += instance.OnMoveAnim;
             @MoveAnim.canceled += instance.OnMoveAnim;
+            @Skill.started += instance.OnSkill;
+            @Skill.performed += instance.OnSkill;
+            @Skill.canceled += instance.OnSkill;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -454,6 +480,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @MoveAnim.started -= instance.OnMoveAnim;
             @MoveAnim.performed -= instance.OnMoveAnim;
             @MoveAnim.canceled -= instance.OnMoveAnim;
+            @Skill.started -= instance.OnSkill;
+            @Skill.performed -= instance.OnSkill;
+            @Skill.canceled -= instance.OnSkill;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -492,5 +521,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnReleaseA(InputAction.CallbackContext context);
         void OnReleaseD(InputAction.CallbackContext context);
         void OnMoveAnim(InputAction.CallbackContext context);
+        void OnSkill(InputAction.CallbackContext context);
     }
 }
