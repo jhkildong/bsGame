@@ -32,7 +32,6 @@ public class AttackBuildingBase : Building, IBuffable
 
     public UnityEvent AtkEvent; //AtkDelay 에서 Invoke
 
-   
     protected Vector3 relativeDir; // 투사체를 발사할 방향벡터
 
     public Buff getBuff { get; set; } = new Buff();

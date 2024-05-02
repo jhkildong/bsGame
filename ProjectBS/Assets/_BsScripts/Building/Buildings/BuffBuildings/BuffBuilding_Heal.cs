@@ -11,7 +11,7 @@ public class BuffBuilding_Heal : BuffBuildingBase
         get { return HealingBuildingData; }
         set { HealingBuildingData = value; }
     }
-
+    [SerializeField] private HitEffects healEffect;
     [SerializeField] private float healAmount; // 힐량
     [SerializeField] private float healDelay; // 힐 틱당 딜레이
     [SerializeField] private bool hasDuratuon; // 지속시간이 있는가?
@@ -65,6 +65,7 @@ public class BuffBuilding_Heal : BuffBuildingBase
                 if (targets.Contains(obj))
                 {
                     healable.ReceiveHealEffect(healAmount);
+                    EffectPoolManager.Instance.SetParentEffect(healEffect, healEffect.ID, obj.transform); // 힐 이펙트를 받는 객체 자식으로 생성밑 풀링
                 }
                 else
                 {

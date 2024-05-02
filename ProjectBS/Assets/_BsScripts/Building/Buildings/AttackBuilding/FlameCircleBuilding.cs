@@ -18,8 +18,8 @@ public class FlameCircleBuilding : AttackBuilding_Area
         if (target != null && atkDelaying)
         {
 
-            EffectPoolManager.Instance.SetActiveRangeObject<PointAtkEffectHit>(myEffect, effectPool, target, _finalDmg, _atkRadius, 0, 0, _atkSpeed,_hitDelay, _atkDuration);
-
+            //EffectPoolManager.Instance.SetActiveRangeObject<PointAtkEffectHit>(myEffect, effectPool, target, _finalDmg, _atkRadius, 0, 0, _atkSpeed,_hitDelay, _atkDuration);
+            EffectPoolManager.Instance.SetActiveRangeObject(atkEffect, effectPool, target, _atkId, _finalDmg, _atkRadius, 0, 0, _atkSpeed, _hitDelay, _atkDuration);
         }
     }
 }

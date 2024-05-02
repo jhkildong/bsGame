@@ -32,7 +32,7 @@ public class Effect : MonoBehaviour, IPoolable
     [SerializeField] private float _size;
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private GameObject prefab;
-    [SerializeField] private GameObject hitEffectPrefab;
+    [SerializeField] private HitEffects hitEffectPrefab;
     #endregion
 
     protected bool isStopped = false;
@@ -72,8 +72,11 @@ public class Effect : MonoBehaviour, IPoolable
         {
             //monster.TakeDamage(Attack);
             monster.TakeDamageEffect(Attack);
-            if(hitEffectPrefab != null)
-            EffectPoolManager.Instance.SetActiveEffect<GameObject>(hitEffectPrefab, other.gameObject); //피격이펙트 생성
+            Vector3 contact = other.ClosestPoint(transform.position); // 충돌한 위치와 가장 가까운 점을 찾는다.
+            Debug.Log(contact);
+            if (hitEffectPrefab != null)
+
+            EffectPoolManager.Instance.SetActiveHitEffect(hitEffectPrefab, contact, hitEffectPrefab.ID); //피격이펙트 생성
         }
     }
 

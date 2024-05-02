@@ -19561,6 +19561,8 @@ MonoBehaviour:
   _nextUpgrade: {fileID: 0}
   isInstalled: 0
   iscompletedBuilding: 0
+  hpBar: {fileID: 0}
+  AuraEffect: {fileID: 0}
   atkType: 2
   target: {fileID: 0}
   atkDelaying: 0
@@ -19585,7 +19587,8 @@ MonoBehaviour:
   _atkDuration: 0
   _atkRadius: 0
   _additionalAtk: 0
-  myEffect: {fileID: 995855345012900889, guid: e17f81322b971a945ab1380a4353e1ba, type: 3}
+  _atkId: 0
+  atkEffect: {fileID: -5355598531823109799, guid: e17f81322b971a945ab1380a4353e1ba, type: 3}
 --- !u!1 &4525046010174911031
 GameObject:
   m_ObjectHideFlags: 0

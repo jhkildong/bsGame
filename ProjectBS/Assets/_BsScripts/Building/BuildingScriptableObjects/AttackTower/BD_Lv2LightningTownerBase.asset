@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9eb4d418614f0409eceb9ab44a0641, type: 3}
   m_Name: BD_Lv2LightningTownerBase
   m_EditorClassIdentifier: 
-  _id: 4
+  _id: 4511
   _buildingName: Lv2LightningTower
   _maxHp: 1000
   _curHp: 1000

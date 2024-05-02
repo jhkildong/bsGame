@@ -9710,11 +9710,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3620
+  _name: 
   _attack: 0
   _speed: 0
   _size: 0
   _particleSystem: {fileID: 1835174905073365011}
   prefab: {fileID: 1835174905073365006}
+  hitEffectPrefab: {fileID: 7131563903533645161, guid: 7bfaab85414ac9042b9c7fa07881786a, type: 3}
 --- !u!198 &1835174905073365011
 ParticleSystem:
   m_ObjectHideFlags: 0

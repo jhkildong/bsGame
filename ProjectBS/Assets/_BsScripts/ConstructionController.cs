@@ -7,7 +7,8 @@ public class ConstructionController : MonoBehaviour
 {
     [SerializeField]private float buildApplyRange = 2.0f;
     private ConstructionKeyUI buildUI;
-    private BuildingInteractionUI buildInteractionUI;
+
+    private BuildingInteractionUI buildingInteractionUI;// 건설이후 상호작용 ui 업그레이드,업그레이드 소모재화, 파괴
     private Transform hitTarget = null;
     private Building buildTarget = null;
 
@@ -17,8 +18,9 @@ public class ConstructionController : MonoBehaviour
         UIManager.Instance.SetPool(UIID.ProgressBar, 10, 10);
         buildUI.gameObject.SetActive(false);
 
-        buildInteractionUI = UIManager.Instance.CreateUI(UIID.BuildingInteractionUI, CanvasType.DynamicCanvas) as BuildingInteractionUI;
-        buildInteractionUI.gameObject.SetActive(false);
+        buildingInteractionUI = UIManager.Instance.CreateUI(UIID.BuildingInteractionUI, CanvasType.DynamicCanvas) as BuildingInteractionUI;
+        UIManager.Instance.SetPool(UIID.ProgressBar, 10, 10);
+        buildingInteractionUI.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -27,7 +29,7 @@ public class ConstructionController : MonoBehaviour
 
         //레이캐스트로 건설할 수 있는 오브젝트 탐색
         if (Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), transform.forward,
-            out hit, buildApplyRange, ((int)BSLayerMasks.InCompletedBuilding)| (int)BSLayerMasks.Building))
+            out hit, buildApplyRange, (int)BSLayerMasks.InCompletedBuilding))
         {
             //새로운 타겟일 경우 갱신
             if (hitTarget != hit.transform)
@@ -49,11 +51,11 @@ public class ConstructionController : MonoBehaviour
                 //색깔 변경
                 buildTarget.SelectedProgress?.Invoke(true);
             }
-            if (Input.GetKeyDown(KeyCode.B)|| Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.B))
             {
                 GameManager.Instance.Player.IsBuilding = true;
             }
-            if(Input.GetKeyUp(KeyCode.B)|| Input.GetKeyUp(KeyCode.R))
+            if(Input.GetKeyUp(KeyCode.B))
             {
                 GameManager.Instance.Player.IsBuilding = false;
             }
@@ -62,46 +64,80 @@ public class ConstructionController : MonoBehaviour
             {
                 buildTarget.Construction(GameManager.Instance.Player.ConstSpeed* Time.deltaTime);
             }
-
-            if (Input.GetKey(KeyCode.R) && buildTarget.CurHp < buildTarget.MaxHp)
-            {
-                //수리구현
-                buildTarget.Repair(GameManager.Instance.Player.RepairSpeed * Time.deltaTime);
-                Debug.Log("수리!");
-            }
             //키 입력시 파괴
             else if (Input.GetKeyDown(KeyCode.G))
             {
                 buildTarget.Destroy();
             }
         }
-        /*
+
+
+
+        
         else if (Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), transform.forward,
             out hit, buildApplyRange, (int)BSLayerMasks.Building))
         {
+            if (hitTarget != hit.transform)
+            {
+                hitTarget = hit.transform;
+                buildTarget = hitTarget.GetComponentInChildren<Building>();
+                //업그레이드 중이 아닐때 ui팝업
+                if (!buildTarget.isUpgrading)
+                {
+                    buildingInteractionUI.gameObject.SetActive(true);
+                    buildingInteractionUI.myTarget = hitTarget;
 
-            if(Input.GetKeyDown (KeyCode.R)) 
+                    if (buildTarget._nextUpgrade != null)//업그레이드 가능 건물일 경우
+                    {
+                        buildingInteractionUI.upgradeUI.SetActive(true);
+                        //필요재화 보이기
+                        buildingInteractionUI.reqWood.text = buildTarget.upgradeWood.ToString();
+                        buildingInteractionUI.reqStone.text = buildTarget.upgradeStone.ToString();
+                        buildingInteractionUI.reqIron.text = buildTarget.upgradeIron.ToString();
+                    }
+                    else//아닌경우
+                    {
+                        buildingInteractionUI.upgradeUI.SetActive(false);
+                    }
+                }
+            }
+
+            //건설중일 경우 상호작용키 팝업 비활성화
+            if (buildTarget.isUpgrading)
+            {
+                buildingInteractionUI.gameObject.SetActive(false);
+                buildingInteractionUI.myTarget = null;
+                //색깔 변경
+                buildTarget.SelectedProgress?.Invoke(true);
+            }
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 GameManager.Instance.Player.IsBuilding = true;
             }
-            if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyUp(KeyCode.R))
             {
                 GameManager.Instance.Player.IsBuilding = false;
             }
             if (Input.GetKey(KeyCode.R) && buildTarget.CurHp < buildTarget.MaxHp)
             {
                 //수리구현
-                buildTarget.Repair(GameManager.Instance.Player.RepairSpeed*Time.deltaTime);
+                buildTarget.Repair(GameManager.Instance.Player.RepairSpeed * Time.deltaTime);
                 Debug.Log("수리!");
             }
-            //키 입력시 파괴
-            else if (Input.GetKeyDown(KeyCode.E))
+
+
+            if (buildTarget._nextUpgrade != null && Input.GetKey(KeyCode.U))
+            {
+                buildTarget.Upgrade(GameManager.Instance.Player.ConstSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetKeyDown(KeyCode.G))
             {
                 buildTarget.Destroy();
             }
         }
-        */
-        //레이에 감지된 건물이 없을 경우
+
+                //레이에 감지된 건물이 없을 경우
         else
         {
             //타겟이 있었을 경우 색깔 변경
@@ -110,6 +146,7 @@ public class ConstructionController : MonoBehaviour
             hitTarget = null;
             buildTarget = null;
             buildUI.gameObject.SetActive(false);
+            buildingInteractionUI.gameObject.SetActive(false);
         }
     }
 }

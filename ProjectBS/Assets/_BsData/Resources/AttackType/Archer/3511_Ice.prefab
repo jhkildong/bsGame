@@ -10014,6 +10014,7 @@ MonoBehaviour:
   _size: 0
   _particleSystem: {fileID: 1235968222283746921}
   prefab: {fileID: 7951552049088545877}
+  hitEffectPrefab: {fileID: 4796161542533998717, guid: eb99b7676875c25489b057740cc0c554, type: 3}
 --- !u!198 &1235968222283746921
 ParticleSystem:
   m_ObjectHideFlags: 0

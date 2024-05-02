@@ -28,7 +28,18 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
     [SerializeField] protected short _requireIron;      // 철 요구 재료개수
     [SerializeField] protected float _constTime;     // 건물 총 건설시간
     [SerializeField] protected float _repairSpeed;    // 건물 수리속도
-    [SerializeField] protected GameObject _nextUpgrade;  //다음 업그레이드 건물
+    public GameObject _nextUpgrade;  //다음 업그레이드 건물
+    [SerializeField] protected float _upgradeTime; // 업그레이드 소요시간
+
+    [SerializeField] protected int _upgradeWood; // 업그레이드 필요나무
+    [SerializeField] protected int _upgradeStone; // 업그레이드 필요돌
+    [SerializeField] protected int _upgradeIron; // 업그레이드 필요철
+
+    public int upgradeWood => _upgradeWood;
+    public int upgradeStone => _upgradeStone;
+    public int upgradeIron => _upgradeIron;
+
+
 
 
 
@@ -38,9 +49,11 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
 
     [SerializeField] public bool iscompletedBuilding; // 건물의 건설 여부
     float curConstTime = 0.0f; //건설한 시간
+    float upConstTime = 0.0f;
 
     //Yeon 추가
     [NonSerialized] public bool isConstructing = false;  // 건설중인지 여부
+    [NonSerialized] public bool isUpgrading = false;
     private UnityAction<float> ConstructionProgress;    // 건설 진행도 증가시 호출
     public UnityAction<bool> SelectedProgress;          // 건설 선택/해제시 호출
 
@@ -99,6 +112,15 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         _repairSpeed = Data.repairSpeed;
         _nextUpgrade = Data.nextUpgrade;
         layerNum = LayerMask.NameToLayer("Building");
+        _upgradeTime = _constTime;
+
+        if(_nextUpgrade!=null) //업글가능한 건물이라면
+        {
+            Building upBd = _nextUpgrade.GetComponent<Building>();
+            _upgradeWood = upBd.Data.requireWood;
+            _upgradeStone = upBd.Data.requireStone;
+            _upgradeIron = upBd.Data.requireIron;
+        }
     }
     protected virtual void Update()
     {
@@ -117,42 +139,22 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         }
         */
 
-        //////ConstructionController로 옮길것!!!!!!!!!!!!
 
-        if (iscompletedBuilding && _nextUpgrade != null && Input.GetKeyDown(KeyCode.U)) 
-        {
-            //다음 업그레이드가있고, 재화가 충족될시
-            Building upgradeBD = _nextUpgrade.GetComponent<Building>();
-            if (GameManager.Instance.CurWood() >= upgradeBD.Data.requireWood && GameManager.Instance.CurStone() >= upgradeBD.Data.requireStone
-                && GameManager.Instance.CurIron() >= upgradeBD.Data.requireIron)
-            {
-                //자원소모
-                GameManager.Instance.ChangeWood(-upgradeBD.Data.requireWood);
-                GameManager.Instance.ChangeStone(-upgradeBD.Data.requireStone);
-                GameManager.Instance.ChangeIron(-upgradeBD.Data.requireIron);
-                //건물 교체
-                Upgrade();
-
-            }
-            else
-            {
-                return;
-            }
-        }
-        
-        
     }
 
 
     public void OnInstalled() // 건물이 세팅될때(클릭으로 건설위치가 정해질때) instantiateBuilding 에서 직접 호출중
     {
         isInstalled = true;
-        
-        //세팅될때 자원 소모
+
+        UseResources(); // 자원 소모
+
+    }
+    public void UseResources()
+    {
         GameManager.Instance.ChangeWood(-_requireWood);
         GameManager.Instance.ChangeStone(-_requireStone);
         GameManager.Instance.ChangeIron(-_requireIron);
-
     }
 
     public void Construction(float constSpeed) //건설중
@@ -185,8 +187,6 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
             {
                 ConstructComplete();
             }
-
-            
         }
 
 
@@ -208,6 +208,7 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         {
             AuraEffect.SetActive(true);
         }
+
         Debug.Log("건설 완료");
         BuildingHpBar buildingHpBar = UIManager.Instance.GetUI(UIID.BuildingHpBar, CanvasType.DynamicCanvas) as BuildingHpBar;
         buildingHpBar.myTarget = transform;
@@ -217,19 +218,53 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         GameManager.Instance.Player.IsBuilding = false;
     }
 
-    protected void Upgrade() //건물 업그레이드
+    public void Upgrade(float constSpeed) //건물 업그레이드
+    {
+        
+        if (!isUpgrading && (GameManager.Instance.CurWood() >= _upgradeWood || GameManager.Instance.CurStone() >= _upgradeStone || GameManager.Instance.CurIron() >= _upgradeIron))
+        {
+            isUpgrading = true;
+            UseResources();
+            ProgressBar progressBar = UIManager.Instance.GetUI(UIID.ProgressBar, CanvasType.DynamicCanvas) as ProgressBar;
+            progressBar.myTarget = transform;
+            ConstructionProgress += progressBar.ChnageProgress;
+            SelectedProgress += progressBar.Selected;
+
+        }
+
+        if (iscompletedBuilding && isInstalled && isUpgrading) //완성 건물일때, 건설 세팅 상태일때
+        {
+            upConstTime += constSpeed;
+            ConstructionProgress?.Invoke(upConstTime / _upgradeTime);
+            Debug.Log("건설 진행 시간 :" + upConstTime);
+            if (upConstTime >= _upgradeTime)
+            {
+                UpgradeComplete();
+            }
+        }
+        
+    
+    }
+    public void UpgradeComplete()
     {
         Vector3 pos = transform.position;
-        GameObject upgradeBD = Instantiate(_nextUpgrade.gameObject,pos,transform.rotation);
+        GameObject upgradeBD = Instantiate(_nextUpgrade.gameObject, pos, transform.rotation);
         Building bd = upgradeBD.GetComponent<Building>();
         bd.isInstalled = true;
         bd.iscompletedBuilding = true;
-        bd.gameObject.layer = layerNum; 
+        bd.gameObject.layer = layerNum;
+
         bd.gameObject.SetActive(false);
         bd.gameObject.SetActive(true);
+
+        BuildingHpBar buildingHpBar = UIManager.Instance.GetUI(UIID.BuildingHpBar, CanvasType.DynamicCanvas) as BuildingHpBar;
+        buildingHpBar.myTarget = bd.transform;
+        bd.ChangeHpAct += buildingHpBar.ChangeHP;
+        bd.CurHp = _maxHp;
         Destroy();
-    
     }
+
+
 
 
     public void ReceiveHeal(float heal)
@@ -293,6 +328,7 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
     public virtual void Destroy()
     {
         CurHp = 0.0f;
+        ConstructionProgress?.Invoke(1); //건설이나 업그레이드 progressbar도 지우기 위한 코드
         Destroy(gameObject);
 
     }

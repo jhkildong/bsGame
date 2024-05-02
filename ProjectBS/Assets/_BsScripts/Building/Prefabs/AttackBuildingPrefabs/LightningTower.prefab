@@ -197,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 5732704864016183740}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.836, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -274,8 +274,11 @@ MonoBehaviour:
   _requireIron: 0
   _constTime: 0
   _repairSpeed: 0
+  _nextUpgrade: {fileID: 0}
   isInstalled: 0
   iscompletedBuilding: 0
+  hpBar: {fileID: 0}
+  AuraEffect: {fileID: 0}
   atkType: 2
   target: {fileID: 0}
   atkDelaying: 0
@@ -292,9 +295,13 @@ MonoBehaviour:
       m_Calls: []
   AreaBuildingData: {fileID: 11400000, guid: 0e6a96150ececa241ac6f70f3f209194, type: 2}
   _finalDmg: 0
+  _finalAs: 0
+  _finalRadius: 0
   _atkPower: 0
-  _atkDelay: 0
+  _atkSpeed: 0
   _hitDelay: 0
   _atkDuration: 0
   _atkRadius: 0
-  myEffect: {fileID: 995855345012900889, guid: e17f81322b971a945ab1380a4353e1ba, type: 3}
+  _additionalAtk: 0
+  _atkId: 0
+  atkEffect: {fileID: -5355598531823109799, guid: e17f81322b971a945ab1380a4353e1ba, type: 3}

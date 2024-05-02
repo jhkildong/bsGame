@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5813323033182016711}
   - component: {fileID: 150905114576485356}
   m_Layer: 5
-  m_Name: BuildButton (4)
+  m_Name: BuildProjectileBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2021,7 +2021,7 @@ GameObject:
   - component: {fileID: 4367200711444142742}
   - component: {fileID: 6735510659792567754}
   m_Layer: 5
-  m_Name: BuildButton (5)
+  m_Name: BuildFlameCircleTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2165,7 +2165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb12a8ec1817104295b7ae8fb646892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building: {fileID: 5732704864016183740, guid: 18a0b9192432c0e4dbc7a1990eaa651e, type: 3}
+  building: {fileID: 7701193478311067084, guid: 6e6354cacf78cdd4f840921ef088cef5, type: 3}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -2426,7 +2426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1211256908135307355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2434,7 +2434,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6676310489559237100}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
