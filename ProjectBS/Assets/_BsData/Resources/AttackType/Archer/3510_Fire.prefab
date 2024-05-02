@@ -14679,11 +14679,7 @@ MonoBehaviour:
   _size: 0
   _particleSystem: {fileID: 1235968222283746921}
   prefab: {fileID: 7951552049088545877}
-<<<<<<< Updated upstream
   hitEffectPrefab: {fileID: 7131563903533645161, guid: 7bfaab85414ac9042b9c7fa07881786a, type: 3}
-=======
-  hitEffectPrefab: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!198 &1235968222283746921
 ParticleSystem:
   m_ObjectHideFlags: 0
