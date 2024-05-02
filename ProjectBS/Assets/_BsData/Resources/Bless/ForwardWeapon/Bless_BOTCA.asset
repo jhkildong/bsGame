@@ -13,48 +13,50 @@ MonoBehaviour:
   m_Name: Bless_BOTCA
   m_EditorClassIdentifier: 
   _id: 1050
-  _name: BlessingOfTheColdAir
+  _name: "\uB0C9\uAE30\uC758 \uCD95\uBCF5"
+  _description: "\uC804\uBC29\uC73C\uB85C \uBC1C\uC0AC\uD558\uB294 \uC5BC\uC74C\uC744
+    1\uAC1C \uC0DD\uC131\uD55C\uB2E4."
   _prefab: {fileID: 5188791887647992852, guid: 865028827c674bb4eaecabe8318849a3, type: 3}
   _lvDataList:
   - name: Attack
-    defaultValue: 20
+    defaultValue: 10
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 2
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0.2
+    - 0
+    - 0
+    - 0
+    - 0
   - name: Amount
-    defaultValue: 0
+    defaultValue: 1
     levelUpType: 0
     levelUpTable:
     - 1
-    - 5
     - 1
     - 0
     - 1
     - 0
+    - 1
     - 1
   - name: ReTime
     defaultValue: 2
-    levelUpType: 1
+    levelUpType: 2
     levelUpTable:
-    - 1
-    - 0.8
     - 0
     - 0
     - 0
+    - 0
+    - 0.5
     - 0
     - 0
   - name: Size
-    defaultValue: 0
+    defaultValue: 2
     levelUpType: 0
     levelUpTable:
-    - 2
-    - 4
+    - 0
+    - 0
     - 0
     - 0
     - 0

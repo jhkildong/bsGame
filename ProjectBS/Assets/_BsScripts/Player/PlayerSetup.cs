@@ -8,7 +8,7 @@ public class PlayerSetup : MonoBehaviour
 {
     private GameObject playerPrefab;
     private PlayerComponent[] jobs;
-    private Effect[] types;
+    private PlayerAttackType[] types;
     private GameObject[] mageHandTypes;
     private SelectWindow playerSelectWindow;
     [SerializeField] Transform Canvas;
@@ -57,7 +57,7 @@ public class PlayerSetup : MonoBehaviour
         sb.Append("/");
         sb.Append(job.GetType().Name);
         string path = sb.ToString();                            //경로: AttackType/JobName
-        types = Resources.LoadAll<Effect>(path);    
+        types = Resources.LoadAll<PlayerAttackType>(path);    
         string[] names = new string[types.Length];
         for (int i = 0; i < types.Length; i++)
         {
@@ -81,6 +81,13 @@ public class PlayerSetup : MonoBehaviour
 
     private void SelectType(PlayerComponent job, int idx)
     {
+        StringBuilder sb = new StringBuilder(FilePath.AttackType);
+        sb.Append("/");
+        sb.Append(job.GetType().Name);
+        sb.Append("/Skill");
+        string path = sb.ToString();        //경로: AttackType/JobName/Skill
+        PlayerSkill[] skills = Resources.LoadAll<PlayerSkill>(path);
+
         //플레이어 생성
         Player player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Player>();
         //플레이어 이름 설정
@@ -89,6 +96,9 @@ public class PlayerSetup : MonoBehaviour
         job.MyEffect = types[idx];
         //직업 생성
         PlayerComponent clone = Instantiate(job, player.RotatingBody);
+        //직업 생성 및 설정
+        clone.MySkillEffect = Instantiate(skills[idx], clone.transform);
+        clone.MySkillEffect.gameObject.SetActive(false);
         //Mage라면 MageHand도 생성
         if (clone is Mage mage)
         {

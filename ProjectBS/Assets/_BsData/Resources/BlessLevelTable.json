@@ -1,169 +1,53 @@
 {
-  "Bless_BOTCA": [
-    {
-      "name": "Attack",
-      "defaultValue": 20.0,
-      "levelUpType": 1,
-      "levelUpTable": [
-        1.0,
-        2.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
-      ]
-    },
-    {
-      "name": "Amount",
-      "defaultValue": 0.0,
-      "levelUpType": 0,
-      "levelUpTable": [
-        1.0,
-        5.0,
-        1.0,
-        0.0,
-        1.0,
-        0.0,
-        1.0
-      ]
-    },
-    {
-      "name": "ReTime",
-      "defaultValue": 2.0,
-      "levelUpType": 1,
-      "levelUpTable": [
-        1.0,
-        0.8,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "name": "Size",
-      "defaultValue": 0.0,
-      "levelUpType": 0,
-      "levelUpTable": [
-        2.0,
-        4.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ]
-    }
-  ],
-  "Bless_CS": [
-    {
-      "name": "Attack",
-      "defaultValue": 20.0,
-      "levelUpType": 1,
-      "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
-      ]
-    },
-    {
-      "name": "Amount",
-      "defaultValue": 0.0,
-      "levelUpType": 0,
-      "levelUpTable": [
-        5.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ]
-    },
-    {
-      "name": "ReTime",
-      "defaultValue": 2.0,
-      "levelUpType": 1,
-      "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
-      ]
-    },
-    {
-      "name": "Size",
-      "defaultValue": 0.0,
-      "levelUpType": 0,
-      "levelUpTable": [
-        2.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ]
-    }
-  ],
   "Bless_LD": [
     {
       "name": "Attack",
-      "defaultValue": 20.0,
+      "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
-      ]
-    },
-    {
-      "name": "Amount",
-      "defaultValue": 0.0,
-      "levelUpType": 0,
-      "levelUpTable": [
-        5.0,
         0.0,
+        0.2,
         0.0,
-        0.0,
+        0.3,
         0.0,
         0.0,
         0.0
       ]
     },
     {
-      "name": "ReTime",
-      "defaultValue": 2.0,
-      "levelUpType": 1,
+      "name": "Amount",
+      "defaultValue": 1.0,
+      "levelUpType": 0,
       "levelUpTable": [
         1.0,
+        0.0,
         1.0,
+        0.0,
         1.0,
-        1.0,
-        1.0,
-        1.0,
+        0.0,
         1.0
       ]
     },
     {
+      "name": "ReTime",
+      "defaultValue": 2.0,
+      "levelUpType": 2,
+      "levelUpTable": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        0.0
+      ]
+    },
+    {
       "name": "Size",
-      "defaultValue": 0.0,
+      "defaultValue": 2.0,
       "levelUpType": 0,
       "levelUpTable": [
-        2.0,
+        0.0,
         0.0,
         0.0,
         0.0,
@@ -176,26 +60,12 @@
   "Bless_VG": [
     {
       "name": "Attack",
-      "defaultValue": 20.0,
+      "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
-      ]
-    },
-    {
-      "name": "Amount",
-      "defaultValue": 0.0,
-      "levelUpType": 0,
-      "levelUpTable": [
-        5.0,
         0.0,
         0.0,
+        0.3,
         0.0,
         0.0,
         0.0,
@@ -203,25 +73,155 @@
       ]
     },
     {
+      "name": "Amount",
+      "defaultValue": 1.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
       "name": "ReTime",
+      "defaultValue": 2.0,
+      "levelUpType": 2,
+      "levelUpTable": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "name": "Size",
       "defaultValue": 2.0,
       "levelUpType": 1,
       "levelUpTable": [
+        0.0,
+        0.25,
+        0.0,
+        0.0,
+        0.25,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "Bless_CS": [
+    {
+      "name": "Attack",
+      "defaultValue": 10.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.3,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Amount",
+      "defaultValue": 1.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "ReTime",
+      "defaultValue": 2.0,
+      "levelUpType": 2,
+      "levelUpTable": [
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.2
+      ]
+    },
+    {
+      "name": "Size",
+      "defaultValue": 2.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "Bless_BOTCA": [
+    {
+      "name": "Attack",
+      "defaultValue": 10.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Amount",
+      "defaultValue": 1.0,
+      "levelUpType": 0,
+      "levelUpTable": [
         1.0,
         1.0,
+        0.0,
         1.0,
-        1.0,
-        1.0,
+        0.0,
         1.0,
         1.0
       ]
     },
     {
+      "name": "ReTime",
+      "defaultValue": 2.0,
+      "levelUpType": 2,
+      "levelUpTable": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.0
+      ]
+    },
+    {
       "name": "Size",
-      "defaultValue": 0.0,
+      "defaultValue": 2.0,
       "levelUpType": 0,
       "levelUpTable": [
-        2.0,
+        0.0,
         0.0,
         0.0,
         0.0,
@@ -234,21 +234,21 @@
   "Bless_BOTS": [
     {
       "name": "Attack",
-      "defaultValue": 20.0,
+      "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.2,
+        0.0
       ]
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -256,8 +256,8 @@
         0.0,
         1.0,
         0.0,
-        1.0,
-        0.0
+        0.0,
+        1.0
       ]
     },
     {
@@ -265,13 +265,13 @@
       "defaultValue": 3.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
@@ -279,22 +279,22 @@
       "defaultValue": 130.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.0
       ]
     },
     {
       "name": "Size",
-      "defaultValue": 0.0,
+      "defaultValue": 2.0,
       "levelUpType": 0,
       "levelUpTable": [
-        2.0,
-        4.0,
+        0.0,
+        0.0,
         0.0,
         0.0,
         0.0,
@@ -306,16 +306,16 @@
   "Bless_PF": [
     {
       "name": "Attack",
-      "defaultValue": 20.0,
+      "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.3,
+        0.0
       ]
     },
     {
@@ -327,7 +327,7 @@
         0.0,
         1.0,
         0.0,
-        1.0,
+        0.0,
         0.0,
         1.0
       ]
@@ -335,15 +335,15 @@
     {
       "name": "ReTime",
       "defaultValue": 2.0,
-      "levelUpType": 1,
+      "levelUpType": 2,
       "levelUpTable": [
-        1.0,
-        0.5,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.2
       ]
     },
     {
@@ -354,8 +354,8 @@
         1.0,
         0.0,
         0.0,
-        1.0,
         0.0,
+        1.0,
         0.0,
         0.0
       ]
@@ -364,16 +364,16 @@
   "Bless_RA": [
     {
       "name": "Attack",
-      "defaultValue": 20.0,
+      "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
@@ -382,12 +382,12 @@
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
-        0.0,
-        1.0,
         1.0,
         0.0,
         1.0,
-        0.0
+        0.0,
+        1.0,
+        1.0
       ]
     },
     {
@@ -395,13 +395,13 @@
       "defaultValue": 5.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        0.0,
+        0.0
       ]
     },
     {
@@ -409,13 +409,13 @@
       "defaultValue": 130.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
@@ -423,43 +423,43 @@
       "defaultValue": 2.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     }
   ],
   "Bless_BOL": [
     {
       "name": "Attack",
-      "defaultValue": 20.0,
+      "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0
       ]
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
-        0.0,
         1.0,
         0.0,
         1.0,
+        0.0,
         1.0,
-        0.0
+        1.0
       ]
     },
     {
@@ -467,13 +467,13 @@
       "defaultValue": 2.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
@@ -481,13 +481,13 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.3,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     }
   ],
@@ -497,13 +497,13 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.3,
+        0.0
       ]
     },
     {
@@ -511,13 +511,13 @@
       "defaultValue": 0.0,
       "levelUpType": 0,
       "levelUpTable": [
-        5.0,
+        1.0,
+        1.0,
         0.0,
         1.0,
         0.0,
-        1.0,
-        1.0,
-        0.0
+        0.0,
+        1.0
       ]
     },
     {
@@ -525,27 +525,27 @@
       "defaultValue": 5.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
       "name": "DestroyTime",
-      "defaultValue": 4.0,
+      "defaultValue": 2.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.0
       ]
     },
     {
@@ -553,57 +553,173 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     }
   ],
   "Bless_RM": [
     {
       "name": "Attack",
-      "defaultValue": 1.0,
+      "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.3,
+        0.0
       ]
     },
     {
       "name": "DelayTime",
-      "defaultValue": 0.2,
-      "levelUpType": 1,
+      "defaultValue": 1.0,
+      "levelUpType": 2,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        0.0,
+        0.4
       ]
     },
     {
       "name": "AtRange",
-      "defaultValue": 5.0,
+      "defaultValue": 3.0,
       "levelUpType": 1,
       "levelUpTable": [
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "1500_Bless_Warrior": [
+    {
+      "name": "Attack",
+      "defaultValue": 20.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        2.0,
+        2.0,
+        3.0,
+        3.0,
+        4.0,
+        4.0,
+        5.0
+      ]
+    },
+    {
+      "name": "Size",
+      "defaultValue": 1.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillAttack",
+      "defaultValue": 30.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        5.0,
+        5.0,
+        6.0,
+        6.0,
+        7.0,
+        7.0,
+        10.0
+      ]
+    },
+    {
+      "name": "SkillCastTime",
+      "defaultValue": 3.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        0.0,
+        0.5,
+        0.0,
+        1.5,
+        0.0,
+        2.0,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillCoolTime",
+      "defaultValue": 50.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        0.0,
+        -5.0,
+        0.0,
+        -5.0,
+        0.0,
+        -5.0,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillSize",
+      "defaultValue": 1.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.2,
+        0.0,
+        0.3,
+        0.0,
+        0.5,
+        0.0
+      ]
+    }
+  ],
+  "1501_Bless_Archer": [
+    {
+      "name": "Attack",
+      "defaultValue": 12.0,
+      "levelUpType": 0,
+      "levelUpTable": [
         1.0,
-        1.2,
-        1.6,
         1.0,
-        1.0,
-        1.0,
-        1.0
+        2.0,
+        2.0,
+        3.0,
+        3.0,
+        5.0
+      ]
+    },
+    {
+      "name": "AttackSp",
+      "defaultValue": 1.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     }
   ]

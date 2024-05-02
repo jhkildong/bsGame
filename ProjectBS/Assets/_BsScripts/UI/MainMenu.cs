@@ -19,20 +19,24 @@ public class MainMenu : MonoBehaviour
     public void OnPlay()
     {
         GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/5002_PlayerSelectWindow"), transform); 
+        obj.SetActive(true);
     }
 
     public void OnShop()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/ShopUI"), transform); 
+        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/ShopUI"), transform);
+        obj.SetActive(true);
     }
 
     public void OnSettings()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SettingsUI"), transform); 
+        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SettingsUI"), transform);
+        obj.SetActive(true);
     }
     public void OnCredits()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/CreditsUI"), transform);  
+        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/CreditsUI"), transform);
+        obj.SetActive(true);
     }
     public void OnQuit()
     {

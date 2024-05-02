@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Effect : MonoBehaviour, IPoolable
+public class PlayerAttackType : MonoBehaviour, IPoolable
 {
     #region IPoolable
     public MonoBehaviour This => this;
@@ -13,22 +13,31 @@ public class Effect : MonoBehaviour, IPoolable
     {
         GameObject clone = Instantiate(prefab);
 
-        return clone.GetComponent<Effect>();
+        return clone.GetComponent<PlayerAttackType>();
     }
     #endregion
 
     #region Property
     public string Name { get => _name;}
     public float Attack { get => _attack; set => _attack = value; }
-    public float Speed { get => _speed; set => _speed = value; }
-    public float Size { get => _size; set => _size = value; }
+    public float Size
+    { 
+        get => _size;
+        set
+        {
+            if(value != _size)
+            {
+                _size = value;
+                transform.localScale = Vector3.one * _size;
+            }
+        }
+    }
     #endregion
 
     #region Field
     [SerializeField] private int _id;
     [SerializeField] private string _name;
     [SerializeField] private float _attack;
-    [SerializeField] private float _speed;
     [SerializeField] private float _size;
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private GameObject prefab;
@@ -42,7 +51,7 @@ public class Effect : MonoBehaviour, IPoolable
         this.gameObject.layer = (int)BSLayers.PlayerAttackEffect;
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         if(_particleSystem == null)
         {

@@ -6,6 +6,7 @@ public class LookAtPoint : MonoBehaviour
 {
     public LayerMask mask = (int)BSLayerMasks.Ground;
     private Camera myCam;
+    private float rotSpeed = 10f;
     public void IsDead() => this.enabled = false;
     // Start is called before the first frame update
     void Start()
@@ -28,10 +29,20 @@ public class LookAtPoint : MonoBehaviour
                 {
                     targetDirection.Normalize();
                     Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotSpeed * Time.deltaTime);
 
                 }
             }
         }
+    }
+
+    public void SetRotSpeed(float speedCeof)
+    {
+        rotSpeed *= speedCeof;
+    }
+
+    public void ResetRotSpeed()
+    {
+        rotSpeed = 10f;
     }
 }

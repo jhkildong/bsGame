@@ -85,10 +85,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08fc7d9791efe347bbab31b6acbd88d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4744914523208500363}
   myTarget: {fileID: 0}
+  currentPos: {x: 0, y: 0, z: 0}
   _id: 5005
   slider: {fileID: 3457437130353793981}
+  sliderImage: {fileID: 0}
 --- !u!1 &5079937311380155189
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +198,7 @@ RectTransform:
   m_Father: {fileID: 4983641099042684123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

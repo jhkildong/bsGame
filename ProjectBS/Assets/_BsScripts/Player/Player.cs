@@ -23,7 +23,6 @@ public class Player : Combat, IDamage<Player>
             RotatingBody.GetComponent<LookAtPoint>().enabled = !value;
         }
     }
-    public bool IsCastingSkill => _isCastingSkill;
     public float ConstSpeed
     {
         get => _constSpeed;
@@ -36,7 +35,6 @@ public class Player : Combat, IDamage<Player>
     }
 
     private bool _isBuilding;
-    private bool _isCastingSkill;
     [SerializeField] private float _constSpeed;
     [SerializeField] private float _repairSpeed;
 
@@ -44,8 +42,15 @@ public class Player : Combat, IDamage<Player>
     {
         Com.Attack = Attack;
     }
+    public void SetMyStat(float attack, float coolTime, float aksp = 1.0f, float castingTime = 5.0f)
+    {
+        _attack = attack;
+        Com.MyAnim.SetFloat(AnimParam.AttackSpeed, aksp);
+        skillCoolTime = coolTime;
+        maxCastingTime = castingTime;
+    }
     #endregion
-    
+
     #region PlayerInput
     ////////////////////////////////PlayerInput////////////////////////////////
     // 플레이어의 키 조작을 버튼 형식으로 받음
@@ -73,7 +78,7 @@ public class Player : Combat, IDamage<Player>
     }
     private void EndSkill(InputAction.CallbackContext context)
     {
-        if (!_isCastingSkill)    //스킬 시전중이 아니면 리턴
+        if (!isCastingSkill)    //스킬 시전중이 아니면 리턴
             return;
         OffSkillAct?.Invoke();
     }
@@ -174,9 +179,6 @@ public class Player : Combat, IDamage<Player>
         _maxHp = Com.MyStat.MaxHp;          //최대 체력 설정 직업마다 스탯을 저장해둠
         CurHp = Com.MyStat.MaxHp;           //현재 체력 설정
         moveSpeed = Com.MyStat.Sp;          //이동속도 설정
-        _attack = Com.MyStat.Ak;            //공격력 설정
-        Com.MyAnim.SetFloat(AnimParam.AttackSpeed, Com.MyStat.AkSp);    //공격속도 설정
-        skillCoolTime = Com.MyStat.SkillCoolTime;       //스킬 쿨타임 설정
      
         effectData.SetRenderer(Com.Myrenderers);        //피격 이펙트 설정
 
@@ -194,6 +196,7 @@ public class Player : Combat, IDamage<Player>
 
         OnSkillAct += OnSkill;      //스킬키를 눌렀을 때 실행
         OffSkillAct += OffSkill;    //스킬키를 떼었을 때 실행
+        Com.SetSkillAct(this);      //스킬 사용시 실행할 메서드 설정
     }
 
     protected override void OnDisable()
@@ -289,15 +292,17 @@ public class Player : Combat, IDamage<Player>
     #region Private Method
     private float skillCoolTime;
     private float remainCoolTime;
-    private float maxCastingTime = 5.0f;
+    private float maxCastingTime;
     private bool isCoolTime = false;
+    private bool isCastingSkill = false;
+    private Coroutine skillCasting;
     
     private void OnSkill()  //스킬키를 눌렀을 때 실행
     {
         if (isCoolTime)
             return;
         isCoolTime = true;
-        _isCastingSkill = true;
+        isCastingSkill = true;
         switch(Com.MyJob)
         {
             case Job.Mage:
@@ -308,14 +313,16 @@ public class Player : Combat, IDamage<Player>
                 (Com as Archer).ShowRange();
                 break;
         }
-        StartCoroutine(CastingTimer()); //최대 시전시간 이후 스킬종료
+        skillCasting = StartCoroutine(CastingTimer()); //최대 시전시간 이후 스킬종료
     }
 
     private void OffSkill()
     {
-        if (!_isCastingSkill)   //스킬 시전중이 아니면 리턴
+        if (!isCastingSkill)   //스킬 시전중이 아니면 리턴
             return;
-        _isCastingSkill = false;
+        isCastingSkill = false;
+        if(skillCasting != null)
+            StopCoroutine(skillCasting);
         //키다운 종료 혹은 시전시간 종료시 실행
         switch (Com.MyJob)
         {
@@ -346,6 +353,7 @@ public class Player : Combat, IDamage<Player>
     {
         yield return new WaitForSeconds(maxCastingTime);
         OffSkillAct?.Invoke();
+        skillCasting = null;
     }
 
     #endregion

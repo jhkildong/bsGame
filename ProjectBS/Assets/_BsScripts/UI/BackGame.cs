@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScriptENEMY : MonoBehaviour
+public class BackGame : MonoBehaviour
 {
-
-    public LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +16,8 @@ public class NewBehaviourScriptENEMY : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnBackGame()
     {
-        if (other.gameObject)
-        {
-
-        }
-;
+        Loading.LoadScene(1);
     }
 }

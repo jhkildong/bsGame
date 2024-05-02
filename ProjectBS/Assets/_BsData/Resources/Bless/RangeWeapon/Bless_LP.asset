@@ -13,61 +13,62 @@ MonoBehaviour:
   m_Name: Bless_LP
   m_EditorClassIdentifier: 
   _id: 1080
-  _name: LavaPuddle
+  _name: "\uC6A9\uC554 \uC6C5\uB369\uC774"
+  _description: "\uC6A9\uC554 \uC6C5\uB369\uC774\uB97C 1\uAC1C \uC0DD\uC131\uD55C\uB2E4."
   _prefab: {fileID: 5824648880119881452, guid: 66e157a978cf4b6429d841138b8a24e9, type: 3}
   _lvDataList:
   - name: Attack
     defaultValue: 10
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0.2
+    - 0
+    - 0
+    - 0.3
+    - 0
   - name: Amount
     defaultValue: 0
     levelUpType: 0
     levelUpTable:
-    - 5
-    - 0
-    - 1
-    - 0
     - 1
     - 1
     - 0
+    - 1
+    - 0
+    - 0
+    - 1
   - name: ReTime
     defaultValue: 5
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   - name: DestroyTime
-    defaultValue: 4
+    defaultValue: 2
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0.5
+    - 0
+    - 0
   - name: AtRange
     defaultValue: 10
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
