@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 12_Item_Oneshot_ Magnet
   m_EditorClassIdentifier: 
   description: "\uC790\uC11D"
-  _id: 0
-  _name: 
-  _value: 0
+  _id: 12
+  _name: "\uC790\uC11D"
+  _value: 12
   _prefab: {fileID: 3938512323750667503, guid: 28fabe57865a12e4c988f72d1557b8a9, type: 3}
   itemType: 3
   _used: 0
