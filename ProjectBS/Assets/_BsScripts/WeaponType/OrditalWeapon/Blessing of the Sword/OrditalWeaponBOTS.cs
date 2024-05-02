@@ -15,7 +15,7 @@ public class OrditalWeaponBOTS : Bless
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up, -myStatus[Key.RotSpeed] * Time.deltaTime); // 공전
+        //transform.Rotate(Vector3.up, -myStatus[Key.RotSpeed] * Time.deltaTime); // 공전
         if (CurLv >= 1)
         {
             if (Count < myStatus[Key.Amount])
