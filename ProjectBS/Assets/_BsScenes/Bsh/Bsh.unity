@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1773,6 +1773,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5329312213973514430, guid: d0ecba8aa07fda24ab3d76404843c094, type: 3}
   m_PrefabInstance: {fileID: 597042906}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &598011681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598011684}
+  - component: {fileID: 598011683}
+  - component: {fileID: 598011682}
+  m_Layer: 0
+  m_Name: MousePointer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &598011682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598011681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ecce7aaaec38ab4582f709f2e61fc13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
+--- !u!65 &598011683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598011681}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &598011684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598011681}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.950618, y: 3.3385582, z: 10.74514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &604425148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3798,9 +3865,15 @@ MonoBehaviour:
     effectTime: 0.1
     effectColor: {r: 1, g: 0, b: 0, a: 1}
     renderers: []
-    mainTexture: {fileID: 0}
-    mainColor: {r: 0, g: 0, b: 0, a: 0}
+    mainTextures: []
+    mainColor:
+    - {r: -9.556323e+33, g: 8.4e-43, b: 0.0000110394785, a: 0.00000016690396}
+    - {r: 4.619321e+19, g: 8.4e-43, b: 4.6e-44, a: 2.079817e+20}
+    - {r: -9.556323e+33, g: 8.4e-43, b: -9.5563425e+33, a: 8.4e-43}
+    - {r: 4.619335e+19, g: 8.4e-43, b: 6.9e-44, a: 8.4e-43}
   additonalAtk: 0
+  _constSpeed: 0
+  _repairSpeed: 0
   WSADInput: 0
   Com: {fileID: 0}
   rotatingBody: {fileID: 0}
@@ -6811,3 +6884,4 @@ SceneRoots:
   - {fileID: 1851670323}
   - {fileID: 1361526529}
   - {fileID: 1746448192}
+  - {fileID: 598011684}

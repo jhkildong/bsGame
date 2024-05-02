@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnPlay()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/5002_PlayerSelectWindow"), transform); 
+        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/5002_PlayerSelectWindow"), transform);
         obj.SetActive(true);
     }
 
