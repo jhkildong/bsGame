@@ -5,18 +5,18 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.2,
-        1.0,
-        1.3,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.2,
+        0.0,
+        0.3,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -31,23 +31,23 @@
     {
       "name": "ReTime",
       "defaultValue": 2.0,
-      "levelUpType": 1,
+      "levelUpType": 2,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        0.7,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        0.0
       ]
     },
     {
       "name": "Size",
-      "defaultValue": 0.0,
+      "defaultValue": 2.0,
       "levelUpType": 0,
       "levelUpTable": [
-        2.0,
+        0.0,
         0.0,
         0.0,
         0.0,
@@ -63,18 +63,18 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.3,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.3,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -89,14 +89,14 @@
     {
       "name": "ReTime",
       "defaultValue": 2.0,
-      "levelUpType": 1,
+      "levelUpType": 2,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
         0.5
       ]
     },
@@ -105,13 +105,13 @@
       "defaultValue": 2.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.25,
-        1.0,
-        1.0,
-        1.25,
-        1.0,
-        1.0
+        0.0,
+        0.25,
+        0.0,
+        0.0,
+        0.25,
+        0.0,
+        0.0
       ]
     }
   ],
@@ -121,18 +121,18 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.2,
-        1.0,
-        1.0,
-        1.3,
-        1.0,
-        1.0
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.3,
+        0.0,
+        0.0
       ]
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -147,23 +147,23 @@
     {
       "name": "ReTime",
       "defaultValue": 2.0,
-      "levelUpType": 1,
+      "levelUpType": 2,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        0.8,
-        1.0,
-        1.0,
-        0.8
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.2
       ]
     },
     {
       "name": "Size",
-      "defaultValue": 0.0,
+      "defaultValue": 2.0,
       "levelUpType": 0,
       "levelUpTable": [
-        2.0,
+        0.0,
         0.0,
         0.0,
         0.0,
@@ -179,18 +179,18 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.2,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -205,23 +205,23 @@
     {
       "name": "ReTime",
       "defaultValue": 2.0,
-      "levelUpType": 1,
+      "levelUpType": 2,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
         0.5,
-        1.0,
-        1.0
+        0.0,
+        0.0
       ]
     },
     {
       "name": "Size",
-      "defaultValue": 0.0,
+      "defaultValue": 2.0,
       "levelUpType": 0,
       "levelUpTable": [
-        2.0,
+        0.0,
         0.0,
         0.0,
         0.0,
@@ -237,18 +237,18 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.2,
-        1.0,
-        1.0,
-        1.2,
-        1.0
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.2,
+        0.0
       ]
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -265,13 +265,13 @@
       "defaultValue": 3.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
@@ -279,21 +279,21 @@
       "defaultValue": 130.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.5,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.0
       ]
     },
     {
       "name": "Size",
-      "defaultValue": 0.0,
+      "defaultValue": 2.0,
       "levelUpType": 0,
       "levelUpTable": [
-        2.0,
+        0.0,
         0.0,
         0.0,
         0.0,
@@ -309,13 +309,13 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.2,
-        1.0,
-        1.0,
-        1.3,
-        1.0
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.3,
+        0.0
       ]
     },
     {
@@ -335,15 +335,15 @@
     {
       "name": "ReTime",
       "defaultValue": 2.0,
-      "levelUpType": 1,
+      "levelUpType": 2,
       "levelUpTable": [
-        1.0,
-        0.8,
-        1.0,
-        0.8,
-        1.0,
-        1.0,
-        0.8
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.2
       ]
     },
     {
@@ -367,13 +367,13 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.5,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
@@ -395,13 +395,13 @@
       "defaultValue": 5.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.3,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        0.0,
+        0.0
       ]
     },
     {
@@ -409,13 +409,13 @@
       "defaultValue": 130.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
@@ -423,13 +423,13 @@
       "defaultValue": 2.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     }
   ],
@@ -439,18 +439,18 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.2,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0
       ]
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -467,13 +467,13 @@
       "defaultValue": 2.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
@@ -481,13 +481,13 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.3,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.3,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     }
   ],
@@ -497,13 +497,13 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.2,
-        1.0,
-        1.0,
-        1.3,
-        1.0
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.3,
+        0.0
       ]
     },
     {
@@ -525,13 +525,13 @@
       "defaultValue": 5.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
@@ -539,13 +539,13 @@
       "defaultValue": 2.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.5,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5,
+        0.0,
+        0.0
       ]
     },
     {
@@ -553,13 +553,13 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     }
   ],
@@ -569,27 +569,27 @@
       "defaultValue": 10.0,
       "levelUpType": 1,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.2,
-        1.0,
-        1.0,
-        1.3,
-        1.0
+        0.0,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.3,
+        0.0
       ]
     },
     {
       "name": "DelayTime",
       "defaultValue": 1.0,
-      "levelUpType": 1,
+      "levelUpType": 2,
       "levelUpTable": [
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        0.7,
-        1.0,
-        0.6
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        0.0,
+        0.4
       ]
     },
     {
@@ -597,13 +597,129 @@
       "defaultValue": 3.0,
       "levelUpType": 1,
       "levelUpTable": [
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "1500_Bless_Warrior": [
+    {
+      "name": "Attack",
+      "defaultValue": 20.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        2.0,
+        2.0,
+        3.0,
+        3.0,
+        4.0,
+        4.0,
+        5.0
+      ]
+    },
+    {
+      "name": "Size",
+      "defaultValue": 1.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillAttack",
+      "defaultValue": 30.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        5.0,
+        5.0,
+        6.0,
+        6.0,
+        7.0,
+        7.0,
+        10.0
+      ]
+    },
+    {
+      "name": "SkillCastTime",
+      "defaultValue": 3.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        0.0,
+        0.5,
+        0.0,
+        1.5,
+        0.0,
+        2.0,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillCoolTime",
+      "defaultValue": 50.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        0.0,
+        -5.0,
+        0.0,
+        -5.0,
+        0.0,
+        -5.0,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillSize",
+      "defaultValue": 1.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.2,
+        0.0,
+        0.3,
+        0.0,
+        0.5,
+        0.0
+      ]
+    }
+  ],
+  "1501_Bless_Archer": [
+    {
+      "name": "Attack",
+      "defaultValue": 12.0,
+      "levelUpType": 0,
+      "levelUpTable": [
         1.0,
-        1.2,
         1.0,
-        1.2,
-        1.0,
-        1.0,
-        1.0
+        2.0,
+        2.0,
+        3.0,
+        3.0,
+        5.0
+      ]
+    },
+    {
+      "name": "AttackSp",
+      "defaultValue": 1.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     }
   ]

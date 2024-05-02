@@ -23,8 +23,8 @@ public class OrditalWeaponPF : Bless
     // Update is called once per frame
     void Update()
     {
-        myRotation = rotatingBody.rotation;
-        transform.Rotate(Vector3.up, -RotSpeed * Time.deltaTime); // 공전
+        //myRotation = rotatingBody.rotation;
+        //transform.Rotate(Vector3.up, -RotSpeed * Time.deltaTime); // 공전
 
         if (CurLv >= 1)
         {

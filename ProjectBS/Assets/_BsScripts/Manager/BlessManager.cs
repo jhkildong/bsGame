@@ -10,13 +10,12 @@ public class BlessManager : Singleton<BlessManager>
     
     private Dictionary<int, BlessData> _blessDict;
     private WeightedRandomPicker<BlessData> blessDataWeight;
-    private List<int> keyList;
     private SelectWindow blessSelectWindow;
     private Stack<UnityAction> callStack;
     private Dictionary<int, Bless> spawnedBless;
 
     BlessData[] temp;
-    int[] weights;
+    float[] weights;
     float[] normalizedWeight;
 
     protected override void Awake()
@@ -36,38 +35,54 @@ public class BlessManager : Singleton<BlessManager>
     {
         //UIComponent를 상속받은 모든 클래스를 Resources/UI 폴더에서 로드하여 딕셔너리에 저장
         BlessData[] BlessLists = Resources.LoadAll<BlessData>(FilePath.Bless);
+        //딕셔너리와 리스트 초기화
         _blessDict = new Dictionary<int, BlessData>();
-        keyList = new List<int>();
         callStack = new Stack<UnityAction>();
         blessDataWeight = new WeightedRandomPicker<BlessData>();
         spawnedBless = new Dictionary<int, Bless>();
 
-
+        //리소스에서 로드한 데이터를 딕셔너리에 저장
         foreach (BlessData data in BlessLists)
         {
             _blessDict.Add(data.ID, data);
         }
-        keyList.AddRange(_blessDict.Keys);
+        //WeightedRandomPicker에 데이터를 추가
         foreach(var item in _blessDict)
         {
             blessDataWeight.Add(item.Value, 1);
         }
+        for(int i = 1500; i < 1503; i++)
+        {
+            spawnedBless.Add(i, CreateBless((BlessID)i));
+        }
     }
     #region Public Method
+    /// <summary>
+    /// BlessData를 기반으로 축복을 생성
+    /// </summary>
     public Bless CreateBless(BlessID id)
     {
+        //이미 생성되어있는 축복이라면 그것을 반환
+        if(spawnedBless.ContainsKey((int)id))
+        {
+            return spawnedBless[(int)id];
+        }
+        //딕셔너리에 해당 ID가 존재하면 복제 후 반환
         if (_blessDict.ContainsKey((int)id))
         {
             Bless clone = _blessDict[(int)id].CreateClone();
             return clone;
         }
+        //존재하지 않으면 null 반환
         return null;
     }
 
+    //레벨업 시 랜덤으로 선택된 축복를 윈도우에 표시
     public void AppearRandomBlessList()
     {
+        //게임 일시정지
         Time.timeScale = 0;
-        //윈도우가 활성화 되있을 경우 callStack에 저장
+        //윈도우가 활성화 되있을 경우 callStack에 저장 후 리턴
         if(blessSelectWindow.gameObject.activeSelf == true)
         {
             callStack.Push(() => AppearRandomBlessList());
@@ -77,28 +92,32 @@ public class BlessManager : Singleton<BlessManager>
         else
             blessSelectWindow.gameObject.SetActive(true);
 
-        temp = new BlessData[3];
-        weights = new int[3];
-        normalizedWeight = new float[3];
-        //랜덤으로 3개의 블레스를 선택
+        temp = new BlessData[3];    //랜덤으로 선택된 축복를 저장할 배열
+        weights = new float[3];       //선택된 축복의 가중치를 저장할 배열
+        normalizedWeight = new float[3];    //선택된 축복의 정규화된 가중치를 저장할 배열
+        //랜덤으로 3개의 축복를 선택
         for (int i = 0; i < 3; i++)
         {
-            temp[i] = blessDataWeight.GetRandomPick();
-            weights[i] = blessDataWeight.GetWeight(temp[i]);
-            normalizedWeight[i] = blessDataWeight.GetNormalizedWeight(temp[i]);
+            temp[i] = blessDataWeight.GetRandomPick();                          //WeightedRandomPicker에서 랜덤으로 축복를 선택
+            weights[i] = blessDataWeight.GetWeight(temp[i]);                    //선택된 축복의 가중치를 저장
+            normalizedWeight[i] = blessDataWeight.GetNormalizedWeight(temp[i]); //선택된 축복의 정규화된 가중치를 저장
+            //로그 출력
             Debug.Log($"{temp[i].name}: {weights[i]}, {normalizedWeight[i] * 100.0f}%");
-            blessDataWeight.Remove(temp[i]);
+            blessDataWeight.Remove(temp[i]);                                    //선택된 축복를 WeightedRandomPicker에서 제거(중복 선택 방지)
         }
 
+        //윈도우에 축복 이름을 표시(설명 포함)
         string[] names = new string[3];
         for(int i = 0; i < 3; i++)
         {
             if (spawnedBless.ContainsKey(temp[i].ID))
-                names[i] = $"{temp[i].Name} Lv:{spawnedBless[temp[i].ID].CurLv}";
+                names[i] = $"{temp[i].Name} Lv:{spawnedBless[temp[i].ID].CurLv + 1}";   //이미 소환되어있는 축복이면 다음 레벨을 표시
             else
-                names[i] = $"{temp[i].Name}";
+                names[i] = $"{temp[i].Name}";                                           //아니면 이름만 표시
         }
         blessSelectWindow.SelectButtons.SetButtonName(names);
+        
+        //윈도우에 축복 선택 버튼을 추가
         for(int i = 0; i < 3; i++)
         {
             int idx = i;
@@ -108,28 +127,33 @@ public class BlessManager : Singleton<BlessManager>
 
     public void SelectBless(int idx)
     {
-        //선택된 블레스를 WeightedRandomPicker에 추가
+        //선택된 축복를 WeightedRandomPicker에 추가
         for (int i = 0; i < 3; i++)
         {
             if (i == idx)
-                blessDataWeight.Add(temp[i], weights[i] + 10);
+            {
+                if (temp[idx].ID >= 1500 || temp[idx].ID < 1503)    //선택된 축복이 직업 축복일 경우
+                    blessDataWeight.Add(temp[i], 0.5f);             //가중치를 0.5로 설정
+                else
+                    blessDataWeight.Add(temp[i], weights[i] + 10);  //선택된 축복의 가중치를 증가
+            }
             else
-                blessDataWeight.Add(temp[i], weights[i]);
+                blessDataWeight.Add(temp[i], weights[i]);       //선택되지 않은 축복의 가중치는 그대로
         }
-        //소환되어있지 않은 블레스이면 생성
+        //소환되어있지 않은 축복이면 생성
         if (!spawnedBless.ContainsKey(temp[idx].ID))
         {
             Bless clone = CreateBless((BlessID)temp[idx].ID);
             spawnedBless.Add(temp[idx].ID, clone);
-            spawnedBless[temp[idx].ID].LevelUp();
         }
+        //소환되어있는 축복이면 레벨업
         else
         {
             spawnedBless[temp[idx].ID].LevelUp();
         }
         Time.timeScale = 1;
         blessSelectWindow.gameObject.SetActive(false);
-        //선택된 블레스를 제거한 후 callStack에 저장된 함수 실행
+        //선택된 축복를 제거한 후 callStack에 저장된 함수 실행
         if (callStack.Count > 0)
         {
             callStack.Pop().Invoke();
@@ -156,7 +180,7 @@ Reference By https://rito15.github.io/posts/unity-toy-weighted-random-picker/
 */
 public class WeightedRandomPicker<T>
 {
-    public int SumOfWeights
+    public float SumOfWeights
     {
         get
         {
@@ -165,13 +189,13 @@ public class WeightedRandomPicker<T>
         }
     }
 
-    private Dictionary<T, int> itemWeightDict;
+    private Dictionary<T, float> itemWeightDict;
     private Dictionary<T, float> normalizedItemWeightDict; // 확률이 정규화된 아이템 목록
 
 
     /// <summary> 가중치 합이 계산되지 않은 상태인지 여부 </summary>
     private bool isDirty;
-    private int _sumOfWeights;
+    private float _sumOfWeights;
 
     /***********************************************************************
     *                               Constructors
@@ -179,7 +203,7 @@ public class WeightedRandomPicker<T>
     #region .
     public WeightedRandomPicker()
     {
-        itemWeightDict = new Dictionary<T, int>();
+        itemWeightDict = new Dictionary<T, float>();
         normalizedItemWeightDict = new Dictionary<T, float>();
         isDirty = true;
         _sumOfWeights = 0;
@@ -191,7 +215,7 @@ public class WeightedRandomPicker<T>
     #region .
 
     /// <summary> 새로운 아이템-가중치 쌍 추가 </summary>
-    public void Add(T item, int weight)
+    public void Add(T item, float weight)
     {
         CheckDuplicatedItem(item);
         CheckValidWeight(weight);
@@ -201,7 +225,7 @@ public class WeightedRandomPicker<T>
     }
 
     /// <summary> 새로운 아이템-가중치 쌍들 추가 </summary>
-    public void Add(params (T item, int weight)[] pairs)
+    public void Add(params (T item, float weight)[] pairs)
     {
         foreach (var pair in pairs)
         {
@@ -229,7 +253,7 @@ public class WeightedRandomPicker<T>
     }
 
     /// <summary> 대상 아이템의 가중치 수정 </summary>
-    public void ModifyWeight(T item, int weight)
+    public void ModifyWeight(T item, float weight)
     {
         CheckNotExistedItem(item);
         CheckValidWeight(weight);
@@ -276,7 +300,7 @@ public class WeightedRandomPicker<T>
     }
 
     /// <summary> 대상 아이템의 가중치 확인 </summary>
-    public int GetWeight(T item)
+    public float GetWeight(T item)
     {
         return itemWeightDict[item];
     }
@@ -315,7 +339,7 @@ public class WeightedRandomPicker<T>
         normalizedItemWeightDict.Clear();
         foreach (var pair in itemWeightDict)
         {
-            normalizedItemWeightDict.Add(pair.Key, (float)pair.Value / (float)_sumOfWeights);
+            normalizedItemWeightDict.Add(pair.Key, pair.Value / _sumOfWeights);
         }
     }
 
@@ -336,7 +360,7 @@ public class WeightedRandomPicker<T>
     }
 
     /// <summary> 가중치 값 범위 검사(0보다 커야 함) </summary>
-    private bool CheckValidWeight(in double weight)
+    private bool CheckValidWeight(in float weight)
     {
         if (weight <= 0f)
             return true;

@@ -131,4 +131,9 @@ public class GridButtons : MonoBehaviour
         button.GetComponentInChildren<TextMeshProUGUI>().text = name;
     }
     #endregion
+
+    public void OnNextScene()
+    {
+        Loading.LoadScene(3);
+    }
 }

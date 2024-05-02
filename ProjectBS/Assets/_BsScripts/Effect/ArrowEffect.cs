@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowEffect : Effect
+public class ArrowEffect : PlayerAttackType
 {
     Rigidbody rb;
 

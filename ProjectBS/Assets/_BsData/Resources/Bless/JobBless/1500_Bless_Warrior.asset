@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
+  m_Name: 1500_Bless_Warrior
+  m_EditorClassIdentifier: 
+  _id: 1500
+  _name: "\uC804\uC0AC\uC758 \uCD95\uBCF5"
+  _description: "\uAE30\uBCF8 \uACF5\uACA9 \uBC0F \uC2A4\uD0AC \uAC15\uD654"
+  _prefab: {fileID: 0}
+  _lvDataList:
+  - name: Attack
+    defaultValue: 20
+    levelUpType: 0
+    levelUpTable:
+    - 2
+    - 2
+    - 3
+    - 3
+    - 4
+    - 4
+    - 5
+  - name: Size
+    defaultValue: 1
+    levelUpType: 1
+    levelUpTable:
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0
+  - name: SkillAttack
+    defaultValue: 30
+    levelUpType: 0
+    levelUpTable:
+    - 5
+    - 5
+    - 6
+    - 6
+    - 7
+    - 7
+    - 10
+  - name: SkillCastTime
+    defaultValue: 3
+    levelUpType: 0
+    levelUpTable:
+    - 0
+    - 0.5
+    - 0
+    - 1.5
+    - 0
+    - 2
+    - 0
+  - name: SkillCoolTime
+    defaultValue: 50
+    levelUpType: 0
+    levelUpTable:
+    - 0
+    - -5
+    - 0
+    - -5
+    - 0
+    - -5
+    - 0
+  - name: SkillSize
+    defaultValue: 1
+    levelUpType: 1
+    levelUpTable:
+    - 0
+    - 0.2
+    - 0
+    - 0.3
+    - 0
+    - 0.5
+    - 0

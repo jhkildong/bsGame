@@ -10,18 +10,12 @@ public static class FilePath
     #region AttackType
     /// <summary>AttackType</summary>
     public const string AttackType = "AttackType";
-    /// <summary>AttackType/Warrior</summary>
-    public const string WarriorAttackTypes = "AttackType/Warrior";
-    /// <summary>AttackType/Archer</summary>
-    public const string ArcherAttackTypes = "AttackType/Archer";
-    /// <summary>AttackType/Mage</summary>
-    public const string MageAttackTypes = "AttackType/Mage";
     /// <summary>AttackType/MageHand</summary>
     public const string MageHandTypes = "AttackType/MageHand";
     /// <summary>AttackType/MagicHit</summary>
     public const string MagicHitTypes = "AttackType/MagicHit";
     #endregion
-    
+
     #region Monster
     /// <summary>Monster</summary>
     public const string Monsters = "Monster";

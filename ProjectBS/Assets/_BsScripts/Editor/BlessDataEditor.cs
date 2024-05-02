@@ -89,6 +89,10 @@ public class Bless2DataEditor : Editor
         //Save 버튼을 누르면 BlessLevelTable.json 파일에 저장
         if (GUILayout.Button("Save"))
         {
+            string json = File.ReadAllText(FilePath.BlessLevelTableJson);
+            //json 파일을 읽어서 BlessLevelTableDict.Dict에 저장
+            BlessLevelTableDict.Dict = JsonConvert.DeserializeObject<Dictionary<string, List<LevelUpData>>>(json);
+            
             //json 파일에 저장
             var settings = new JsonSerializerSettings
             {
@@ -106,7 +110,7 @@ public class Bless2DataEditor : Editor
                 //없으면 추가
                 BlessLevelTableDict.Dict.Add(myScript.name, myScript.LvDataList);
             }
-            string json = JsonConvert.SerializeObject(BlessLevelTableDict.Dict, settings);
+            json = JsonConvert.SerializeObject(BlessLevelTableDict.Dict, settings);
             File.WriteAllText(FilePath.BlessLevelTableJson, json);
 
             //Key.cs에 이름 추가

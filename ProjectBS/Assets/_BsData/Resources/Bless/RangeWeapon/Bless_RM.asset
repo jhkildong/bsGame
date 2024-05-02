@@ -21,32 +21,32 @@ MonoBehaviour:
     defaultValue: 10
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1.2
-    - 1
-    - 1
-    - 1.3
-    - 1
+    - 0
+    - 0
+    - 0.2
+    - 0
+    - 0
+    - 0.3
+    - 0
   - name: DelayTime
     defaultValue: 1
-    levelUpType: 1
+    levelUpType: 2
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 0.7
-    - 1
-    - 0.6
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0.3
+    - 0
+    - 0.4
   - name: AtRange
     defaultValue: 3
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1.2
-    - 1
-    - 1.2
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0
+    - 0
+    - 0

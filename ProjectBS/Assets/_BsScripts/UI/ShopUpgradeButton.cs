@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ShopUpgradeButton : MonoBehaviour
+public class ShopUpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Transform changeColorList;
+    public Transform OriginImageList;
     public Transform changeImageList;
+    public Transform tooltipText;
 
-    private List<Image> unUpgradeImage = new List<Image>();
+    private List<Image> OriginImage = new List<Image>();
     private List<Image> changeImage = new List<Image>();
 
     private Button button;
@@ -17,12 +19,12 @@ public class ShopUpgradeButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (Transform child in changeColorList)
+        foreach (Transform child in OriginImageList)
         {
             Image iamge = child.GetComponent<Image>();
             if(iamge != null )
             {
-                unUpgradeImage.Add(iamge);
+                OriginImage.Add(iamge);
             }
         }
 
@@ -46,5 +48,15 @@ public class ShopUpgradeButton : MonoBehaviour
             changeImage[currentIndex].gameObject.SetActive(true);
             currentIndex++;
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        tooltipText.gameObject.SetActive(true); 
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        tooltipText.gameObject.SetActive(false);
     }
 }

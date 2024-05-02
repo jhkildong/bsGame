@@ -27,8 +27,8 @@ namespace Yeon
                 ChangeHpAct?.Invoke((float)_curHp / (float)MaxHp);
             }
         }
-        public float SpeedCeof => _speedCeof;   //이동속도 계수
-        protected float Attack { get => Mathf.Round((float)_attack * (1 + getBuff.atkBuff) + additonalAtk); }
+        protected virtual float Attack { get => Mathf.Round(_attack * (1 + getBuff.atkBuff) + additonalAtk); }
+        
         public bool IsDead => CurHp <= 0;
         #endregion
 
@@ -36,10 +36,7 @@ namespace Yeon
         ////////////////////////////////Private Field////////////////////////////////
         [SerializeField] protected float _maxHp;                  //최대 체력
         [SerializeField] protected float _curHp;                  //현재 체력
-        [SerializeField] protected float _speedCeof = 1.0f;       //이동속도 계수
-        [SerializeField] protected float _attackCeof = 1.0f;      //공격력 계수
         [SerializeField] protected float _attack;                 //공격력
-
 
         #endregion
 
@@ -162,7 +159,7 @@ namespace Yeon
         }
 
         public Buff getBuff { get => _buff; set => _buff = value; }
-        private Buff _buff = new Buff();
+        protected Buff _buff = new Buff();
         public float additonalAtk;
         #endregion
 
