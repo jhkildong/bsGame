@@ -38,7 +38,8 @@ public class LevelUpData
     public enum LevelUpType
     {
         Add,
-        Multiply,
+        Increase,
+        Decrease,
     }
     public string name;
     public float defaultValue;
@@ -54,18 +55,37 @@ public class LevelUpData
                 return 0;
             if (level >= MAX_LEVEL)
                 level = MAX_LEVEL;
-            float value = defaultValue;
+            float value = 0;
             for (int i = 0; i < level; i++)
             {
-                switch (levelUpType)
+                //감소면 복리로 감소(증가는 단리)
+                if (levelUpType == LevelUpType.Decrease)
                 {
-                    case LevelUpType.Add:
-                        value += levelUpTable[i];
-                        break;
-                    case LevelUpType.Multiply:
-                        value *= levelUpTable[i];
-                        break;
+                    if (value == 0) value = 1;
+                    if (levelUpTable[i] > 1)
+                    {
+                        //잘못된 값
+                        continue;
+                    }
+                    value *= (1 - levelUpTable[i]);
                 }
+                else
+                {
+                    value += levelUpTable[i];
+                }
+            }
+
+            switch (levelUpType)
+            {
+                case LevelUpType.Add:
+                    value = defaultValue + value;
+                    break;
+                case LevelUpType.Increase:
+                    value = defaultValue * (1 + value);
+                    break;
+                case LevelUpType.Decrease:
+                    value = defaultValue * value;
+                    break;
             }
             return value;
         }

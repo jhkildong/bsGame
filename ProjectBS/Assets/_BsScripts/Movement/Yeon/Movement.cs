@@ -23,12 +23,8 @@ namespace Yeon
         [SerializeField]
         protected float moveSpeed = 1f;
 
-        [SerializeField] protected bool isMoving;
-        [SerializeField] protected bool isBlocked = false; //장애물 존재
-        [SerializeField] protected bool isOutOfControl = false; //제어 불가 상태
-
-        [SerializeField] protected Vector3 worldMoveDir;
-        [SerializeField] protected float outOfControllDuration;
+        protected bool isOutOfControl = false; //제어 불가 상태
+        protected Vector3 worldMoveDir;
         #endregion
 
         #region Init Method
@@ -56,31 +52,6 @@ namespace Yeon
         }
         #endregion
 
-        private void OnDrawGizmos()
-        {
-            if(col is CapsuleCollider cc)
-            {
-
-                Gizmos.color = Color.red;
-
-
-                float height = cc.height * 0.5f; // 캡슐 콜라이더의 높이의 절반
-                Vector3 center = transform.position + cc.center; // 캡슐 콜라이더의 중심 위치
-
-                // 캡슐의 두 끝을 그립니다.
-                Gizmos.DrawWireSphere(center + Vector3.up * (height - cc.radius), cc.radius);
-                Gizmos.DrawWireSphere(center + Vector3.down * (height - cc.radius), cc.radius);
-
-                // 캡슐의 두 끝을 연결합니다.
-                Gizmos.DrawLine(center + Vector3.up * (height - cc.radius), center + Vector3.down * (height - cc.radius));
-            }
-            else if(col is SphereCollider sc)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(transform.position + sc.center, sc.radius);
-            }
-        }
-
         #region Unity Event
         ////////////////////////////////UnityEvent////////////////////////////////
         ///<summary>시작시 rigidBody와 캡슐콜라이더 설정</summary>
@@ -101,7 +72,7 @@ namespace Yeon
         /// <summary> 리지드바디 최종 속도 적용 </summary>
         private void MovementToRigidbody()
         {
-            if (!isOutOfControl && !isBlocked && !isMoving)
+            if (!isOutOfControl)
             {
                 rBody.velocity = worldMoveDir * moveSpeed;
             }
@@ -117,6 +88,10 @@ namespace Yeon
         public void SetDirection(Vector3 dir)
         {
             worldMoveDir = dir;
+        }
+        public void SetOutOfControl(bool outOfControl)
+        {
+            isOutOfControl = outOfControl;
         }
         #endregion
     }
