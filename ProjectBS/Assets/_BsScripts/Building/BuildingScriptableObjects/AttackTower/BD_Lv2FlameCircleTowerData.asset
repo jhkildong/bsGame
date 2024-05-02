@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43cda4da081fa614796e5f407362b303, type: 3}
-  m_Name: BD_TestAtkTowerData
+  m_Name: BD_Lv2FlameCircleTowerData
   m_EditorClassIdentifier: 
-  _atkPower: 3
+  _atkPower: 4
   _atkSpeed: 0.2
   _hitDelay: 0.5
   _atkDuration: 5
-  _atkRadius: 2
+  _atkRadius: 3
   _attackableLayer:
     serializedVersion: 2
     m_Bits: 32768

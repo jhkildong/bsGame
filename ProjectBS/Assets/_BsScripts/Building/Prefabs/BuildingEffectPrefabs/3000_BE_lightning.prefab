@@ -14621,7 +14621,7 @@ GameObject:
   - component: {fileID: -5355598531823109799}
   - component: {fileID: 3847220124791232232}
   m_Layer: 27
-  m_Name: BE_lightning
+  m_Name: 3000_BE_lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19453,11 +19453,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atkType: 0
   canHit: 0
+  id: 3000
   hitTiming: 0.3
   attackableLayer:
     serializedVersion: 2
     m_Bits: 32768
-  hitEffect: {fileID: 8442984799047500724, guid: 83bdc720e7107a8479f1183d783d8f4e, type: 3}
+  hitEffect: {fileID: 6741226646432807674, guid: af29735476141dc4cbc4302e4d7c2c0d, type: 3}
 --- !u!135 &3847220124791232232
 SphereCollider:
   m_ObjectHideFlags: 0

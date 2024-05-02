@@ -18,11 +18,14 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
 
     ParticleSystem ps;
 
+    public int ID => id;
+
     public bool canHit;
 
     protected float hitTime = 1f; //공격 타이밍
     float progress; // 파티클 재생 진행도
 
+    [SerializeField] private int id; //공격 id
     private float dmg;
     private float baseAttack;
     private float myRadius;
@@ -35,7 +38,7 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
     [SerializeField]protected float hitTiming; // 타격 타이밍 (0~1사이)
 
     public LayerMask attackableLayer;
-    public GameObject hitEffect; 
+    public HitEffects hitEffect; 
 
     private void Awake()
     {
@@ -66,7 +69,7 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
     }
     */
 
-    public void SetPointStats(float atk = 1, float radius = 1, float size = 1, float speed = 1,float atkDelay = 1,float hitDelay = 1,  float durTime = 1) // 건물의 스탯을 EffectPoolManager에 전달 -> 이펙트 생성시에 해당 Stat을 이펙트로 전달
+    public void SetPointStats(float atk = 1, float radius = 1, float size = 1, float speed = 1,float atkDelay = 1,float hitDelay = 1,  float durTime = 1) // 건물의 스탯을 EffectPoolManager에 전달 -> 이펙트 생성시에 해당 Stat을 이펙트로 전달 // 0501 id추가
     {
         baseAttack = atk;
         myRadius = radius;
@@ -90,7 +93,7 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
             if (progress >= 1f)
             {
                 //gameObject.SetActive(false);
-                EffectPoolManager.Instance.ReleaseObject<PointAtkEffectHit>(gameObject);
+                EffectPoolManager.Instance.ReleaseObject(gameObject, id);
             }
         }
 
@@ -107,7 +110,8 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
             else if(curDur >= atkDuration) // 지속시간이 끝나면 풀로 되돌림
             {       
                 atkDelaying = false;
-                EffectPoolManager.Instance.ReleaseObject<PointAtkEffectHit>(gameObject);
+                //EffectPoolManager.Instance.ReleaseObject<PointAtkEffectHit>(gameObject);
+                EffectPoolManager.Instance.ReleaseObject(gameObject, id);
             }
         }
 
@@ -138,9 +142,10 @@ public class PointAtkEffectHit : MonoBehaviour, ISetPointStats
         foreach (Collider collider in colliders)
         {
             IDamage target = collider.GetComponent<IDamage>();
-            EffectPoolManager.Instance.SetActiveEffect<GameObject>(hitEffect, collider.gameObject); // 피격대상 위치에 타격 이펙트 생성
-            Debug.Log(collider.gameObject.transform.position);
+            Vector3 contact = collider.ClosestPoint(transform.position); // 충돌한 위치와 가장 가까운 점을 찾는다.
+            EffectPoolManager.Instance.SetActiveHitEffect(hitEffect, contact, hitEffect.ID); // 피격대상과 가장 가까운 점에 피격이펙트 생성
             target.TakeDamage(baseAttack);
+            target.TakeDamageEffect(baseAttack);
         }
         //범위내의 적에게 (Idamage 가 있는)
         //데미지 전달

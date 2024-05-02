@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IcicleBuilding : AttackBuilding_Projectile
 {
-    public GameObject myProjectile;
+    //public GameObject myProjectile;
     public GameObject muzzle;
 
 
@@ -20,7 +20,7 @@ public class IcicleBuilding : AttackBuilding_Projectile
         {
             relativeDir = (target.transform.position - muzzle.transform.position).normalized;
             relativeDir.y = 0;
-            EffectPoolManager.Instance.SetActiveProjectileObject<ProjectileEffectHit>(myProjectile, effectPool, muzzle, _atkPower,
+            EffectPoolManager.Instance.SetActiveProjectileObject(atkEffect, effectPool, muzzle, _atkId, _atkPower,
                 _atkProjectileSize, _atkProjectileSpeed, _atkProjectileRange, _atkCanPen, _atkPenCount,relativeDir);
 
         }

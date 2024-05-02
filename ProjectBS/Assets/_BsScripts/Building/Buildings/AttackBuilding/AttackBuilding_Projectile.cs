@@ -22,7 +22,9 @@ public class AttackBuilding_Projectile : AttackBuildingBase
     [SerializeField] public float _atkProjectileRange; // 건물 투사체 사거리
     [SerializeField] public bool _atkCanPen; //관통가능한 공격인가?
     [SerializeField] public int _atkPenCount; //관통가능한 물체수
-    //[SerializeField] private LayerMask _attackableLayer;
+
+    [SerializeField] protected int _atkId;
+    public ProjectileEffectHit atkEffect;
     protected override void Start()
     {
         base.Start();
@@ -34,6 +36,7 @@ public class AttackBuilding_Projectile : AttackBuildingBase
         _atkProjectileRange = PData.atkProjectileRange;
         _atkCanPen = PData.atkCanPen;
         _atkPenCount = PData.atkPenCount;
+        _atkId = atkEffect.ID;
 
         _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
         _finalAs = 1 / (_atkSpeed * (1 + getBuff.asBuff)); // 1/ (기본공격속도 * (1 + %공격속도합산))
@@ -42,7 +45,7 @@ public class AttackBuilding_Projectile : AttackBuildingBase
     }
 
 
-    protected override void Update() // 사실상 override 아님. Building에서 update로 하는게 없음
+    protected override void Update() 
     {
         base.Update();
         AttackToTarget();
@@ -64,7 +67,7 @@ public class AttackBuilding_Projectile : AttackBuildingBase
         _finalAs = 1 / (_atkSpeed * (1 + getBuff.asBuff)); // 1/ (기본공격속도 * (1 + %공격속도합산))
         _finalSize = _atkProjectileSize + (_atkProjectileSize * getBuff.rangeBuff);
 
-        AtkEvent?.Invoke();
+        AtkEvent?.Invoke(); // 공격 로직 실행 ( 타겟으로 발사 )
         yield return new WaitForSeconds(_finalAs);
         atkDelaying = false;
     }

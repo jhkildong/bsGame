@@ -155,7 +155,7 @@ namespace Yeon
             if (IsDead)
                 return;
             CurHp += heal;
-            CurHp = Mathf.Clamp(CurHp, 0, MaxHp); 
+            CurHp = Mathf.Clamp(CurHp, 0, MaxHp);
         }
 
         public Buff getBuff { get => _buff; set => _buff = value; }

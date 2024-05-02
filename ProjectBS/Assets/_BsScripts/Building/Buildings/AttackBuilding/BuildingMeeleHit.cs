@@ -26,6 +26,8 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
     private float myAtkDelay;
     private bool atkDelaying;
     public LayerMask attackableLayer;
+
+    [SerializeField]private HitEffects hitEffect;
     /*
     public void SetMeeleStats(short atk = 1, float radius = 1, float size = 1, float speed = 1, float atkDelay = 1)
     {
@@ -84,6 +86,8 @@ public class BuildingMeeleHit : MonoBehaviour//, ISetMeeleStats
         {
             IDamage target = collider.GetComponent<IDamage>();
             target.TakeDamage(damage);
+            Vector3 contact = collider.ClosestPoint(transform.position); // 충돌한 위치와 가장 가까운 점을 찾는다.
+            EffectPoolManager.Instance.SetActiveHitEffect(hitEffect, contact, hitEffect.ID); // 피격대상과 가장 가까운 점에 피격이펙트 생성
         }
         yield return new WaitForSeconds(delay);
         atkDelaying = false;

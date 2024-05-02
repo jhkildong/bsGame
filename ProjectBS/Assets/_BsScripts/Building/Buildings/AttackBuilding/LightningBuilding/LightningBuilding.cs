@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightningBuilding : AttackBuilding_Area // 0412 변경전 -> AttackBuildingBase
 {
-    public GameObject myEffect;
+    //public GameObject myEffect;
 
     protected override void Start()
     {
@@ -16,9 +16,9 @@ public class LightningBuilding : AttackBuilding_Area // 0412 변경전 -> AttackBui
     {
         if (target != null && atkDelaying)
         {
-            
-            EffectPoolManager.Instance.SetActiveRangeObject<PointAtkEffectHit>(myEffect, effectPool, target, _finalDmg, _atkRadius, 0, 0,_atkSpeed,_hitDelay,_atkDuration);
-            
+
+            //EffectPoolManager.Instance.SetActiveRangeObject<PointAtkEffectHit>(myEffect, effectPool, target, _finalDmg, _atkRadius, 0, 0,_atkSpeed,_hitDelay,_atkDuration);
+            EffectPoolManager.Instance.SetActiveRangeObject(atkEffect, effectPool, target, _atkId, _finalDmg, _atkRadius, 0, 0, _atkSpeed, _hitDelay, _atkDuration);
         }
     }
 

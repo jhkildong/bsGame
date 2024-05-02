@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NonAtkEffect : MonoBehaviour
+public class HitEffects : MonoBehaviour
 {
     ParticleSystem ps;
-    protected float hitTime = 1f; //공격 타이밍
+    public int ID => id;
+    [SerializeField] private int id;
     float progress; // 파티클 재생 진행도
 
     void Start()
@@ -21,7 +22,8 @@ public class NonAtkEffect : MonoBehaviour
 
         if (progress >= 1f) // 이펙트가 끝나면
         {
-            EffectPoolManager.Instance.ReleaseObject<NonAtkEffect>(gameObject); //풀로 되돌림
+            //EffectPoolManager.Instance.ReleaseObject<NonAtkEffect>(gameObject); //풀로 되돌림
+            EffectPoolManager.Instance.ReleaseObject(gameObject,id); //풀로 되돌림
         }
 
     }

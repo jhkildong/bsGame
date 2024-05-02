@@ -22,7 +22,8 @@ public class AttackBuilding_Area : AttackBuildingBase
 
     [SerializeField] protected float _additionalAtk; // 추가공격력
     //[SerializeField] private LayerMask _attackableLayer;
-
+    [SerializeField] protected int _atkId;
+    public PointAtkEffectHit atkEffect;
     protected override void Start()
     {
         base.Start();
@@ -32,6 +33,7 @@ public class AttackBuilding_Area : AttackBuildingBase
         _hitDelay = AData.hitDelay;
         _atkDuration = AData.atkDuration;
         _atkRadius = AData.atkRadius;
+        _atkId = atkEffect.ID;
 
         _finalDmg = Mathf.Round((float)_atkPower * (1 + getBuff.atkBuff));
         _finalAs = 1 / (_atkSpeed * (1 + getBuff.asBuff)); // 1/ (기본공격속도 * (1 + %공격속도합산))

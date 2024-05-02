@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009689f57b351bf4481c62c6dcc07581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingData: {fileID: 11400000, guid: a30fe226983de7e48a963d20193a9c77, type: 2}
+  buildingData: {fileID: 11400000, guid: 856c91af59c25e14fac1bbc2bb5f3338, type: 2}
   _id: 0
   _buildingName: 
   _maxHp: 0
@@ -410,7 +410,8 @@ MonoBehaviour:
   _atkProjectileRange: 0
   _atkCanPen: 0
   _atkPenCount: 0
-  myProjectile: {fileID: 3269023311403048843, guid: 548f0a8410fc3ec4aa8f485c66b68025, type: 3}
+  _atkId: 0
+  atkEffect: {fileID: 1148116666656626343, guid: 548f0a8410fc3ec4aa8f485c66b68025, type: 3}
   muzzle: {fileID: 4723964829024902436}
 --- !u!1 &7484407118577239274
 GameObject:
