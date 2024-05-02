@@ -22,13 +22,13 @@ MonoBehaviour:
     defaultValue: 10
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1.2
-    - 1
-    - 1
-    - 1.3
-    - 1
+    - 0
+    - 0
+    - 0.2
+    - 0
+    - 0
+    - 0.3
+    - 0
   - name: Amount
     defaultValue: 0
     levelUpType: 0
@@ -42,15 +42,15 @@ MonoBehaviour:
     - 1
   - name: ReTime
     defaultValue: 2
-    levelUpType: 1
+    levelUpType: 2
     levelUpTable:
-    - 1
-    - 0.8
-    - 1
-    - 0.8
-    - 1
-    - 1
-    - 0.8
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0
+    - 0
+    - 0.2
   - name: ArrowAmount
     defaultValue: 0
     levelUpType: 0

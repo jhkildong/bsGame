@@ -21,15 +21,15 @@ MonoBehaviour:
     defaultValue: 10
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1.2
-    - 1
-    - 1
-    - 1.2
-    - 1
+    - 0
+    - 0
+    - 0.2
+    - 0
+    - 0
+    - 0.2
+    - 0
   - name: Amount
-    defaultValue: 0
+    defaultValue: 1
     levelUpType: 0
     levelUpTable:
     - 1
@@ -43,29 +43,29 @@ MonoBehaviour:
     defaultValue: 3
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   - name: RotSpeed
     defaultValue: 130
     levelUpType: 1
     levelUpTable:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1.5
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0.5
+    - 0
+    - 0
   - name: Size
-    defaultValue: 0
+    defaultValue: 2
     levelUpType: 0
     levelUpTable:
-    - 2
+    - 0
     - 0
     - 0
     - 0
