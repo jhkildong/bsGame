@@ -416,7 +416,6 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: 1cc8d47902f51fa47a5c7f5ac1a60dc2, type: 2}
   - data: {fileID: 11400000, guid: 10ffcfb7f7f689c439629a28b6eaaf6d, type: 2}
   - data: {fileID: 11400000, guid: a90a4c8e9eaafa34e8d3020b2845cf56, type: 2}
-  - data: {fileID: 11400000, guid: a90a4c8e9eaafa34e8d3020b2845cf56, type: 2}
   - data: {fileID: 11400000, guid: cda88bd40e245bf49b114d0cd40cd477, type: 2}
   - data: {fileID: 11400000, guid: 7696f5c3e683b4345a75a69d04471700, type: 2}
   - data: {fileID: 11400000, guid: 86064aae380c9784c8b7aaa79e4337a6, type: 2}
@@ -425,6 +424,8 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: 6f0b8a064497a234da8d88cf1b8c8b9d, type: 2}
   - data: {fileID: 11400000, guid: e1cac2b171955134aa1acd0fc1fa48dd, type: 2}
   - data: {fileID: 11400000, guid: 3c2e9c6f9ef03864e91a24e8f8d47784, type: 2}
+  - data: {fileID: 11400000, guid: 004bfa338d9be5348a28bf4d7f42612f, type: 2}
+  - data: {fileID: 11400000, guid: 17ca0f413670c1c40a7f316b85de925a, type: 2}
 --- !u!4 &240066944
 Transform:
   m_ObjectHideFlags: 0

@@ -123,6 +123,8 @@ public class PlayerSetup : MonoBehaviour
         mainCameraAction.Target = player.transform;
         //플레이어 선택창 제거
         Destroy(playerSelectWindow.gameObject);
+
+        UIManager.Instance.CreateUI(UIID.SkillIconUI, CanvasType.DynamicCanvas);
     }
 
     public void OnPlay()

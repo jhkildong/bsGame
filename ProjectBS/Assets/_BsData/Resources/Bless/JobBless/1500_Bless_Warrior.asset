@@ -60,7 +60,7 @@ MonoBehaviour:
     - 1
     - 0
     - 2
-    - 0
+    - 5
   - name: SkillCoolTime
     defaultValue: 50
     levelUpType: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
     - -5
     - 0
     - -5
-    - 0
+    - -10
   - name: SkillSize
     defaultValue: 1
     levelUpType: 1
@@ -82,4 +82,4 @@ MonoBehaviour:
     - 0.3
     - 0
     - 0.5
-    - 0
+    - 0.7

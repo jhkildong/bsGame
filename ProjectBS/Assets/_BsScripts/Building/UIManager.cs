@@ -163,5 +163,6 @@ public enum UIID
     BlessSelectWindow = 5007,
     HealFontUI = 5008,
     BuildingHpBar = 5010,
-    BuildingInteractionUI = 5011
+    BuildingInteractionUI = 5011,
+    SkillIconUI = 5012,
 }

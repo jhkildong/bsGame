@@ -10,9 +10,7 @@ public class WarriorSkill : PlayerSkill
     private void OnEnable()
     {
         takingDamage = StartCoroutine(TakingDamage());
-        Vector3 scale = transform.localScale;
-        scale *= Size;
-        transform.localScale = scale;
+        transform.localScale = Vector3.one * Size;
     }
 
     private void OnDisable()

@@ -11,6 +11,8 @@ public class Player : Combat, IDamage<Player>
     ////////////////////////////////Public Field, Method////////////////////////////////
     public event UnityAction OnSkillAct;
     public event UnityAction OffSkillAct;
+    public event UnityAction<float, float> ChangeCoolTimeAct;
+    public event UnityAction<int> ChangeStackAct;
     
     public Transform RotatingBody => rotatingBody;
     public bool IsBuilding
@@ -294,7 +296,16 @@ public class Player : Combat, IDamage<Player>
     //TODO: PlayerComponent에서 파생되는 직업들을 다시 Player를 상속받게 해서 스킬의 동작을 각 직업에서 구현하기
     //처음의 구조를 잘못잡음 시간이 없어서 일단 구현한대로 진행
     private float skillCoolTime;
-    private float remainCoolTime;
+    private float remainCoolTime
+    {
+        get => _remainCoolTime;
+        set
+        {
+            _remainCoolTime = value;
+            ChangeCoolTimeAct?.Invoke(value, skillCoolTime);
+        }
+    }
+    private float _remainCoolTime;
     private float maxCastingTime;
     private bool isSkillNotReady = false;   //기존에 isSkillCoolTime에서 변경 변수명과 상태를 맞추기 위해 NotReady로 명명
     private bool isCastingSkill = false;
@@ -330,7 +341,19 @@ public class Player : Combat, IDamage<Player>
         }
     }
     private int _maxSkillStack = 1;
-    private int curSkillStack = 1;
+    private int curSkillStack
+    {
+        get => _curSkillStack;
+        set
+        {
+            _curSkillStack = value;
+            if(MaxSkillStack > 1)
+                ChangeStackAct?.Invoke(_curSkillStack);
+            else
+                ChangeStackAct?.Invoke(-1);
+        }
+    }
+    private int _curSkillStack;
     private Coroutine skillCasting;
     private Coroutine ArcherSkillCoolTime;
 
