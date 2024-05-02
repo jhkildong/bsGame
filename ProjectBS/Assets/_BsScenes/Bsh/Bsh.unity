@@ -1785,7 +1785,7 @@ GameObject:
   - component: {fileID: 598011683}
   - component: {fileID: 598011682}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MousePointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1803,7 +1803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecce7aaaec38ab4582f709f2e61fc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 3b0497f5c50d040478fa02e4bfaa9402, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
 --- !u!65 &598011683
 BoxCollider:
   m_ObjectHideFlags: 0
