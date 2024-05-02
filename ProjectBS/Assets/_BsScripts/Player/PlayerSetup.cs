@@ -10,6 +10,7 @@ public class PlayerSetup : MonoBehaviour
     private PlayerComponent[] jobs;
     private PlayerAttackType[] types;
     private GameObject[] mageHandTypes;
+    private BlessID[] jobBlessIDs;
     private SelectWindow playerSelectWindow;
     [SerializeField] Transform Canvas;
     [SerializeField] private MainCameraAction mainCameraAction;
@@ -19,6 +20,7 @@ public class PlayerSetup : MonoBehaviour
         playerPrefab = Resources.Load<GameObject>(FilePath.PlayerPrefab);
         jobs = Resources.LoadAll<PlayerComponent>(FilePath.Job);
         mageHandTypes = Resources.LoadAll<GameObject>(FilePath.MageHandTypes);
+        jobBlessIDs = new BlessID[] { BlessID.WARRIOR, BlessID.ARCHER, BlessID.MAGE, };
     }
     private void Start()
     {
@@ -107,6 +109,16 @@ public class PlayerSetup : MonoBehaviour
         }
         //플레이어 초기설정(job(PlayerComponent)의 데이터를 받아서 설정)
         player.InitPlayerSetting(clone);
+        //직업 축복 생성
+        int jobBlessIdx = (int)job.MyJob;
+        JobBless jobBless = BlessManager.Instance.CreateBless(jobBlessIDs[jobBlessIdx]) as JobBless;
+        clone.MyJobBless = jobBless;
+        for(int i = 0; i < jobBlessIDs.Length; i++)
+        {
+            if(i == jobBlessIdx)
+                continue;
+            BlessManager.Instance.RemoveBlessInSelectPool((int)jobBlessIDs[i]);
+        }
         //메인카메라 타겟설정
         mainCameraAction.Target = player.transform;
         //플레이어 선택창 제거

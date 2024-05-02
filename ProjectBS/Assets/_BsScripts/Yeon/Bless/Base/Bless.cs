@@ -34,17 +34,17 @@ public class Bless : MonoBehaviour
         }
     }
 
-    public void LevelUp()
+    public virtual void LevelUp()
     {
-        if (_curLevel >= _maxLevel)
-        {
-            BlessManager.Instance.FinishLevelUp(Data.ID);
-            return;
-        }
         _curLevel++;
         foreach (var lvData in _data.LvDataList)
         {
             myStatus[lvData.name] = lvData[_curLevel];
+        }
+        if (_curLevel >= _maxLevel)
+        {
+            BlessManager.Instance.RemoveBlessInSelectPool(Data.ID);
+            return;
         }
     }
 

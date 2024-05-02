@@ -1,23 +1,32 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Archer : PlayerComponent
 {
     public override Job MyJob => Job.Archer;
     [SerializeField]private GameObject SkillRangeMaker;
-    private GameObject clone;
+    public Stack<PlayerSkill> skillEffectStack;
 
-    public void ShowRange()
+    private void Start()
     {
-        if(clone == null)
+        MySkillEffect.transform.SetParent(null);
+        skillEffectStack = new Stack<PlayerSkill>();
+        skillEffectStack.Push(MySkillEffect);
+
+        for(int i = 0; i < 4; i++)
         {
-            clone = Instantiate(SkillRangeMaker);
+            PlayerSkill clone = Instantiate(MySkillEffect);
+            clone.gameObject.SetActive(false);
+            skillEffectStack.Push(clone);
         }
-        clone.SetActive(true);
+
+        MyAnimEvent.SkillAct += OnSkillEffect;
+        MyAnimEvent.SkillAct += OnArcherSkill;
     }
 
-    public void HideRange()
+    private void OnArcherSkill(int i)
     {
-        clone.SetActive(false);
+        GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().enabled = true;
     }
 
     public override void OnAttackPoint()
@@ -26,5 +35,28 @@ public class Archer : PlayerComponent
         ArrowEffect arrow = ObjectPoolManager.Instance.GetEffect(MyEffect, Attack) as ArrowEffect;
         arrow.This.transform.SetPositionAndRotation(MyEffectSpawn.position, MyEffectSpawn.rotation);
         arrow.Shoot();
+    }
+
+    public override void SetSkillAct(Player player)
+    {
+        player.OnSkillAct += OnSkill;
+        player.OffSkillAct += OffSkill;
+    }
+
+    private void OnSkill()
+    {
+        MySkillEffect = skillEffectStack.Pop();
+        (MySkillEffect as ArcherSkill).myParent = this;
+        MySkillEffect.Attack = MyJobBless.MyStatus[Key.SkillAttack];
+        MySkillEffect.Size = MyJobBless.MyStatus[Key.SkillSize];
+        SkillRangeMaker.SetActive(true);
+        SkillRangeMaker.transform.localScale = Vector3.one * MyJobBless.MyStatus[Key.SkillSize];
+    }
+
+    private void OffSkill()
+    {
+        MySkillEffect.transform.position = SkillRangeMaker.transform.position;
+        SkillRangeMaker.SetActive(false);
+        GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().enabled = false;
     }
 }

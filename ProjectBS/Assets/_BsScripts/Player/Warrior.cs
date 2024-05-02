@@ -27,7 +27,7 @@ public class Warrior : PlayerComponent
         ChangeAttackDir();
 
         //공격 이펙트 생성
-        GameObject go = ObjectPoolManager.Instance.GetEffect(MyEffect, Attack).This.gameObject;
+        GameObject go = ObjectPoolManager.Instance.GetEffect(MyEffect, Attack, MyJobBless.MyStatus[Key.Size]).This.gameObject;
         go.transform.SetPositionAndRotation(MyEffectSpawn.position, Quaternion.Euler(0.0f, MyEffectSpawn.rotation.eulerAngles.y, _attackDir));
     }
 
@@ -39,12 +39,16 @@ public class Warrior : PlayerComponent
 
     private void OnSkill()
     {
+        MySkillEffect.Attack = MyJobBless.MyStatus[Key.SkillAttack];
+        MySkillEffect.Size = MyJobBless.MyStatus[Key.SkillSize];
+        OnSkillEffect(1);
         SetRigWeight(0);
         GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().enabled = false;   //스킬 사용시 마우스 방향으로 회전하는 스크립트 비활성화
     }
 
     private void OffSkill()
     {
+        OnSkillEffect(0);
         SetRigWeight(1);
         GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().enabled = true;    //스킬 사용 종료시 마우스 방향으로 회전하는 스크립트 활성화
     }

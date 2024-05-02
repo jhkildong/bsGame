@@ -49,11 +49,11 @@ public class BlessManager : Singleton<BlessManager>
         //WeightedRandomPicker에 데이터를 추가
         foreach(var item in _blessDict)
         {
-            blessDataWeight.Add(item.Value, 1);
-        }
-        for(int i = 1500; i < 1503; i++)
-        {
-            spawnedBless.Add(i, CreateBless((BlessID)i));
+            //테스트용
+            if(item.Value.ID >= 1500 && item.Value.ID < 1503)
+                blessDataWeight.Add(item.Value, 100);
+            else
+                blessDataWeight.Add(item.Value, 1);
         }
     }
     #region Public Method
@@ -71,6 +71,8 @@ public class BlessManager : Singleton<BlessManager>
         if (_blessDict.ContainsKey((int)id))
         {
             Bless clone = _blessDict[(int)id].CreateClone();
+            spawnedBless.Add(_blessDict[(int)id].ID, clone);
+
             return clone;
         }
         //존재하지 않으면 null 반환
@@ -125,15 +127,20 @@ public class BlessManager : Singleton<BlessManager>
         }
     }
 
-    public void SelectBless(int idx)
+    private void SelectBless(int idx)
     {
         //선택된 축복를 WeightedRandomPicker에 추가
         for (int i = 0; i < 3; i++)
         {
             if (i == idx)
             {
-                if (temp[idx].ID >= 1500 || temp[idx].ID < 1503)    //선택된 축복이 직업 축복일 경우
-                    blessDataWeight.Add(temp[i], 0.5f);             //가중치를 0.5로 설정
+                if ((temp[idx].ID >= 1500 && temp[idx].ID < 1503)) //선택된 축복이 직업 축복이고 레벨 6일경우
+                {
+                    if (spawnedBless[temp[idx].ID].CurLv == 6)
+                        blessDataWeight.Add(temp[i], 0.5f);             //가중치를 0.5로 설정
+                    else
+                        blessDataWeight.Add(temp[i], weights[i] + 10);  //선택된 축복의 가중치를 증가
+                }
                 else
                     blessDataWeight.Add(temp[i], weights[i] + 10);  //선택된 축복의 가중치를 증가
             }
@@ -143,8 +150,7 @@ public class BlessManager : Singleton<BlessManager>
         //소환되어있지 않은 축복이면 생성
         if (!spawnedBless.ContainsKey(temp[idx].ID))
         {
-            Bless clone = CreateBless((BlessID)temp[idx].ID);
-            spawnedBless.Add(temp[idx].ID, clone);
+            CreateBless((BlessID)temp[idx].ID);
         }
         //소환되어있는 축복이면 레벨업
         else
@@ -160,7 +166,7 @@ public class BlessManager : Singleton<BlessManager>
         }
     }
 
-    public void FinishLevelUp(int ID)
+    public void RemoveBlessInSelectPool(int ID)
     {
         blessDataWeight.Remove(BlessDict[ID]);
     }
@@ -172,6 +178,8 @@ public enum BlessID
     BOTS = 1010, RA = 1020, PF = 1030,
     LD = 1040, BOTCA = 1050, CS = 1060, VG = 1070,
     LP = 1080, RM = 1090, BOL = 1100,
+    WARRIOR = 1500, ARCHER = 1501, MAGE = 1502
+
 }
 
 

@@ -42,7 +42,7 @@ public class Player : Combat, IDamage<Player>
     {
         Com.Attack = Attack;
     }
-    public void SetMyStat(float attack, float coolTime, float aksp = 1.0f, float castingTime = 5.0f)
+    public void UpdateStatus(float attack, float coolTime, float aksp = 1.0f, float castingTime = 5.0f)
     {
         _attack = attack;
         Com.MyAnim.SetFloat(AnimParam.AttackSpeed, aksp);
@@ -69,7 +69,7 @@ public class Player : Combat, IDamage<Player>
     }
     private void StartSkill(InputAction.CallbackContext context)
     {
-        if(isCoolTime)  //쿨타임이면 리턴
+        if(isSkillNotReady)  //스킬 준비가 안됬으면 리턴
         {
             Debug.Log($"쿨타임: {remainCoolTime}");
             return;
@@ -290,28 +290,79 @@ public class Player : Combat, IDamage<Player>
     #endregion
 
     #region Private Method
+    ////////////////////////////////PrivateMethod////////////////////////////////
+    //TODO: PlayerComponent에서 파생되는 직업들을 다시 Player를 상속받게 해서 스킬의 동작을 각 직업에서 구현하기
+    //처음의 구조를 잘못잡음 시간이 없어서 일단 구현한대로 진행
     private float skillCoolTime;
     private float remainCoolTime;
     private float maxCastingTime;
-    private bool isCoolTime = false;
+    private bool isSkillNotReady = false;   //기존에 isSkillCoolTime에서 변경 변수명과 상태를 맞추기 위해 NotReady로 명명
     private bool isCastingSkill = false;
+    public bool MageLv7SkillReady
+    {
+        get
+        {
+            if (Com.MyJobBless.CurLv >= 7)
+                return _mageLv7SkillReady;
+            else
+                return false;
+        }
+        set
+        {
+            if (Com.MyJobBless.CurLv < 7)
+                _mageLv7SkillReady = false;
+            else
+                _mageLv7SkillReady = value;
+        }
+    }
+    private bool _mageLv7SkillReady;
+    public int MaxSkillStack
+    {
+        get => _maxSkillStack;
+        set
+        {
+            if(value != _maxSkillStack)
+            {
+                curSkillStack = value;
+                isSkillNotReady = false;
+            }
+            _maxSkillStack = value;
+        }
+    }
+    private int _maxSkillStack = 1;
+    private int curSkillStack = 1;
     private Coroutine skillCasting;
+    private Coroutine ArcherSkillCoolTime;
+
+    private float MageBuffTime = 40.0f;
+    private float remainBuffTime;
+    private float MageBuffCoolTime = 30.0f;
+    private float reaminBuffCoolTime;
     
     private void OnSkill()  //스킬키를 눌렀을 때 실행
     {
-        if (isCoolTime)
+        if (isSkillNotReady)
             return;
-        isCoolTime = true;
-        isCastingSkill = true;
-        switch(Com.MyJob)
+        if(MageLv7SkillReady)
         {
-            case Job.Mage:
-            case Job.Warrior:   //마법사, 전사는 키다운 스킬시전
-                Com.MyAnim.SetBool(AnimParam.isSkill, true);
-                break;
-            case Job.Archer:    //궁수는 범위 지정
-                (Com as Archer).ShowRange();
-                break;
+            MageLv7SkillReady = false;
+            Com.MyJobBless.MageLv7SkillOn();
+            SetOutOfControl(true);
+            RotatingBody.GetComponent<LookAtPoint>().SetRotSpeed(0.1f);
+            Com.MyAnim.SetTrigger(AnimParam.Lv7Skill);
+            StartCoroutine(MageBuffTimer());
+            return;
+        }
+        
+        if(Com.MyJob == Job.Archer)
+        {
+            isCastingSkill = true;
+        }
+        else
+        {
+            isSkillNotReady = true;
+            isCastingSkill = true;
+            Com.MyAnim.SetBool(AnimParam.isSkill, true);
         }
         skillCasting = StartCoroutine(CastingTimer()); //최대 시전시간 이후 스킬종료
     }
@@ -329,12 +380,17 @@ public class Player : Combat, IDamage<Player>
             case Job.Mage:
             case Job.Warrior:   //마법사, 전사는 스킬시전 종료
                 Com.MyAnim.SetBool(AnimParam.isSkill, false);
-                break;
+                StartCoroutine(SkillCoolTimer());
+                return;
             case Job.Archer:    //궁수는 스킬시전
                 Com.MyAnim.SetTrigger(AnimParam.OnSkill);
+                curSkillStack--;
+                if(curSkillStack == 0)
+                    isSkillNotReady = true;
+                if (ArcherSkillCoolTime == null)
+                    ArcherSkillCoolTime = StartCoroutine(ArcherSkillCoolTimer());
                 return;
         }
-        StartCoroutine(SkillCoolTimer());
     }
 
     private IEnumerator SkillCoolTimer()
@@ -345,9 +401,63 @@ public class Player : Combat, IDamage<Player>
             remainCoolTime -= Time.deltaTime;
             yield return null;
         }
-        isCoolTime = false;
+        isSkillNotReady = false;
         yield break;
     }
+
+    private IEnumerator ArcherSkillCoolTimer()
+    {
+        remainCoolTime = skillCoolTime;
+        while (true)
+        {
+            remainCoolTime -= Time.deltaTime;
+            if(remainCoolTime <= 0.0f)
+            {
+                isSkillNotReady = false;
+                if (curSkillStack < MaxSkillStack)
+                {
+                    curSkillStack++;
+                    remainCoolTime = skillCoolTime;
+                }
+                else
+                {
+                    ArcherSkillCoolTime = null;
+                    yield break;
+                }
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator MageBuffTimer()
+    {
+        remainBuffTime = MageBuffTime;
+        while (remainBuffTime > 0.0f)
+        {
+            remainBuffTime -= Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log("마법사 버프 종료");
+        Com.MyJobBless.MageLv7SkillOff();
+        Mage mage = Com as Mage;
+        mage.OffLv7SkillEffect();
+        StartCoroutine(MageBuffCoolTimer());
+        yield break;
+    }
+
+    private IEnumerator MageBuffCoolTimer()
+    {
+        reaminBuffCoolTime = MageBuffCoolTime;
+        while (reaminBuffCoolTime > 0.0f)
+        {
+            reaminBuffCoolTime -= Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log("마법사 버프 쿨타임 종료");
+        MageLv7SkillReady = true;
+        yield break;
+    }
+
 
     private IEnumerator CastingTimer()
     {

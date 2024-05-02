@@ -656,9 +656,9 @@
       "levelUpType": 0,
       "levelUpTable": [
         0.0,
-        0.5,
+        1.0,
         0.0,
-        1.5,
+        1.0,
         0.0,
         2.0,
         0.0
@@ -714,11 +714,167 @@
       "levelUpType": 1,
       "levelUpTable": [
         0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillAttack",
+      "defaultValue": 20.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        3.0,
+        3.0,
+        4.0,
+        4.0,
+        5.0,
+        5.0,
+        10.0
+      ]
+    },
+    {
+      "name": "SkillCoolTime",
+      "defaultValue": 40.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        0.0,
+        -3.0,
+        0.0,
+        -3.0,
+        0.0,
+        -4.0,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillSize",
+      "defaultValue": 0.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.3,
+        0.0,
+        0.3,
+        0.0,
+        0.4,
+        1.0
+      ]
+    },
+    {
+      "name": "SkillAmount",
+      "defaultValue": 1.0,
+      "levelUpType": 0,
+      "levelUpTable": [
         0.0,
         0.0,
         0.0,
+        1.0,
         0.0,
         0.0,
+        2.0
+      ]
+    }
+  ],
+  "1502_Bless_Mage": [
+    {
+      "name": "Attack",
+      "defaultValue": 17.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        1.0,
+        1.0,
+        2.0,
+        2.0,
+        3.0,
+        3.0,
+        5.0
+      ]
+    },
+    {
+      "name": "Size",
+      "defaultValue": 1.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0
+      ]
+    },
+    {
+      "name": "AttackSp",
+      "defaultValue": 1.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillAttack",
+      "defaultValue": 20.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        3.0,
+        3.0,
+        4.0,
+        4.0,
+        5.0,
+        5.0,
+        10.0
+      ]
+    },
+    {
+      "name": "SkillCastTime",
+      "defaultValue": 3.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        2.0,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillCoolTime",
+      "defaultValue": 40.0,
+      "levelUpType": 0,
+      "levelUpTable": [
+        0.0,
+        -5.0,
+        0.0,
+        -5.0,
+        0.0,
+        -5.0,
+        0.0
+      ]
+    },
+    {
+      "name": "SkillSize",
+      "defaultValue": 1.0,
+      "levelUpType": 1,
+      "levelUpTable": [
+        0.0,
+        0.2,
+        0.0,
+        0.2,
+        0.0,
+        0.2,
         0.0
       ]
     }
