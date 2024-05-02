@@ -136,12 +136,11 @@ public class ObjectPoolManager : MonoBehaviour
         return go;
     }
 
-    public Effect GetEffect(Effect poolable, float attack = 1, float speed = 1, float size = 1)
+    public PlayerAttackType GetEffect(PlayerAttackType poolable, float attack = 1, float size = 1)
     {
         IPoolable go = GetObj(poolable);
-        Effect effect = go.This as Effect;
+        PlayerAttackType effect = go.This as PlayerAttackType;
         effect.Attack = attack;
-        effect.Speed = speed;
         effect.Size = size;
 
         return effect;

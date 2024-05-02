@@ -9,15 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a92c7acb541aea4aa5a54be9554c498, type: 3}
-  m_Name: BD_AtkBuffBuildingData
+  m_Script: {fileID: 11500000, guid: b7f14dc289518574496800802be9a349, type: 3}
+  m_Name: 1502_Bless_Mage
   m_EditorClassIdentifier: 
-  _buffName: atkBuffStone
-  _buffAmount: 0.2
-  _hasDuration: 0
-  _duration: 0
-  _canStack: 1
-  _targetLayer:
-    serializedVersion: 2
-    m_Bits: 16793600
-  _buffType: 1
+  _id: 1502
+  _name: "\uB9C8\uBC95\uC0AC\uC758 \uCD95\uBCF5"
+  _description: "\uAE30\uBCF8 \uACF5\uACA9 \uBC0F \uC2A4\uD0AC \uAC15\uD654"
+  _prefab: {fileID: 0}
+  _lvDataList: []

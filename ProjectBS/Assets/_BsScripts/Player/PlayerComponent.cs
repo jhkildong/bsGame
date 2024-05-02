@@ -41,12 +41,14 @@ public abstract class PlayerComponent : CharacterComponent
         get => _attack;
         set => _attack = value;
     }
-    public virtual Effect MyEffect
+    public virtual PlayerAttackType MyEffect
     { 
         get => _effect;
         set => _effect = value;
     }
+    public PlayerSkill MySkillEffect { get => _skillEffect; set => _skillEffect = value; }
     public PlayerStat MyStat => _playerStat;
+    public JobBless MyJobBless => _jobBless;
     #endregion
 
     #region Field
@@ -54,10 +56,11 @@ public abstract class PlayerComponent : CharacterComponent
     [SerializeField] protected Transform _effectSpawn;
     [SerializeField] protected Rig[] _rigs;
     [SerializeField] protected float _attack;
-    [SerializeField] protected Effect[] _effects;
     [SerializeField] protected int _effectIdx;
-    [SerializeField] protected Effect _effect;
+    [SerializeField] protected PlayerAttackType _effect;
+    [SerializeField] protected PlayerSkill _skillEffect;
     [SerializeField] protected PlayerStat _playerStat = new PlayerStat();
+    [SerializeField] protected JobBless _jobBless;
     #endregion
 
     #region Abstract Method
@@ -78,6 +81,15 @@ public abstract class PlayerComponent : CharacterComponent
     public virtual void SetSkillAct(Player player)
     {
 
+    }
+
+    //애니메이션 이벤트는 bool값을 지원안함
+    public void OnSkillEffect(int onSkill)
+    {
+        if (onSkill == 0)
+            MySkillEffect.gameObject.SetActive(false);
+        else if (onSkill == 1)
+            MySkillEffect.gameObject.SetActive(true);
     }
     #endregion
 }

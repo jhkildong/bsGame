@@ -14,5 +14,11 @@ public static class Key
 	public const string ArrowAmount = "ArrowAmount";
 	public const string DestroyTime = "DestroyTime";
 	public const string DelayTime = "DelayTime";
+	public const string SkillAttack = "SkillAttack";
+	public const string SkillCastTime = "SkillCastTime";
+	public const string SkillCoolTime = "SkillCoolTime";
+	public const string SkillSize = "SkillSize";
+	public const string AttackSp = "AttackSp";
+	public const string SkillAmount = "SkillAmount";
 
 }

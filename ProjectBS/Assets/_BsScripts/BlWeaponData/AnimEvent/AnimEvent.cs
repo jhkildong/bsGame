@@ -19,8 +19,8 @@ public class AnimEvent : MonoBehaviour
         DeadAct?.Invoke();
     }
 
-    public void OnSkill(int v)
+    public void OnSkill(int onSkill)
     {
-        SkillAct?.Invoke(v);
+        SkillAct?.Invoke(onSkill);
     }
 }
