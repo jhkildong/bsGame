@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,7 +13,7 @@ public class BlessManager : Singleton<BlessManager>
     private SelectWindow blessSelectWindow;
     private Stack<UnityAction> callStack;
     private Dictionary<int, Bless> spawnedBless;
-    private GridImages blessIconsUI;
+    private BlessIconsUI blessIconsUI;
 
     BlessData[] temp;
     float[] weights;
@@ -28,7 +29,8 @@ public class BlessManager : Singleton<BlessManager>
     {
         blessSelectWindow = UIManager.Instance.CreateUI(UIID.BlessSelectWindow, CanvasType.Canvas) as SelectWindow;
         blessSelectWindow.gameObject.SetActive(false);
-        blessIconsUI = UIManager.Instance.CreateUI(UIID.BlessIconsUI, CanvasType.Canvas) as GridImages;
+        blessIconsUI = UIManager.Instance.CreateUI(UIID.BlessIconsUI, CanvasType.Canvas) as BlessIconsUI;
+        LevelUpDescription.GetLevelUpDescriptionToJson();
     }
 
 
@@ -113,10 +115,25 @@ public class BlessManager : Singleton<BlessManager>
         string[] names = new string[3];
         for(int i = 0; i < 3; i++)
         {
+            StringBuilder sb = new StringBuilder();
             if (spawnedBless.ContainsKey(temp[i].ID))
-                names[i] = $"{temp[i].Name} Lv:{spawnedBless[temp[i].ID].CurLv + 1}";   //이미 소환되어있는 축복이면 다음 레벨을 표시
+            {
+                int CurLv = spawnedBless[temp[i].ID].CurLv;
+                sb.Append(temp[i].Name);
+                sb.Append(" Lv.");
+                sb.Append(CurLv + 1);
+                sb.Append(" : ");
+                sb.Append(LevelUpDescription.DescriptionDic[temp[i].ID][CurLv]);
+                names[i] = sb.ToString();   //이미 소환되어있는 축복이면 다음 레벨을 표시
+            }
             else
-                names[i] = $"{temp[i].Name}";                                           //아니면 이름만 표시
+            {
+                sb.Append(temp[i].Name);
+                sb.Append(" : ");
+                sb.Append(temp[i].Description);
+                names[i] = sb.ToString();   //아니면 이름만 표시
+            }
+                
         }
         blessSelectWindow.SelectButtons.SetButtonName(names);
         
@@ -152,14 +169,14 @@ public class BlessManager : Singleton<BlessManager>
         if (!spawnedBless.ContainsKey(temp[idx].ID))
         {
             CreateBless((BlessID)temp[idx].ID);
-            blessIconsUI.AddIcon(temp[idx].Icon);
+            blessIconsUI.AddBlessIcon(temp[idx]);
         }
         //소환되어있는 축복이면 레벨업
         else
         {
             spawnedBless[temp[idx].ID].LevelUp();
             string Lv = $"Lv.{spawnedBless[temp[idx].ID].CurLv}";
-            //blessIconsUI.SetTextAt( )
+            blessIconsUI.SetText(Lv, temp[idx].ID);
         }
         Time.timeScale = 1;
         blessSelectWindow.gameObject.SetActive(false);

@@ -44,5 +44,6 @@ public class ArcherSkillState : StateMachineBehaviour
     override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
     {
         animator.GetComponent<BowAnimSet>().OffSkillAim();
+        GameManager.Instance.Player.isCastingSkill = false;
     }
 }
