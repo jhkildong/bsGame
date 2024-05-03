@@ -28,7 +28,6 @@ public class ItemFollow : MonoBehaviour
             }
             yield return null;
         }
-
     }
     void Eat()
     {
