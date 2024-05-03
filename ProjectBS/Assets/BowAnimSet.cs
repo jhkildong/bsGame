@@ -49,6 +49,7 @@ public class BowAnimSet : MonoBehaviour
     {
         mode = Mode.ArrowString;
     }
+    //idle이 아닌 다른상태를 표시하기위해(idle상태에서는 update에서 SetWeight를 안하므로)
     public void SetArrowShot()
     {
         DummyArrow.SetActive(false);
@@ -64,6 +65,7 @@ public class BowAnimSet : MonoBehaviour
 
     public void OnSkillAim()
     {
+        GameManager.Instance.Player.SetOutOfControl(true);
         skillAiming = StartCoroutine(OnSkillAiming());
     }
 
@@ -78,6 +80,7 @@ public class BowAnimSet : MonoBehaviour
 
     public void OffSkillAim()
     {
+        GameManager.Instance.Player.SetOutOfControl(false);
         StopCoroutine(skillAiming);
         StartCoroutine(OffSkillAiming());
     }

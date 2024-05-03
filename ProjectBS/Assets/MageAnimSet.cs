@@ -60,4 +60,10 @@ public class MageAnimSet : MonoBehaviour
     {
         HandEffect.SetActive(true);
     }
+
+    public void StartPlayerMove()
+    {
+        GameManager.Instance.Player.SetOutOfControl(false);
+        GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().ResetRotSpeed();
+    }
 }

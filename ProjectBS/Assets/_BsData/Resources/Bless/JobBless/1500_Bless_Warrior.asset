@@ -15,7 +15,7 @@ MonoBehaviour:
   _id: 1500
   _name: "\uC804\uC0AC\uC758 \uCD95\uBCF5"
   _description: "\uAE30\uBCF8 \uACF5\uACA9 \uBC0F \uC2A4\uD0AC \uAC15\uD654"
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 8476745866706510708, guid: 01511b75304528945aef950c5a2dfe4d, type: 3}
   _lvDataList:
   - name: Attack
     defaultValue: 20
@@ -55,12 +55,12 @@ MonoBehaviour:
     levelUpType: 0
     levelUpTable:
     - 0
-    - 0.5
+    - 1
     - 0
-    - 1.5
+    - 1
     - 0
     - 2
-    - 0
+    - 5
   - name: SkillCoolTime
     defaultValue: 50
     levelUpType: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
     - -5
     - 0
     - -5
-    - 0
+    - -10
   - name: SkillSize
     defaultValue: 1
     levelUpType: 1
@@ -82,4 +82,4 @@ MonoBehaviour:
     - 0.3
     - 0
     - 0.5
-    - 0
+    - 0.7

@@ -20,5 +20,6 @@ public static class AnimParam
     public static int isSkill = Animator.StringToHash("isSkill");
     public static int OnSkill = Animator.StringToHash("OnSkill");
     public static int AttackSpeed = Animator.StringToHash("AttackSpeed");
+    public static int Lv7Skill = Animator.StringToHash("Lv7Skill");
 
 }

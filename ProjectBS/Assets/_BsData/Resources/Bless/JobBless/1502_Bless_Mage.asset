@@ -15,5 +15,82 @@ MonoBehaviour:
   _id: 1502
   _name: "\uB9C8\uBC95\uC0AC\uC758 \uCD95\uBCF5"
   _description: "\uAE30\uBCF8 \uACF5\uACA9 \uBC0F \uC2A4\uD0AC \uAC15\uD654"
-  _prefab: {fileID: 0}
-  _lvDataList: []
+  _prefab: {fileID: 8476745866706510708, guid: cb2f5eb7065138243b6b4b2b4f17dd57, type: 3}
+  _lvDataList:
+  - name: Attack
+    defaultValue: 17
+    levelUpType: 0
+    levelUpTable:
+    - 1
+    - 1
+    - 2
+    - 2
+    - 3
+    - 3
+    - 5
+  - name: Size
+    defaultValue: 1
+    levelUpType: 1
+    levelUpTable:
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0.2
+  - name: AttackSp
+    defaultValue: 1
+    levelUpType: 1
+    levelUpTable:
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0.2
+  - name: SkillAttack
+    defaultValue: 20
+    levelUpType: 0
+    levelUpTable:
+    - 3
+    - 3
+    - 4
+    - 4
+    - 5
+    - 5
+    - 10
+  - name: SkillCastTime
+    defaultValue: 3
+    levelUpType: 0
+    levelUpTable:
+    - 0
+    - 1
+    - 0
+    - 1
+    - 0
+    - 2
+    - 3
+  - name: SkillCoolTime
+    defaultValue: 40
+    levelUpType: 0
+    levelUpTable:
+    - 0
+    - -5
+    - 0
+    - -5
+    - 0
+    - -5
+    - -15
+  - name: SkillSize
+    defaultValue: 1
+    levelUpType: 1
+    levelUpTable:
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0
+    - 0.2
+    - 0.2

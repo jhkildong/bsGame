@@ -8,13 +8,13 @@ public abstract class PlayerComponent : CharacterComponent
 {
     #region Property
     ////////////////////////////////Property////////////////////////////////
-    public Transform MyEffectSpawn 
+    public Transform MyEffectSpawn
     {
         get
         {
             if (_effectSpawn == null)
             {
-                if(_effectSpawn = transform.Find("EffectSpawn"))
+                if (_effectSpawn = transform.Find("EffectSpawn"))
                 {
                     GameObject go = new GameObject("EffectSpawn");
                     go.transform.SetParent(transform);
@@ -42,13 +42,13 @@ public abstract class PlayerComponent : CharacterComponent
         set => _attack = value;
     }
     public virtual PlayerAttackType MyEffect
-    { 
+    {
         get => _effect;
         set => _effect = value;
     }
     public PlayerSkill MySkillEffect { get => _skillEffect; set => _skillEffect = value; }
     public PlayerStat MyStat => _playerStat;
-    public JobBless MyJobBless => _jobBless;
+    public JobBless MyJobBless { get => _jobBless; set => _jobBless = value;}
     #endregion
 
     #region Field

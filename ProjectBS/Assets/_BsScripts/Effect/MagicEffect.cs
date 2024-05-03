@@ -36,7 +36,7 @@ public class MagicEffect : PlayerAttackType
     {
         if (isStopped)
             return;
-        ObjectPoolManager.Instance.GetEffect(hitEffect, attack : Attack).
+        ObjectPoolManager.Instance.GetEffect(hitEffect, Attack, Size).
             This.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
         isStopped = true;
     }
