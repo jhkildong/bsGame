@@ -28,11 +28,12 @@ public class GameManager : MonoBehaviour
     private int myWood = 999;
     private int myStone = 999;
     private int myIron = 999;
-    private int myGold;
+    private int myGold = 999;
 
-    private int myLevel;
-    private int myExp;
-    private int MaxExp;
+    private int myLevel; // 내 레벨
+    private int myExp; //경험치 총량
+    private int curLvExp; //현재 레벨의 현재 경험치량
+    private int MaxExp; // 레벨업에 필요한 경험치 총량
 
     public event UnityAction<int> WoodChangeAct;
     public event UnityAction<int> StoneChangeAct;
@@ -151,6 +152,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if(MaxExp == myExp)
+        {
+            myLevel++;
+            //레벨업 이벤트
+            
+        }
+
 
     }
 
@@ -252,6 +260,7 @@ public class GameManager : MonoBehaviour
     public void ChangeExp(int num)
     {
         myExp += num;
+        curLvExp += num;
         //UI로 나타낼 코드 추가 필요
         ExpChangeAct?.Invoke(myExp);
         Debug.Log($"경험치 변동. 현재 경형치 : {myExp}");
