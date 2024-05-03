@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 1501_Bless_Archer
   m_EditorClassIdentifier: 
   _id: 1501
+  _icon: {fileID: 21300000, guid: 4029a9cfeb86f134c9c5af05993eaac8, type: 3}
   _name: "\uAD81\uC218\uC758 \uCD95\uBCF5"
   _description: "\uAE30\uBCF8 \uACF5\uACA9 \uBC0F \uC2A4\uD0AC \uAC15\uD654"
   _prefab: {fileID: 8476745866706510708, guid: 15e484a8a9d09fd40b42055f2b52daeb, type: 3}

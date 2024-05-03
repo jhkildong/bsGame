@@ -4,9 +4,6 @@ using TMPro;
 
 public class SkillIcon : UIComponent
 {
-    public override int ID => _id;
-    [SerializeField] private int _id;
-
     [SerializeField]private Image _icon;
     [SerializeField] private TextMeshProUGUI _coolTimeText;
     [SerializeField] private TextMeshProUGUI _stackText;

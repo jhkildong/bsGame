@@ -7,12 +7,12 @@ public class BlessManager : Singleton<BlessManager>
 {
     //Resources/UI 폴더에 있는 BlessData를 저장할 딕셔너리
     public Dictionary<int, BlessData> BlessDict => _blessDict;
-    
     private Dictionary<int, BlessData> _blessDict;
     private WeightedRandomPicker<BlessData> blessDataWeight;
     private SelectWindow blessSelectWindow;
     private Stack<UnityAction> callStack;
     private Dictionary<int, Bless> spawnedBless;
+    private GridImages blessIconsUI;
 
     BlessData[] temp;
     float[] weights;
@@ -28,6 +28,7 @@ public class BlessManager : Singleton<BlessManager>
     {
         blessSelectWindow = UIManager.Instance.CreateUI(UIID.BlessSelectWindow, CanvasType.Canvas) as SelectWindow;
         blessSelectWindow.gameObject.SetActive(false);
+        blessIconsUI = UIManager.Instance.CreateUI(UIID.BlessIconsUI, CanvasType.Canvas) as GridImages;
     }
 
 
@@ -137,12 +138,12 @@ public class BlessManager : Singleton<BlessManager>
                 if ((temp[idx].ID >= 1500 && temp[idx].ID < 1503)) //선택된 축복이 직업 축복이고 레벨 6일경우
                 {
                     if (spawnedBless[temp[idx].ID].CurLv == 6)
+                    {
                         blessDataWeight.Add(temp[i], 0.5f);             //가중치를 0.5로 설정
-                    else
-                        blessDataWeight.Add(temp[i], weights[i] + 10);  //선택된 축복의 가중치를 증가
+                        continue;
+                    }
                 }
-                else
-                    blessDataWeight.Add(temp[i], weights[i] + 10);  //선택된 축복의 가중치를 증가
+                blessDataWeight.Add(temp[i], weights[i] + 10);  //선택된 축복의 가중치를 증가
             }
             else
                 blessDataWeight.Add(temp[i], weights[i]);       //선택되지 않은 축복의 가중치는 그대로
@@ -151,11 +152,14 @@ public class BlessManager : Singleton<BlessManager>
         if (!spawnedBless.ContainsKey(temp[idx].ID))
         {
             CreateBless((BlessID)temp[idx].ID);
+            blessIconsUI.AddIcon(temp[idx].Icon);
         }
         //소환되어있는 축복이면 레벨업
         else
         {
             spawnedBless[temp[idx].ID].LevelUp();
+            string Lv = $"Lv.{spawnedBless[temp[idx].ID].CurLv}";
+            //blessIconsUI.SetTextAt( )
         }
         Time.timeScale = 1;
         blessSelectWindow.gameObject.SetActive(false);
@@ -164,6 +168,11 @@ public class BlessManager : Singleton<BlessManager>
         {
             callStack.Pop().Invoke();
         }
+    }
+
+    public void SetJobBlessIcon(int ID)
+    {
+        blessIconsUI.SetJobBlessIcon(BlessDict[ID]);
     }
 
     public void RemoveBlessInSelectPool(int ID)
