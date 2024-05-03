@@ -167,6 +167,7 @@ public class Player : Combat, IDamage<Player>
         GameManager.Instance.WoodChangeAct += playerUI.ChangeWoodText;
         GameManager.Instance.StoneChangeAct += playerUI.ChangeStoneText;
         GameManager.Instance.IronChangeAct += playerUI.ChangeIronText;
+        GameManager.Instance.GoldChangeAct += playerUI.ChangeGoldText;
         GameManager.Instance.ExpChangeAct += playerUI.ChangeExpText;
         GameManager.Instance.ChangeWood(0);
         GameManager.Instance.ChangeStone(0);
