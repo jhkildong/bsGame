@@ -30,7 +30,7 @@ public class ForwardMovingWeapon : Weapon
 
     public void Shoot(float speed)
     {
-        rb.AddForce(transform.forward * speed, ForceMode.VelocityChange);
+        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 
     IEnumerator DelayRelease(float time)

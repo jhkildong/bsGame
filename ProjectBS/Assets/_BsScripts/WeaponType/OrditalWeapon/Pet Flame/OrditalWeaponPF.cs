@@ -9,7 +9,7 @@ public class OrditalWeaponPF : Bless
     private List<GameObject> myBows; // 생성한 활들
 
     float RotSpeed = 100.0f;
-    float AtRange = 1.0f;
+    float AtRange = 2.0f;
 
     short Count = 0;
 
@@ -23,8 +23,9 @@ public class OrditalWeaponPF : Bless
     // Update is called once per frame
     void Update()
     {
-        //myRotation = rotatingBody.rotation;
-        //transform.Rotate(Vector3.up, -RotSpeed * Time.deltaTime); // 공전
+        if (rotatingBody == null) return;
+        myRotation = rotatingBody.rotation;
+        transform.Rotate(Vector3.up, -RotSpeed * Time.deltaTime); // 공전
 
         if (CurLv >= 1)
         {

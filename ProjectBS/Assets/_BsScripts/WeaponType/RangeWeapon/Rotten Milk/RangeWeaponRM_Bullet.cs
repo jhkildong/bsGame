@@ -9,17 +9,6 @@ public class RangeWeaponRM_Bullet : Weapon
 
     float time = 0.0f;
 
-    private void OnEnable()
-    {
-        StartCoroutine(DelayRelease(5.0f));
-    }
-
-    IEnumerator DelayRelease(float time)
-    {
-        yield return new WaitForSeconds(time);
-        ObjectPoolManager.Instance.ReleaseObj(this);
-    }
-
     // Update is called once per frame
     void Update()
     {

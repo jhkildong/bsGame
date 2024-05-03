@@ -16,7 +16,7 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 1.0,
+      "defaultValue": 0.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -30,7 +30,7 @@
     },
     {
       "name": "ReTime",
-      "defaultValue": 2.0,
+      "defaultValue": 1.0,
       "levelUpType": 2,
       "levelUpTable": [
         0.0,
@@ -348,7 +348,7 @@
     },
     {
       "name": "ArrowAmount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
