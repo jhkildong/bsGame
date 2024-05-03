@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ak: 0
+  ReleaseTime: 0.1
 --- !u!65 &5283106188518282144
 BoxCollider:
   m_ObjectHideFlags: 0
