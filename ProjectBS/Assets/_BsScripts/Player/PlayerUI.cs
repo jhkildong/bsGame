@@ -19,8 +19,14 @@ public class PlayerUI : UIComponent
     public TextMeshProUGUI myIronText => _myIronText;
     [SerializeField] private TextMeshProUGUI _myIronText;
 
+    public TextMeshProUGUI myGoldText => _myGoldText;
+    [SerializeField] private TextMeshProUGUI _myGoldText;
+
+
     public TextMeshProUGUI myExpText => _myExpText;
     [SerializeField] private TextMeshProUGUI _myExpText;
+
+
 
     /*
     public Slider MyExpBar => _expBar;
@@ -38,20 +44,28 @@ public class PlayerUI : UIComponent
     {
         if (_myWoodText == null)
             return;
-        _myWoodText.text = $"Wood: {wood.ToString()}";
+        _myWoodText.text = wood.ToString();
     }
     public void ChangeStoneText(int stone)
     {
         if (_myStoneText == null)
             return;
-        _myStoneText.text = $"Stone: {stone.ToString()}";
+        _myStoneText.text = stone.ToString();
     }
     public void ChangeIronText(int iron)
     {
         if (_myIronText == null)
             return;
-        _myIronText.text = $"Iron: {iron.ToString()}";
+        _myIronText.text = iron.ToString();
     }
+    public void ChangeGoldText(int gold)
+    {
+        if (_myGoldText == null)
+            return;
+        _myGoldText.text = gold.ToString();
+    }
+
+
     public void ChangeExpText(int exp) // slider·Î ¹Ù²Ü ¿¹Á¤
     {
         if (_myExpText == null)
