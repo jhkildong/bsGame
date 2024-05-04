@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8b69fdfe4eb0f54ea35ec6c6b61e0f5, type: 3}
-  m_Name: 11_Item_Exp_Boost_Lv3
+  m_Name: 2009_Item_Exp_Boost_Lv1
   m_EditorClassIdentifier: 
-  description: "\uACBD\uD5D8\uCE58\uAC00 10\uB9CC\uD07C \uC62C\uB77C\uAC10"
-  _id: 11
-  _name: ExpBoost_Lv3
-  _value: 10
-  _prefab: {fileID: 6178760419957704234, guid: 52b35f8ad7ac8374b8aa188c200fa7ad, type: 3}
+  description: "\uACBD\uD5D8\uCE58\uAC00 5\uB9CC\uD07C \uC62C\uB77C\uAC10"
+  _id: 2009
+  _name: ExpBoost_Lv1
+  _value: 5
+  _prefab: {fileID: 6178760419957704234, guid: 2b5cb0d3490de294da102bd3f0c4593f, type: 3}
   itemType: 1
-  _exprate: 0
+  _exprate: 2

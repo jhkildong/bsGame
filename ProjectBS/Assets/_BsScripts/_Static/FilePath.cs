@@ -34,6 +34,12 @@ public static class FilePath
 
     #region Bless
     public const string Bless = "Bless";
+    public const string PassiveBless = "Bless/PassiveBless";
+    #endregion
+
+    #region Item
+    /// <summary>Item</summary>
+    public const string Items = "Item";
     #endregion
 
 #if UNITY_EDITOR

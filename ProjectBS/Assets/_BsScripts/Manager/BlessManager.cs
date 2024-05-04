@@ -1,23 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class BlessManager : Singleton<BlessManager>
 {
-    //Resources/UI 폴더에 있는 BlessData를 저장할 딕셔너리
+    public int RerollCount { get => _rerollCount; set => _rerollCount = value; }
+    [SerializeField]private int _rerollCount;
+
+    //Resources/UI 폴더에 있는 BlessData를 저장할 딕셔너리   <ID, BlessData>
     public Dictionary<int, BlessData> BlessDict => _blessDict;
     private Dictionary<int, BlessData> _blessDict;
-    private WeightedRandomPicker<BlessData> blessDataWeight;
-    private SelectWindow blessSelectWindow;
-    private Stack<UnityAction> callStack;
-    private Dictionary<int, Bless> spawnedBless;
-    private BlessIconsUI blessIconsUI;
+    private WeightedRandomPicker<BaseBlessData> blessDataWeight;    //가중치를 적용한 랜덤 선택을 위한 클래스
+    private Dictionary<int, Bless> spawnedBless;                    //소환된 축복을 저장할 딕셔너리
+    private PassiveBlessData PassiveBlessData;                      //패시브 축복 데이터
+    
+    private SelectWindow blessSelectWindow;                         //축복 선택 윈도우
+    private BlessIconsUI blessIconsUI;                              //현재 소환된 축복을 표시할 UI
+    private Stack<UnityAction> callStack;                           //윈도우가 활성화 되어있을 경우 저장할 스택(ex 중복 레벨업)
 
-    BlessData[] temp;
-    float[] weights;
-    float[] normalizedWeight;
+    BaseBlessData[] temp;           //랜덤으로 선택된 축복를 임시로 저장할 배열
+    float[] weights;            //선택된 축복의 가중치를 임시로 저장할 배열
+    float[] normalizedWeight;   //선택된 축복의 정규화된 가중치를 임시로 저장할 배열 -> 디버깅용
 
     protected override void Awake()
     {
@@ -41,8 +47,10 @@ public class BlessManager : Singleton<BlessManager>
         //딕셔너리와 리스트 초기화
         _blessDict = new Dictionary<int, BlessData>();
         callStack = new Stack<UnityAction>();
-        blessDataWeight = new WeightedRandomPicker<BlessData>();
+        blessDataWeight = new WeightedRandomPicker<BaseBlessData>();
         spawnedBless = new Dictionary<int, Bless>();
+
+        PassiveBlessData = Resources.Load<PassiveBlessData>(FilePath.PassiveBless);
 
         //리소스에서 로드한 데이터를 딕셔너리에 저장
         foreach (BlessData data in BlessLists)
@@ -52,13 +60,22 @@ public class BlessManager : Singleton<BlessManager>
         //WeightedRandomPicker에 데이터를 추가
         foreach(var item in _blessDict)
         {
-            //테스트용
-            if(item.Value.ID >= 1500 && item.Value.ID < 1503)
-                blessDataWeight.Add(item.Value, 100);
-            else
-                blessDataWeight.Add(item.Value, 1);
+            blessDataWeight.Add(item.Value, 1);
         }
+        //패시브 축복의 가중치를 추가
+        float sum = blessDataWeight.SumOfWeights;
+        float passiveWeight = sum * 0.428571f;  //패시브 축복의 가중치를 3/7로 설정(전체가중치 7, 패시브가중치 3)
+        blessDataWeight.Add(PassiveBlessData, passiveWeight);
     }
+
+    private void ModifyPassiveBlessWeight()
+    {
+        float sum = blessDataWeight.SumOfWeights;
+        float passiveWeight = blessDataWeight.GetWeight(PassiveBlessData);
+        passiveWeight = (sum - passiveWeight)  * 0.428571f;  //패시브 축복의 가중치를 3/7로 설정(전체가중치 7, 패시브가중치 3)
+        blessDataWeight.ModifyWeight(PassiveBlessData, passiveWeight);
+    }
+
     #region Public Method
     /// <summary>
     /// BlessData를 기반으로 축복을 생성
@@ -97,66 +114,110 @@ public class BlessManager : Singleton<BlessManager>
         else
             blessSelectWindow.gameObject.SetActive(true);
 
-        temp = new BlessData[3];    //랜덤으로 선택된 축복를 저장할 배열
-        weights = new float[3];       //선택된 축복의 가중치를 저장할 배열
+        temp = new BaseBlessData[3];        //랜덤으로 선택된 축복를 저장할 배열
+        weights = new float[3];             //선택된 축복의 가중치를 저장할 배열
         normalizedWeight = new float[3];    //선택된 축복의 정규화된 가중치를 저장할 배열
         //랜덤으로 3개의 축복를 선택
         for (int i = 0; i < 3; i++)
         {
-            temp[i] = blessDataWeight.GetRandomPick();                          //WeightedRandomPicker에서 랜덤으로 축복를 선택
-            weights[i] = blessDataWeight.GetWeight(temp[i]);                    //선택된 축복의 가중치를 저장
-            normalizedWeight[i] = blessDataWeight.GetNormalizedWeight(temp[i]); //선택된 축복의 정규화된 가중치를 저장
+            if(blessDataWeight.GetRandomPick() is BlessData blessData)                  //선택된 축복이 BlessData일 경우
+            {
+                temp[i] = blessData;                                                    //임시 배열에 저장
+                weights[i] = blessDataWeight.GetWeight(blessData);                      //선택된 축복의 가중치를 저장
+                normalizedWeight[i] = blessDataWeight.GetNormalizedWeight(blessData);   //선택된 축복의 정규화된 가중치를 저장
+                blessDataWeight.Remove(temp[i]);                                        //선택된 축복를 WeightedRandomPicker에서 제거(중복 선택 방지)
+                ModifyPassiveBlessWeight();                                             //패시브 축복의 가중치를 조정(항상 30%로 유지)
+            }
+            else if(PassiveBlessData is PassiveBlessData passiveData)                   //선택된 축복이 PassiveBlessData일 경우
+            {
+                temp[i] = passiveData;                                                    //임시 배열에 저장
+                weights[i] = blessDataWeight.GetWeight(passiveData);                      //선택된 축복의 가중치를 저장
+                normalizedWeight[i] = blessDataWeight.GetNormalizedWeight(passiveData);   //선택된 축복의 정규화된 가중치를 저장
+            }
+#if UNITY_EDITOR
             //로그 출력
             Debug.Log($"{temp[i].name}: {weights[i]}, {normalizedWeight[i] * 100.0f}%");
-            blessDataWeight.Remove(temp[i]);                                    //선택된 축복를 WeightedRandomPicker에서 제거(중복 선택 방지)
+#endif
         }
 
         //윈도우에 축복 이름을 표시(설명 포함)
         string[] names = new string[3];
-        for(int i = 0; i < 3; i++)
-        {
-            StringBuilder sb = new StringBuilder();
-            if (spawnedBless.ContainsKey(temp[i].ID))
-            {
-                int CurLv = spawnedBless[temp[i].ID].CurLv;
-                sb.Append(temp[i].Name);
-                sb.Append(" Lv.");
-                sb.Append(CurLv + 1);
-                sb.Append(" : ");
-                sb.Append(LevelUpDescription.DescriptionDic[temp[i].ID][CurLv]);
-                names[i] = sb.ToString();   //이미 소환되어있는 축복이면 다음 레벨을 표시
-            }
-            else
-            {
-                sb.Append(temp[i].Name);
-                sb.Append(" : ");
-                sb.Append(temp[i].Description);
-                names[i] = sb.ToString();   //아니면 이름만 표시
-            }
-                
-        }
-        blessSelectWindow.SelectButtons.SetButtonName(names);
-        
-        //윈도우에 축복 선택 버튼을 추가
+        List<int> exclude = new List<int>();
         for(int i = 0; i < 3; i++)
         {
             int idx = i;
             blessSelectWindow.SelectButtons.SetButtonAction(idx, () => SelectBless(idx));
+            if (temp[i] is BlessData blessData)                         //선택된 축복이 BlessData일 경우
+            {
+                StringBuilder sb = new StringBuilder();
+                if (spawnedBless.ContainsKey(blessData.ID))
+                {
+                    int CurLv = spawnedBless[blessData.ID].CurLv;
+                    sb.Append(blessData.Name);
+                    sb.Append(" Lv.");
+                    sb.Append(CurLv + 1);
+                    sb.Append(" : ");
+                    sb.Append(LevelUpDescription.DescriptionDic[blessData.ID][CurLv]);
+                    names[i] = sb.ToString();   //이미 소환되어있는 축복이면 다음 레벨을 표시
+                }
+                else
+                {
+                    sb.Append(blessData.Name);
+                    sb.Append(" : ");
+                    sb.Append(blessData.Description);
+                    names[i] = sb.ToString();   //아니면 이름만 표시
+                }
+            }
+            else if (temp[i] is PassiveBlessData passiveData)           //선택된 축복이 PassiveBlessData일 경우
+            {
+                exclude.Add(passiveData.ShowRandomPassive(out string desc, out UnityAction action, exclude.ToArray()));
+                blessSelectWindow.SelectButtons.AddButtonAction(idx, action);
+                names[i] = desc;
+            }
         }
+
+        blessSelectWindow.SelectButtons.SetButtonName(names);
+
+        if(RerollCount > 0)
+        {
+            blessSelectWindow.SetUndoButtonInteract(true);
+            blessSelectWindow.SetUndoButtonText($"{RerollCount}");
+            blessSelectWindow.SetUndoButtonAct(() =>
+            {
+                RerollCount--;
+                for (int i = 0; i < 3; i++)
+                {
+                    if (temp[i] is PassiveBlessData)    //패시브 축복이면 continue(패시브 축복은 꺼내지 않음)
+                        continue;
+                    blessDataWeight.Add(temp[i], weights[i]);
+                }
+                ModifyPassiveBlessWeight();
+                blessSelectWindow.gameObject.SetActive(false);
+                AppearRandomBlessList();
+            });
+        }
+        else
+        {
+            blessSelectWindow.SetUndoButtonText($"{RerollCount}");
+            blessSelectWindow.SetUndoButtonInteract(false);
+        }
+
     }
 
     private void SelectBless(int idx)
     {
-        //선택된 축복를 WeightedRandomPicker에 추가
+        //선택된 축복를 다시 WeightedRandomPicker에 넣기
         for (int i = 0; i < 3; i++)
         {
+            if (temp[i] is PassiveBlessData)    //패시브 축복이면 continue(패시브 축복은 꺼내지 않음)
+                continue;
             if (i == idx)
             {
-                if ((temp[idx].ID >= 1500 && temp[idx].ID < 1503)) //선택된 축복이 직업 축복이고 레벨 6일경우
+                if ((temp[idx].ID >= (int)BlessID.WARRIOR) && temp[idx].ID <= (int)BlessID.MAGE) //선택된 축복이 직업 축복이고 레벨 6일경우
                 {
-                    if (spawnedBless[temp[idx].ID].CurLv == 6)
+                    if (spawnedBless[temp[idx].ID].CurLv == 5)          //레벨 5 -> 6으로 갈때 설정해둬야 레벨 6 -> 7 갈때 적용이 됨
                     {
-                        blessDataWeight.Add(temp[i], 0.5f);             //가중치를 0.5로 설정
+                        blessDataWeight.Add(temp[i], 0.2f);             //가중치를 0.5로 설정
                         continue;
                     }
                 }
@@ -165,22 +226,27 @@ public class BlessManager : Singleton<BlessManager>
             else
                 blessDataWeight.Add(temp[i], weights[i]);       //선택되지 않은 축복의 가중치는 그대로
         }
-        //소환되어있지 않은 축복이면 생성
-        if (!spawnedBless.ContainsKey(temp[idx].ID))
+        ModifyPassiveBlessWeight();                             //패시브 축복의 가중치를 조정(다음 선택지에서도 30%로 유지 되게)
+
+        if (temp[idx] is BlessData blessData)                    //선택된 축복이 BlessData일 경우
         {
-            CreateBless((BlessID)temp[idx].ID);
-            blessIconsUI.AddBlessIcon(temp[idx]);
-        }
-        //소환되어있는 축복이면 레벨업
-        else
-        {
-            spawnedBless[temp[idx].ID].LevelUp();
-            string Lv = $"Lv.{spawnedBless[temp[idx].ID].CurLv}";
-            blessIconsUI.SetText(Lv, temp[idx].ID);
+            //소환되어있지 않은 축복이면 생성
+            if (!spawnedBless.ContainsKey(blessData.ID))
+            {
+                CreateBless((BlessID)blessData.ID);
+                blessIconsUI.AddBlessIcon(blessData);
+            }
+            //소환되어있는 축복이면 레벨업
+            else
+            {
+                spawnedBless[blessData.ID].LevelUp();
+                string Lv = $"Lv.{spawnedBless[blessData.ID].CurLv}";
+                blessIconsUI.SetText(Lv, blessData.ID);
+            }
         }
         Time.timeScale = 1;
         blessSelectWindow.gameObject.SetActive(false);
-        //선택된 축복를 제거한 후 callStack에 저장된 함수 실행
+        //축복 선택이 끝난 후 callStack에 저장된 함수가 있으면 실행
         if (callStack.Count > 0)
         {
             callStack.Pop().Invoke();

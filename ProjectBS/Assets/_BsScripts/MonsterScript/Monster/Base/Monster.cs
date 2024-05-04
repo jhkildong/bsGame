@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Yeon;
 
-[RequireComponent(typeof(DropTable))]
-public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
+public abstract class Monster : Combat, IDamage<Monster>, IPoolable
 {
     #region Public Field
     //임시
@@ -33,18 +32,11 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     ////////////////////////////////PrivateField////////////////////////////////
     [SerializeField] protected MonsterComponent _monsterComponent;
     [SerializeField] protected MonsterData _data;
-    [SerializeField] protected DropTable dropTable;
     private Transform _playerTransform;
     #endregion
 
     #region Interface Method
     ////////////////////////////////InterfaceMethod////////////////////////////////
-    public List<dropItem> dropItems() => Data.DropItemList;
-    public void WillDrop()
-    {
-        GameObject go = ItemManager.Instance.A(dropItems());
-        go.transform.position = this.transform.position + new Vector3(0f, 0.3f, 0f);
-    }
 
     public override void TakeDamage(float damage)
     {
@@ -122,7 +114,6 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     protected override void Awake()
     {
         InitRigidbody();
-        dropTable = GetComponent<DropTable>();
     }
 
     //활성화 될 때 상태 초기화
@@ -145,7 +136,10 @@ public abstract class Monster : Combat, IDropable, IDamage<Monster>, IPoolable
     {
         Com.MyAnim.SetTrigger(AnimParam.Death);
         ChangeState(State.Death);
-        dropTable.WillDrop(Data.DropItemList).transform.position = this.transform.position + Vector3.up;   //아이템생성
+        GameObject go = ItemManager.Instance.DropRandomItem(Data.DropItemList);
+        go.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0 , Random.Range(-1, 1));
+        GameObject exp = ItemManager.Instance.DropExp(Data.Exp);
+        exp.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
     }
 
     protected virtual void ChangeTarget(Transform target)

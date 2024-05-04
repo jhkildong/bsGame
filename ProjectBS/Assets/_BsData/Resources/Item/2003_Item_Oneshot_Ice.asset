@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff6a95133543b6341b2bf9ea21c4f97c, type: 3}
-  m_Name: 12_Item_Oneshot_ Magnet
+  m_Name: 2003_Item_Oneshot_Ice
   m_EditorClassIdentifier: 
-  description: "\uC790\uC11D"
-  _id: 12
-  _name: "\uC790\uC11D"
-  _value: 12
-  _prefab: {fileID: 3938512323750667503, guid: 28fabe57865a12e4c988f72d1557b8a9, type: 3}
+  description: "\uC804\uCCB4\uC801\uC778 \uBAAC\uC2A4\uD130 \uC18D\uB3C4\uAC00 \uB290\uB824\uC9D0."
+  _id: 2003
+  _name: Ice
+  _value: 2
+  _prefab: {fileID: 6178760419957704234, guid: 090336a628e57914bb453efadb1d72be, type: 3}
   itemType: 3
   _used: 0

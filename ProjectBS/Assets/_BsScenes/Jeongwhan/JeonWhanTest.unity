@@ -3402,6 +3402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cef1d2b57290ec4cb355e8c54488540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rerollCount: 500
 --- !u!1 &2062161601
 GameObject:
   m_ObjectHideFlags: 0

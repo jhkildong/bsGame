@@ -74,7 +74,7 @@ public class PlayerSetup : MonoBehaviour
             playerSelectWindow.SelectButtons.SetButtonAction(idx, () => SelectType(job, idx));
         }
         //Undo버튼 설정
-        playerSelectWindow.SetUndoButton(
+        playerSelectWindow.SetUndoButtonAct(
             () => {
                 SetJobSelect();
                 playerSelectWindow.HideUndoButton();

@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72fc1e9bb1e24dd4581c0c5e0129fae9, type: 3}
-  m_Name: 07_Item_Struct_steel
+  m_Name: 2006_Item_Struct_wood
   m_EditorClassIdentifier: 
-  description: "\uCCA0\uC785\uB2C8\uB2E4.\nValue\uAC12 \uB9CC\uD07C \uC7AC\uB8CC\uB97C
-    \uC5BB\uC2B5\uB2C8\uB2E4."
-  _id: 7
-  _name: steel
+  description: "I am groot\nValue\uAC12 \uB9CC\uD07C \uC7AC\uB8CC\uB97C \uC5BB\uC2B5\uB2C8\uB2E4."
+  _id: 2006
+  _name: wood
   _value: 10
-  _prefab: {fileID: 5251614332493598394, guid: eb49bd7529a10ea4485874a4e24d3b39, type: 3}
+  _prefab: {fileID: 2952176841543845929, guid: 3282cc959663cb24c94a7060d3607f75, type: 3}
   TypeOfItem: 2
-  TypeOfMaterial: 3
+  TypeOfMaterial: 1

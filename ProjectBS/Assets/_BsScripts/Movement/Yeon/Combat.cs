@@ -1,3 +1,4 @@
+using System.Buffers.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,17 +18,30 @@ namespace Yeon
 
         #region Property
         ////////////////////////////////Property////////////////////////////////
-        public float MaxHp => _maxHp;           //최대 체력
+        public float MaxHp
+        {
+            get => _maxHp * (1 + getBuff.hpBuff);
+            set
+            {
+                _maxHp = value;
+                tempMaxHp = _maxHp * (1 + getBuff.hpBuff);
+            }
+        }
         public float CurHp
         {
             get => _curHp;
             set
             {
                 _curHp = value;
-                ChangeHpAct?.Invoke((float)_curHp / (float)MaxHp);
+                ChangeHpAct?.Invoke(_curHp / MaxHp);
             }
         }
-        protected virtual float Attack { get => Mathf.Round(_attack * (1 + getBuff.atkBuff) + additonalAtk); }
+        protected float Aksp
+        {
+            get => _atkSpeed * (1 + getBuff.asBuff);
+            set => _atkSpeed = value;
+        }
+        protected float Attack { get => Mathf.Round(_attack * (1 + getBuff.atkBuff) + additonalAtk); }
         
         public bool IsDead => CurHp <= 0;
         #endregion
@@ -35,8 +49,11 @@ namespace Yeon
         #region Private Field
         ////////////////////////////////Private Field////////////////////////////////
         [SerializeField] protected float _maxHp;                  //최대 체력
+        protected float tempMaxHp;
         [SerializeField] protected float _curHp;                  //현재 체력
         [SerializeField] protected float _attack;                 //공격력
+        [SerializeField] protected float _atkSpeed;               //공격속도
+
 
         #endregion
 
@@ -148,6 +165,7 @@ namespace Yeon
                 return _height;
             }
         }
+
         private float _height;
         public void ReceiveHeal(float heal)
         {

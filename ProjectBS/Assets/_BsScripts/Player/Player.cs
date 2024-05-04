@@ -27,27 +27,32 @@ public class Player : Combat, IDamage<Player>
     }
     public float ConstSpeed
     {
-        get => _constSpeed;
+        get => _constSpeed * (1 + ConstSpeedBuff);
         set => _constSpeed = value;
     }
     public float RepairSpeed
     {
-        get => _repairSpeed;
+        get => _repairSpeed * (1 + RepairSpeedBuff); 
         set => _repairSpeed = value;
     }
+    public float ConstSpeedBuff {get => _constSpeedBuff; set => _constSpeedBuff = value;}
+    public float RepairSpeedBuff { get => _repairSpeedBuff; set => _repairSpeedBuff = value;}
 
     private bool _isBuilding;
     [SerializeField] private float _constSpeed;
     [SerializeField] private float _repairSpeed;
+    private float _constSpeedBuff;
+    private float _repairSpeedBuff;
 
     public void SetEffectAttack()
     {
         Com.Attack = Attack;
     }
-    public void UpdateStatus(float attack, float coolTime, float aksp = 1.0f, float castingTime = 5.0f)
+    public void UpdateStatus(float attack, float coolTime, float atksp = 1.0f, float castingTime = 5.0f)
     {
         _attack = attack;
-        Com.MyAnim.SetFloat(AnimParam.AttackSpeed, aksp);
+        Aksp = atksp;
+        Com.MyAnim.SetFloat(AnimParam.AttackSpeed, Aksp);
         skillCoolTime = coolTime;
         maxCastingTime = castingTime;
     }
@@ -166,7 +171,9 @@ public class Player : Combat, IDamage<Player>
     ////////////////////////////////PrivateField////////////////////////////////
     [SerializeField] private PlayerComponent Com;
     [SerializeField] private Transform rotatingBody;
+    [SerializeField] private MagnetField magnetField;
     private PlayerUI playerUI;
+    
 
     Vector3 _moveDir;
     Vector3 _dir;
@@ -196,7 +203,7 @@ public class Player : Combat, IDamage<Player>
 
         //GameManager.Instance.GoldChangeAct
 
-        _maxHp = Com.MyStat.MaxHp;          //최대 체력 설정 직업마다 스탯을 저장해둠
+        MaxHp = Com.MyStat.MaxHp;          //최대 체력 설정 직업마다 스탯을 저장해둠
         CurHp = Com.MyStat.MaxHp;           //현재 체력 설정
         moveSpeed = Com.MyStat.Sp;          //이동속도 설정
      
@@ -250,6 +257,21 @@ public class Player : Combat, IDamage<Player>
     {
         base.Awake();
         GameManager.Instance.Player = this;
+
+        #region BuffChangeAct Setting
+        _buff.asBuffDict.ChangeBuffAct += () => { Com.MyAnim.SetFloat(AnimParam.AttackSpeed, Aksp); };
+        _buff.hpBuffDict.ChangeBuffAct += () =>
+        {
+            float changeHp = MaxHp - tempMaxHp;
+            if (CurHp + changeHp > 0)
+                CurHp += changeHp;
+            else
+                CurHp = 1;
+            tempMaxHp = MaxHp;
+        };
+        _buff.msBuffDict.ChangeBuffAct += () => { moveSpeed *= (1 + getBuff.msBuff); };
+        _buff.rangeBuffDict.ChangeBuffAct += () => { magnetField.transform.localScale = Vector3.one * (1 + getBuff.rangeBuff); };
+        #endregion
 
         #region PlayerInputsCallback Setting
         ////////////////////////////////PlayerInputsCallbackSetting////////////////////////////////

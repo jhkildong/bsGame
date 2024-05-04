@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Bless_", menuName = "Bless", order = 0)]
-public class BlessData : ScriptableObject
+[CreateAssetMenu(fileName = "Bless_", menuName = "Bless/Bless", order = 0)]
+public class BlessData : BaseBlessData
 {
-    public int ID => _id;
     public Sprite Icon => _icon;
     public string Name => _name;
     public string Description => _description;
     public GameObject Prefab => _prefab;
     public List<LevelUpData> LvDataList { get => _lvDataList; set => _lvDataList = value; }
 
-    [SerializeField] private int _id;               // 축복 아이디
     [SerializeField] private Sprite _icon;           // 축복 아이콘
     [SerializeField] private string _name;          // 축복 이름
     [SerializeField, Multiline] private string _description;   // 축복 설명

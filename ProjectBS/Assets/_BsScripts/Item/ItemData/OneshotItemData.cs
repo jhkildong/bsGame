@@ -8,10 +8,12 @@ public class OneshotItemData : ItemData
     public bool used => _used;
 
     [SerializeField] private bool _used;
-    public override GameObject CreateItem()
+    public override Item CreateItem()
     {
-        GameObject itemObject = new GameObject(Name);
-        itemObject.AddComponent<OneshotItem>().Init(this);
-        return itemObject;
+        GameObject go = new GameObject(Name);
+        OneshotItem clone = go.AddComponent<OneshotItem>();
+        clone.Init(this);
+
+        return clone;
     }
 }

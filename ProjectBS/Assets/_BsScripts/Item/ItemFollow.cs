@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class ItemFollow : MonoBehaviour
 {
-    Transform target;
-    Vector3 dir;
-    float movespeed;
-    float accel;
-    public void follow(PlayerA playerA)
+    public void Follow(Transform target)
     {
         Debug.Log("Item is following...");
-        StartCoroutine(following(playerA));
+        StartCoroutine(Following(target));
     }
-    IEnumerator following(PlayerA playerA)
+    IEnumerator Following(Transform target)
     {
-        target = playerA.transform;
-        while(target != null)
+        Vector3 dir;
+        float accel = 0;
+        while (target != null)
         {
-            dir = playerA.transform.position - transform.position;
+            dir = target.position - transform.position;
             accel += Time.deltaTime;
             transform.position += dir.normalized * accel;
             if (Vector3.Distance(target.position, transform.position) < 0.25f)

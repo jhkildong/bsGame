@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
 public class enemydrop : MonoBehaviour
 {
     public int hp = 10;
@@ -33,3 +34,4 @@ public class enemydrop : MonoBehaviour
         Debug.Log("부딛혀서 체력이 깎임. 현재 체력 : " + hp);
     }
 }
+*/

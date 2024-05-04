@@ -71,7 +71,7 @@ public class JobBless : Bless
                 break;
             case (int)BlessID.ARCHER:
                 GameManager.Instance.Player.UpdateStatus(
-                    myStatus[Key.Attack], myStatus[Key.SkillCoolTime], aksp: myStatus[Key.AttackSp]);
+                    myStatus[Key.Attack], myStatus[Key.SkillCoolTime], atksp: myStatus[Key.AttackSp]);
                 GameManager.Instance.Player.MaxSkillStack = (int)myStatus[Key.SkillAmount];
                 break;
             case (int)BlessID.MAGE:

@@ -1,7 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+
+
+[System.Serializable]
+public class dropItem
+{
+    public int ID;
+    public float dropChance;
+}
 
 public class ItemManager : MonoBehaviour
 {
@@ -32,48 +39,55 @@ public class ItemManager : MonoBehaviour
     }
     //SingleTon<<<<<<<<<<<<<<<<<<<<<
 
-
-
-    [System.Serializable]
-    public class Items
-    {
-        public ItemData data;
-    }
-    public List<Items> items = new List<Items>();
+    [SerializeField, ReadOnly]
+    ItemData[] itemDatas;
+    Dictionary<int, Item> itemDic = new Dictionary<int, Item>();
     
-    public ItemData GetItemDataByID(int id)
+    private void Start()
     {
-        foreach (var item in items)
-        {
-            if (item.data.ID == id)
-            {
-                Debug.Log("아이템 데이터 가져옴.");
-                return item.data;
-            }
-        }
-        return null; // 해당 ID에 대한 아이템 데이터가 없는 경우 null 반환
+        itemDatas = Resources.LoadAll<ItemData>(FilePath.Items);
+        DataSetPool(itemDatas);
     }
 
-    public GameObject A(List<dropItem> items)
+    void DataSetPool(ItemData[] datas)
+    {
+        foreach (ItemData data in datas)
+        {
+            if (data.ItemPrefab == null)
+            {
+                Debug.Log("ItemData Prefab is null");
+                continue;
+            }
+            Item item = data.CreateItem();   //데이터를 기반으로 사본생성
+
+            itemDic.Add(data.ID, item);                   //사본을 리스트에 추가(추가 호출을 위해)
+            ObjectPoolManager.Instance.SetPool(item, 50, 50);
+            ObjectPoolManager.Instance.ReleaseObj(item);
+        }
+    }
+
+    public GameObject DropRandomItem(List<dropItem> items)
     {
         float rnd = Random.Range(0, 100);
         foreach(var dropitem in items)
         {
             if(dropitem.dropChance > rnd)
             {
-                return Drop(GetItemDataByID(dropitem.ID));
+                GameObject item = ObjectPoolManager.Instance.GetObj(itemDic[dropitem.ID]).This.gameObject;
+                return item;
             }
             else
             {
-                rnd = rnd - dropitem.dropChance;
+                rnd -= dropitem.dropChance;
             }
         }
         return null;
     }
 
-    public GameObject Drop(ItemData itemData)
+    public GameObject DropExp(float exp)
     {
-        Debug.Log("아이템 드랍 :" + itemData.Name);
-        return itemData.CreateItem();;
+        ExpItem item = ObjectPoolManager.Instance.GetObj(itemDic[2500]) as ExpItem;
+        item.Exp = (int)exp;
+        return item.This.gameObject;
     }
 }

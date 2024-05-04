@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b69fdfe4eb0f54ea35ec6c6b61e0f5, type: 3}
+  m_Name: 2008_Item_Exp_orb
+  m_EditorClassIdentifier: 
+  description: "\uACBD\uD5D8\uCE58\uAC00 3\uB9CC\uD07C \uC62C\uB77C\uAC10"
+  _id: 2008
+  _name: Orb
+  _value: 3
+  _prefab: {fileID: 6178760419957704234, guid: d26dc319f3523e14b880163c565a0a2d, type: 3}
+  itemType: 1
+  _exprate: 5

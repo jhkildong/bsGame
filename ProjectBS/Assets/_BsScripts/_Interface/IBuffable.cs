@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public interface IBuffable
 {
@@ -90,6 +91,8 @@ public class Buff
 //값이 바뀐 경우만 계산하도록 만든 버프 딕셔너리 클래스 -정환 추가
 public class BuffDict
 {
+    public UnityAction ChangeBuffAct;
+
     Dictionary<string, float> buffDict;
     private float buffAmount;
     private bool isDirty = true;
@@ -100,29 +103,48 @@ public class BuffDict
         isDirty = true;
     }
 
+    public float this[string key]
+    {
+        get
+        {
+            if (buffDict.ContainsKey(key))
+            {
+                return buffDict[key];
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        set
+        {
+            if (buffDict.ContainsKey(key))
+            {
+                buffDict[key] = value;
+                ChangeBuffAct?.Invoke();
+            }
+            else
+            {
+                Add(key, value);
+            }
+            isDirty = true;
+        }
+    }
+
     public void Add(string key, float value)
     {
         if (buffDict.ContainsKey(key))
-        {
-            Debug.Log("Key already exists");
-            //throw new System.Exception("Key already exists");
-        }
-        else
-        {
-            buffDict.Add(key, value);
-        }
+            throw new System.Exception("Key is already exist");
+        buffDict.Add(key, value);
+        ChangeBuffAct?.Invoke();
         isDirty = true;
     }
     public void Remove(string key)
     {
-        if(buffDict.ContainsKey(key))
-        {
-            buffDict.Remove(key);
-        }
-        else
-        {
+        if (!buffDict.ContainsKey(key))
             throw new System.Exception("Key not found");
-        }
+        buffDict.Remove(key);
+        ChangeBuffAct?.Invoke();
         isDirty = true;
     }
 

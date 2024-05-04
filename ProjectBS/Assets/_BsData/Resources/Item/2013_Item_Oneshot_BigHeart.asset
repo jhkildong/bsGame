@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff6a95133543b6341b2bf9ea21c4f97c, type: 3}
-  m_Name: 04_Item_Oneshot_Heart
+  m_Name: 2013_Item_Oneshot_BigHeart
   m_EditorClassIdentifier: 
-  description: "\uCCB4\uB825\uC774 10 \uC62C\uB77C\uAC10."
-  _id: 4
-  _name: heart
-  _value: 1
-  _prefab: {fileID: 4157742439831412141, guid: e18ed00d4a1145143b80803184010b72, type: 3}
+  description: "\uCCB4\uB825\uC774 \uB9CE\uC774 \uCC38"
+  _id: 2013
+  _name: "\uD558\uD2B8"
+  _value: 13
+  _prefab: {fileID: 1958168085196861139, guid: baf807f82fe01f44dbeabcd9404f98e6, type: 3}
   itemType: 3
   _used: 0

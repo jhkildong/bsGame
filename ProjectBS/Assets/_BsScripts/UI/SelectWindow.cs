@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public class SelectWindow : UIComponent
 {
@@ -22,11 +23,21 @@ public class SelectWindow : UIComponent
   
     }
 
-    public void SetUndoButton(UnityAction action)
+    public void SetUndoButtonAct(UnityAction action)
     {
         UndoButton.gameObject.SetActive(true);
         UndoButton.onClick.RemoveAllListeners();
         UndoButton.onClick.AddListener(action);
+    }
+
+    public void SetUndoButtonInteract(bool state)
+    {
+        UndoButton.interactable = state;
+    }
+
+    public void SetUndoButtonText(string text)
+    {
+        UndoButton.GetComponentInChildren<TextMeshProUGUI>().text = text;
     }
 
     public void HideUndoButton()

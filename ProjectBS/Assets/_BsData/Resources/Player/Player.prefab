@@ -129,7 +129,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4087311019217202910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -217,33 +217,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  isMoving: 0
-  isBlocked: 0
-  isOutOfControl: 0
-  worldMoveDir: {x: 0, y: 0, z: 0}
-  outOfControllDuration: 0
   myAttackPoint: {fileID: 0}
   attackMask:
     serializedVersion: 2
     m_Bits: 0
   _maxHp: 500
   _curHp: 500
-  _speedCeof: 1
-  _attackCeof: 1
   _attack: 20
+  _atkSpeed: 0
   _effectData:
     effectCount: 3
     effectTime: 0.1
     effectColor: {r: 1, g: 0, b: 0, a: 1}
     renderers: []
-    mainTexture: {fileID: 0}
-    mainColor: {r: 1, g: 1, b: 1, a: 1}
+    mainTextures: []
+    mainColor:
+    - {r: -1.9954233e-28, g: 6.87e-43, b: 0.0000110394785, a: 0.00000016690396}
+    - {r: -2.949139e-39, g: 6.88e-43, b: 4.6e-44, a: 2.079817e+20}
+    - {r: -1.9954233e-28, g: 6.87e-43, b: -1.9954271e-28, a: 6.87e-43}
+    - {r: -2.949184e-39, g: 6.88e-43, b: 6.9e-44, a: 1.3563156e-19}
   additonalAtk: 0
+  _constSpeed: 1
+  _repairSpeed: 100
   WSADInput: 0
   Com: {fileID: 0}
   rotatingBody: {fileID: 3329387691305622105}
-  _constSpeed: 1
-  _repairSpeed: 100
+  magnetField: {fileID: 3971501229242104397}
+  isCastingSkill: 0
 --- !u!114 &3872214994456316594
 MonoBehaviour:
   m_ObjectHideFlags: 0

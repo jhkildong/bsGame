@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8b69fdfe4eb0f54ea35ec6c6b61e0f5, type: 3}
-  m_Name: 10_Item_Exp_Boost_Lv2
+  m_Name: 2500_Item_Exp_Gem
   m_EditorClassIdentifier: 
-  description: "\uACBD\uD5D8\uCE58\uAC00 7\uB9CC\uD07C \uC62C\uB77C\uAC10"
-  _id: 10
-  _name: ExpBoost_Lv2
-  _value: 7
-  _prefab: {fileID: 6178760419957704234, guid: bcf98f7e817f6644eb607a4fec713b76, type: 3}
+  description: "\uACBD\uD5D8\uCE58 \uC82C"
+  _id: 2500
+  _name: Gem
+  _value: 0
+  _prefab: {fileID: 7791971927208363275, guid: ae5694f26070cc843a27e76c2b4a6c21, type: 3}
   itemType: 1
   _exprate: 0

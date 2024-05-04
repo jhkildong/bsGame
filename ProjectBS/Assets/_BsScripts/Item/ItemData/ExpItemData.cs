@@ -12,11 +12,12 @@ public class ExpItemData : ItemData
 
     [SerializeField] private float _exprate;
     // Start is called before the first frame update
-    public override GameObject CreateItem()
+    public override Item CreateItem()
     {
-        GameObject itemObject = new GameObject(Name);
-        itemObject.AddComponent<ExpItem>().Init(this);
+        GameObject go = new GameObject(Name);
+        ExpItem clone = go.AddComponent<ExpItem>();
+        clone.Init(this);
 
-        return itemObject;
+        return clone;
     }
 }

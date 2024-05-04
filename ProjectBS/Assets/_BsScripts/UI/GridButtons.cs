@@ -58,6 +58,11 @@ public class GridButtons : MonoBehaviour
         buttons[idx].onClick.RemoveAllListeners();
         buttons[idx].onClick.AddListener(action);
     }
+
+    public void AddButtonAction(int idx, UnityAction action)
+    {
+        buttons[idx].onClick.AddListener(action);
+    }
     #endregion
 
     #region Private Method
