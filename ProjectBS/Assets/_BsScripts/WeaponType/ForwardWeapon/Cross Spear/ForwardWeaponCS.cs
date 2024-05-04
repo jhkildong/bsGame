@@ -45,7 +45,7 @@ public class ForwardWeaponCS : Bless
         bullet.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); // ªÁ¿Ã¡Ó
         
         bullet.Ak = myStatus[Key.Attack];
-        bullet.Shoot(15);
+        bullet.Shoot(25);
     }
 
     IEnumerator SpawnMultipleWeapons(float v)

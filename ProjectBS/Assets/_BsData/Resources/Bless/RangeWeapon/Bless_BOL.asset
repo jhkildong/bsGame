@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bless_BOL
   m_EditorClassIdentifier: 
   _id: 1100
+  _icon: {fileID: 0}
   _name: "\uBC88\uAC1C\uC758 \uCD95\uBCF5"
   _description: "\uC801\uC5D0\uAC8C \uB0B4\uB9AC\uCE58\uB294 \uBC88\uAC1C\uB97C 1\uAC1C
     \uC0DD\uC131\uD55C\uB2E4."
@@ -30,7 +31,7 @@ MonoBehaviour:
     - 0
     - 0
   - name: Amount
-    defaultValue: 1
+    defaultValue: 0
     levelUpType: 0
     levelUpTable:
     - 1

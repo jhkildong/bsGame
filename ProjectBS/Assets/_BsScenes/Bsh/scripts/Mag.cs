@@ -16,8 +16,8 @@ public class Mag : MonoBehaviour
             {
                 // itemfollow 컴포넌트를 활성화시킴
                 Debug.Log(collider);
-                PlayerA playerA = other.GetComponent<PlayerA>();
-                collider.GetComponent<ItemFollow>().follow(playerA);
+                //PlayerA playerA = other.GetComponent<PlayerA>();
+                //collider.GetComponent<ItemFollow>().follow(playerA);
             }
         }
     }
