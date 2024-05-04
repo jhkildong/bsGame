@@ -222,6 +222,10 @@ public class BuffBuilding_Buff : BuffBuildingBase , IBuffController
         {
             foreach (GameObject target in targets) //targets list가 <GameObject>로 되어있다. 추후 Collider로 수정 가능할 경우 수정할 것.
             {
+                if(target == null) //타겟이 파괴되었을 경우 다음 타겟으로 넘어간다
+                {
+                    continue;
+                }
                 IBuffable buffable = target.GetComponent<IBuffable>();
                 if (buffable != null)
                 {
