@@ -112,6 +112,7 @@ public class PlayerSetup : MonoBehaviour
         //직업 축복 생성
         int jobBlessIdx = (int)job.MyJob;
         JobBless jobBless = BlessManager.Instance.CreateBless(jobBlessIDs[jobBlessIdx]) as JobBless;
+        BlessManager.Instance.SetJobBlessIcon((int)jobBlessIDs[jobBlessIdx]);
         clone.MyJobBless = jobBless;
         for(int i = 0; i < jobBlessIDs.Length; i++)
         {

@@ -165,4 +165,5 @@ public enum UIID
     BuildingHpBar = 5010,
     BuildingInteractionUI = 5011,
     SkillIconUI = 5012,
+    BlessIconsUI = 5013,
 }

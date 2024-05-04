@@ -13,7 +13,7 @@ public class _ButtonEventexPF : MonoBehaviour
     {
         button = GetComponent<Button>(); //버튼 component 가져오기
         button.onClick.AddListener(OnButtonClick); //인자가 없을 때 함수 호출
-        Weapon = FindObjectOfType<OrditalWeaponPF>();
+        Weapon = BlessManager.Instance.CreateBless(BlessID.PF) as OrditalWeaponPF;
     }
 
     private void OnButtonClick()

@@ -33,7 +33,7 @@ public class ArcherSkill : PlayerSkill
             if (_particleSystem.isStopped)
             {
                 transform.gameObject.SetActive(false);
-                myParent.skillEffectStack.Push(this);       //TODO: 서로 커플링, 퍼블릭변수, 문제많음
+                myParent.skillEffectStack.Push(this);       //TODO: 서로 커플링, 퍼블릭변수 문제 해결해야함
                 yield break;
             }
             yield return null;

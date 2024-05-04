@@ -76,13 +76,30 @@ public class Player : Combat, IDamage<Player>
             Debug.Log($"쿨타임: {remainCoolTime}");
             return;
         }
+        if(Com.MyJob == Job.Archer && isCastingSkill)    //궁수는 스킬중이면 리턴
+            return;
         OnSkillAct?.Invoke();
     }
     private void EndSkill(InputAction.CallbackContext context)
     {
-        if (!isCastingSkill)    //스킬 시전중이 아니면 리턴
+        if(Com.MyJob == Job.Archer)     //궁수면 OffskillAct가 공격 시전이기 때문에 바로 실행
+        {
+            if (isSkillNotReady || isCastingSkill) return;    //스킬 준비가 안되있거나, 스킬 시전 도중이면(쿨타임돌고 있는 도중 눌렀을 경우)
+            if (skillCasting != null)
+                StopCoroutine(skillCasting);
+            skillCasting = null;
+            OffSkillAct?.Invoke();
             return;
-        OffSkillAct?.Invoke();
+        }
+        else
+        {
+            if (!isCastingSkill)    //스킬 시전중이 아니면 리턴(자동으로 끝난 경우, 쿨타임돌고 있는 도중 눌렀을 경우)
+                return;
+            if (skillCasting != null)
+                StopCoroutine(skillCasting);
+            skillCasting = null;
+            OffSkillAct?.Invoke();
+        }
     }
 
 
@@ -169,6 +186,7 @@ public class Player : Combat, IDamage<Player>
         GameManager.Instance.WoodChangeAct += playerUI.ChangeWoodText;
         GameManager.Instance.StoneChangeAct += playerUI.ChangeStoneText;
         GameManager.Instance.IronChangeAct += playerUI.ChangeIronText;
+        GameManager.Instance.GoldChangeAct += playerUI.ChangeGoldText;
         GameManager.Instance.ExpChangeAct += playerUI.ChangeExpText;
         GameManager.Instance.ChangeWood(0);
         GameManager.Instance.ChangeStone(0);
@@ -308,7 +326,7 @@ public class Player : Combat, IDamage<Player>
     private float _remainCoolTime;
     private float maxCastingTime;
     private bool isSkillNotReady = false;   //기존에 isSkillCoolTime에서 변경 변수명과 상태를 맞추기 위해 NotReady로 명명
-    private bool isCastingSkill = false;
+    public bool isCastingSkill = false;
     public bool MageLv7SkillReady
     {
         get
@@ -334,10 +352,11 @@ public class Player : Combat, IDamage<Player>
         {
             if(value != _maxSkillStack)
             {
+                _maxSkillStack = value;
                 curSkillStack = value;
+                remainCoolTime = 0.0f;
                 isSkillNotReady = false;
             }
-            _maxSkillStack = value;
         }
     }
     private int _maxSkillStack = 1;
@@ -364,8 +383,6 @@ public class Player : Combat, IDamage<Player>
     
     private void OnSkill()  //스킬키를 눌렀을 때 실행
     {
-        if (isSkillNotReady)
-            return;
         if(MageLv7SkillReady)
         {
             MageLv7SkillReady = false;
@@ -377,11 +394,7 @@ public class Player : Combat, IDamage<Player>
             return;
         }
         
-        if(Com.MyJob == Job.Archer)
-        {
-            isCastingSkill = true;
-        }
-        else
+        if(Com.MyJob != Job.Archer)
         {
             isSkillNotReady = true;
             isCastingSkill = true;
@@ -392,23 +405,19 @@ public class Player : Combat, IDamage<Player>
 
     private void OffSkill()
     {
-        if (!isCastingSkill)   //스킬 시전중이 아니면 리턴
-            return;
-        isCastingSkill = false;
-        if(skillCasting != null)
-            StopCoroutine(skillCasting);
         //키다운 종료 혹은 시전시간 종료시 실행
         switch (Com.MyJob)
         {
             case Job.Mage:
             case Job.Warrior:   //마법사, 전사는 스킬시전 종료
+                isCastingSkill = false;
                 Com.MyAnim.SetBool(AnimParam.isSkill, false);
                 StartCoroutine(SkillCoolTimer());
                 return;
             case Job.Archer:    //궁수는 스킬시전
                 Com.MyAnim.SetTrigger(AnimParam.OnSkill);
                 curSkillStack--;
-                if(curSkillStack == 0)
+                if(curSkillStack <= 0)
                     isSkillNotReady = true;
                 if (ArcherSkillCoolTime == null)
                     ArcherSkillCoolTime = StartCoroutine(ArcherSkillCoolTimer());

@@ -6,12 +6,14 @@ using UnityEngine;
 public class BlessData : ScriptableObject
 {
     public int ID => _id;
+    public Sprite Icon => _icon;
     public string Name => _name;
     public string Description => _description;
     public GameObject Prefab => _prefab;
     public List<LevelUpData> LvDataList { get => _lvDataList; set => _lvDataList = value; }
 
     [SerializeField] private int _id;               // 축복 아이디
+    [SerializeField] private Sprite _icon;           // 축복 아이콘
     [SerializeField] private string _name;          // 축복 이름
     [SerializeField, Multiline] private string _description;   // 축복 설명
     [SerializeField] private GameObject _prefab;    // 축복 프리팹

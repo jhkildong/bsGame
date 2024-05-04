@@ -11,8 +11,8 @@ using UnityEditorInternal;
 public static class BlessLevelTableDict
 {
     public static Dictionary<string, List<LevelUpData>> Dict = new Dictionary<string, List<LevelUpData>>();
+    
 }
-
 
 [CustomEditor(typeof(BlessData))]
 public class Bless2DataEditor : Editor
@@ -92,9 +92,10 @@ public class Bless2DataEditor : Editor
             string json = File.ReadAllText(FilePath.BlessLevelTableJson);
             //json 파일을 읽어서 BlessLevelTableDict.Dict에 저장
             BlessLevelTableDict.Dict = JsonConvert.DeserializeObject<Dictionary<string, List<LevelUpData>>>(json);
-            
+
             //json 파일에 저장
-            var settings = new JsonSerializerSettings
+
+            var settings = new JsonSerializerSettings   //세팅값
             {
                 NullValueHandling = NullValueHandling.Include,  //null값도 json에 포함
                 Formatting = Formatting.Indented                //들여쓰기
@@ -163,8 +164,110 @@ public class Bless2DataEditor : Editor
         EditorGUILayout.EndHorizontal();
         #endregion
 
+        #region SaveAll, LoadAll 버튼
         EditorGUILayout.BeginHorizontal();
-        if(GUILayout.Button("Open BlessLevelTable.json"))
+        //Save 버튼을 누르면 BlessLevelTable.json 파일에 저장
+        if (GUILayout.Button("SaveAll"))
+        {
+            string json = File.ReadAllText(FilePath.BlessLevelTableJson);
+            //json 파일을 읽어서 BlessLevelTableDict.Dict에 저장
+            BlessLevelTableDict.Dict = JsonConvert.DeserializeObject<Dictionary<string, List<LevelUpData>>>(json);
+
+            LevelUpDescription.GetLevelUpDescriptionToJson();
+
+            //json 파일에 저장
+            var settings = new JsonSerializerSettings   //세팅값
+            {
+                NullValueHandling = NullValueHandling.Include,  //null값도 json에 포함
+                Formatting = Formatting.Indented                //들여쓰기
+            };
+
+            BlessData[] blessDatas = Resources.LoadAll<BlessData>(FilePath.Bless);    //모든 BlessData를 로드
+
+            string[] defaultDescription = new string[7] { "", "", "", "", "", "", "" };
+            foreach(BlessData blessData in blessDatas)
+            {
+                if (BlessLevelTableDict.Dict.ContainsKey(blessData.name))
+                {
+                    //저장된 값이 있으면 업데이트
+                    BlessLevelTableDict.Dict[blessData.name] = blessData.LvDataList;
+                }
+                else
+                {
+                    //없으면 추가
+                    BlessLevelTableDict.Dict.Add(blessData.name, blessData.LvDataList);
+                }
+                if(!LevelUpDescription.DescriptionDic.ContainsKey(blessData.ID))
+                    LevelUpDescription.DescriptionDic.Add(blessData.ID, defaultDescription);
+            }
+
+            json = JsonConvert.SerializeObject(BlessLevelTableDict.Dict, settings);
+            File.WriteAllText(FilePath.BlessLevelTableJson, json);
+
+            string DescriptionJson = JsonConvert.SerializeObject(LevelUpDescription.DescriptionDic, settings);
+            File.WriteAllText(FilePath.BlessLevelUpDiscriptionJson, DescriptionJson);
+
+            //Key.cs에 이름 추가
+            if (!File.Exists(FilePath.KeyCs))   //파일이 없으면 리턴
+            {
+                Debug.Log("파일을 찾을 수 없습니다: " + FilePath.KeyCs);
+                return;
+            }
+            string scriptContent = File.ReadAllText(FilePath.KeyCs);
+            
+            foreach(BlessData blessData in blessDatas)
+            {
+                //리스트에 있는 이름들을 Key.cs에 추가
+                foreach (LevelUpData data in blessData.LvDataList)
+                {
+                    if (data.name == "" || data.name == null)    //이름이 없으면 스킵
+                    {
+                        continue;
+                    }
+                    if (scriptContent.Contains(data.name))      //이미 등록된 이름이면 스킵
+                    {
+                        continue;
+                    }
+                    string key = $"\tpublic const string {data.name} = \"{data.name}\";\n"; //\tpublic const string dataName = "dataName";\n
+
+                    int lastLineIndex = scriptContent.LastIndexOf('\n');
+                    scriptContent = scriptContent.Insert(lastLineIndex, key); //마지막 줄넘김 전에 추가
+
+                    File.WriteAllText(FilePath.KeyCs, scriptContent); //스크립트 파일 업데이트
+                    AssetDatabase.Refresh(); //에셋 갱신(새로고침)
+                }
+            }
+        }
+
+        if (GUILayout.Button("LoadAll"))
+        {
+            if (File.Exists(FilePath.BlessLevelTableJson))
+            {
+                string json = File.ReadAllText(FilePath.BlessLevelTableJson);
+                //json 파일을 읽어서 BlessLevelTableDict.Dict에 저장
+                BlessLevelTableDict.Dict = JsonConvert.DeserializeObject<Dictionary<string, List<LevelUpData>>>(json);
+
+                BlessData[] blessDatas = Resources.LoadAll<BlessData>(FilePath.Bless);    //모든 BlessData를 로드
+
+                foreach(BlessData blessData in blessDatas)
+                {
+                    //이름이 같은 데이터가 있으면 LvDataList에 저장
+                    if (BlessLevelTableDict.Dict.ContainsKey(blessData.name))
+                    {
+                        blessData.LvDataList = BlessLevelTableDict.Dict[blessData.name];
+                    }
+                    else
+                    {
+                        Debug.Log("저장된 데이터가 없습니다.");
+                    }
+                }
+            }
+        }
+        EditorGUILayout.EndHorizontal();
+        #endregion
+
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("Open BlessLevelTable.json"))
         {
             var asset = AssetDatabase.LoadAssetAtPath<TextAsset>(FilePath.BlessLevelTableJson);
             if (asset == null)
@@ -175,7 +278,7 @@ public class Bless2DataEditor : Editor
 
             AssetDatabase.OpenAsset(asset);
         }
-        if(GUILayout.Button("Open Key.cs"))
+        if (GUILayout.Button("Open Key.cs"))
         {
             var asset = AssetDatabase.LoadAssetAtPath<TextAsset>(FilePath.KeyCs);
             if (asset == null)

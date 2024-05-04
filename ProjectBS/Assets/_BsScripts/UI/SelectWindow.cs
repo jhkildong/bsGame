@@ -4,8 +4,6 @@ using UnityEngine.Events;
 
 public class SelectWindow : UIComponent
 {
-    public override int ID => _id;
-    [SerializeField] private int _id;
     public GridButtons SelectButtons;
     [SerializeField]private Button UndoButton;
 

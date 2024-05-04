@@ -52,7 +52,7 @@ MonoBehaviour:
     - 0
     - 0.2
   - name: ArrowAmount
-    defaultValue: 0
+    defaultValue: 1
     levelUpType: 0
     levelUpTable:
     - 1

@@ -29,6 +29,22 @@ public class Archer : PlayerComponent
         GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().enabled = true;
     }
 
+    public override void OnSkillEffect(int onSkill)
+    {
+        if (onSkill == 0)
+            MySkillEffect.gameObject.SetActive(false);
+        else if (onSkill == 1)
+        {
+            MySkillEffect = skillEffectStack.Pop();
+            (MySkillEffect as ArcherSkill).myParent = this;
+            MySkillEffect.Attack = MyJobBless.MyStatus[Key.SkillAttack];
+            MySkillEffect.Size = MyJobBless.MyStatus[Key.SkillSize];
+            MySkillEffect.gameObject.SetActive(true);
+            MySkillEffect.transform.position = SkillRangeMaker.transform.position;
+        }
+            
+    }
+
     public override void OnAttackPoint()
     {
         //공격 이펙트 생성
@@ -45,17 +61,13 @@ public class Archer : PlayerComponent
 
     private void OnSkill()
     {
-        MySkillEffect = skillEffectStack.Pop();
-        (MySkillEffect as ArcherSkill).myParent = this;
-        MySkillEffect.Attack = MyJobBless.MyStatus[Key.SkillAttack];
-        MySkillEffect.Size = MyJobBless.MyStatus[Key.SkillSize];
         SkillRangeMaker.SetActive(true);
         SkillRangeMaker.transform.localScale = Vector3.one * MyJobBless.MyStatus[Key.SkillSize];
     }
 
     private void OffSkill()
     {
-        MySkillEffect.transform.position = SkillRangeMaker.transform.position;
+        GameManager.Instance.Player.isCastingSkill = true;          //스킬 사용 상태 true, 애니메이션이 끝날 때 false로 호출
         SkillRangeMaker.SetActive(false);
         GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().enabled = false;
     }

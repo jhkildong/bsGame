@@ -3,9 +3,6 @@ using UnityEngine.UI;
 
 public class ConstructionKeyUI : FollowingTargetUI
 {
-    public override int ID => _id;
-    [SerializeField] private int _id;
-
     [SerializeField] private GameObject PressB;
 
     private void OnDisable()
