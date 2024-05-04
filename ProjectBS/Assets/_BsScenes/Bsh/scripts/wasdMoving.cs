@@ -14,17 +14,5 @@ public class wasdMoving : MonoBehaviour
         // 이동
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * moveSpeed * Time.deltaTime;
         transform.position += movement;
-
-        // 회전
-        if (movement != Vector3.zero)
-        {
-            _myAnim.SetBool("walk", true);
-            Quaternion targetRotation = Quaternion.LookRotation(movement, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f * Time.deltaTime);
-        }
-        else if(movement == Vector3.zero)
-        {
-            _myAnim.SetBool("walk", false);
-        }
     }
 }
