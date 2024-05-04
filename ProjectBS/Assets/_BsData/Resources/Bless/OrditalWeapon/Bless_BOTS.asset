@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bless_BOTS
   m_EditorClassIdentifier: 
   _id: 1010
+  _icon: {fileID: 0}
   _name: "\uAC80\uC758 \uCD95\uBCF5"
   _description: "\uACF5\uC804\uD558\uB294 \uAC80\uC744 1\uAC1C \uC0DD\uC131\uD55C\uB2E4."
   _prefab: {fileID: 5875949191823715278, guid: 70fb47a1c8b74ea4b8018d233dbede6b, type: 3}
@@ -29,7 +30,7 @@ MonoBehaviour:
     - 0.2
     - 0
   - name: Amount
-    defaultValue: 1
+    defaultValue: 0
     levelUpType: 0
     levelUpTable:
     - 1

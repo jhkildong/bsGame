@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Bless_LD
   m_EditorClassIdentifier: 
   _id: 1040
+  _icon: {fileID: 0}
   _name: "\uAC00\uBCBC\uC6B4 \uB2E8\uAC80"
-  _description: "\uC804\uBC29\uC73C\uB85C \uBC1C\uC0AC\uD558\uB294 \uB2E8\uAC80\uC744
-    1\uAC1C \uC0DD\uC131\uD55C\uB2E4."
+  _description: "\uC804\uBC29\uC73C\uB85C \uB2E8\uAC80\uC744 1\uAC1C \uBC1C\uC0AC\uD55C\uB2E4."
   _prefab: {fileID: 2396756261227933011, guid: f58d5a649f0de324483f54ea0ead3f54, type: 3}
   _lvDataList:
   - name: Attack

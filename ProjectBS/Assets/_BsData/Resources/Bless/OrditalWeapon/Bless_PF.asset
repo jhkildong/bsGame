@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Bless_PF
   m_EditorClassIdentifier: 
   _id: 1030
+  _icon: {fileID: 0}
   _name: "\uD3AB\uBD88"
   _description: "\uD30C\uC774\uC5B4\uBCFC \uACF5\uACA9\uC744 \uD558\uB294 \uD654\uC2E0\uC744
-    1\uBA85 \uC0DD\uC131\uD55C\uB2E4."
+    1\uB9C8\uB9AC \uC0DD\uC131\uD55C\uB2E4."
   _prefab: {fileID: 1345635395758532283, guid: 74c555f52e0e4454e99b8349ba2d27be, type: 3}
   _lvDataList:
   - name: Attack
@@ -52,7 +53,7 @@ MonoBehaviour:
     - 0
     - 0.2
   - name: ArrowAmount
-    defaultValue: 1
+    defaultValue: 0
     levelUpType: 0
     levelUpTable:
     - 1

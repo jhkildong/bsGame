@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bless_VG
   m_EditorClassIdentifier: 
   _id: 1070
+  _icon: {fileID: 0}
   _name: "\uAC74\uB2EC\uB81B"
   _description: "\uC804\uBC29\uC73C\uB85C \uACF5\uACA9\uD558\uB294 \uC8FC\uBA39\uC744
     1\uAC1C \uC0DD\uC131\uD55C\uB2E4."
@@ -30,7 +31,7 @@ MonoBehaviour:
     - 0
     - 0
   - name: Amount
-    defaultValue: 1
+    defaultValue: 0
     levelUpType: 0
     levelUpTable:
     - 1
