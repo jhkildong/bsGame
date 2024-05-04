@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BD_msDebuffBuildingData
   m_EditorClassIdentifier: 
   _buffName: SlowBuildingDebuff
-  _buffAmount: -0.3
+  _buffAmount: -0.5
   _hasDuration: 0
   _duration: 0
   _canStack: 0

@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a660c1237a0b6444ac36111df387324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingData: {fileID: 11400000, guid: 9863f6ea9c438094da4be1fa58d75269, type: 2}
+  buildingData: {fileID: 11400000, guid: 0ff823c11a652d246a756b164098f3b1, type: 2}
   _id: 0
   _buildingName: 
   _maxHp: 0
@@ -113,6 +113,10 @@ MonoBehaviour:
   _constTime: 0
   _repairSpeed: 0
   _nextUpgrade: {fileID: 0}
+  _upgradeTime: 0
+  _upgradeWood: 0
+  _upgradeStone: 0
+  _upgradeIron: 0
   isInstalled: 0
   iscompletedBuilding: 0
   hpBar: {fileID: 0}
@@ -131,7 +135,7 @@ MonoBehaviour:
   AtkEvent:
     m_PersistentCalls:
       m_Calls: []
-  MeeleBuildingData: {fileID: 11400000, guid: 8520cf7029760314a92f2b0a9c7cf1d2, type: 2}
+  MeeleBuildingData: {fileID: 11400000, guid: 965ebded21a59b8428c9e2b2345f1d54, type: 2}
   myAtkCollider: {fileID: 2142840153214218336}
   _finalRadius: 0
   _finalDmg: 0
