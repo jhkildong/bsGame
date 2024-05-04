@@ -49,7 +49,7 @@ namespace Yeon
         #region Private Field
         ////////////////////////////////Private Field////////////////////////////////
         [SerializeField] protected float _maxHp;                  //최대 체력
-        protected float tempMaxHp;
+        [SerializeField] protected float tempMaxHp;
         [SerializeField] protected float _curHp;                  //현재 체력
         [SerializeField] protected float _attack;                 //공격력
         [SerializeField] protected float _atkSpeed;               //공격속도

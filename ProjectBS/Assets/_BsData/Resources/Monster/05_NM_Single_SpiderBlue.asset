@@ -18,11 +18,11 @@ MonoBehaviour:
   _attackDelay: 1
   _speed: 1.5
   _maxHp: 100
-  _exp: 20
+  _exp: 60
   _mass: 20
   _radius: 2
   _prefab: {fileID: 4221879471387922243, guid: b2ebd14a1cbfb254a9d13b334caea29a, type: 3}
   _dropItemList:
-  - ID: 4
+  - ID: 2004
     dropChance: 100
   _type: 1

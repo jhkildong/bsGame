@@ -37,8 +37,8 @@ public class PassiveBlessData : BaseBlessData
         {
             case PassiveBlessType.Attack:
                 sb.Append("공격력이 ");
-                action = () => GameManager.Instance.Player.getBuff.atkBuffDict["PassiveAttack"] += randomValue * 0.1f;
                 result = 0;
+                action = () => GameManager.Instance.Player.getBuff.atkBuffDict["PassiveAttack"] += randomValue * 0.1f;
                 break;
             case PassiveBlessType.AkSpeed:
                 sb.Append("공격속도가 ");

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mag : MonoBehaviour
 {
+    /*
     private void OnTriggerEnter(Collider other)
     {
         // 충돌한 모든 오브젝트를 가져옴
@@ -21,4 +22,5 @@ public class Mag : MonoBehaviour
             }
         }
     }
+    */
 }
