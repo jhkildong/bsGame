@@ -30,11 +30,19 @@ public class GameManager : MonoBehaviour
     private int myIron = 999;
     private int myGold = 999;
 
-    private int myLevel; // 내 레벨
+    private int myLevel = 1; // 내 레벨
     private int myExp; //경험치 총량
-    private int curLvExp; //현재 레벨의 현재 경험치량
-    private int MaxExp; // 레벨업에 필요한 경험치 총량
-
+    private int curLvExp; //현재레벨 보유 경험치
+    public int CurLvExp
+    {
+        get { return curLvExp; }
+    }
+    private int requireExp; // 레벨업에 필요한 경험치 총량
+    public int RequireExp
+    {
+        get { return requireExp; }
+    }
+    private int overExp; //레벨업시 넘친 경험치
     public event UnityAction<int> WoodChangeAct;
     public event UnityAction<int> StoneChangeAct;
     public event UnityAction<int> IronChangeAct;
@@ -46,6 +54,24 @@ public class GameManager : MonoBehaviour
 
 
     private PlayerUI playerUI;
+
+
+    private int CalcRequireExp(int level) //현재레벨의 최대경험치 계산
+    {
+        if (level >= 1 && level <= 20)
+        {
+            requireExp = 5 + (level - 1) * 10;
+        }
+        else if (level >= 21 && level <= 40)
+        {
+            requireExp = 5 + 10 * 20 + (level - 20) * 13;
+        }
+        else
+        {
+            requireExp = 5 + 10 * 20 + 13 * 20 + (level - 40) * 16;
+        }
+        return requireExp;
+    }
 
 
     public static GameManager Instance //인스턴스에 접근하기 위한 프로퍼티
@@ -87,7 +113,7 @@ public class GameManager : MonoBehaviour
     {
         gameStart = true;
         //myWoodCount.text = $"wood : {myWood.ToString()}";
-            
+        CalcRequireExp(myLevel);
 
 
     }
@@ -152,13 +178,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(MaxExp == myExp)
-        {
-            myLevel++;
-            //레벨업 이벤트
-            
-        }
-
 
     }
 
@@ -206,7 +225,7 @@ public class GameManager : MonoBehaviour
     }
     public int CurExp()
     {
-        return myExp;
+        return curLvExp;
     }
 
 
@@ -259,12 +278,27 @@ public class GameManager : MonoBehaviour
     
     public void ChangeExp(int num)
     {
-        myExp += num;
         curLvExp += num;
+        if (curLvExp >= requireExp) //레벨업
+        {
+            LevelUp();
+        }
         //UI로 나타낼 코드 추가 필요
-        ExpChangeAct?.Invoke(myExp);
-        Debug.Log($"경험치 변동. 현재 경형치 : {myExp}");
+        ExpChangeAct?.Invoke(curLvExp);
     }
+
+    public void LevelUp()
+    {
+        overExp = curLvExp - requireExp;// 넘친 경험치 임시저장
+        curLvExp = 0;
+        myLevel++;
+        BlessManager.Instance.AppearRandomBlessList();
+        requireExp = CalcRequireExp(myLevel);//다음레벨 요구 경험치량 계산
+        curLvExp += overExp;
+
+
+    }
+
 }
 
 

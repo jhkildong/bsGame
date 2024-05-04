@@ -328,6 +328,9 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
     public virtual void Destroy()
     {
         CurHp = 0.0f;
+        GameObject res = Resources.Load<GameObject>("HitEffects/3411_Dust1");
+        HitEffects dust = res.GetComponent<HitEffects>();
+        EffectPoolManager.Instance.SetActiveHitEffect(dust, transform.position, dust.ID);
         ConstructionProgress?.Invoke(1); //건설이나 업그레이드 progressbar도 지우기 위한 코드
         Destroy(gameObject);
 

@@ -20,8 +20,8 @@ public class PlayerUI : UIComponent
     [SerializeField] private TextMeshProUGUI _myGoldText;
 
 
-    public TextMeshProUGUI myExpText => _myExpText;
-    [SerializeField] private TextMeshProUGUI _myExpText;
+    public Slider myExp => _myExp;
+    [SerializeField] private Slider _myExp;
 
 
 
@@ -63,11 +63,15 @@ public class PlayerUI : UIComponent
     }
 
 
-    public void ChangeExpText(int exp) // slider·Î ¹Ù²Ü ¿¹Á¤
+    public void ChangeExp(int exp)
     {
-        if (_myExpText == null)
+        if (_myExp == null)
             return;
-        _myExpText.text = $"Exp: {exp.ToString()}";
+        Debug.Log(exp);
+        Debug.Log(GameManager.Instance.RequireExp);
+        Debug.Log((float)(exp / GameManager.Instance.RequireExp));
+        _myExp.value = ((float)exp / (float)GameManager.Instance.RequireExp);
+        Debug.Log(_myExp.value);
     }
     /*
     public void ChangeExpBar(float exp)
