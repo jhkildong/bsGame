@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bless_LP
   m_EditorClassIdentifier: 
   _id: 1080
+  _icon: {fileID: 0}
   _name: "\uC6A9\uC554 \uC6C5\uB369\uC774"
   _description: "\uC6A9\uC554 \uC6C5\uB369\uC774\uB97C 1\uAC1C \uC0DD\uC131\uD55C\uB2E4."
   _prefab: {fileID: 5824648880119881452, guid: 66e157a978cf4b6429d841138b8a24e9, type: 3}
@@ -29,7 +30,7 @@ MonoBehaviour:
     - 0.3
     - 0
   - name: Amount
-    defaultValue: 0
+    defaultValue: 1
     levelUpType: 0
     levelUpTable:
     - 1
