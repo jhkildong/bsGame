@@ -50,8 +50,7 @@ public abstract class Item : MonoBehaviour, IPoolable
             transform.position += dir.normalized * accel;
             if (Vector3.Distance(target.position, transform.position) < 0.25f)
             {
-                //Eat();
-                ObjectPoolManager.Instance.ReleaseObj(this);
+                Eat();
                 yield break;
             }
             yield return null;
@@ -59,9 +58,9 @@ public abstract class Item : MonoBehaviour, IPoolable
 
     }
 
-    void Eat()
+    protected virtual void Eat()
     {
-        Destroy(gameObject);
+        ObjectPoolManager.Instance.ReleaseObj(this);
         Debug.Log(gameObject + "을(를) 얻었다..!");
     }
 }

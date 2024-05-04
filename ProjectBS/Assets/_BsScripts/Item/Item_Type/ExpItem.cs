@@ -23,8 +23,9 @@ public class ExpItem : Item
         ExpItemData = (data as ExpItemData);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void Eat()
     {
+        base.Eat();
         GameManager.Instance.ChangeExp(Exp);
     }
 }
