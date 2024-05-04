@@ -5,6 +5,7 @@ public class ForwardWeaponBOTCA : Bless
 {
     float time = 0.0f;
     float WaitTime = 0.05f;
+    Vector3 myDir;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,8 @@ public class ForwardWeaponBOTCA : Bless
     private void SetSpawnWeapon()
     {
         var bullet = SpawnWeapon() as ForwardMovingWeapon;
-        bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        myDir = Quaternion.Euler(0, Random.Range(0.0f, 360.0f), 0) * Vector3.forward;
+        bullet.transform.SetPositionAndRotation(transform.position, Quaternion.LookRotation(myDir));
         bullet.transform.localScale = new Vector3(myStatus[Key.Size], myStatus[Key.Size], myStatus[Key.Size]); //ªÁ¿Ã¡Ó
         bullet.Ak = myStatus[Key.Attack];
         bullet.Shoot(25);
