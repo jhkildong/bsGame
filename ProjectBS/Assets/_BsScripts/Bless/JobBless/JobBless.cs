@@ -32,7 +32,6 @@ public class JobBless : Bless
         if (_curLevel >= _maxLevel)
         {
             BlessManager.Instance.RemoveBlessInSelectPool(Data.ID);
-            return;
         }
         UpdateStatusToPlayer();
     }

@@ -1,9 +1,10 @@
 using UnityEditor;
 using UnityEngine;
 
-public abstract class UIComponent : MonoBehaviour, IPoolable
+public class UIComponent : MonoBehaviour, IPoolable
 {
-    public abstract int ID { get; }
+    public int ID => _id;
+    [SerializeField] private int _id;
     public MonoBehaviour This => this;
 
     public IPoolable CreateClone()

@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class BuildingHpBar : FollowingTargetUI
 {
-    public override int ID => _id;
-    [SerializeField] private int _id = 5006;
-
     public Slider MySlider => _slider;
     [SerializeField] private Slider _slider;
 

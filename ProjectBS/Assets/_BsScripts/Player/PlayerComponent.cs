@@ -84,7 +84,7 @@ public abstract class PlayerComponent : CharacterComponent
     }
 
     //애니메이션 이벤트는 bool값을 지원안함
-    public void OnSkillEffect(int onSkill)
+    public virtual void OnSkillEffect(int onSkill)
     {
         if (onSkill == 0)
             MySkillEffect.gameObject.SetActive(false);

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(GridLayoutGroup))]
 public class GridButtons : MonoBehaviour
 {
     [SerializeField]protected List<Button> buttons;

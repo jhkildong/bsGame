@@ -30,7 +30,7 @@ MonoBehaviour:
     - 0
     - 0
   - name: Amount
-    defaultValue: 1
+    defaultValue: 0
     levelUpType: 0
     levelUpTable:
     - 1
@@ -41,7 +41,7 @@ MonoBehaviour:
     - 0
     - 1
   - name: ReTime
-    defaultValue: 2
+    defaultValue: 1
     levelUpType: 2
     levelUpTable:
     - 0

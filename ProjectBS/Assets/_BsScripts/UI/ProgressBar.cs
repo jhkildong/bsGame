@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class ProgressBar : FollowingTargetUI
 {
-    public override int ID => _id;
-    [SerializeField] private int _id;
-
     [SerializeField] private Slider slider;
     [SerializeField] private Image sliderImage;
     private Color sliderColor;

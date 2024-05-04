@@ -1,0 +1,7 @@
+C:\Unity\bsGame\ProjectBS\BSgame\bin\Debug\BSgame.exe.config
+C:\Unity\bsGame\ProjectBS\BSgame\bin\Debug\BSgame.exe
+C:\Unity\bsGame\ProjectBS\BSgame\bin\Debug\BSgame.pdb
+C:\Unity\bsGame\ProjectBS\BSgame\obj\Debug\BSgame.csproj.AssemblyReference.cache
+C:\Unity\bsGame\ProjectBS\BSgame\obj\Debug\BSgame.csproj.CoreCompileInputs.cache
+C:\Unity\bsGame\ProjectBS\BSgame\obj\Debug\BSgame.exe
+C:\Unity\bsGame\ProjectBS\BSgame\obj\Debug\BSgame.pdb

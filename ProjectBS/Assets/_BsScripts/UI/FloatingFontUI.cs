@@ -3,8 +3,6 @@ using TMPro;
 
 public class FloatingFontUI : FollowingTargetUI
 {
-    public override int ID => _id;
-    [SerializeField]private int _id;
     [SerializeField]private TextMeshProUGUI text;
 
     public void SetDamageUI(int dmg, Vector3 pos)
