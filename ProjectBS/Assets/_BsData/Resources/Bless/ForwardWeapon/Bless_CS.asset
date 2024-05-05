@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bless_CS
   m_EditorClassIdentifier: 
   _id: 1060
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 5fb2bcae22dc25d44aa2b96b94031c4f, type: 3}
   _name: "\uC2ED\uC790\uCC3D"
   _description: "\uC804\uBC29\uC744 \uCC0C\uB974\uB294 \uCC3D\uC744 1\uAC1C \uC0DD\uC131\uD55C\uB2E4."
   _prefab: {fileID: 2336909956578856692, guid: 52dc9034c50881146869f6cd8f97a028, type: 3}

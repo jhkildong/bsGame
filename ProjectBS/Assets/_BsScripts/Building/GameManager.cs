@@ -15,7 +15,17 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
 
 
+    
     public Player Player;
+
+    [HideInInspector]public PlayerComponent myJob;
+    [HideInInspector]public int myTypeIdx;
+
+    public void SetSelectedInfo(PlayerComponent job, int typeIdx)
+    {
+        myJob = job;
+        myTypeIdx = typeIdx;
+    }
 
     public bool gameStart;
     public bool gameOver;

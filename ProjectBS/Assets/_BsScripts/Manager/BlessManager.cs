@@ -31,14 +31,13 @@ public class BlessManager : Singleton<BlessManager>
         Initialize();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         blessSelectWindow = UIManager.Instance.CreateUI(UIID.BlessSelectWindow, CanvasType.Canvas) as SelectWindow;
         blessSelectWindow.gameObject.SetActive(false);
         blessIconsUI = UIManager.Instance.CreateUI(UIID.BlessIconsUI, CanvasType.Canvas) as BlessIconsUI;
         LevelUpDescription.GetLevelUpDescriptionToJson();
     }
-
 
     private void Initialize()
     {
@@ -64,7 +63,7 @@ public class BlessManager : Singleton<BlessManager>
         }
         //패시브 축복의 가중치를 추가
         float sum = blessDataWeight.SumOfWeights;
-        float passiveWeight = sum * 0.428571f;  //패시브 축복의 가중치를 3/7로 설정(전체가중치 7, 패시브가중치 3)
+        float passiveWeight = sum * 0.111111f;  //패시브 축복의 가중치를 1/9로 설정(전체가중치 7, 패시브가중치 3)
         blessDataWeight.Add(PassiveBlessData, passiveWeight);
     }
 
@@ -72,7 +71,7 @@ public class BlessManager : Singleton<BlessManager>
     {
         float sum = blessDataWeight.SumOfWeights;
         float passiveWeight = blessDataWeight.GetWeight(PassiveBlessData);
-        passiveWeight = (sum - passiveWeight)  * 0.428571f;  //패시브 축복의 가중치를 3/7로 설정(전체가중치 7, 패시브가중치 3)
+        passiveWeight = (sum - passiveWeight)  * 0.111111f;  //패시브 축복의 가중치를 3/7로 설정(전체가중치 7, 패시브가중치 3)
         blessDataWeight.ModifyWeight(PassiveBlessData, passiveWeight);
     }
 
@@ -221,7 +220,7 @@ public class BlessManager : Singleton<BlessManager>
                         continue;
                     }
                 }
-                blessDataWeight.Add(temp[i], weights[i] + 10);  //선택된 축복의 가중치를 증가
+                blessDataWeight.Add(temp[i], weights[i] + 3);  //선택된 축복의 가중치를 증가
             }
             else
                 blessDataWeight.Add(temp[i], weights[i]);       //선택되지 않은 축복의 가중치는 그대로
@@ -371,7 +370,7 @@ public class WeightedRandomPicker<T>
     /// <summary> 랜덤 뽑기 </summary>
     public T GetRandomPick()
     {
-        Random.InitState(System.DateTime.Now.Millisecond);
+        Random.InitState((int)(System.DateTime.Now.Ticks % int.MaxValue));
         // 랜덤 계산
         float chance = Random.value; // [0.0, 1.0)
         chance *= SumOfWeights;

@@ -18,7 +18,7 @@ public class Weapon : MonoBehaviour, IPoolable
             IDamage<Monster> obj = other.GetComponent<IDamage<Monster>>();
             if (obj != null)
             {
-                obj.TakeDamage(Ak);
+                obj.TakeDamageEffect(Ak);
             }
         }
     }

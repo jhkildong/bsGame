@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4832485056786473258}
   - component: {fileID: 4201792546082988070}
   m_Layer: 5
-  m_Name: SettingsUI
+  m_Name: 5015_SettingsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19bfb5592a833f745bd4a649291d10df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 5015
 --- !u!1 &186960398725201934
 GameObject:
   m_ObjectHideFlags: 0

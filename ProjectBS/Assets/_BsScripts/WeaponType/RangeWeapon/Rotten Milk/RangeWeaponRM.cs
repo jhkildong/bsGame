@@ -16,7 +16,7 @@ public class RangeWeaponRM : Bless
     // Update is called once per frame
     void Update()
     {
-        if (CurLv >= 1)
+        if (CurLv >= 0)
         {
             if (Count < 1)
             {

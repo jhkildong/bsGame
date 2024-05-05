@@ -2,21 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopUI : MonoBehaviour
+public class ShopUI : UIComponent
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OnBackButton()
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

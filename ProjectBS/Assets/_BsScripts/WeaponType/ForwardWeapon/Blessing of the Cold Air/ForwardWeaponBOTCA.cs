@@ -17,7 +17,7 @@ public class ForwardWeaponBOTCA : Bless
     void Update()
     {
         time += Time.deltaTime;
-        if (CurLv >= 1)
+        if (CurLv >= 0)
         {
             if (time >= myStatus[Key.ReTime])
             {
