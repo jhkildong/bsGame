@@ -24,5 +24,9 @@ MonoBehaviour:
   _prefab: {fileID: 4221879471387922243, guid: b2ebd14a1cbfb254a9d13b334caea29a, type: 3}
   _dropItemList:
   - ID: 2004
-    dropChance: 100
+    dropChance: 25
+  - ID: 2500
+    dropChance: 50
+  - ID: 2006
+    dropChance: 25
   _type: 1
