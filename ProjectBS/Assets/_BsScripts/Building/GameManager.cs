@@ -25,10 +25,10 @@ public class GameManager : MonoBehaviour
     private bool isNight;
     public int curDay;
     //private int myExp;
-    private int myWood = 999;
-    private int myStone = 999;
-    private int myIron = 999;
-    private int myGold = 999;
+    private int myWood = 50;
+    private int myStone = 30;
+    private int myIron = 20;
+    private int myGold = 0;
 
     private int myLevel = 1; // 내 레벨
     private int myExp; //경험치 총량

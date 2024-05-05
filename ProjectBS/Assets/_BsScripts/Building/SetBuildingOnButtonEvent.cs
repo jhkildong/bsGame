@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public class SetBuildingOnButtonEvent : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class SetBuildingOnButtonEvent : MonoBehaviour
     //버튼에 부착
     // 버튼 누르면 해당 건물을 InstantiateBuilding의 GameObject selectBuilding로 전달. (현재 커플링 상태)
     public GameObject building;
+    public TextMeshProUGUI reqWoodText;
+    public TextMeshProUGUI reqStoneText;
+    public TextMeshProUGUI reqIronText;
     [SerializeField] private int _requireWood;
     [SerializeField] private int _requireStone;
     [SerializeField] private int _requireIron;
@@ -29,6 +33,10 @@ public class SetBuildingOnButtonEvent : MonoBehaviour
         _requireStone = myBD.Data.requireStone;
         _requireIron = myBD.Data.requireIron;
         
+        reqWoodText.text = _requireWood.ToString();
+        reqStoneText.text = _requireStone.ToString();
+        reqIronText.text = _requireIron.ToString();
+
         GameManager.Instance.WoodChangeAct += (num) => CanBuild(); //자원이 갱신될때마다 버튼이 활성화 가능한지 점검
         GameManager.Instance.StoneChangeAct += (num) => CanBuild();
         GameManager.Instance.IronChangeAct += (num) => CanBuild();

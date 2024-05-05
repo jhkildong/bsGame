@@ -218,10 +218,9 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         GameManager.Instance.Player.IsBuilding = false;
     }
 
-    public void Upgrade(float constSpeed) //건물 업그레이드
+    public void StartUpgrade()
     {
-        
-        if (!isUpgrading && (GameManager.Instance.CurWood() >= _upgradeWood || GameManager.Instance.CurStone() >= _upgradeStone || GameManager.Instance.CurIron() >= _upgradeIron))
+        if (!isUpgrading && (GameManager.Instance.CurWood() >= _upgradeWood && GameManager.Instance.CurStone() >= _upgradeStone && GameManager.Instance.CurIron() >= _upgradeIron))
         {
             isUpgrading = true;
             UseResources();
@@ -231,16 +230,34 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
             SelectedProgress += progressBar.Selected;
 
         }
+    }
 
+    public void Upgrade(float constSpeed) //건물 업그레이드
+    {
+        /*
+        if (!isUpgrading && (GameManager.Instance.CurWood() >= _upgradeWood && GameManager.Instance.CurStone() >= _upgradeStone && GameManager.Instance.CurIron() >= _upgradeIron))
+        {
+            isUpgrading = true;
+            UseResources();
+            ProgressBar progressBar = UIManager.Instance.GetUI(UIID.ProgressBar, CanvasType.DynamicCanvas) as ProgressBar;
+            progressBar.myTarget = transform;
+            ConstructionProgress += progressBar.ChnageProgress;
+            SelectedProgress += progressBar.Selected;
+
+        }
+        */
         if (iscompletedBuilding && isInstalled && isUpgrading) //완성 건물일때, 건설 세팅 상태일때
         {
-            upConstTime += constSpeed;
-            ConstructionProgress?.Invoke(upConstTime / _upgradeTime);
-            Debug.Log("건설 진행 시간 :" + upConstTime);
-            if (upConstTime >= _upgradeTime)
-            {
-                UpgradeComplete();
+            if(Input.GetKey(KeyCode.B)) {
+                upConstTime += constSpeed;
+                ConstructionProgress?.Invoke(upConstTime / _upgradeTime);
+                Debug.Log("건설 진행 시간 :" + upConstTime);
+                if (upConstTime >= _upgradeTime)
+                {
+                    UpgradeComplete();
+                }
             }
+            
         }
         
     

@@ -18,7 +18,8 @@ public class PlayerUI : UIComponent
 
     public TextMeshProUGUI myGoldText => _myGoldText;
     [SerializeField] private TextMeshProUGUI _myGoldText;
-
+    public TextMeshProUGUI curTime => _curTime;
+    [SerializeField] private TextMeshProUGUI _curTime;
 
     public Slider myExp => _myExp;
     [SerializeField] private Slider _myExp;
