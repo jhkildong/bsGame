@@ -67,8 +67,8 @@ public class Archer : PlayerComponent
 
     private void OffSkill()
     {
-        GameManager.Instance.Player.isCastingSkill = true;          //스킬 사용 상태 true, 애니메이션이 끝날 때 false로 호출
+        GameManager.Instance.Player.isCastingSkill = true;          //스킬 사용 상태 true, 애니메이션이 끝날 때 false로 호출(ArcherSkillState.cs)
+        GameManager.Instance.Player.SetInputState(false);
         SkillRangeMaker.SetActive(false);
-        GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().enabled = false;
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerSetup : MonoBehaviour
@@ -12,8 +13,6 @@ public class PlayerSetup : MonoBehaviour
     private GameObject[] mageHandTypes;
     private BlessID[] jobBlessIDs;
     private SelectWindow playerSelectWindow;
-    [SerializeField] Transform Canvas;
-    [SerializeField] private MainCameraAction mainCameraAction;
 
     private void Awake()
     {
@@ -24,9 +23,10 @@ public class PlayerSetup : MonoBehaviour
     }
     private void Start()
     {
-        UIManager.Instance.SetPool(UIID.DamageUI, 30, 30);
+        //UIManager.Instance.SetPool(UIID.DamageUI, 30, 30);
         playerSelectWindow = UIManager.Instance.CreateUI(UIID.PlayerSelectWindow, CanvasType.Canvas) as SelectWindow;
         SetJobSelect();
+        gameObject.SetActive(false);
     }
 
     #region Select Job
@@ -81,6 +81,33 @@ public class PlayerSetup : MonoBehaviour
             });
     }
 
+    private PlayerComponent tempJob;
+    private int tempIdx;
+
+    private void LoadSceneAndInstantiateSelectedType(PlayerComponent job, int idx)
+    {
+        tempJob = job;
+        tempIdx = idx;
+        // 씬 로드
+        Loading.LoadScene(3);
+
+        // 씬이 완전히 로드된 후에 게임 오브젝트 생성
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 3)
+        {
+            SelectType(tempJob, tempIdx);
+
+            // 이벤트 핸들러 제거
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+    }
+
+
+
     private void SelectType(PlayerComponent job, int idx)
     {
         StringBuilder sb = new StringBuilder(FilePath.AttackType);
@@ -120,17 +147,11 @@ public class PlayerSetup : MonoBehaviour
                 continue;
             BlessManager.Instance.RemoveBlessInSelectPool((int)jobBlessIDs[i]);
         }
-        //메인카메라 타겟설정
-        mainCameraAction.Target = player.transform;
+        Camera.main.GetComponent<MainCameraAction>().Target = player.transform;
         //플레이어 선택창 제거
         Destroy(playerSelectWindow.gameObject);
 
         UIManager.Instance.CreateUI(UIID.SkillIconUI, CanvasType.DynamicCanvas);
-    }
-
-    public void OnPlay()
-    {
-        Loading.LoadScene(3);
     }
     #endregion
 }

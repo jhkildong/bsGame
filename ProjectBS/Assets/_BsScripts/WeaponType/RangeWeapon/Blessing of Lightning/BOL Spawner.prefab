@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: d5b602fa67b4d4d468b1491f30287fde, type: 2}
-  weaponPrefab: {fileID: 7725184279735776520, guid: b77a865a45aeb1349857916caba9986c, type: 3}
+  weaponPrefab: {fileID: 3409803680647492637, guid: b77a865a45aeb1349857916caba9986c, type: 3}

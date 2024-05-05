@@ -4,13 +4,14 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Yeon;
 
-
 public class Player : Combat, IDamage<Player>
 {
     #region Public Field, Method
     ////////////////////////////////Public Field, Method////////////////////////////////
     public event UnityAction OnSkillAct;
     public event UnityAction OffSkillAct;
+    public event UnityAction StartAttackAct;
+    public event UnityAction EndAttackAct;
     public event UnityAction<float, float> ChangeCoolTimeAct;
     public event UnityAction<int> ChangeStackAct;
     
@@ -22,7 +23,11 @@ public class Player : Combat, IDamage<Player>
         {
             _isBuilding = value;
             Com.MyAnim.SetBool(AnimParam.isBuilding, value);
-            RotatingBody.GetComponent<LookAtPoint>().enabled = !value;
+            SetInputState(!value);
+            if (value)
+                rBody.constraints |= RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+            else
+                rBody.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
         }
     }
     public float ConstSpeed
@@ -56,6 +61,52 @@ public class Player : Combat, IDamage<Player>
         skillCoolTime = coolTime;
         maxCastingTime = castingTime;
     }
+
+    public void SetInputState(bool state)
+    {
+        if (state)
+        {
+            if (isCastingSkill) //스킬 시전 중
+            {
+                switch (Com.MyJob)      //TODO:분리 필요
+                {
+                    case Job.Warrior:
+                        SetOutOfControl(!state);                                    //이동가능
+                        //RotatingBody.GetComponent<LookAtPoint>().enabled = !state;//시선변경 불가능
+                        break;
+                    case Job.Mage:
+                        //SetOutOfControl(state);                                   //이동불가능
+                        RotatingBody.GetComponent<LookAtPoint>().enabled = state;   //시선 변경 가능
+                        RotatingBody.GetComponent<LookAtPoint>().SetRotSpeed(0.1f);
+                        break;
+                    case Job.Archer:
+                        SetOutOfControl(!state);                                    //이동가능
+                        RotatingBody.GetComponent<LookAtPoint>().enabled = state;   //시선 변경 가능
+                        break;
+                }
+            }
+            else
+            {
+                SetOutOfControl(!state);                                    
+                RotatingBody.GetComponent<LookAtPoint>().enabled = state;
+            }
+            playerInputs.Enable();
+        }
+        else
+        {
+            SetOutOfControl(!state);                                    //이동불가
+            RotatingBody.GetComponent<LookAtPoint>().enabled = state;   //시선 변경 불가
+            playerInputs.Disable();                                     //입력 불가
+            WSADInput = 0b_0000;                                        //이동 입력 초기화
+            Com.MyAnim.SetBool(AnimParam.isMoving, false);              //이동 애니메이션 초기화
+            Com.MyAnim.SetBool(AnimParam.isAttacking, false);           //공격 애니메이션 초기화
+        }
+    }
+
+    public void test()
+    {
+        GetComponentInChildren<MonsterSpawner>().Test();
+    }
     #endregion
 
     #region PlayerInput
@@ -68,14 +119,22 @@ public class Player : Combat, IDamage<Player>
     private PlayerInputs playerInputs;
     private void StartAttack(InputAction.CallbackContext context)
     {
+        if(isCastingSkill)  //스킬 시전중이면 리턴
+            return;
         Com.MyAnim.SetBool(AnimParam.isAttacking, true);
+        StartAttackAct?.Invoke();
     }
     private void EndAttack(InputAction.CallbackContext context)
     {
+        if (isCastingSkill)
+            return;
         Com.MyAnim.SetBool(AnimParam.isAttacking, false);
+        EndAttackAct?.Invoke();
     }
     private void StartSkill(InputAction.CallbackContext context)
     {
+        if(isCastingSkill)  //스킬 시전중이면 리턴
+            return;
         if(isSkillNotReady)  //스킬 준비가 안됬으면 리턴
         {
             Debug.Log($"쿨타임: {remainCoolTime}");
@@ -91,7 +150,9 @@ public class Player : Combat, IDamage<Player>
         {
             if (isSkillNotReady || isCastingSkill) return;    //스킬 준비가 안되있거나, 스킬 시전 도중이면(쿨타임돌고 있는 도중 눌렀을 경우)
             if (skillCasting != null)
+            {
                 StopCoroutine(skillCasting);
+            }    
             skillCasting = null;
             OffSkillAct?.Invoke();
             return;
@@ -101,7 +162,11 @@ public class Player : Combat, IDamage<Player>
             if (!isCastingSkill)    //스킬 시전중이 아니면 리턴(자동으로 끝난 경우, 쿨타임돌고 있는 도중 눌렀을 경우)
                 return;
             if (skillCasting != null)
+            {
+                if (isOutOfControl)
+                    return;
                 StopCoroutine(skillCasting);
+            }
             skillCasting = null;
             OffSkillAct?.Invoke();
         }
@@ -269,7 +334,7 @@ public class Player : Combat, IDamage<Player>
                 CurHp = 1;
             tempMaxHp = MaxHp;
         };
-        _buff.msBuffDict.ChangeBuffAct += () => { moveSpeed *= (1 + getBuff.msBuff); };
+        _buff.msBuffDict.ChangeBuffAct += () => { moveSpeedBuff = 1 + getBuff.msBuff; };
         _buff.rangeBuffDict.ChangeBuffAct += () => { magnetField.transform.localScale = Vector3.one * (1 + getBuff.rangeBuff); };
         #endregion
 
@@ -294,11 +359,18 @@ public class Player : Combat, IDamage<Player>
 
         playerInputs.Player.Skill.performed += StartSkill;
         playerInputs.Player.Skill.canceled += EndSkill;
-        playerInputs.Enable();
+        StartCoroutine(DelayInputEnable());
+        //playerInputs.Enable();
         #endregion
 
         //게임창의 포커스가 변했을 시 실행될 메서드 등록
         Application.focusChanged += OnFocusChanged;
+    }
+
+    private IEnumerator DelayInputEnable()
+    {
+        yield return new WaitForSeconds(0.05f);
+        playerInputs.Enable();
     }
 
     private void Update()
@@ -405,12 +477,13 @@ public class Player : Combat, IDamage<Player>
     
     private void OnSkill()  //스킬키를 눌렀을 때 실행
     {
+        Com.MyAnim.SetBool(AnimParam.isAttacking, false);
         if(MageLv7SkillReady)
         {
             MageLv7SkillReady = false;
             Com.MyJobBless.MageLv7SkillOn();
             SetOutOfControl(true);
-            RotatingBody.GetComponent<LookAtPoint>().SetRotSpeed(0.1f);
+            RotatingBody.GetComponent<LookAtPoint>().SetRotSpeed(0.05f);
             Com.MyAnim.SetTrigger(AnimParam.Lv7Skill);
             StartCoroutine(MageBuffTimer());
             return;

@@ -20,8 +20,10 @@ namespace Yeon
 
         #region Private Field
         ////////////////////////////////Private Field////////////////////////////////
+        
         [SerializeField]
         protected float moveSpeed = 1f;
+        protected float moveSpeedBuff = 1f;
 
         protected bool isOutOfControl = false; //제어 불가 상태
         protected Vector3 worldMoveDir;
@@ -74,7 +76,7 @@ namespace Yeon
         {
             if (!isOutOfControl)
             {
-                rBody.velocity = worldMoveDir * moveSpeed;
+                rBody.velocity = worldMoveDir * moveSpeed * moveSpeedBuff;
             }
             else
             {

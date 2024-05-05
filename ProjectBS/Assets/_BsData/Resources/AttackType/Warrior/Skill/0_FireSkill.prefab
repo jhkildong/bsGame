@@ -29,7 +29,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8183391258514854688}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
@@ -4835,7 +4835,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8183391258514854688}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
@@ -9614,7 +9614,7 @@ Transform:
   m_LocalRotation: {x: 0.679764, y: -0.194733, z: 0.194733, w: 0.679764}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8183391258514854688}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 31.971}
@@ -14456,7 +14456,7 @@ Transform:
   m_LocalRotation: {x: -0.0039800373, y: 0.7070956, z: 0.7070956, w: 0.0039800373}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8183391258514854688}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: -180.64499}
@@ -19262,7 +19262,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8183391258514854688}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
@@ -24034,7 +24034,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7644784208367020685}
   - {fileID: 7457276062424426250}

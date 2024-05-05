@@ -68,6 +68,7 @@ public class ItemManager : MonoBehaviour
 
     public GameObject DropRandomItem(List<dropItem> items)
     {
+        Random.InitState(System.DateTime.Now.Millisecond);
         float rnd = Random.Range(0, 100);
         foreach(var dropitem in items)
         {

@@ -15,9 +15,4 @@ public class BackGame : MonoBehaviour
     {
         
     }
-
-    public void OnBackGame()
-    {
-        Loading.LoadScene(1);
-    }
 }

@@ -65,7 +65,6 @@ public class BowAnimSet : MonoBehaviour
 
     public void OnSkillAim()
     {
-        GameManager.Instance.Player.SetOutOfControl(true);
         skillAiming = StartCoroutine(OnSkillAiming());
     }
 
@@ -80,7 +79,6 @@ public class BowAnimSet : MonoBehaviour
 
     public void OffSkillAim()
     {
-        GameManager.Instance.Player.SetOutOfControl(false);
         StopCoroutine(skillAiming);
         StartCoroutine(OffSkillAiming());
     }

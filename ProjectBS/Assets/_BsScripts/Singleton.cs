@@ -27,15 +27,14 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour // where -> T�
     }
     protected void Initialize(T This)
     {
-        if(_inst == null)
-            _inst = This; // 인스턴스가 없으면 자기자신을 힙영역의 참조자에 참조하라고 해준다.
-        if (_inst != null && _inst != this) //이미 생성된 인스턴스가 있다면
+        if (_inst == null)
         {
-            Destroy(this.gameObject); //이번에 생성된 자신을 파괴하여 유일성을 유지
+            _inst = This; // 인스턴스가 없으면 자기자신을 힙영역의 참조자에 참조하라고 해준다.
+            DontDestroyOnLoad(gameObject); // 씬을 이동해도 지워지지 않게.
         }
         else
         {
-            DontDestroyOnLoad(gameObject); // 씬을 이동해도 지워지지 않게.
+            Destroy(gameObject); //이번에 생성된 자신을 파괴하여 유일성을 유지
         }
     }
     protected virtual void Awake()

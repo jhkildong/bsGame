@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/_BsScenes/Jaejun/LoadingScene.unity
     guid: b833e9ab26343074e93638770180c244
   - enabled: 1
+    path: Assets/_BsScenes/Jeongwhan/JeonWhanTest.unity
+    guid: 0a75d0738d941024f8a071402c39e086
+  - enabled: 1
     path: Assets/_BsScenes/Jaejun/JaejunTest.unity
     guid: e4467ae2d3ec8244ba9fad7d506e0daa
   m_configObjects:

@@ -28,3 +28,4 @@ MonoBehaviour:
   - ID: 2500
     dropChance: 50
   _type: 4
+  _surroundRange: 30

@@ -86,6 +86,20 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
 
         ResetTarget();
         DeadAct += Die;
+
+        #region BuffChangeAct Setting
+        _buff.asBuffDict.ChangeBuffAct += () => { Com.MyAnim.SetFloat(AnimParam.AttackSpeed, Aksp); };
+        _buff.hpBuffDict.ChangeBuffAct += () =>
+        {
+            float changeHp = MaxHp - tempMaxHp;
+            if (CurHp + changeHp > 0)
+                CurHp += changeHp;
+            else
+                CurHp = 1;
+            tempMaxHp = MaxHp;
+        };
+        _buff.msBuffDict.ChangeBuffAct += () => { moveSpeedBuff = 1 + getBuff.msBuff; };
+        #endregion
     }
 
     protected override void InitCollider(float radius)

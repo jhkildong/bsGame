@@ -181,17 +181,19 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         gamePaused = true;
         Time.timeScale = 0;
+        Player.SetInputState(false);
         Debug.Log("일시정지되었습니다.");
         //UI 팝업 추가
     }
-    void ResumeGame()
+    public void ResumeGame()
     {
         gamePaused = false;
         Time.timeScale = 1;
+        Player.SetInputState(true);
         Debug.Log("일시정지해제.");
         //UI 사라지게 추가
     }

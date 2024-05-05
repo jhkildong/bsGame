@@ -45,5 +45,6 @@ public class ArcherSkillState : StateMachineBehaviour
     {
         animator.GetComponent<BowAnimSet>().OffSkillAim();
         GameManager.Instance.Player.isCastingSkill = false;
+        GameManager.Instance.Player.SetInputState(true);
     }
 }

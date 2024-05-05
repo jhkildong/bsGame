@@ -103,7 +103,7 @@ public class BlessManager : Singleton<BlessManager>
     public void AppearRandomBlessList()
     {
         //게임 일시정지
-        Time.timeScale = 0;
+        GameManager.Instance.PauseGame();
         //윈도우가 활성화 되있을 경우 callStack에 저장 후 리턴
         if(blessSelectWindow.gameObject.activeSelf == true)
         {
@@ -244,13 +244,13 @@ public class BlessManager : Singleton<BlessManager>
                 blessIconsUI.SetText(Lv, blessData.ID);
             }
         }
-        Time.timeScale = 1;
         blessSelectWindow.gameObject.SetActive(false);
         //축복 선택이 끝난 후 callStack에 저장된 함수가 있으면 실행
         if (callStack.Count > 0)
         {
             callStack.Pop().Invoke();
         }
+        GameManager.Instance.ResumeGame();
     }
 
     public void SetJobBlessIcon(int ID)
@@ -371,6 +371,7 @@ public class WeightedRandomPicker<T>
     /// <summary> 랜덤 뽑기 </summary>
     public T GetRandomPick()
     {
+        Random.InitState(System.DateTime.Now.Millisecond);
         // 랜덤 계산
         float chance = Random.value; // [0.0, 1.0)
         chance *= SumOfWeights;

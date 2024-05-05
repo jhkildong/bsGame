@@ -35,7 +35,6 @@ public class RangeWeaponBOL : Bless
         Vector3 spawnPos = transform.position + randomPos;
         spawnPos.y = 0.0f;
         var bullet = SpawnWeapon(); // 公扁 积己
-        bullet.transform.SetParent(transform);
         bullet.transform.position = spawnPos; // 公扁 困摹
         bullet.Ak = myStatus[Key.Attack];
     }

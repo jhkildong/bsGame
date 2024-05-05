@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class ConstructionController : MonoBehaviour
 {
+    private bool canBuild = true;
+
     [SerializeField]private float buildApplyRange = 2.0f;
     private ConstructionKeyUI buildUI;
 
@@ -14,18 +16,30 @@ public class ConstructionController : MonoBehaviour
 
     private void Start()
     {
-        buildUI = UIManager.Instance.CreateUI(UIID.ConstructionKeyUI, CanvasType.DynamicCanvas) as ConstructionKeyUI;
         UIManager.Instance.SetPool(UIID.ProgressBar, 10, 10);
+
+        buildUI = UIManager.Instance.CreateUI(UIID.ConstructionKeyUI, CanvasType.DynamicCanvas) as ConstructionKeyUI;
         buildUI.gameObject.SetActive(false);
 
         buildingInteractionUI = UIManager.Instance.CreateUI(UIID.BuildingInteractionUI, CanvasType.DynamicCanvas) as BuildingInteractionUI;
-        UIManager.Instance.SetPool(UIID.ProgressBar, 10, 10);
         buildingInteractionUI.gameObject.SetActive(false);
-    }
 
+        GameManager.Instance.Player.OnSkillAct += () => canBuild = false;
+        if (GameManager.Instance.Player.GetComponentInChildren<Archer>() == null)          //임시처리
+        {
+            GameManager.Instance.Player.OffSkillAct += () => canBuild = true;
+        }
+        GameManager.Instance.Player.StartAttackAct += () => canBuild = false;
+        GameManager.Instance.Player.EndAttackAct += () => canBuild = true;
+
+
+    }
     private void Update()
     {
         RaycastHit hit;
+
+        if (!canBuild)
+            return;
 
         //레이캐스트로 건설할 수 있는 오브젝트 탐색
         if (Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), transform.forward,
@@ -51,10 +65,6 @@ public class ConstructionController : MonoBehaviour
                 //색깔 변경
                 buildTarget.SelectedProgress?.Invoke(true);
             }
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                GameManager.Instance.Player.IsBuilding = true;
-            }
             if(Input.GetKeyUp(KeyCode.B))
             {
                 GameManager.Instance.Player.IsBuilding = false;
@@ -62,17 +72,15 @@ public class ConstructionController : MonoBehaviour
             //상호작용키 입력시 건설
             if (Input.GetKey(KeyCode.B))
             {
+                GameManager.Instance.Player.IsBuilding = true;
                 buildTarget.Construction(GameManager.Instance.Player.ConstSpeed* Time.deltaTime);
             }
             //키 입력시 파괴
-            else if (Input.GetKeyDown(KeyCode.G))
+            if (Input.GetKeyDown(KeyCode.G))
             {
                 buildTarget.Destroy();
             }
         }
-
-
-
         
         else if (Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), transform.forward,
             out hit, buildApplyRange, (int)BSLayerMasks.Building))
@@ -110,16 +118,13 @@ public class ConstructionController : MonoBehaviour
                 //색깔 변경
                 buildTarget.SelectedProgress?.Invoke(true);
             }
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                GameManager.Instance.Player.IsBuilding = true;
-            }
             if (Input.GetKeyUp(KeyCode.R))
             {
                 GameManager.Instance.Player.IsBuilding = false;
             }
             if (Input.GetKey(KeyCode.R) && buildTarget.CurHp < buildTarget.MaxHp)
             {
+                GameManager.Instance.Player.IsBuilding = true;
                 //수리구현
                 buildTarget.Repair(GameManager.Instance.Player.RepairSpeed * Time.deltaTime);
                 Debug.Log("수리!");

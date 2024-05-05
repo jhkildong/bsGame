@@ -25,4 +25,5 @@ MonoBehaviour:
   _dropItemList:
   - ID: 2001
     dropChance: 100
+  _weight: 10
   _type: 1

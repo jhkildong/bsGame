@@ -118,6 +118,7 @@ public class BuffDict
         }
         set
         {
+            isDirty = true;
             if (buffDict.ContainsKey(key))
             {
                 buffDict[key] = value;
@@ -127,7 +128,6 @@ public class BuffDict
             {
                 Add(key, value);
             }
-            isDirty = true;
         }
     }
 

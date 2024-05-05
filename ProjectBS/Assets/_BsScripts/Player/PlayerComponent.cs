@@ -61,6 +61,30 @@ public abstract class PlayerComponent : CharacterComponent
     [SerializeField] protected PlayerSkill _skillEffect;
     [SerializeField] protected PlayerStat _playerStat = new PlayerStat();
     [SerializeField] protected JobBless _jobBless;
+
+
+    [SerializeField] protected Transform weaponPoint;
+    [SerializeField] protected Transform hammerPoint;
+
+    private void ChangeWeapon(int idx)
+    {
+        switch (idx)
+        {
+            case 0:
+                weaponPoint.gameObject.SetActive(true);
+                hammerPoint.gameObject.SetActive(false);
+                break;
+            case 1:
+                weaponPoint.gameObject.SetActive(false);
+                hammerPoint.gameObject.SetActive(true);
+                break;
+        }
+    }
+    protected override void Awake()
+    {
+        base.Awake();
+        MyAnimEvent.ChangeWeaponAct += ChangeWeapon;
+    }
     #endregion
 
     #region Abstract Method

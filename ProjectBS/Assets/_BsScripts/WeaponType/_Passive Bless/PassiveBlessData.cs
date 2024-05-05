@@ -42,7 +42,7 @@ public class PassiveBlessData : BaseBlessData
                 break;
             case PassiveBlessType.AkSpeed:
                 sb.Append("공격속도가 ");
-                action = () => GameManager.Instance.Player.getBuff.atkBuffDict["PassiveAkSpeed"] += randomValue * 0.1f;
+                action = () => GameManager.Instance.Player.getBuff.asBuffDict["PassiveAkSpeed"] += randomValue * 0.1f;
                 result = 1;
                 break;
             case PassiveBlessType.HpMax:

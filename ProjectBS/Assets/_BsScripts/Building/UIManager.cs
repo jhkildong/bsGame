@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -9,6 +10,7 @@ public class UIManager : Singleton<UIManager>
     {
         base.Awake();
         Initialize();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     //Resources/UI 폴더에 있는 UIComponent를 저장할 딕셔너리
@@ -20,6 +22,16 @@ public class UIManager : Singleton<UIManager>
     //캔버스와 다이나믹 캔버스를 저장할 변수
     [SerializeField]private Transform canvas;
     [SerializeField]private Transform dynamicCanvas;
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 3)
+        {
+            Initialize();
+            // 이벤트 핸들러 제거
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+    }
 
     private void Initialize()
     {
