@@ -4,39 +4,44 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private GameObject PlayerSelectWindow;
+    private GameObject ShopUI;
+    private GameObject SettingsUI;
+    private GameObject CreditsUI;
 
     public void OnPlay()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/5002_PlayerSelectWindow"), transform);
-        obj.SetActive(true);
+        if (PlayerSelectWindow == null)
+        {
+            PlayerSelectWindow = Instantiate(Resources.Load<GameObject>("Prefabs/UI/5002_PlayerSelectWindow"), transform);
+        }
+        PlayerSelectWindow.SetActive(true);
     }
 
     public void OnShop()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/ShopUI"), transform);
-        obj.SetActive(true);
+        if (ShopUI == null)
+        {
+            ShopUI = Instantiate(Resources.Load<GameObject>("Prefabs/UI/ShopUI"), transform);
+        }
+        ShopUI.SetActive(true);
     }
 
     public void OnSettings()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SettingsUI"), transform);
-        obj.SetActive(true);
+        if (SettingsUI == null)
+        {
+            SettingsUI = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SettingsUI"), transform);
+        }
+        SettingsUI.SetActive(true);
     }
     public void OnCredits()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/CreditsUI"), transform);
-        obj.SetActive(true);
+        if (CreditsUI == null)
+        {
+            CreditsUI = Instantiate(Resources.Load<GameObject>("Prefabs/UI/CreditsUI"), transform);
+        }
+        CreditsUI.SetActive(true);
     }
     public void OnQuit()
     {
