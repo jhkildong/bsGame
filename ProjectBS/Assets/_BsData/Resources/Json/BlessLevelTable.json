@@ -16,7 +16,7 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -74,7 +74,7 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -132,7 +132,7 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -190,7 +190,7 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -248,7 +248,7 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -320,7 +320,7 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -348,10 +348,10 @@
     },
     {
       "name": "ArrowAmount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
-        1.0,
+        0.0,
         0.0,
         0.0,
         0.0,
@@ -378,7 +378,7 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -450,7 +450,7 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -508,7 +508,7 @@
     },
     {
       "name": "Amount",
-      "defaultValue": 0.0,
+      "defaultValue": 1.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -597,7 +597,7 @@
       "defaultValue": 3.0,
       "levelUpType": 1,
       "levelUpTable": [
-        0.0,
+        0.2,
         0.2,
         0.0,
         0.2,

@@ -30,7 +30,7 @@ MonoBehaviour:
     - 0.2
     - 0
   - name: Amount
-    defaultValue: 0
+    defaultValue: 1
     levelUpType: 0
     levelUpTable:
     - 1

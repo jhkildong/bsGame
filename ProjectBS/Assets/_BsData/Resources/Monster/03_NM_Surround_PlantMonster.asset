@@ -23,10 +23,8 @@ MonoBehaviour:
   _radius: 0.5
   _prefab: {fileID: 3347426971228172218, guid: fcc7edfd78ee02e4dbb50096a2d40d94, type: 3}
   _dropItemList:
-  - ID: 2001
-    dropChance: 10
-  - ID: 2002
-    dropChance: 10
-  - ID: 2003
-    dropChance: 80
+  - ID: 2007
+    dropChance: 50
+  - ID: 2500
+    dropChance: 50
   _type: 4

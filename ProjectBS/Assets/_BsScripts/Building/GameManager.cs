@@ -221,6 +221,7 @@ public class GameManager : MonoBehaviour
     }
     public int CurGold()
     {
+        Debug.Log(myGold);
         return myGold;
     }
     public int CurExp()
