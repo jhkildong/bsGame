@@ -123,6 +123,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &10903550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 10903552}
+  - component: {fileID: 10903551}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &10903551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10903550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66f3368e6fcefa42bbd875fb048c4c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  gameStart: 0
+  gameOver: 0
+  gamePaused: 0
+  curGameTime: 0
+  checkAMPMTime: 0
+  curDay: 0
+--- !u!4 &10903552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10903550}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &11853953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3535,7 +3586,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCD5C\uB300 \uCCB4\uB825\n\uD604\uC7AC \uCCB4\uB825\n\uC774\uB3D9 \uC18D\uB3C4\n\uACF5\uACA9\uB825\n\uC790\uC11D\n\uC7AC\uD654"
+  m_text: "\uCD5C\uB300 \uCCB4\uB825\n\uD604\uC7AC \uCCB4\uB825\n\uC774\uB3D9 \uC18D\uB3C4\n\uACF5\uACA9\uB825\n\uC790\uC11D\n\uC7AC\uD654\n\uACBD\uD5D8\uCE58"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6c5d53b4df8723a4d90ac885a1695384, type: 2}
   m_sharedMaterial: {fileID: 4768283967554217133, guid: 6c5d53b4df8723a4d90ac885a1695384, type: 2}
@@ -8486,7 +8537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1652259318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10393,3 +10444,4 @@ SceneRoots:
   - {fileID: 1652259321}
   - {fileID: 1017664971}
   - {fileID: 564430920}
+  - {fileID: 10903552}
