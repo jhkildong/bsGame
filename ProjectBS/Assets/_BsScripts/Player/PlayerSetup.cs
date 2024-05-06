@@ -80,6 +80,7 @@ public class PlayerSetup : MonoBehaviour
 
         SkillIcon skillIcon = UIManager.Instance.CreateUI(UIID.SkillIconUI, CanvasType.DynamicCanvas) as SkillIcon;
         skillIcon.SetIcon(jobBlessIdx);
+        GameManager.Instance.Player.SetSkillicon(skillIcon);
         Destroy(gameObject);
     }
 }

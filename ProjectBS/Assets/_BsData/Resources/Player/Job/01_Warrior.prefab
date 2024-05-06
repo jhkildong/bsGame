@@ -174,10 +174,10 @@ MonoBehaviour:
   - {fileID: 4392369504613958426}
   _attack: 0
   _effectIdx: 0
-  _effect: {fileID: 0}
+  _effect: {fileID: 4114206021695057503, guid: 5212d9cbede04d44aafa8eb5f6b83c1c, type: 3}
   _skillEffect: {fileID: 0}
   _playerStat:
-    _maxHp: 500
+    _maxHp: 100
     _sp: 4
   _jobBless: {fileID: 0}
   weaponPoint: {fileID: 7857720619451312347}

@@ -53,7 +53,7 @@ MonoBehaviour:
     - 7
     - 10
   - name: SkillCastTime
-    defaultValue: 3
+    defaultValue: 10
     levelUpType: 0
     levelUpTable:
     - 0
@@ -64,7 +64,7 @@ MonoBehaviour:
     - 2
     - 5
   - name: SkillCoolTime
-    defaultValue: 50
+    defaultValue: 0
     levelUpType: 0
     levelUpTable:
     - 0

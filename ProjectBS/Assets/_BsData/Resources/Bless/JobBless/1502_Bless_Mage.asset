@@ -85,7 +85,7 @@ MonoBehaviour:
     - -5
     - 0
     - -5
-    - -15
+    - -25
   - name: SkillSize
     defaultValue: 1
     levelUpType: 1

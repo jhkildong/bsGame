@@ -26,6 +26,7 @@ namespace Yeon
         protected float moveSpeedBuff = 1f;
 
         protected bool isOutOfControl = false; //제어 불가 상태
+        protected bool isStop = false; //이동 중지 상태
         protected Vector3 worldMoveDir;
         #endregion
 
@@ -74,7 +75,7 @@ namespace Yeon
         /// <summary> 리지드바디 최종 속도 적용 </summary>
         private void MovementToRigidbody()
         {
-            if (!isOutOfControl)
+            if (!isOutOfControl && !isStop)
             {
                 rBody.velocity = worldMoveDir * moveSpeed * moveSpeedBuff;
             }
