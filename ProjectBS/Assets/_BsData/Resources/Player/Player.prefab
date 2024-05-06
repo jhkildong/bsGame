@@ -92,14 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b0ec2250f80604ebb8b34708cee748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalMonsterDatas: []
-  bossMonsterDatas: []
+  monsterDatas: []
   respawnDist: 20
-  applyRespawn: 1
   respawnTime: 1
-  bossRespawnTime: 20
-  init: 200
-  max: 200
+  _curStage: 0
 --- !u!1 &2659509768014043797
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,8 +218,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _maxHp: 500
+  tempMaxHp: 0
   _curHp: 500
-  _attack: 20
+  _attack: 5
   _atkSpeed: 0
   _effectData:
     effectCount: 3

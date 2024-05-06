@@ -52,7 +52,7 @@ public class Loading : MonoBehaviour
         {
             yield return StartCoroutine(UpdatingSlider(ao.progress / 0.9f));
         }
-        //yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);
         ao.allowSceneActivation = true;
     }
 

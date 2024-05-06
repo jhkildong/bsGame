@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
     private bool isNight;
     public int curDay;
     //private int myExp;
-    private int myWood = 50;
-    private int myStone = 30;
-    private int myIron = 20;
+    private int myWood = 0;
+    private int myStone = 0;
+    private int myIron = 0;
     private int myGold = 0;
 
     private int myLevel = 1; // �� ����
@@ -135,6 +135,13 @@ public class GameManager : MonoBehaviour
             timerStart = true;
 
             Sunlight = GameObject.Find("Directional Light").GetComponent<Light>();
+           
+        }
+        else
+        {
+            StopAllCoroutines();
+            timerStart = false;
+
         }
     }
 
@@ -255,7 +262,9 @@ public class GameManager : MonoBehaviour
     public void GameOver() // �÷��̾ ��������� ���� �߰��ؾߵ�.
     {
         gameOver = true;
-        Debug.Log("���ӿ���");
+        Time.timeScale = 0;
+        //여기에 게임오버 창 뜨게 설정
+        UIManager.Instance.CreateUI(UIID.GameOverUI, CanvasType.DynamicCanvas);
     }
 
     public float CurTime() // ���� ���� �ð�

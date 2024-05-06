@@ -14,7 +14,7 @@ public class GameOverScript : MonoBehaviour
 
     void Start()
     {
-        Setup();
+       // Setup();
     }
 
     public void Setup()

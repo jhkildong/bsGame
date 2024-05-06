@@ -321,6 +321,7 @@ public class Player : Combat, IDamage<Player>
         isOutOfControl = true;
         Com.SetRigWeight(0.0f);
         playerInputs.Disable();
+        GameManager.Instance.GameOver();
     }
     #endregion
 
