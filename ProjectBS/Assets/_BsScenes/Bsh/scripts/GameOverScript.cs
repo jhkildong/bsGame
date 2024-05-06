@@ -46,15 +46,13 @@ public class GameOverScript : MonoBehaviour
         }
         // 불투명도가 목표값에 도달했을 때 추가 작업 가능
     }
-    public void RestartButton()
-    {
-        //SceneManager.LoadScene("LoadingScene");
-        Loading.LoadScene(0);
-    }
-
+    
     public void ExitButton()
     {
-        //SceneManager.LoadScene("MainMenu1");
+        Loading.LoadScene(0);
+    }
+    public void RestartButton()
+    {
         Loading.LoadScene(1);
     }
 }
