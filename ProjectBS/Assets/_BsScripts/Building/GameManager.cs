@@ -319,6 +319,7 @@ public class GameManager : MonoBehaviour
         overExp = curLvExp - requireExp;// 넘친 경험치 임시저장
         curLvExp = 0;
         myLevel++;
+        BlessManager.Instance.RerollCount = SaveData.RerollCount;
         BlessManager.Instance.AppearRandomBlessList();
         requireExp = CalcRequireExp(myLevel);//다음레벨 요구 경험치량 계산
         curLvExp += overExp;
@@ -340,6 +341,7 @@ public class GameManager : MonoBehaviour
         public int ExpBonus;
 
         public int MyGold;
+        public int RerollCount;
     }
 
     private void OnApplicationQuit()

@@ -8,6 +8,9 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "PassiveBless", menuName = "Bless/PassiveBless", order = 1)]
 public class PassiveBlessData : BaseBlessData
 {
+    public Sprite Icon => _icon;
+    [SerializeField] private Sprite _icon;
+
     enum PassiveBlessType
     {
         Attack,
