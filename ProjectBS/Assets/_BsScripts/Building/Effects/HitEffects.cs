@@ -8,13 +8,20 @@ public class HitEffects : MonoBehaviour
     public int ID => id;
     [SerializeField] private int id;
     float progress; // 파티클 재생 진행도
+    public SoundObject sound;
 
+    void OnEnable()
+    {
+        SoundManager.Instance.PlaySound(sound.gameObject, transform.position, sound.ID);
+    }
     void Start()
     {
         ps = GetComponent<ParticleSystem>();
+        //사운드 재생
+
     }
 
-    // Update is called once per frame
+    // Update is called once per framesss
     void Update()
     {
         progress = ps.time / ps.main.duration;
@@ -24,6 +31,7 @@ public class HitEffects : MonoBehaviour
         {
             //EffectPoolManager.Instance.ReleaseObject<NonAtkEffect>(gameObject); //풀로 되돌림
             EffectPoolManager.Instance.ReleaseObject(gameObject,id); //풀로 되돌림
+            //SoundManager.Instance.ReleaseObject(sound,ID);
         }
 
     }

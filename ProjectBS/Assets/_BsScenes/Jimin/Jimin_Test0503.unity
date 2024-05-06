@@ -221,7 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecce7aaaec38ab4582f709f2e61fc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 51cb6ee928f89b64691ef4dfd57c03e9, type: 3}
+  StartScene: {fileID: 0}
+  InGame: {fileID: 0}
 --- !u!65 &49907440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2375,6 +2376,52 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.67779875, y: 0.55900097, z: 0.6840085}
   m_Center: {x: 0.0001758337, y: 0.27962512, z: -0.0010081679}
+--- !u!1 &590451504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 590451506}
+  - component: {fileID: 590451505}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &590451505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590451504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9201c2152f6d93a47a0188fe52117116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSources: []
+  audioList: []
+--- !u!4 &590451506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590451504}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.1042094, y: 1.0397216, z: -5.9350643}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &594778684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7294617343799140601, guid: 95c46443d1974e749994be5927856c8c, type: 3}
@@ -3082,8 +3129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8773e5b3c7147d4bb8b15a4f0bf51be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 532369909}
-  mainCameraAction: {fileID: 222664226}
 --- !u!1001 &702444490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3784,10 +3829,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  Sunlight: {fileID: 705507994}
+  curSecText: {fileID: 0}
+  curMinText: {fileID: 0}
   gameStart: 0
   gameOver: 0
   gamePaused: 0
-  curGameTime: 0
+  curSec: 0
+  curMin: 0
+  curTime: 0
   checkAMPMTime: 0
   curDay: 0
 --- !u!4 &858329458
@@ -10287,3 +10337,4 @@ SceneRoots:
   - {fileID: 240066944}
   - {fileID: 1408428781}
   - {fileID: 49907441}
+  - {fileID: 590451506}

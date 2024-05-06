@@ -16,11 +16,16 @@ public class GameManager : MonoBehaviour
 
 
     public Player Player;
+    public Light Sunlight;
+    public TextMeshProUGUI curSecText;//현재 시간(초) 텍스트 (player Ui에 있음)
+    public TextMeshProUGUI curMinText;//현재 시간(분) 텍스트 (player Ui에 있음)
 
     public bool gameStart;
     public bool gameOver;
     public bool gamePaused;
-    public float curGameTime; // 현재시간
+    public float curSec; // 현재시간(초)
+    public float curMin; // 현재시간(분)
+    public float curTime; // 현재 시간
     public float checkAMPMTime;
     private bool isNight;
     public int curDay;
@@ -48,7 +53,6 @@ public class GameManager : MonoBehaviour
     public event UnityAction<int> IronChangeAct;
     public event UnityAction<int> GoldChangeAct;
     public event UnityAction<int> ExpChangeAct;
-
     public event UnityAction<int> ChangeDayAct;
     public event UnityAction<bool> ChangeAMPMAct;
 
@@ -116,6 +120,7 @@ public class GameManager : MonoBehaviour
         CalcRequireExp(myLevel);
 
 
+
     }
     /*
     private void UpdateWoodText()
@@ -145,19 +150,20 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (gameStart && !gamePaused && !gameOver)
+        if (gameStart && !gamePaused && !gameOver && curSecText!=null)
         {
-            curGameTime += Time.deltaTime;
+            curSec += Time.deltaTime;
             checkAMPMTime += Time.deltaTime;
+            TimeConvert();
             //Debug.Log(curGameTime);
 
             //밤낮 변경
-            if (!isNight && checkAMPMTime >= 5)
+            if (!isNight && checkAMPMTime >= 7)
             {
                 checkAMPMTime = 0;
                 ChangeToNight();
             }
-            if (isNight && checkAMPMTime >= 10)
+            if (isNight && checkAMPMTime >= 7)
             {
                 checkAMPMTime = 0;
                 ChangeToDay();
@@ -179,6 +185,26 @@ public class GameManager : MonoBehaviour
         }
 
 
+    }
+
+    public void TimeConvert()//시간을 분:초 로 표기해주는 함수
+    {
+        if(curMin < 10)
+        {
+            curMinText.text = $"0{Mathf.FloorToInt(curSec / 60).ToString()}";
+        }
+        else
+        {
+            curMinText.text = $"{Mathf.FloorToInt(curSec / 60).ToString()}";
+        }
+        if(curSec<10)
+        {
+            curSecText.text = $":0{Mathf.FloorToInt(curSec % 60).ToString()}";
+        }
+        else
+        {
+            curSecText.text = $":{Mathf.FloorToInt(curSec % 60).ToString()}";
+        }
     }
 
     public void PauseGame()
@@ -205,7 +231,7 @@ public class GameManager : MonoBehaviour
 
     public float CurTime() // 현재 게임 시간
     {
-        return curGameTime;
+        return curSec;
     }
 
     public int CurWood()
@@ -237,15 +263,43 @@ public class GameManager : MonoBehaviour
         isNight = false;
         Debug.Log("낮이 되었습니다.");
         ChangeAMPMAct?.Invoke(isNight);
-        
+        StartCoroutine(ChangeSunlightToDay(Sunlight));
+        //Sunlight.intensity = 1;
         curDay += 1;
         ChangeDayAct?.Invoke(curDay);
+    }
+    public IEnumerator ChangeSunlightToDay(Light light)
+    {
+        float startIntensity = light.intensity; // 시작 강도
+        float startTime = Time.time; // 시작 시간
+
+        while (Time.time - startTime < 5f)
+        {
+            float t = (Time.time - startTime) / 5f; // 현재 진행률 계산
+            light.intensity = Mathf.Lerp(startIntensity, 1f, t); // 시작 강도부터 목표 강도까지 서서히 증가
+            yield return null;
+        }
+        light.intensity = 1f; 
     }
     void ChangeToNight()
     {
         isNight = true;
         Debug.Log("밤이 되었습니다.");
         ChangeAMPMAct?.Invoke(isNight);
+        StartCoroutine(ChangeSunlightToNight(Sunlight));   
+    }
+    public IEnumerator ChangeSunlightToNight(Light light)
+    {
+        float startIntensity = light.intensity; // 시작 강도
+        float startTime = Time.time; // 시작 시간
+
+        while (Time.time - startTime < 5f)
+        {
+            float t = (Time.time - startTime) / 5f; // 현재 진행률 계산
+            light.intensity = Mathf.Lerp(startIntensity, 0f, t); // 시작 강도부터 목표 강도까지 서서히 증가
+            yield return null;
+        }
+        light.intensity = 0f; 
     }
 
     public void ChangeWood(int num)
