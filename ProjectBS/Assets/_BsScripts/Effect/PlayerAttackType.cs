@@ -32,11 +32,15 @@ public class PlayerAttackType : MonoBehaviour, IPoolable
             }
         }
     }
+    public string Description => _description;
+    public Sprite Icon => _icon;
     #endregion
 
     #region Field
     [SerializeField] private int _id;
     [SerializeField] private string _name;
+    [SerializeField, Multiline] private string _description;
+    [SerializeField] private Sprite _icon;
     [SerializeField] private float _attack;
     [SerializeField] private float _size;
     [SerializeField] private ParticleSystem _particleSystem;

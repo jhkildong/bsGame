@@ -91,4 +91,18 @@ public class ItemManager : MonoBehaviour
         item.Exp = (int)exp;
         return item.This.gameObject;
     }
+
+    public GameObject DropGold(float gold)
+    {
+        Random.InitState((int)(System.DateTime.Now.Ticks % int.MaxValue));
+        float rnd = Random.Range(0, 100);
+        if (rnd < 40)
+        {
+            GoldItem item = ObjectPoolManager.Instance.GetObj(itemDic[2600]) as GoldItem;
+            item.Gold = (int)gold;
+            return item.This.gameObject;
+        }
+        else
+            return null;
+    }
 }

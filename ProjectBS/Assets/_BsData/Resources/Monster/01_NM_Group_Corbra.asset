@@ -19,6 +19,7 @@ MonoBehaviour:
   _speed: 1
   _maxHp: 20
   _exp: 1
+  _gold: 5
   _mass: 1
   _radius: 0.5
   _prefab: {fileID: 767905264487814327, guid: ae4f8b952a7abca4f9150c857cfa3a88, type: 3}

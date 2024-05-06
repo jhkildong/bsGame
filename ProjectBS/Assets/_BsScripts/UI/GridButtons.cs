@@ -9,6 +9,9 @@ using UnityEngine.UI;
 public class GridButtons : MonoBehaviour
 {
     [SerializeField]protected List<Button> buttons;
+    [SerializeField]private List<TextMeshProUGUI> names;
+    [SerializeField]private List<TextMeshProUGUI> descriptions;
+    [SerializeField]private List<Image> images;
     private RectTransform RT => (transform as RectTransform);
     private GridLayoutGroup GridLayout
     {
@@ -62,6 +65,30 @@ public class GridButtons : MonoBehaviour
     public void AddButtonAction(int idx, UnityAction action)
     {
         buttons[idx].onClick.AddListener(action);
+    }
+
+    public void SetNames(params string[] names)
+    {
+        for (int i = 0; i < names.Length; i++)
+        {
+            this.names[i].text = names[i];
+        }
+    }
+
+    public void SetDecriptions(params string[] descriptions)
+    {
+        for (int i = 0; i < descriptions.Length; i++)
+        {
+            this.descriptions[i].text = descriptions[i];
+        }
+    }
+
+    public void SetImages(params Sprite[] sprites)
+    {
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            images[i].sprite = sprites[i];
+        }
     }
     #endregion
 

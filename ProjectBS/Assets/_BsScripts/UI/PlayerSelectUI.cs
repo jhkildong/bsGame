@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerSelectUI : MonoBehaviour
 {
     private PlayerComponent[] jobs;
+    private BlessData[] jobBlesses;
     private PlayerAttackType[] types;
     [SerializeField] private SelectWindow playerSelectWindow;
 
@@ -13,16 +14,23 @@ public class PlayerSelectUI : MonoBehaviour
     private void Awake()
     {
         jobs = Resources.LoadAll<PlayerComponent>(FilePath.Job);
+        jobBlesses = Resources.LoadAll<BlessData>(FilePath.JobBless);
     }
 
     public void SetJobSelect()
     {
         string[] names = new string[jobs.Length];
+        string[] descriptions = new string[jobs.Length];
+        Sprite[] sprites = new Sprite[jobs.Length];
         for (int i = 0; i < jobs.Length; i++)
         {
-            names[i] = jobs[i].MyJob.GetDescription();
+            names[i] = jobBlesses[i].Name;
+            descriptions[i] = jobBlesses[i].Description;
+            sprites[i] = jobBlesses[i].Icon;
         }
-        playerSelectWindow.SelectButtons.SetButtonName(names);
+        playerSelectWindow.SelectButtons.SetNames(names);
+        playerSelectWindow.SelectButtons.SetDecriptions(descriptions);
+        playerSelectWindow.SelectButtons.SetImages(sprites);
 
         for (int i = 0; i < jobs.Length; i++)
         {
@@ -43,14 +51,21 @@ public class PlayerSelectUI : MonoBehaviour
         sb.Append(job.GetType().Name);
         string path = sb.ToString();                            //경로: AttackType/JobName
         types = Resources.LoadAll<PlayerAttackType>(path);
+        
+
         string[] names = new string[types.Length];
+        string[] descriptions = new string[jobs.Length];
+        Sprite[] sprites = new Sprite[jobs.Length];
         for (int i = 0; i < types.Length; i++)
         {
             names[i] = types[i].Name;
+            descriptions[i] = types[i].Description;
+            sprites[i] = types[i].Icon;
         }
+        playerSelectWindow.SelectButtons.SetNames(names);
+        playerSelectWindow.SelectButtons.SetDecriptions(descriptions);
+        playerSelectWindow.SelectButtons.SetImages(sprites);
 
-        //선택 버튼설정
-        playerSelectWindow.SelectButtons.SetButtonName(names);
         for (int i = 0; i < types.Length; i++)
         {
             int idx = i;

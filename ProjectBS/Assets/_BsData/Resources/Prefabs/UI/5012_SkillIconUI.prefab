@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 7802780488016920260}
   - component: {fileID: 2550359987144438244}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 5012
-  _icon: {fileID: 8010118779566285255}
+  skillSprites:
+  - {fileID: 21300000, guid: 1bcc90354bbd89b4cadfb49071cae0a1, type: 3}
+  - {fileID: 21300000, guid: 1604c0811fd0c3040962bf0c7aa39316, type: 3}
+  - {fileID: 21300000, guid: 055b3d9ec5f9191449f32993459e6755, type: 3}
+  - {fileID: 21300000, guid: 2b0096210dc7e9446bece6b6e88d3104, type: 3}
+  _icon: {fileID: 2550359987144438244}
+  _coolTimeicon: {fileID: 8010118779566285255}
   _coolTimeText: {fileID: 3036903285144211325}
   _stackText: {fileID: 6152282383175336117}
 --- !u!1 &7452105729181934405
@@ -411,7 +417,7 @@ GameObject:
   - component: {fileID: 4779069825443707726}
   - component: {fileID: 8010118779566285255}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: CoolTimeIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,7 +475,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0

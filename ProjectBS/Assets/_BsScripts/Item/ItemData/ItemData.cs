@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class ItemData : ScriptableObject
 {
-    public enum itemtype { None, exp, structure, oneshot}
+    public enum itemtype { None, exp, structure, oneshot, gold}
     //아이템 종류 타입 첫줄에서 골라야함.
 
     public int ID => _id;

@@ -19470,9 +19470,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3503
-  _name: "\uC554\uC11D"
+  _name: "\uC554\uC11D\uC758 \uCE7C\uB0A0"
+  _description: "\uC554\uC11D\uC758 \uD798\uC774 \uAE43\uB4E0 \uCE7C\uB0A0"
+  _icon: {fileID: 21300000, guid: fed80d027ded231468960c87b99015d9, type: 3}
   _attack: 0
-  _speed: 0
   _size: 0
   _particleSystem: {fileID: 3894563636541966135}
   prefab: {fileID: 3894563636541966133}

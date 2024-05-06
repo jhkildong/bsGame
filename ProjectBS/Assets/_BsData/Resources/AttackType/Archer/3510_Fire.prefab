@@ -14674,7 +14674,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3510
-  _name: "\uD654\uC5FC"
+  _name: "\uD654\uC5FC\uC758 \uD654\uC0B4"
+  _description: "\uD654\uC5FC\uC758 \uD798\uC774 \uAE43\uB4E0 \uD654\uC0B4"
+  _icon: {fileID: 21300000, guid: b24c661c5b270a248999f7e6dd335e8d, type: 3}
   _attack: 0
   _size: 0
   _particleSystem: {fileID: 1235968222283746921}

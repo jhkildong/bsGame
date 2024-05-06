@@ -156,6 +156,9 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
         GameObject exp = ItemManager.Instance.DropExp(Data.Exp);
         if(exp != null)
             exp.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+        GameObject gold = ItemManager.Instance.DropGold(Data.Gold);
+        if(gold != null)
+            gold.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
     }
 
     protected virtual void ChangeTarget(Transform target)

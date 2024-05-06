@@ -4,7 +4,10 @@ using TMPro;
 
 public class SkillIcon : UIComponent
 {
-    [SerializeField]private Image _icon;
+    public Sprite[] skillSprites;
+
+    [SerializeField] private Image _icon;
+    [SerializeField] private Image _coolTimeicon;
     [SerializeField] private TextMeshProUGUI _coolTimeText;
     [SerializeField] private TextMeshProUGUI _stackText;
 
@@ -18,6 +21,12 @@ public class SkillIcon : UIComponent
         ChangeText(0, 1);
         ChangeStack(-1);
     }
+    public void SetIcon(int idx)
+    {
+        _icon.sprite = skillSprites[idx];
+        _coolTimeicon.sprite = skillSprites[idx];
+    }
+
 
     private void ChangeImg(float CurCoolTime, float MaxCoolTime)
     {

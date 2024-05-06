@@ -35,6 +35,7 @@ public static class FilePath
     #region Bless
     public const string Bless = "Bless";
     public const string PassiveBless = "Bless/PassiveBless";
+    public const string JobBless = "Bless/JobBless";
     #endregion
 
     #region Item

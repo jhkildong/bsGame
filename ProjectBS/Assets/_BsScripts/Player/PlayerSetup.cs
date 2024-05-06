@@ -78,8 +78,8 @@ public class PlayerSetup : MonoBehaviour
         }
         mca.Target = player.transform;
 
-        UIManager.Instance.CreateUI(UIID.SkillIconUI, CanvasType.DynamicCanvas);
-
+        SkillIcon skillIcon = UIManager.Instance.CreateUI(UIID.SkillIconUI, CanvasType.DynamicCanvas) as SkillIcon;
+        skillIcon.SetIcon(jobBlessIdx);
         Destroy(gameObject);
     }
 }

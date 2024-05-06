@@ -1,5 +1,3 @@
-using System.ComponentModel;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
@@ -120,23 +118,7 @@ public abstract class PlayerComponent : CharacterComponent
 
 public enum Job
 {
-    [Description("전사")]
     Warrior,
-    [Description("궁수")]
     Archer,
-    [Description("마법사")]
     Mage
-}
-
-/// <summary>
-/// Description을 가져오는 확장메서드 TODO?: 다른 Enum에도 사용할 수 있게 확장
-/// </summary>
-public static class JobExtension
-{
-    public static string GetDescription(this Job job)
-    {
-        FieldInfo fi = job.GetType().GetField(job.ToString());
-        DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-        return attributes.Length > 0 ? attributes[0].Description : job.ToString();
-    }
 }
