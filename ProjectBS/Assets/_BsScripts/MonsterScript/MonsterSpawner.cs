@@ -22,7 +22,8 @@ public class MonsterSpawner : MonoBehaviour
     private WeightedRandomPicker<NormalMonster> monsterWeightRandom = new WeightedRandomPicker<NormalMonster>();
     private List<int> stageInBossIdList = new List<int>();
     [SerializeField] private float respawnDist = 20.0f;
-    [SerializeField] private float respawnTime = 1.0f;
+    [SerializeField] private float respawnTime = 1.5f;
+    private float nightRespawnTime;
     private float bossRespawnTime = 30.0f;
 
     private Coroutine spawnCoroutine;
@@ -58,7 +59,15 @@ public class MonsterSpawner : MonoBehaviour
 
         DataSetPool(monsterDatas);
         spawnCoroutine = StartCoroutine(RandomMonsterSpawnByStage(Stage.Stage1));
+        GameManager.Instance.ChangeDayAct += (day) =>
+        {
+            if (day >= 10)
+                day = 10;
+            _curStage = (Stage)day;
+        };
+        GameManager.Instance.ChangeAMPMAct += (state) => { nightRespawnTime = state ? 0.5f : 1.0f; };
     }
+
 
     void DataSetPool(MonsterData[] datas)
     {
@@ -95,7 +104,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private IEnumerator RandomMonsterSpawnByStage(Stage stage)
     {
-        var WaitforSeconds = new WaitForSeconds(respawnTime);
+        var WaitforSeconds = new WaitForSeconds(respawnTime * nightRespawnTime);
         monsterWeightRandom = new WeightedRandomPicker<NormalMonster>();
 
         foreach (int id in StageMonsterIdDict[stage])
@@ -218,16 +227,16 @@ public class MonsterSpawner : MonoBehaviour
 
     private Dictionary<Stage, HashSet<int>> StageMonsterIdDict = new Dictionary<Stage, HashSet<int>>()
     {
-        { Stage.Stage1,  new HashSet<int>(){0, 1}                   },
+        { Stage.Stage1,  new HashSet<int>(){0, 1, 500}              },
         { Stage.Stage2,  new HashSet<int>(){0, 1, 2}                },
         { Stage.Stage3,  new HashSet<int>(){0, 1, 2}                },
         { Stage.Stage4,  new HashSet<int>(){0, 2, 3}                },
-        { Stage.Stage5,  new HashSet<int>(){0, 2, 3, 6}             },
-        { Stage.Stage6,  new HashSet<int>(){0, 2, 3, 7}             },
-        { Stage.Stage7,  new HashSet<int>(){0, 2, 3, 4, 6}          },
-        { Stage.Stage8,  new HashSet<int>(){0, 2, 3, 5, 6}          },
-        { Stage.Stage9,  new HashSet<int>(){0, 2, 3, 4, 7, 9}       },
-        { Stage.Stage10, new HashSet<int>(){0, 2, 3, 4, 5, 7, 9}    },
+        { Stage.Stage5,  new HashSet<int>(){0, 2, 3, 6, 500}        },
+        { Stage.Stage6,  new HashSet<int>(){0, 2, 3, 7, 500}        },
+        { Stage.Stage7,  new HashSet<int>(){0, 2, 3, 4, 6, 500}     },
+        { Stage.Stage8,  new HashSet<int>(){0, 2, 3, 5, 6, 500}     },
+        { Stage.Stage9,  new HashSet<int>(){0, 2, 3, 4, 7, 9, 500}  },
+        { Stage.Stage10, new HashSet<int>(){0, 2, 3, 4, 5, 7, 9, 500}},
     };
 }
 
