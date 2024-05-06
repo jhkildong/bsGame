@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Coffee.UIEffects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,6 +13,8 @@ public class GridButtons : MonoBehaviour
     [SerializeField]private List<TextMeshProUGUI> names;
     [SerializeField]private List<TextMeshProUGUI> descriptions;
     [SerializeField]private List<Image> images;
+    public UIShiny[] shinies;
+
     private RectTransform RT => (transform as RectTransform);
     private GridLayoutGroup GridLayout
     {
@@ -39,7 +42,25 @@ public class GridButtons : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        if (shinies != null && shinies.Length > 0)
+        {
+            foreach (var shiny in shinies)
+            {
+                shiny.Stop();
+                shiny.GetComponent<Image>().color = Color.white;
+            }
+        }
+    }
+
     #region Public Method
+    public void SetShinyColor(Color color, int idx)
+    {
+        shinies[idx].GetComponent<Image>().color = color;
+    }
+
+
     public void SetButtonName(params string[] names)
     {
         if (names.Length < buttons.Count)

@@ -420,7 +420,7 @@ public class Player : Combat, IDamage<Player>
         set
         {
             _remainCoolTime = value;
-            if (remainCoolTime > 0)
+            if (remainBuffCoolTime > 0)
                 return;
             ChangeCoolTimeAct?.Invoke(value, skillCoolTime);
         }

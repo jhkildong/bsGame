@@ -14,6 +14,7 @@ public class ShopUI : WindowUI
     public Button MagnetFieldRange;
     public Button Hp;
     public Button ExpBonus;
+    public Button RerollCount;
 
     private Button[] buttons;
 
@@ -23,6 +24,7 @@ public class ShopUI : WindowUI
     private Image[] magnetFieldRangeCount = new Image[MAX_LEVEL];
     private Image[] hpCount = new Image[MAX_LEVEL];
     private Image[] expBonusCount = new Image[MAX_LEVEL];
+    private Image[] reRollCounts = new Image[MAX_LEVEL];
 
 
 
@@ -33,7 +35,7 @@ public class ShopUI : WindowUI
 
     private void Awake()
     {
-        buttons = new Button[] { Attack, AttackSpeed, Speed, MagnetFieldRange, Hp, ExpBonus };
+        buttons = new Button[] { Attack, AttackSpeed, Speed, MagnetFieldRange, Hp, ExpBonus, RerollCount };
 
         CopyExecptFirst(Attack.transform.parent.GetComponentsInChildren<Image>(), attackCount);
         CopyExecptFirst(AttackSpeed.transform.parent.GetComponentsInChildren<Image>(), attackSpeedCount);
@@ -41,6 +43,7 @@ public class ShopUI : WindowUI
         CopyExecptFirst(MagnetFieldRange.transform.parent.GetComponentsInChildren<Image>(), magnetFieldRangeCount);
         CopyExecptFirst(Hp.transform.parent.GetComponentsInChildren<Image>(), hpCount);
         CopyExecptFirst(ExpBonus.transform.parent.GetComponentsInChildren<Image>(), expBonusCount);
+        CopyExecptFirst(RerollCount.transform.parent.GetComponentsInChildren<Image>(), reRollCounts);
         Attack.onClick.AddListener(
             () =>
             {
@@ -95,6 +98,14 @@ public class ShopUI : WindowUI
                 ExpBonus.interactable = false;
             
         });
+        RerollCount.onClick.AddListener(() =>
+        {
+            GameManager inst = GameManager.Instance;
+            inst.ChangeGold(-100 * ++inst.SaveData.RerollCount);
+            SetImageAndButton(inst.SaveData.RerollCount, reRollCounts);
+            if (GameManager.Instance.SaveData.RerollCount >= MAX_LEVEL)
+                RerollCount.interactable = false;
+        });
         GameManager.Instance.GoldChangeAct += (gold) => goldText.text = gold.ToString();
     }
 
@@ -111,6 +122,7 @@ public class ShopUI : WindowUI
         SetImageAndButton(GameManager.Instance.SaveData.MagnetFieldRange, magnetFieldRangeCount);
         SetImageAndButton(GameManager.Instance.SaveData.MaxHp, hpCount);
         SetImageAndButton(GameManager.Instance.SaveData.ExpBonus, expBonusCount);
+        SetImageAndButton(GameManager.Instance.SaveData.RerollCount, reRollCounts);
 
         goldText.text = GameManager.Instance.CurGold().ToString();
     }
@@ -139,6 +151,7 @@ public class ShopUI : WindowUI
         MagnetFieldRange.interactable = (inst.SaveData.MagnetFieldRange + 1) * 100 <= inst.CurGold();
         Hp.interactable = (inst.SaveData.MaxHp + 1) * 100 <= inst.CurGold();
         ExpBonus.interactable = (inst.SaveData.ExpBonus + 1) * 100 <= inst.CurGold();
+        RerollCount.interactable = (inst.SaveData.RerollCount + 1) * 100 <= inst.CurGold();
     }
 
 }
