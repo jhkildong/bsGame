@@ -135,9 +135,14 @@ public class ConstructionController : MonoBehaviour
             {
                 buildTarget.StartUpgrade();
             }
-            if (buildTarget._nextUpgrade != null && Input.GetKey(KeyCode.B))
+            if (buildTarget._nextUpgrade != null && buildTarget.isUpgrading&& Input.GetKey(KeyCode.B))
             {
+                GameManager.Instance.Player.IsBuilding = true;
                 buildTarget.Upgrade(GameManager.Instance.Player.ConstSpeed * Time.deltaTime);
+            }
+            if (Input.GetKeyUp(KeyCode.B))
+            {
+                GameManager.Instance.Player.IsBuilding = false;
             }
 
             if (Input.GetKeyDown(KeyCode.G))

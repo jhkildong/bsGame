@@ -12,7 +12,7 @@ public class HitEffects : MonoBehaviour
 
     void OnEnable()
     {
-        SoundManager.Instance.PlaySound(sound.gameObject, transform.position, sound.ID);
+        //SoundManager.Instance.PlaySound(sound.gameObject, transform.position, sound.ID);   0506 임시조치
     }
     void Start()
     {

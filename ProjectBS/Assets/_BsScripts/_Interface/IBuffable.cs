@@ -134,7 +134,7 @@ public class BuffDict
     public void Add(string key, float value)
     {
         if (buffDict.ContainsKey(key))
-            throw new System.Exception("Key is already exist");
+            return;
         buffDict.Add(key, value);
         ChangeBuffAct?.Invoke();
         isDirty = true;
@@ -142,7 +142,7 @@ public class BuffDict
     public void Remove(string key)
     {
         if (!buffDict.ContainsKey(key))
-            throw new System.Exception("Key not found");
+            return;
         buffDict.Remove(key);
         ChangeBuffAct?.Invoke();
         isDirty = true;

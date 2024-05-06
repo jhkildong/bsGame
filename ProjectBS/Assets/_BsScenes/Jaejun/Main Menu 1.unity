@@ -1100,12 +1100,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  Sunlight: {fileID: 0}
+  curSecText: {fileID: 0}
+  curMinText: {fileID: 0}
   myJob: {fileID: 0}
   myTypeIdx: 0
   gameStart: 0
   gameOver: 0
   gamePaused: 0
-  curGameTime: 0
+  curSec: 0
+  curMin: 0
+  curTime: 0
   checkAMPMTime: 0
   curDay: 0
   _saveData:
