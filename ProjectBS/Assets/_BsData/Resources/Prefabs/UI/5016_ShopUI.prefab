@@ -56,6 +56,7 @@ MonoBehaviour:
   MagnetFieldRange: {fileID: 5994555768756722385}
   Hp: {fileID: 2556734980352733810}
   ExpBonus: {fileID: 4371985026826429968}
+  RerollCount: {fileID: 0}
   origin: {fileID: 21300000, guid: c9b00ab864b403f45afb81839c9a68d5, type: 3}
   change: {fileID: 21300000, guid: cb251efaff8c68041a054046a722fb01, type: 3}
   goldText: {fileID: 0}
@@ -5963,8 +5964,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 497.59, y: 267.97}
-  m_SizeDelta: {x: 537.1817, y: 55.001}
+  m_AnchoredPosition: {x: 651.58185, y: 267.97}
+  m_SizeDelta: {x: 845.1655, y: 55.001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6024230056838750924
 CanvasRenderer:
