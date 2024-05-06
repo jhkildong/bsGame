@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.coffee.ui-effect": {
-      "version": "file:UIEffect",
+      "version": "file:package",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
@@ -264,12 +264,6 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
-    },
-    "release-upm": {
-      "version": "file:D:/Download/qb/UIEffect-4.0.0-preview.10/UIEffect-4.0.0-preview.10",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

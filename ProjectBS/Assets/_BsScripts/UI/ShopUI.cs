@@ -133,12 +133,12 @@ public class ShopUI : WindowUI
     void CheckValidButton()
     {
         GameManager inst = GameManager.Instance;
-        Attack.interactable = inst.SaveData.Attack * 100 < inst.CurGold();
-        AttackSpeed.interactable = inst.SaveData.AkSp * 100 < inst.CurGold();
-        Speed.interactable = inst.SaveData.MvSp * 100 < inst.CurGold();
-        MagnetFieldRange.interactable = inst.SaveData.MagnetFieldRange * 100 < inst.CurGold();
-        Hp.interactable = inst.SaveData.MaxHp * 100 < inst.CurGold();
-        ExpBonus.interactable = inst.SaveData.ExpBonus * 100 < inst.CurGold();
+        Attack.interactable = (inst.SaveData.Attack + 1) * 100 <= inst.CurGold();
+        AttackSpeed.interactable = (inst.SaveData.AkSp + 1) * 100 <= inst.CurGold();
+        Speed.interactable = (inst.SaveData.MvSp + 1) * 100 <= inst.CurGold();
+        MagnetFieldRange.interactable = (inst.SaveData.MagnetFieldRange + 1) * 100 <= inst.CurGold();
+        Hp.interactable = (inst.SaveData.MaxHp + 1) * 100 <= inst.CurGold();
+        ExpBonus.interactable = (inst.SaveData.ExpBonus + 1) * 100 <= inst.CurGold();
     }
 
 }
