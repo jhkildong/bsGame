@@ -25,7 +25,7 @@ public class UIManager : Singleton<UIManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex == 3)
+        if (scene.buildIndex == 2)
         {
             Initialize();
             // 이벤트 핸들러 제거
@@ -43,32 +43,17 @@ public class UIManager : Singleton<UIManager>
             _uiDict.Add(ui.ID, ui);
         }
         //캔버스와 다이나믹 캔버스가 없을 경우 생성
-        if (canvas == null)
-        {
-            string name = "Canvas";
-            GameObject go = GameObject.Find(name);
-            if(go != null)
-            {
-                canvas = go.transform;
-            }
-            else
-            {
-                canvas = CreateCanvas(name).transform;
-            }
-        }
+        
+        GameObject _canvas = GameObject.Find("Canvas");
+        GameObject _dynamicCanvas = GameObject.Find("DynamicCanvas");
+        if (_canvas == null)
+            canvas = CreateCanvas("Canvas").transform;
+        else
+            canvas = _canvas.transform;
         if (dynamicCanvas == null)
-        {
-            string name = "DynamicCanvas";
-            GameObject go = GameObject.Find(name);
-            if (go != null)
-            {
-                dynamicCanvas = go.transform;
-            }
-            else
-            {
-                dynamicCanvas = CreateCanvas(name).transform;
-            }
-        }
+            dynamicCanvas = CreateCanvas("DynamicCanvas").transform;
+        else
+            dynamicCanvas = _dynamicCanvas.transform;
         CanvasSetting(canvas.gameObject);
         CanvasSetting(dynamicCanvas.gameObject);
     }
@@ -178,4 +163,7 @@ public enum UIID
     BuildingInteractionUI = 5011,
     SkillIconUI = 5012,
     BlessIconsUI = 5013,
+    CreditsUI = 5014,
+    SettingsUI = 5015,
+    ShopUI = 5016,
 }

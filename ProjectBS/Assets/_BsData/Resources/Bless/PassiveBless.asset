@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PassiveBless
   m_EditorClassIdentifier: 
   _id: 1800
+  _icon: {fileID: 21300000, guid: 864f59deccd57bb4097337c45f5edf95, type: 3}

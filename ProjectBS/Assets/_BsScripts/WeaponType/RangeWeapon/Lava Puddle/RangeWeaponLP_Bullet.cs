@@ -23,17 +23,16 @@ public class RangeWeaponLP_Bullet : Weapon
     {
         time += Time.deltaTime;
 
-        Collider[] list = Physics.OverlapSphere(transform.position, 2.0f, Monster);
-
         if (time >= DelayTime)
         {
+            Collider[] list = Physics.OverlapSphere(transform.position, 2.0f, Monster);
             time = 0.0f;
             foreach (Collider col in list)
             {
                 IDamage<Monster> obj = col.GetComponent<IDamage<Monster>>();
                 if (obj != null)
                 {
-                    obj.TakeDamage(Ak);
+                    obj.TakeDamageEffect(Ak);
                     Debug.Log("Attack");
                 }
             }

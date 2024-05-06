@@ -33,8 +33,11 @@ public class Mage : PlayerComponent
 
     public void OnLv7SkillEffect(int i)
     {
-        if(i == 2)
+        if (i == 2)
+        {
             BuffEffect.SetActive(true);
+            GameManager.Instance.Player.SetMoveStop(false); //임시처리
+        }
     }
     public void OffLv7SkillEffect()
     {
@@ -51,13 +54,13 @@ public class Mage : PlayerComponent
     {
         MySkillEffect.Attack = MyJobBless.MyStatus[Key.SkillAttack];
         MySkillEffect.Size = MyJobBless.MyStatus[Key.SkillSize];
-        GameManager.Instance.Player.SetOutOfControl(true);
+        GameManager.Instance.Player.SetMoveStop(true);
         GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().SetRotSpeed(0.1f);
     }
 
     private void OffSkill()
     {
-        GameManager.Instance.Player.SetOutOfControl(false);
+        GameManager.Instance.Player.SetMoveStop(false);
         GameManager.Instance.Player.RotatingBody.GetComponent<LookAtPoint>().ResetRotSpeed();
     }
 

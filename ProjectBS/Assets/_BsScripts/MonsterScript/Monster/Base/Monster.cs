@@ -151,9 +151,14 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
         Com.MyAnim.SetTrigger(AnimParam.Death);
         ChangeState(State.Death);
         GameObject go = ItemManager.Instance.DropRandomItem(Data.DropItemList);
-        go.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0 , Random.Range(-1, 1));
+        if (go != null)
+            go.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0 , Random.Range(-1, 1));
         GameObject exp = ItemManager.Instance.DropExp(Data.Exp);
-        exp.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+        if(exp != null)
+            exp.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+        GameObject gold = ItemManager.Instance.DropGold(Data.Gold);
+        if(gold != null)
+            gold.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
     }
 
     protected virtual void ChangeTarget(Transform target)

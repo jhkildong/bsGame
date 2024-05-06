@@ -19,6 +19,7 @@ MonoBehaviour:
   _speed: 2.5
   _maxHp: 30
   _exp: 5
+  _gold: 15
   _mass: 2
   _radius: 0.4
   _prefab: {fileID: 710075996187122608, guid: 9d48d77671a907742bbfecdec4990941, type: 3}
@@ -27,6 +28,7 @@ MonoBehaviour:
     dropChance: 50
   - ID: 2500
     dropChance: 50
+  _weight: 8
   _type: 2
   _amount: 2
   _buildingDmg: 5

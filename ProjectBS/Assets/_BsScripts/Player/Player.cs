@@ -13,6 +13,7 @@ public class Player : Combat, IDamage<Player>
     public event UnityAction StartAttackAct;
     public event UnityAction EndAttackAct;
     public event UnityAction<float, float> ChangeCoolTimeAct;
+    public event UnityAction<float, float> ChangeBuffTimeAct;
     public event UnityAction<int> ChangeStackAct;
     
     public Transform RotatingBody => rotatingBody;
@@ -49,6 +50,11 @@ public class Player : Combat, IDamage<Player>
     private float _constSpeedBuff;
     private float _repairSpeedBuff;
 
+    public void SetMoveStop(bool state)
+    {
+        isStop = state;
+    }
+
     public void SetEffectAttack()
     {
         Com.Attack = Attack;
@@ -59,6 +65,8 @@ public class Player : Combat, IDamage<Player>
         Aksp = atksp;
         Com.MyAnim.SetFloat(AnimParam.AttackSpeed, Aksp);
         skillCoolTime = coolTime;
+        if(remainCoolTime > coolTime)
+            remainCoolTime = coolTime;
         maxCastingTime = castingTime;
     }
 
@@ -66,28 +74,25 @@ public class Player : Combat, IDamage<Player>
     {
         if (state)
         {
+            SetOutOfControl(!state);
             if (isCastingSkill) //스킬 시전 중
             {
                 switch (Com.MyJob)      //TODO:분리 필요
                 {
                     case Job.Warrior:
-                        SetOutOfControl(!state);                                    //이동가능
                         //RotatingBody.GetComponent<LookAtPoint>().enabled = !state;//시선변경 불가능
                         break;
                     case Job.Mage:
-                        //SetOutOfControl(state);                                   //이동불가능
                         RotatingBody.GetComponent<LookAtPoint>().enabled = state;   //시선 변경 가능
                         RotatingBody.GetComponent<LookAtPoint>().SetRotSpeed(0.1f);
                         break;
                     case Job.Archer:
-                        SetOutOfControl(!state);                                    //이동가능
                         RotatingBody.GetComponent<LookAtPoint>().enabled = state;   //시선 변경 가능
                         break;
                 }
             }
             else
             {
-                SetOutOfControl(!state);                                    
                 RotatingBody.GetComponent<LookAtPoint>().enabled = state;
             }
             playerInputs.Enable();
@@ -103,9 +108,10 @@ public class Player : Combat, IDamage<Player>
         }
     }
 
-    public void test()
+    SkillIcon icon;
+    public void SetSkillicon(SkillIcon icon)
     {
-        GetComponentInChildren<MonsterSpawner>().Test();
+        this.icon = icon;       //스킬아이콘 캐싱(나중에 변경?)
     }
     #endregion
 
@@ -416,6 +422,8 @@ public class Player : Combat, IDamage<Player>
         set
         {
             _remainCoolTime = value;
+            if (remainBuffCoolTime > 0)
+                return;
             ChangeCoolTimeAct?.Invoke(value, skillCoolTime);
         }
     }
@@ -437,7 +445,14 @@ public class Player : Combat, IDamage<Player>
             if (Com.MyJobBless.CurLv < 7)
                 _mageLv7SkillReady = false;
             else
-                _mageLv7SkillReady = value;
+            {
+                _mageLv7SkillReady = value;     //마법사 7레벨 달성
+                if (value)
+                {
+                    remainCoolTime = 0.0f;
+                    icon.SetIcon(3);
+                }
+            }
         }
     }
     private bool _mageLv7SkillReady;
@@ -473,13 +488,32 @@ public class Player : Combat, IDamage<Player>
     private Coroutine ArcherSkillCoolTime;
 
     private float MageBuffTime = 40.0f;
-    private float remainBuffTime;
+    private float remainBuffTime
+    {
+        get => _remainBuffTime;
+        set
+        {
+            _remainBuffTime = value;
+            ChangeBuffTimeAct?.Invoke(value, MageBuffTime);
+        }
+    }
+    private float _remainBuffTime;
     private float MageBuffCoolTime = 30.0f;
-    private float reaminBuffCoolTime;
-    
+    private float remainBuffCoolTime
+    {
+        get => _remainBuffCoolTime;
+        set
+        {
+            _remainBuffCoolTime = value;
+            ChangeCoolTimeAct?.Invoke(value, skillCoolTime);
+        }
+    }
+    private float _remainBuffCoolTime;
+
     private void OnSkill()  //스킬키를 눌렀을 때 실행
     {
         Com.MyAnim.SetBool(AnimParam.isAttacking, false);
+
         if(MageLv7SkillReady)
         {
             MageLv7SkillReady = false;
@@ -524,6 +558,11 @@ public class Player : Combat, IDamage<Player>
 
     private IEnumerator SkillCoolTimer()
     {
+        if (remainBuffTime > 0)
+        {
+            isSkillNotReady = false;
+            yield break;
+        }
         remainCoolTime = skillCoolTime;
         while(remainCoolTime > 0.0f)
         {
@@ -561,9 +600,12 @@ public class Player : Combat, IDamage<Player>
     private IEnumerator MageBuffTimer()
     {
         remainBuffTime = MageBuffTime;
+        icon.SetTextColor(Color.yellow);
+        icon.SetSkillDuring(true);
         while (remainBuffTime > 0.0f)
         {
             remainBuffTime -= Time.deltaTime;
+
             yield return null;
         }
         Debug.Log("마법사 버프 종료");
@@ -576,10 +618,13 @@ public class Player : Combat, IDamage<Player>
 
     private IEnumerator MageBuffCoolTimer()
     {
-        reaminBuffCoolTime = MageBuffCoolTime;
-        while (reaminBuffCoolTime > 0.0f)
+        remainBuffCoolTime = MageBuffCoolTime;
+        icon.SetTextColor(Color.white);
+        icon.SetSkillDuring(false);
+        icon.SetIcon(2);
+        while (remainBuffCoolTime > 0.0f)
         {
-            reaminBuffCoolTime -= Time.deltaTime;
+            remainBuffCoolTime -= Time.deltaTime;
             yield return null;
         }
         Debug.Log("마법사 버프 쿨타임 종료");

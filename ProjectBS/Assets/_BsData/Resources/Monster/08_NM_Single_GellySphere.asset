@@ -18,7 +18,8 @@ MonoBehaviour:
   _attackDelay: 1
   _speed: 0
   _maxHp: 30
-  _exp: 10
+  _exp: 3
+  _gold: 15
   _mass: 1
   _radius: 0.7
   _prefab: {fileID: 4802871909332010857, guid: fd3b6ced62323d34588397d237636211, type: 3}

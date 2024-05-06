@@ -138,7 +138,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private Vector3 GetRandomPosInCircle(Vector3 thisPos)
     {
-        Random.InitState(System.DateTime.Now.Millisecond);
+        Random.InitState((int)(System.DateTime.Now.Ticks % int.MaxValue));
         float rndAngle = Random.value * Mathf.PI * 2.0f;
         Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
         rndPos += thisPos;
@@ -156,7 +156,7 @@ public class MonsterSpawner : MonoBehaviour
     {
         for (int i = 0; i < (monster as GroupMonster).GroupData.Amount; ++i)
         {
-            Random.InitState(System.DateTime.Now.Millisecond);
+            Random.InitState((int)(System.DateTime.Now.Ticks % int.MaxValue));
             Vector3 addPos = new Vector3(Random.Range(0, 2.0f), 0, Random.Range(0, 2.0f));
             GameObject go = ObjectPoolManager.Instance.GetObj(monster).This.gameObject;
             go.transform.position = GetRandomPosInCircle(transform.position) + addPos;

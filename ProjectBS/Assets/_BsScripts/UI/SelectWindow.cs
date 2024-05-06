@@ -44,4 +44,9 @@ public class SelectWindow : UIComponent
     {
         UndoButton.gameObject.SetActive(false);
     }
+
+    public void ExitButton()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -17,7 +17,7 @@ public class OrditalWeaponBOTS : Bless
     {
         if (!myStatus.ContainsKey(Key.RotSpeed)) return;
         transform.Rotate(Vector3.up, -myStatus[Key.RotSpeed] * Time.deltaTime); // °øÀü
-        if (CurLv >= 1)
+        if (CurLv >= 0)
         {
             if (Count < myStatus[Key.Amount])
             {

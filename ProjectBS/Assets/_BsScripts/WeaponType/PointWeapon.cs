@@ -23,7 +23,7 @@ public class PointWeapon : Weapon
             IDamage<Monster> obj = col.GetComponent<IDamage<Monster>>();
             if (obj != null)
             {
-                obj.TakeDamage(Ak);
+                obj.TakeDamageEffect(Ak);
                 Debug.Log("Attack");
             }
         }

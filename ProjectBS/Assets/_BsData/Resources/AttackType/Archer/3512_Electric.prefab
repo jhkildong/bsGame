@@ -14693,7 +14693,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3510
-  _name: "\uC804\uAE30"
+  _name: "\uBC88\uAC1C\uC758 \uD654\uC0B4"
+  _description: "\uBC88\uAC1C\uC758 \uD798\uC774 \uAE43\uB4E0 \uD654\uC0B4"
+  _icon: {fileID: 21300000, guid: 87916df7b6773404a9568f0dfde01a8b, type: 3}
   _attack: 0
   _size: 0
   _particleSystem: {fileID: 1235968222283746921}

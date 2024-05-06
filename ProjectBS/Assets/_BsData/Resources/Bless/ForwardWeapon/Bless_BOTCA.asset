@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bless_BOTCA
   m_EditorClassIdentifier: 
   _id: 1050
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 0a1df881558cebf4991ff495dfb13fe8, type: 3}
   _name: "\uB0C9\uAE30\uC758 \uCD95\uBCF5"
   _description: "\uB79C\uB364\uD55C \uBC29\uD5A5\uC73C\uB85C \uC5BC\uC74C\uC744 1\uAC1C
     \uBC1C\uC0AC\uD55C\uB2E4."

@@ -9870,7 +9870,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3510
-  _name: "\uC5BC\uC74C"
+  _name: "\uBE59\uACB0\uC758 \uD654\uC0B4"
+  _description: "\uB0C9\uAE30\uC758 \uD798\uC774 \uAE43\uB4E0 \uD654\uC0B4"
+  _icon: {fileID: 21300000, guid: e1dda47913ea17140bb58a1f8d7167d6, type: 3}
   _attack: 0
   _size: 0
   _particleSystem: {fileID: 1235968222283746921}

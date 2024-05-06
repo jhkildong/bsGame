@@ -207,7 +207,7 @@ MonoBehaviour:
   _effect: {fileID: 0}
   _skillEffect: {fileID: 0}
   _playerStat:
-    _maxHp: 500
+    _maxHp: 100
     _sp: 4
   _jobBless: {fileID: 0}
   weaponPoint: {fileID: 5021365466889539758}

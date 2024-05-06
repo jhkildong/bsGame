@@ -21,6 +21,7 @@ public abstract class MonsterData : ScriptableObject
     public float Sp => _speed;
     public float MaxHP => _maxHp;
     public float Exp => _exp;
+    public float Gold => _gold;
     public float Mass => _mass;
     public float Radius => _radius;
     public GameObject Prefab => _prefab;
@@ -35,6 +36,7 @@ public abstract class MonsterData : ScriptableObject
     [SerializeField] private float _speed;          // 몬스터 이동속도
     [SerializeField] private float _maxHp;          // 몬스터 최대체력
     [SerializeField] private float _exp;            // 몬스터 경험치
+    [SerializeField] private float _gold;           // 몬스터 골드
     [SerializeField] private float _mass;           // 몬스터 무게
     [SerializeField] private float _radius;         // 몬스터 크기
     [SerializeField] private GameObject _prefab;    // 몬스터 프리팹

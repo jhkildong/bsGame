@@ -14,16 +14,10 @@ public class Loading : MonoBehaviour
         StartCoroutine(LoadingScene(targetScene));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public static void LoadScene(int scene)
     {
         targetScene = scene;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     IEnumerator LoadingScene(int scene)
@@ -32,11 +26,33 @@ public class Loading : MonoBehaviour
         ao.allowSceneActivation = false;
         myLoadingBar.value = 0.0f;
 
+        /*
+        float timer = 0f;
+        while (!ao.isDone)
+        {
+            yield return null;
+
+            timer += Time.deltaTime;
+            if (ao.progress < 0.9f)
+            {
+                myLoadingBar.value = Mathf.Lerp(ao.progress, 1f, timer);
+                if (myLoadingBar.value >= ao.progress)
+                    timer = 0f;
+            }
+            else
+            {
+                myLoadingBar.value = Mathf.Lerp(myLoadingBar.value, 1f, timer);
+                if (myLoadingBar.value >= 0.99f)
+                    ao.allowSceneActivation = true;
+            }
+        }
+        */
+
         while (myLoadingBar.value < 1.0f)
         {
             yield return StartCoroutine(UpdatingSlider(ao.progress / 0.9f));
         }
-        yield return new WaitForSeconds(1.0f);
+        //yield return new WaitForSeconds(0.5f);
         ao.allowSceneActivation = true;
     }
 

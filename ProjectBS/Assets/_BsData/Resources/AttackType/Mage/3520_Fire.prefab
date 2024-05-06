@@ -53,12 +53,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3520
-  _name: "\uD654\uC5FC"
+  _name: "\uD654\uC5FC\uC758 \uAD6C\uC2AC"
+  _description: "\uD654\uC5FC\uC758 \uD798\uC774 \uAE43\uB4E0 \uAD6C\uC2AC"
+  _icon: {fileID: 21300000, guid: c24f79c5d6d91f043819caf4ebff1035, type: 3}
   _attack: 0
-  _speed: 1
   _size: 1
   _particleSystem: {fileID: 801264807716959383}
   prefab: {fileID: 3654896277540929589}
+  hitEffectPrefab: {fileID: 0}
 --- !u!198 &801264807716959383
 ParticleSystem:
   m_ObjectHideFlags: 0

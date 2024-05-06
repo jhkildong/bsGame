@@ -35,11 +35,17 @@ public static class FilePath
     #region Bless
     public const string Bless = "Bless";
     public const string PassiveBless = "Bless/PassiveBless";
+    public const string JobBless = "Bless/JobBless";
     #endregion
 
     #region Item
     /// <summary>Item</summary>
     public const string Items = "Item";
+    #endregion
+
+    #region Json
+    /// <summary>Resources/Json</summary>
+    public const string StatusData = "/StatusData.json";
     #endregion
 
 #if UNITY_EDITOR

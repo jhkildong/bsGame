@@ -31,14 +31,13 @@ public class BlessManager : Singleton<BlessManager>
         Initialize();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         blessSelectWindow = UIManager.Instance.CreateUI(UIID.BlessSelectWindow, CanvasType.Canvas) as SelectWindow;
         blessSelectWindow.gameObject.SetActive(false);
         blessIconsUI = UIManager.Instance.CreateUI(UIID.BlessIconsUI, CanvasType.Canvas) as BlessIconsUI;
         LevelUpDescription.GetLevelUpDescriptionToJson();
     }
-
 
     private void Initialize()
     {
@@ -64,7 +63,7 @@ public class BlessManager : Singleton<BlessManager>
         }
         //패시브 축복의 가중치를 추가
         float sum = blessDataWeight.SumOfWeights;
-        float passiveWeight = sum * 0.428571f;  //패시브 축복의 가중치를 3/7로 설정(전체가중치 7, 패시브가중치 3)
+        float passiveWeight = sum * 0.111111f;  //패시브 축복의 가중치를 1/9로 설정(전체가중치 7, 패시브가중치 3)
         blessDataWeight.Add(PassiveBlessData, passiveWeight);
     }
 
@@ -72,7 +71,7 @@ public class BlessManager : Singleton<BlessManager>
     {
         float sum = blessDataWeight.SumOfWeights;
         float passiveWeight = blessDataWeight.GetWeight(PassiveBlessData);
-        passiveWeight = (sum - passiveWeight)  * 0.428571f;  //패시브 축복의 가중치를 3/7로 설정(전체가중치 7, 패시브가중치 3)
+        passiveWeight = (sum - passiveWeight)  * 0.111111f;  //패시브 축복의 가중치를 3/7로 설정(전체가중치 7, 패시브가중치 3)
         blessDataWeight.ModifyWeight(PassiveBlessData, passiveWeight);
     }
 
@@ -142,6 +141,8 @@ public class BlessManager : Singleton<BlessManager>
 
         //윈도우에 축복 이름을 표시(설명 포함)
         string[] names = new string[3];
+        string[] description = new string[3];
+        Sprite[] sprites = new Sprite[3];
         List<int> exclude = new List<int>();
         for(int i = 0; i < 3; i++)
         {
@@ -149,35 +150,51 @@ public class BlessManager : Singleton<BlessManager>
             blessSelectWindow.SelectButtons.SetButtonAction(idx, () => SelectBless(idx));
             if (temp[i] is BlessData blessData)                         //선택된 축복이 BlessData일 경우
             {
-                StringBuilder sb = new StringBuilder();
                 if (spawnedBless.ContainsKey(blessData.ID))
                 {
                     int CurLv = spawnedBless[blessData.ID].CurLv;
-                    sb.Append(blessData.Name);
-                    sb.Append(" Lv.");
-                    sb.Append(CurLv + 1);
-                    sb.Append(" : ");
-                    sb.Append(LevelUpDescription.DescriptionDic[blessData.ID][CurLv]);
-                    names[i] = sb.ToString();   //이미 소환되어있는 축복이면 다음 레벨을 표시
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("Lv.");
+                    sb.Append(CurLv + 1);                   //다음레벨을 표시
+                    sb.Append("\n");
+                    sb.Append(blessData.Name);              //이름을 표시
+                    names[i] = sb.ToString();
+                    description[i] = LevelUpDescription.DescriptionDic[blessData.ID][CurLv];    //설명을 표시 인덱스이기 때문에 현재 레벨로 접근
+                    sprites[i] = blessData.Icon; //이미 소환되어있는 축복이면 다음 레벨을 표시
+                    blessSelectWindow.SelectButtons.shinies[i].Play();
+                    if (CurLv >= 6)
+                    {   //현재 레벨이 6이고 직업 축복일 경우
+                        if (blessData.ID >= (int)BlessID.WARRIOR && blessData.ID <= (int)BlessID.MAGE)
+                        {
+                            Color color = new Color(255, 223, 0, 255);
+                            blessSelectWindow.SelectButtons.SetShinyColor(color, i);
+                        }
+                    }
+                    
                 }
                 else
                 {
-                    sb.Append(blessData.Name);
-                    sb.Append(" : ");
-                    sb.Append(blessData.Description);
-                    names[i] = sb.ToString();   //아니면 이름만 표시
+                    names[i] = blessData.Name;
+                    description[i] = blessData.Description;
+                    sprites[i] = blessData.Icon;  //아니면 이름만 표시
                 }
             }
             else if (temp[i] is PassiveBlessData passiveData)           //선택된 축복이 PassiveBlessData일 경우
             {
+                //중복된 패시브가 선택되지 않게 저장
                 exclude.Add(passiveData.ShowRandomPassive(out string desc, out UnityAction action, exclude.ToArray()));
                 blessSelectWindow.SelectButtons.AddButtonAction(idx, action);
-                names[i] = desc;
+                names[i] = "강화의 축복";
+                description[i] = desc;
+                sprites[i] = passiveData.Icon;
             }
         }
 
-        blessSelectWindow.SelectButtons.SetButtonName(names);
+        blessSelectWindow.SelectButtons.SetNames(names);
+        blessSelectWindow.SelectButtons.SetDecriptions(description);
+        blessSelectWindow.SelectButtons.SetImages(sprites);
 
+        
         if(RerollCount > 0)
         {
             blessSelectWindow.SetUndoButtonInteract(true);
@@ -221,7 +238,7 @@ public class BlessManager : Singleton<BlessManager>
                         continue;
                     }
                 }
-                blessDataWeight.Add(temp[i], weights[i] + 10);  //선택된 축복의 가중치를 증가
+                blessDataWeight.Add(temp[i], weights[i] + 3);  //선택된 축복의 가중치를 증가
             }
             else
                 blessDataWeight.Add(temp[i], weights[i]);       //선택되지 않은 축복의 가중치는 그대로
@@ -371,7 +388,7 @@ public class WeightedRandomPicker<T>
     /// <summary> 랜덤 뽑기 </summary>
     public T GetRandomPick()
     {
-        Random.InitState(System.DateTime.Now.Millisecond);
+        Random.InitState((int)(System.DateTime.Now.Ticks % int.MaxValue));
         // 랜덤 계산
         float chance = Random.value; // [0.0, 1.0)
         chance *= SumOfWeights;

@@ -27,7 +27,7 @@ public class OrditalWeaponPF : Bless
         myRotation = rotatingBody.rotation;
         transform.Rotate(Vector3.up, -RotSpeed * Time.deltaTime); // °øÀü
 
-        if (CurLv >= 1)
+        if (CurLv >= 0)
         {
             if (Count < myStatus[Key.Amount])
             {

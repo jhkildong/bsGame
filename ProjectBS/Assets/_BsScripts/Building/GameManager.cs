@@ -4,28 +4,39 @@ using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using System.IO;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static GameManager;
 
 public class GameManager : MonoBehaviour
 {
-    //½Ì±ÛÅæ ÆÐÅÏÀ» »ç¿ëÇÏ±â À§ÇÑ ÀÎ½ºÅÏ½º º¯¼ö. ÀÌ·¸°Ô ¼³°èÇÏ¸é °´Ã¼¸¦ »ý¼ºÇÏÁö ¾Ê¾Æµµ staticÀÌ±â ¶§¹®¿¡ ¿ÜºÎ ¾îµð¼­µç Á¢±Ù °¡´É
+    //ï¿½Ì±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æµï¿½ staticï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Üºï¿½ ï¿½ï¿½ð¼­µï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    //GameManager.Instance.StartGame(); ¿ÜºÎ¿¡¼­ ÀÌ·± ½ÄÀ¸·Î Á¢±Ù °¡´ÉÇÏ´Ù.
+    //GameManager.Instance.StartGame(); ï¿½ÜºÎ¿ï¿½ï¿½ï¿½ ï¿½Ì·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 
     private static GameManager _instance;
 
-
     public Player Player;
     public Light Sunlight;
-    public TextMeshProUGUI curSecText;//ÇöÀç ½Ã°£(ÃÊ) ÅØ½ºÆ® (player Ui¿¡ ÀÖÀ½)
-    public TextMeshProUGUI curMinText;//ÇöÀç ½Ã°£(ºÐ) ÅØ½ºÆ® (player Ui¿¡ ÀÖÀ½)
+    public TextMeshProUGUI curSecText;//ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½(ï¿½ï¿½) ï¿½Ø½ï¿½Æ® (player Uiï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    public TextMeshProUGUI curMinText;//ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½(ï¿½ï¿½) ï¿½Ø½ï¿½Æ® (player Uiï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+
+    [HideInInspector]public PlayerComponent myJob;
+    [HideInInspector]public int myTypeIdx;
+
+    public void SetSelectedInfo(PlayerComponent job, int typeIdx)
+    {
+        myJob = job;
+        myTypeIdx = typeIdx;
+    }
 
     public bool gameStart;
     public bool gameOver;
     public bool gamePaused;
-    public float curSec; // ÇöÀç½Ã°£(ÃÊ)
-    public float curMin; // ÇöÀç½Ã°£(ºÐ)
-    public float curTime; // ÇöÀç ½Ã°£
+    public float curSec; // ï¿½ï¿½ï¿½ï¿½Ã°ï¿½(ï¿½ï¿½)
+    public float curMin; // ï¿½ï¿½ï¿½ï¿½Ã°ï¿½(ï¿½ï¿½)
+    public float curTime; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
     public float checkAMPMTime;
     private bool isNight;
     public int curDay;
@@ -35,19 +46,19 @@ public class GameManager : MonoBehaviour
     private int myIron = 20;
     private int myGold = 0;
 
-    private int myLevel = 1; // ³» ·¹º§
-    private int myExp; //°æÇèÄ¡ ÃÑ·®
-    private int curLvExp; //ÇöÀç·¹º§ º¸À¯ °æÇèÄ¡
+    private int myLevel = 1; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private int myExp; //ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½Ñ·ï¿½
+    private int curLvExp; //ï¿½ï¿½ï¿½ç·¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡
     public int CurLvExp
     {
         get { return curLvExp; }
     }
-    private int requireExp; // ·¹º§¾÷¿¡ ÇÊ¿äÇÑ °æÇèÄ¡ ÃÑ·®
+    private int requireExp; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½Ñ·ï¿½
     public int RequireExp
     {
         get { return requireExp; }
     }
-    private int overExp; //·¹º§¾÷½Ã ³ÑÄ£ °æÇèÄ¡
+    private int overExp; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä£ ï¿½ï¿½ï¿½ï¿½Ä¡
     public event UnityAction<int> WoodChangeAct;
     public event UnityAction<int> StoneChangeAct;
     public event UnityAction<int> IronChangeAct;
@@ -60,7 +71,7 @@ public class GameManager : MonoBehaviour
     private PlayerUI playerUI;
 
 
-    private int CalcRequireExp(int level) //ÇöÀç·¹º§ÀÇ ÃÖ´ë°æÇèÄ¡ °è»ê
+    private int CalcRequireExp(int level) //ï¿½ï¿½ï¿½ç·¹ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½
     {
         if (level >= 1 && level <= 20)
         {
@@ -78,18 +89,18 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public static GameManager Instance //ÀÎ½ºÅÏ½º¿¡ Á¢±ÙÇÏ±â À§ÇÑ ÇÁ·ÎÆÛÆ¼
+    public static GameManager Instance //ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
     {
         get
         {
-            // ÀÎ½ºÅÏ½º°¡ ¾ø´Â °æ¿ì¿¡ Á¢±ÙÇÏ·Á ÇÏ¸é ÀÎ½ºÅÏ½º¸¦ ÇÒ´çÇØÁØ´Ù.
+            // ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ï¸ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
             if (!_instance)
             {
                 _instance = FindObjectOfType(typeof(GameManager)) as GameManager;
 
                 if (_instance == null)
                 {
-                    Debug.Log("½Ì±ÛÅæ ÀÎ½ºÅÏ½º°¡ ¾ø½À´Ï´Ù");
+                    Debug.Log("ï¿½Ì±ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
                 }
 
             }
@@ -103,14 +114,26 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
-        // ÀÎ½ºÅÏ½º°¡ Á¸ÀçÇÏ´Â °æ¿ì »õ·Î»ý±â´Â ÀÎ½ºÅÏ½º¸¦ »èÁ¦ÇÑ´Ù. (GameManager ÀÎ½ºÅÏ½º´Â ¾ðÁ¦³ª ÇÏ³ª¿©¾ß ÇÑ´Ù )
+        // ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. (GameManager ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½ )
         else if (_instance != this)
         {
-            Debug.Log("¾À¿¡ µÎ°³ÀÌ»óÀÇ ÀÎ½ºÅÏ½º°¡ ÀÖ½À´Ï´Ù");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½");
             Destroy(gameObject);
         }
-        //ÀÌ·¸°Ô ÇÏ¸é ¾ÀÀÌ ÀüÈ¯µÇ´õ¶óµµ ¼±¾ðµÇ¾ú´ø ÀÎ½ºÅÏ½º°¡ ÆÄ±«µÇÁö ¾Ê´Â´Ù.
+        //ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ç´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
         DontDestroyOnLoad(gameObject);
+
+        LoadStatusData();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private bool timerStart = false;
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 2)
+        {
+            timerStart = true;
+        }
     }
 
     void Start()
@@ -150,6 +173,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
+        if (!timerStart)
+            return;
+                    
         if (gameStart && !gamePaused && !gameOver && curSecText!=null)
         {
             curSec += Time.deltaTime;
@@ -157,7 +184,7 @@ public class GameManager : MonoBehaviour
             TimeConvert();
             //Debug.Log(curGameTime);
 
-            //¹ã³· º¯°æ
+            //ï¿½ã³· ï¿½ï¿½ï¿½ï¿½
             if (!isNight && checkAMPMTime >= 7)
             {
                 checkAMPMTime = 0;
@@ -187,7 +214,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void TimeConvert()//½Ã°£À» ºÐ:ÃÊ ·Î Ç¥±âÇØÁÖ´Â ÇÔ¼ö
+    public void TimeConvert()//ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½:ï¿½ï¿½ ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½
     {
         if(curMin < 10)
         {
@@ -212,24 +239,24 @@ public class GameManager : MonoBehaviour
         gamePaused = true;
         Time.timeScale = 0;
         Player.SetInputState(false);
-        Debug.Log("ÀÏ½ÃÁ¤ÁöµÇ¾ú½À´Ï´Ù.");
-        //UI ÆË¾÷ Ãß°¡
+        Debug.Log("ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+        //UI ï¿½Ë¾ï¿½ ï¿½ß°ï¿½
     }
     public void ResumeGame()
     {
         gamePaused = false;
         Time.timeScale = 1;
         Player.SetInputState(true);
-        Debug.Log("ÀÏ½ÃÁ¤ÁöÇØÁ¦.");
-        //UI »ç¶óÁö°Ô Ãß°¡
+        Debug.Log("ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
+        //UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
     }
-    public void GameOver() // ÇÃ·¹ÀÌ¾î°¡ »ç¸ÁÇßÀ»¶§ Á¶°Ç Ãß°¡ÇØ¾ßµÊ.
+    public void GameOver() // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ø¾ßµï¿½.
     {
         gameOver = true;
-        Debug.Log("°ÔÀÓ¿À¹ö");
+        Debug.Log("ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½");
     }
 
-    public float CurTime() // ÇöÀç °ÔÀÓ ½Ã°£
+    public float CurTime() // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
     {
         return curSec;
     }
@@ -261,7 +288,7 @@ public class GameManager : MonoBehaviour
     void ChangeToDay()
     {
         isNight = false;
-        Debug.Log("³·ÀÌ µÇ¾ú½À´Ï´Ù.");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
         ChangeAMPMAct?.Invoke(isNight);
         StartCoroutine(ChangeSunlightToDay(Sunlight));
         //Sunlight.intensity = 1;
@@ -270,13 +297,13 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator ChangeSunlightToDay(Light light)
     {
-        float startIntensity = light.intensity; // ½ÃÀÛ °­µµ
-        float startTime = Time.time; // ½ÃÀÛ ½Ã°£
+        float startIntensity = light.intensity; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float startTime = Time.time; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
 
         while (Time.time - startTime < 5f)
         {
-            float t = (Time.time - startTime) / 5f; // ÇöÀç ÁøÇà·ü °è»ê
-            light.intensity = Mathf.Lerp(startIntensity, 1f, t); // ½ÃÀÛ °­µµºÎÅÍ ¸ñÇ¥ °­µµ±îÁö ¼­¼­È÷ Áõ°¡
+            float t = (Time.time - startTime) / 5f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+            light.intensity = Mathf.Lerp(startIntensity, 1f, t); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             yield return null;
         }
         light.intensity = 1f; 
@@ -284,19 +311,19 @@ public class GameManager : MonoBehaviour
     void ChangeToNight()
     {
         isNight = true;
-        Debug.Log("¹ãÀÌ µÇ¾ú½À´Ï´Ù.");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
         ChangeAMPMAct?.Invoke(isNight);
         StartCoroutine(ChangeSunlightToNight(Sunlight));   
     }
     public IEnumerator ChangeSunlightToNight(Light light)
     {
-        float startIntensity = light.intensity; // ½ÃÀÛ °­µµ
-        float startTime = Time.time; // ½ÃÀÛ ½Ã°£
+        float startIntensity = light.intensity; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float startTime = Time.time; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
 
         while (Time.time - startTime < 5f)
         {
-            float t = (Time.time - startTime) / 5f; // ÇöÀç ÁøÇà·ü °è»ê
-            light.intensity = Mathf.Lerp(startIntensity, 0f, t); // ½ÃÀÛ °­µµºÎÅÍ ¸ñÇ¥ °­µµ±îÁö ¼­¼­È÷ Áõ°¡
+            float t = (Time.time - startTime) / 5f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+            light.intensity = Mathf.Lerp(startIntensity, 0f, t); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             yield return null;
         }
         light.intensity = 0f; 
@@ -306,56 +333,96 @@ public class GameManager : MonoBehaviour
     {
         myWood += num;
         //myWoodCount.text = myWood.ToString();
-        //UI·Î ³ªÅ¸³¾ ÄÚµå Ãß°¡ ÇÊ¿ä
+        //UIï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ß°ï¿½ ï¿½Ê¿ï¿½
         WoodChangeAct?.Invoke(myWood);
-        Debug.Log($"³ª¹« °¹¼ö º¯µ¿ {myWood}");
+        Debug.Log($"ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ {myWood}");
     }
     public void ChangeStone(int num)
     {
         myStone += num;
-        //UI·Î ³ªÅ¸³¾ ÄÚµå Ãß°¡ ÇÊ¿ä
+        //UIï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ß°ï¿½ ï¿½Ê¿ï¿½
         StoneChangeAct?.Invoke(myStone);
-        Debug.Log($"µ¹ °¹¼ö º¯µ¿ {myStone}");
+        Debug.Log($"ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ {myStone}");
     }
     public void ChangeIron(int num)
     {
         myIron += num;
-        //UI·Î ³ªÅ¸³¾ ÄÚµå Ãß°¡ ÇÊ¿ä
+        //UIï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ß°ï¿½ ï¿½Ê¿ï¿½
         IronChangeAct?.Invoke(myIron);
-        Debug.Log($"Ã¶ °¹¼ö º¯µ¿. ÇöÀç Ã¶ : {myIron}");
+        Debug.Log($"Ã¶ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ Ã¶ : {myIron}");
     }
 
     public void ChangeGold(int num)
     {
-        myIron += num;
-        //UI·Î ³ªÅ¸³¾ ÄÚµå Ãß°¡ ÇÊ¿ä
+        myGold += num;
+        SaveData.MyGold = myGold;
+        //UIï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ß°ï¿½ ï¿½Ê¿ï¿½
         GoldChangeAct?.Invoke(myGold);
-        Debug.Log($"°ñµå º¯µ¿. ÇöÀç °ñµå : {myGold}");
+        Debug.Log($"ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ : {myGold}");
     }
     
     public void ChangeExp(int num)
     {
         curLvExp += num;
-        if (curLvExp >= requireExp) //·¹º§¾÷
+        if (curLvExp >= requireExp) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             LevelUp();
         }
-        //UI·Î ³ªÅ¸³¾ ÄÚµå Ãß°¡ ÇÊ¿ä
+        //UIï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ß°ï¿½ ï¿½Ê¿ï¿½
         ExpChangeAct?.Invoke(curLvExp);
     }
 
     public void LevelUp()
     {
-        overExp = curLvExp - requireExp;// ³ÑÄ£ °æÇèÄ¡ ÀÓ½ÃÀúÀå
+        overExp = curLvExp - requireExp;// ï¿½ï¿½Ä£ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½
         curLvExp = 0;
         myLevel++;
+        BlessManager.Instance.RerollCount = SaveData.RerollCount;
         BlessManager.Instance.AppearRandomBlessList();
-        requireExp = CalcRequireExp(myLevel);//´ÙÀ½·¹º§ ¿ä±¸ °æÇèÄ¡·® °è»ê
+        requireExp = CalcRequireExp(myLevel);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ä±¸ ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½
         curLvExp += overExp;
 
 
     }
 
+    public SaveDatas SaveData => _saveData;
+    [SerializeField]private SaveDatas _saveData = new SaveDatas();
+
+    [System.Serializable]
+    public class SaveDatas
+    {
+        public int Attack;
+        public int AkSp;
+        public int MvSp;
+        public int MagnetFieldRange;
+        public int MaxHp;
+        public int ExpBonus;
+
+        public int MyGold;
+        public int RerollCount;
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveStatusData();
+    }
+
+    private void SaveStatusData()
+    {
+        string json = JsonUtility.ToJson(_saveData);
+        File.WriteAllText(Application.persistentDataPath + FilePath.StatusData, json);
+    }
+
+    private void LoadStatusData()
+    {
+        string path = Application.persistentDataPath + FilePath.StatusData;
+        if(File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            _saveData = JsonUtility.FromJson<SaveDatas>(json);
+        }
+        myGold = _saveData.MyGold;
+    }
 }
 
 

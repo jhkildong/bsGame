@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Coffee.UIEffects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,11 @@ using UnityEngine.UI;
 public class GridButtons : MonoBehaviour
 {
     [SerializeField]protected List<Button> buttons;
+    [SerializeField]private List<TextMeshProUGUI> names;
+    [SerializeField]private List<TextMeshProUGUI> descriptions;
+    [SerializeField]private List<Image> images;
+    public UIShiny[] shinies;
+
     private RectTransform RT => (transform as RectTransform);
     private GridLayoutGroup GridLayout
     {
@@ -36,7 +42,25 @@ public class GridButtons : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        if (shinies != null && shinies.Length > 0)
+        {
+            foreach (var shiny in shinies)
+            {
+                shiny.Stop();
+                shiny.GetComponent<Image>().color = Color.white;
+            }
+        }
+    }
+
     #region Public Method
+    public void SetShinyColor(Color color, int idx)
+    {
+        shinies[idx].GetComponent<Image>().color = color;
+    }
+
+
     public void SetButtonName(params string[] names)
     {
         if (names.Length < buttons.Count)
@@ -62,6 +86,30 @@ public class GridButtons : MonoBehaviour
     public void AddButtonAction(int idx, UnityAction action)
     {
         buttons[idx].onClick.AddListener(action);
+    }
+
+    public void SetNames(params string[] names)
+    {
+        for (int i = 0; i < names.Length; i++)
+        {
+            this.names[i].text = names[i];
+        }
+    }
+
+    public void SetDecriptions(params string[] descriptions)
+    {
+        for (int i = 0; i < descriptions.Length; i++)
+        {
+            this.descriptions[i].text = descriptions[i];
+        }
+    }
+
+    public void SetImages(params Sprite[] sprites)
+    {
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            images[i].sprite = sprites[i];
+        }
     }
     #endregion
 
@@ -133,7 +181,6 @@ public class GridButtons : MonoBehaviour
 
     private void SetName(Button button, string name)
     {
-        button.name = name;
         button.GetComponentInChildren<TextMeshProUGUI>().text = name;
     }
     #endregion

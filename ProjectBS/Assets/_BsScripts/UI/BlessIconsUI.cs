@@ -35,7 +35,8 @@ public class BlessIconsUI : UIComponent
             newIcon.sprite = null;
         else
             newIcon.sprite = data.Icon;
-        iconDict.Add(data.ID, defaultIcon);
+        iconDict.Add(data.ID, newIcon);
+        newIcon.GetComponentInChildren<TextMeshProUGUI>().text = "";
     }
 
     public void DeleteIcon(int dataID)

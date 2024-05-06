@@ -53,9 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 3502
-  _name: "\uC5BC\uC74C"
+  _name: "\uB0C9\uAE30\uC758 \uCE7C\uB0A0"
+  _description: "\uB0C9\uAE30\uC758 \uD798\uC774 \uAE43\uB4E0 \uCE7C\uB0A0"
+  _icon: {fileID: 21300000, guid: dbe3e8de3a1238f4c8372ae87dc8175f, type: 3}
   _attack: 0
-  _speed: 0
   _size: 0
   _particleSystem: {fileID: 2223439838157312334}
   prefab: {fileID: 2223439838157312332}

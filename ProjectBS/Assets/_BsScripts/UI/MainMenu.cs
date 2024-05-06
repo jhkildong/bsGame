@@ -1,44 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private UIComponent PlayerSelectWindow;
+    [SerializeField] private UIComponent ShopUI;
+    [SerializeField] private UIComponent SettingsUI;
+    [SerializeField] private UIComponent CreditsUI;
+    
+
+    [SerializeField] Button playButton;
+    [SerializeField] Button shopButton;
+    [SerializeField] Button settingsButton;
+    [SerializeField] Button creditsButton;
+    [SerializeField] Button QuitButton;
+
+    private void Start()
     {
-        
+        PlayerSelectWindow.gameObject.SetActive(false);
+        ShopUI.gameObject.SetActive(false);
+        SettingsUI.gameObject.SetActive(false);
+        CreditsUI.gameObject.SetActive(false);
+
+        playButton.onClick.AddListener(OnPlay);
+        shopButton.onClick.AddListener(OnShop);
+        settingsButton.onClick.AddListener(OnSettings);
+        creditsButton.onClick.AddListener(OnCredits);
+        QuitButton.onClick.AddListener(OnQuit);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnPlay()
     {
-        
+        PlayerSelectWindow.gameObject.SetActive(true);
+        PlayerSelectWindow.GetComponent<PlayerSelectUI>().SetJobSelect();
     }
 
-    public void OnPlay()
+    private void OnShop()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/5002_PlayerSelectWindow"), transform);
-        obj.SetActive(true);
+        ShopUI.gameObject.SetActive(true);
     }
 
-    public void OnShop()
+    private void OnSettings()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/ShopUI"), transform);
-        obj.SetActive(true);
+        SettingsUI.gameObject.SetActive(true);
     }
-
-    public void OnSettings()
+    private void OnCredits()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SettingsUI"), transform);
-        obj.SetActive(true);
+        CreditsUI.gameObject.SetActive(true);
     }
-    public void OnCredits()
-    {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/CreditsUI"), transform);
-        obj.SetActive(true);
-    }
-    public void OnQuit()
+    private void OnQuit()
     {
         Application.Quit();
     }

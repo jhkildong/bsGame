@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bless_PF
   m_EditorClassIdentifier: 
   _id: 1030
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 51a16129e9ca1394c9ef08b5319f4b5a, type: 3}
   _name: "\uD3AB\uBD88"
   _description: "\uD30C\uC774\uC5B4\uBCFC \uACF5\uACA9\uC744 \uD558\uB294 \uD654\uC2E0\uC744
     1\uB9C8\uB9AC \uC0DD\uC131\uD55C\uB2E4."
