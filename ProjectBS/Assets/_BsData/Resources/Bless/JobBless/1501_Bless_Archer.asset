@@ -15,7 +15,9 @@ MonoBehaviour:
   _id: 1501
   _icon: {fileID: 21300000, guid: 341d2482654d6124db37c1ca13255064, type: 3}
   _name: "\uAD81\uC218\uC758 \uCD95\uBCF5"
-  _description: "\uAE30\uBCF8 \uACF5\uACA9 \uBC0F \uC2A4\uD0AC \uAC15\uD654"
+  _description: "\uC18D\uC131\uD654\uC0B4\uC744 \uBC1C\uC0AC\uD558\uBA70\n\uBC94\uC704\uB97C
+    \uC9C0\uC815\uD574 \uD654\uC0B4\uBE44\uB97C \n\uB0B4\uB9AC\uAC8C \uD558\uB294
+    \uC2A4\uD0AC\uC744 \uAC16\uACE0\uC788\uC2B5\uB2C8\uB2E4."
   _prefab: {fileID: 8476745866706510708, guid: 15e484a8a9d09fd40b42055f2b52daeb, type: 3}
   _lvDataList:
   - name: Attack
