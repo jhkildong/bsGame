@@ -46,7 +46,8 @@ public class BuffBuilding_Heal : BuffBuildingBase
             yield return null;
         }
         Debug.Log("Campfire 지속시간 끝");
-        Destroy(gameObject);
+        Destroy();
+        
     }
 
     IEnumerator healTickTimeCheck(IHealing healable, GameObject obj)

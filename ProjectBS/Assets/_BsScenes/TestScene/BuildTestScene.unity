@@ -646,6 +646,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7956947558258921731, guid: b80abba72c6c3504dbdbeafc88ce5890, type: 3}
   m_PrefabInstance: {fileID: 155519263}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &179123729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179123731}
+  - component: {fileID: 179123730}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &179123730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179123729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9201c2152f6d93a47a0188fe52117116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSources: []
+  audioList: []
+--- !u!4 &179123731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179123729}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.1042094, y: 1.0397216, z: -5.9350643}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &202879190
 GameObject:
   m_ObjectHideFlags: 0
@@ -3149,6 +3195,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 29
       objectReference: {fileID: 0}
+    - target: {fileID: 729793218, guid: a16b5b0132ccd6a41ae97c9cc483a453, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 490816564691107580, guid: a16b5b0132ccd6a41ae97c9cc483a453, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
@@ -5611,12 +5661,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  Sunlight: {fileID: 0}
+  curSecText: {fileID: 0}
+  curMinText: {fileID: 0}
   myJob: {fileID: 0}
   myTypeIdx: 0
   gameStart: 0
   gameOver: 0
   gamePaused: 0
-  curGameTime: 0
+  curSec: 0
+  curMin: 0
+  curTime: 0
   checkAMPMTime: 0
   curDay: 0
   _saveData:
@@ -5627,6 +5682,7 @@ MonoBehaviour:
     MaxHp: 0
     ExpBonus: 0
     MyGold: 0
+    RerollCount: 0
 --- !u!4 &1380075692
 Transform:
   m_ObjectHideFlags: 0
@@ -7055,6 +7111,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 29
       objectReference: {fileID: 0}
+    - target: {fileID: 1628770747, guid: bcc59605049cf8a4995bf79279008c08, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4374487540520383777, guid: bcc59605049cf8a4995bf79279008c08, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
@@ -7911,6 +7971,10 @@ PrefabInstance:
     - target: {fileID: 182510848, guid: 5035294e597987445a2252709e8007b1, type: 3}
       propertyPath: m_Layer
       value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 182510849, guid: 5035294e597987445a2252709e8007b1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5234396581829623209, guid: 5035294e597987445a2252709e8007b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9109,3 +9173,4 @@ SceneRoots:
   - {fileID: 1501803668}
   - {fileID: 547628704}
   - {fileID: 1299403768}
+  - {fileID: 179123731}
