@@ -18,8 +18,12 @@ public class PlayerUI : UIComponent
 
     public TextMeshProUGUI myGoldText => _myGoldText;
     [SerializeField] private TextMeshProUGUI _myGoldText;
-    public TextMeshProUGUI curTime => _curTime;
-    [SerializeField] private TextMeshProUGUI _curTime;
+    public TextMeshProUGUI curSec => _curSec;
+    [SerializeField] private TextMeshProUGUI _curSec;
+
+    public TextMeshProUGUI curMin => _curMin;
+    [SerializeField] private TextMeshProUGUI _curMin;
+
 
     public Slider myExp => _myExp;
     [SerializeField] private Slider _myExp;
@@ -74,13 +78,5 @@ public class PlayerUI : UIComponent
         _myExp.value = ((float)exp / (float)GameManager.Instance.RequireExp);
         Debug.Log(_myExp.value);
     }
-    /*
-    public void ChangeExpBar(float exp)
-    {
-        if (_expBar == null)
-            return;
-        _expBar.value = exp;
-    }
-    */
 
 }

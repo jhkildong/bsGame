@@ -266,6 +266,8 @@ public class Player : Combat, IDamage<Player>
         GameManager.Instance.IronChangeAct += playerUI.ChangeIronText;
         GameManager.Instance.GoldChangeAct += playerUI.ChangeGoldText;
         GameManager.Instance.ExpChangeAct += playerUI.ChangeExp;
+        GameManager.Instance.curSecText = playerUI.curSec; //시간 텍스트 할당
+        GameManager.Instance.curMinText = playerUI.curMin; //시간 텍스트 할당
         GameManager.Instance.ChangeWood(0);
         GameManager.Instance.ChangeStone(0);
         GameManager.Instance.ChangeIron(0);
