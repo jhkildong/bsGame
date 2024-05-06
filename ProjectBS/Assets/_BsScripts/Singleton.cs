@@ -30,7 +30,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour // where -> T�
         if (_inst == null)
         {
             _inst = This; // 인스턴스가 없으면 자기자신을 힙영역의 참조자에 참조하라고 해준다.
-            DontDestroyOnLoad(gameObject); // 씬을 이동해도 지워지지 않게.
         }
         else
         {

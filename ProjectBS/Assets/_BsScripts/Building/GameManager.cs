@@ -8,6 +8,8 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static GameManager;
+using Unity.Burst.CompilerServices;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     //GameManager.Instance.StartGame(); �ܺο��� �̷� ������ ���� �����ϴ�.
 
-    private static GameManager _instance;
+    private static GameManager _inst;
 
     public Player Player;
     public Light Sunlight;
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
     public float checkAMPMTime;
     private bool isNight;
     public int curDay;
+    private int curGold;
     //private int myExp;
     private int myWood = 0;
     private int myStone = 0;
@@ -47,7 +50,7 @@ public class GameManager : MonoBehaviour
     private int myGold = 0;
 
     private int myLevel = 1; // �� ����
-    private int myExp; //����ġ �ѷ�
+    //private int myExp; //����ġ �ѷ�
     private int curLvExp; //���緹�� ���� ����ġ
     public int CurLvExp
     {
@@ -93,55 +96,91 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            // �ν��Ͻ��� ���� ��쿡 �����Ϸ� �ϸ� �ν��Ͻ��� �Ҵ����ش�.
-            if (!_instance)
+            if (_inst == null)
             {
-                _instance = FindObjectOfType(typeof(GameManager)) as GameManager;
-
-                if (_instance == null)
+                _inst = FindObjectOfType<GameManager>();
+                if (_inst == null)
                 {
-                    Debug.Log("�̱��� �ν��Ͻ��� �����ϴ�");
+                    GameObject obj = new GameObject();
+                    obj.name = typeof(GameManager).ToString();
+                    _inst = obj.AddComponent<GameManager>();
                 }
-
             }
-            return _instance;
+            return _inst;
+        }
+    }
+
+    private void Initialize()
+    {
+        if (_inst != null && _inst != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
         }
     }
 
     void Awake()
     {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
-        // �ν��Ͻ��� �����ϴ� ��� ���λ���� �ν��Ͻ��� �����Ѵ�. (GameManager �ν��Ͻ��� ������ �ϳ����� �Ѵ� )
-        else if (_instance != this)
-        {
-            Debug.Log("���� �ΰ��̻��� �ν��Ͻ��� �ֽ��ϴ�");
-            Destroy(gameObject);
-        }
-        //�̷��� �ϸ� ���� ��ȯ�Ǵ��� ����Ǿ��� �ν��Ͻ��� �ı����� �ʴ´�.
-        DontDestroyOnLoad(gameObject);
+        Initialize();
 
         LoadStatusData();
         SceneManager.sceneLoaded += OnSceneLoaded;
+        
     }
 
     private bool timerStart = false;
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.buildIndex == 0)
+        {
+            if (curGold > 0)
+            {
+                SaveData.MyGold += curGold;
+                curGold = SaveData.MyGold;
+            }
+            else
+            {
+                curGold = SaveData.MyGold;
+            }
+
+        }
+
+        if (scene.buildIndex == 1)
+        {
+            WoodChangeAct = null;
+            StoneChangeAct = null;
+            IronChangeAct = null;
+            GoldChangeAct = null;
+            ExpChangeAct = null;
+            ChangeDayAct = null;
+            ChangeAMPMAct = null;
+        }
+
         if (scene.buildIndex == 2)
         {
+            SaveData.MyGold = curGold;
+            curGold = 0;
+
+            gameStart = true;
+            gameOver = false;
+            curSec = 0;
+            curMin = 0;
+            curTime = 0;
+            checkAMPMTime = 0;
+            isNight = false;
+            curDay = 0;
+            myWood = 0;
+            myStone = 0;
+            myIron = 0;
+            curLvExp = 0;
+            overExp = 0;
+            myLevel = 1;
+
             timerStart = true;
-
             Sunlight = GameObject.Find("Directional Light").GetComponent<Light>();
-           
-        }
-        else
-        {
-            StopAllCoroutines();
-            timerStart = false;
-
         }
     }
 
@@ -262,10 +301,13 @@ public class GameManager : MonoBehaviour
     public void GameOver() // �÷��̾ ��������� ���� �߰��ؾߵ�.
     {
         gameOver = true;
+        timerStart = false;
         Time.timeScale = 0;
+        StopAllCoroutines();
         //여기에 게임오버 창 뜨게 설정
         UIManager.Instance.CreateUI(UIID.GameOverUI, CanvasType.DynamicCanvas);
     }
+
 
     public float CurTime() // ���� ���� �ð�
     {
@@ -287,8 +329,8 @@ public class GameManager : MonoBehaviour
     }
     public int CurGold()
     {
-        Debug.Log(myGold);
-        return myGold;
+        //Debug.Log(myGold);
+        return curGold;
     }
     public int CurExp()
     {
@@ -365,11 +407,10 @@ public class GameManager : MonoBehaviour
 
     public void ChangeGold(int num)
     {
-        myGold += num;
-        SaveData.MyGold = myGold;
+        curGold += num;
         //UI�� ��Ÿ�� �ڵ� �߰� �ʿ�
-        GoldChangeAct?.Invoke(myGold);
-        Debug.Log($"��� ����. ���� ��� : {myGold}");
+        GoldChangeAct?.Invoke(curGold);
+        Debug.Log($"��� ����. ���� ��� : {curGold}");
     }
     
     public void ChangeExp(int num)
@@ -432,7 +473,8 @@ public class GameManager : MonoBehaviour
             string json = File.ReadAllText(path);
             _saveData = JsonUtility.FromJson<SaveDatas>(json);
         }
-        myGold = _saveData.MyGold;
+        //curGold = _saveData.MyGold;
+        //myGold = _saveData.MyGold;
     }
 }
 

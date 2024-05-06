@@ -69,6 +69,14 @@ public class Player : Combat, IDamage<Player>
             remainCoolTime = coolTime;
         maxCastingTime = castingTime;
     }
+    public void SetGameManagerBuff()
+    {
+        getBuff.atkBuffDict["SavedAttack"] = GameManager.Instance.SaveData.Attack * 0.1f;
+        getBuff.asBuffDict["SavedAksp"] = GameManager.Instance.SaveData.AkSp * 0.1f;
+        getBuff.msBuffDict["SavedSpeed"] = GameManager.Instance.SaveData.MvSp * 0.1f;
+        getBuff.rangeBuffDict["SavedMagnetFieldRange"] = GameManager.Instance.SaveData.MagnetFieldRange * 0.1f;
+        getBuff.hpBuffDict["SavedHp"] = GameManager.Instance.SaveData.MaxHp * 0.1f;
+    }
 
     public void SetInputState(bool state)
     {

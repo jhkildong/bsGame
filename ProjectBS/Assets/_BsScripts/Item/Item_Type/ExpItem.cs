@@ -26,6 +26,6 @@ public class ExpItem : Item
     protected override void Eat()
     {
         base.Eat();
-        GameManager.Instance.ChangeExp(Exp);
+        GameManager.Instance.ChangeExp(Exp * GameManager.Instance.SaveData.ExpBonus);
     }
 }
