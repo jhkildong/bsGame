@@ -42,6 +42,11 @@ public static class FilePath
     public const string Items = "Item";
     #endregion
 
+    #region Json
+    /// <summary>Resources/Json</summary>
+    public const string StatusData = "/StatusData.json";
+    #endregion
+
 #if UNITY_EDITOR
     /// <summary>Assets/_BsData/Resources/Json/BlessLevelTable.json</summary>
     public const string BlessLevelTableJson = "Assets/_BsData/Resources/Json/BlessLevelTable.json";

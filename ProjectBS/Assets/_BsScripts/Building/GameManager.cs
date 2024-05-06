@@ -4,7 +4,10 @@ using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using System.IO;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static GameManager;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,8 +17,6 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
-
-    
     public Player Player;
 
     [HideInInspector]public PlayerComponent myJob;
@@ -117,6 +118,18 @@ public class GameManager : MonoBehaviour
         }
         //이렇게 하면 씬이 전환되더라도 선언되었던 인스턴스가 파괴되지 않는다.
         DontDestroyOnLoad(gameObject);
+
+        LoadStatusData();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private bool timerStart = false;
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 2)
+        {
+            timerStart = true;
+        }
     }
 
     void Start()
@@ -124,8 +137,6 @@ public class GameManager : MonoBehaviour
         gameStart = true;
         //myWoodCount.text = $"wood : {myWood.ToString()}";
         CalcRequireExp(myLevel);
-
-
     }
     /*
     private void UpdateWoodText()
@@ -155,6 +166,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (!timerStart)
+            return;
         if (gameStart && !gamePaused && !gameOver)
         {
             curGameTime += Time.deltaTime;
@@ -283,7 +296,8 @@ public class GameManager : MonoBehaviour
 
     public void ChangeGold(int num)
     {
-        myIron += num;
+        myGold += num;
+        SaveData.MyGold = myGold;
         //UI로 나타낼 코드 추가 필요
         GoldChangeAct?.Invoke(myGold);
         Debug.Log($"골드 변동. 현재 골드 : {myGold}");
@@ -312,6 +326,43 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public SaveDatas SaveData => _saveData;
+    [SerializeField]private SaveDatas _saveData = new SaveDatas();
+
+    [System.Serializable]
+    public class SaveDatas
+    {
+        public int Attack;
+        public int AkSp;
+        public int MvSp;
+        public int MagnetFieldRange;
+        public int MaxHp;
+        public int ExpBonus;
+
+        public int MyGold;
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveStatusData();
+    }
+
+    private void SaveStatusData()
+    {
+        string json = JsonUtility.ToJson(_saveData);
+        File.WriteAllText(Application.persistentDataPath + FilePath.StatusData, json);
+    }
+
+    private void LoadStatusData()
+    {
+        string path = Application.persistentDataPath + FilePath.StatusData;
+        if(File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            _saveData = JsonUtility.FromJson<SaveDatas>(json);
+        }
+        myGold = _saveData.MyGold;
+    }
 }
 
 

@@ -133,7 +133,6 @@ public class GridButtons : MonoBehaviour
 
     private void SetName(Button button, string name)
     {
-        button.name = name;
         button.GetComponentInChildren<TextMeshProUGUI>().text = name;
     }
     #endregion
