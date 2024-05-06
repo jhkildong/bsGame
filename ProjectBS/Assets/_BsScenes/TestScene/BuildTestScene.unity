@@ -5753,6 +5753,14 @@ MonoBehaviour:
   curGameTime: 0
   checkAMPMTime: 0
   curDay: 0
+  _saveData:
+    Attack: 0
+    AkSp: 0
+    MvSp: 0
+    MagnetFieldRange: 0
+    MaxHp: 0
+    ExpBonus: 0
+    MyGold: 0
 --- !u!4 &1380075692
 Transform:
   m_ObjectHideFlags: 0
@@ -9356,8 +9364,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1751192888}
   - {fileID: 1498073338}
-  - {fileID: 1459285825}
   - {fileID: 9436241}
+  - {fileID: 1459285825}
   - {fileID: 894831810}
   - {fileID: 1861829834}
   - {fileID: 1197615138}
