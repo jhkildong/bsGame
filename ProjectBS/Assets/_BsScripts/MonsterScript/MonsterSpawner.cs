@@ -55,6 +55,7 @@ public class MonsterSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nightRespawnTime = 1.0f;
         monsterDatas = Resources.LoadAll<MonsterData>(FilePath.Monsters);
 
         DataSetPool(monsterDatas);
@@ -66,6 +67,7 @@ public class MonsterSpawner : MonoBehaviour
             _curStage = (Stage)day;
         };
         GameManager.Instance.ChangeAMPMAct += (state) => { nightRespawnTime = state ? 0.5f : 1.0f; };
+
     }
 
 

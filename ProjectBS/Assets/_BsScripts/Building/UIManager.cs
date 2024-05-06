@@ -166,4 +166,5 @@ public enum UIID
     CreditsUI = 5014,
     SettingsUI = 5015,
     ShopUI = 5016,
+    GameOverUI = 5099
 }

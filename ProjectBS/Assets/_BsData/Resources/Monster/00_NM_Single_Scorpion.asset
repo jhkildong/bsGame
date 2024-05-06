@@ -17,7 +17,7 @@ MonoBehaviour:
   _attack: 2
   _attackDelay: 1
   _speed: 1
-  _maxHp: 30
+  _maxHp: 15
   _exp: 2
   _gold: 10
   _mass: 1

@@ -16,7 +16,7 @@ MonoBehaviour:
     \uC5BB\uC2B5\uB2C8\uB2E4."
   _id: 2007
   _name: steel
-  _value: 10
+  _value: 5
   _prefab: {fileID: 5251614332493598394, guid: eb49bd7529a10ea4485874a4e24d3b39, type: 3}
   TypeOfItem: 2
   TypeOfMaterial: 3
