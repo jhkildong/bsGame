@@ -133,6 +133,8 @@ public class GameManager : MonoBehaviour
         if (scene.buildIndex == 2)
         {
             timerStart = true;
+
+            Sunlight = GameObject.Find("Directional Light").GetComponent<Light>();
         }
     }
 
