@@ -610,7 +610,7 @@
   "1500_Bless_Warrior": [
     {
       "name": "Attack",
-      "defaultValue": 20.0,
+      "defaultValue": 12.0,
       "levelUpType": 0,
       "levelUpTable": [
         2.0,
@@ -633,7 +633,7 @@
         0.2,
         0.0,
         0.2,
-        0.0
+        0.5
       ]
     },
     {
@@ -696,7 +696,7 @@
   "1501_Bless_Archer": [
     {
       "name": "Attack",
-      "defaultValue": 12.0,
+      "defaultValue": 10.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -782,7 +782,7 @@
   "1502_Bless_Mage": [
     {
       "name": "Attack",
-      "defaultValue": 17.0,
+      "defaultValue": 15.0,
       "levelUpType": 0,
       "levelUpTable": [
         1.0,
@@ -861,7 +861,7 @@
         -5.0,
         0.0,
         -5.0,
-        -15.0
+        -25.0
       ]
     },
     {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
+
 using System.Collections.Generic;
 
 public static class LevelUpDescription
@@ -9,8 +10,11 @@ public static class LevelUpDescription
 
     public static void GetLevelUpDescriptionToJson()
     {
-        string json = File.ReadAllText(FilePath.BlessLevelUpDiscriptionJson);
+        var jsonTextFile = Resources.Load<TextAsset>(FilePath.BlessLevelUpDiscriptionJson);
+
         //json 파일을 읽어서 DescriptionDic에 저장
-        DescriptionDic = JsonConvert.DeserializeObject<Dictionary<int, string[]>>(json);
+        DescriptionDic = JsonConvert.DeserializeObject<Dictionary<int, string[]>>(jsonTextFile.ToString());
+
+            
     }
 }

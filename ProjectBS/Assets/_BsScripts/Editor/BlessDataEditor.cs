@@ -205,7 +205,7 @@ public class Bless2DataEditor : Editor
             File.WriteAllText(FilePath.BlessLevelTableJson, json);
 
             string DescriptionJson = JsonConvert.SerializeObject(LevelUpDescription.DescriptionDic, settings);
-            File.WriteAllText(FilePath.BlessLevelUpDiscriptionJson, DescriptionJson);
+            File.WriteAllText("Assets/_BsData/Resources/Json/BlessLevelUpDescription.json", DescriptionJson);
 
             //Key.cs에 이름 추가
             if (!File.Exists(FilePath.KeyCs))   //파일이 없으면 리턴
