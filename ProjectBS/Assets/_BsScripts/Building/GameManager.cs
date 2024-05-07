@@ -44,9 +44,9 @@ public class GameManager : MonoBehaviour
     public int curDay;
     private int curGold;
     //private int myExp;
-    private int myWood = 0;
-    private int myStone = 0;
-    private int myIron = 0;
+    private int myWood = 200;
+    private int myStone = 102;
+    private int myIron = 90;
     private int myGold = 0;
 
     private int myLevel = 1; // �� ����
@@ -233,12 +233,12 @@ public class GameManager : MonoBehaviour
             //Debug.Log(curGameTime);
 
             //�㳷 ����
-            if (!isNight && checkAMPMTime >= 7)
+            if (!isNight && checkAMPMTime >= 6)
             {
                 checkAMPMTime = 0;
                 ChangeToNight();
             }
-            if (isNight && checkAMPMTime >= 7)
+            if (isNight && checkAMPMTime >= 6)
             {
                 checkAMPMTime = 0;
                 ChangeToDay();
