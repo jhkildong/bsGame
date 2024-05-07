@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43cda4da081fa614796e5f407362b303, type: 3}
-  m_Name: BD_FlameCircleTowerData
+  m_Name: BD_FlameCircleTowerAtkStats
   m_EditorClassIdentifier: 
   _atkPower: 3
   _atkSpeed: 0.2

@@ -19,19 +19,6 @@ MonoBehaviour:
   _requireWood: 5
   _requireStone: 20
   _requireIron: 0
-  _constTime: 5
+  _constTime: 1
   _repairSpeed: 5
-  _atkPower: 5
-  _atkDelay: 0.5
-  _hitDelay: 0
-  _atkDuration: 0
-  _atkRadius: 0
-  _atkProjectileSize: 1
-  _atkProjectileSpeed: 20
-  _atkProjectileRange: 40
-  _atkCanPen: 1
-  _atkPenCount: 0
-  _buildingPrefab: {fileID: 0}
-  _attackableLayer:
-    serializedVersion: 2
-    m_Bits: 32768
+  _nextUpgrade: {fileID: 0}

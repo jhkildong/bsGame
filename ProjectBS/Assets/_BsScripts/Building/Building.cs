@@ -157,6 +157,7 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         GameManager.Instance.ChangeIron(-_requireIron);
     }
 
+
     public void Construction(float constSpeed) //건설중
     {
         //canBuild상태에서 상호작용키 입력시, constructing 활성화, 건설애니메이션 시작, constructing인 동안 이벤트 호출. 

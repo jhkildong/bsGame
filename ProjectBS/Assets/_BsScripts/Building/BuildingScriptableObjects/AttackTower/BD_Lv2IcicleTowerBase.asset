@@ -19,6 +19,6 @@ MonoBehaviour:
   _requireWood: 5
   _requireStone: 20
   _requireIron: 0
-  _constTime: 5
+  _constTime: 1
   _repairSpeed: 5
   _nextUpgrade: {fileID: 0}
