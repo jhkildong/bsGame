@@ -233,12 +233,12 @@ public class GameManager : MonoBehaviour
             //Debug.Log(curGameTime);
 
             //�㳷 ����
-            if (!isNight && checkAMPMTime >= 60)
+            if (!isNight && checkAMPMTime >= 6)
             {
                 checkAMPMTime = 0;
                 ChangeToNight();
             }
-            if (isNight && checkAMPMTime >= 60)
+            if (isNight && checkAMPMTime >= 6)
             {
                 checkAMPMTime = 0;
                 ChangeToDay();
