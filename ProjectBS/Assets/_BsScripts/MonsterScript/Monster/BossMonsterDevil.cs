@@ -173,6 +173,7 @@ public class BossMonsterDevil : BossMonster
         }
         yield return new WaitForSeconds(1.0f);
         ObjectPoolManager.Instance.ReleaseObj(this);
+        yield break;
     }
 
     protected override void ChangeState(State s)

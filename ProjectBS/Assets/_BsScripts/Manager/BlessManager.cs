@@ -267,7 +267,8 @@ public class BlessManager : Singleton<BlessManager>
         {
             callStack.Pop().Invoke();
         }
-        GameManager.Instance.ResumeGame();
+        else
+            GameManager.Instance.ResumeGame();
     }
 
     public void SetJobBlessIcon(int ID)
