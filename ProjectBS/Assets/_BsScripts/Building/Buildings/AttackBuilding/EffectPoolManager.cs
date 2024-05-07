@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.Pool;
-using static UnityEditor.PlayerSettings;
 
 public class EffectPoolManager : Singleton<EffectPoolManager> // 싱글턴 패턴. 이펙트 오브젝트 풀링 매니저.
 {
