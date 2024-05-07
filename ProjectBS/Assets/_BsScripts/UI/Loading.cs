@@ -26,33 +26,11 @@ public class Loading : MonoBehaviour
         ao.allowSceneActivation = false;
         myLoadingBar.value = 0.0f;
 
-        /*
-        float timer = 0f;
-        while (!ao.isDone)
-        {
-            yield return null;
-
-            timer += Time.deltaTime;
-            if (ao.progress < 0.9f)
-            {
-                myLoadingBar.value = Mathf.Lerp(ao.progress, 1f, timer);
-                if (myLoadingBar.value >= ao.progress)
-                    timer = 0f;
-            }
-            else
-            {
-                myLoadingBar.value = Mathf.Lerp(myLoadingBar.value, 1f, timer);
-                if (myLoadingBar.value >= 0.99f)
-                    ao.allowSceneActivation = true;
-            }
-        }
-        */
-
         while (myLoadingBar.value < 1.0f)
         {
             yield return StartCoroutine(UpdatingSlider(ao.progress / 0.9f));
         }
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(1.0f);
         ao.allowSceneActivation = true;
     }
 
@@ -65,5 +43,6 @@ public class Loading : MonoBehaviour
         }
         myLoadingBar.value = v;
     }
+
 }
 

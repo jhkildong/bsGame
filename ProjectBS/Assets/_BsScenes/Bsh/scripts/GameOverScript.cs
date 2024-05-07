@@ -46,9 +46,10 @@ public class GameOverScript : MonoBehaviour
         }
         // 불투명도가 목표값에 도달했을 때 추가 작업 가능
     }
-    
+
     public void ExitButton()
     {
+        Time.timeScale = 1;
         Loading.LoadScene(0);
     }
     public void RestartButton()

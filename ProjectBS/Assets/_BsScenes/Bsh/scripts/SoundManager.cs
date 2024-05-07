@@ -46,7 +46,7 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         }
         //이렇게 하면 씬이 전환되더라도 선언되었던 인스턴스가 파괴되지 않는다.
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         audioSources =  Resources.LoadAll<SoundObject>("Sounds");
         
