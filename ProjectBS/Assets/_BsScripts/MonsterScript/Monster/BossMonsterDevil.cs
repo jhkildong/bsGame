@@ -29,7 +29,7 @@ public class BossMonsterDevil : BossMonster
         base.OnEnable();
         if(Data == null)
             return;
-        addState = AdditionalState.None;
+        AddStateChange(AdditionalState.None);
         skill1Timer = 0.0f;
         Com.MyAnim.SetBool(AnimParam.isMoving, true);
         StartCoroutine(Skill1CoolDown());

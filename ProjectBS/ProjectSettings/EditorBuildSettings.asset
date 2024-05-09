@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_BsScenes/Jaejun/Main Menu 1.unity
+    path: Assets/_BsScenes/MainScene/Main Menu 1.unity
     guid: ebe2b1966f0dca8488af6a791fc5450d
   - enabled: 1
-    path: Assets/_BsScenes/Jaejun/LoadingScene.unity
+    path: Assets/_BsScenes/MainScene/LoadingScene.unity
     guid: b833e9ab26343074e93638770180c244
   - enabled: 1
-    path: Assets/_BsScenes/TestScene/BuildTestScene.unity
+    path: Assets/_BsScenes/MainScene/BuildTestScene.unity
     guid: eb384e6283f0a354bb6b2cd1d9c0c5f6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: cd3d68a7b3598e542949340da9cc1f51, type: 2}

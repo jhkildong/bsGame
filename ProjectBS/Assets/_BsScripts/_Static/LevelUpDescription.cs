@@ -14,7 +14,5 @@ public static class LevelUpDescription
 
         //json 파일을 읽어서 DescriptionDic에 저장
         DescriptionDic = JsonConvert.DeserializeObject<Dictionary<int, string[]>>(jsonTextFile.ToString());
-
-            
     }
 }
