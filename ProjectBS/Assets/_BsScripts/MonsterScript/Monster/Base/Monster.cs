@@ -128,6 +128,7 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     protected override void Awake()
     {
         InitRigidbody();
+        _BTRunner = new BehaviorTreeRunner(SettingBT());
     }
 
     //활성화 될 때 상태 초기화
@@ -138,8 +139,6 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
 
         _curHp = Data.MaxHP;
         moveSpeed = Data.Sp;
-        ResetTarget();
-        ChangeState(State.Chase);
     }
 
     #endregion
@@ -149,7 +148,6 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     private void Die()
     {
         Com.MyAnim.SetTrigger(AnimParam.Death);
-        ChangeState(State.Death);
         GameObject go = ItemManager.Instance.DropRandomItem(Data.DropItemList);
         if (go != null)
             go.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0 , Random.Range(-1, 1));
@@ -160,79 +158,91 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
         if(gold != null)
             gold.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
     }
-
-    protected virtual void ChangeTarget(Transform target)
-    {
-        if (myState == State.Death) return;
-        myTarget = target;
-    }
-
-    protected virtual void ResetTarget()
-    {
-        if (myState == State.Death) return;
-        myTarget = PlayerTransform;
-    }
     #endregion
 
-    #region StateMachine
-    ////////////////////////////////StateMachine////////////////////////////////
-    public enum State
+ 
+    #region BehaviorTree
+    private BehaviorTreeRunner _BTRunner;
+    private float playTime = 0.0f;
+    protected Transform myTarget;
+    protected IDamage attackTarget;
+
+    INode SettingBT()
     {
-        Chase, Attack, Death
+        return new SelectorNode(
+            new List<INode>()
+            {
+                new ActionNode(CheckDeath),
+                new SequenceNode (
+                     new List<INode>()
+                     {
+                         new ActionNode(CheckTargetInAttackRange),
+                         new ActionNode(CheckAttackTime),
+                         new ActionNode(AttackTarget)
+                     }),
+                new ActionNode(MoveToPlayer)
+            }
+        );
     }
-    [SerializeField]protected State myState = State.Chase;
-    [SerializeField]protected Transform myTarget;
-    [SerializeField]protected IDamage attackTarget;
-    [SerializeField]protected float playTime;
 
-
-    protected virtual void ChangeState(State s)
+    protected virtual INode.NodeState CheckDeath()
     {
-        if (myState == s) return;
-        myState = s;
-        switch (myState)
+        if (IsDead)
         {
-            case State.Chase:
-                break;
-            case State.Attack:
-                SetDirection(Vector3.zero);
-                attackTarget.TakeDamage(Attack);
-                playTime = Data.AkDelay;
-                break;
-            case State.Death:
-                SetDirection(Vector3.zero);
-                ObjectPoolManager.Instance.ReleaseObj(this);
-                break;
+            Die();
+            ObjectPoolManager.Instance.ReleaseObj(this);
+            return INode.NodeState.Success;
+        }
+        else
+            return INode.NodeState.Failure;
+    }
+
+    protected virtual INode.NodeState CheckTargetInAttackRange()
+    {
+        if (attackTarget != null)
+            return INode.NodeState.Success;
+        else
+            return INode.NodeState.Failure;
+    }
+
+    protected virtual INode.NodeState CheckAttackTime()
+    {
+        SetDirection(Vector3.zero);
+        if (playTime <= 0.0f)
+        {
+            playTime = AttackDelay;
+            return INode.NodeState.Success;
+        }
+        else
+        {
+            playTime -= Time.deltaTime;
+            return INode.NodeState.Running;
         }
     }
 
-    protected virtual void StateProcess()
+    protected virtual INode.NodeState AttackTarget()
     {
-        switch (myState)
+        if (attackTarget != null)
         {
-            case State.Chase:
-                SetDirection(transform.forward);
-                break;
-            case State.Attack:
-                playTime -= Time.deltaTime;
-                if(playTime <= 0)
-                {
-                    attackTarget.TakeDamage(Attack);
-                    playTime = Data.AkDelay;
-                }
-                break;
-            case State.Death:
-                break;
+            attackTarget.TakeDamageEffect(Attack);
+            return INode.NodeState.Success;
         }
+        return INode.NodeState.Failure;
     }
+
+    protected virtual INode.NodeState MoveToPlayer()
+    {
+        SetDirection(transform.forward);
+        return INode.NodeState.Success;
+    }
+    #endregion
 
     protected virtual void Update()
     {
         if (myTarget == null)
-            ResetTarget();
-        StateProcess();
+            myTarget = PlayerTransform;
+        _BTRunner.Operate();
 
-        if (myState == State.Death) return;
         //타겟을 향해 부드럽게 방향전환
         Vector3 targetDirection = myTarget.position - transform.position;
         targetDirection.y = 0.0f;
@@ -244,28 +254,32 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     {
         base.FixedUpdate();
     }
-    #endregion
 
     #region Collision Event
     ////////////////////////////////CollisionEvent////////////////////////////////
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if ((attackMask & (1 << collision.gameObject.layer)) != 0)
+        if (((1 << collision.gameObject.layer) & attackMask) != 0)
         {
-            IDamage AttackTarget = collision.gameObject.GetComponent<IDamage>();
-            if (AttackTarget != null)
+            if (Vector3.Dot(collision.transform.position - transform.position, transform.forward) > 0)
             {
-                attackTarget = AttackTarget;
-                ChangeState(State.Attack);
+                IDamage target = collision.gameObject.GetComponent<IDamage>();
+                if (target != null)
+                {
+                    attackTarget = target;
+                }
             }
         }
     }
 
     protected virtual void OnCollisionExit(Collision collision)
     {
-        if ((attackMask & (1 << collision.gameObject.layer)) != 0)
+        if (((1 << collision.gameObject.layer) & attackMask) != 0)
         {
-            ChangeState(State.Chase);
+            if (attackTarget == collision.gameObject.GetComponent<IDamage>())
+            {
+                attackTarget = null;
+            }
         }
     }
     #endregion
