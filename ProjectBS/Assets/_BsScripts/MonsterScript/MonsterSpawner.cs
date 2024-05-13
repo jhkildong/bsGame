@@ -229,7 +229,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private Dictionary<Stage, HashSet<int>> StageMonsterIdDict = new Dictionary<Stage, HashSet<int>>()
     {
-        { Stage.Stage1,  new HashSet<int>(){0, 1 }                  },
+        { Stage.Stage1,  new HashSet<int>(){0, 1, 9}                  },
         { Stage.Stage2,  new HashSet<int>(){0, 1, 2}                },
         { Stage.Stage3,  new HashSet<int>(){0, 1, 2}                },
         { Stage.Stage4,  new HashSet<int>(){0, 2, 3}                },

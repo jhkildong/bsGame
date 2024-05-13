@@ -20,7 +20,7 @@ public class StraightMoveMonster : GroupMonster
         go.transform.SetParent(this.transform);
         go.transform.localPosition = new Vector3(0, 0, 1);
         target = go.transform;
-        ChangeTarget(target);
+        //ChangeTarget(target);
     }
 
     protected override void OnEnable()
@@ -30,7 +30,7 @@ public class StraightMoveMonster : GroupMonster
         {
             return;
         }
-        ChangeTarget(target);
+        //ChangeTarget(target);
         StartCoroutine(ReleaseAuto());
     }
     protected override void InitCollider(float radius)

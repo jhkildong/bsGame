@@ -14,7 +14,7 @@ public class DemolitionMonster : GroupMonster
         base.Init(data);
         GameObject go = new GameObject("AIPerception");
         go.transform.SetParent(this.transform);
-        go.AddComponent<AIPerception>().Init(attackMask, FindTarget, LostPlayerInRange);
+        go.AddComponent<AIPerception>().Init(attackMask, FindTarget);
         animEvent = GetComponentInChildren<AnimEvent>();
         animEvent.AttackAct += OnAttackPoint;
     }
@@ -33,9 +33,8 @@ public class DemolitionMonster : GroupMonster
         Com.MyAnim.SetBool(AnimParam.Wait, true);
     }
 
-    protected override void ChangeTarget(Transform target)
+    protected void ChangeTarget(Transform target)
     {
-        base.ChangeTarget(target);
         if (myTarget != null) 
             attackTarget = myTarget.gameObject.GetComponent<IDamage>();
         else
@@ -50,8 +49,6 @@ public class DemolitionMonster : GroupMonster
             Transform tr = targetQueue.Peek();
             ChangeTarget(tr);
         }
-
-        ChangeState(State.Attack);
     }
 
     private Transform FindNextTarget()
@@ -63,73 +60,57 @@ public class DemolitionMonster : GroupMonster
         return targetQueue.Count > 0 ? targetQueue.Peek() : null;
     }
 
-    private void LostPlayerInRange()
+
+    #region BehaviorTree
+
+    protected override INode SettingBT()
     {
-        if(targetQueue.Count == 0)
-        {
-            ChangeState(State.Chase);
-        }
-    }
-    
-    protected override void ChangeState(State s)
-    {
-        if (myState == s) return;
-        myState = s;
-        switch (myState)
-        {
-            case State.Chase:
-                Com.MyAnim.SetBool(AnimParam.isAttacking, false);
-                attackTarget = null;
-                break;
-            case State.Attack:
-                break;
-            case State.Death:
-                SetDirection(Vector3.zero);
-                ObjectPoolManager.Instance.ReleaseObj(this);
-                break;
-        }
+        return new SelectorNode(
+            new List<INode>()
+            {
+                new ActionNode(CheckDeath),
+                new SequenceNode (
+                     new List<INode>()
+                     {
+                         new ActionNode(CheckTargetInAttackRange),
+                         new ActionNode(CheckAttackTime),
+                         new ActionNode(AttackTarget)
+                     }),
+                new ActionNode(MoveToTarget)
+            }
+        );
     }
 
-    protected override void StateProcess()
+    protected override INode.NodeState CheckTargetInAttackRange()
     {
-        switch (myState)
-        {
-            case State.Chase:
-                SetDirection(transform.forward);
-                break;
-            case State.Attack:
-                if(targetQueue.Count > 0)
-                {
-                    if (targetQueue.Peek() == null)
-                    {
-                        Transform nextTarget = FindNextTarget();
-                        if (nextTarget == null)
-                            ChangeTarget(PlayerTransform);
-                        else
-                            ChangeTarget(nextTarget);
-                    }
-                }
-                else
-                {
-                    ChangeTarget(PlayerTransform);
-                }
-                Vector3 dir = myTarget.position - transform.position;
-                if(dir.magnitude > DemolitionData.AttackRange)
-                {
-                    SetDirection(transform.forward);
-                    Com.MyAnim.SetBool(AnimParam.isAttacking, false);
-                }
-                else
-                {
-                    SetDirection(Vector3.zero);
-                    Com.MyAnim.SetBool(AnimParam.isAttacking, true);
-                }
-                break;
-            case State.Death:
-                break;
-        }
+        myTarget = FindNextTarget();
+        if (attackTarget != null && (Vector3.SqrMagnitude(myTarget.position - transform.position) <= DemolitionData.AttackRange))
+            return INode.NodeState.Success;
+        else
+            return INode.NodeState.Failure;
     }
-    
+
+    protected override INode.NodeState AttackTarget()
+    {
+        if (myTarget != null)
+        {
+            Com.MyAnim.SetTrigger(AnimParam.Attack);
+            return INode.NodeState.Success;
+        }
+        return INode.NodeState.Failure;
+    }
+
+    protected override INode.NodeState MoveToTarget()
+    {
+        if (myTarget == null)
+            myTarget = PlayerTransform;
+        SetDirection(transform.forward);
+        return INode.NodeState.Success;
+    }
+
+
+    #endregion
+
     public void OnAttackPoint()
     {
         Vector3 dir = myTarget.position - transform.position;

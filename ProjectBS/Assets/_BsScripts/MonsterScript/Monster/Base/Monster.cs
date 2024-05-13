@@ -84,7 +84,6 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
         effectData.effectTime = 0.1f;
         effectData.SetRenderer(_monsterComponent.Myrenderers);
 
-        ResetTarget();
         DeadAct += Die;
 
         #region BuffChangeAct Setting
@@ -167,7 +166,7 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     protected Transform myTarget;
     protected IDamage attackTarget;
 
-    INode SettingBT()
+    protected virtual INode SettingBT()
     {
         return new SelectorNode(
             new List<INode>()
@@ -180,7 +179,7 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
                          new ActionNode(CheckAttackTime),
                          new ActionNode(AttackTarget)
                      }),
-                new ActionNode(MoveToPlayer)
+                new ActionNode(MoveToTarget)
             }
         );
     }
@@ -200,14 +199,19 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     protected virtual INode.NodeState CheckTargetInAttackRange()
     {
         if (attackTarget != null)
+        {
+            SetDirection(Vector3.zero);
             return INode.NodeState.Success;
+        }
         else
+        {
+            SetDirection(transform.forward);
             return INode.NodeState.Failure;
+        }
     }
 
     protected virtual INode.NodeState CheckAttackTime()
     {
-        SetDirection(Vector3.zero);
         if (playTime <= 0.0f)
         {
             playTime = AttackDelay;
@@ -227,12 +231,20 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
             attackTarget.TakeDamageEffect(Attack);
             return INode.NodeState.Success;
         }
-        return INode.NodeState.Failure;
+        else
+        {
+            SetDirection(transform.forward);
+            return INode.NodeState.Failure;
+        }
     }
 
-    protected virtual INode.NodeState MoveToPlayer()
+    protected virtual INode.NodeState MoveToTarget()
     {
-        SetDirection(transform.forward);
+        if (myTarget == null)
+        {
+            SetDirection(Vector3.zero);
+            return INode.NodeState.Failure;
+        }
         return INode.NodeState.Success;
     }
     #endregion

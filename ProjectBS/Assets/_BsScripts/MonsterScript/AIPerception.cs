@@ -6,10 +6,10 @@ using UnityEngine.Events;
 public class AIPerception : MonoBehaviour
 {
     public event UnityAction<Transform> findEnemy;
-    public event UnityAction lostEnemy;
+    public event UnityAction<Transform> lostEnemy;
     private LayerMask myMask;
 
-    public void Init(LayerMask mask, UnityAction<Transform> find = null, UnityAction lost = null)
+    public void Init(LayerMask mask, UnityAction<Transform> find = null, UnityAction<Transform> lost = null)
     {
         myMask = mask;
         findEnemy += find;
@@ -32,7 +32,7 @@ public class AIPerception : MonoBehaviour
     {
         if (((int)BSLayerMasks.Player & (1 << other.gameObject.layer)) != 0)
         {
-            lostEnemy?.Invoke();
+            lostEnemy?.Invoke(other.transform);
         }
     }
 }

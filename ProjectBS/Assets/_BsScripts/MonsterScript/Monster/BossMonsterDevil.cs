@@ -12,6 +12,7 @@ public class BossMonsterDevil : BossMonster
         (col as CapsuleCollider).center = new Vector3(0, 1.25f, 0);
     }
 
+    /*
     public override void Init(MonsterData data)
     {
         base.Init(data);
@@ -253,4 +254,5 @@ public class BossMonsterDevil : BossMonster
         }
         leftAttack = !leftAttack;
     }
+    */
 }
