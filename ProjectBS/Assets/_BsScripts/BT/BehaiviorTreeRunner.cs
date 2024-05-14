@@ -87,6 +87,7 @@ public sealed class SequenceNode : INode
 public class BehaviorTreeRunner
 {
     INode _rootNode;
+    INode.NodeState _state;
 
     public BehaviorTreeRunner(INode root)
     {
@@ -95,7 +96,11 @@ public class BehaviorTreeRunner
 
     public void Operate()
     {
-        _rootNode.Evaluate();
+        _state = _rootNode.Evaluate();
+        if (_state == INode.NodeState.Running)
+        {
+            
+        }
     }
 
 }
