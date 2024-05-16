@@ -222,9 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 948781673}
-  offsetX: 0
-  offsetY: 11
-  offsetZ: -6
   cameraSpeed: 10
 --- !u!81 &70824009
 AudioListener:
@@ -509,6 +506,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5732704864016183740, guid: f7dca73a90d20ce4b96de712495b37b6, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -844,12 +844,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  Sunlight: {fileID: 0}
+  curSecText: {fileID: 0}
+  curMinText: {fileID: 0}
+  myJob: {fileID: 0}
+  myTypeIdx: 0
   gameStart: 0
   gameOver: 0
   gamePaused: 0
-  curGameTime: 0
+  curSec: 0
+  curMin: 0
+  curTime: 0
   checkAMPMTime: 0
   curDay: 0
+  _saveData:
+    Attack: 0
+    AkSp: 0
+    MvSp: 0
+    MagnetFieldRange: 0
+    MaxHp: 0
+    ExpBonus: 0
+    MyGold: 0
+    RerollCount: 0
 --- !u!4 &279786800
 Transform:
   m_ObjectHideFlags: 0
@@ -919,7 +935,10 @@ MonoBehaviour:
   _myWoodText: {fileID: 0}
   _myStoneText: {fileID: 0}
   _myIronText: {fileID: 0}
-  _myExpText: {fileID: 0}
+  _myGoldText: {fileID: 0}
+  _curSec: {fileID: 0}
+  _curMin: {fileID: 0}
+  _myExp: {fileID: 0}
 --- !u!1 &389628471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,7 +1328,10 @@ MonoBehaviour:
   _myWoodText: {fileID: 0}
   _myStoneText: {fileID: 0}
   _myIronText: {fileID: 0}
-  _myExpText: {fileID: 0}
+  _myGoldText: {fileID: 0}
+  _curSec: {fileID: 0}
+  _curMin: {fileID: 0}
+  _myExp: {fileID: 0}
 --- !u!1 &551689990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,6 +1676,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 3521843912368141584, guid: e63ee91e47ca24b47b1ba0db9c6abc57, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -2004,31 +2029,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  isMoving: 0
-  isBlocked: 0
-  isOutOfControl: 0
-  worldMoveDir: {x: 0, y: 0, z: 0}
-  outOfControllDuration: 0
   myAttackPoint: {fileID: 64482260}
   attackMask:
     serializedVersion: 2
     m_Bits: 0
   _maxHp: 0
+  tempMaxHp: 0
   _curHp: 1
-  _speedCeof: 1
-  _attackCeof: 1
   _attack: 100
+  _atkSpeed: 0
   _effectData:
     effectCount: 3
     effectTime: 0.1
     effectColor: {r: 1, g: 0, b: 0, a: 1}
     renderers: []
-    mainTexture: {fileID: 0}
-    mainColor: {r: 0, g: 0, b: 0, a: 0}
+    mainTextures: []
+    mainColor:
+    - {r: -1.7023039e-30, g: 6.52e-43, b: 0.0000110394785, a: 0.00000016690396}
+    - {r: 2.960641e-39, g: 6.53e-43, b: 4.6e-44, a: 2.079817e+20}
+    - {r: -1.7023039e-30, g: 6.52e-43, b: -1.70231e-30, a: 6.52e-43}
+    - {r: 2.960686e-39, g: 6.53e-43, b: 6.9e-44, a: 1.4664299e-19}
   additonalAtk: 0
+  _constSpeed: 0
+  _repairSpeed: 0
   WSADInput: 0
   Com: {fileID: 0}
   rotatingBody: {fileID: 0}
+  magnetField: {fileID: 0}
+  isCastingSkill: 0
 --- !u!4 &948781676
 Transform:
   m_ObjectHideFlags: 0
@@ -2761,6 +2789,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 8414439279532295106, guid: 373b4871c09cc944c9ec5a3e17796b83, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -2973,14 +3004,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b0ec2250f80604ebb8b34708cee748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalMonsterDatas: []
-  bossMonsterDatas: []
+  monsterDatas: []
   respawnDist: 20
-  applyRespawn: 1
   respawnTime: 2
-  bossRespawnTime: 20
-  init: 200
-  max: 200
+  _curStage: 0
 --- !u!1 &1726570585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3789,10 +3816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb79cd82469b81c4b9f42114effe982b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - data: {fileID: 11400000, guid: 1cc8d47902f51fa47a5c7f5ac1a60dc2, type: 2}
-  - data: {fileID: 11400000, guid: 10ffcfb7f7f689c439629a28b6eaaf6d, type: 2}
-  - data: {fileID: 11400000, guid: 7696f5c3e683b4345a75a69d04471700, type: 2}
+  itemDatas: []
 --- !u!4 &1887881580
 Transform:
   m_ObjectHideFlags: 0
@@ -4070,6 +4094,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 7215726233801088367, guid: b87f8b2fa9976fe488546514a7e45aa3, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
