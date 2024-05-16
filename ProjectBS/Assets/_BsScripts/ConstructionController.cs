@@ -85,11 +85,11 @@ public class ConstructionController : MonoBehaviour
         else if (Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), transform.forward,
             out hit, buildApplyRange, (int)BSLayerMasks.Building))
         {
-            if (hitTarget != hit.transform)
+            if (hit.transform!=null)
             {
                 hitTarget = hit.transform;
                 buildTarget = hitTarget.GetComponentInChildren<Building>();
-                //업그레이드 중이 아닐때 ui팝업
+                //업그레이드 중이 아닐때 ui팝업kj
                 if (!buildTarget.isUpgrading)
                 {
                     buildingInteractionUI.gameObject.SetActive(true);

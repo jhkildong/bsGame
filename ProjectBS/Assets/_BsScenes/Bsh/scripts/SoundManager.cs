@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 
 
@@ -35,9 +37,11 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
+
         if (_instance == null)
         {
             _instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         // 인스턴스가 존재하는 경우 새로생기는 인스턴스를 삭제한다. (GameManager 인스턴스는 언제나 하나여야 한다 )
         else if (_instance != this)
@@ -45,31 +49,99 @@ public class SoundManager : MonoBehaviour
             Debug.Log("씬에 두개이상의 인스턴스가 있습니다");
             Destroy(gameObject);
         }
+
         //이렇게 하면 씬이 전환되더라도 선언되었던 인스턴스가 파괴되지 않는다.
         //DontDestroyOnLoad(gameObject);
 
-        audioSources =  Resources.LoadAll<SoundObject>("Sounds");
-        
-        foreach (var source in audioSources) 
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.buildIndex == 0)
         {
-            string Key =  source.ID.ToString();
-            if (soundPool.ContainsKey(Key))
+            //딕셔너리의 모든 오브젝트 파괴 (임시 조치 추후 수정필요!!)
+            foreach (var kvp in soundPool)
             {
-                continue;
+                foreach (var obj in kvp.Value)
+                {
+                    Destroy(obj);
+                }
             }
-            soundPool[Key] = new Stack<GameObject>();
-            for(int i = 0; i<5; i++)
-            {
-                GameObject soundObj = Instantiate(source.gameObject);
-                soundPool[Key].Push(soundObj);
-                soundObj.SetActive(false);
+            soundPool.Clear(); // 딕셔너리를 비워줍니다.
+
+            if (audioSources.Length == 0) { 
+                audioSources = Resources.LoadAll<SoundObject>("Sounds");
+
+                foreach (var source in audioSources)
+                {
+                    string Key = source.ID.ToString();
+                    if (soundPool.ContainsKey(Key))
+                    {
+                        continue;
+                    }
+                    soundPool[Key] = new Stack<GameObject>();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        GameObject soundObj = Instantiate(source.gameObject,transform);
+                        soundPool[Key].Push(soundObj);
+                        soundObj.SetActive(false);
+                    }
+                }
             }
+            //메인화면 배경음 재생. 추후 수정 예정
+            SoundManager.Instance.bgmList.Clear();
+            GameObject bgm = Resources.Load<GameObject>("Sounds/6097_MainMenuBgm");
+            SoundManager.Instance.PlaySound(bgm, Vector3.zero, 6097);
+
         }
 
+        if (scene.buildIndex == 1)
+        {
+            soundPool.Clear();
+        }
+
+        if(scene.buildIndex == 2)
+        {
+            //딕셔너리의 모든 오브젝트 파괴 (임시 조치 추후 수정필요!!)
+            foreach (var kvp in soundPool)
+            {
+                foreach (var obj in kvp.Value)
+                {
+                    Destroy(obj);
+                }
+            }
+            soundPool.Clear(); // 딕셔너리를 비워줍니다.
+
+            if (audioSources.Length == 0)
+            {
+                audioSources = Resources.LoadAll<SoundObject>("Sounds");
+
+                foreach (var source in audioSources)
+                {
+                    string Key = source.ID.ToString();
+                    if (soundPool.ContainsKey(Key))
+                    {
+                        continue;
+                    }
+                    soundPool[Key] = new Stack<GameObject>();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        GameObject soundObj = Instantiate(source.gameObject,transform);
+                        soundPool[Key].Push(soundObj);
+                        soundObj.SetActive(false);
+                    }
+                }
+            }
+        }
     }
 
     //오디오 중첩시 볼륨 배분 코드
     public List<AudioSource> audioList;
+    public List<AudioSource> bgmList;
+
     private float originalVolume;
 
     void Start()
@@ -108,7 +180,7 @@ public class SoundManager : MonoBehaviour
         string Key = key.ToString();
         //audioClip = clip.soundClip;
 
-        if (soundPool.ContainsKey(Key) && soundPool[Key].Count > 0)
+        if (soundPool.ContainsKey(Key) && soundPool[Key].Count > 0 && soundPool[Key] !=null)
         {
             // 풀에 해당하는 키가 있고, 풀에 오브젝트가 있는 경우
             clip = soundPool[Key].Pop();
@@ -116,19 +188,35 @@ public class SoundManager : MonoBehaviour
 
             //사운드가 동시에 여럿 재생될때 각 볼륨크기를 배분하여 재생한다.
             AudioSource a = clip.GetComponent<AudioSource>();
-            if (!audioList.Contains(a))
+            if (a.outputAudioMixerGroup.ToString() == "Effect")
             {
-                audioList.Add(clip.GetComponent<AudioSource>());
-                if (originalVolume == 0)
+                if (!audioList.Contains(a))
                 {
-                    originalVolume = audioList[0].volume;
+                    audioList.Add(clip.GetComponent<AudioSource>());
+                    if (originalVolume == 0)
+                    {
+                        originalVolume = audioList[0].volume;
+                    }
                 }
+                clip.transform.position = tf;
+                clip.gameObject.SetActive(true);
+            }
+            else if(a.outputAudioMixerGroup.ToString() == "Bgm")
+            {
+
+
+                if (!bgmList.Contains(a))
+                {
+                    bgmList.Add(clip.GetComponent<AudioSource>());
+                    if (originalVolume == 0)
+                    {
+                        originalVolume = bgmList[0].volume;
+                    }
+                }
+                clip.transform.position = tf;
+                clip.gameObject.SetActive(true);
             }
 
-
-
-            clip.transform.position = tf;
-            clip.gameObject.SetActive(true);
         }
         else
         {

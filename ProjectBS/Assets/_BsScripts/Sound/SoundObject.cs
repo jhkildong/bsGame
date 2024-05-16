@@ -32,6 +32,8 @@ public class SoundObject : MonoBehaviour , IPoolable
     IEnumerator AudioLengthCheck(float length)
     {
         yield return new WaitForSeconds(length);
+
+        if(!audioSource.loop)
         SoundManager.Instance.ReleaseObject(gameObject, ID);
     }
 }

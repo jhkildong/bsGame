@@ -288,10 +288,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1fb184c6fd4d24494031307c85814d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTarget: {fileID: 0}
-  currentPos: {x: 0, y: 0, z: 0}
   _id: 5010
   _slider: {fileID: 5710340521321195527}
+  myTarget: {fileID: 0}
+  currentPos: {x: 0, y: 0, z: 0}
+  width: 0
+  height: 0
 --- !u!1 &7533855209930444993
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 8
   _name: GellySphere
-  _attack: 1
+  _attack: 4
   _attackDelay: 1
   _speed: 0
   _maxHp: 50

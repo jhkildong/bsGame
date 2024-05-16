@@ -7,6 +7,7 @@ public class WarriorSkill : PlayerSkill
     private float attackInterval = 0.3f;
     Coroutine takingDamage;
 
+    [SerializeField] private HitEffects hitEffectPrefab; //박지민 추가 (타격 이펙트)
     private void OnEnable()
     {
         takingDamage = StartCoroutine(TakingDamage());
@@ -39,6 +40,8 @@ public class WarriorSkill : PlayerSkill
             if (damage != null)
             {
                 damage.TakeDamageEffect(Attack);
+
+                EffectPoolManager.Instance.SetActiveHitEffect(hitEffectPrefab, collider.transform.position, hitEffectPrefab.ID); //박지민 추가 (타격 이펙트)
             }
         }
     }

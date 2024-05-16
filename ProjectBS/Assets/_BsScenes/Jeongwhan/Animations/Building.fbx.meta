@@ -494,7 +494,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.569468
+        functionName: BuildHammerHit
+        data: 
+        objectReferenceParameter: {fileID: 382737889623027164, guid: 520a4a6534dfd6d409c9f7135cf2346f, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -638,8 +645,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Villager@Hammer-Working01_B
-      takeName: Villager@Hammer-Working01_B
+      name: Villager@Hammer-Working01_C
+      takeName: Villager@Hammer-Working01_C
       internalID: 0
       firstFrame: 0
       lastFrame: 23
@@ -661,7 +668,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.5533039
+        functionName: BuildHammerHit
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 34df74dd99a2fce4f9de4fbaaa5b66a3, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -828,7 +842,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.57978296
+        functionName: BuildHammerHit
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 34df74dd99a2fce4f9de4fbaaa5b66a3, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

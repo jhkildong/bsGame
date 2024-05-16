@@ -4,7 +4,6 @@ public abstract class FollowingTargetUI : UIComponent
 {
     public Transform myTarget;
     public Vector3 currentPos;
-
     void Update()
     {
         if (myTarget != null)

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ak: 0
   _particleSystem: {fileID: 4727756418422208569}
+  hitEffectPrefab: {fileID: 6741226646432807674, guid: af29735476141dc4cbc4302e4d7c2c0d, type: 3}
 --- !u!199 &4772143316495180204
 ParticleSystemRenderer:
   serializedVersion: 6

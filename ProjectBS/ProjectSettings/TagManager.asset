@@ -44,3 +44,6 @@ TagManager:
   - name: TestSortingLayer
     uniqueID: 375163843
     locked: 0
+  - name: HpBar
+    uniqueID: 1676403309
+    locked: 0

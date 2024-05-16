@@ -72,31 +72,19 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
             ChangeHpAct?.Invoke((float)_curHp / (float)_maxHp);
         }
     }
-    /*
-    public Building(BuildingData data)
-    {
-       Data = data;
-        cp = Data.curHp;
-    } 
-    */
-
-    //private InstantiateBuilding installBuilding;
+    private Bounds bounds; //Mesh Renderer의 Bounds 속성. Bounds는 해당 Mesh Renderer가 렌더링되는 공간을 특정
+    private Vector3 mySize;
 
     protected virtual void Start()
     {
         SetBuildingStat();
         Debug.Log("building" + _constTime);
-        /*
-        Renderer[] myRenderer = gameObject.GetComponentsInChildren<Renderer>();
-        foreach(Renderer renderer in myRenderer)
-        {
-            renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 1f);
-        }
-        */
 
-        //installBuilding.BuildingInstalled += IsInstalled;
-        //hpBar = UIManager.Instance.CreateUI(UIID.BuildingHpBar, CanvasType.DynamicCanvas) as BuildingHpBar; // 체력바 생성
-        //hpBar.gameObject.SetActive(true);
+
+        //체력바 위치 배치를 위한 나의 크기 측정
+        Collider collider = GetComponent<Collider>();
+        bounds = collider.bounds; 
+        mySize = bounds.size;
     }
     
     public void SetBuildingStat()
@@ -156,6 +144,12 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         GameManager.Instance.ChangeStone(-_requireStone);
         GameManager.Instance.ChangeIron(-_requireIron);
     }
+    public void UseUpgradeResources()
+    {
+        GameManager.Instance.ChangeWood(-_upgradeWood);
+        GameManager.Instance.ChangeStone(-_upgradeStone);
+        GameManager.Instance.ChangeIron(-_upgradeIron);
+    }
 
 
     public void Construction(float constSpeed) //건설중
@@ -212,8 +206,8 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
 
         Debug.Log("건설 완료");
         BuildingHpBar buildingHpBar = UIManager.Instance.GetUI(UIID.BuildingHpBar, CanvasType.DynamicCanvas) as BuildingHpBar;
+        buildingHpBar.height = mySize.y;
         buildingHpBar.myTarget = transform;
-        
         ChangeHpAct += buildingHpBar.ChangeHP; //체력변동이벤트를 등록
         CurHp = _maxHp;
         GameManager.Instance.Player.IsBuilding = false;
@@ -224,7 +218,7 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         if (!isUpgrading && (GameManager.Instance.CurWood() >= _upgradeWood && GameManager.Instance.CurStone() >= _upgradeStone && GameManager.Instance.CurIron() >= _upgradeIron))
         {
             isUpgrading = true;
-            UseResources();
+            UseUpgradeResources();
             ProgressBar progressBar = UIManager.Instance.GetUI(UIID.ProgressBar, CanvasType.DynamicCanvas) as ProgressBar;
             progressBar.myTarget = transform;
             ConstructionProgress += progressBar.ChnageProgress;
@@ -266,7 +260,9 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
     public void UpgradeComplete()
     {
         Vector3 pos = transform.position;
-        GameObject upgradeBD = Instantiate(_nextUpgrade.gameObject, pos, transform.rotation);
+        GameObject upgradeBD = Instantiate(_nextUpgrade.gameObject, pos + new Vector3(0,0,0.000001f), transform.rotation); //+ new Vector3(0,0,0.0000001f)한 이유 -> ConstrunctionController에서 건물옵션ui를 띄워줄때,
+                                                                                                                           //ray에hit한 건물의 transform을 검사 기준으로 하고있어서(업그레이드되었을때 ui가 바로안뜸)
+
         Building bd = upgradeBD.GetComponent<Building>();
         bd.isInstalled = true;
         bd.iscompletedBuilding = true;
@@ -276,6 +272,7 @@ public abstract class Building : MonoBehaviour, IDamage, IHealing
         bd.gameObject.SetActive(true);
 
         BuildingHpBar buildingHpBar = UIManager.Instance.GetUI(UIID.BuildingHpBar, CanvasType.DynamicCanvas) as BuildingHpBar;
+        buildingHpBar.height = mySize.y;
         buildingHpBar.myTarget = bd.transform;
         bd.ChangeHpAct += buildingHpBar.ChangeHP;
         bd.CurHp = _maxHp;

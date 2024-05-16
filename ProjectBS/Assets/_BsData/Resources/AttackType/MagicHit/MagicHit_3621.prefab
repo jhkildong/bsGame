@@ -14578,6 +14578,7 @@ GameObject:
   - component: {fileID: 8260617210669617124}
   - component: {fileID: -401560956884567136}
   - component: {fileID: 8260617210669617127}
+  - component: {fileID: 4032787197992407222}
   m_Layer: 0
   m_Name: MagicHit_3621
   m_TagString: Untagged
@@ -14619,8 +14620,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 3621
   _name: 
+  _description: 
+  _icon: {fileID: 0}
   _attack: 0
-  _speed: 0
   _size: 0
   _particleSystem: {fileID: 8260617210669617124}
   prefab: {fileID: 8260617210669617129}
@@ -19441,6 +19443,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4032787197992407222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8260617210669617129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c919f1586ae864a82932be0fb129e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3621
+  sound: {fileID: -3073313066435453973, guid: 632e209022844e24a830f4302d005bc0, type: 3}
 --- !u!1 &8260617210803778311
 GameObject:
   m_ObjectHideFlags: 0

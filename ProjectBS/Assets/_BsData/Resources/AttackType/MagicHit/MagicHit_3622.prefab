@@ -4841,6 +4841,7 @@ GameObject:
   - component: {fileID: 934617562227915429}
   - component: {fileID: 934617562227915450}
   - component: {fileID: 8235033863261586764}
+  - component: {fileID: -9039196077450219014}
   m_Layer: 0
   m_Name: MagicHit_3622
   m_TagString: Untagged
@@ -4883,8 +4884,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 3622
   _name: 
+  _description: 
+  _icon: {fileID: 0}
   _attack: 0
-  _speed: 0
   _size: 0
   _particleSystem: {fileID: 934617562227915429}
   prefab: {fileID: 934617562227915448}
@@ -9705,6 +9707,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-9039196077450219014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934617562227915448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c919f1586ae864a82932be0fb129e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3622
+  sound: {fileID: 2966270767439566703, guid: 27543cbb07f79604f8c1a18f4ed4e060, type: 3}
 --- !u!1 &934617562851771037
 GameObject:
   m_ObjectHideFlags: 0

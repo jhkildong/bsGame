@@ -204,8 +204,14 @@ MonoBehaviour:
   _constTime: 0
   _repairSpeed: 0
   _nextUpgrade: {fileID: 0}
+  _upgradeTime: 0
+  _upgradeWood: 0
+  _upgradeStone: 0
+  _upgradeIron: 0
   isInstalled: 0
   iscompletedBuilding: 0
+  hpBar: {fileID: 0}
+  AuraEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -230,7 +236,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.7
+  m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1865165469225620949
 GameObject:

@@ -921,6 +921,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1106372073353851931, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106372073353851931, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106372073353851931, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
+      propertyPath: m_MinValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789404822979650477, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: c1430b2ae8ebedc4f92f4064bc47ee18, type: 2}
+    - target: {fileID: 2789404822979650477, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
+      propertyPath: mixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: c1430b2ae8ebedc4f92f4064bc47ee18, type: 2}
     - target: {fileID: 3129788905924443574, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -933,6 +953,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4311896033286554950, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: c1430b2ae8ebedc4f92f4064bc47ee18, type: 2}
+    - target: {fileID: 4311896033286554950, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
+      propertyPath: mixerGroup
+      value: 
+      objectReference: {fileID: 3010933257010193804, guid: c1430b2ae8ebedc4f92f4064bc47ee18, type: 2}
     - target: {fileID: 4563852223152696333, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1045,6 +1073,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7313116220688703786, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: c1430b2ae8ebedc4f92f4064bc47ee18, type: 2}
+    - target: {fileID: 7313116220688703786, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
+      propertyPath: mixerGroup
+      value: 
+      objectReference: {fileID: 6309651976441897418, guid: c1430b2ae8ebedc4f92f4064bc47ee18, type: 2}
     - target: {fileID: 7709932073719335907, guid: 595fb62a29e81fa4eb8275bd7afb7773, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1466,6 +1502,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &899807279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899807281}
+  - component: {fileID: 899807280}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &899807280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899807279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9201c2152f6d93a47a0188fe52117116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSources: []
+  audioList: []
+  bgmList: []
+--- !u!4 &899807281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899807279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.1042094, y: 1.0397216, z: -5.9350643}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &942116342
 GameObject:
   m_ObjectHideFlags: 0
@@ -4339,3 +4422,4 @@ SceneRoots:
   - {fileID: 366619125}
   - {fileID: 364775009}
   - {fileID: 1037324912}
+  - {fileID: 899807281}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PointWeapon : Weapon
 {
     [SerializeField] private ParticleSystem _particleSystem;
-
+    [SerializeField] private HitEffects hitEffectPrefab; //박지민 추가 (타격 이펙트)
     private void OnEnable()
     {
         _particleSystem.Play();
@@ -25,6 +25,7 @@ public class PointWeapon : Weapon
             {
                 obj.TakeDamageEffect(Ak);
                 Debug.Log("Attack");
+                EffectPoolManager.Instance.SetActiveHitEffect(hitEffectPrefab, col.transform.position, hitEffectPrefab.ID); //박지민 추가 (타격 이펙트)
             }
         }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BD_FirePlaceHealStats
   m_EditorClassIdentifier: 
   _healAmount: 2
-  _healDelay: 0.5
+  _healDelay: 1
   _hasDuratuon: 1
   _duration: 10
   _targetLayer:

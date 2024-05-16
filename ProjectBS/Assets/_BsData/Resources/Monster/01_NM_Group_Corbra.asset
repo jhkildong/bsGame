@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 1
   _name: Corbra
-  _attack: 1
+  _attack: 2
   _attackDelay: 1
   _speed: 1
   _maxHp: 20
