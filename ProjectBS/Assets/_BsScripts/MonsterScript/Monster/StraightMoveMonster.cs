@@ -20,7 +20,7 @@ public class StraightMoveMonster : GroupMonster
         go.transform.SetParent(this.transform);
         go.transform.localPosition = new Vector3(0, 0, 1);
         target = go.transform;
-        ChangeTarget(target);
+        myTarget = target;
     }
 
     protected override void OnEnable()
@@ -30,7 +30,7 @@ public class StraightMoveMonster : GroupMonster
         {
             return;
         }
-        ChangeTarget(target);
+        myTarget = target;
         StartCoroutine(ReleaseAuto());
     }
     protected override void InitCollider(float radius)
@@ -51,7 +51,6 @@ public class StraightMoveMonster : GroupMonster
         {
             IDamage AttackTarget = other.gameObject.GetComponent<IDamage>();
             AttackTarget.TakeDamage(Attack);
-            //ChangeState(State.Attack);
         }
     }
 

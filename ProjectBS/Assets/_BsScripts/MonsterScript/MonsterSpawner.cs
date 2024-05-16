@@ -22,7 +22,7 @@ public class MonsterSpawner : MonoBehaviour
     private WeightedRandomPicker<NormalMonster> monsterWeightRandom = new WeightedRandomPicker<NormalMonster>();
     private List<int> stageInBossIdList = new List<int>();
     [SerializeField] private float respawnDist = 20.0f;
-    [SerializeField] private float respawnTime = 1.5f;
+    private float respawnTime = 1.5f;
     private float nightRespawnTime;
     private float bossRespawnTime = 30.0f;
 
@@ -62,8 +62,8 @@ public class MonsterSpawner : MonoBehaviour
         spawnCoroutine = StartCoroutine(RandomMonsterSpawnByStage(Stage.Stage1));
         GameManager.Instance.ChangeDayAct += (day) =>
         {
-            if (day >= 10)
-                day = 10;
+            if (day >= 9)
+                day = 9;
             CurStage = (Stage)day;
         };
         GameManager.Instance.ChangeAMPMAct += (state) => { nightRespawnTime = state ? 0.5f : 1.0f; };
@@ -113,6 +113,8 @@ public class MonsterSpawner : MonoBehaviour
         {
             if (normalMonsterDict.ContainsKey(id))
             {
+                if (normalMonsterDict[id].Data is SurroundMonsterData)
+                    continue;
                 monsterWeightRandom.Add(normalMonsterDict[id], normalMonsterDict[id].NormalData.Weight);
             }
             else if (bossMonsterDict.ContainsKey(id))
@@ -126,6 +128,10 @@ public class MonsterSpawner : MonoBehaviour
         }
         while (true)
         {
+            if(monsterWeightRandom.Count == 0)
+            {
+                yield break;
+            }
             NormalMonster spawnMonster = monsterWeightRandom.GetRandomPick();
             switch (spawnMonster.NormalData.Type)
             {
@@ -149,7 +155,6 @@ public class MonsterSpawner : MonoBehaviour
 
     private Vector3 GetRandomPosInCircle(Vector3 thisPos)
     {
-        Random.InitState((int)(System.DateTime.Now.Ticks % int.MaxValue));
         float rndAngle = Random.value * Mathf.PI * 2.0f;
         Vector3 rndPos = new Vector3(Mathf.Cos(rndAngle), 0f, Mathf.Sin(rndAngle)) * respawnDist;
         rndPos += thisPos;
@@ -165,12 +170,12 @@ public class MonsterSpawner : MonoBehaviour
 
     private void GroupSpawn(NormalMonster monster)
     {
+        Vector3 spawnPos = GetRandomPosInCircle(transform.position);
         for (int i = 0; i < (monster as GroupMonster).GroupData.Amount; ++i)
         {
-            Random.InitState((int)(System.DateTime.Now.Ticks % int.MaxValue));
-            Vector3 addPos = new Vector3(Random.Range(0, 2.0f), 0, Random.Range(0, 2.0f));
+            Vector3 addPos = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f));
             GameObject go = ObjectPoolManager.Instance.GetObj(monster).This.gameObject;
-            go.transform.position = GetRandomPosInCircle(transform.position) + addPos;
+            go.transform.position = spawnPos + addPos;
             if (monster.NormalData.Type.HasFlag(MonsterType.StraightMove))
             {
                 go.transform.LookAt(transform.position);
@@ -229,11 +234,11 @@ public class MonsterSpawner : MonoBehaviour
 
     private Dictionary<Stage, HashSet<int>> StageMonsterIdDict = new Dictionary<Stage, HashSet<int>>()
     {
-        { Stage.Stage1,  new HashSet<int>(){0, 1 }                  },
-        { Stage.Stage2,  new HashSet<int>(){0, 1, 2}                },
-        { Stage.Stage3,  new HashSet<int>(){0, 1, 2}                },
-        { Stage.Stage4,  new HashSet<int>(){0, 2, 3}                },
-        { Stage.Stage5,  new HashSet<int>(){0, 2, 3, 6,    }        },
+        { Stage.Stage1,  new HashSet<int>(){500 }                  },
+        { Stage.Stage2,  new HashSet<int>(){0, 1, 2, 500}                },
+        { Stage.Stage3,  new HashSet<int>(){0, 1, 2, 500}                },
+        { Stage.Stage4,  new HashSet<int>(){0, 2, 3, 500}                },
+        { Stage.Stage5,  new HashSet<int>(){0, 2, 3, 6,500    }        },
         { Stage.Stage6,  new HashSet<int>(){0, 2, 3, 7, 500}        },
         { Stage.Stage7,  new HashSet<int>(){0, 2, 3, 4, 6, 500}     },
         { Stage.Stage8,  new HashSet<int>(){0, 2, 3, 5, 6, 500}     },

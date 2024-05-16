@@ -27,6 +27,8 @@ MonoBehaviour:
   - ID: 2004
     dropChance: 50
   - ID: 2500
+    dropChance: 0
+  - ID: 2015
     dropChance: 50
   _weight: 8
   _type: 2

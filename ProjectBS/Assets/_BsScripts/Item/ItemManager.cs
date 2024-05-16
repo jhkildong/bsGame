@@ -42,6 +42,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField, ReadOnly]
     ItemData[] itemDatas;
     Dictionary<int, Item> itemDic = new Dictionary<int, Item>();
+    List<Item> DropedItems = new List<Item>();
     
     private void Start()
     {
@@ -68,13 +69,13 @@ public class ItemManager : MonoBehaviour
 
     public GameObject DropRandomItem(List<dropItem> items)
     {
-        Random.InitState((int)(System.DateTime.Now.Ticks % int.MaxValue));
         float rnd = Random.Range(0, 100);
         foreach(var dropitem in items)
         {
             if(dropitem.dropChance > rnd)
             {
                 GameObject item = ObjectPoolManager.Instance.GetObj(itemDic[dropitem.ID]).This.gameObject;
+                DropedItems.Add(item.GetComponent<Item>());
                 return item;
             }
             else
@@ -89,20 +90,34 @@ public class ItemManager : MonoBehaviour
     {
         ExpItem item = ObjectPoolManager.Instance.GetObj(itemDic[2500]) as ExpItem;
         item.Exp = (int)exp;
+        DropedItems.Add(item.GetComponent<Item>());
         return item.This.gameObject;
     }
 
     public GameObject DropGold(float gold)
     {
-        Random.InitState((int)(System.DateTime.Now.Ticks % int.MaxValue));
         float rnd = Random.Range(0, 100);
         if (rnd < 40)
         {
             GoldItem item = ObjectPoolManager.Instance.GetObj(itemDic[2600]) as GoldItem;
             item.Gold = (int)gold;
+            DropedItems.Add(item.GetComponent<Item>());
             return item.This.gameObject;
         }
         else
             return null;
+    }
+
+    public void ReleaseItem(Item item)
+    {
+        DropedItems.Remove(item);
+    }
+
+    public void EatAllItem()
+    {
+        foreach (Item item in DropedItems)
+        {
+            item.Follow(GameManager.Instance.Player.transform);
+        }
     }
 }

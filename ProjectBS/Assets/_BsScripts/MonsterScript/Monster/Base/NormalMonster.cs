@@ -1,5 +1,5 @@
 using UnityEngine;
-using Yeon;
+using TheKiwiCoder;
 
 public abstract class NormalMonster : Monster
 {
@@ -8,6 +8,9 @@ public abstract class NormalMonster : Monster
     public override void Init(MonsterData data)
     {
         base.Init(data as NormalMonsterData);
+
+        BehaviourTree tree = Resources.Load<BehaviourTree>(FilePath.MonsterBehaviourTree);
+        GetComponent<BehaviourTreeRunner>().Init(tree);
     }
 
 
