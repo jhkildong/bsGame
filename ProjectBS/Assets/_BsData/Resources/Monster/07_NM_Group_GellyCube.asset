@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 7
   _name: GellyCube
-  _attack: 1
+  _attack: 3
   _attackDelay: 1
   _speed: 0
   _maxHp: 30

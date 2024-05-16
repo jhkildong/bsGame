@@ -19,6 +19,6 @@ MonoBehaviour:
   _requireWood: 10
   _requireStone: 5
   _requireIron: 0
-  _constTime: 5
+  _constTime: 3
   _repairSpeed: 5
-  _buildingPrefab: {fileID: 0}
+  _nextUpgrade: {fileID: 0}

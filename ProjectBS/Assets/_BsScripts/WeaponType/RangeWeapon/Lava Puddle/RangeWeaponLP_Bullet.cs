@@ -7,6 +7,7 @@ public class RangeWeaponLP_Bullet : Weapon
     float DelayTime = 0.2f;
     float time;
 
+    [SerializeField] private HitEffects hitEffectPrefab; //박지민 추가 (타격 이펙트)
     private void OnEnable()
     {
         StartCoroutine(DelayRelease(5.0f));
@@ -34,6 +35,7 @@ public class RangeWeaponLP_Bullet : Weapon
                 {
                     obj.TakeDamageEffect(Ak);
                     Debug.Log("Attack");
+                    EffectPoolManager.Instance.SetActiveHitEffect(hitEffectPrefab, col.transform.position, hitEffectPrefab.ID); //박지민 추가 (타격 이펙트)
                 }
             }
         }

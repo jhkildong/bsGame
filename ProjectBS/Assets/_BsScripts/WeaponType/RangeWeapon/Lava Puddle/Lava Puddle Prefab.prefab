@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ak: 0
+  hitEffectPrefab: {fileID: 3382312283975314585, guid: eb4609ea2ae085a4a8faf7aebd128a13, type: 3}
 --- !u!136 &2024184475337803465
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -5122,6 +5122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ak: 0
+  hitEffect: {fileID: 719345567423343601, guid: bc03553dfa3cbda42b5e1b3fddae6901, type: 3}
   ReleaseTime: 1.5
 --- !u!65 &646475484198312664
 BoxCollider:

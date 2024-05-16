@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public bool gameStart;
     public bool gameOver;
     public bool gamePaused;
+    public bool gameClear;
     public float curSec; // ����ð�(��)
     public float curMin; // ����ð�(��)
     public float curTime; // ���� �ð�
@@ -146,6 +147,7 @@ public class GameManager : MonoBehaviour
                 curGold = SaveData.MyGold;
             }
 
+
         }
 
         if (scene.buildIndex == 1)
@@ -181,7 +183,25 @@ public class GameManager : MonoBehaviour
 
             timerStart = true;
             Sunlight = GameObject.Find("Directional Light").GetComponent<Light>();
+
+
+
+
+            if (SoundManager.Instance.bgmList.Count > 0)
+            {
+                Destroy(SoundManager.Instance.bgmList[0]);
+                SoundManager.Instance.bgmList.Clear();
+            }
+                if (SoundManager.Instance.bgmList.Count < 1)
+                {
+                    GameObject bgm = Resources.Load<GameObject>("Sounds/6098_InGameBgm");
+
+                    SoundManager.Instance.PlaySound(bgm, Vector3.zero, 6098);
+                }
+            
+
         }
+        //SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void Start()
@@ -193,31 +213,7 @@ public class GameManager : MonoBehaviour
 
 
     }
-    /*
-    private void UpdateWoodText()
-    {
-        playerUI.ChangeWoodText(myWood);
-    }
-    private void UpdateStoneText()
-    {
-        playerUI.ChangeStoneText(myStone);
-    }
 
-    private void UpdateIronText()
-    {
-        playerUI.ChangeIronText(myIron);
-    }
-    private void UpdateExpText()
-    {
-        playerUI.ChangeExpText(myExp);
-    }
-
-    private void UpdateExpBar()
-    {
-        playerUI.ChangeExpBar(myExp);
-    }
-    
-    */
 
     void Update()
     {
@@ -233,12 +229,12 @@ public class GameManager : MonoBehaviour
             //Debug.Log(curGameTime);
 
             //�㳷 ����
-            if (!isNight && checkAMPMTime >= 6)
+            if (!isNight && checkAMPMTime >= 30)
             {
                 checkAMPMTime = 0;
                 ChangeToNight();
             }
-            if (isNight && checkAMPMTime >= 6)
+            if (isNight && checkAMPMTime >= 30)
             {
                 checkAMPMTime = 0;
                 ChangeToDay();
@@ -287,7 +283,7 @@ public class GameManager : MonoBehaviour
         gamePaused = true;
         Time.timeScale = 0;
         Player.SetInputState(false);
-        Debug.Log("�Ͻ������Ǿ����ϴ�.");
+
         //UI �˾� �߰�
     }
     public void ResumeGame()
@@ -295,7 +291,7 @@ public class GameManager : MonoBehaviour
         gamePaused = false;
         Time.timeScale = 1;
         Player.SetInputState(true);
-        Debug.Log("�Ͻ���������.");
+
         //UI ������� �߰�
     }
     public void GameOver() // �÷��̾ ��������� ���� �߰��ؾߵ�.

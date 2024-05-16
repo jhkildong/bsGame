@@ -50,7 +50,7 @@ public class BuffBuilding_Heal : BuffBuildingBase
         
     }
 
-    IEnumerator healTickTimeCheck(IHealing healable, GameObject obj)
+    IEnumerator healTickTimeCheck(IHealing healable, GameObject obj) //Èú Æ½°£°Ý 
     {
         if (obj == null) yield break;
         float inTime = 0;

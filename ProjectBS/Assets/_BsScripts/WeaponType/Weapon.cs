@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour, IPoolable
 {
     protected LayerMask Monster;
     public float Ak;
+    [SerializeField] private HitEffects hitEffect; //박지민 추가 (타격 이펙트)
 
     protected virtual void Start()
     {
@@ -19,6 +20,8 @@ public class Weapon : MonoBehaviour, IPoolable
             if (obj != null)
             {
                 obj.TakeDamageEffect(Ak);
+                if(hitEffect!=null)
+                EffectPoolManager.Instance.SetActiveHitEffect(hitEffect, other.transform.position, hitEffect.ID); //박지민 추가 (타격 이펙트)
             }
         }
     }

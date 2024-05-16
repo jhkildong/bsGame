@@ -19,7 +19,7 @@ MonoBehaviour:
   _prefab: {fileID: 3540576751485843617, guid: 9708fd17065614047a838de3220525e3, type: 3}
   _lvDataList:
   - name: Attack
-    defaultValue: 10
+    defaultValue: 3
     levelUpType: 1
     levelUpTable:
     - 0
@@ -41,7 +41,7 @@ MonoBehaviour:
     - 0
     - 0.4
   - name: AtRange
-    defaultValue: 3
+    defaultValue: 2
     levelUpType: 1
     levelUpTable:
     - 0.2

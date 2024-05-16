@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attack: 0
+  hitEffectPrefab: {fileID: 6741226646432807674, guid: af29735476141dc4cbc4302e4d7c2c0d, type: 3}
 --- !u!198 &-8772830327691765505
 ParticleSystem:
   m_ObjectHideFlags: 0

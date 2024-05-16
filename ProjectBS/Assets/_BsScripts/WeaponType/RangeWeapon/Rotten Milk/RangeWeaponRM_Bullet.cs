@@ -9,6 +9,7 @@ public class RangeWeaponRM_Bullet : Weapon
 
     float time = 0.0f;
 
+    [SerializeField] private HitEffects hitEffectPrefab; //박지민 추가 (타격 이펙트)
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +26,8 @@ public class RangeWeaponRM_Bullet : Weapon
                 {
                     obj.TakeDamageEffect(Ak);
                     Debug.Log("Attack");
+
+                    EffectPoolManager.Instance.SetActiveHitEffect(hitEffectPrefab, col.transform.position, hitEffectPrefab.ID); //박지민 추가 (타격 이펙트)
                 }
             }
         }

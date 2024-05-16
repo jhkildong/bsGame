@@ -29111,3 +29111,4 @@ MonoBehaviour:
   Ak: 0
   DelayTime: 0
   AtRange: 0
+  hitEffectPrefab: {fileID: 7214498547347744333, guid: 185488e308ac85642adefc8a0beedaa1, type: 3}
