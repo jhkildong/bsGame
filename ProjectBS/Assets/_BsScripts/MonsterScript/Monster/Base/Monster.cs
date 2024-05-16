@@ -1,13 +1,35 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using Yeon;
+using TheKiwiCoder;
 
+[RequireComponent(typeof(BehaviourTreeRunner))]
 public abstract class Monster : Combat, IDamage<Monster>, IPoolable
 {
     #region Public Field
     //임시
     public event UnityAction<Transform> DeadTransformAct;
+    #endregion
+
+    #region Public Method
+    public virtual void AttackTarget()
+    {
+        if (attackTarget == null) return;
+        if (attackDelayTime > 0) return;
+
+        attackTarget.TakeDamage(Data.Ak);
+        attackDelayTime = AttackDelay;
+        timer = StartCoroutine(Timer());
+    }
+    public virtual bool AttackReady() => attackDelayTime <= 0;
+    public virtual bool AttackTargetInRange() => attackTarget != null;
+
+    public void ChangeAttackState(bool isAttack)
+    {
+        attackReady = !isAttack;
+    }
+    protected bool attackReady = true;
     #endregion
 
     #region Property
@@ -19,7 +41,7 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     {
         get
         {
-            if(_playerTransform == null)
+            if (_playerTransform == null)
             {
                 _playerTransform = GameManager.Instance.Player.transform;
             }
@@ -32,6 +54,9 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     ////////////////////////////////PrivateField////////////////////////////////
     [SerializeField] protected MonsterComponent _monsterComponent;
     [SerializeField] protected MonsterData _data;
+    [SerializeField] protected Transform myTarget;
+    [SerializeField] protected IDamage attackTarget;
+    [SerializeField] protected float attackDelayTime;       //현재 공격 딜레이(공격 대상과 접촉해있을 시 줄어듬)
     private Transform _playerTransform;
     #endregion
 
@@ -43,7 +68,7 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
         base.TakeDamage(damage);
         if (CurHp <= 0)
         {
-            DeadTransformAct?.Invoke(this.transform);
+            DeadTransformAct?.Invoke(transform);
         }
     }
 
@@ -60,7 +85,7 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     public virtual void Init(MonsterData data)
     {
         _data = data;
-        
+
         Instantiate(data.Prefab, this.transform); //자식으로 몬스터의 프리팹 생성
 
         _maxHp = data.MaxHP;
@@ -84,7 +109,7 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
         effectData.effectTime = 0.1f;
         effectData.SetRenderer(_monsterComponent.Myrenderers);
 
-        ResetTarget();
+        myTarget = PlayerTransform;
         DeadAct += Die;
 
         #region BuffChangeAct Setting
@@ -136,103 +161,18 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
         base.OnEnable();
         if (Data == null) return;
 
+        myTarget = PlayerTransform;
         _curHp = Data.MaxHP;
         moveSpeed = Data.Sp;
-        ResetTarget();
-        ChangeState(State.Chase);
-    }
-
-    #endregion
-
-    #region Private Method
-    ////////////////////////////////PrivateMethod////////////////////////////////
-    private void Die()
-    {
-        Com.MyAnim.SetTrigger(AnimParam.Death);
-        ChangeState(State.Death);
-        GameObject go = ItemManager.Instance.DropRandomItem(Data.DropItemList);
-        if (go != null)
-            go.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0 , Random.Range(-1, 1));
-        GameObject exp = ItemManager.Instance.DropExp(Data.Exp);
-        if(exp != null)
-            exp.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
-        GameObject gold = ItemManager.Instance.DropGold(Data.Gold);
-        if(gold != null)
-            gold.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
-    }
-
-    protected virtual void ChangeTarget(Transform target)
-    {
-        if (myState == State.Death) return;
-        myTarget = target;
-    }
-
-    protected virtual void ResetTarget()
-    {
-        if (myState == State.Death) return;
-        myTarget = PlayerTransform;
-    }
-    #endregion
-
-    #region StateMachine
-    ////////////////////////////////StateMachine////////////////////////////////
-    public enum State
-    {
-        Chase, Attack, Death
-    }
-    [SerializeField]protected State myState = State.Chase;
-    [SerializeField]protected Transform myTarget;
-    [SerializeField]protected IDamage attackTarget;
-    [SerializeField]protected float playTime;
-
-
-    protected virtual void ChangeState(State s)
-    {
-        if (myState == s) return;
-        myState = s;
-        switch (myState)
-        {
-            case State.Chase:
-                break;
-            case State.Attack:
-                SetDirection(Vector3.zero);
-                attackTarget.TakeDamage(Attack);
-                playTime = Data.AkDelay;
-                break;
-            case State.Death:
-                SetDirection(Vector3.zero);
-                ObjectPoolManager.Instance.ReleaseObj(this);
-                break;
-        }
-    }
-
-    protected virtual void StateProcess()
-    {
-        switch (myState)
-        {
-            case State.Chase:
-                SetDirection(transform.forward);
-                break;
-            case State.Attack:
-                playTime -= Time.deltaTime;
-                if(playTime <= 0)
-                {
-                    attackTarget.TakeDamage(Attack);
-                    playTime = Data.AkDelay;
-                }
-                break;
-            case State.Death:
-                break;
-        }
     }
 
     protected virtual void Update()
     {
+        if (IsDead)
+            return;
         if (myTarget == null)
-            ResetTarget();
-        StateProcess();
+            myTarget = PlayerTransform;
 
-        if (myState == State.Death) return;
         //타겟을 향해 부드럽게 방향전환
         Vector3 targetDirection = myTarget.position - transform.position;
         targetDirection.y = 0.0f;
@@ -244,7 +184,56 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     {
         base.FixedUpdate();
     }
+
     #endregion
+
+    #region Private Method
+    ////////////////////////////////PrivateMethod////////////////////////////////
+    protected virtual void Die()
+    {
+        Com.MyAnim.SetTrigger(AnimParam.Death);
+        GameObject go = ItemManager.Instance.DropRandomItem(Data.DropItemList);
+        if (go != null)
+            go.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f));
+        GameObject exp = ItemManager.Instance.DropExp(Data.Exp);
+        if (exp != null)
+            exp.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f));
+        GameObject gold = ItemManager.Instance.DropGold(Data.Gold);
+        if (gold != null)
+            gold.transform.position = transform.position + Vector3.up * 0.7f + new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f));
+        ObjectPoolManager.Instance.ReleaseObj(this);
+    }
+
+    protected Coroutine timer;
+    protected virtual void playTimer()
+    {
+        timer = StartCoroutine(Timer());
+    }
+    protected virtual void stopTimer()
+    {
+        if (timer != null)
+        {
+            StopCoroutine(timer);
+            timer = null;
+        }
+    }
+
+    IEnumerator Timer()
+    {
+        while (true)
+        {
+            attackDelayTime -= Time.deltaTime;
+            if (attackDelayTime <= 0)
+            {
+                timer = null;
+                yield break;
+            }
+            yield return null;
+        }
+    }
+    #endregion
+
+
 
     #region Collision Event
     ////////////////////////////////CollisionEvent////////////////////////////////
@@ -256,7 +245,7 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
             if (AttackTarget != null)
             {
                 attackTarget = AttackTarget;
-                ChangeState(State.Attack);
+                playTimer();
             }
         }
     }
@@ -265,7 +254,12 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     {
         if ((attackMask & (1 << collision.gameObject.layer)) != 0)
         {
-            ChangeState(State.Chase);
+            IDamage AttackTarget = collision.gameObject.GetComponent<IDamage>();
+            if (AttackTarget == attackTarget)
+            {
+                attackTarget = null;
+                stopTimer();
+            }
         }
     }
     #endregion

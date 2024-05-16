@@ -30,6 +30,6 @@ MonoBehaviour:
     dropChance: 40
   - ID: 2006
     dropChance: 30
-  _weight: 8
+  _weight: 3
   _type: 10
   _amount: 2

@@ -50,6 +50,9 @@ public static class FilePath
     public const string StatusData = "/StatusData.json";
     #endregion
 
+    public const string MonsterBehaviourTree = "Monster/BehaviourTree/Monster";
+    public const string BossMonsterBehaviourTree = "Monster/BehaviourTree/BossMonster";
+
     /// <summary>Assets/_BsData/Resources/Json/BlessLevelTable.json</summary>
     public const string BlessLevelTableJson = "Assets/_BsData/Resources/Json/BlessLevelTable.json";
     /// <summary>Assets/_BsData/Resources/Json/BlessLevelUpDescription.json</summary>

@@ -156,9 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1185954974}
-  offsetX: 0
-  offsetY: 11
-  offsetZ: -6
   cameraSpeed: 10
 --- !u!81 &70824009
 AudioListener:
@@ -397,6 +394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 1886382828072545872, guid: 7ee9fc279ffc9524f93b7329e4a26d87, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -491,6 +491,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5732704864016183740, guid: f7dca73a90d20ce4b96de712495b37b6, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -726,12 +729,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  Sunlight: {fileID: 0}
+  curSecText: {fileID: 0}
+  curMinText: {fileID: 0}
+  myJob: {fileID: 0}
+  myTypeIdx: 0
   gameStart: 0
   gameOver: 0
   gamePaused: 0
-  curGameTime: 0
+  curSec: 0
+  curMin: 0
+  curTime: 0
   checkAMPMTime: 0
   curDay: 0
+  _saveData:
+    Attack: 0
+    AkSp: 0
+    MvSp: 0
+    MagnetFieldRange: 0
+    MaxHp: 0
+    ExpBonus: 0
+    MyGold: 0
+    RerollCount: 0
 --- !u!4 &279786800
 Transform:
   m_ObjectHideFlags: 0
@@ -800,6 +819,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 7109192342924118199, guid: 0df4d77c733e9e14eaccb4121bdbae29, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -1185,6 +1207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5647818942448586349, guid: be433cc5af3803f40bd8b17e74265cc5, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -1860,6 +1885,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5647818942448586349, guid: be433cc5af3803f40bd8b17e74265cc5, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -2400,6 +2428,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5686909921988133878, guid: 526978ef17ae4344aa7269091f2a7cb5, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -2813,6 +2844,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 7215726233801088367, guid: b87f8b2fa9976fe488546514a7e45aa3, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -3214,8 +3248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8773e5b3c7147d4bb8b15a4f0bf51be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 1330534681}
-  mainCameraAction: {fileID: 70824008}
 --- !u!4 &1077003387
 Transform:
   m_ObjectHideFlags: 0
@@ -3852,6 +3884,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 8692592371598191780, guid: f83c8f7e8fb0ef24990b8ca87bd15d92, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -4014,6 +4049,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 1190186066781599322, guid: 3156a4c8dfb2b0646ac1c47e783c078e, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -4233,6 +4271,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 2078908572340995146, guid: 126df369520cd0349932b2e3c9a36160, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -4944,6 +4985,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 8692592371598191780, guid: f83c8f7e8fb0ef24990b8ca87bd15d92, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -5403,11 +5447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb79cd82469b81c4b9f42114effe982b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - data: {fileID: 11400000, guid: 1cc8d47902f51fa47a5c7f5ac1a60dc2, type: 2}
-  - data: {fileID: 11400000, guid: 10ffcfb7f7f689c439629a28b6eaaf6d, type: 2}
-  - data: {fileID: 11400000, guid: 7696f5c3e683b4345a75a69d04471700, type: 2}
-  - data: {fileID: 11400000, guid: cda88bd40e245bf49b114d0cd40cd477, type: 2}
+  itemDatas: []
 --- !u!4 &1887881580
 Transform:
   m_ObjectHideFlags: 0
@@ -5533,6 +5573,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 1393229479709798815, guid: ed3947d5ef94eab47bdcb63b5d3933bd, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -5695,6 +5738,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 5732704864016183740, guid: 18a0b9192432c0e4dbc7a1990eaa651e, type: 3}
+  reqWoodText: {fileID: 0}
+  reqStoneText: {fileID: 0}
+  reqIronText: {fileID: 0}
   _requireWood: 0
   _requireStone: 0
   _requireIron: 0
@@ -20998,6 +21044,10 @@ MonoBehaviour:
   _constTime: 0
   _repairSpeed: 0
   _nextUpgrade: {fileID: 0}
+  _upgradeTime: 0
+  _upgradeWood: 0
+  _upgradeStone: 0
+  _upgradeIron: 0
   isInstalled: 0
   iscompletedBuilding: 0
   hpBar: {fileID: 0}
