@@ -360,6 +360,7 @@ public class WeightedRandomPicker<T>
     *                               Public Methods
     ***********************************************************************/
     #region .
+    public int Count => itemWeightDict.Count;
 
     /// <summary> 목록에서 대상 아이템 제거 </summary>
     public void Remove(T item)
@@ -389,7 +390,6 @@ public class WeightedRandomPicker<T>
     /// <summary> 랜덤 뽑기 </summary>
     public T GetRandomPick()
     {
-        Random.InitState((int)(System.DateTime.Now.Ticks % int.MaxValue));
         // 랜덤 계산
         float chance = Random.value; // [0.0, 1.0)
         chance *= SumOfWeights;

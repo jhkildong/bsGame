@@ -30,7 +30,7 @@ public class AIPerception : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (((int)BSLayerMasks.Player & (1 << other.gameObject.layer)) != 0)
+        if ((myMask & (1 << other.gameObject.layer)) != 0)
         {
             lostEnemy?.Invoke(other.transform);
         }

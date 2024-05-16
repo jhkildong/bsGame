@@ -61,6 +61,7 @@ public abstract class Item : MonoBehaviour, IPoolable
     protected virtual void Eat()
     {
         ObjectPoolManager.Instance.ReleaseObj(this);
+        ItemManager.Instance.ReleaseItem(this);
         Debug.Log(gameObject + "을(를) 얻었다..!");
     }
 }

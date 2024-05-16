@@ -415,7 +415,7 @@ public class Player : Combat, IDamage<Player>
 
     protected override void FixedUpdate()
     {
-        worldMoveDir = _moveDir;
+        SetDirection(_moveDir);
         base.FixedUpdate();
     }
     #endregion
