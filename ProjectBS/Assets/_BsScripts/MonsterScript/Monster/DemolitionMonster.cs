@@ -22,6 +22,10 @@ public class DemolitionMonster : GroupMonster
 
     public override bool AttackTargetInRange()
     {
+        if (myTarget == null)
+        {
+            return false;
+        }
         if (Vector3.SqrMagnitude(myTarget.position - transform.position) < DemolitionData.AttackRange * DemolitionData.AttackRange)
         {
             attackTarget = myTarget.GetComponent<IDamage>();
