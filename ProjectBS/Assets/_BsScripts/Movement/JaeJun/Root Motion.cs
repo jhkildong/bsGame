@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RootMotion : MonoBehaviour
 {
+    public bool isStop = false;
     [SerializeField]Animator myAnim;
     Yeon.Movement myPlayer
     {
@@ -27,6 +28,14 @@ public class RootMotion : MonoBehaviour
 
     private void OnAnimatorMove()
     {
-        myPlayer.transform.position = myAnim.rootPosition;
+        if (isStop)
+        {
+            myAnim.rootPosition = transform.position;
+            return;
+        }
+        if(myPlayer == null)
+            transform.position = myAnim.rootPosition;
+        else
+            myPlayer.transform.position = myAnim.rootPosition;
     }
 }

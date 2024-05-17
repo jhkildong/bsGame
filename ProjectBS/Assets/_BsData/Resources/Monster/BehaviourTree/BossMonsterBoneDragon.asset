@@ -15,7 +15,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: c89f638434072b44987d3f06777c1e91
-  position: {x: 460.00006, y: 596.8}
+  position: {x: 622.2902, y: 596.6044}
   description: 
   drawGizmos: 0
 --- !u!114 &-6620928590868630251
@@ -33,11 +33,11 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 4169de9a2e305e6409afb1cd2007e7cf
-  position: {x: 273.6, y: 597.60004}
+  position: {x: 279.42, y: 593.645}
   description: 
   drawGizmos: 0
   skillIndex: 1
-  stopMoving: 0
+  stopMoving: 1
 --- !u!114 &-5323610935837925067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,6 +56,25 @@ MonoBehaviour:
   position: {x: 1048.8634, y: 439.99988}
   description: 
   drawGizmos: 0
+--- !u!114 &-5124038832225224888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e52e3952be295e44ab175478661b1d4, type: 3}
+  m_Name: OnSkill
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 02ea062a670c545409e8bc3508f527dc
+  position: {x: 830.68585, y: 594.7495}
+  description: 
+  drawGizmos: 0
+  skillIndex: 2
 --- !u!114 &-5083528212675208565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,28 +114,11 @@ MonoBehaviour:
   drawGizmos: 0
   children:
   - {fileID: 3250210923634342357}
+  - {fileID: 4229627945425137119}
   - {fileID: 505424533479563936}
   - {fileID: 6575365837571324170}
   - {fileID: -4396221456234480169}
   - {fileID: -5323610935837925067}
---- !u!114 &-4716715618725821260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2241a930eae4bbe47a6f919eaba781b8, type: 3}
-  m_Name: Attack
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: d6db0797488a70f41a434be3469c971d
-  position: {x: 659.9999, y: 597.6}
-  description: 
-  drawGizmos: 0
 --- !u!114 &-4396221456234480169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,9 +138,10 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   children:
+  - {fileID: 8472377016311197892}
   - {fileID: -8422851074179468313}
-  - {fileID: -4716715618725821260}
-  - {fileID: 7754214283013789829}
+  - {fileID: -5124038832225224888}
+  - {fileID: 4480567677271025181}
 --- !u!114 &-3351857424799648399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +157,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: f1b78c271524a1c47b810d7f6f304a6f
-  position: {x: -839.9999, y: 597.6}
+  position: {x: -898.6501, y: 599.15}
   description: 
   drawGizmos: 0
   skillIndex: 0
@@ -206,7 +209,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d285eb63c2cdd74180de7cfceaa96ad, type: 3}
-  m_Name: BossMonster
+  m_Name: BossMonsterBoneDragon
   m_EditorClassIdentifier: 
   rootNode: {fileID: -2670311003682206292}
   treeState: 0
@@ -225,31 +228,13 @@ MonoBehaviour:
   - {fileID: 3072716290909253391}
   - {fileID: -4396221456234480169}
   - {fileID: -8422851074179468313}
-  - {fileID: -4716715618725821260}
   - {fileID: -5323610935837925067}
-  - {fileID: 320330961079785252}
   - {fileID: 888241668233742278}
   - {fileID: 3250210923634342357}
-  - {fileID: 7754214283013789829}
---- !u!114 &320330961079785252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e658b1bd308bc5c429f5a9b404a04943, type: 3}
-  m_Name: Inverter
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: e1382a23b415f18499864ac88d7ea6cb
-  position: {x: -689.59985, y: 597.6}
-  description: 
-  drawGizmos: 0
-  child: {fileID: 888241668233742278}
+  - {fileID: 8472377016311197892}
+  - {fileID: -5124038832225224888}
+  - {fileID: 4480567677271025181}
+  - {fileID: 4229627945425137119}
 --- !u!114 &505424533479563936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +255,7 @@ MonoBehaviour:
   drawGizmos: 0
   children:
   - {fileID: -3351857424799648399}
-  - {fileID: 320330961079785252}
+  - {fileID: 888241668233742278}
   - {fileID: 1127104686012862104}
   - {fileID: 2285313267928582105}
 --- !u!114 &888241668233742278
@@ -288,7 +273,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 40273ff759b086f41a6b9943e0b77639
-  position: {x: -714.90106, y: 710.4487}
+  position: {x: -744, y: 599.55005}
   description: 
   drawGizmos: 0
 --- !u!114 &1127104686012862104
@@ -384,9 +369,47 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ca5dc78b95ec3b34c9dcd487d1dabe9a
-  position: {x: -989.59985, y: 439.99994}
+  position: {x: -1252.503, y: 433.91653}
   description: 
   drawGizmos: 0
+--- !u!114 &4229627945425137119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd35df8a7523be4ca7a6d9f47db9c0e, type: 3}
+  m_Name: CheckChangePhase
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 8301abde4256cb544bebc378534d2939
+  position: {x: -898.4939, y: 433.49005}
+  description: 
+  drawGizmos: 0
+--- !u!114 &4480567677271025181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591dcbfc5af9be04eb0b29f1bb2835e4, type: 3}
+  m_Name: CheckSkillDuring
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: a34a9c8f1cda84240a9b5da56862a787
+  position: {x: 988.9562, y: 591.9165}
+  description: 
+  drawGizmos: 0
+  skillIndex: 2
+  stopMoving: 0
 --- !u!114 &6575365837571324170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,7 +433,7 @@ MonoBehaviour:
   - {fileID: 3072716290909253391}
   - {fileID: -417922379352345009}
   - {fileID: -6620928590868630251}
---- !u!114 &7754214283013789829
+--- !u!114 &8472377016311197892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -419,12 +442,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b712f9704163b8c4a9e693a6495547b8, type: 3}
-  m_Name: CheckAttackDuring
+  m_Script: {fileID: 11500000, guid: ccf9a797a9fe9bb4f92009de9adc3780, type: 3}
+  m_Name: CheckSkillReady
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: 695cff10bb47aca46814862b4b9d14ec
-  position: {x: 810.40027, y: 596.8002}
+  guid: 3c85cf2992b8d4048ac3083679050ef6
+  position: {x: 461.4155, y: 596.6044}
   description: 
   drawGizmos: 0
+  skillIndex: 2

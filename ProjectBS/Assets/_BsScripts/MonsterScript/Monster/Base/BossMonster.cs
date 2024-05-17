@@ -9,12 +9,22 @@ public abstract class BossMonster : Monster
     public BossMonsterData BossData => _data as BossMonsterData;
     
     public List<Skill> SkillList;
-
-    public override void Init(MonsterData data)
+    public bool isSkillCast
     {
-        base.Init(data as BossMonsterData);
-        BehaviourTree tree = Resources.Load<BehaviourTree>(FilePath.BossMonsterBehaviourTree);
-        GetComponent<BehaviourTreeRunner>().Init(tree);
+        get => _isSkillCast;
+        set
+        {
+            _isSkillCast = value;
+        }
+    }
+    private bool _isSkillCast = false;
+
+    protected BehaviourTreeRunner myTree;
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        myTree.enabled = false;
     }
 
     protected IEnumerator SkillCoolTime(int idx)

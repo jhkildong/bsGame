@@ -10,6 +10,7 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
     #region Public Field
     //юс╫ц
     public event UnityAction<Transform> DeadTransformAct;
+    public bool isChnagePhase = false;
     #endregion
 
     #region Public Method

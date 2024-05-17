@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TheKiwiCoder;
 
 public class BossMonsterDevil : BossMonster
 {
@@ -41,6 +42,9 @@ public class BossMonsterDevil : BossMonster
     public override void Init(MonsterData data)
     {
         base.Init(data);
+        BehaviourTree tree = Resources.Load<BehaviourTree>(FilePath.DevilBehaviourTree);
+        myTree = GetComponent<BehaviourTreeRunner>();
+        myTree.Init(tree);
         MonsterData servantImpData = Resources.Load<MonsterData>(FilePath.Imp);
         servantImp = servantImpData.CreateClone();
         ObjectPoolManager.Instance.ReleaseObj(servantImp);
@@ -69,6 +73,7 @@ public class BossMonsterDevil : BossMonster
         {
             skill.reset();
         }
+        myTree.enabled = true;
         col.enabled = true;
     }
 
