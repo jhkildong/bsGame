@@ -15,13 +15,15 @@ MonoBehaviour:
   _id: 501
   _name: BoneDragon
   _attack: 15
-  _attackDelay: 2
+  _attackDelay: 1
   _speed: 2
   _maxHp: 250
   _exp: 200
   _gold: 300
   _mass: 50
-  _radius: 0.7
+  _radius: 2
   _prefab: {fileID: 4038061350733537972, guid: 396f9f924cc2a004490b3beea6073b94, type: 3}
-  _dropItemList: []
+  _dropItemList:
+  - ID: 2007
+    dropChance: 100
   _attackRange: 6

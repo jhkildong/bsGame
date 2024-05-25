@@ -53,7 +53,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: feb40c977a8701e4b85687f933668f5f
-  position: {x: 1048.8634, y: 439.99988}
+  position: {x: 1773.1503, y: 432.69977}
   description: 
   drawGizmos: 0
 --- !u!114 &-5124038832225224888
@@ -118,6 +118,7 @@ MonoBehaviour:
   - {fileID: 505424533479563936}
   - {fileID: 6575365837571324170}
   - {fileID: -4396221456234480169}
+  - {fileID: 915578128449065226}
   - {fileID: -5323610935837925067}
 --- !u!114 &-4396221456234480169
 MonoBehaviour:
@@ -180,6 +181,24 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   child: {fileID: 3153509214982747574}
+--- !u!114 &-878893002377674906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2241a930eae4bbe47a6f919eaba781b8, type: 3}
+  m_Name: Attack
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 5b8f24c9c0e8ad34880035ad12efc7f3
+  position: {x: 1662.6493, y: 591.99994}
+  description: 
+  drawGizmos: 0
 --- !u!114 &-417922379352345009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +254,10 @@ MonoBehaviour:
   - {fileID: -5124038832225224888}
   - {fileID: 4480567677271025181}
   - {fileID: 4229627945425137119}
+  - {fileID: 915578128449065226}
+  - {fileID: 768609865094685562}
+  - {fileID: 5424419031836060901}
+  - {fileID: -878893002377674906}
 --- !u!114 &505424533479563936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +281,24 @@ MonoBehaviour:
   - {fileID: 888241668233742278}
   - {fileID: 1127104686012862104}
   - {fileID: 2285313267928582105}
+--- !u!114 &768609865094685562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb712d26595af0459ff9c9774e6974c, type: 3}
+  m_Name: CheckTargetInAttackRange
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 595edfa1fe7705c4eb46589e3726f784
+  position: {x: 1239.6746, y: 591.2001}
+  description: 
+  drawGizmos: 0
 --- !u!114 &888241668233742278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +317,28 @@ MonoBehaviour:
   position: {x: -744, y: 599.55005}
   description: 
   drawGizmos: 0
+--- !u!114 &915578128449065226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61431bba79d7d7843b82bf1de71703f5, type: 3}
+  m_Name: Sequencer
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: ff9658f225441b942a26717b269d66df
+  position: {x: 1399.4966, y: 432}
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: 768609865094685562}
+  - {fileID: 5424419031836060901}
+  - {fileID: -878893002377674906}
 --- !u!114 &1127104686012862104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,6 +473,24 @@ MonoBehaviour:
   drawGizmos: 0
   skillIndex: 2
   stopMoving: 0
+--- !u!114 &5424419031836060901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2dd7ed19acacc5479e826b99a510f22, type: 3}
+  m_Name: CheckAttackDelay
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 2087e92c8e2dba3479a67f78725cb3b0
+  position: {x: 1474.4, y: 591.19995}
+  description: 
+  drawGizmos: 0
 --- !u!114 &6575365837571324170
 MonoBehaviour:
   m_ObjectHideFlags: 0

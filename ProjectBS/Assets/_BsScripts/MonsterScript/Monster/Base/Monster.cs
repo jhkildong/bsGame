@@ -19,7 +19,7 @@ public abstract class Monster : Combat, IDamage<Monster>, IPoolable
         if (attackTarget == null) return;
         if (attackDelayTime > 0) return;
 
-        attackTarget.TakeDamage(Data.Ak);
+        attackTarget.TakeDamageEffect(Data.Ak);
         attackDelayTime = AttackDelay;
         timer = StartCoroutine(Timer());
     }

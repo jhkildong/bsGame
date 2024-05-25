@@ -218,6 +218,15 @@ public class MonsterSpawner : MonoBehaviour
     }
     IEnumerator BossMonsterSpawn()
     {
+        if(CurStage == Stage.Stage10)
+        {
+            Monster monster = bossMonsterDict[501];
+            GameObject go;
+            go = ObjectPoolManager.Instance.GetObj(monster).This.gameObject;
+            go.transform.position = GetRandomPosInCircle(transform.position);
+            yield return new WaitForSeconds(bossRespawnTime);
+        }
+
         while (true)
         {
             foreach (var Id in stageInBossIdList)
@@ -234,11 +243,11 @@ public class MonsterSpawner : MonoBehaviour
 
     private Dictionary<Stage, HashSet<int>> StageMonsterIdDict = new Dictionary<Stage, HashSet<int>>()
     {
-        { Stage.Stage1,  new HashSet<int>(){500 }                  },
-        { Stage.Stage2,  new HashSet<int>(){0, 1, 2, 500}                },
-        { Stage.Stage3,  new HashSet<int>(){0, 1, 2, 500}                },
-        { Stage.Stage4,  new HashSet<int>(){0, 2, 3, 500}                },
-        { Stage.Stage5,  new HashSet<int>(){0, 2, 3, 6,500    }        },
+        { Stage.Stage1,  new HashSet<int>(){0, 1}                   },
+        { Stage.Stage2,  new HashSet<int>(){0, 1, 2}                },
+        { Stage.Stage3,  new HashSet<int>(){0, 1, 2}                },
+        { Stage.Stage4,  new HashSet<int>(){0, 2, 3}                },
+        { Stage.Stage5,  new HashSet<int>(){0, 2, 3, 6}             },
         { Stage.Stage6,  new HashSet<int>(){0, 2, 3, 7, 500}        },
         { Stage.Stage7,  new HashSet<int>(){0, 2, 3, 4, 6, 500}     },
         { Stage.Stage8,  new HashSet<int>(){0, 2, 3, 5, 6, 500}     },

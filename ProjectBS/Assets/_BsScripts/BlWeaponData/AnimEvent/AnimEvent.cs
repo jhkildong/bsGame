@@ -10,6 +10,7 @@ public class AnimEvent : MonoBehaviour
     public event UnityAction DeadAct;
     public event UnityAction<int> SkillAct;
     public event UnityAction<int> ChangeWeaponAct;
+    public event UnityAction<int> EffectAct;
     public SoundObject sound;
 
     public void OnAttack()
@@ -34,5 +35,13 @@ public class AnimEvent : MonoBehaviour
     public void BuildHammerHit() //박지민 추가. 건설 애니메이션 사운드 재생.
     {
         SoundManager.Instance.PlaySound(sound.gameObject, transform.position, sound.ID);
+    }
+    public void OnEffect()
+    {
+        EffectAct?.Invoke(0);
+    }
+    public void OffEffect()
+    {
+        EffectAct?.Invoke(1);
     }
 }

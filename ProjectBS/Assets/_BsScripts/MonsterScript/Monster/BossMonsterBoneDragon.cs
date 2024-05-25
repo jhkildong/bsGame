@@ -1,17 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TheKiwiCoder;
+using UnityEngine;
 
 public class BossMonsterBoneDragon : BossMonster
 {
-    public override void AttackTarget()
-    {
-        if (attackTarget == null) return;
-
-        SetDirection(Vector3.zero);
-        Com.MyAnim.SetTrigger(AnimParam.Attack);
-    }
+    DragonComponent myCom => Com as DragonComponent;
 
     public override bool AttackReady()
     {
@@ -22,13 +16,10 @@ public class BossMonsterBoneDragon : BossMonster
     {
         if (Vector3.SqrMagnitude(myTarget.position - transform.position) < BossData.AttackRange * BossData.AttackRange)
         {
-            attackTarget = myTarget.GetComponent<IDamage>();
+            if (Vector3.Angle(transform.forward, myTarget.position - transform.position) <= 45.0f)
+                return true;
         }
-        else
-        {
-            attackTarget = null;
-        }
-        return base.AttackTargetInRange();
+        return false;
     }
 
 
@@ -45,7 +36,24 @@ public class BossMonsterBoneDragon : BossMonster
             new Skill(OnSkill1, skill1Cooltime),
             new Skill(OnSkill2, skill2Cooltime)
         };
+        Com.MyAnimEvent.EffectAct += EffectPlay;
+        myCom.DragonFire.Attack = Data.Ak;
     }
+
+    private void EffectPlay(int i)
+    {
+        if (i == 0)
+        {
+            myCom.MyEffect.Play();
+            myCom.DragonFire.StartEffect();
+        }
+        else
+        {
+            myCom.MyEffect.Stop();
+            myCom.DragonFire.StopEffect();
+        }
+    }
+
 
     private bool nextPhase = true;
     private float skill0Cooltime = 20.0f;
@@ -58,8 +66,6 @@ public class BossMonsterBoneDragon : BossMonster
     protected override void OnEnable()
     {
         base.OnEnable();
-        Init(Data);
-
         if (Data == null)
             return;
         foreach (var skill in SkillList)
@@ -88,26 +94,26 @@ public class BossMonsterBoneDragon : BossMonster
         SetDirection(Vector3.zero);
         col.enabled = false;
         Com.MyAnim.SetTrigger(AnimParam.Death);
-        
-        if(nextPhase)
+
+        if (nextPhase)
         {
             nextPhase = false;
             isChnagePhase = true;
             Com.MyAnim.SetTrigger(AnimParam.Reassemble);
             while (isChnagePhase)
                 yield return null;
+            CurHp = Data.MaxHP * 1.5f;
             yield return new WaitForSeconds(0.5f);
+            col.enabled = true;
             SkillList[1].isReady = true;
             SkillList[2].isReady = true;
-            col.enabled = true;
-            CurHp = Data.MaxHP * 1.5f;
             foreach (var skill in SkillList)
             {
                 skill.reset();
             }
             SetDirection(transform.forward);
             Com.MyAnim.SetBool(AnimParam.isMoving, true);
-
+            yield break;
         }
 
 
@@ -207,7 +213,8 @@ public class BossMonsterBoneDragon : BossMonster
         int idx = 2;
         float height = 13.0f;
         float back = 6.0f;
-        col.isTrigger = false;
+        col.isTrigger = true;
+        (col as SphereCollider).radius = 4.0f;
         SkillList[idx].isDuring = true;
         isSkillCast = true;
         Com.MyAnim.SetBool(AnimParam.isMoving, false);
@@ -240,7 +247,8 @@ public class BossMonsterBoneDragon : BossMonster
 
         SkillList[idx].isDuring = false;
         skill2Coroutine = null;
-        col.isTrigger = true;
+        col.isTrigger = false;
+        (col as SphereCollider).radius = 2.5f;
         StartCoroutine(SkillCoolTime(idx));
     }
 
@@ -250,4 +258,41 @@ public class BossMonsterBoneDragon : BossMonster
         base.Update();
     }
 
+    protected override void OnCollisionEnter(Collision collision)
+    {
+        if ((attackMask & (1 << collision.gameObject.layer)) != 0)
+        {
+            IDamage AttackTarget = collision.gameObject.GetComponent<IDamage>();
+            if (AttackTarget != null)
+            {
+                attackTarget = AttackTarget;
+                playTimer();
+            }
+        }
+    }
+
+    protected override void OnCollisionExit(Collision collision)
+    {
+        if ((attackMask & (1 << collision.gameObject.layer)) != 0)
+        {
+            IDamage AttackTarget = collision.gameObject.GetComponent<IDamage>();
+            if (AttackTarget == attackTarget)
+            {
+                attackTarget = null;
+                stopTimer();
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((attackMask & (1 << other.gameObject.layer)) != 0)
+        {
+            IDamage AttackTarget = other.gameObject.GetComponent<IDamage>();
+            if (AttackTarget != null)
+            {
+                AttackTarget.TakeDamageEffect(Data.Ak*2.0f);
+            }
+        }
+    }
 }
