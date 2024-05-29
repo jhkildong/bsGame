@@ -27,6 +27,10 @@ public static class IDamageExtension
         if (dmg < 1)
             dmg = 1;
 
+        if(obj == null)
+        {
+            return;
+        }
         obj.TakeDamage(dmg);
         MonoBehaviour mono = obj as MonoBehaviour;
         Vector3 objPos = mono.transform.position;

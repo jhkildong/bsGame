@@ -21,7 +21,7 @@ MonoBehaviour:
   _exp: 200
   _gold: 300
   _mass: 50
-  _radius: 2
+  _radius: 2.5
   _prefab: {fileID: 4038061350733537972, guid: 396f9f924cc2a004490b3beea6073b94, type: 3}
   _dropItemList:
   - ID: 2007
