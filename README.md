@@ -1,4 +1,7 @@
+영상 링크 : https://drive.google.com/file/d/1HXbzTm2qvK4mBpicWY1CLN3TolvtDNfZ/view?usp=drive_link  
+
 https://drive.google.com/drive/folders/1TZVacSd9rDb6bMYVDEuVMMNYC348H368  
+
 
 SunghoBae : sungho9898@naver.com  
 JeongWhan Yeon : jh_kildong@naver.com   
